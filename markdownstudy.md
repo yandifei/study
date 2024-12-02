@@ -111,8 +111,47 @@ int main()
 > 规范的是在每一行都加> ，
 > 空两格代表换行，学的东西都可以嵌套，包括应用都可以嵌套
 
-超文本链接
+超文本链接  
 方法一：可以直接写网址  
 方法二：[]()在方括号里面填写的文字点击后会直接跳转,外括号填写跳转的链接,如：  
 我的学习仓库md修改[md修改链接](https://github.com/yandifei/study/edit/main/markdownstudy.md)
+如果有很多个重复链接的话就可以直接使用变量来代替网址，如：  
+[需改此文档][a]代码也可以点[这里][a]，这里使用另一个变量[表示][b],效果全都一样。这里是[百度](https://www.baidu.com)  
+[a]: https://github.com/yandifei/study/edit/main/markdownstudy.md  
+[b]: https://github.com/yandifei/study/edit/main/markdownstudy.md  
+[c]: https://www.baidu.com  
+变量命名的方式在这里好像不可以,有效的就只有这个[md修改链接](https://github.com/yandifei/study/edit/main/markdownstudy.md)  
+方法三：脚注  
+方括号里面加^加上脚注的数字，如：
+第一个脚注[^1],文本修改链接[^2]
+[^1]:我是脚注
+[^2]:https://github.com/yandifei/study/edit/main/markdownstudy.md
+
+插图  
+alt-alternative，当图片无法加载时，会加载alt中的文字内容  
+完了,它讲得好垃圾和好水啊,图片不要放在本地尽量搞成链接形式,插图格式  
+![图片](图片链接)
+
+表格  
+和latex非常相似，用|线表示,|--|--|上面的表示的是表头(加粗和居中)  
+|姓名|年龄|性别|
+|:----|:----:|---:|
+|表格左对齐|表格居中|表格右对齐|
+|小明| 18|男|
+|小红| 17|女|
+
+up：学过前端的看，没学过就不用看了  
+图片大小修改  
+<img style="width:500px;height: 300px"SrC="图片链接">  
+图片直接插入  
+<img src ="图片链接">  
+字体大小和颜色  
+直接<span style="color:blue;font-size:40px">hello world</span>
+
+高亮文本学习  
+==我是高亮文本==
+
+公式排版  
+这个部分和我学的latex一样,感觉up讲得比较烂涅  
+
 
