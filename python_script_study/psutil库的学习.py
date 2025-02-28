@@ -174,8 +174,13 @@ def get_disk_io_count(per_disk=False,nowrap=True):
     return psutil.disk_io_counters(per_disk,nowrap)
 
 # 网络（net）
-def get_net_io_count():
+# noinspection PyTypeChecker
+def get_net_io_count(per_nic=False,nowrap=True):
     """获得系统范围的网络 I/O 统计信息
+    参数：
+    per_nic ：是否按网络接口返回统计信息。若为 True，返回字典（键为接口名，值为统计元组）
+    nowrap ：是否自动处理计数器溢出（将溢出后的新值累加到旧值上，确保数值单调递增）
+    返回值：
     bytes_sent：发送的字节数
     bytes_recv：接收的字节数
     packets_sent：发送的数据包数
@@ -185,10 +190,17 @@ def get_net_io_count():
     dropin：被丢弃的传入数据包总数
     dropout：被丢弃的传出数据包总数（始终为 0 在 macOS 和 BSD 上）
     """
-    return psutil.net_io_counters(pernic = False,nowrap = True)
+    return psutil.net_io_counters(per_nic,nowrap)
 
-def get_net_connections():
+def get_net_connections(kind="inet"):
     """系统范围的套接字连接
+    参数：
+    kind ： 过滤连接类型。（以下是可选参数）
+    "inet"（IPv4 和 IPv6）     "inet4"（IPv4 协议）    "inet6"（IPv6 协议）
+    "tcp"（TCP 协议）   "tcp4"（基于 IPv4 的 TCP）   "tcp6"（基于 IPv6 的 TCP）
+    "udp"（UDP 协议）   "udp4"（基于 IPv4 的 UDP）   "udp6"（基于 IPv6 的 UDP）
+    "unix"（UNIX 套接字（UDP 和 TCP 协议））  "all"（所有可能的族和协议的总和）
+    返回值：
     fd：套接字文件描述符。如果连接引用当前的 process 这个可以传递给 socket.fromfd 来获取可用的 socket 对象。 在 Windows 和 SunOS 上，此参数始终设置为 。-1
     family：地址系列，可以是 AF_INET、AF_INET6 或 AF_UNIX。
     type：地址类型，可以是 SOCK_STREAM、SOCK_DGRAM 或 SOCK_SEQPACKET。
@@ -198,7 +210,56 @@ def get_net_connections():
     pid：打开套接字的进程的 PID（如果可检索）， 还。在某些平台（例如 Linux）上，此 字段根据进程权限更改（需要 root）。None
 
     """
+    return psutil.net_connections(kind)
 
+def get_net_if_address():
+    """获得每个 NIC（网络接口卡）关联的地址
+    family：地址系列，AF_INET 或 AF_INET6 或 ，指的是 MAC 地址。
+    address：主 NIC 地址（始终设置）。
+    netmask：网络掩码地址（可能是None）。
+    broadcast：广播地址（可能是None）。
+    PTP：代表“点对点”;它是 点对点接口（通常为 VPN）。broadcast 和 ptp 是 互斥。可能为None
+    """
+    return psutil.net_if_addrs()
+
+def get_net_if_stats():
+    """获得系统中所有网络接口（NIC）的状态信息，包括是否启用、双工模式、速度、MTU（最大传输单元）及标志位等。
+    适用于监控网络接口的健康状态、配置及性能。
+    返回值 ：字典，键为网络接口名称（如 eth0、wlan0），值为 命名元组
+    """
+    return psutil.net_if_stats()
+
+# 传感器（Sensors）|温度监控之类的
+def get_hardware_temperature(fahrenheit=False):
+    """Windows系统不能用。获得硬件的温度，包括 CPU、硬盘等设备的当前温度、高温阈值和临界温度。
+    参数：
+    fahrenheit 默认为True即返回摄氏度，如果为Ture则返回华摄氏度
+    """
+    return psutil.sensors_temperatures(fahrenheit)
+
+def restore_fans():
+    """恢复风扇的速度（Linux才能用）
+    返回值：字典，label，风扇标签（如 cpu_fan、system_fan）|    current，当前风扇转速（单位：RPM）。
+    """
+    return psutil.sensors_fans()
+
+def get_battery_information():
+    """获得电池的信息（用于获取设备的电池状态信息，包括剩余电量百分比、剩余续航时间（秒）以及是否连接电源。）
+    返回值：
+    percent ： 剩余电池电量百分比
+    secsleft ： 距离电池电量耗尽。 电池剩余续航时间（秒）。若已连接电源，返回 psutil.POWER_TIME_UNLIMITED；若无法计算，返回 psutil.POWER_TIME_UNKNOWN。
+    power_plugged ： 如果交流电源线已连接，如果未连接或无法确定。
+    """
+    battery_information = list(psutil.sensors_battery())
+    if not battery_information[0]:
+        battery_information[0] = "设备为台式机或无法获取电池信息"
+    if battery_information[1] == psutil.POWER_TIME_UNLIMITED:
+        battery_information[1] = "电源已连接续航无限"
+    # else:
+    #     battery_information[1] = "设备为台式机或无法计算电池剩余续航时间（秒）"
+    if not battery_information[2]:
+        battery_information[2] = "无法确定电源是否连接"
+    return battery_information
 
 if __name__ == '__main__':
     print(get_cpu_times())
@@ -218,6 +279,13 @@ if __name__ == '__main__':
     print(get_swap_memory())
     print(get_disk_information())
     print(get_disk_usage("/"))  # /为所有磁盘的使用率
-    print(get_disk_io_count())
+    # print(get_disk_io_count())
     print(get_net_io_count())
-
+    # print(get_net_connections())
+    # print(get_net_if_address())
+    # print(get_net_if_stats())
+    # print(get_hardware_temperature()) windows系统不能用这个函数。Linux等可以用
+    # print(restore_fans())   # 只有Linux可以用
+    print(get_battery_information())
+    if psutil.POWER_TIME_UNLIMITED == psutil.sensors_battery()[1]:
+        print(1)
