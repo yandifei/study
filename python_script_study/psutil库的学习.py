@@ -289,22 +289,61 @@ def get_user_information():
     return psutil.users()
 
 # 进程（Processes）
+# get_all_pid_attribute_super 这个是最全的，遍历所有进程的属性（属性自定义）
+def get_all_pid_attribute_super(attrs=None,ad_value=None):
+    """遍历系统中所有正在运行的进程。相较于手动遍历 PID 列表，此方法更高效且避免竞态条件（如进程中途退出导致的错误）
+    参数：
+    attrs ： 通过 attrs 参数指定需要预加载的属性，减少多次系统调用
+    如果attrs为None，则默认attrs=["pid", "name", "status"]
+    ad_value : 设置当进程某个属性无法获取时的值（如权限不足），默认为None，
+    返回值：
+    默认pid（进程ID），name（进程名），status（进程当前状态），started（进程开始时间）
+    """
+    psutil.process_iter.cache_clear()  # 手动清除进程列表缓存以确保获取最新数据(爆黄不用管的，能用的啊)
+    count_process_information = list()    # 设置一个列表用来统计放置不同进程的信息
+    for process_information in psutil.process_iter(attrs, ad_value):
+        try:
+            count_process_information.append(process_information)
+        except(psutil.NoSuchProcess, psutil.AccessDenied):
+            count_process_information.append("进程可能已退出或无权限访问")
+    return count_process_information
+
 def get_pid_list():
     """获得当前正在运行的 PID 的排序列表
     返回值 ：  正在运行的PID 排序的列表
     """
     return psutil.pids()
 
-def get_pid_list_ex():
-    """遍历系统中所有正在运行的进程。相较于手动遍历 PID 列表，此方法更高效且避免竞态条件（如进程中途退出导致的错误）
-    
-
+def is_pid_exists(pid):
+    """检查当前进程列表中是否存在给定的 PID
+    参数：
+    pid ： 进程ID
+    返回值：
+    存在则为True，不存在则为False
     """
+    return psutil.pid_exists(pid)
 
-    count_process_information = list()    # 设置一个列表用来统计放置不同进程的信息
-    for process_information in psutil.process_iter():
-        count_process_information.append(f"进程ID：{process_information.pid}，进程名：{process_information.name()}，进程状态：{process_information.status()}")
-    return count_process_information
+def monitor_process(procs,timeout=None,callback=None):
+    """用于等待一组进程终止，并返回已终止和仍在运行的进程列表。
+    它特别适用于批量管理进程（如等待多个子进程退出），支持超时机制和回调函数，能有效监控进程生命周期。
+    参数：
+    procs   ：   要等待的 psutil.Process 对象列表
+    timeout	：	最大等待时间（秒）。默认为 None（无限等待）
+    callback：	回调函数，每当有进程终止时触发，参数为已终止的 Process 对象
+    返回值（一下都是列表）：
+    gone	已终止的进程列表（包含新属性 returncode 表示退出状态）
+    alive	仍存活的进程列表（超时或未终止）。
+    """
+    return psutil.wait_procs(procs,timeout,callback)
+    # 核心使用场景
+    # 批量等待进程退出
+    # 等待一组进程正常终止，或超时后强制终止剩余进程。
+    # 实时监控进程状态
+    # 通过回调函数实时处理进程退出事件（如日志记录）。
+    # 资源回收
+    # 确保子进程退出后释放资源（如临时文件、网络连接）。
+
+
 
 if __name__ == '__main__':
     print(get_cpu_times())
@@ -334,9 +373,12 @@ if __name__ == '__main__':
     print(get_battery_information())
     print(get_sys_boot_timestamp(True))
     print(get_user_information())
-    print(get_pid_list())   # len(get_pid_list())：统计总共多少个进程
-    for i in get_pid_list_ex():
-        print(i)
+    # for i in get_all_pid_attribute_super():
+    #     print(i)
+    # print(get_pid_list())   # len(get_pid_list())：统计总共多少个进程
+    # print(is_pid_exists(0))
+    print(monitor_process(procs=[16436]))
+
 
 
 

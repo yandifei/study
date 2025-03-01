@@ -1,20 +1,11 @@
 import psutil
-import time
 
-def monitor_cpu(interval=1, percpu=False):
-    print("开始监控 CPU 使用率（按 Ctrl+C 停止）...")
-    try:
-        while True:
-            usage = psutil.cpu_percent(interval=interval, percpu=percpu)
-            if percpu:
-                core_str = " | ".join([f"Core {i}: {u}%" for i, u in enumerate(usage)])
-                print(f"CPU 核心利用率: {core_str}")
-            else:
-                print(f"当前系统 CPU 利用率: {usage}%")
-    except KeyboardInterrupt:
-        print("监控已停止。")
-# 监控整体 CPU 使用率
-monitor_cpu(interval=1)
+def on_terminate(proc):
+    print("process {} terminated with exit code {}".format(proc, proc.returncode))
 
-# 监控每个核心（取消注释运行）
-# monitor_cpu(interval=1, percpu=True)
+procs = psutil.Process().children()
+for p in procs:
+    p.terminate()
+gone, alive = psutil.wait_procs(procs, timeout=3, callback=on_terminate)
+for p in alive:
+    p.kill()
