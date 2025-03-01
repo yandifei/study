@@ -1,3 +1,4 @@
+from datetime import datetime
 from time import sleep
 import psutil
 
@@ -246,20 +247,64 @@ def restore_fans():
 def get_battery_information():
     """获得电池的信息（用于获取设备的电池状态信息，包括剩余电量百分比、剩余续航时间（秒）以及是否连接电源。）
     返回值：
-    percent ： 剩余电池电量百分比
-    secsleft ： 距离电池电量耗尽。 电池剩余续航时间（秒）。若已连接电源，返回 psutil.POWER_TIME_UNLIMITED；若无法计算，返回 psutil.POWER_TIME_UNKNOWN。
-    power_plugged ： 如果交流电源线已连接，如果未连接或无法确定。
+    percent ： “剩余电池电量百分比” 或 “设备为台式机或无法获取电池信息”
+    secsleft ： 电池剩余续航时间（秒），若已连接电源则为“电源连接续航无限”，若无法获取则返回"设备为台式机或无法计算电池剩余续航时间"
+    power_plugged ： 如果交流电源线已连接则返回“电源已连接”，如果未连接或无法确定则返回"未连接电源或无法确定电源是否连接"
     """
     battery_information = list(psutil.sensors_battery())
-    if not battery_information[0]:
+    if battery_information[0] is None:
         battery_information[0] = "设备为台式机或无法获取电池信息"
     if battery_information[1] == psutil.POWER_TIME_UNLIMITED:
-        battery_information[1] = "电源已连接续航无限"
-    # else:
-    #     battery_information[1] = "设备为台式机或无法计算电池剩余续航时间（秒）"
-    if not battery_information[2]:
+        battery_information[1] = "电源连接续航无限"
+    elif battery_information[1] == psutil.POWER_TIME_UNKNOWN:
+         battery_information[1] = "无法计算电池剩余续航时间"
+    if battery_information[2] is None:
         battery_information[2] = "无法确定电源是否连接"
+    elif battery_information[2]:    # 返回值为True
+        battery_information[2] = "电源已连接"
+    elif not battery_information[2]:
+        battery_information[2] = "电源未连接"
     return battery_information
+
+# 其他（系统启动时间、用户）
+def get_sys_boot_timestamp(calculate=False):
+    """获得系统启动时的时间戳（自1970年1月1日UTC以来的秒数）
+    参数：
+    mod ： 默认为False返回秒的时间戳，如果为True则会进行计算并返回本时区的日期
+    """
+    boot_timestamp = psutil.boot_time() # 获得系统启动时的时间戳
+    if not calculate:
+        return  boot_timestamp
+    else:   # 获取系统启动时间的时间戳（秒），转换为可读的日期时间格式（本地时区）
+        return datetime.fromtimestamp(boot_timestamp).strftime('%Y-%m-%d %H:%M:%S')
+
+def get_user_information():
+    """获得计算机用户相关的信息
+    name: 登录用户名。
+    terminal: 用户登录的终端（如 tty1, pts/0，Windows 可能为 None）。
+    host: 用户登录的主机（如远程 IP 或本地终端）。
+    started: 用户登录时间的时间戳（秒级，Unix 时间戳）。
+    pid: 用户登录会话的进程 ID（如 Linux 的登录进程 PID，Windows 可能为 None）
+    """
+    return psutil.users()
+
+# 进程（Processes）
+def get_pid_list():
+    """获得当前正在运行的 PID 的排序列表
+    返回值 ：  正在运行的PID 排序的列表
+    """
+    return psutil.pids()
+
+def get_pid_list_ex():
+    """遍历系统中所有正在运行的进程。相较于手动遍历 PID 列表，此方法更高效且避免竞态条件（如进程中途退出导致的错误）
+    
+
+    """
+
+    count_process_information = list()    # 设置一个列表用来统计放置不同进程的信息
+    for process_information in psutil.process_iter():
+        count_process_information.append(f"进程ID：{process_information.pid}，进程名：{process_information.name()}，进程状态：{process_information.status()}")
+    return count_process_information
 
 if __name__ == '__main__':
     print(get_cpu_times())
@@ -287,5 +332,12 @@ if __name__ == '__main__':
     # print(get_hardware_temperature()) windows系统不能用这个函数。Linux等可以用
     # print(restore_fans())   # 只有Linux可以用
     print(get_battery_information())
-    if psutil.POWER_TIME_UNLIMITED == psutil.sensors_battery()[1]:
-        print(1)
+    print(get_sys_boot_timestamp(True))
+    print(get_user_information())
+    print(get_pid_list())   # len(get_pid_list())：统计总共多少个进程
+    for i in get_pid_list_ex():
+        print(i)
+
+
+
+
