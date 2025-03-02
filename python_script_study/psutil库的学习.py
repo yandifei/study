@@ -1,6 +1,8 @@
-from datetime import datetime
-from time import sleep
-import psutil
+import psutil   # 学习的库
+from win32process import GetWindowThreadProcessId # 通过窗口句柄用来获取pid的
+from datetime import datetime   # 用来计算时间（）
+from time import sleep  # 必要的函数（用来等待）
+
 
 # CPU
 def get_cpu_times(per_cpu=False):
@@ -289,9 +291,51 @@ def get_user_information():
     return psutil.users()
 
 # 进程（Processes）
+def hwnd_get_pid(hwnd):
+    """通过句柄获得进程的PID（windows专属，这调用的win32的库）
+    注意：主进程创建的窗口则获得主进程的pid，子进程创建的窗口则获得子进程的pid
+    参数:
+    hwnd ： 窗口的句柄
+    返回值：
+    pid
+    """
+    tid,pid = GetWindowThreadProcessId(hwnd)    # 调用win32的api获取进程的PID，通过窗口句柄
+    try:
+        if psutil.pid_exists(pid):  # 判断进程是否有效
+            return pid
+        else:
+            return None # 未找到该进程号
+    except(psutil.NoSuchProcess, psutil.AccessDenied):
+        return "进程可能已退出或无权限访问"
+
+def hwnd_get_tid(hwnd):
+    """通过句柄获得窗口的线程
+    这个函数本来不应该在这里的
+    注意：获得的线程ID和窗口的创建有关（如果是主进程的子线程创建的窗口，输入该窗口句柄后获得的是创建者子线程ID）
+    """
+    tid, pid = GetWindowThreadProcessId(hwnd)  # 调用win32的api获取进程的TID，通过窗口句柄
+    return tid
+
+def is_pid_exists(pid):
+    """检查当前进程列表中是否存在给定的 PID
+    参数：
+    pid ： 进程ID
+    返回值：
+    存在则为True，不存在则为False
+    """
+    return psutil.pid_exists(pid)
+
+def get_parent_pid():
+    """获得父进程的pid
+    参数：
+    pid ： 进程ID
+    """
+
+
 # get_all_pid_attribute_super 这个是最全的，遍历所有进程的属性（属性自定义）
 def get_all_pid_attribute_super(attrs=None,ad_value=None):
     """遍历系统中所有正在运行的进程。相较于手动遍历 PID 列表，此方法更高效且避免竞态条件（如进程中途退出导致的错误）
+    这个可以包括所有的进程相关的操作，可以说是进程里面最强最有效的操作，不过得去官网看类
     参数：
     attrs ： 通过 attrs 参数指定需要预加载的属性，减少多次系统调用
     如果attrs为None，则默认attrs=["pid", "name", "status"]
@@ -308,22 +352,45 @@ def get_all_pid_attribute_super(attrs=None,ad_value=None):
             count_process_information.append("进程可能已退出或无权限访问")
     return count_process_information
 
-def get_pid_list():
-    """获得当前正在运行的 PID 的排序列表
+def get_all_active_pid():
+    """获得所有当前正在运行的 PID 的排序列表
     返回值 ：  正在运行的PID 排序的列表
     """
     return psutil.pids()
 
-def is_pid_exists(pid):
-    """检查当前进程列表中是否存在给定的 PID
+def get_all_active_pid_name(return_value="set"):
+    """获得当前所有进程的名字
     参数：
-    pid ： 进程ID
+    return_value ： 默认"set"即如果有多个进程同个名字则自动去重
+    如果为"list"则返回所有的进程名包括重名（子进程可能重名）
     返回值：
-    存在则为True，不存在则为False
+    return_value为"set"时如果其中有一个进程退出或无权限访问，则集合中就有“进程可能已退出或无权限访问”
+    return_value为"list"为所有进程都返回，可以看到多个无权访问的进程
     """
-    return psutil.pid_exists(pid)
+    if return_value == "set":    # 返回值以集合形式返回
+        all_active_pid_name = set()  # 创建一个集合来放置所有进程的名字
+    elif return_value == "list":  # 返回值以列表形式返回
+        all_active_pid_name = list()  # 创建一个集合来放置所有进程的名字
+    else: raise TypeError("参数类型错误，只能填 'list'、'set'(字符串)")
+    # 开始遍历所有正在活动进程
+    for pid in psutil.process_iter():
+        try:
+            all_active_pid_name.add(pid.name())
+        except(psutil.NoSuchProcess, psutil.AccessDenied):
+            all_active_pid_name.add("进程可能已退出或无权限访问")
+    return all_active_pid_name
 
-def monitor_process(procs,timeout=None,callback=None):
+
+
+def process_callback(process):
+    """进程回调函数（为了下面的函数服务的）
+    每当下面函数中有一个给定的进程结束时就会的调用此函数。
+    当然，这个回调函数在这里只是为了测试而已
+    """
+    # print(f"进程：{process.name()}已经终止，进程ID：{process.pid}，进程状态：{process.status()}")
+    print(f"进程：{process.pid}已经终止,状态：{process}，退出代码：{process.returncode}")
+
+def monitor_process(procs,timeout=None,callback=process_callback):
     """用于等待一组进程终止，并返回已终止和仍在运行的进程列表。
     它特别适用于批量管理进程（如等待多个子进程退出），支持超时机制和回调函数，能有效监控进程生命周期。
     参数：
@@ -334,7 +401,22 @@ def monitor_process(procs,timeout=None,callback=None):
     gone	已终止的进程列表（包含新属性 returncode 表示退出状态）
     alive	仍存活的进程列表（超时或未终止）。
     """
-    return psutil.wait_procs(procs,timeout,callback)
+    # 把procs列表通过for给每个pid创建进程的实例对象再放回procs列表里面去
+    procs = [psutil.Process(pid) for pid in procs]
+    gone, alive = psutil.wait_procs(procs, timeout, callback)
+    for process in gone:
+        # print(f"进程：{process.name()}已经终止，进程ID：{process.pid}，进程状态：{process.status()}，退出码: {process.returncode}")
+        print(f"进程：{process.pid}已经终止,状态：{process}，退出代码：{process.returncode}")
+    if alive:
+        print("以下进程超时后仍存活:")
+        for process in alive:
+            print(f"PID: {process.status()}")
+        # 可选：强制终止存活进程
+        for process in alive:
+            process.kill()
+        # 再次等待确保终止
+        # gone, alive = psutil.wait_procs(alive, timeout=1)
+    # return
     # 核心使用场景
     # 批量等待进程退出
     # 等待一组进程正常终止，或超时后强制终止剩余进程。
@@ -342,6 +424,9 @@ def monitor_process(procs,timeout=None,callback=None):
     # 通过回调函数实时处理进程退出事件（如日志记录）。
     # 资源回收
     # 确保子进程退出后释放资源（如临时文件、网络连接）。
+
+
+
 
 
 
@@ -373,11 +458,20 @@ if __name__ == '__main__':
     print(get_battery_information())
     print(get_sys_boot_timestamp(True))
     print(get_user_information())
-    # for i in get_all_pid_attribute_super():
-    #     print(i)
+    """进程"""
+    print(f"窗口PID：{hwnd_get_pid(6555674)}")
+    print(f"窗口TID：{hwnd_get_tid(6555674)}")
+    # for process in get_all_pid_attribute_super():
+    #     print(process)
     # print(get_pid_list())   # len(get_pid_list())：统计总共多少个进程
+    # print(get_all_active_pid_name())
+
+
+
+
+
     # print(is_pid_exists(0))
-    print(monitor_process(procs=[16436]))
+    # print(monitor_process(procs=[6428]))    # notepad，记事本方便
 
 
 
