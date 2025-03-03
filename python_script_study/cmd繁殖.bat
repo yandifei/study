@@ -1,0 +1,2 @@
+start cmd
+%0
