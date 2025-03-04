@@ -363,23 +363,23 @@ def get_parent_pid(pid, recursive=True,return_class=False):
     except psutil.AccessDenied:
         print(f"无权限访问进程 {pid}")
 
-def get_child_pid(pid, return_class=False):
-    """获得子进程的pid（不包括子进程的子进程）
+def get_child_pid(pid, return_name=False):
+    """获得当前进程下的所有子进程的pid（不包括子进程的子进程）
     参数：
     pid ： 进程ID
-    return_name ： 默认False即仅仅返回pid，如果为True则返回子进程的名字
+    return_name ： 默认False即仅仅返回pid，如果为True则返回pid和子进程的名字
     返回值：
     默认返回子进程的PID，如何return_class=Ture则返回子进程的对象
     """
+    child_process_infos = list()    # 设置一个列表来放子进程的信息
     child_process = psutil.Process(pid).children(False) # 获得子进程PID，False不包括子进程的子进程
-
-    if return_class:
+    if return_name:
         for child_process_infos in child_process:
-            child_process_information.append(f"子进程ID:{child_process_infos.pid},子进程名:{child_process_infos.name()}")   # 存放子进程的pid和名
+            child_process_infos.append(f"子进程ID:{child_process_infos.pid},子进程名:{child_process_infos.name()}")   # 存放子进程的pid和名
     else:
         for child_process_infos in child_process:
-            child_process_information.append(child_process_infos.pid) # 存放子进程的pid
-    return child_process_information
+            child_process_infos.append(child_process_infos.pid) # 存放子进程的pid
+    return child_process_infos
 
 def get_all_child_pid(pid):
     """获得所有子进程，包括子进程的子进程
@@ -401,19 +401,78 @@ def pid_get_path(pid):
     """
     return psutil.Process(pid).exe()
 
-def is_pid_exists(pid):
-    """检查当前进程列表中是否存在给定的 PID
+def is_running(pid):
+    """检查当前进程列表中是否存在给定的 PID（如果PID被接替了依旧可以检测出来，即确保这个应用是真的消失了）
+    直接使用 is_running() 更安全，因为它不仅检查 PID 是否存在，还确保该 PID 对应的是原始进程。
     参数：
     pid ： 进程ID
     返回值：
     存在则为True，不存在则为False
     """
+    psutil.Process(pid).is_running()
+
+def is_pid_exists(pid):
+    """检查当前进程列表中是否存在给定的 PID（最快的）
+    参数：
+    pid ： 进程ID
+    返回值：
+    存在则为True（如果这个进程号被接替了还是显示True），不存在则为False
+    """
     return psutil.pid_exists(pid)
 
-def is_running():
-    """在当前进程列表中返回当前进程是否正在运行。 这在进程消失并且其 PID 被 另一个过程，因此它必须优先于执行 。 如果 PID 已被重用，此方法还将从内部缓存中删除该进程
-
+def kill_pid(pid,check=True):
+    """终止指定进程
+    参数：
+    pid ： 进程ID
+    check ： True检查 PID有效性，防止误杀新进程，False则直接干掉这个进程
+    返回值：
+    终止成功返回True，失败为False
     """
+    try:
+        if check:   # 开启内置PID重用检查机制，确保操作的是原始目标进程
+            psutil.Process(pid).terminate()
+        elif not check:     # 无论是新的还是旧的都干掉
+            psutil.Process(pid).kill()
+    except():
+        return False
+    else:
+        return True
+
+def pause_process(pid):
+    """暂停进程
+    内置了 PID 重用检查 机制，确保操作的是原始目标进程（Windows 系统：暂停进程的所有线程）
+    参数：
+    pid ： 进程ID
+    返回值：
+    暂停成功返回True，失败为False(False是权限不够的问题)
+    """
+    try:
+        psutil.Process(pid).suspend()  # 暂停进程
+    except psutil.AccessDenied:
+        return False
+
+def restore_process(pid):
+    """恢复被暂停的进程
+    内置了 PID 重用检查 机制，确保操作的是原始目标进程（Windows 系统：暂停进程的所有线程）
+    参数：
+    pid ： 进程ID
+    返回值：
+    暂停恢复返回True，失败为False(False是权限不够的问题)
+    """
+    try:
+        psutil.Process(pid).resume()  # 恢复被暂停的进程
+    except psutil.AccessDenied:
+        return False
+
+def wait_process_die(pid,timeout=None):
+    """等待进程结束
+    内置了 PID 重用检查 机制，确保操作的是原始目标进程（Windows 系统：暂停进程的所有线程）
+    参数：
+    pid ： 进程ID
+    timeout ： 默认None无限等待、可以自定义时间超时抛出异常
+    timeout=0：非阻塞模式立即返回进程状态（若进程未终止则抛出异常）
+    """
+    psutil.Process(pid).wait(timeout)  # 等待进程结束
 
 def get_pid_create_time(pid):
     """获得进程的创建时间
@@ -574,8 +633,12 @@ def get_pid_memory_percent(pid):
     # RSS (Resident Set Size)表示进程实际使用的物理内存（不包括交换分区）
     return psutil.Process(pid).memory_percent(memtype='rss')
 
-
-
+def get_cpu_num(pid):
+    """获得该进程当前正在哪个CPU上运行(Linux、FreeBSD、SunOS可用，windows不支持)
+    参数:
+    pid ： 进程ID
+    """
+    return psutil.Process(pid).cpu_num()
 """
 uids()
 此进程的真实、有效和保存的用户 ID 作为命名元组。 这与 os.getresuid 相同，但可用于任何进程 PID。
@@ -584,10 +647,6 @@ gids()
 terminal()
 与此进程关联的终端（如果有），否则 。这是 类似于 “tty” 命令，但可用于任何进程 PID
 """
-
-
-
-
 if __name__ == '__main__':
     print(get_cpu_times())
     # psutil.cpu_percent(1)  # 首次调用非阻塞模式，把无效数值使用掉
@@ -620,30 +679,24 @@ if __name__ == '__main__':
     print(f"当前窗口的进程是{hwnd_get_current_process_pid()}")  # 进程会不断改变
     # print(f"窗口PID：{hwnd_get_pid(6555674)}")
     # print(f"窗口TID：{hwnd_get_tid(6555674)}")
-    print(get_pid_name(5008))
+    # print(get_pid_name(5008))
     # print(pid_get_path(5008))
-    print(get_parent_pid(0))
+    # print(get_parent_pid(0))
     # print(get_child_pid(5008))
     # print(is_pid_exists(4))
     # print(get_pid_create_time(5008))
-
 
     # for process in get_all_pid_attribute_super():
     #     print(process)
     # print(get_pid_list())   # len(get_pid_list())：统计总共多少个进程
     # print(get_all_active_pid_name())
 
-
-
-
-
-
     # print(monitor_process(procs=[6428]))    # notepad，记事本方便
 
     # print(get_pid_cmdline(5008))
     # print(get_pid_environment(5008))
 
-
+    print(get_cpu_num(14128))
 
 
 
