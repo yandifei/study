@@ -1,0 +1,2 @@
+cmd默认是BGB格式的，其次使用指令的时候也指定utf-8格式
+javac -encoding UTF-8 study1.java
