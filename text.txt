@@ -1,0 +1,2 @@
+https://kali.download/base-images/kali-2024.4/kali-linux-2024.4-vmware-amd64.7z
+https://mirror.nyist.edu.cn/centos-stream/10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-dvd1.iso
