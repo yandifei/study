@@ -13,6 +13,6 @@ public class Exercise1 {
 		//使用一条语句实现（可读性极差）
 		int max = (n1 > n2 ? n1 : n2) > n3 ?  (n1 > n2 ? n1 : n2) : n3;
 		System.out.println(max);
-
+		int $a = 1;
 	}
 }
