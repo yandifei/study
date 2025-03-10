@@ -15,4 +15,6 @@ switch(c) {
 ```
 4. default是可以省略的，省略的话就是其他结果都不做任何处理，程序直接跳到switch语句块
 5. break语句用来在执行完一个case分支后使程序跳出switch语句块。没有break就会直接穿透（真实穿透伤害），因为如果没有break，就会执行下一个case里面的程序不管有没有满足case里面的条件。遇到break后就会立刻退出当前的选择分支
-6. 
+### switch 和 if 什么什么时候选择最好
+如果判断的具体数值不多，
+而且符合byte、 short 、int、char, enum[枚举]String这6种类型。虽然两个语句都可以使用，建议使用swtich语句。
