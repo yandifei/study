@@ -1,1 +1,1 @@
-print(1+1.0x)
+while True: print("死变态 ",end="")
