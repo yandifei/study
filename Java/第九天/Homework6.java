@@ -13,6 +13,10 @@ public class Homework6 {
 			// System.out.print(j + " ");		//特别注意如果System.out.print(j + k + " ");就会有问题
 			System.out.print(" " + k + " " + j);
 		}
+		System.out.println();
+		for(char i = 64, j = 96, k = 1; k <= 26; k++) {
+			System.out.print(" " + (char)(i + k) + " " + " " + (char)(j + k));
+		}
 	}	
 }
 /*
