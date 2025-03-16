@@ -1,6 +1,6 @@
 /*Exercise2.java -- 数组练习1*/
 public class Exercise2 {
-	public static void main(String[] agrs) {
+	public static void main(String[] args) {
 		//请求出一个数组int[]的最大值{4, -1, 9, 10, 23}，并得到对应的下标
 		//错的
 		// int[] arry = { 1010, -1, 9, 10, 23 };
