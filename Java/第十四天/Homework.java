@@ -39,7 +39,7 @@ public class Homework {
 			for(int j = 0, temp = 0; j < arr.length - i - 1; j++, temp = 0) {
 				if(arr[j] > arr[j + 1]) {
 					temp = arr[j + 1];	//把小的数组放到缓冲变量
-					arr[j + 1] = arr[j];	//把大的值往前挪
+					arr[j + 1] = arr[j];	//把大的值往前挪	
 					arr[j] = temp;	//把大的值往后挪
 				}
 			}
