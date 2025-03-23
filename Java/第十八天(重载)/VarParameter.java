@@ -5,7 +5,6 @@ public class VarParameter {
 		System.out.println(m.sum(1,5,100));
 		int[] a = {1, 5, 100};
 		System.out.println(m.sum(a));
-		System.out.println(m.asdf(1));
 
 	}
 }
@@ -33,9 +32,5 @@ class HspMethod {
 			res += nums[i];
 		}
 		return res;
-	}
-
-	public int asdf(int num1, int num2 = num1) {
-		return num1 + num1;
 	}
 }
