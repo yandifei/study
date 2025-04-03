@@ -1,4 +1,4 @@
-package Homework.Homework05;
+package Homework05;
 
 public class Scientist extends Employee {
     private double bonus;

@@ -1,4 +1,4 @@
-package Homework.Homework05;
+package Homework05;
 
 public class Teacher extends Employee {
     private int classDay;
