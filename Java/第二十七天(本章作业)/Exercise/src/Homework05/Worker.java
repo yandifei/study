@@ -1,4 +1,4 @@
-package Homework.Homework05;
+package Homework05;
 
 public class Worker extends Employee {
     public Worker(String name, double salary) {
