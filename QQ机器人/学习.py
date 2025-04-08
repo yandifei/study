@@ -13,7 +13,7 @@ win_childs = win.GetChildren()    # 获得根窗口
 ##qq_win = 0
 ##遍历根窗口的子窗口
 
-chat_name = "Free my WW"    # qq群聊窗口
+chat_name = "鸣潮想睡觉"    # qq群聊窗口
 for child in win_childs:
 ##    print(f"类名: {child.ClassName}\t标题: {child.Name}\t控件类型: {child.ControlTypeName}")
     if child.Name == chat_name:
@@ -142,11 +142,30 @@ def split_senderName_message(member_message):
         if send_message.LocalizedControlType == "文本":
             print(f"发送消息:{send_message.Name}")  # 用户发送的是文本消息
         else:
-            print(jude_send_message(send_message))  # 其他类型的消息
+            print(f"发送消息:{jude_send_message(send_message)}")  # 其他类型的消息
     # 多类型
     else:   # 发送的是链接、表情包之类的，组的形式，多个组
 ##        print("非文本消息(图片、表情、链接等)")
+        a = ""
         print(f"发送消息:",end='')
+##        condition = send_message.PropertyCondition(send_message.LocalizedControlType,"文本")
+        # 使用FindAll，通过给定的条件获取指定的所有子控件
+##        all_type_message = send_message.FindAll(TreeScope=send_message.TreeScope.Descendants,Condition=condition)
+        for i in send_message.GetChildren():
+            if len(i.GetChildren()) > 0:
+                for i in i.GetChildren():
+                    if len(i.GetChildren()) > 0:
+                        for i in i.GetChildren():
+                            if i.LocalizedControlType == "文本":print(i.Name,end='1')
+                    if i.LocalizedControlType == "文本":print(i.Name,end='2')
+            if i.LocalizedControlType == "文本":print(i.Name,end='3') # 本体消息
+        print(a,end='')
+            
+
+##        try:
+##            print(len(send_message.GetChildren()))  # send_message有三个控件
+##        except():
+##            print("无法获取")
 ##        compound_message = all_type_message[index].GetChildren()    # 获取多个组合框(不同类型文本的组件)
         print() # 换行
                 
