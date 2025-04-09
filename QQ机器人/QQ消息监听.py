@@ -13,7 +13,7 @@ win_childs = win.GetChildren()    # 获得根窗口
 ##qq_win = 0
 ##遍历根窗口的子窗口
 
-chat_name = "鸣潮想睡觉"    # qq群聊窗口
+chat_name = "猫猫█artificial intelligence█"    # qq群聊窗口
 for child in win_childs:
 ##    print(f"类名: {child.ClassName}\t标题: {child.Name}\t控件类型: {child.ControlTypeName}")
     if child.Name == chat_name:
@@ -95,7 +95,6 @@ message_list = message_list.GetChildren()[0]    # 再次进入单个组里面
 print(f"获得的最大消息条数:{len(message_list.GetChildren())}")  # 获得的消息条数
 # 到了这一步后有许多组，对应的都是群友的消息，选择哪条消息后还要进入一个组(没用的组)
 
-
 def jude_send_message(jude_type_message):
     """判断发送的是什么类型的消息
     jude_type_message : 单个控件(不是组)
@@ -123,7 +122,11 @@ def split_senderName_message(member_message):
     # 发送者
     if len(member_message) == 2:    # 一般都是2组(发送者和消息体)
         senderName = member_message[0]    # 发送者的组
-        print(f"发送者:{senderName.Name}",end='    ')
+        # 加入群聊的情况
+        if member_message[1].GetChildren()[0].GetChildren()[0].LocalizedControlType == "链接" and member_message[1].GetChildren()[0].GetChildren()[1].Name == "加入了群聊。":
+            print(senderName.Name)  # 发送谁加入了群聊
+        else:   # 其他正常的消息
+            print(f"发送者:{senderName.Name}",end='    ')
     else:
         senderName = member_message[0]. GetChildren()# 消息撤回情况
         print(f"发送者:{senderName[0].Name}",end='')
@@ -156,17 +159,10 @@ def split_senderName_message(member_message):
                 for i in i.GetChildren():
                     if len(i.GetChildren()) > 0:
                         for i in i.GetChildren():
-                            if i.LocalizedControlType == "文本":print(i.Name,end='1')
-                    if i.LocalizedControlType == "文本":print(i.Name,end='2')
-            if i.LocalizedControlType == "文本":print(i.Name,end='3') # 本体消息
+                            if i.LocalizedControlType == "文本":print(i.Name,end='')
+                    if i.LocalizedControlType == "文本":print(i.Name,end='')
+            if i.LocalizedControlType == "文本":print(i.Name,end='') # 本体消息
         print(a,end='')
-            
-
-##        try:
-##            print(len(send_message.GetChildren()))  # send_message有三个控件
-##        except():
-##            print("无法获取")
-##        compound_message = all_type_message[index].GetChildren()    # 获取多个组合框(不同类型文本的组件)
         print() # 换行
                 
         
@@ -189,5 +185,5 @@ for index in range(len(message_list.GetChildren())): # 打印最新的消息列�
         
 
 
-    
-    
+
+
