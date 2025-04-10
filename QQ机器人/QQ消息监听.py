@@ -4,7 +4,7 @@
 3.无封号风险、一键exe启动、自动回复、根据上下问回复
 """
 import uiautomation as auto
-from time import sleep
+
 print("成功导入uiautomation")
 # ->窗口
 win = auto.GetRootControl()
