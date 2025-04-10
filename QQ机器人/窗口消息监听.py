@@ -1,9 +1,9 @@
 """对windows的窗口进行消息监听"""
-from time import sleep
 
+import win32con
 # 这里的消息监听本质是检测窗口变化(为了专业人员看懂，不是hook键盘等各种的消息事件监听)
 import win32gui
-import win32con
+
 
 class MessageMonitoring:
     def __init__(self, dialogue_window_hwnd):
