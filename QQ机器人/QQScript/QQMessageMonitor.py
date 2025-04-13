@@ -44,36 +44,24 @@ def top_window_traversal(out=False):   # 顶层窗口遍历
         for window in visible_windows_object: print(window.Name)# 打印找到的窗口名
     return visible_windows_object
 
-def get_qq_pid():
+def get_qq_win_hwnd():
     """判断登录了多少个QQ   1. 把符合句柄的窗口展示出来 2. 通过结构判断是不是qq窗口
-    返回值： qq_account : qq窗口句柄的列表
+    返回值： qq_win_hwnd : qq窗口句柄的列表
     """
-    all_qq_hwnd = list()
-    def enum_child(hwnd, _):    # 回调函数
-        if not win32gui.IsWindowVisible(hwnd):  # 过滤不可见的窗口
-            return True # 直接跳过
-        if win32gui.GetClassName(hwnd) == "Chrome_WidgetWin_1" and win32gui.GetWindowText(hwnd) == "QQ":
-             all_qq_hwnd.append(hwnd)  # 获得所有的qq类名和标题的句柄
-        return True  # 继续遍历
-    win32gui.EnumChildWindows(None, enum_child, None)   # 遍历函数
-    print(all_qq_hwnd)
-    """结构判断是否是QQ窗口"""
-    qq_accounts = list() # 用来放置qq账号
-    win32gui.ShowWindow(all_qq_hwnd[0], win32con.SW_SHOW)  # 展示QQ窗口
-    for qq_hwnd in all_qq_hwnd:    # 遍历符合qq类名和标题的句柄
-        for qq_win in top_window_traversal():
-            if qq_win.Name == "QQ" and qq_win.LocalizedControlType == "窗格":
-    #
-    #
-    #     qq_control = qq_control.GetChildren()[0] # 获得第一个控件(文档)02
-    #     if qq_control.LocalizedControlType != "文档":
-    #         raise EnvironmentError("无法定位窗口，请手动打开所有的QQ窗口放置到桌面上")
-    #     qq_control = qq_control.GetFirstChildControl().GetFirstChildControl() # 进入2个组
-    #     if len(qq_control.GetChildren()) == 4:  # 如果是q群或好友就只有一个子控件，qq有4个控件
-    #         qq_accounts.append(qq_hwnd)
-    # return qq_accounts
-
-
+    visible_windows = uiautomation.GetRootControl().GetChildren()  # 获取当前桌面对象->获得当前桌面所有可见的窗口的对象
+    qq_win_hwnd = list() # 放置QQ号窗口句柄
+    for visible_window in visible_windows:
+        if visible_window.Name == "QQ" and visible_window.ClassName == "Chrome_WidgetWin_1":    # 检索类名和标题
+            win32gui.SetWindowPos(visible_window.NativeWindowHandle,win32con.HWND_TOPMOST,
+                                  0, 0, 0, 0,win32con.SWP_NOMOVE | win32con.SWP_NOSIZE) # 窗口置顶
+            if visible_window.GetChildren()[0].LocalizedControlType != "文档":    # 报错警告（没有文档对象）
+                raise EnvironmentError("请手动把QQ窗口显示在桌面上")
+            # 通过结构判断是QQ窗口还是对话窗口
+            if len(visible_window.GetChildren()[0].GetChildren()[0].GetChildren()[0].GetChildren()) == 4:   # 如果是QQ号则为4，对话窗口为1
+                qq_win_hwnd.append(visible_window.NativeWindowHandle)   # 把十进制的qq窗口句柄放置在列表种
+            win32gui.SetWindowPos(visible_window.NativeWindowHandle,win32con.HWND_NOTOPMOST,
+                0, 0, 0, 0,win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)# 取消置顶
+    return qq_win_hwnd
 
 
 
@@ -88,4 +76,4 @@ def jude_group_friend():
 
 if __name__ == '__main__':
     # a = QQMessageMonitor()
-    print(get_qq_pid())
+    print(get_qq_win_hwnd())
