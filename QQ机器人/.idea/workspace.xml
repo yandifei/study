@@ -79,7 +79,7 @@
       <recent name="B:\study\QQ机器人\test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.QQMessageMonitor (1)">
+  <component name="RunManager" selected="Python.test (1)">
     <configuration name="学习" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="QQ机器人" />
       <option name="ENV_FILES" value="" />
@@ -280,8 +280,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.QQMessageMonitor (1)" />
         <item itemvalue="Python.test (1)" />
+        <item itemvalue="Python.QQMessageMonitor (1)" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.QQMessageMonitor" />
         <item itemvalue="Python.QQ消息监听" />
