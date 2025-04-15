@@ -7,7 +7,7 @@ import win32con
 from time import sleep
 
 class QQMessageMonitor:
-    def __init__(self,win_name=None,monitor_name=None):
+    def __init__(self,win_name="",monitor_name=""):
         """
         :参数 win_name: 左上角窗口名字(如果有备注名就填备注名)
         :参数 monitor_name: QQ号或发送者的名字
@@ -15,19 +15,40 @@ class QQMessageMonitor:
         self.win_name = str(win_name)    # 左上角窗口名字(如果有备注名就填备注名) 强制转为字符串
         self.monitor_name = str(monitor_name)   # 强制转为字符串
         self.parameter_validation() # 调用函数对参数进行校验
-        # 窗口相关
-        self.visible_windows_object = self.top_window_traversal()   # 遍历顶层窗口
-        self.find_qq_chat_win(self.visible_windows_object)   # 从顶层窗口中找到指定的qq聊天窗口
+        # 窗口初始化相关
+        self.group_or_friend = None # 记录窗口QQ群还是好友
+        self.qq_chat_win = self.find_qq_chat_win(self.top_window_traversal())   # 遍历顶层窗口->从顶层窗口中找到指定的qq聊天窗口
+        self.qq_chat_hwnd = self.qq_chat_win.NativeWindowHandle # 被监听窗口的句柄
+        self.cancel_top_win()   # 取消窗口置顶，防止窗口置顶失效
+        self.top_win()  # 把窗口置顶，防止窗口被遮挡导致渲染停止无法监控窗口
+        self.top_wait_time = 0.5  # 设置置顶后等待qq渲染完成的属性，（如果电脑卡的话可以调大属性）
+        sleep(self.top_wait_time)    # 等待1秒窗口完全置顶（qq置顶后渲染需要时间）
+        self.pid = self.qq_chat_win.ProcessId   # 被监听窗口的进程ID
+        self.geometry = self.qq_chat_win.BoundingRectangle  # 窗口的位置和大小
+        print(f"成功绑定“{win_name}”{self.jude_group_or_friend(self.qq_chat_win)}窗口并置顶窗口\t监听者：{monitor_name}")# 把对象进行绑定，动态属性修改并打印
+        print(f"“{win_name}”句柄:{self.qq_chat_hwnd}\t进程ID:{self.pid}\t窗口大小:{self.geometry}")
+        """聊天窗口控制监控相关"""
+        # 文档->组->组2(子孩子有2个组，第一个组是窗口控制按钮相关，第二个组是非窗口控制按钮的界面)
+        self.main_chat_win = self.qq_chat_win.GetChildren()[0].GetChildren()[0].GetChildren()[1]
+        # 文档->组->组2->组2(好友有2个组，群有3个组)
+        # 窗口控制按钮
+        self.top_button = self.main_chat_win.GetChildren()[0].GetChildren()[0]  #置顶（复合按钮）按钮
+        self.min_button = self.main_chat_win.GetChildren()[0].GetChildren()[1]  # 最小化按钮
+        self.max_button = self.main_chat_win.GetChildren()[0].GetChildren()[2]  # 最大化按钮
+        self.close_button = self.main_chat_win.GetChildren()[0].GetChildren()[3]    # 关闭按钮
+        print(self.min_button.Name)
 
 
     def parameter_validation(self):
         """创建对象时对输入的信息进行校验"""
-        if self.win_name is None:
-            print("请填写聊天框的名字",end=" ")
-        if self.monitor_name is None:
-            print("请填写你的身份(群中的称号或QQ号或QQ名)", end=" ")
-        print() # 换行
+        if self.win_name == "":
+            raise ValueError("请填写聊天框的名字")
+        elif self.win_name == "QQ":
+            raise ValueError("检测到需要监听的窗口名是QQ，请改备注名")
+        if self.monitor_name == "":
+            raise ValueError("请填写你的身份(群中的称号或QQ号或QQ名)")
 
+    # 窗口遍历查找相关
     @staticmethod
     def top_window_traversal(out=False):   # 顶层窗口遍历
         """获得当前的根窗口的所有可见窗口
@@ -35,21 +56,26 @@ class QQMessageMonitor:
         返回值： visible_windows_object（list）     ：   桌面可见的列表
         """
         desktop = uiautomation.GetRootControl()  # 获取当前桌面对象
-        if not out: print(f"{desktop.Name}的可见窗口为:")
+        if out: print(f"{desktop.Name}的可见窗口为:")
         visible_windows = desktop.GetChildren()  # 获得当前桌面所有可见的窗口的对象
         visible_windows_object = list()     # 列表存放可见窗口的对象
         for visible_window in visible_windows:
             visible_windows_object.append(visible_window)   #   遍历存放可见窗口的对象
-        if not out:
+        if out:
             for window in visible_windows_object: print(window.Name)# 打印找到的窗口名
         return visible_windows_object
 
-    # 窗口相关
+    def message_list(self):
+        # 文档->组->组2->组2->组2->组1->组3-组1->组 后面的孩子就是一条条的消息窗口了
+        a = self.qq_chat_win.GetChildren()[0].GetChildren()[0].GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0].GetChildren()[0]
 
+
+
+    # 窗口控制相关
     def find_qq_chat_win(self,visible_windows_object):
         """遍历顶层窗口找到指定qq聊天窗口
         :参数 visible_windows_object: 可见窗口的列表
-        :返回值:
+        :返回值:指定窗口的对象
         """
         qq_chat_win_list = list() # 如果标题和类名相同就拒绝绑定
         for visible_window in visible_windows_object:
@@ -60,36 +86,79 @@ class QQMessageMonitor:
             raise ValueError("没有找到这个窗口")
         elif len(qq_chat_win_list) >= 2:
             raise ValueError("请确保当前名字的窗口没有重名")
-        # 检查结构
-        if self.is_qq(qq_chat_win_list[0]):
-
-
-        
-
-
-
-
-
-
-
-
+        return qq_chat_win_list[0]
 
     @staticmethod
     def is_qq(obj):
+        """检测是不是qq窗口的结构
+        参数：obj ：需要判断的对象
+        返回值：False 或 True
+        """
         try:
             if len(obj.GetChildren()[0].GetChildren()[0].GetChildren()[0].GetChildren()) == 4:
                 return True
         except():
-            raise ValueError("请把qq窗口置顶")
+            raise ValueError("请把qq窗口置顶并展示在在桌面上")
         return False
 
-    def jude_group_friend(self,obj):
+    def jude_group_or_friend(self,obj):
         """判断该对话框是QQ群还是qq好友(根据结构判断)
+        参数：obj：窗口的对象
+        返回值： "群聊" 或 "好友"
+        会该变self.group_or_friend属性
         """
-        return
+        # 检查结构（不需要担心是QQ窗口，考虑qq群还是qq好友就行）
+        if obj.GetChildren()[0].LocalizedControlType != "文档":
+            raise EnvironmentError(f"请把“{self.win_name}”窗口显示在桌面上")
+        # 文档->组->第二个组->第二个组->群聊3个|好友2个组
+        elif len(obj.GetChildren()[0].GetChildren()[0].GetChildren()[1].GetChildren()[1].GetChildren()) == 3:
+            self.group_or_friend = "群聊"
+            return "群聊"
+        elif len(obj.GetChildren()[0].GetChildren()[0].GetChildren()[1].GetChildren()[1].GetChildren()) == 2:
+            self.group_or_friend = "好友"
+            return "好友"
 
+    def move(self,x, y,repaint=True):
+        """qq聊天窗口位置移动
+        x ： 窗口左上角的x坐标
+        y ： 窗口左上角的y坐标
+        repaint : 重新绘制窗口，默认打开
+        """
+        size = win32gui.GetWindowRect(self.qq_chat_hwnd)  # 获取窗口左上角和右下角的坐标
+        width, height = size[2] - size[0], size[3] - size[1]    # 计算窗口的大小
+        win32gui.MoveWindow(self.qq_chat_hwnd, x, y, width, height, repaint)
 
+    def set_size(self, width, height, repaint=True):
+        """改变qq聊天窗口的大小（坐标保持在左上角）
+        width ： 设置窗口的宽度
+        height ： 设置窗口的高度
+        repaint : 重新绘制窗口，默认打开
+        """
+        point = win32gui.GetWindowRect(self.qq_chat_hwnd)  # 获取窗口左上角和右下角的坐标
+        win32gui.MoveWindow(self.qq_chat_hwnd, point[0], point[1], width, height, repaint)
+
+    def top_win(self):
+        """将qq聊天窗口置顶"""
+        win32gui.SetWindowPos(
+            self.qq_chat_hwnd,
+            win32con.HWND_TOPMOST,  # 置顶层
+            0, 0, 0, 0,
+            win32con.SWP_NOMOVE | win32con.SWP_NOSIZE
+        )
+
+    def cancel_top_win(self):
+        """取消窗口置顶
+        hwnd ： 窗口的句柄
+        """
+        win32gui.SetWindowPos(
+            self.qq_chat_hwnd,
+            win32con.HWND_NOTOPMOST,  # 取消置顶
+            0, 0, 0, 0,
+            win32con.SWP_NOMOVE | win32con.SWP_NOSIZE
+        )
 
 if __name__ == '__main__':
     # a = QQMessageMonitor()
-    print(get_qq_win_hwnd())
+    chat1 = QQMessageMonitor("鸣潮自动刷声骸","雁低飞")
+
+    chat2 = QQMessageMonitor("蓝宝", "雁低飞")
