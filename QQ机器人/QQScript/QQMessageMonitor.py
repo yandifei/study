@@ -21,7 +21,7 @@ class QQMessageMonitor:
         self.qq_chat_hwnd = self.qq_chat_win.NativeWindowHandle # 被监听窗口的句柄
         self.cancel_top_win()   # 取消窗口置顶，防止窗口置顶失效
         self.top_win()  # 把窗口置顶，防止窗口被遮挡导致渲染停止无法监控窗口
-        self.top_wait_time = 0.5  # 设置置顶后等待qq渲染完成的属性，（如果电脑卡的话可以调大属性）
+        self.top_wait_time = 1  # 设置置顶后等待qq渲染完成的属性，（如果电脑卡的话可以调大属性）
         sleep(self.top_wait_time)    # 等待1秒窗口完全置顶（qq置顶后渲染需要时间）
         self.pid = self.qq_chat_win.ProcessId   # 被监听窗口的进程ID
         self.geometry = self.qq_chat_win.BoundingRectangle  # 窗口的位置和大小
@@ -30,13 +30,32 @@ class QQMessageMonitor:
         """聊天窗口控制监控相关"""
         # 文档->组->组2(子孩子有2个组，第一个组是窗口控制按钮相关，第二个组是非窗口控制按钮的界面)
         self.main_chat_win = self.qq_chat_win.GetChildren()[0].GetChildren()[0].GetChildren()[1]
-        # 文档->组->组2->组2(好友有2个组，群有3个组)
-        # 窗口控制按钮
+        # 文档->组->组2->组2(好友有2个组，群有3个组)可以用来区分qq还是群
+        # 标题栏(title_bar)[窗口控制按钮]
         self.top_button = self.main_chat_win.GetChildren()[0].GetChildren()[0]  #置顶（复合按钮）按钮
         self.min_button = self.main_chat_win.GetChildren()[0].GetChildren()[1]  # 最小化按钮
         self.max_button = self.main_chat_win.GetChildren()[0].GetChildren()[2]  # 最大化按钮
         self.close_button = self.main_chat_win.GetChildren()[0].GetChildren()[3]    # 关闭按钮
-        print(self.min_button.Name)
+        # 标题栏(menu_bar)[菜单标题(好友名或群名和人数)、菜单选项按钮]
+        # 2个组里面->组2->组1->组2->好友名或群名按钮->有2个组（1个是群名，一个是人数）
+        self.menu_bar_button = self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[1]    # 按钮
+        self.menu_bar_name = self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[1].GetChildren()[0] # 群名
+        self.menu_bar_name = self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[1].GetChildren()[1] # 人数
+        # 2个组里面->组2->组1->组3->"更多"工具栏->6个组都菜单栏选项按钮（6个组里面对应语音通话、视频通话、屏幕共享、群应用、邀请加群、展开菜单的按钮）
+        self.menu_option_buttons  =self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0]
+        self.voice_call_button = self.menu_option_buttons.GetChildren()[0].GetChildren()[0] # 语音通话
+        self.voice_call_button = self.menu_option_buttons.GetChildren()[1].GetChildren()[0] # 视频通话
+        self.voice_call_button = self.menu_option_buttons.GetChildren()[2].GetChildren()[0] # 屏幕共享
+        self.voice_call_button = self.menu_option_buttons.GetChildren()[3].GetChildren()[0] # 群应用
+        self.voice_call_button = self.menu_option_buttons.GetChildren()[4].GetChildren()[0] # 邀请加群
+        self.voice_call_button = self.menu_option_buttons.GetChildren()[5].GetChildren()[0] # 展开菜单的按钮
+        """消息列表框(message_list_box)"""
+        # 2个组里面->组2->组2->组1->组3->组0->组0->全是消息控件，需要解析
+        self.message_list_box = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[2].GetChildren()[2].GetChildren()[0].GetChildren()[0]
+        """编辑工具栏(edit_tool_bar)"""
+        self.edit_tool_bar = self.main_chat_win.GetChildren()[1].GetChildren()[2]
+
+
 
 
     def parameter_validation(self):
@@ -48,7 +67,15 @@ class QQMessageMonitor:
         if self.monitor_name == "":
             raise ValueError("请填写你的身份(群中的称号或QQ号或QQ名)")
 
+
     # 窗口遍历查找相关
+    @staticmethod
+    def refind(obj):
+        """刷新控件，1.控件发生变化就需要刷新 2.建立新的窗口时也要刷新
+        参数：obj：传入刷新对象
+        """
+        obj.Refind()  # 刷新控件
+
     @staticmethod
     def top_window_traversal(out=False):   # 顶层窗口遍历
         """获得当前的根窗口的所有可见窗口
@@ -64,10 +91,12 @@ class QQMessageMonitor:
         if out:
             for window in visible_windows_object: print(window.Name)# 打印找到的窗口名
         return visible_windows_object
-
-    def message_list(self):
-        # 文档->组->组2->组2->组2->组1->组3-组1->组 后面的孩子就是一条条的消息窗口了
-        a = self.qq_chat_win.GetChildren()[0].GetChildren()[0].GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0].GetChildren()[0]
+    
+    
+    
+    # def message_list(self):
+    #     # 文档->组->组2->组2->组2->组1->组3-组1->组 后面的孩子就是一条条的消息窗口了
+    #     a = self.qq_chat_win.GetChildren()[0].GetChildren()[0].GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0].GetChildren()[0]
 
 
 
@@ -79,7 +108,7 @@ class QQMessageMonitor:
         """
         qq_chat_win_list = list() # 如果标题和类名相同就拒绝绑定
         for visible_window in visible_windows_object:
-            # 找到符合指定好友名或qq群名的窗口
+            # 找到符合指定好友名或qq群名的窗口 
             if visible_window.Name == self.win_name and visible_window.ClassName == "Chrome_WidgetWin_1":
                 qq_chat_win_list.append(visible_window) # 把查找对象添加进去
         if len(qq_chat_win_list) == 0:
@@ -108,7 +137,11 @@ class QQMessageMonitor:
         会该变self.group_or_friend属性
         """
         # 检查结构（不需要担心是QQ窗口，考虑qq群还是qq好友就行）
+        # obj.Refind()    # 刷新控件
         if obj.GetChildren()[0].LocalizedControlType != "文档":
+            # sleep(1)
+            print(obj.GetChildren()[0].LocalizedControlType)
+            print(obj.GetChildren()[1].LocalizedControlType)
             raise EnvironmentError(f"请把“{self.win_name}”窗口显示在桌面上")
         # 文档->组->第二个组->第二个组->群聊3个|好友2个组
         elif len(obj.GetChildren()[0].GetChildren()[0].GetChildren()[1].GetChildren()[1].GetChildren()) == 3:
@@ -159,6 +192,9 @@ class QQMessageMonitor:
 
 if __name__ == '__main__':
     # a = QQMessageMonitor()
-    chat1 = QQMessageMonitor("鸣潮自动刷声骸","雁低飞")
-
     chat2 = QQMessageMonitor("蓝宝", "雁低飞")
+    chat2.cancel_top_win()
+    chat1 = QQMessageMonitor("鸣潮自动刷声骸","雁低飞")
+    chat1.cancel_top_win()
+    # chat3 = QQMessageMonitor("七彩虹笔记本", "雁低飞")
+    # chat3.cancel_top_win()
