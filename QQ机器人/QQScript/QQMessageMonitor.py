@@ -2,6 +2,7 @@
 内置判断是Q群还是QQ好友
 """
 import uiautomation
+import win32api
 import win32gui
 import win32con
 from time import sleep
@@ -27,36 +28,65 @@ class QQMessageMonitor:
         self.geometry = self.qq_chat_win.BoundingRectangle  # 窗口的位置和大小
         print(f"成功绑定“{win_name}”{self.jude_group_or_friend(self.qq_chat_win)}窗口并置顶窗口\t监听者：{monitor_name}")# 把对象进行绑定，动态属性修改并打印
         print(f"“{win_name}”句柄:{self.qq_chat_hwnd}\t进程ID:{self.pid}\t窗口大小:{self.geometry}")
-        """聊天窗口控制监控相关"""
+        """------------------------------------------聊天窗口控制监控相关---------------------------------------------"""
         # 文档->组->组2(子孩子有2个组，第一个组是窗口控制按钮相关，第二个组是非窗口控制按钮的界面)
         self.main_chat_win = self.qq_chat_win.GetChildren()[0].GetChildren()[0].GetChildren()[1]
         # 文档->组->组2->组2(好友有2个组，群有3个组)可以用来区分qq还是群
-        # 标题栏(title_bar)[窗口控制按钮]
+        """标题栏(title_bar)[窗口控制按钮]"""
         self.top_button = self.main_chat_win.GetChildren()[0].GetChildren()[0]  #置顶（复合按钮）按钮
         self.min_button = self.main_chat_win.GetChildren()[0].GetChildren()[1]  # 最小化按钮
         self.max_button = self.main_chat_win.GetChildren()[0].GetChildren()[2]  # 最大化按钮
         self.close_button = self.main_chat_win.GetChildren()[0].GetChildren()[3]    # 关闭按钮
-        # 标题栏(menu_bar)[菜单标题(好友名或群名和人数)、菜单选项按钮]
-        # 2个组里面->组2->组1->组2->好友名或群名按钮->有2个组（1个是群名，一个是人数）
-        self.menu_bar_button = self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[1]    # 按钮
-        self.menu_bar_name = self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[1].GetChildren()[0] # 群名
-        self.menu_bar_name = self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[1].GetChildren()[1] # 人数
+        """菜单栏(menu_bar)[菜单标题(好友名或群名和人数)、菜单选项按钮]"""
+        # 2个组里面->组2->组1->组2->左上菜单栏->有2个组（1个是群名，一个是人数）
+        self.menu_bar = self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[1]    # 标题栏左边
+        self.menu_bar_button = self.menu_bar.GetChildren()[0] # 群按钮（群名）
+        self.menu_bar_group_count = self.menu_bar.GetChildren()[1] # 群人数
         # 2个组里面->组2->组1->组3->"更多"工具栏->6个组都菜单栏选项按钮（6个组里面对应语音通话、视频通话、屏幕共享、群应用、邀请加群、展开菜单的按钮）
         self.menu_option_buttons  =self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0]
         self.voice_call_button = self.menu_option_buttons.GetChildren()[0].GetChildren()[0] # 语音通话
-        self.voice_call_button = self.menu_option_buttons.GetChildren()[1].GetChildren()[0] # 视频通话
-        self.voice_call_button = self.menu_option_buttons.GetChildren()[2].GetChildren()[0] # 屏幕共享
-        self.voice_call_button = self.menu_option_buttons.GetChildren()[3].GetChildren()[0] # 群应用
-        self.voice_call_button = self.menu_option_buttons.GetChildren()[4].GetChildren()[0] # 邀请加群
-        self.voice_call_button = self.menu_option_buttons.GetChildren()[5].GetChildren()[0] # 展开菜单的按钮
+        self.video_call_button = self.menu_option_buttons.GetChildren()[1].GetChildren()[0] # 视频通话
+        self.screen_share_toggle = self.menu_option_buttons.GetChildren()[2].GetChildren()[0] # 屏幕共享
+        self.group_application = self.menu_option_buttons.GetChildren()[3].GetChildren()[0] # 群应用
+        self.invite_to_group_button = self.menu_option_buttons.GetChildren()[4].GetChildren()[0] # 邀请加群
+        self.more_actions_button = self.menu_option_buttons.GetChildren()[5].GetChildren()[0] # 展开菜单的按钮
         """消息列表框(message_list_box)"""
         # 2个组里面->组2->组2->组1->组3->组0->组0->全是消息控件，需要解析
-        self.message_list_box = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[2].GetChildren()[2].GetChildren()[0].GetChildren()[0]
+        self.message_list_box = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0].GetChildren()[0]
         """编辑工具栏(edit_tool_bar)"""
-        self.edit_tool_bar = self.main_chat_win.GetChildren()[1].GetChildren()[2]
-
-
-
+        # 2个组里面->组2->组2->组2->组3->7个组(表情、截图、文件、图片、红包、语音、聊天记录)
+        self.edit_tool_bar = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[2]
+        self.expression_button = self.edit_tool_bar.GetChildren()[0].GetChildren()[0]   # 表情按钮
+        self.screenshot_button = self.edit_tool_bar.GetChildren()[1].GetChildren()[0]   # 截图按钮
+        self.screenshot_arrow = self.edit_tool_bar.GetChildren()[1].GetChildren()[1].GetChildren()[0] # 截图 Alt + S弹出菜单
+        self.folder_button = self.edit_tool_bar.GetChildren()[2].GetChildren()[0]   # 文件按钮
+        self.folder_arrow_button2 = self.edit_tool_bar.GetChildren()[2].GetChildren()[1].GetChildren()[0]  # 文件弹出菜单
+        self.image_button = self.edit_tool_bar.GetChildren()[3].GetChildren()[0]   # 图片按钮
+        self.lucky_money_button = self.edit_tool_bar.GetChildren()[4].GetChildren()[0]   # 红包按钮
+        self.microphone_on_button = self.edit_tool_bar.GetChildren()[5].GetChildren()[0]   # 语音按钮
+        self.message_record_button = self.edit_tool_bar.GetChildren()[6].GetChildren()[0]   # 聊天记录按钮
+        """编辑框(edit_box)[textbox、关闭按钮、发送按钮]"""
+        # 2个组里面->组2->组2->组2->组4->组->组1("编辑"EditControl)[这个下面还有一个TextControl"文本"的子控件]
+        self.edit_box = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[3].GetChildren()[0].GetChildren()[1]
+        # 2个组里面->组2->组2->组2->组5->组1(关闭按钮)
+        self.edit_box_close_button =  self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[4].GetChildren()[0]
+        # 2个组里面->组2->组2->组2->组5->组2->组1(发送按钮)
+        self.enter_button = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[4].GetChildren()[1].GetChildren()[0]
+        """公告栏(bulletin_bar)[群公告文本控件、群公告按钮、可见的群公告文本]"""
+        # 2个组里面->组3->组1->组1->组1(有3个子孩子[群公告文本控件、群公告按钮、可见的群公告文本])
+        self.bulletin_bar = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[0]
+        # self.bulletin_text_button = self.bulletin_bar.GetChildren()[0].GetChildren()[0] # 群公告文字（节约空间）
+        self.group_bulletin_button = self.bulletin_bar.GetChildren()[1] # 群公告按钮
+        self.visible_group_bulletin = self.bulletin_bar.GetChildren()[2].GetChildren()[0].GetChildren()[0].Name # 可见的群公告
+        """群成员框(group_member_box)[文本控件(群聊成员人数)、群成员搜索、群成员列表]"""
+        # 2个组里面->组3->组1->组1->组2(直接文本控件(群聊成员人数))
+        self.group_member_count = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[1]    # 群聊成员人数
+        # 2个组里面->组3->组1->组1->组3(群搜索按钮)
+        # 2个组里面->组3->组1->组1->组4->组->组2(群成员搜索输入框("编辑"EditControl))
+        self.group_member_search = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[2]
+        self.group_member_search_input_box= self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[3].GetChildren()[0].GetChildren()[1]    # 群聊成员人数
+        # 2个组里面->组3->组1->组1->组5->"成员列表"(一堆子组(记录群员和职称，如果是群友就没有称呼))
+        self.group_member_list = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[4].GetChildren()[0]
 
     def parameter_validation(self):
         """创建对象时对输入的信息进行校验"""
@@ -91,14 +121,6 @@ class QQMessageMonitor:
         if out:
             for window in visible_windows_object: print(window.Name)# 打印找到的窗口名
         return visible_windows_object
-    
-    
-    
-    # def message_list(self):
-    #     # 文档->组->组2->组2->组2->组1->组3-组1->组 后面的孩子就是一条条的消息窗口了
-    #     a = self.qq_chat_win.GetChildren()[0].GetChildren()[0].GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0].GetChildren()[0]
-
-
 
     # 窗口控制相关
     def find_qq_chat_win(self,visible_windows_object):
@@ -190,11 +212,30 @@ class QQMessageMonitor:
             win32con.SWP_NOMOVE | win32con.SWP_NOSIZE
         )
 
+    # 控件操作相关
+    @staticmethod
+    def click(control):
+        """鼠标瞬移到控件中心点击
+        参数：control：控件对象
+        """
+        uiautomation.Click(control.BoundingRectangle.xcenter(), control.BoundingRectangle.ycenter())
+
+    @staticmethod
+    def send_click(control):
+        """向控件发送点击消息
+        参数：control：控件对象
+        """
+        win32api.SendMessage(control.NativeWindowHandle, win32con.WM_LBUTTONDOWN, 0, 0)
+
+
+
+
 if __name__ == '__main__':
     # a = QQMessageMonitor()
-    chat2 = QQMessageMonitor("蓝宝", "雁低飞")
-    chat2.cancel_top_win()
+    # chat2 = QQMessageMonitor("蓝宝", "雁低飞")
+    # chat2.cancel_top_win()
     chat1 = QQMessageMonitor("鸣潮自动刷声骸","雁低飞")
+    # chat1.move(0,1000)
     chat1.cancel_top_win()
     # chat3 = QQMessageMonitor("七彩虹笔记本", "雁低飞")
     # chat3.cancel_top_win()
