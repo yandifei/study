@@ -1,6 +1,8 @@
 """这个库用来监控QQ消息，监控Q群成员的消息，以及监听QQ好友的消息
 内置判断是Q群还是QQ好友
 """
+import os
+import re
 import uiautomation
 import win32api
 import win32gui
@@ -40,20 +42,28 @@ class QQMessageMonitor:
         """菜单栏(menu_bar)[菜单标题(好友名或群名和人数)、菜单选项按钮]"""
         # 2个组里面->组2->组1->组2->左上菜单栏->有2个组（1个是群名，一个是人数）
         self.menu_bar = self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[1]    # 标题栏左边
-        self.menu_bar_button = self.menu_bar.GetChildren()[0] # 群按钮（群名）
-        self.menu_bar_group_count = self.menu_bar.GetChildren()[1] # 群人数
+        if self.group_or_friend == "群聊":
+            self.menu_bar_button = self.menu_bar.GetChildren()[0] # 群按钮（群名或备注名和人数）
+            self.menu_bar_group_name = self.menu_bar_button.GetChildren()[0] # 群名(群按钮子的第一个子孩子)
+            self.menu_bar_group_count = self.menu_bar_button.GetChildren()[1] # 群人数(群按钮子的第二个子孩子)
+        elif self.group_or_friend == "好友":
+            self.menu_bar_button = self.menu_bar.GetChildren()[0]  # 好友按钮(好友名或备注名)
         # 2个组里面->组2->组1->组3->"更多"工具栏->6个组都菜单栏选项按钮（6个组里面对应语音通话、视频通话、屏幕共享、群应用、邀请加群、展开菜单的按钮）
         self.menu_option_buttons  =self.main_chat_win.GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0]
         self.voice_call_button = self.menu_option_buttons.GetChildren()[0].GetChildren()[0] # 语音通话
         self.video_call_button = self.menu_option_buttons.GetChildren()[1].GetChildren()[0] # 视频通话
         self.screen_share_toggle = self.menu_option_buttons.GetChildren()[2].GetChildren()[0] # 屏幕共享
-        self.group_application = self.menu_option_buttons.GetChildren()[3].GetChildren()[0] # 群应用
-        self.invite_to_group_button = self.menu_option_buttons.GetChildren()[4].GetChildren()[0] # 邀请加群
-        self.more_actions_button = self.menu_option_buttons.GetChildren()[5].GetChildren()[0] # 展开菜单的按钮
+        if self.group_or_friend == "群聊":
+            self.group_application = self.menu_option_buttons.GetChildren()[3].GetChildren()[0] # 群应用
+            self.invite_to_group_button = self.menu_option_buttons.GetChildren()[4].GetChildren()[0] # 邀请加群
+        elif self.group_or_friend == "好友":
+            self.remote_control = self.menu_option_buttons.GetChildren()[3].GetChildren()[0] # 远程协助
+            self.group_building = self.menu_option_buttons.GetChildren()[4].GetChildren()[0]  # 发起群聊
+        self.more_button = self.menu_option_buttons.GetChildren()[5].GetChildren()[0]  # 展开菜单的按钮
         """消息列表框(message_list_box)"""
         # 2个组里面->组2->组2->组1->组3->组0->组0->全是消息控件，需要解析
         self.message_list_box = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0].GetChildren()[0]
-        """编辑工具栏(edit_tool_bar)"""
+        # """编辑工具栏(edit_tool_bar)"""
         # 2个组里面->组2->组2->组2->组3->7个组(表情、截图、文件、图片、红包、语音、聊天记录)
         self.edit_tool_bar = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[2]
         self.expression_button = self.edit_tool_bar.GetChildren()[0].GetChildren()[0]   # 表情按钮
@@ -62,10 +72,18 @@ class QQMessageMonitor:
         self.folder_button = self.edit_tool_bar.GetChildren()[2].GetChildren()[0]   # 文件按钮
         self.folder_arrow_button2 = self.edit_tool_bar.GetChildren()[2].GetChildren()[1].GetChildren()[0]  # 文件弹出菜单
         self.image_button = self.edit_tool_bar.GetChildren()[3].GetChildren()[0]   # 图片按钮
-        self.lucky_money_button = self.edit_tool_bar.GetChildren()[4].GetChildren()[0]   # 红包按钮
-        self.microphone_on_button = self.edit_tool_bar.GetChildren()[5].GetChildren()[0]   # 语音按钮
-        self.message_record_button = self.edit_tool_bar.GetChildren()[6].GetChildren()[0]   # 聊天记录按钮
-        """编辑框(edit_box)[textbox、关闭按钮、发送按钮]"""
+        if self.group_or_friend == "群聊":
+            self.lucky_money_button = self.edit_tool_bar.GetChildren()[4].GetChildren()[0]   # 红包按钮
+            self.microphone_on_button = self.edit_tool_bar.GetChildren()[5].GetChildren()[0]   # 语音按钮
+        elif self.group_or_friend == "好友":
+            self.shake_button = self.edit_tool_bar.GetChildren()[4].GetChildren()[0]   # 窗口抖动按钮
+            self.lucky_money_button = self.edit_tool_bar.GetChildren()[5].GetChildren()[0]   # 红包按钮
+            self.microphone_on_button = self.edit_tool_bar.GetChildren()[6].GetChildren()[0]   # 语音按钮
+        if self.edit_tool_bar.GetChildren()[6].GetChildren()[0] == "机器人指令":  # qq群和好友不会起冲突(qq群这里可能少一个按钮)
+            self.message_record_button = self.edit_tool_bar.GetChildren()[7].GetChildren()[0]   # 聊天记录按钮
+        elif self.edit_tool_bar.GetChildren()[6].GetChildren()[0] == "聊天记录":    # 少了机器人指令按钮
+            self.message_record_button = self.edit_tool_bar.GetChildren()[6].GetChildren()[0]  # 聊天记录按钮
+        # """编辑框(edit_box)[textbox、关闭按钮、发送按钮]"""
         # 2个组里面->组2->组2->组2->组4->组->组1("编辑"EditControl)[这个下面还有一个TextControl"文本"的子控件]
         self.edit_box = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[3].GetChildren()[0].GetChildren()[1]
         # 2个组里面->组2->组2->组2->组5->组1(关闭按钮)
@@ -73,20 +91,24 @@ class QQMessageMonitor:
         # 2个组里面->组2->组2->组2->组5->组2->组1(发送按钮)
         self.enter_button = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[4].GetChildren()[1].GetChildren()[0]
         """公告栏(bulletin_bar)[群公告文本控件、群公告按钮、可见的群公告文本]"""
-        # 2个组里面->组3->组1->组1->组1(有3个子孩子[群公告文本控件、群公告按钮、可见的群公告文本])
-        self.bulletin_bar = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[0]
-        # self.bulletin_text_button = self.bulletin_bar.GetChildren()[0].GetChildren()[0] # 群公告文字（节约空间）
-        self.group_bulletin_button = self.bulletin_bar.GetChildren()[1] # 群公告按钮
-        self.visible_group_bulletin = self.bulletin_bar.GetChildren()[2].GetChildren()[0].GetChildren()[0].Name # 可见的群公告
+        if self.group_or_friend == "群聊":
+            # 2个组里面->组3->组1->组1->组1(有3个子孩子[群公告文本控件、群公告按钮、可见的群公告文本])
+            self.bulletin_bar = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[0]
+            # self.bulletin_text_button = self.bulletin_bar.GetChildren()[0].GetChildren()[0] # 群公告文字（节约空间）
+            self.group_bulletin_button = self.bulletin_bar.GetChildren()[1] # 群公告按钮
+            self.visible_group_bulletin = self.bulletin_bar.GetChildren()[2].GetChildren()[0].GetChildren()[0].Name # 可见的群公告
         """群成员框(group_member_box)[文本控件(群聊成员人数)、群成员搜索、群成员列表]"""
-        # 2个组里面->组3->组1->组1->组2(直接文本控件(群聊成员人数))
-        self.group_member_count = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[1]    # 群聊成员人数
-        # 2个组里面->组3->组1->组1->组3(群搜索按钮)
-        # 2个组里面->组3->组1->组1->组4->组->组2(群成员搜索输入框("编辑"EditControl))
-        self.group_member_search = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[2]
-        self.group_member_search_input_box= self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[3].GetChildren()[0].GetChildren()[1]    # 群聊成员人数
-        # 2个组里面->组3->组1->组1->组5->"成员列表"(一堆子组(记录群员和职称，如果是群友就没有称呼))
-        self.group_member_list = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[4].GetChildren()[0]
+        if self.group_or_friend == "群聊":
+            # 2个组里面->组3->组1->组1->组2(直接文本控件(群聊成员人数))
+            self.group_member_count = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[1]    # 群聊成员人数
+            # 2个组里面->组3->组1->组1->组3(群搜索按钮)
+            # 2个组里面->组3->组1->组1->组4->组->组2(群成员搜索输入框("编辑"EditControl))
+            self.group_member_search = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[2]
+            self.group_member_search_input_box= self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[3].GetChildren()[0].GetChildren()[1]    # 群聊成员人数
+            # 2个组里面->组3->组1->组1->组5->"成员列表"(一堆子组(记录群员和职称，如果是群友就没有称呼))
+            self.group_member_list = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[4].GetChildren()[0]
+        """-----------------------------------------消息监听相关-----------------------------------------"""
+        self.message_data_path = None   # 消息路径
 
     def parameter_validation(self):
         """创建对象时对输入的信息进行校验"""
@@ -98,7 +120,7 @@ class QQMessageMonitor:
             raise ValueError("请填写你的身份(群中的称号或QQ号或QQ名)")
 
 
-    # 窗口遍历查找相关
+    """顶层窗口遍历查找相关"""
     @staticmethod
     def refind(obj):
         """刷新控件，1.控件发生变化就需要刷新 2.建立新的窗口时也要刷新
@@ -122,7 +144,6 @@ class QQMessageMonitor:
             for window in visible_windows_object: print(window.Name)# 打印找到的窗口名
         return visible_windows_object
 
-    # 窗口控制相关
     def find_qq_chat_win(self,visible_windows_object):
         """遍历顶层窗口找到指定qq聊天窗口
         :参数 visible_windows_object: 可见窗口的列表
@@ -139,6 +160,7 @@ class QQMessageMonitor:
             raise ValueError("请确保当前名字的窗口没有重名")
         return qq_chat_win_list[0]
 
+    """窗口判定相关"""
     @staticmethod
     def is_qq(obj):
         """检测是不是qq窗口的结构
@@ -173,6 +195,7 @@ class QQMessageMonitor:
             self.group_or_friend = "好友"
             return "好友"
 
+    """窗口控制和控件操作相关"""
     def move(self,x, y,repaint=True):
         """qq聊天窗口位置移动
         x ： 窗口左上角的x坐标
@@ -211,8 +234,7 @@ class QQMessageMonitor:
             0, 0, 0, 0,
             win32con.SWP_NOMOVE | win32con.SWP_NOSIZE
         )
-
-    # 控件操作相关
+    
     @staticmethod
     def click(control):
         """鼠标瞬移到控件中心点击
@@ -227,15 +249,39 @@ class QQMessageMonitor:
         """
         win32api.SendMessage(control.NativeWindowHandle, win32con.WM_LBUTTONDOWN, 0, 0)
 
+    """消息窗口监听相关"""
+    def create_directory(self,path=None):
+        """创建监听者和监听窗口的目录
+        参数：path：默认为None(库的上级目录下创建)，如果填入就在填入路径下创建
+        """
+        monitor_directory = re.sub(r'[\\/:*?"<>|]', '_', self.monitor_name) # 剔除监听者无效字符
+        messages_data_directory = re.sub(r'[\\/:*?"<>|]', '_', self.win_name) # 剔除监听窗口无效字符
+        if path is None:    # 如果路径不填就在库的上级目录下创建一个文件夹
+            try:
+                os.mkdir(f"../{monitor_directory}")
+                print(f"成功创建监听者目录:{monitor_directory}\t{self.group_or_friend}“{self.win_name}”消息将存放到该目录中")
+            except FileExistsError: # 路径一定存在且合法
+                print(f"已存在监听者目录:{monitor_directory}\t{self.group_or_friend}“{self.win_name}”的监听消息将继续存放到该目录中")
+        else:
+            try:
+                os.path.join(path, monitor_directory)
+                os.mkdir(f"../{}")
+                print(
+                    f"成功创建监听者目录:{monitor_directory}\t{self.group_or_friend}“{self.win_name}”消息将存放到该目录中")
+            except FileExistsError:  # 路径一定存在且合法
+                print(
+                    f"已存在监听者目录:{monitor_directory}\t{self.group_or_friend}“{self.win_name}”的监听消息将继续存放到该目录中")
+
 
 
 
 if __name__ == '__main__':
     # a = QQMessageMonitor()
-    # chat2 = QQMessageMonitor("蓝宝", "雁低飞")
-    # chat2.cancel_top_win()
-    chat1 = QQMessageMonitor("鸣潮自动刷声骸","雁低飞")
-    # chat1.move(0,1000)
+    chat1 = QQMessageMonitor("鸣潮想睡觉", "雁低飞")
+    chat1.move(0, 1000)
     chat1.cancel_top_win()
-    # chat3 = QQMessageMonitor("七彩虹笔记本", "雁低飞")
-    # chat3.cancel_top_win()
+    chat1.create_directory()
+    # chat2 = QQMessageMonitor("蓝宝","雁低飞")
+    # chat2.cancel_top_win()
+
+
