@@ -64,7 +64,7 @@ class QQMessageMonitor:
         """消息列表框(message_list_box)"""
         # 2个组里面->组2->组2->组1->组3->组0->组0->全是消息控件，需要解析
         self.message_list_box = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0].GetChildren()[0]
-        # """编辑工具栏(edit_tool_bar)"""
+        """编辑工具栏(edit_tool_bar)"""
         # 2个组里面->组2->组2->组2->组3->7个组(表情、截图、文件、图片、红包、语音、聊天记录)
         self.edit_tool_bar = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[2]
         self.expression_button = self.edit_tool_bar.GetChildren()[0].GetChildren()[0]   # 表情按钮
@@ -97,11 +97,10 @@ class QQMessageMonitor:
             self.bulletin_bar = self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()[0]
             # self.bulletin_text_button = self.bulletin_bar.GetChildren()[0].GetChildren()[0] # 群公告文字（节约空间）
             self.group_bulletin_button = self.bulletin_bar.GetChildren()[1] # 群公告按钮
-            if len(self.bulletin_bar.GetChildren()[2]) == 0:    # 如果自己是群主或管理员没设置公告就会有这个
-                print("没有群公告")
-            elif
-            self.visible_group_bulletin = self.bulletin_bar.GetChildren()[2].GetChildren()[0].GetChildren()[0].Name # 可见的群公告
-            print(self.visible_group_bulletin)
+            if len(self.bulletin_bar.GetChildren()[2].GetChildren()) == 0:    # 如果自己是群主或管理员没设置公告就会有这个
+                self.visible_group_bulletin = None  # 群公告为空
+            else:   # 调用群公告解析
+                self.visible_group_bulletin = self.bulletin_split(self.bulletin_bar.GetChildren()[2]) # 可见的群公告
         """群成员框(group_member_box)[文本控件(群聊成员人数)、群成员搜索、群成员列表]"""
         if self.group_or_friend == "群聊":
             group_or_friend_index = 1   # 群成员位置下表
@@ -258,6 +257,23 @@ class QQMessageMonitor:
         win32api.SendMessage(control.NativeWindowHandle, win32con.WM_LBUTTONDOWN, 0, 0)
 
     """消息窗口监听相关"""
+    @staticmethod
+    def bulletin_split(obj):
+        """公告文本解析（2层）可以判断该是否有公告消息，但是必须存在公告这个控件（群主可以不写公告但会有这个框）
+        参数:obj:公告对象
+        """
+        # 无、1层、2层（链接）
+        bulletin_message = ""   # 信息存储
+        if len(obj.GetChildren()) != 0:
+            for i in obj.GetChildren():
+                if len(i.GetChildren()) != 0:   # 存在子控件需要深度查找
+                    for j in i.GetChildren():
+                        if j.LocalizedControlType == "文本":
+                            bulletin_message += j.Name + " " # 添加文本
+                elif i.LocalizedControlType == "文本":    # 没有子控件
+                    bulletin_message += i.Name + " " # 添加文本
+        return bulletin_message
+
     def create_directory(self,path=None,use=False):
         """创建监听者和监听窗口的目录
         参数：path：默认为None(库的上级目录下创建)，如果填入就在填入路径下创建
@@ -265,7 +281,7 @@ class QQMessageMonitor:
         """
         monitor_directory = re.sub(r'[\\/:*?"<>|]', '_', self.monitor_name) # 剔除监听者无效字符
         messages_data_directory = re.sub(r'[\\/:*?"<>|]', '_', self.win_name) # 剔除监听窗口无效字符
-        if path is None:    # 如果路径不填就在库的上级目录下创建一个文件夹
+        if path is None:    # 如果路径不填就在库的本级目录下创建一个文件夹
             try:
                 self.message_data_directory = os.path.join(os.getcwd(),monitor_directory,messages_data_directory)   # 路径拼接
                 os.makedirs(self.message_data_directory)
@@ -278,37 +294,88 @@ class QQMessageMonitor:
                 self.message_data_directory = os.path.join(path, monitor_directory,messages_data_directory) # 拼接多级目录
                 os.makedirs(self.message_data_directory)  # 创建多级目录
                 print(f"成功创建监听者目录:{monitor_directory}\t{self.group_or_friend}“{self.win_name}”消息将存放到该目录中")
-
             except FileExistsError:
                 if not use: # 如果未开启沿用就报错(防止不小心对重要文件进行操作)
                     raise EnvironmentError(f"文件夹已存在“{monitor_directory}”目录，请转移该目录或删除该目录，如果要沿用该目录请填入参数")
             except OSError:
                 raise ValueError("输入的路径不存在，创建目录失败")
 
-    def create_txt(self):
+    def create_txt(self,path=None):
         """在指定目录下创建一个txt文本文件存放置聊天记录
         如果该文件存在就直接覆写，不会进行追加(因为创建目录的时候就必须填入沿用的参数就代表了知道会修改的问题)
         """
-        self.message_data_txt = os.path.join(self.message_data_directory, "聊天记录.txt") # 路径拼接
-        print(datetime.now())
-        with open(self.message_data_txt,"w",encoding="utf-8") as messages_txt:   # 创建把“聊天记录”文本文件放置监听到的下消息
-            messages_txt.write(f"{datetime.now()}") # 往文件里面写入具体的时间数据
+        if path is None:    # 默认写入到建立好的文件夹(这里不用对self.message_data_directory路径进行检查因为获取时已经检查过了)
+            if self.message_data_directory is None: # 如果直接调用这个方法就完蛋了(覆写清空)
+                raise ValueError("请先调用“create_directory”方法生成存放目录")
+            self.message_data_txt = os.path.join(self.message_data_directory, "聊天记录.txt") # 路径拼接
+            with open(self.message_data_txt,"w",encoding="utf-8") as messages_txt:   # 创建把“聊天记录”文本文件放置监听到的下消息
+                messages_txt.write(f"{datetime.now()}") # 往文件里面写入具体的时间数据
+        else:
+            try:    # 对输入的路径进行检查
+                path = rf"{path}"  # 对输入的路径进行转义
+                self.message_data_txt = os.path.join(path, "聊天记录.txt") # 路径拼接
+            except OSError:
+                raise ValueError("输入的路径不存在，创建txt失败")
+            with open(self.message_data_txt, "w", encoding="utf-8") as messages_txt:  # 创建把“聊天记录”文本文件放置监听到的下消息
+                messages_txt.write(f"{datetime.now()}")  # 往文件里面写入具体的时间数据
 
     def split_messages(self):
         """分割消息列表的数据"""
-        print(f"截获消息数:{len(self.message_list_box.GetChildren())}")
+        print(f"获得消息数:{len(self.message_list_box.GetChildren())}")
+
+        a = ""  # 设置一个变量值
+
+        def txt_split(obj):
+            """递归函数，遍历有效文本控件"""
+            if len(obj.GetChildren()) == 0: # 判断单个控件的内容
+                if obj.LocalizedControlType == "文本" and obj.Name != "":  # 获得有效文本控件的内容
+                    # global a
+                    # a = + obj.LocalizedControlType
+                    print(obj.Name,end="")
+                elif obj.LocalizedControlType == "组" and obj.Name == "视频":
+                    print(obj.Name, end="")
+                elif obj.LocalizedControlType == "图像" and obj.Name == "图片": # 确认是有效的图像(无效的Name为"")
+                    print(obj.Name, end="")
+            else:
+                for children_control in obj.GetChildren():
+                    txt_split(children_control)
+
+        def test(obj):
+            if obj.LocalizedControlType == "文本" and obj.Name != "":  # 获得有效文本控件的内容
+                print(obj.Name, end="")
+            elif obj.LocalizedControlType == "组" and obj.Name == "视频":
+                print(obj.Name, end="")
+            elif obj.LocalizedControlType == "图像" and obj.Name == "图片":  # 确认是有效的图像(无效的Name为"")
+                print(obj.Name, end="")
+            else:
+                print(obj.Name)
+
         for message_control in self.message_list_box.GetChildren():  # 获得所有消息控件
-            print(message_control.AutomationId)
+            message_control = message_control.GetChildren()[0]  # 进入组控件里面（所有都单个消息控件都得进入）
+            if len(message_control.GetChildren()) == 2: # 如果等于2代表时间被嵌入的
+                message_control = message_control.GetChildren()[1]  # 进入个人消息体里面(避开时间)
+            else:
+                message_control = message_control.GetChildren()[0]  # 进入个人消息体里面
+            send_name = message_control.GetChildren()[0].Name   # 监听者的名字
+            if len(message_control.GetChildren()) == 2: # 普通文本消息（非文件类型）优先级放这里避免时间复杂度提高
+                txt_split(message_control)
+
+
+
+            print() # 换行
+
 
 
 
 if __name__ == '__main__':
     # a = QQMessageMonitor()
-    chat1 = QQMessageMonitor("计算机学习", "雁低飞")
+    chat1 = QQMessageMonitor("Free my WW", "雁低飞")
     chat1.move(0, 1000)     # 把窗口移动到指定位置
     chat1.create_directory(None,True)  # 如果没有转义这里会报警告，不用管
     chat1.create_txt()  # 创建文本文件
     chat1.split_messages()
+    # print(chat1.visible_group_bulletin) # 打印群公告
+    # chat1.split_messages()
     # chat1.cancel_top_win()  # 取消窗口置顶
     # chat2 = QQMessageMonitor("蓝宝","雁低飞")
     # chat2.cancel_top_win()
