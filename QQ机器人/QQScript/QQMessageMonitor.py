@@ -64,6 +64,9 @@ class QQMessageMonitor:
         """消息列表框(message_list_box)"""
         # 2个组里面->组2->组2->组1->组3->组0->组0->全是消息控件，需要解析
         self.message_list_box = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0].GetChildren()[0]
+        self.messages_count = list()  # 记录消息数属性(调用消息监控会更新)
+        self.AutomationId_list = list()   # 记录获得消息控件的所有ID(调用消息监控会更新)
+        self.message_list = list()  # 设置一个列表接收消息
         """编辑工具栏(edit_tool_bar)"""
         # 2个组里面->组2->组2->组2->组3->7个组(表情、截图、文件、图片、红包、语音、聊天记录)
         self.edit_tool_bar = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[2]
@@ -319,50 +322,85 @@ class QQMessageMonitor:
             with open(self.message_data_txt, "w", encoding="utf-8") as messages_txt:  # 创建把“聊天记录”文本文件放置监听到的下消息
                 messages_txt.write(f"{datetime.now()}")  # 往文件里面写入具体的时间数据
 
-    def split_messages(self):
-        """分割消息列表的数据"""
-        print(f"获得消息数:{len(self.message_list_box.GetChildren())}")
-
-        a = ""  # 设置一个变量值
-
+    def get_messages(self):
+        """分割消息的控件数据获得消息
+        返回值:
+        self.message_list:截获的消息列表
+        self.AutomationId_list ： 控件id列表
+        self.messages_count ： 最大消息数
+        """
+        self.messages_count = len(self.message_list_box.GetChildren())  # 更新消息数属性
+        # print(f"获得消息数:{messages_count}")
+        one_message_join =  ""  # 用来存放合成的消息(因为一条消息可以是和合成的)
         def txt_split(obj):
             """递归函数，遍历有效文本控件"""
+            nonlocal one_message_join # 用来存放一条消息(因为一条消息可以是和合成的)
             if len(obj.GetChildren()) == 0: # 判断单个控件的内容
                 if obj.LocalizedControlType == "文本" and obj.Name != "":  # 获得有效文本控件的内容
-                    # global a
-                    # a = + obj.LocalizedControlType
-                    print(obj.Name,end="")
-                elif obj.LocalizedControlType == "组" and obj.Name == "视频":
-                    print(obj.Name, end="")
+                    one_message_join += obj.Name
+                elif obj.LocalizedControlType == "组" and obj.Name == "表情":  # 确认是有效的表情(如何直接检测Name会导致如果“表情”是文本也会收集)
+                    one_message_join += obj.Name # QQ自带的表情
+                elif obj.LocalizedControlType == "图像" and obj.Name == "" and obj.GetParentControl().Name == "表情" and obj.GetParentControl().LocalizedControlType == "组":
+                    one_message_join += "表情"    # 父窗口是表情，但是最底层的子控件是图像且Name为空
                 elif obj.LocalizedControlType == "图像" and obj.Name == "图片": # 确认是有效的图像(无效的Name为"")
-                    print(obj.Name, end="")
+                    one_message_join += "图片、静态或动态表情" # 图片、静态动态表情都被列为图像
+                elif obj.LocalizedControlType == "组" and obj.Name == "视频":
+                    one_message_join += obj.Name
+                elif obj.LocalizedControlType == "组" and obj.Name == "卡片":
+                    one_message_join += obj.Name
             else:
                 for children_control in obj.GetChildren():
                     txt_split(children_control)
-
-        def test(obj):
-            if obj.LocalizedControlType == "文本" and obj.Name != "":  # 获得有效文本控件的内容
-                print(obj.Name, end="")
-            elif obj.LocalizedControlType == "组" and obj.Name == "视频":
-                print(obj.Name, end="")
-            elif obj.LocalizedControlType == "图像" and obj.Name == "图片":  # 确认是有效的图像(无效的Name为"")
-                print(obj.Name, end="")
-            else:
-                print(obj.Name)
-
+        self.message_list.clear()  # 设置一个列表接收消息(对属性的列表清空)
+        self.AutomationId_list.clear()  # 用来放置控件的AutomationId(对属性的列表清空)
         for message_control in self.message_list_box.GetChildren():  # 获得所有消息控件
+            self.AutomationId_list.append(message_control.AutomationId)  # 放置控件id
             message_control = message_control.GetChildren()[0]  # 进入组控件里面（所有都单个消息控件都得进入）
             if len(message_control.GetChildren()) == 2: # 如果等于2代表时间被嵌入的
                 message_control = message_control.GetChildren()[1]  # 进入个人消息体里面(避开时间)
             else:
                 message_control = message_control.GetChildren()[0]  # 进入个人消息体里面
             send_name = message_control.GetChildren()[0].Name   # 监听者的名字
+            one_message_join = ""  # 清空组合的信息
+            if len(message_control.GetChildren()) == 1: # 我撤回了成员的某条消息
+                for i in message_control.GetChildren()[0].GetChildren(): # 进入控件组里面遍历子控件
+                    one_message_join = i.Name
             if len(message_control.GetChildren()) == 2: # 普通文本消息（非文件类型）优先级放这里避免时间复杂度提高
                 txt_split(message_control)
+            elif len(message_control.GetChildren()) == 3 and message_control.GetChildren()[2].Name == "":   # 确定是文件类型而不是引用类型
+                one_message_join = message_control.GetChildren()[1].GetChildren()[0].Name
+            else:   # 超级复合文本（多个链接之类的）
+                txt_split(message_control)
+            self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
+        return self.message_list, self.AutomationId_list, self.messages_count # 返回截获的消息列表、控件id列表、最大消息数
+
+    def deduplication(self,new_message_obj,old_message_obj):
+        """对消息列表进行去重，即获得新的消息
+        参数:
+        new_message_obj : 新控件对象的AutomationId(子控件有子孩子)
+        """
+
+    def contrast_AutomationId_list(self):
+        """对比控件ID
+        参数：AutomationId_list：旧的控件ID列表
+        返回值：没有监测到的消息控件的下标
+        """
+        old_message_list = self.message_list.copy()   # 保存上一次的消息列表(注意这里是深拷贝)
+        old_AutomationId_list = self.AutomationId_list.copy()  # 保存上一次的控件列表(注意这里是深拷贝)
+        self.get_messages() # 更新消息来进行对比
+        for index in range(len(self.AutomationId_list)):   # 根据当前列表的最大数进行比较(最大值到0)
+            # if old_AutomationId_list[-1] == self.AutomationId_list[index]:  # 从旧表的最后一个元素和新表0开始比较
+                # 旧表的最后一个元素如果等于新表的最后一个元素代表没有监测到新消息
+                # if index == len(self.AutomationId_list) - 1: # (这里减1是因为对比的是下标值)
+                #     print("未监测到变化")
+                # else:
+                #     index += 1  # 如果找到就返回新表下标,是新的消息下标值， 没有重复
+                # print(old_AutomationId_list[-1],self.AutomationId_list[index])
+            print(old_AutomationId_list[-1],self.AutomationId_list[index])
+        # for i in message_list:
 
 
 
-            print() # 换行
 
 
 
@@ -373,10 +411,16 @@ if __name__ == '__main__':
     chat1.move(0, 1000)     # 把窗口移动到指定位置
     chat1.create_directory(None,True)  # 如果没有转义这里会报警告，不用管
     chat1.create_txt()  # 创建文本文件
-    chat1.split_messages()
+    chat1.get_messages()  # 初次获取数据(更新属性)
+    for i in chat1.message_list:
+        print(i)
+    sleep(5)    # 接收消息
+    # chat1.get_messages()    # 更新数据(更新属性)
+    chat1.contrast_AutomationId_list()  # 调用对比消息列表的所有控件id
+
     # print(chat1.visible_group_bulletin) # 打印群公告
-    # chat1.split_messages()
-    # chat1.cancel_top_win()  # 取消窗口置顶
+    # chat1.get_messages()
+    chat1.cancel_top_win()  # 取消窗口置顶
     # chat2 = QQMessageMonitor("蓝宝","雁低飞")
     # chat2.cancel_top_win()
 
