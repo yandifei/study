@@ -11,6 +11,4 @@
 # chat1.cancel_top_win()  # 取消窗口置顶
 # # chat2 = QQMessageMonitor("蓝宝","雁低飞")
 # # chat2.cancel_top_win()
-
-for i in range(-5,0):
-    print(i)
+from datetime import datetime
