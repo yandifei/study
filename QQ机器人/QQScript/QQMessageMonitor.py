@@ -64,9 +64,11 @@ class QQMessageMonitor:
         """消息列表框(message_list_box)"""
         # 2个组里面->组2->组2->组1->组3->组0->组0->全是消息控件，需要解析
         self.message_list_box = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[0].GetChildren()[2].GetChildren()[0].GetChildren()[0]
-        self.messages_count = list()  # 记录消息数属性(调用消息监控会更新)
+        self.messages_count = 0  # 记录最大消息数(调用消息监控会更新)
         self.AutomationId_list = list()   # 记录获得消息控件的所有ID(调用消息监控会更新)
         self.message_list = list()  # 设置一个列表接收消息
+        self.get_messages() # 创建对象的时候就对窗口进行一次监听，并把记录保存下来(动态属性修改)
+        self.control_id_index = 0  # 旧表的最后一个控件id下标，用来定位新表(默认新表的第一个控件遍历消息体)
         """编辑工具栏(edit_tool_bar)"""
         # 2个组里面->组2->组2->组2->组3->7个组(表情、截图、文件、图片、红包、语音、聊天记录)
         self.edit_tool_bar = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[2]
@@ -120,7 +122,7 @@ class QQMessageMonitor:
         """-----------------------------------------消息监听相关-----------------------------------------"""
         self.message_data_directory = None   # 监听数据存放的目录
         self.message_data_txt = None    # 监听的文本数据存放路径
-        self.new_index = 0  # 新表新消息的下标(初始必须是0)
+
 
     def parameter_validation(self):
         """创建对象时对输入的信息进行校验"""
@@ -330,8 +332,6 @@ class QQMessageMonitor:
         self.AutomationId_list ： 控件id列表
         self.messages_count ： 最大消息数
         """
-        self.messages_count = len(self.message_list_box.GetChildren())  # 更新消息数属性
-        # print(f"获得消息数:{messages_count}")
         one_message_join =  ""  # 用来存放合成的消息(因为一条消息可以是和合成的)
         def txt_split(obj):
             """递归函数，遍历有效文本控件"""
@@ -352,18 +352,20 @@ class QQMessageMonitor:
             else:
                 for children_control in obj.GetChildren():
                     txt_split(children_control)
+        self.messages_count = len(self.message_list_box.GetChildren())  # 更新消息数属性
+        # print(f"获得消息数:{messages_count}")
         self.message_list.clear()  # 设置一个列表接收消息(对属性的列表清空)
         self.AutomationId_list.clear()  # 用来放置控件的AutomationId(对属性的列表清空)
-        for index in range(len(self.message_list_box.GetChildren())):   # 以下标的形式遍历(方便后续处理)
-            message_control = self.message_list_box.GetChildren()[index] # 获得所有消息控件
+        # message_child = self.message_list_box.GetChildren()  # 这里多一个变量是为了2次遍历相同的控件
+        for message_control in self.message_list_box.GetChildren()    :# 优先遍历控件id动态更改属性
             self.AutomationId_list.append(message_control.AutomationId)  # 放置控件id
-            if self.new_index is None:    # 即为没有消息的更新
-                self.message_list.clear()   # 没有新的消息就清空消息列表
-                break   # 直接跳出循环
-            elif self.new_index > index: # 确保新表新消息的下标一致(因为下标是最新消息所有是>而不是>=，等于就跳过最新消息了)
-                self.message_list.clear()  # 清空消息列表来放置新的消息(不能放在外面会导致列表添加有被删)
-                continue    #   跳过此次遍历节约时间和空间复杂度
-            message_control = message_control.GetChildren()[0]  # 进入组控件里面（所有都单个消息控件都得进入）
+        for message_control in self.message_list_box.GetChildren():   # 以下标的形式遍历(方便后续处理)
+            try:
+                message_control = message_control.GetChildren()[0]  # 进入组控件里面（所有都单个消息控件都得进入）
+                pass  # IndexError: list index out of range  提示我下标溢出
+            except():
+                print(len(message_control.GetChildren()))   # 打控件的子孩子数
+                raise ValueError("这里会提示下标溢出，可能没有监测到控件")
             if len(message_control.GetChildren()) == 2: # 如果等于2代表时间被嵌入的
                 message_control = message_control.GetChildren()[1]  # 进入个人消息体里面(避开时间)
             else:
@@ -380,59 +382,64 @@ class QQMessageMonitor:
             else:   # 超级复合文本（多个链接之类的）
                 txt_split(message_control)
             self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
+            # print(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join)
         return self.message_list, self.AutomationId_list, self.messages_count # 返回截获的消息列表、控件id列表、最大消息数
 
-    def deduplication(self,new_message_obj,old_message_obj):
-        """对消息列表进行去重，即获得新的消息
-        参数:
-        new_message_obj : 新控件对象的AutomationId(子控件有子孩子)
-        """
-
-    def contrast_AutomationId_list(self):
-        """对比控件ID
-        参数：AutomationId_list：旧的控件ID列表
-        返回值：没有监测到的消息控件的下标
+    def monitor_message(self):
+        pass    # 修改逻辑，跳过旧消息的文本控件解析(这里其实是对比上一次消息列表和这次消息列表消息的不同，实际上能在逻辑上实现)
+        """消息监听(对比上次的消息控件id来确认添加的消息数)
+        
         """
         old_message_list = self.message_list.copy()   # 保存上一次的消息列表(注意这里是深拷贝)
         old_AutomationId_list = self.AutomationId_list.copy()  # 保存上一次的控件列表(注意这里是深拷贝)
-        self.get_messages() # 更新消息来进行对比
-        for index in range(len(self.AutomationId_list)):   # 根据当前列表的最大数进行比较(最大值到0)
-            if old_AutomationId_list[-1] == self.AutomationId_list[index]:  # 从旧表的最后一个元素和新表0开始比较
-                # 旧表的最后一个元素如果等于新表的最后一个元素代表没有监测到新消息
-                if index == len(self.AutomationId_list) - 1: # (这里减1是因为对比的是下标值)
-                    print("此次未监测到有新消息出现")
-                    self.new_index = None   # 没有新的下标
-                else:
-                    self.new_index = index + 1  # 如果找到就返回新表下标,是新的消息下标值， 没有重复
-        # print("-------------------------------------------------------旧的-----------------------------------------")
-        # for i in old_message_list:
-        #     print(i)
-        print("-------------------------------------------------监听的消息体-----------------------------------------")
+        self.get_messages()  # 更新消息来进行对比(更新消息列表、控件id号、最大消息数)
+        """三种情况:
+        1. 旧表的下标存在，有新的消息，下标在新表里面但不是新表的最后一个下标
+        2. 旧表的下标存在，无新的消息，下标等于新表的最后一个下标
+        3. 下标不存在，即为监听的连续性遭到破坏，可能存在监听遗漏
+        """
+        # 旧表的下标存在，有新的消息，下标在新表里面但不是新表的最后一个下标
+        if old_AutomationId_list[-1] in self.AutomationId_list and old_AutomationId_list[-1] != self.AutomationId_list[-1]:
+            self.control_id_index = self.AutomationId_list.index(old_AutomationId_list[-1]) + 1  # 新消息的控件id下标(不加1就是最后一个旧消息控件id下标)
+            # print("1. 旧表的下标存在，有新的消息，下标在新表里面但不是新表的最后一个下标")
+            # self.message_list.clear()      # 清空消息列表放置新的消息
+        # 2. 旧表的下标存在，无新的消息，下标等于新表的最后一个下标
+        elif old_AutomationId_list[-1] in self.AutomationId_list and old_AutomationId_list[-1] == self.AutomationId_list[-1]:
+            self.control_id_index = self.AutomationId_list.index(old_AutomationId_list[-1]) + 1 # 没有新消息的控件下标(等于最新控件最后的下标)[这里的减1是为了不在下面进行遍历]
+            # print("2. 旧表的下标存在，无新的消息，下标等于新表的最后一个下标")
+            # self.message_list.clear()  # 清空消息列表放置新的消息(但是消息没有变化就不用清空列表了)
+        # 3. 下标不存在，即为监听的连续性遭到破坏，可能存在监听遗漏
+        elif old_AutomationId_list[-1] not in self.AutomationId_list:
+            # 无法对接上旧表的消息下表，可能刚好就是没承接旧表下标但是又刚好没新的消息下标
+            self.control_id_index = 0    # 重新遍历新表的消息体
+            # self.message_list.clear()  # 清空消息列表放置全新的消息列表
+            print(f"{datetime.now()}极大可能存在消息监听丢失，开始重新记录")
+        """原理解析：保存上一次控件获得的消息到临时变量，更新属性后进行对比，通过控件id去判断加入哪些新的消息"""
+        new_message_list = list()   # 新列表用来临时放置新消息的元素
+        # print(self.control_id_index,self.messages_count)
+        for index in range(self.control_id_index,self.messages_count):
+            # print(index)
+            new_message_list.append(self.message_list[index])
+        self.message_list = new_message_list # 把新消息的列表给消息列表属性(之前的空间都被垃圾回收机制回收掉)
         for i in self.message_list:
             print(i)
-
-
 
 if __name__ == '__main__':
     # a = QQMessageMonitor()
     chat1 = QQMessageMonitor("鸣潮自动刷声骸", "雁低飞")
-    chat1.move(0, 1000)     # 把窗口移动到指定位置
+    chat1.move(0, 1)     # 把窗口移动到指定位置
     chat1.create_directory(None,True)  # 如果没有转义这里会报警告，不用管
     chat1.create_txt()  # 创建文本文件
-    chat1.get_messages()  # 初次获取数据(更新属性)
-    # for i in chat1.message_list:
-    #     print(i)
-    sleep(5)    # 接收消息
-    # chat1.get_messages()    # 更新数据(更新属性)
-    chat1.contrast_AutomationId_list()  # 调用对比消息列表的所有控件id
-    sleep(5)
-    chat1.contrast_AutomationId_list()  # 调用对比消息列表的所有控件id
-
-
+    print(type(chat1.geometry))
+    for i in chat1.message_list:  # 打印初次绑定后的消息
+        print(i)
+    while True:
+        sleep(1)   # 每10秒监测一次变化
+        chat1.monitor_message()
 
     # print(chat1.visible_group_bulletin) # 打印群公告
     # chat1.get_messages()
-    chat1.cancel_top_win()  # 取消窗口置顶
+    # chat1.cancel_top_win()  # 取消窗口置顶
     # chat2 = QQMessageMonitor("蓝宝","雁低飞")
     # chat2.cancel_top_win()
 

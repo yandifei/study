@@ -12,3 +12,7 @@
 # # chat2 = QQMessageMonitor("蓝宝","雁低飞")
 # # chat2.cancel_top_win()
 from datetime import datetime
+a = [1,2,3,4,5,6,7,8,9]
+a.clear()
+a.clear()
+print(a[0])
