@@ -1,18 +1,14 @@
-# from QQScript.QQMessageMonitor import * # 导包
-#
-#
-#
-# chat1 = QQMessageMonitor("Free my WW", "雁低飞")
-# chat1.move(0, 1000)     # 把窗口移动到指定位置0
-# chat1.create_directory(None,True)  # 如果没有转义这里会报警告，不用管
-# chat1.create_txt()  # 创建文本文件
-# print(chat1.visible_group_bulletin) # 打印群公告
-# # chat1.split_messages()
-# chat1.cancel_top_win()  # 取消窗口置顶
-# # chat2 = QQMessageMonitor("蓝宝","雁低飞")
-# # chat2.cancel_top_win()
-from datetime import datetime
-a = [1,2,3,4,5,6,7,8,9]
-a.clear()
-a.clear()
-print(a[0])
+from QQScript.QQMessageMonitor import * # 导包
+# qq_group_name = input("请输入监听的群聊:\n") # 猫猫       雁低飞
+# qq_monitor_name = input("请输入你的身份(最好是聊天对象的名称，如你在q群的名称):\n")
+qq_group_name = "猫猫"
+qq_monitor_name = "雁低飞"
+chat_win1 = QQMessageMonitor(qq_group_name, qq_monitor_name)
+chat_win1.move(0,1010)  # 把窗口移动到最上角
+print("窗口已放置最左上角，可通过鼠标拖拽拉伸")
+print(f"数据存放路径:\t{chat_win1.message_data_txt}")
+for one_message in chat_win1.message_list:  # 打印初次绑定后的消息
+    print(one_message)
+while True:
+    sleep(1)  # 每1秒监测一次变化
+    chat_win1.monitor_message()
