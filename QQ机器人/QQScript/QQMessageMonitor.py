@@ -29,6 +29,10 @@ class QQMessageMonitor:
         sleep(self.top_wait_time)    # 等待1秒窗口完全置顶（qq置顶后渲染需要时间）
         self.pid = self.qq_chat_win.ProcessId   # 被监听窗口的进程ID
         self.geometry = self.qq_chat_win.BoundingRectangle  # 窗口的位置和大小
+        self.x = self.geometry.left # 窗口x坐标
+        self.y = self.geometry.top # 窗口y坐标
+        self.weight = self.geometry.width # 窗口长
+        self.height = self.geometry.height # 窗口宽
         print(f"成功绑定“{win_name}”{self.jude_group_or_friend(self.qq_chat_win)}窗口并置顶窗口\t监听者：{monitor_name}")# 把对象进行绑定，动态属性修改并打印
         print(f"“{win_name}”句柄:{self.qq_chat_hwnd}\t进程ID:{self.pid}\t窗口大小:{self.geometry}")
         """------------------------------------------聊天窗口控制监控相关---------------------------------------------"""
@@ -122,6 +126,8 @@ class QQMessageMonitor:
         """-----------------------------------------消息监听相关-----------------------------------------"""
         self.message_data_directory = None   # 监听数据存放的目录
         self.message_data_txt = None    # 监听的文本数据存放路径
+        self.create_directory()  # 如果没有转义这里会报警告，不用管(创建目录)
+        self.create_txt()  # 创建文本文件
 
 
     def parameter_validation(self):
@@ -209,12 +215,15 @@ class QQMessageMonitor:
             return "好友"
 
     """窗口控制和控件操作相关"""
-    def move(self,x, y,repaint=True):
-        """qq聊天窗口位置移动
+    def move(self,x = None, y = None,repaint=True):
+        """qq聊天窗口位置移动(如果什么都不填就把窗口移动到最左上角只留一个像素)
         x ： 窗口左上角的x坐标
         y ： 窗口左上角的y坐标
         repaint : 重新绘制窗口，默认打开
         """
+        if x == y is None:  # 把窗口移动到指定位置
+            x = 1 - self.height()
+            y = 1 - self.weight()
         size = win32gui.GetWindowRect(self.qq_chat_hwnd)  # 获取窗口左上角和右下角的坐标
         width, height = size[2] - size[0], size[3] - size[1]    # 计算窗口的大小
         win32gui.MoveWindow(self.qq_chat_hwnd, x, y, width, height, repaint)
@@ -315,7 +324,7 @@ class QQMessageMonitor:
                 raise ValueError("请先调用“create_directory”方法生成存放目录")
             self.message_data_txt = os.path.join(self.message_data_directory, "聊天记录.txt") # 路径拼接
             with open(self.message_data_txt,"w",encoding="utf-8") as messages_txt:   # 创建把“聊天记录”文本文件放置监听到的下消息
-                messages_txt.write(f"{datetime.now()}") # 往文件里面写入具体的时间数据
+                messages_txt.write(f"{datetime.now()}\n时间\t\t监听者\t\t监听数据\n") # 往文件里面写入具体的时间数据
         else:
             try:    # 对输入的路径进行检查
                 path = rf"{path}"  # 对输入的路径进行转义
@@ -323,7 +332,17 @@ class QQMessageMonitor:
             except OSError:
                 raise ValueError("输入的路径不存在，创建txt失败")
             with open(self.message_data_txt, "w", encoding="utf-8") as messages_txt:  # 创建把“聊天记录”文本文件放置监听到的下消息
-                messages_txt.write(f"{datetime.now()}")  # 往文件里面写入具体的时间数据
+                messages_txt.write(f"{datetime.now()}\n时间\t\t监听者\t\t监听数据\n")  # 往文件里面写入具体的时间数据()
+
+    def write_txt(self,message_list):
+        """追加模式写入监听到的数据
+        参数：message_list ：消息列表
+        """
+        with open(self.message_data_txt, "a", encoding="utf-8") as messages_txt:  # 创建把“聊天记录”文本文件放置监听到的下消息
+            for one_message in message_list:
+                messages_txt.write(one_message + "\n")  # 换行
+            messages_txt.flush()  # 立即写入硬盘（但需注意性能影响）
+
 
     def get_messages(self):
         """分割消息的控件数据获得消息
@@ -381,15 +400,13 @@ class QQMessageMonitor:
                 one_message_join = message_control.GetChildren()[1].GetChildren()[0].Name
             else:   # 超级复合文本（多个链接之类的）
                 txt_split(message_control)
-            self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
+            self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + " \t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
             # print(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join)
         return self.message_list, self.AutomationId_list, self.messages_count # 返回截获的消息列表、控件id列表、最大消息数
 
     def monitor_message(self):
         pass    # 修改逻辑，跳过旧消息的文本控件解析(这里其实是对比上一次消息列表和这次消息列表消息的不同，实际上能在逻辑上实现)
-        """消息监听(对比上次的消息控件id来确认添加的消息数)
-        
-        """
+        """消息监听(对比上次的消息控件id来确认添加的消息数)"""
         old_message_list = self.message_list.copy()   # 保存上一次的消息列表(注意这里是深拷贝)
         old_AutomationId_list = self.AutomationId_list.copy()  # 保存上一次的控件列表(注意这里是深拷贝)
         self.get_messages()  # 更新消息来进行对比(更新消息列表、控件id号、最大消息数)
@@ -421,25 +438,17 @@ class QQMessageMonitor:
             # print(index)
             new_message_list.append(self.message_list[index])
         self.message_list = new_message_list # 把新消息的列表给消息列表属性(之前的空间都被垃圾回收机制回收掉)
-        for i in self.message_list:
-            print(i)
+        for one_message in self.message_list:   #输出监听到的消息
+            print(one_message)
+        self.write_txt(self.message_list)   # 写入数据
 
 if __name__ == '__main__':
-    # a = QQMessageMonitor()
     chat1 = QQMessageMonitor("鸣潮自动刷声骸", "雁低飞")
-    chat1.move(0, 1)     # 把窗口移动到指定位置
-    chat1.create_directory(None,True)  # 如果没有转义这里会报警告，不用管
-    chat1.create_txt()  # 创建文本文件
-    print(type(chat1.geometry))
+    chat1.move()     # 把窗口移动到最上角
+    print(f"数据存放路径:\t{chat1.message_data_txt}")
     for i in chat1.message_list:  # 打印初次绑定后的消息
         print(i)
     while True:
         sleep(1)   # 每10秒监测一次变化
         chat1.monitor_message()
-
-    # print(chat1.visible_group_bulletin) # 打印群公告
-    # chat1.get_messages()
-    # chat1.cancel_top_win()  # 取消窗口置顶
-    # chat2 = QQMessageMonitor("蓝宝","雁低飞")
-    # chat2.cancel_top_win()
 
