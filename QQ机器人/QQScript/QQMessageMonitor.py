@@ -4,6 +4,8 @@
 import os
 import re
 from datetime import datetime
+from itertools import count
+
 import uiautomation
 import win32api
 import win32gui
@@ -354,23 +356,30 @@ class QQMessageMonitor:
         one_message_join =  ""  # 用来存放合成的消息(因为一条消息可以是和合成的)
         def txt_split(obj):
             """递归函数，遍历有效文本控件"""
-            nonlocal one_message_join # 用来存放一条消息(因为一条消息可以是和合成的)
-            if len(obj.GetChildren()) == 0: # 判断单个控件的内容
-                if obj.LocalizedControlType == "文本" and obj.Name != "":  # 获得有效文本控件的内容
-                    one_message_join += obj.Name
-                elif obj.LocalizedControlType == "组" and obj.Name == "表情":  # 确认是有效的表情(如何直接检测Name会导致如果“表情”是文本也会收集)
-                    one_message_join += obj.Name # QQ自带的表情
-                elif obj.LocalizedControlType == "图像" and obj.Name == "" and obj.GetParentControl().Name == "表情" and obj.GetParentControl().LocalizedControlType == "组":
-                    one_message_join += "表情"    # 父窗口是表情，但是最底层的子控件是图像且Name为空
-                elif obj.LocalizedControlType == "图像" and obj.Name == "图片": # 确认是有效的图像(无效的Name为"")
-                    one_message_join += "图片、静态或动态表情" # 图片、静态动态表情都被列为图像
-                elif obj.LocalizedControlType == "组" and obj.Name == "视频":
-                    one_message_join += obj.Name
-                elif obj.LocalizedControlType == "组" and obj.Name == "卡片":
-                    one_message_join += obj.Name
-            else:
-                for children_control in obj.GetChildren():
-                    txt_split(children_control)
+            try:    # AttributeError: 'NoneType' object has no attribute 'Name'
+                nonlocal one_message_join # 用来存放一条消息(因为一条消息可以是和合成的)
+                if len(obj.GetChildren()) == 0: # 判断单个控件的内容
+                    if obj.LocalizedControlType == "文本" and obj.Name != "":  # 获得有效文本控件的内容
+                        one_message_join += obj.Name
+                    elif obj.LocalizedControlType == "组" and obj.Name == "表情":  # 确认是有效的表情(如何直接检测Name会导致如果“表情”是文本也会收集)
+                        one_message_join += obj.Name # QQ自带的表情
+                    elif obj.LocalizedControlType == "图像" and obj.Name == "" and obj.GetParentControl().Name == "表情" and obj.GetParentControl().LocalizedControlType == "组":
+                        one_message_join += "表情"    # 父窗口是表情，但是最底层的子控件是图像且Name为空
+                    elif obj.LocalizedControlType == "图像" and obj.Name == "图片": # 确认是有效的图像(无效的Name为"")
+                        one_message_join += "图片、静态或动态表情" # 图片、静态动态表情都被列为图像
+                    elif obj.LocalizedControlType == "组" and obj.Name == "视频":
+                        one_message_join += obj.Name
+                    elif obj.LocalizedControlType == "组" and obj.Name == "卡片":
+                        one_message_join += obj.Name
+                elif obj.LocalizedControlType == "组" and "语音" in obj.Name:
+                    one_message_join = obj.Name # 检测到语音退出语音的遍历
+                    return one_message_join # 退出遍历
+                else:
+                    for children_control in obj.GetChildren():
+                        txt_split(children_control)
+            except AttributeError as ex:
+                print(f"文本消息解析失败，{ex}")
+                return "获取失败"
         self.messages_count = len(self.message_list_box.GetChildren())  # 更新消息数属性
         # print(f"获得消息数:{messages_count}")
         self.message_list.clear()  # 设置一个列表接收消息(对属性的列表清空)
@@ -379,29 +388,30 @@ class QQMessageMonitor:
         for message_control in self.message_list_box.GetChildren()    :# 优先遍历控件id动态更改属性
             self.AutomationId_list.append(message_control.AutomationId)  # 放置控件id
         for message_control in self.message_list_box.GetChildren():   # 以下标的形式遍历(方便后续处理)
-            try:
+            try:    # 估计有些消息体确实没有子孩子，或者突然过时了(实际猜测是最新的消息被顶掉了，导致控件为空)
                 message_control = message_control.GetChildren()[0]  # 进入组控件里面（所有都单个消息控件都得进入）
                 pass  # IndexError: list index out of range  提示我下标溢出
-            except():
-                print(len(message_control.GetChildren()))   # 打控件的子孩子数
-                raise ValueError("这里会提示下标溢出，可能没有监测到控件")
-            if len(message_control.GetChildren()) == 2: # 如果等于2代表时间被嵌入的
-                message_control = message_control.GetChildren()[1]  # 进入个人消息体里面(避开时间)
-            else:
-                message_control = message_control.GetChildren()[0]  # 进入个人消息体里面
-            send_name = message_control.GetChildren()[0].Name   # 监听者的名字
-            one_message_join = ""  # 清空组合的信息
-            if len(message_control.GetChildren()) == 1: # 我撤回了成员的某条消息
-                for i in message_control.GetChildren()[0].GetChildren(): # 进入控件组里面遍历子控件
-                    one_message_join = i.Name
-            if len(message_control.GetChildren()) == 2: # 普通文本消息（非文件类型）优先级放这里避免时间复杂度提高
-                txt_split(message_control)
-            elif len(message_control.GetChildren()) == 3 and message_control.GetChildren()[2].Name == "":   # 确定是文件类型而不是引用类型
-                one_message_join = message_control.GetChildren()[1].GetChildren()[0].Name
-            else:   # 超级复合文本（多个链接之类的）
-                txt_split(message_control)
-            self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + " \t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
-            # print(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join)
+                if len(message_control.GetChildren()) == 2: # 如果等于2代表时间被嵌入的
+                    message_control = message_control.GetChildren()[1]  # 进入个人消息体里面(避开时间)
+                else:
+                    message_control = message_control.GetChildren()[0]  # 进入个人消息体里面
+                send_name = message_control.GetChildren()[0].Name   # 监听者的名字
+                one_message_join = ""  # 清空组合的信息
+                if len(message_control.GetChildren()) == 1: # 我撤回了成员的某条消息
+                    for i in message_control.GetChildren()[0].GetChildren(): # 进入控件组里面遍历子控件
+                        one_message_join = i.Name
+                if len(message_control.GetChildren()) == 2: # 普通文本消息（非文件类型）优先级放这里避免时间复杂度提高
+                    txt_split(message_control)
+                elif len(message_control.GetChildren()) == 3 and message_control.GetChildren()[2].Name == "":   # 确定是文件类型而不是引用类型
+                    one_message_join = message_control.GetChildren()[1].GetChildren()[0].Name
+                else:   # 超级复合文本（多个链接之类的）
+                    txt_split(message_control)
+                self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + " \t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
+                # print(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join)
+            except IndexError as e:  # 显式捕获IndexError
+                print(f"下标溢出：无法获取子控件，原始错误：{e}")
+                print(f"子孩子控件数:{len(message_control.GetChildren())}")   # 打控件的子孩子数
+                continue # 跳过这次控件访问
         return self.message_list, self.AutomationId_list, self.messages_count # 返回截获的消息列表、控件id列表、最大消息数
 
     def monitor_message(self):
@@ -419,29 +429,30 @@ class QQMessageMonitor:
         if old_AutomationId_list[-1] in self.AutomationId_list and old_AutomationId_list[-1] != self.AutomationId_list[-1]:
             self.control_id_index = self.AutomationId_list.index(old_AutomationId_list[-1]) + 1  # 新消息的控件id下标(不加1就是最后一个旧消息控件id下标)
             # print("1. 旧表的下标存在，有新的消息，下标在新表里面但不是新表的最后一个下标")
-            # self.message_list.clear()      # 清空消息列表放置新的消息
         # 2. 旧表的下标存在，无新的消息，下标等于新表的最后一个下标
         elif old_AutomationId_list[-1] in self.AutomationId_list and old_AutomationId_list[-1] == self.AutomationId_list[-1]:
             self.control_id_index = self.AutomationId_list.index(old_AutomationId_list[-1]) + 1 # 没有新消息的控件下标(等于最新控件最后的下标)[这里的减1是为了不在下面进行遍历]
             # print("2. 旧表的下标存在，无新的消息，下标等于新表的最后一个下标")
-            # self.message_list.clear()  # 清空消息列表放置新的消息(但是消息没有变化就不用清空列表了)
         # 3. 下标不存在，即为监听的连续性遭到破坏，可能存在监听遗漏
         elif old_AutomationId_list[-1] not in self.AutomationId_list:
             # 无法对接上旧表的消息下表，可能刚好就是没承接旧表下标但是又刚好没新的消息下标
             self.control_id_index = 0    # 重新遍历新表的消息体
-            # self.message_list.clear()  # 清空消息列表放置全新的消息列表
+            self.write_txt(f"{datetime.now()}极大可能存在消息监听丢失，开始重新记录")  # 写入数据
             print(f"{datetime.now()}极大可能存在消息监听丢失，开始重新记录")
         """原理解析：保存上一次控件获得的消息到临时变量，更新属性后进行对比，通过控件id去判断加入哪些新的消息"""
         new_message_list = list()   # 新列表用来临时放置新消息的元素
         # print(self.control_id_index,self.messages_count)
-        for index in range(self.control_id_index,self.messages_count):
-            # print(index)
-            new_message_list.append(self.message_list[index])
-        self.message_list = new_message_list # 把新消息的列表给消息列表属性(之前的空间都被垃圾回收机制回收掉)
-        for one_message in self.message_list:   #输出监听到的消息
-            print(one_message)
-        self.write_txt(self.message_list)   # 写入数据
-
+        try:  # 估计有些消息体确实没有子孩子，或者突然过时了(实际猜测是最新的消息被顶掉了，导致控件为空)
+            for index in range(self.control_id_index,self.messages_count):
+                # print(index)
+                new_message_list.append(self.message_list[index])
+            self.message_list = new_message_list # 把新消息的列表给消息列表属性(之前的空间都被垃圾回收机制回收掉)
+            for one_message in self.message_list:   #输出监听到的消息
+                print(one_message)
+            self.write_txt(self.message_list)   # 写入数据
+        except IndexError as e:  # 显式捕获IndexError
+            print(f"monitor_message下标溢出：无法获取子控件，原始错误：{e}")
+            print(f"self.message_list子孩子控件数:{len(self.message_list)}")  # 打控件的子孩子数
 if __name__ == '__main__':
     chat1 = QQMessageMonitor("鸣潮自动刷声骸", "雁低飞")
     chat1.move()     # 把窗口移动到最上角
