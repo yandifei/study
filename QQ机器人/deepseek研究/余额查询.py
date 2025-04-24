@@ -5,7 +5,7 @@ url = "https://api.deepseek.com/user/balance"
 payload={}
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'Bearer sk-12eaafd1ff2245b4ae038c02471984a7'  # "sk-12eaafd1ff2245b4ae038c02471984a7"
+  'Authorization': 'Bearer '  #
 }
 
 response = requests.request("GET", url, headers=headers, data=payload)
@@ -22,6 +22,7 @@ elif not data["is_available"]:  # 如果为False
 
 detail_list = data["balance_infos"] # 详细信息
 
+# currency_type =
 if detail_list[0]["currency"] == "CNY":   # 人民币
   print("货币类型为人民币")
 elif detail_list[0]["currency"] == "USD":   # 美元
@@ -43,3 +44,12 @@ print(f"充值余额:{detail_list[0]["topped_up_balance"]}")
 #     }
 #   ]
 # }
+
+"""数值计算"""
+# 1 个英文字符 ≈ 0.3 个 token。1 个中文字符 ≈ 0.6 个 token。
+# R1 保底模型字数计算
+# 16÷1000000 = 62500(元/tokens)  16元除以一百万
+min_token = float(detail_list[0]["total_balance"]) * 62500 # 当前金额(元) * 62500[每元的token数]
+characters = int(min_token / 0.6)   # 最少的中文字符字数(直接取整数)
+words = int(min_token / 0.3)    # 最少的英文字符字数(直接取整数)
+print(f"当前可用余额能生成最少 {int(min_token)} token，对话可使用最少约{characters}个汉字，对哈可使用最少约{words}英文字符")
