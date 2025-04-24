@@ -460,6 +460,6 @@ if __name__ == '__main__':
     for i in chat1.message_list:  # 打印初次绑定后的消息
         print(i)
     while True:
-        sleep(1)   # 每10秒监测一次变化
+        sleep(0.5)   # 每1秒监测一次变化(0.5防止遗漏)
         chat1.monitor_message()
 
