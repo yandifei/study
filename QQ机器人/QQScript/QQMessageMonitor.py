@@ -26,6 +26,7 @@ class QQMessageMonitor:
         self.qq_chat_win = self.find_qq_chat_win(self.top_window_traversal())   # 遍历顶层窗口->从顶层窗口中找到指定的qq聊天窗口
         self.qq_chat_hwnd = self.qq_chat_win.NativeWindowHandle # 被监听窗口的句柄
         self.cancel_top_win()   # 取消窗口置顶，防止窗口置顶失效
+        self.show_win() # 如果窗口最小化就展示窗口
         self.top_win()  # 把窗口置顶，防止窗口被遮挡导致渲染停止无法监控窗口
         self.top_wait_time = 1  # 设置置顶后等待qq渲染完成的属性，（如果电脑卡的话可以调大属性）
         sleep(self.top_wait_time)    # 等待1秒窗口完全置顶（qq置顶后渲染需要时间）
@@ -230,6 +231,11 @@ class QQMessageMonitor:
         width, height = size[2] - size[0], size[3] - size[1]    # 计算窗口的大小
         win32gui.MoveWindow(self.qq_chat_hwnd, x, y, width, height, repaint)
 
+    def show_win(self):
+        """展示qq窗口，如果qq窗口最小化就展示出来"""
+        win32gui.ShowWindow(self.qq_chat_hwnd, win32con.SW_RESTORE)
+
+
     def set_size(self, width, height, repaint=True):
         """改变qq聊天窗口的大小（坐标保持在左上角）
         width ： 设置窗口的宽度
@@ -327,6 +333,7 @@ class QQMessageMonitor:
             self.message_data_txt = os.path.join(self.message_data_directory, "聊天记录.txt") # 路径拼接
             with open(self.message_data_txt,"w",encoding="utf-8") as messages_txt:   # 创建把“聊天记录”文本文件放置监听到的下消息
                 messages_txt.write(f"{datetime.now()}\n时间\t\t监听者\t\t监听数据\n") # 往文件里面写入具体的时间数据
+                print(f"\033[92m{datetime.now()}\n时间\t\t监听者\t\t监听数据\n\033[0m")  # 往文件里面写入具体的时间数据
         else:
             try:    # 对输入的路径进行检查
                 path = rf"{path}"  # 对输入的路径进行转义
@@ -334,7 +341,7 @@ class QQMessageMonitor:
             except OSError:
                 raise ValueError("输入的路径不存在，创建txt失败")
             with open(self.message_data_txt, "w", encoding="utf-8") as messages_txt:  # 创建把“聊天记录”文本文件放置监听到的下消息
-                messages_txt.write(f"{datetime.now()}\n时间\t\t监听者\t\t监听数据\n")  # 往文件里面写入具体的时间数据()
+                messages_txt.write(f"{datetime.now()}\n\t时间 \t\t监听者\t\t监听数据\n")  # 往文件里面写入具体的时间数据()
 
     def write_txt(self,message_list):
         """追加模式写入监听到的数据
@@ -409,8 +416,8 @@ class QQMessageMonitor:
                 self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + " \t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
                 # print(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join)
             except IndexError as e:  # 显式捕获IndexError
-                print(f"下标溢出：无法获取子控件，原始错误：{e}")
-                print(f"子孩子控件数:{len(message_control.GetChildren())}")   # 打控件的子孩子数
+                print(f"\033[33m下标溢出：无法获取子控件，原始错误：{e}\033[0m",end="\t")
+                print(f"\033[33m子孩子控件数:{len(message_control.GetChildren())}\033[0m")   # 打控件的子孩子数
                 continue # 跳过这次控件访问
         return self.message_list, self.AutomationId_list, self.messages_count # 返回截获的消息列表、控件id列表、最大消息数
 
@@ -451,8 +458,8 @@ class QQMessageMonitor:
                 print(one_message)
             self.write_txt(self.message_list)   # 写入数据
         except IndexError as e:  # 显式捕获IndexError
-            print(f"monitor_message下标溢出：无法获取子控件，原始错误：{e}")
-            print(f"self.message_list子孩子控件数:{len(self.message_list)}")  # 打控件的子孩子数
+            print(f"\033[93mmonitor_message下标溢出：无法获取子控件，原始错误：{e}\033[0m",end="\t")
+            print(f"\033self.message_list子孩子控件数:{len(self.message_list)}\033[0m")  # 打控件的子孩子数
 if __name__ == '__main__':
     chat1 = QQMessageMonitor("鸣潮自动刷声骸", "雁低飞")
     chat1.move()     # 把窗口移动到最上角
