@@ -219,14 +219,14 @@ class QQMessageMonitor:
 
     """窗口控制和控件操作相关"""
     def move(self,x = None, y = None,repaint=True):
-        """qq聊天窗口位置移动(如果什么都不填就把窗口移动到最左上角只留一个像素)
+        """qq聊天窗口位置移动(如果什么都不填就把窗口移动到最左上角只留一个像素，不要多次调用)
         x ： 窗口左上角的x坐标
         y ： 窗口左上角的y坐标
         repaint : 重新绘制窗口，默认打开
         """
         if x == y is None:  # 把窗口移动到指定位置
-            x = 1 - self.height()
-            y = 1 - self.weight()
+            x = 3 - self.height()
+            y = 3 - self.weight()
         size = win32gui.GetWindowRect(self.qq_chat_hwnd)  # 获取窗口左上角和右下角的坐标
         width, height = size[2] - size[0], size[3] - size[1]    # 计算窗口的大小
         win32gui.MoveWindow(self.qq_chat_hwnd, x, y, width, height, repaint)
@@ -332,8 +332,7 @@ class QQMessageMonitor:
                 raise ValueError("请先调用“create_directory”方法生成存放目录")
             self.message_data_txt = os.path.join(self.message_data_directory, "聊天记录.txt") # 路径拼接
             with open(self.message_data_txt,"w",encoding="utf-8") as messages_txt:   # 创建把“聊天记录”文本文件放置监听到的下消息
-                messages_txt.write(f"{datetime.now()}\n时间\t\t监听者\t\t监听数据\n") # 往文件里面写入具体的时间数据
-                print(f"\033[92m{datetime.now()}\n时间\t\t监听者\t\t监听数据\n\033[0m")  # 往文件里面写入具体的时间数据
+                messages_txt.write(f"{datetime.now()}\n\t时间\t\t发送者\t\t监听数据\n") # 往文件里面写入具体的时间数据
         else:
             try:    # 对输入的路径进行检查
                 path = rf"{path}"  # 对输入的路径进行转义
@@ -341,7 +340,7 @@ class QQMessageMonitor:
             except OSError:
                 raise ValueError("输入的路径不存在，创建txt失败")
             with open(self.message_data_txt, "w", encoding="utf-8") as messages_txt:  # 创建把“聊天记录”文本文件放置监听到的下消息
-                messages_txt.write(f"{datetime.now()}\n\t时间 \t\t监听者\t\t监听数据\n")  # 往文件里面写入具体的时间数据()
+                messages_txt.write(f"{datetime.now()}\n\t时间\t\t发送者\t\t7监听数据\n")  # 往文件里面写入具体的时间数据()
 
     def write_txt(self,message_list):
         """追加模式写入监听到的数据
@@ -402,13 +401,21 @@ class QQMessageMonitor:
                     message_control = message_control.GetChildren()[1]  # 进入个人消息体里面(避开时间)
                 else:
                     message_control = message_control.GetChildren()[0]  # 进入个人消息体里面
-                send_name = message_control.GetChildren()[0].Name   # 监听者的名字
+                send_name = message_control.GetChildren()[0].Name   # 发送者的名字
                 one_message_join = ""  # 清空组合的信息
-                if len(message_control.GetChildren()) == 1: # 我撤回了成员的某条消息
-                    for i in message_control.GetChildren()[0].GetChildren(): # 进入控件组里面遍历子控件
-                        one_message_join = i.Name
-                if len(message_control.GetChildren()) == 2: # 普通文本消息（非文件类型）优先级放这里避免时间复杂度提高
-                    txt_split(message_control)
+                if len(message_control.GetChildren()) == 1: # 对方或我撤回了成员的某条消息(撤回、加入群聊)
+                    if message_control.GetChildren()[0].GetChildren()[1].Name == "加入了群聊。":
+                        send_name = "系统"
+                        # 加入者的名字 拼接 message_control.GetChildren()[0].GetChildren()[1].Name（"加入了群聊。"）
+                        one_message_join = message_control.GetChildren()[0].GetChildren()[0].Name + "加入了群聊。"
+                    else:
+                        send_name = message_control.GetChildren()[0].GetChildren()[0].Name   # 重新定义发送者的名字
+                        one_message_join = message_control.GetChildren()[0].GetChildren()[1].Name
+                elif len(message_control.GetChildren()) == 2: # 普通文本消息（非文件类型）优先级放这里避免时间复杂度提高
+                    if message_control.GetChildren()[1].Name == "卡片":
+                        one_message_join = "卡片消息"
+                    else:
+                        txt_split(message_control)
                 elif len(message_control.GetChildren()) == 3 and message_control.GetChildren()[2].Name == "":   # 确定是文件类型而不是引用类型
                     one_message_join = message_control.GetChildren()[1].GetChildren()[0].Name
                 else:   # 超级复合文本（多个链接之类的）
@@ -444,7 +451,7 @@ class QQMessageMonitor:
         elif old_AutomationId_list[-1] not in self.AutomationId_list:
             # 无法对接上旧表的消息下表，可能刚好就是没承接旧表下标但是又刚好没新的消息下标
             self.control_id_index = 0    # 重新遍历新表的消息体
-            self.write_txt(f"{datetime.now()}极大可能存在消息监听丢失，开始重新记录")  # 写入数据
+            self.write_txt([f"{datetime.now()}极大可能存在消息监听丢失，开始重新记录"])  # 写入数据(传入列表)
             print(f"{datetime.now()}极大可能存在消息监听丢失，开始重新记录")
         """原理解析：保存上一次控件获得的消息到临时变量，更新属性后进行对比，通过控件id去判断加入哪些新的消息"""
         new_message_list = list()   # 新列表用来临时放置新消息的元素
@@ -461,12 +468,15 @@ class QQMessageMonitor:
             print(f"\033[93mmonitor_message下标溢出：无法获取子控件，原始错误：{e}\033[0m",end="\t")
             print(f"\033self.message_list子孩子控件数:{len(self.message_list)}\033[0m")  # 打控件的子孩子数
 if __name__ == '__main__':
-    chat1 = QQMessageMonitor("鸣潮自动刷声骸", "雁低飞")
-    chat1.move()     # 把窗口移动到最上角
-    print(f"数据存放路径:\t{chat1.message_data_txt}")
-    for i in chat1.message_list:  # 打印初次绑定后的消息
-        print(i)
-    while True:
-        sleep(0.5)   # 每1秒监测一次变化(0.5防止遗漏)
-        chat1.monitor_message()
+    # chat1 = QQMessageMonitor("鸣潮自动刷声骸", "雁低飞")
+    # chat1.move()     # 把窗口移动到最上角
+    # print(f"数据存放路径:\t{chat1.message_data_txt}")
+    # for one_message in chat1.message_list:  # 打印初次绑定后的消息
+    #     print(one_message)
+    # while True:
+    #     sleep(0.5)   # 每1秒监测一次变化(0.5防止遗漏)
+    #     chat1.monitor_message() # 开始监控
+    #     chat1.show_win()    # 展示窗口
+    #     chat1.top_win()     # 置顶窗口
+    print("可以输出没有语法错误")
 
