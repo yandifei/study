@@ -10,7 +10,7 @@ if base_url_choice == "考虑兼容":
     base_url = "https: // api.deepseek.com / v1"    # 考虑与OpenAI的兼容
 else:
     base_url = "https://api.deepseek.com"   # 不考虑兼容
-client = OpenAI(api_key="sk-d5da84db73394e29bc3ce3aab5c9e474", base_url=base_url)   #
+client = OpenAI(api_key="", base_url=base_url)   #
 
 # deepseek-chat是DeepSeek-V3模型,deepseek-reasoner是DeepSeek-R1模型
 model_choice = "R1"
