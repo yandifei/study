@@ -11,35 +11,22 @@ import os   # 导入系统库
 import requests # 导入网络请求的库
 import json # 解析服务器的json文本回应
 import transformers # (爆红没事，能跑就行)
+from openai import OpenAI
+
 class DeepseekConversationEngine:
     def __init__(self):
         self.__DEEPSEEK_API_KEY = self.__get_check_key()    # 从`系统环境变量中读入密钥和检查密钥
         """核心业务"""
+        self.client = OpenAI(api_key=self.__DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
+        self.model_choice = "deepseek-chat" # 模型默认V3(deepseek-chat)，R1是(deepseek-reasoner)
+        # temperature 参数默认为(1.0)代码生成/数学解题(0.0)数据抽取/分析(1.0)通用对话(1.3)翻译(1.3)创意类写作/诗歌创作(1.5)
+        self.temperature = 1.3 # 默认日常聊天就设置为1.3了
         self.dialog_history = list()    # 对话历史，列表存储
+        self.clear_flag = 5 # 对话历史最大数，超过就清空最开始的那一次的对话(V3默认为5轮)
+        # 记得设置没有任何人设的对话
         """Token分词和计算"""
         # add_special_tokens=True是模型输入格式要求,False是纯文本Token计算
         self.tokenizer = transformers.AutoTokenizer.from_pretrained("./deepseek_v3_tokenizer/",trust_remote_code=True)
-
-
-    """多模式对话管理(核心业务)"""
-    @staticmethod
-    def role_read(txt_file_name):
-        """提示库角色设定读取
-        参数：txt_file_name ： txt文本文件名字(默认放在“提示库”的文件夹中)，不需要填后缀名
-        返回值 ： role_information : 文本文件的内容
-        """
-        while True:
-            txt_file_name += ".txt"  # 补足后缀名
-            path = os.path.join("./提示库/", txt_file_name)
-            if not os.path.isfile(path):  # 检查是否有这个文件（文件不存在）
-                print(
-                    f"\033[91m\"{os.path.join(os.getcwd(), "提示库")}\"中没有“{txt_file_name}”这个文件，请检查该txt文件是否存在\033[0m")
-                txt_file_name = input("\033[92m请重新输入文件名(不用输入全名，路径自动补足)：\033[0m")
-            else:  # 检查是否有这个文件（文件存在）:
-                break  # 跳出循环
-        with open(path, "r", encoding="utf-8") as role_txt:
-            return role_txt.read()
-
 
     """密钥安全读取和校验"""
     @staticmethod
@@ -59,6 +46,32 @@ class DeepseekConversationEngine:
         if response.status_code != 200:  # 检查响应状态码
             raise ValueError("API密钥无效或未授权，检查密钥是否正确或重启pycharm或程序")
         return DEEPSEEK_API_KEY
+
+    """多模式对话管理(核心业务)"""
+    def compatible_openai(self):
+        """修改self.client属性中的base_url对OpenAI进行兼容
+        # 出于与 OpenAI 兼容考虑，您也可以将 base_url 设置为 https://api.deepseek.com/v1 来使用，
+        但注意，此处 v1 与模型版本无关。
+        """
+        self.client = OpenAI(api_key=self.__DEEPSEEK_API_KEY, base_url="https://api.deepseek.com/v1")
+
+    @staticmethod
+    def role_read(txt_file_name):
+        """提示库角色设定读取
+        参数：txt_file_name ： txt文本文件名字(默认放在“提示库”的文件夹中)，不需要填后缀名
+        返回值 ： role_information : 文本文件的内容
+        """
+        while True:
+            txt_file_name += ".txt"  # 补足后缀名
+            path = os.path.join("./提示库/", txt_file_name)
+            if not os.path.isfile(path):  # 检查是否有这个文件（文件不存在）
+                print(
+                    f"\033[91m\"{os.path.join(os.getcwd(), "提示库")}\"中没有“{txt_file_name}”这个文件，请检查该txt文件是否存在\033[0m")
+                txt_file_name = input("\033[92m请重新输入文件名(不用输入全名，路径自动补足)：\033[0m")
+            else:  # 检查是否有这个文件（文件存在）:
+                break  # 跳出循环
+        with open(path, "r", encoding="utf-8") as role_txt:
+            return role_txt.read()
 
     """余额计算和监控"""
     def balance_inquiry(self, out=False):

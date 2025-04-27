@@ -7,10 +7,10 @@ role_play4 = "开启毒舌模式"
 # 出于与 OpenAI 兼容考虑，您也可以将 base_url 设置为 https://api.deepseek.com/v1 来使用，但注意，此处 v1 与模型版本无关。
 base_url_choice = None
 if base_url_choice == "考虑兼容":
-    base_url = "https: // api.deepseek.com / v1"    # 考虑与OpenAI的兼容
+    base_url = "https://api.deepseek.com/v1"    # 考虑与OpenAI的兼容
 else:
     base_url = "https://api.deepseek.com"   # 不考虑兼容
-client = OpenAI(api_key="", base_url=base_url)   #
+client = OpenAI(api_key="", base_url=base_url)
 
 # deepseek-chat是DeepSeek-V3模型,deepseek-reasoner是DeepSeek-R1模型
 model_choice = "R1"
