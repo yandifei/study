@@ -371,6 +371,8 @@ class QQMessageMonitor:
                         one_message_join += obj.Name # QQ自带的表情
                     elif obj.LocalizedControlType == "图像" and obj.Name == "" and obj.GetParentControl().Name == "表情" and obj.GetParentControl().LocalizedControlType == "组":
                         one_message_join += "表情"    # 父窗口是表情，但是最底层的子控件是图像且Name为空
+                    elif obj.LocalizedControlType == "图像" and obj.AriaRole == "img" and obj.Name == "":  # 被引用图像消息体
+                        one_message_join += "图像"    # 父窗口是表情，但是最底层的子控件是图像且Name为空
                     elif obj.LocalizedControlType == "图像" and obj.Name == "图片": # 确认是有效的图像(无效的Name为"")
                         one_message_join += "图片、静态或动态表情" # 图片、静态动态表情都被列为图像
                     elif obj.LocalizedControlType == "组" and obj.Name == "视频":
@@ -407,17 +409,24 @@ class QQMessageMonitor:
                     if message_control.GetChildren()[0].GetChildren()[1].Name == "加入了群聊。":
                         send_name = "系统"
                         # 加入者的名字 拼接 message_control.GetChildren()[0].GetChildren()[1].Name（"加入了群聊。"）
-                        one_message_join = message_control.GetChildren()[0].GetChildren()[0].Name + "加入了群聊。"
-                    else:
+                        one_message_join = message_control.GetChildren()[0].GetChildren()[0].Name + "加入了群聊。"    # 人名和群聊
+                    elif len(message_control.GetChildren()[0].GetChildren()) == 2:  # 撤回消息的情况
                         send_name = message_control.GetChildren()[0].GetChildren()[0].Name   # 重新定义发送者的名字
-                        one_message_join = message_control.GetChildren()[0].GetChildren()[1].Name
-                elif len(message_control.GetChildren()) == 2: # 普通文本消息（非文件类型）优先级放这里避免时间复杂度提高
+                        one_message_join = message_control.GetChildren()[0].GetChildren()[1].Name  # 撤回了一条消息
+                    else:
+                        send_name = "系统" # 拍一拍的发送者
+                        for pai_control in message_control.GetChildren()[0].GetChildren():  # 遍历拍一拍的控件
+                            one_message_join += pai_control.Name  # 把拍一拍的消息组合起来
+                elif len(message_control.GetChildren()) == 2: # 引用和卡片
                     if message_control.GetChildren()[1].Name == "卡片":
                         one_message_join = "卡片消息"
-                    else:
+                    else:   # 引用类型
                         txt_split(message_control)
-                elif len(message_control.GetChildren()) == 3 and message_control.GetChildren()[2].Name == "":   # 确定是文件类型而不是引用类型
-                    one_message_join = message_control.GetChildren()[1].GetChildren()[0].Name
+                elif len(message_control.GetChildren()) == 3:   # 文件类型和普通聊天类型都是3个组，消息内容在第二个组
+                    if message_control.GetChildren()[1].GetChildren()[0].Name != "":    # 文件类型
+                        one_message_join = message_control.GetChildren()[1].GetChildren()[0].Name   # 文件名
+                    elif message_control.GetChildren()[1].GetChildren()[0].Name == "":   # 文本控件在里面
+                        txt_split(message_control)
                 else:   # 超级复合文本（多个链接之类的）
                     txt_split(message_control)
                 self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + " \t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
