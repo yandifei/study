@@ -16,11 +16,21 @@ from openai import OpenAI
 class DeepseekConversationEngine:
     def __init__(self):
         self.__DEEPSEEK_API_KEY = self.__get_check_key()    # 从`系统环境变量中读入密钥和检查密钥
-        """核心业务"""
+        """-----------------------------------------------------核心业务-----------------------------------------------------"""
         self.client = OpenAI(api_key=self.__DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
-        self.model_choice = "deepseek-chat" # 模型默认V3(deepseek-chat)，R1是(deepseek-reasoner)
+        """请求参数(回答内容控制)"""
+        # 模型默认V3(deepseek-chat)，R1是(deepseek-reasoner)
+        self.model_choice = "deepseek-chat"
+        # 介于 -2.0 和 2.0 之间的数字。如果该值为正，那么新 token 会根据其在已有文本中的出现频率受到相应的惩罚，降低模型重复相同内容的可能性。
+        self.frequency_penalty = 0  # 默认0
         # temperature 参数默认为(1.0)代码生成/数学解题(0.0)数据抽取/分析(1.0)通用对话(1.3)翻译(1.3)创意类写作/诗歌创作(1.5)
         self.temperature = 1.3 # 默认日常聊天就设置为1.3了
+        # 介于 1 到 8192 间的整数，限制一次请求中模型生成 completion 的最大 token 数。输入 token 和输出 token 的总长度受模型的上下文长度的限制。
+        self.max_tokens = 4096 #  默认4096个token（6825.667个字），8192为13653.33个字
+        # 介于 -2.0 和 2.0 之间的数字。如果该值为正，那么新 token 会根据其是否已在已有文本中出现受到相应的惩罚，从而增加模型谈论新主题的可能性。
+        self.presence_penalty = 0   # 默认0
+        # response_format
+        """历史对话处理"""
         self.dialog_history = list()    # 对话历史，列表存储
         self.clear_flag = 5 # 对话历史最大数，超过就清空最开始的那一次的对话(V3默认为5轮)
         # 记得设置没有任何人设的对话
@@ -54,6 +64,43 @@ class DeepseekConversationEngine:
         但注意，此处 v1 与模型版本无关。
         """
         self.client = OpenAI(api_key=self.__DEEPSEEK_API_KEY, base_url="https://api.deepseek.com/v1")
+
+    def use_beat(self):
+        """修改self.client属性中的base_url为"https://api.deepseek.com/beta"来开启api某些限制功能
+        部分功能必须是beat才能开启，如R1思维返回就必须使用这个url"""
+        self.client = OpenAI(api_key=self.__DEEPSEEK_API_KEY, base_url="https://api.deepseek.com/beta")
+
+    # message
+
+
+    def set_model(self):
+        """模型切换，如果为 V3 模型就切换为 R1模型， 如果为 R1 模型则切换为 V3模型
+        # 模型默认V3(deepseek-chat)，R1是(deepseek-reasoner)
+        """
+        if self.model_choice == "deepseek-chat":  # V3模型
+            self.model_choice = "deepseek-reasoner" # R1模型
+        else:
+            self.model_choice = "deepseek-chat" # V3模型
+
+    def set_frequency_penalty(self,frequency_penalty):
+        """控制生成内容的重复性 -2.0（鼓励重复）到 2.0（严格避免重复）、0（无惩罚）
+       在新 token 会根据其在已有文本中的出现频率受到相应的惩罚，降低模型重复相同内容的可能性。"""
+        self.frequency_penalty = frequency_penalty
+
+    def set_temperature(self,temperature):
+        """设置模型对话的温度
+        参数 ： temperature ： 温度参数
+        默认为(1.0)代码生成/数学解题(0.0)数据抽取/分析(1.0)通用对话(1.3)翻译(1.3)创意类写作/诗歌创作(1.5)
+        返回值：如果修改成功返回True，否则返回False
+        """
+        if temperature < 0.0 or temperature > 2.0:
+            print("\033[91m超出温度范围(0.0-2.0),自动调整会默认参数1.0\033[0m")
+            return False
+        else:
+            self.temperature = temperature
+            return True
+
+
 
     @staticmethod
     def role_read(txt_file_name):

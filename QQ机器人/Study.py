@@ -40,16 +40,15 @@ else:   # 默认V3模型
 #     ],
 #     stream=False    # 是否流式输出(是否逐字输出)
 # )
-ask = "deepseek的api接口费用使用完后是0.00元吗？还是可以为负数？在最后一次调用中token超出费用这次调用结果是否会中断？"
-print(ask)
 
 try:
     response = client.chat.completions.create(
-        model=model,
         messages=[
-            {"role": "system", "content": role_play1},      # 系统提示（设定角色）"
-            {"role": "user", "content": ask},       # 用户输入
+            {"role": "system", "content": "你是一只猫娘"},      # 系统提示（设定角色）"
+            {"role": "assistant", "content": "是的，主人"},  # 系统提示（设定角色）"
+            {"role": "user", "content": "能陪我睡觉吗？"},       # 用户输入
         ],
+        model=model,
         stream=False    # 是否流式输出(是否逐字输出)
     )
     print(response.choices[0].message.content)
