@@ -31,6 +31,22 @@ self.client = OpenAI(api_key=self.__DEEPSEEK_API_KEY, base_url="https://api.deep
 - `#新对话`清空对话历史
 - 
 
+## 输出格式
+输出默认全文本输出，不会带有markdown语法，如:
+```markdown
+markdown
+# Hello World
+**这里是加粗字体**
+***这里是加粗和斜体***
+```
+只有在输出代码或必要的文本创作(表示word的表格)才会用上mrakdown。
+
+**可以在提问的时候指定输出格式，如`json`、`markdown`、 `text`等，结合参数`response_format`能确保生成格式如：**
+```python
+问题：请生成json格式的文本
+set_response_format("json_object")    # 调用方法修改response_format属性强制输出json格式的回答
+# response_format = "text" 默认 
+```
 
 ## 开发随笔
 高并发，多线程，多进程
@@ -47,3 +63,49 @@ V3提供转换R1的方法，正常调用后直接转回V3，提供特殊指令�
 创建对象的时候可以指定默认使用什么模型，行是什么样的策略？
 
 确保单一对象同一时刻只有一个模型，V3或R1
+
+## API请求参数
+1. **对话补全**：https://api-docs.deepseek.com/zh-cn/api/create-chat-completion  
+***共15个参数：***  
+`messages`、`model`、`frequency_penalty`、`max_tokens`、`presence_penalty`、`response_format`、`stop`、`stream`、`stream_options`、`temperature`、`top_p`、`tools`、`tool_choice`、`logprobs`、`top_logprobs`
+
+<br>
+
+2. **FIM补全**：https://api-docs.deepseek.com/zh-cn/api/create-chat-completion  
+***共13个参数：***  
+`model`、`prompt`、`echo`、`frequency_penalty`、`logprobs`、`max_tokens`、`presence_penalty`、`stop`、`stream`、`stream_options`、`suffix`、`temperature`、`top_p`
+
+区别：
+|对话补全| 1 |
+| --- | --- |
+|FIM补全| 1|
+```python
+# 模型默认V3(deepseek-chat)，R1是(deepseek-reasoner)
+self.model_choice = "deepseek-chat"
+# 介于 -2.0 和 2.0 之间的数字。如果该值为正，那么新 token 会根据其在已有文本中的出现频率受到相应的惩罚，降低模型重复相同内容的可能性。
+self.frequency_penalty = 0  # 默认0
+# 介于 1 到 8192 间的整数，限制一次请求中模型生成 completion 的最大 token 数。输入 token 和输出 token 的总长度受模型的上下文长度的限制。
+self.max_tokens = 4096 #  默认4096个token（6825.667个字），8192为13653.33个字
+# 介于 -2.0 和 2.0 之间的数字。如果该值为正，那么新 token 会根据其是否已在已有文本中出现受到相应的惩罚，从而增加模型谈论新主题的可能性。
+self.presence_penalty = 0   # 默认0
+# response_format。一个 object，指定模型必须输出的格式。设置为 { "type": "json_object" } 以启用 JSON 模式，该模式保证模型生成的消息是有效的 JSON。
+self.response_format = {"type": "text"}   # 默认为text，{"type": "json_object"}强制 JSON 输出
+# 停止生成标志词，string 或最多包含 16 个 string 的 list。比如","则在生成这个字符 前 就停止生成
+self.stop = None
+# 是否流式输出。如果设置为 True，将会以 SSE（server-sent events）的形式以流式发送消息增量。消息流以 data: [DONE] 结尾。
+self.stream = False
+# 只有在stream参数为true时才可设置此参数。如果设置为true，在流式消息最后的data: [DONE] 之前将会传输一个额外的块。此块上的 usage 字段显示整个请求的 token 使用统计信息
+self.stream_options = {"include_usage": True} # 请求用量统计
+# temperature 参数默认为(1.0)代码生成/数学解题(0.0)数据抽取/分析(1.0)通用对话(1.3)翻译(1.3)创意类写作/诗歌创作(1.5)
+self.temperature = 1.3  # 默认日常聊天就设置为1.3了
+# 作为调节采样温度的替代方案，模型会考虑前 top_p 概率的 token 的结果。所以 0.1 就意味着只有包括在最高 10% 概率中的 token 会被考虑。 我们通常建议修改这个值或者更改 temperature，但不建议同时对两者进行修改。
+self.top_p = 1 # 默认值为1
+# 模型可能会调用的 tool 的列表。目前，仅支持 function 作为工具。使用此参数来提供以 JSON 作为输入参数的 function 列表。最多支持 128 个 function。
+self.tools = None   # 默认为None
+# 控制模型调用 tool 的行为。
+self.tool_choice  = "none"
+# 是否返回所输出 token 的对数概率。如果为 true，则在 message 的 content 中返回每个输出 token 的对数概率。
+self.logprobs = False
+# 一个介于 0 到 20 之间的整数 N，指定每个输出位置返回输出概率 top N 的 token，且返回这些 token 的对数概率。指定此参数时，logprobs 必须为 true。
+self.top_logprobs = None
+```
