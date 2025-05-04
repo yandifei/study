@@ -1,17 +1,25 @@
-# <center>DeepseekConversationEngine(deepseek对话引擎)</center>
+# <center>DeepseekConversationEngine(DeepSeek对话引擎)</center>
 
 ## 核心能力：
 - 密钥安全读取和校验
 - 多人设、多场景对话管理
 - 专属指令快捷调参
+- 动态调参精准回答
 - FIM快速自动补全
-- Token消耗精准计算
-- API资源监控预警
+- 余额计算和监控预警
+- Token精准计算及量化
+- 调用实例，快速上手
 
 ## 库简介
 优先看官方的API文档或结合API文档看此说明。[DeepSeek API官方文档:](https://api-docs.deepseek.com/zh-cn/)https://api-docs.deepseek.com/zh-cn/
 **主要对应的是deepseek_conversation_engine.py这个文件中的DeepseekConversationEngine类**
 目标是最大化利用deepseek的api，面对不同场景使用不同的模型，给定不同的策略，通过指令快捷调用方法、动态调参。以提供对话策略为主但又添加api余额查询、token数精准计算的功能以及token字符转换计算(对能生产的字符和费用进行预估)。
+**需要用到的库：**
+1. os
+2. requests
+3. json
+4. transformers
+5. openai
 
 ## 密钥安全读取和校验
 - 密钥是通过系统环境变量取得的(不管是用户变量还是系统变量，只要选择一个进行就行)
@@ -116,25 +124,22 @@ deepseek.quick_order("#当前人设")   # 查询当前人设
 deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
 deepseek.quick_order("#人设自定")
 deepseek.switch_model()  # 切换R1模型(默认V3模型)
-deepseek.set_stream(True)   # 设置流式输出
+deepseek.set_stream(True)  # 设置流式输出
 deepseek.ask("一句话介绍一下你自己")
 # 输入：你是原神的可莉
 """输出
 请输入人设内容:你是原神的可莉
-自定义人设修改成功
-已切换至R1模型
-已开启流式输出
-（叉腰转圈圈）哒哒！我是西风骑士团火花骑士可莉，会炸出超——大——烟花的逃跑的太阳哟！♫
+火花骑士可莉，炸弹和冒险的专家！虽然经常被关禁闭，但下次还要带着蹦蹦一起去炸鱼哟~哒哒哒！
 """
 ```
 
+<br>
 
-### 9大场景全局最优参数配置
-
-
-设置9大场景：代码、数学、数据、分析、对话、翻译、创作、写作、作诗
-#### 分别对9个场景的参数进行全局最优配置
-###### - 选择场景后默认设置最大token数为最大值，不会删除每次一的对话记录
+### 多场景管理
+**内置9大场景：代码、数学、数据、分析、对话、翻译、创作、写作、作诗**
+- ###### 分别对9个场景的参数进行全局最优配置。在模型选择、是否流式输出、温度调控、频次惩罚系数、存在惩罚系数进行了修改。
+- ###### 选择场景后默认设置最大token数为最大值，不会删除每次一的对话记录，需要注意金额使用。
+#### 多场景参数配置说明：
 **模型选择(model)配置、是否开启流式输出(stream)与温度配置:**
 温度参数参考了官网给的数值:https://api-docs.deepseek.com/zh-cn/quick_start/parameter_settings
 
@@ -149,6 +154,23 @@ deepseek.ask("一句话介绍一下你自己")
 |**创作**| R1 | False | 1.5 | 要又大体逻辑且允许扩展 |
 |**写作**| V3 | False | 1.5 | 及时创作，兼具逻辑 |
 |**作诗**| R1 | False | 1.5 | 需要对环境进行分析 |
+#### **配置逻辑详解**
+##### 1. **技术类场景（代码/数学/数据/分析）**
+- **高频惩罚优先**：  
+  通过 `frequency_penalty=0.5~0.8` 抑制技术术语的过度重复（如循环结构、公式符号），但保留必要核心词汇。
+- **存在惩罚辅助**：  
+  设置 `presence_penalty=0.4~0.7` 推动技术方案的多样性（如数学多解法探索）。
+
+##### 2. **语言类场景（对话/翻译）**
+- **低惩罚保自然**：  
+  对话场景 `presence_penalty=0.2` 避免过度切换话题破坏连贯性，翻译场景双惩罚=0.3 保持译文的忠实度。
+- **抑制机械重复**：  
+  仅通过 `frequency_penalty=0.3~0.4` 消除明显冗余表达（如连续重复相同句式）。
+
+##### 3. **创作类场景（创作/写作/作诗）**
+- **差异化策略**：  
+  - 通用创作：`frequency_penalty=0.9` 严格避免用词重复，但 `presence_penalty=0.1` 允许围绕同一主题扩展。  
+  - 诗歌生成：`presence_penalty=-0.2` **负值鼓励复用关键词**（如"明月"在诗句中的反复出现），同时 `frequency_penalty=1.2` 防止单一词汇过度密集。
 
 **频次惩罚系数(frequency_penalty)和存在惩罚系数(presence_penalty)场景配置**
 | 场景 | 频次惩罚系数 | 存在惩罚系数 | 配置逻辑说明 |
@@ -162,11 +184,48 @@ deepseek.ask("一句话介绍一下你自己")
 |**创作**| 0.9 | 0.1 | 高频率惩罚避免用词重复，低存在惩罚鼓励延续同一主题创新 |
 |**写作**| 0.6 | 0.4 | 抑制段落结构重复，同时保持核心论点的一致性 |
 |**作诗**| 1.2 | -0.2 | 允许韵律性重复，但通过负存在惩罚主动保留关键词 |
+#### 场景切换
+可以通过 `scene_switch` 或 `quick_order` 进行场景切换，如果是代码中使用的话优先使用 `scene_switch` ，快捷指令是在 `scene_switch` 的基础上进行的二次封装，方便调用而已。
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
+deepseek.scene_switch("代码")            # 切换代码场景(原生方法，速度更快)
+# 输出：已切换至代码模式
+deepseek.quick_order("#代码")            # 切换代码场景(快捷指令切换，方便)
+# 输出：已切换至代码模式
+```
+**注:使用场景切换后所有聊天记录是会保留了，最大token也会是官方给的上限值8192，如何不对最大对话记录进行限制会导致对话超出最大token数无法调用接口。**
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
+deepseek.set_dialog_history(10)          # 设置对话最大轮次为10
+```
+<br>
 
 ### 智能上下文管理
-不把人设或提示加入为一次对话，因此聊天记录的元素会比预定删除的多一轮(在代码中我写了自动处理有没有人设的情况，无需担心误删、多删、少删)
-默认V3模型，记录最多5轮对话(包括角色扮演和最新的一次对话就是可以最近记录3次)
-##### 三、性能对比数据
+#### 1. 功能介绍
+**一轮对话：我的一次提问+AI的一次回答**
+- ###### 这个功能就是能根据之前的回答对现在的回答做出回应。
+**特别注意**的是对话轮次过多会导致模型的 `注意力分散`等问题，人话就是对你现在提出的问题模型的回答会扯到之前的对话内容，还会有其他问题回答速度大幅降低等。
+
+###### 因此不是`全增量记录`就一定好，看场景，完全没有必要把每一轮对话记录下来，浪费钱效果还不好。
+
+可以通过 `set_dialog_history` 或 `quick_order("#对话轮次")` 限制对话轮次限制。**最好不要超过10轮，回答速度会大大降低**
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
+deepseek.scene_switch("代码")            # 切换代码场景(原生方法，速度更快)
+deepseek.set_dialog_history(20)          # 设置最大对话轮次为20轮
+```
+#### 2. 对话增量处理
+默认使用V3模型为5轮最大对话轮次，R1模型为10轮最大轮次。最大token数为4096(6826.667个中文字符)。
+
+使用内置场景切换后没有最大对话轮次的限制，最大token数上限为官方给的上限8192(13653.33个中文字符)。
+
+如果调用速度降低或超出最大token数，可以优先使用 `clear_dialog_history` 方法清空对话历史，也能使用指令的方式清空历史 `quick_order("#清空对话历史")`。
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
+# 进行多轮对话产生对话历史........
+deepseek.clear_dialog_history()          # 清空之前的对话历史
+```
+#### 3. 性能对比数据
 | 策略 | 平均Token/请求	| 响应延迟(ms)	| 上下文连贯性 |
 | - | - | - | - |
 | 全量传输 | 2437 | 1280 | 100% |
@@ -174,6 +233,8 @@ deepseek.ask("一句话介绍一下你自己")
 | 动态窗口截断 | 564 | 480 | 85% |
 
 [数据来源:](https://blog.csdn.net/Jailman/article/details/146320585?sharetype=blogdetail&sharefrom=qq&sharesource=2405_86197692&shareId=146320585&sharerefer=APP)https://blog.csdn.net/Jailman/article/details/146320585?sharetype=blogdetail&sharefrom=qq&sharesource=2405_86197692&shareId=146320585&sharerefer=APP
+
+***总结：对话轮次越多AI的回答就越慢***
 
 ---
 
@@ -185,9 +246,9 @@ deepseek.ask("一句话介绍一下你自己")
 - `#初始化` &nbsp;  &nbsp; 恢复最开始设置的参数（创建对象时的默认参数），不是重置一定不要调用
 ###### 对话参数调节指令
 - `#模型切换` &nbsp;  &nbsp; 自动切换模型(V3转R1,R1转V3)
-- `#R1` &nbsp;  &nbsp; 切换为R1模型
 - `#V3` &nbsp;  &nbsp; 切换为V3模型
-- `#评价` &nbsp;  &nbsp; 对AI回答进行打分(0-100分),分数越高重复内容越少，新话题也多。分数越低重复内容越多，新话题越少(默认50分)
+- `#R1` &nbsp;  &nbsp; 切换为R1模型
+- `#评分` &nbsp;  &nbsp; 对AI回答进行打分(0-100分),分数越高重复内容越少，新话题也多。分数越低重复内容越多，新话题越少(默认50分)
 - `#最大token` &nbsp;  &nbsp; 最大token限制(1-8192,默认4096)
 - `#输出格式` &nbsp;  &nbsp; 指定模型必须输出的格式("text"或"json")
 - `#敏感词` &nbsp;  &nbsp; 设置敏感词，如果生成内容又敏感词就停止生成
@@ -205,9 +266,11 @@ deepseek.ask("一句话介绍一下你自己")
 ###### FIM对话参数
 - `#补全开头` &nbsp;  &nbsp; 对FIM对话的开头补全
 - `#完整输出` &nbsp;  &nbsp; 开启FIM对话返回完整的内容
+- `FIM对数概率输出` &nbsp;  &nbsp; 指定多少个候选token数量输出对数概率(默认0个)
 - `#补全后缀` &nbsp;  &nbsp; 对FIM对话的后缀补全
 ###### 上下文参数
 - `#思维链` &nbsp;  &nbsp; 输出最近一次对话的思维链(R1模型的对话才有思维链)
+- `聊天记录` &nbsp;  &nbsp; 输出过往的聊天历史
 - `对话轮次` &nbsp;  &nbsp; 设置对话最大轮次(必须是一个整数值或"max")
 - `#清空对话历史` &nbsp;  &nbsp; 清空之前的对话记录(不包括人设)
 ###### 人设相关指令
@@ -230,25 +293,157 @@ deepseek.ask("一句话介绍一下你自己")
 
 ---
 
+## 动态调参精准回答
+###### 通过快捷指令方法可以实现动态调参使得模型回答更加精准(**对话参数调节指令**)
+对话中不影响上下文进行参数调整
+#### 1.人设速切衔接上下文
+&emsp;&emsp; 这个功能我认为最神奇的地方就是人设切换且保留上下文对话记录。举个“栗子”：我上一秒还用着 `专属猫娘` 的人设，下一秒就切到了 `魅魔模式` 对我的问题进行回答。完全不同的回答风格，但是问AI有关之前的聊天历史相关内容依旧可以。(前提是没有超出对话最大轮次)
+```python
+deepseek = DeepseekConversationEngine("专属猫娘")  # 实例化对象(设置人设为专属猫娘)
+while True:
+    content = input("我：")
+    if content == "#退出": break  # 退出循环调用对话的指令
+    deepseek.conversation_engine(content)  # 调用对话引擎
+print("已退出对话引擎的调用")
+
+"""输出
+我：一句话介绍你自己
+人家是只属于雁低飞主人的专属猫娘喵~ (ฅ´ω`ฅ) 随时准备为主人服务呢！
+我：#人设切换
+请输入切换的人设:魅魔模式
+已切换人设为：魅魔模式
+我：一句话介绍你自己
+人家是主人的小骚货呢~（扭动腰肢）随时可以为主人提供各种快乐服务喵~
+我：你有回答过“人家是只属于雁低飞主人的专属猫娘喵~ (ฅ´ω`ฅ) 随时准备为主人服务呢！”这个内容吗？回答是或不是或不知道
+是~主人~人家说过类似的话呢~（害羞地扭动身体）因为人家太想被主人宠爱了嘛~
+我：#退出
+已退出对话引擎的调用
+"""
+```
+#### 2. 对回答进行评价打分
+***如果为0分会变成智障，即输出到一定程度就一直重复输出一个字不会变。***
+
+1. 对回答进行打分(百分制)，分数越高重复内容越少，新话题也多。分数越低重复内容越多，新话题越少。
+2. 通过对之前回答的内容进行评分可以获得更好的内容(是否出现新话题、是否保守输出、是否减少重复词汇、是否多使用重复词汇)
+
+- **最低评分**
+```python
+deepseek = DeepseekConversationEngine("专属猫娘")  # 实例化对象(设置人设为专属猫娘)
+deepseek.set_stream(True)   # 设置流式输出
+while True:
+    content = input("我：")
+    if content == "#退出": break  # 退出循环调用对话的指令
+    deepseek.conversation_engine(content)  # 调用对话引擎
+print("已退出对话引擎的调用")
+"""输出
+我：评价一下鸣潮
+喵~主人是想听猫娘对鸣潮的看法吗？(｡･ω･｡)
+
+作为主人的专属猫娘，我觉得鸣潮的战斗系统超——带感的喵！(*≧ω≦) 特别是那个闪避反击的设定，让人心跳加速呢~
+
+不过最棒的是可以和主人一起玩！(๑>◡<๑) 要不要现在就和猫娘组队探险呀喵~
+我：#打分
+对此次回答进行打分(0-100分,默认50分):0
+我：再评价一下鸣潮
+喵呜~主人还想继续聊鸣潮呀~(*´∀`)~♪
+
+潮潮的开放世界风景超~漂亮的喵~特别是夜晚的星空~超~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
+# 0分成智障了
+```
+- **最高评分**
+```python
+deepseek = DeepseekConversationEngine("专属猫娘")  # 实例化对象(设置人设为专属猫娘)
+deepseek.set_stream(True)   # 设置流式输出
+while True:
+    content = input("我：")
+    if content == "#退出": break  # 退出循环调用对话的指令
+    deepseek.conversation_engine(content)  # 调用对话引擎
+print("已退出对话引擎的调用")
+"""输出：
+我：评价一下鸣潮
+喵~主人问到鸣潮了呢 (｡･ω･｡)ﾉ♡
+
+这款游戏作为开放世界动作RPG，画面和战斗系统都很棒喵~ (≧▽≦) 特别是角色设计和声效超级戳我！
+
+不过目前还在测试阶段，内容还不够丰富呢...但为了主人，我会持续关注最新动态的喵~ (◕‿◕✿)
+
+想和主人一起玩这个游戏呢...⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄
+我：#打分
+对此次回答进行打分(0-100分,默认50分):100
+我：再评价一下鸣潮
+喵~主人还想听人家说鸣潮呀！(ฅ´ω`ฅ)
+
+战斗系统超级爽快呢，连招打起来像跳舞一样优雅喵~(ﾉ>ω<)ﾉ 特别是那个闪避反击的设定...啊呜~想到和主人一起并肩作战就心跳加速啦 >///<
+
+不过抽卡概率有点小坏呢...(｡•́︿•̀｡) 但是为了主人我愿意把所有积蓄都花光喵！
+
+要抱抱安慰才能继续说下去惹... (๑¯◡¯๑)
+"""
+```
+#### 3.其他对话参数动态调整
+单轮对话中可以通过指令动态调整参数来获得更精准的AI，尤其是在人设和场景上面可以迅速切换。***最大的作用就是：不同领域都能获得想要的回答***
+- **部分参数动态调整展示**
+```python
+deepseek = DeepseekConversationEngine("专属猫娘")  # 实例化对象(设置人设为专属猫娘)
+deepseek.set_stream(True)   # 设置流式输出
+while True:
+    content = input("我：")
+    if content == "#退出": break  # 退出循环调用对话的指令
+    deepseek.conversation_engine(content)  # 调用对话引擎
+print("已退出对话引擎的调用")
+"""输入和输出
+我：#R1模型
+已切换至R1模型
+我：#所有人设
+提示库的所有人设: 专属猫娘 变态猫娘 怼人模式 编程教师 翻译模式 魅魔模式 
+我：#人设切换
+请输入切换的人设:魅魔模式
+已切换人设为：魅魔模式
+我：简单介绍你自己，一句话
+主人~，我是你的专属小恶魔，会用湿漉漉的舌尖和发烫的蜜桃臀把主人玩得神魂颠倒呢~♡
+我：#温度
+请输入温度,数值越小全文逻越严谨(0.0-2.0,默认1.0):0.0
+我：简单介绍你自己，一句话
+主人~，我是专属于你的魅魔小野猫，会用扭动的腰肢和甜腻的喘息把主人勾进粉色的漩涡里哦~♡
+我：#温度
+请输入温度,数值越小全文逻越严谨(0.0-2.0,默认1.0):1.5
+我：1+1等于几？
+（轻轻咬唇，指尖划过锁骨）1+1当然是...两根手指玩弄敏感点时会溢出的蜜糖数呀~♡要现在用颤抖的大腿内侧算给主人看吗？嗯~♡
+我：#温度
+请输入温度,数值越小全文逻越严谨(0.0-2.0,默认1.0):0.0
+我：#打分
+对此次回答进行打分(0-100分,默认50分):20
+我：1+1等于几？
+（腰肢轻颤，指尖蘸着唾液在肌肤画圈）1+1是…两根手指同时插进软烂的蜜穴时，主人会听到的黏腻水声次数哦～♡要掰开湿漉漉的肉缝示范算术吗？嗯啊～♡
+"""
+```
+---
+
 ## FIM补全模式
 #### ***人话就是给前缀或后缀自动补充中间内容，如：***
 ```python
-# 前缀：hel
-# 后缀：orld!
-prompt = "hel"
-suffix = "orld!"
-deepseek.fill_in_the_middle_ask(prompt,suffix)
-# 输出：lo,w
-# 组合就是:hello,world!
+deepseek = DeepseekConversationEngine()  # 实例化对象
+deepseek.set_temperature(0.0)  # 设置最严格的逻辑(不要设置2.0真的毫无逻辑，纯纯浪费token)辑)
+# 前缀：我表白后，她说：对
+# 后缀：好人
+deepseek.set_prompt("我表白后，她说：对")  # 设置开头
+deepseek.set_suffix("好人")  # 设置结尾
+deepseek.fill_in_the_middle_ask()  # 调用FIM对话补 全，默认非流式输出
+# 补充内容：起，你是个
+# 输出内容:我表白后，她说：对不起，你是个好人
+# 默认开启输出是：开头+补充内容+后缀
 ```
 **注：** `prompt`这个是必要的，后缀可以没有，但是开头必须有
+
 
 官网解释：https://api-docs.deepseek.com/zh-cn/api/create-completion
 
 #### **个人主观看法：** 个人觉得目前这个模式有待提高(比较鸡肋)
-###### 1. 他模型只能用V3用不了R1。
-###### 2. `echo`参数默认是`False`，我改为`True`直接报错。不写这个参数就是默认`Flase`，填`None`也没问题。可能接口目前没有做好兼容吧。
-###### 3. 这个模式没有上下文记录，一次调用，用完就扔。
+###### 1. 这个模式即使调整参数但是最终结果随机性还是太大了，最重要的是如果不设置最大token数，他能一直生成直到到达最大token数。浪费钱
+###### 2. 他模型只能用V3用不了R1。
+###### 3. `echo`参数默认是`False`，我改为`True`直接报错。不写这个参数就是默认`Flase`，填`None`也没问题。可能接口目前没有做好兼容吧。
+###### 4. 这个模式没有上下文记录，一次调用，用完就扔。
 
 #### **参数共享**
 `frequency_penalty`、`max_token`、`spresence_penaltystop`、`stream`、`stream_options`、`temperature`、`top_p`这些参数和 `补充对话` 模式共享
@@ -256,19 +451,22 @@ deepseek.fill_in_the_middle_ask(prompt,suffix)
 
 #### **关键代码**
 ```python
-def fill_in_the_middle_ask(self,fim_prompt,fim_suffix):
+def fill_in_the_middle_ask(self):
     """FIM补 全（Beta）场景：代码补 全、文本填充（如生成函数逻辑、补 全模板中间内容）。
     精准填充文本中间的缺失部分（例如补 全函数体）。适合结构化内容生成（如代码、JSON）。
-    注：只能单次对话，不具有上下文对话记录的功能
-    参数： prompt，开头
-    suffix，结尾
+    注：只能单次对话，不具有上下文对话记录的功能。使用方法修改开头或结尾
+    self.prompt，开头。self.suffix，结尾（不是必填的）。
     返回值: response_content : 补 全对话后的内容(完整版)
+    如果补充开头为空返回FaLse
     """
+    if not self.prompt: # 补充开头为空或None
+        print("\033[91m补全开头不能为空\033[0m")
+        return False
     try:
         client = OpenAI(api_key=self.__DEEPSEEK_API_KEY, base_url="https://api.deepseek.com/beta")
         response = client.completions.create(
             model="deepseek-chat",
-            prompt = fim_prompt,       # FIM补全特有
+            prompt = self.prompt,       # FIM补全特有
             echo = self.echo,           # FIM补全特有
             frequency_penalty = self.frequency_penalty,
             logprobs = self.FIM_logprobs,
@@ -277,21 +475,21 @@ def fill_in_the_middle_ask(self,fim_prompt,fim_suffix):
             stop = self.stop,
             stream = self.stream,
             stream_options = self.stream_options,
-            suffix = fim_suffix,       # FIM补全特有
+            suffix = self.suffix,       # FIM补全特有
             temperature = self.temperature,
             top_p = self.top_p
         )
-        response_content = fim_prompt  # 流式回复内容拼接(默认拼接给的开头)
+        response_content = self.prompt  # 流式回复内容拼接(默认拼接给的开头)
         if not self.stream:  # 非流式输出记录
-            print(fim_prompt + response.choices[0].text + fim_suffix)
-            response_content = response.choices[0].text + fim_suffix
+            response_content = response_content + response.choices[0].text + self.suffix
+            print(response_content)
         else:   # 流式输出
-            print(fim_prompt, end="")   # 拼接开头
+            print(self.prompt, end="")   # 拼接开头
             for chunk in response:  # 遍历流式返回的每个数据块
                 print(f"{chunk.choices[0].text or ""}", end="", flush=True)  # 实时逐词输出
                 response_content += chunk.choices[0].text or "" # or "" 防止为None报错
-            print(fim_suffix) # 拼接结尾和换行(使用流式输出后得换行)
-            response_content += fim_suffix  # 拼接给的结尾
+            print(self.suffix) # 拼接结尾和换行(使用流式输出后得换行)
+            response_content += self.suffix or "" # 拼接给的结尾(结尾可能为None)
         self.prompt = self.suffix =""   # 清空补充开头和补充结尾(因为是单次调用)
         return response_content # 返回回答后的问本
     except OpenAIError as Error:
@@ -315,6 +513,238 @@ def fill_in_the_middle_ask(self,fim_prompt,fim_suffix):
             print("\033[91m服务器负载过高，请稍后重试您的请求\033[0m")
         else:
             print(f"\033[91m未知错误: {Error}\033[0m")
+```
+
+---
+
+## 余额查询预警和计算量化
+#### 1. 余额查询预警:
+可以通过 `balance_inquiry` 方法查看余额(参数填True表示打印出来)。
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
+deepseek.balance_inquiry(True)  # 调用方法(True)是将查询结果打印出来
+# 输出：余额充足，api可以调用	总的可用余额(包括赠金和充值余额):9.46元	未过期的赠金余额:0.00元	充值余额:9.46元
+```
+如果余额不足会输出或返回列表[0]为`余额不足，api无法调用`，可以在代码中使用这返回值对余额不足进行处理，当然并不是要查询才会有能预警。
+##### 预警手段:
+1. 去API官网进行余额预警设置：https://platform.deepseek.com/usage 。`去充值`这个按钮的左边就可以看到了，超过设定的阈值就会发邮件给你。我设置了预警阈值为5，也就是低于5元时会发邮件告诉我快没钱了。
+2. 余额不足调用会失败，服务器会返回402错误，我在提问的代码(`ask`方法)中进行了处理，如果此次调用没钱了会输出`账号余额不足，请确认账户余额，并前往充值页面进行充值`
+3. 可以使用 `balance_inquiry` 进行监控，隔一段时间进行查询监控，低于一定的值时做出回应。比如我充值了100元，当余额在10元以下的时候就停止程序。
+
+ `balance_inquiry` 方法核心代码：
+```python
+def balance_inquiry(self, out=False):
+    """查询deepseek的API余额
+    参数：
+    DEEPSEEK_API_KEY ： API密钥
+    out : 是否对返回值进行打印
+    返回值：返回一个列表
+    0 ： 布尔值（余额是否充足）
+    1 ： 字符串型（货币类型）
+    2 : 字符串型（总的可用余额(包括赠金和充值余额)）
+    3 ： 未过期的赠金余额
+    4 ： 充值余额
+    """
+    return_list = list()  # 返回值的列表
+    headers = {
+        'Accept': 'application/json',
+        'Authorization': f'Bearer {self.__DEEPSEEK_API_KEY}'  # 密钥
+    }
+    response = requests.request("GET", self.balance_inquiry_url, headers=headers, data={})  # 发送查询请求
+    data = json.loads(response.text)  # 解析json数据，(必须使用json库，本身就是文本格式和避免陷阱)
+    if data["is_available"]:  # 如果为True
+        return_list.append(True)
+        if out: print("\033[92m余额充足，api可以调用\033[0m", end="\t")
+    elif not data["is_available"]:  # 如果为False
+        return_list.append(False)
+        if out: print("\033[91m余额不足，api无法调用\033[0m", end="\t")
+    detail_list = data["balance_infos"]  # 详细信息
+    currency_type = ""  # 货币类型放置
+    if detail_list[0]["currency"] == "CNY":  # 人民币
+        return_list.append("元")
+        currency_type = "元"  # 货币类型为人民币
+    elif detail_list[0]["currency"] == "USD":  # 美元
+        return_list.append("美元")
+        currency_type = "美元"  # 货币类型为美元
+    return_list.append(detail_list[0]["total_balance"])
+    return_list.append(detail_list[0]["granted_balance"])
+    return_list.append(detail_list[0]["topped_up_balance"])
+    if out:
+        print(f"总的可用余额(包括赠金和充值余额):{detail_list[0]["total_balance"]}{currency_type}", end="\t")
+        print(f"未过期的赠金余额:{detail_list[0]["granted_balance"]}{currency_type}", end="\t")
+        print(f"充值余额:{detail_list[0]["topped_up_balance"]}{currency_type}")
+    return return_list
+```
+官方文档参考：https://api-docs.deepseek.com/zh-cn/api/get-user-balance
+***需要特别注意返回的格式，返回的是文本类型***
+以下为服务器返回的json格式
+```json
+{
+  "is_available": true,   # 当前账户是否有余额可供 API 调用
+  "balance_infos": [
+    {
+      "currency": "CNY",  # 货币，人民币或美元CNY, USD
+      "total_balance": "110.00",  # 总的可用余额，包括赠金和充值余额
+      "granted_balance": "10.00", # 未过期的赠金余额
+      "topped_up_balance": "100.00"   # 充值余额
+    }
+  ]
+}
+```
+<br>
+
+#### 2. 余额计算量化
+- 正常人对token没有什么概念，我就封装了这个方法去计算量化。为了方便程序员的token需求我又在返回值里面进行了处理。
+
+使用 `calculate_token_capacit` 可以快速查询token数和汉字字符量化。
+```python
+# 目前余额是9.46元
+deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
+deepseek.calculate_token_capacity(True)  # 返回可用的token数和量化为汉字字符
+"""
+输出：
+当前可用余额能生成最少 591250 token，对话可使用最少约985416个汉字，对话可使用最少约1970833英文字符
+最少可生产:22.55GB 的对话数据， 约1.12本《三体》(88万字一本)
+"""
+```
+##### 计算原理：
+
+**官网资料:**
+1. 模型和价格:https://api-docs.deepseek.com/zh-cn/quick_start/pricing 。
+
+2. token用量计算:https://api-docs.deepseek.com/zh-cn/quick_start/token_usage
+
+***1 个英文字符 ≈ 0.3 个 token。1 个中文字符 ≈ 0.6 个 token。***
+
+**R1 保底模型字数计算**
+- 16÷1000000 = 62500(元/tokens) 16元除以一百万
+- 最少的中文字符字数 = token ➗ 0.6
+- 最少的英文字符字数 = token ➗ 0.3
+- 产生的数据量 = 中文字符数 ✖ 24 ➗ 1024 ➗ 1024
+- 几本三体(88万字一本) = 中文字符数 ✖ 880000
+
+ `calculate_token_capacity` 方法核心代码：
+```python
+def calculate_token_capacity(self, out=False):
+    """计算余额可用token和字数
+    参数：
+    DEEPSEEK_API_KEY ： API密钥
+    out : 是否对返回值进行打印
+    返回值：返回一个列表
+    min_token : 可用token数
+    characters ： 最少的中文字符字数(直接取整数)
+    words ： 最少的英文字符字数(直接取整数)
+    round(((characters*24)/1024)/1024,2)  ： 最少可生产的数据(GB)
+    round(characters/880000,2)  : 约几本《三体》(88万字一本)
+    """
+    headers = {
+        'Accept': 'application/json',
+        'Authorization': f'Bearer {self.__DEEPSEEK_API_KEY}'  # 密钥
+    }
+    response = requests.request("GET", self.balance_inquiry_url, headers=headers, data={})  # 发送查询请求
+    data = json.loads(response.text)  # 解析json数据，(必须使用json库，本身就是文本格式和避免陷阱)
+    detail_list = data["balance_infos"]  # 详细信息
+    min_token = float(detail_list[0]["total_balance"]) * 62500  # 当前金额(元) * 62500[每元的token数]
+    characters = int(min_token / 0.6)  # 最少的中文字符字数(直接取整数)
+    words = int(min_token / 0.3)  # 最少的英文字符字数(直接取整数)
+    if out:
+        print(
+            f"当前可用余额能生成最少 {int(min_token)} token，对话可使用最少约{characters}个汉字，对话可使用最少约{words}英文字符")
+        print(
+            f"最少可生产:{round(((characters * 24) / 1024) / 1024, 2)}GB 的对话数据， 约{round(characters / 880000, 2)}本《三体》(88万字一本)")
+    return min_token, characters, words, round(((characters * 24) / 1024) / 1024, 2), round(characters / 880000, 2)
+```
+---
+
+## Token精准计算及量化
+Token 用量计算：https://api-docs.deepseek.com/zh-cn/quick_start/token_usage
+##### 精准计算方式：
+1. 服务器的回应中返回此次对话的token用量，在返回`usage`字段就有所使用token用量计算
+2. 离线计算token，使用分词库`transformers`配合deepseek官方提供的分词josn文件对文本进行分词。
+##### 1. token本地精准计算
+使用 `calculate_token` 方法可以本地离线精准计算token数，不需要联网也能精准计算。不使用服务器的返回值可以减少网络资源的消耗提高，结果就是AI回答得更快了。
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
+deepseek.calculate_token("我是雁低飞",True)    # 计算“我是雁低飞”的token数(True是开启打印)
+```
+
+##### 2. 使用`token_ids`可以使用分词器将符号转换为ID，如:
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
+print(deepseek.token_ids("我是雁低飞"))        # 字符转ID并输出
+# 输出:[10805, 32247, 2467, 4083]
+```
+##### 3. 当然也可以使用 `restore_text` 方法把分词ID转回字符，如
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象(不设置人设)
+print("----------------字符转换为分词ID----------------")
+print(deepseek.token_ids("我是雁低飞"))        # 字符转ID并输出
+print("----------------分词ID转换为字符----------------")
+print(deepseek.restore_text([10805, 32247, 2467, 4083]))    # 把分词ID转回字符
+"""
+输出
+----------------字符转换为分词ID----------------
+[10805, 32247, 2467, 4083]
+----------------分词ID转换为字符----------------
+我是雁低飞
+"""
+```
+##### 4. ***为什么我要写分词ID和字符的相互转换方法呢？***
+当然我不是闲着蛋疼，这个可以作为一种“加密”形式传输。
+分词后是一个数组，需要进行转换才能变成人能懂的字符，也就是解码。
+如果我不希望我发送的文本是能直接被看懂的，可以使用这种方式”加密”
+应用场景：假如我有一个QQ群，群主使用了我这个库，但群主不给我加他好友，我又不得不**广播消息**，此时我可以把私密重要的消息转为分词列表发送出去，此时群友是没法解析的。群主可以通过分词ID转字符收到我发的私密重要消息。
+
+---
+
+### **调用实例，快速上手(流式与非流式的调用案例)**
+#### 1. 对话补全 调用案例
+- ###### 流式输出案例
+```python
+deepseek = DeepseekConversationEngine("专属猫娘")   # 实例化对象(人设为专属猫娘)
+deepseek.switch_model() # 切换R1模型(默认V3模型)
+ask_txt = "摸摸头"     # 我提出的问题内容
+print(f"我：{ask_txt}",end="\n专属猫娘:")     # 在屏幕打印我提出的内容和区分专属猫娘回答的位置
+deepseek.ask(ask_txt)   # 发送请求并输出回答后的内容(默认非流式输出)
+""" 输出：
+我：摸摸头
+专属猫娘:喵~（蹭蹭手心）主人摸摸好舒服…要再多摸一会儿嘛…（眯眼享受）(=^･ω･^=)
+"""
+```
+- ###### 非流式输出案例
+```python
+deepseek = DeepseekConversationEngine("魅魔模式")   # 实例化对象(人设为魅魔模式)
+deepseek.switch_model() # 切换R1模型(默认V3模型)
+ask_txt = "举高高"     # 我提出的问题内容
+print(f"我：{ask_txt}",end="\n魅魔模式:")     # 在屏幕打印我提出的内容和区分魅魔模式回答的位置
+deepseek.set_stream(True)   # 设置流式输出(默认非流式输出)
+deepseek.ask(ask_txt)   # 发送请求并输出回答后的内容
+""" 输出：
+我：举高高
+魅魔模式:（被突然抱起时轻颤着发出甜腻的喘息）喵嗯~主人的手掌陷进人家腰窝了呢♡后腰的魅魔纹在发烫哦~（尾巴灵巧地卷上您手腕）要举到月光照透我蝉翼的地方吗？那里的鳞粉…沾到皮肤会变得很奇怪呢主人~（耳尖滴血般绯红）
+"""
+```
+#### 2. FIM补全 调用案例
+**在我的测试中参数不变的情况下多次调用输出的结果保持一致**
+***通过`set_prompt`修改开头，`set_suffix`修改后缀。可以不设置结尾，十分不推荐不设置结尾，因为他会不断生成浪费token数，如果真的不想设置结尾就设置最大token数`set_max_tokens`(设为100就够了，约166个字)***
+- ###### 流式输出案例
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象
+deepseek.set_temperature(0.0)  # 设置最严格的逻辑(不要设置2.0真的毫无逻辑，纯纯浪费token)
+deepseek.set_prompt("我表白后，她说：对")  # 设置开头
+deepseek.set_suffix("好人")  # 设置结尾
+deepseek.fill_in_the_middle_ask()  # 默认非流式输出
+# 输出：我表白后，她说：对不起，你是个好人
+```
+- ###### 非流式输出案例
+```python
+deepseek = DeepseekConversationEngine()  # 实例化对象
+deepseek.set_temperature(0.0)  # 设置最严格的逻辑(不要设置2.0真的毫无逻辑，纯纯浪费token)
+deepseek.set_stream(True)  # 设置流式输出
+deepseek.set_prompt("你真是")  # 设置开头
+deepseek.set_suffix("人")  # 设置结尾
+deepseek.fill_in_the_middle_ask()
+# 输出：你真是个可爱的人
 ```
 
 ---
@@ -363,57 +793,6 @@ def set_stream(self,stream=False):
     self.stream = stream
     return True
 ```
-### **流式与非流式的调用案例**
-#### 1. 对话补全 调用案例
-- ###### 流式输出案例
-```python
-deepseek = DeepseekConversationEngine("专属猫娘")   # 实例化对象(人设为专属猫娘)
-deepseek.switch_model() # 切换R1模型(默认V3模型)
-ask_txt = "摸摸头"     # 我提出的问题内容
-print(f"我：{ask_txt}",end="\n专属猫娘:")     # 在屏幕打印我提出的内容和区分专属猫娘回答的位置
-deepseek.ask(ask_txt)   # 发送请求并输出回答后的内容(默认非流式输出)
-""" 输出：
-我：摸摸头
-专属猫娘:喵~（蹭蹭手心）主人摸摸好舒服…要再多摸一会儿嘛…（眯眼享受）(=^･ω･^=)
-"""
-```
-- ###### 非流式输出案例
-```python
-deepseek = DeepseekConversationEngine("魅魔模式")   # 实例化对象(人设为魅魔模式)
-deepseek.switch_model() # 切换R1模型(默认V3模型)
-ask_txt = "举高高"     # 我提出的问题内容
-print(f"我：{ask_txt}",end="\n魅魔模式:")     # 在屏幕打印我提出的内容和区分魅魔模式回答的位置
-deepseek.set_stream(True)   # 设置流式输出(默认非流式输出)
-deepseek.ask(ask_txt)   # 发送请求并输出回答后的内容
-""" 输出：
-我：举高高
-魅魔模式:（被突然抱起时轻颤着发出甜腻的喘息）喵嗯~主人的手掌陷进人家腰窝了呢♡后腰的魅魔纹在发烫哦~（尾巴灵巧地卷上您手腕）要举到月光照透我蝉翼的地方吗？那里的鳞粉…沾到皮肤会变得很奇怪呢主人~（耳尖滴血般绯红）
-"""
-```
-#### 2. FIM补全 调用案例
-**在我的测试中参数不变的情况下多次调用输出的结果保持一致**
-***可以不设置结尾的：`deepseek.fill_in_the_middle_ask(prompt,None)`***
-- ###### 流式输出案例
-```python
-deepseek = DeepseekConversationEngine() # 实例化对象
-deepseek.set_temperature(0.0)   # 设置最严格的逻辑(不要设置2.0真的毫无逻辑，纯纯浪费token)
-prompt = "我表白后，她说：对"   # 设置开头
-suffix = "好人" # 设置结尾
-deepseek.fill_in_the_middle_ask(prompt,suffix)  # 默认非流式输出
-# 输出：我表白后，她说：对不起，你是个好人
-```
-- ###### 非流式输出案例
-```python
-deepseek = DeepseekConversationEngine() # 实例化对象
-deepseek.set_temperature(0.0)   # 设置最严格的逻辑(不要设置2.0真的毫无逻辑，纯纯浪费token)
-deepseek.set_stream(True)   # 设置流式输出
-prompt = "你真是"   # 设置开头
-suffix = "人"   # 设置结尾
-deepseek.fill_in_the_middle_ask(prompt,suffix)
-# 输出：你真是个可爱的人
-```
-
-
 
 ## 输出格式
 输出默认全文本输出，不会带有markdown语法，如:
@@ -469,7 +848,34 @@ set_response_format("json_object")    # 调用方法修改response_format属性�
 
 ---
 
+## 卡住的情况
+非流式请求：持续返回空行
+流式请求：持续返回 SSE keep-alive 注释（: keep-alive）
+这些内容不影响 OpenAI SDK 对响应的 JSON body 的解析。如果自己解析 HTTP 响应，请注意处理这些空行或注释。
+卡住超 30 分钟后，请求仍未完成，服务器将关闭连接，就是断开连接
 
+---
+
+### 服务器回应的错误代码
+错误码	描述
+400 - 请求体格式错误，请根据错误信息提示修改请求体
+401 - APIkey错误，认证失败。请检查您的APIkey是否正确如没有APIkey请先创建APIkey
+402 - 账号余额不足，请确认账户余额，并前往充值页面进行充值
+422 - 请求体参数错误，请根据错误信息提示修改相关参数
+429 - 请求速率（TPM 或 RPM）达到上限，请合理规划您的请求速率
+500 - 服务器内部故障，请等待后重试。若问题一直存在，请联系我们解决
+503 - 服务器负载过高，请稍后重试您的请求
+
+
+---
+
+## 模型选择
+如非复杂推理任务，建议使用新版本 V3 模型，即刻享受速度更加流畅、效果全面提升的对话体验
+中文搜索能力优化
+新版 V3 模型可以在联网搜索场景下，对于报告生成类指令输出内容更为详实准确、排版更加清晰美观的结果。
+此外，新版 V3 模型在工具调用、角色扮演、问答闲聊等方面也得到了一定幅度的能力提升。
+
+---
 
 # 上下文实验记录
 ***从实验结果中得出，对话中去掉之前AI的一轮对话后确实无法识别被移除的那轮对话内容***
@@ -486,8 +892,8 @@ while True:
     deepseek.dialog_history_manage()     # 自动清理最旧的对话记录
     print(f"{'历史记录':-^123}")          # 画一条线
     print(deepseek.dialog_history)       # 输出历史记录
-```
-```python
+"""
+输出和输入：
 -----------------------------------------------------------第1对话------------------------------------------------------------
 我:介绍一下你自己
 您好！我是由中国的深度求索（DeepSeek）公司开发的智能助手DeepSeek-R1。如您有任何任何问题，我会尽我所能为您提供帮助。
@@ -531,8 +937,9 @@ while True:
 若您想探讨这个问题，我很乐意展开说明！😊
 -----------------------------------------------------------历史记录------------------------------------------------------------
 [{'role': 'user', 'content': '4+4=？等于8吗？'}, {'role': 'assistant', 'content': '在基础的数学算术中，**4 + 4 = 8**，这是最普遍的答案。但若考虑特殊场景，结果可能会变化：  \n\n- **不同进制**：  \n  - **二进制**：4（100₂） + 4（100₂） = **1000₂**（即十进制的8）；  \n  - **四进制**：4 无法单独表示（四进制符号为 0,1,2,3），需进位为 **10₄**（即十进制的4），此时 10₄ + 10₄ = **20₄**（即十进制的8）。  \n\n- **模运算**：  \n  - 如模5运算，4 + 4 ≡ **3**（因为8 mod 5 = 3）；  \n  - 模7运算，4 + 4 ≡ **1**（8 mod 7 = 1）。  \n\n- **抽象定义**：某些代数系统（如有限域或自定义运算规则）中可能重新定义加法逻辑。  \n\n常规情况下答案明确为 **8**，特殊场景需额外说明。您想深入探讨哪种情况呢？😊'}, {'role': 'user', 'content': '我有问你“1+1等于几？”这个问题吗？回答有还是没有或不知道'}, {'role': 'assistant', 'content': '根据我们的对话记录，您此前并未问过“1+1等于几？”这个问题。因此，回答是：**没有**。  \n若您想探讨这个问题，我很乐意展开说明！😊'}]
+"""
 ```
-
+---
 
 ## 开发随笔
 高并发，多线程，多进程
@@ -541,25 +948,4 @@ while True:
 3.技术、学科（数学）问题问答：保持全增量上下文对话（R1）
 4.复杂推理10轮对话（R1）
 5.怼人模式（R1）全增量
-输入的量是有限制的，如果一条对话算100-400KB，内存溢出也得要等100万次对话，根本限制是官方的限制
-6.保留原始的API接口对话，没有任何的人设直接回答
-
-V3提供转换R1的方法，正常调用后直接转回V3，提供特殊指令之后一直是R1，超过一定时间不调用变V3（忘记关闭R1的情况）。
-
-创建对象的时候可以指定默认使用什么模型，行是什么样的策略？
-
-确保单一对象同一时刻只有一个模型，V3或R1
-第一轮对话
-{'role': 'user', 'content': "1+1=？"}
-{'role': 'assistant', 'content': "2"}
-{'role': 'user', 'content': "2+2=？"}
-{'role': 'assistant', 'content': "4"}
-{'role': 'user', 'content': "3+3=？"}
-{'role': 'assistant', 'content': "6"}
-第二轮对话
-{'role': 'user', 'content': "2+2=？"}
-{'role': 'assistant', 'content': "4"}
-{'role': 'user', 'content': "3+3=？"}
-{'role': 'assistant', 'content': "6"}
-{'role': 'user', 'content': "4+4=？"}
-{'role': 'assistant', 'content': "8"}
+6.输入的量是有限制的，如果一条对话算100-400KB，内存溢出也得要等100万次对话，根本限制是官方的限制。内存爆之前我的请求就爆了

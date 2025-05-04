@@ -1,15 +1,18 @@
 """这个库用来监控QQ消息，监控Q群成员的消息，以及监听QQ好友的消息
 内置判断是Q群还是QQ好友
 """
+# 系统自带的库
 import os
 import re
+import io
 from datetime import datetime
-from itertools import count
-
+# 第三方库
 import uiautomation
 import win32api
 import win32gui
 import win32con
+import win32clipboard
+from PIL import Image
 from time import sleep
 
 class QQMessageMonitor:
@@ -28,8 +31,8 @@ class QQMessageMonitor:
         self.cancel_top_win()   # 取消窗口置顶，防止窗口置顶失效
         self.show_win() # 如果窗口最小化就展示窗口
         self.top_win()  # 把窗口置顶，防止窗口被遮挡导致渲染停止无法监控窗口
-        self.top_wait_time = 1  # 设置置顶后等待qq渲染完成的属性，（如果电脑卡的话可以调大属性）
-        sleep(self.top_wait_time)    # 等待1秒窗口完全置顶（qq置顶后渲染需要时间）
+        self.top_wait_time = 2  # 设置置顶后等待qq渲染完成的属性，（如果电脑卡的话可以调大属性）
+        sleep(self.top_wait_time)    # 等待2秒窗口完全置顶（qq置顶后渲染需要时间）
         self.pid = self.qq_chat_win.ProcessId   # 被监听窗口的进程ID
         self.geometry = self.qq_chat_win.BoundingRectangle  # 窗口的位置和大小
         self.x = self.geometry.left # 窗口x坐标
@@ -102,7 +105,7 @@ class QQMessageMonitor:
         # 2个组里面->组2->组2->组2->组5->组1(关闭按钮)
         self.edit_box_close_button =  self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[4].GetChildren()[0]
         # 2个组里面->组2->组2->组2->组5->组2->组1(发送按钮)
-        self.enter_button = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[4].GetChildren()[1].GetChildren()[0]
+        self.send_button = self.main_chat_win.GetChildren()[1].GetChildren()[1].GetChildren()[1].GetChildren()[4].GetChildren()[1].GetChildren()[0]
         """公告栏(bulletin_bar)[群公告文本控件、群公告按钮、可见的群公告文本]"""
         if self.group_or_friend == "群聊" and len(self.main_chat_win.GetChildren()[1].GetChildren()[2].GetChildren()[0].GetChildren()) == 5:  # 如果等于4就代表没有公告，5才有公告
             # 2个组里面->组3->组1->组1->组1(有3个子孩子[群公告文本、群公告按钮、可见的群公告文本])
@@ -131,7 +134,7 @@ class QQMessageMonitor:
         self.message_data_txt = None    # 监听的文本数据存放路径
         self.create_directory()  # 如果没有转义这里会报警告，不用管(创建目录)
         self.create_txt()  # 创建文本文件
-
+        self.message_processing_queues = list() # 消息处理队列(接收到指定消息后就把消息进行处理)
 
     def parameter_validation(self):
         """创建对象时对输入的信息进行校验"""
@@ -235,7 +238,6 @@ class QQMessageMonitor:
         """展示qq窗口，如果qq窗口最小化就展示出来"""
         win32gui.ShowWindow(self.qq_chat_hwnd, win32con.SW_RESTORE)
 
-
     def set_size(self, width, height, repaint=True):
         """改变qq聊天窗口的大小（坐标保持在左上角）
         width ： 设置窗口的宽度
@@ -264,7 +266,23 @@ class QQMessageMonitor:
             0, 0, 0, 0,
             win32con.SWP_NOMOVE | win32con.SWP_NOSIZE
         )
-    
+
+    @staticmethod
+    def get_hwnd(control):
+        """获得控件的窗口句柄
+        参数：control：控件对象
+        返回值：控件的句柄
+        """
+        return control.NativeWindowHandle
+
+    @staticmethod
+    def get_position(control):
+        """获得控件的中心位置
+        参数：control：控件对象
+        返回值：控件的中心坐标
+        """
+        return control.BoundingRectangle.xcenter(),control.BoundingRectangle.ycenter()
+
     @staticmethod
     def click(control):
         """鼠标瞬移到控件中心点击
@@ -272,12 +290,130 @@ class QQMessageMonitor:
         """
         uiautomation.Click(control.BoundingRectangle.xcenter(), control.BoundingRectangle.ycenter())
 
-    @staticmethod
-    def send_click(control):
-        """向控件发送点击消息
+    def send_click(self,control):
+        """向窗口发送点击消息
         参数：control：控件对象
         """
-        win32api.SendMessage(control.NativeWindowHandle, win32con.WM_LBUTTONDOWN, 0, 0)
+        # 获取控件中心x和y的绝对坐标
+        screen_x, screen_y = control.BoundingRectangle.xcenter(),control.BoundingRectangle.ycenter()
+        # 把屏幕坐标转换为客户端坐标（应用窗口的坐标）
+        client_x, client_y = win32gui.ScreenToClient(self.qq_chat_hwnd, (screen_x, screen_y))
+        # 模拟鼠标指针， 传送到指定坐标（坐标必须是相对坐标即客户端坐标）
+        long_position = win32api.MAKELONG(client_x, client_y)
+        # 模拟鼠标按下(窗口句柄和客户端坐标)
+        win32api.SendMessage(self.qq_chat_hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
+        # 模拟鼠标弹起(窗口句柄和客户端坐标)
+        win32api.SendMessage(self.qq_chat_hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
+
+    @staticmethod
+    def key(control,content):
+        """向控件逐个输入字符(光标一直在第一个位置)
+        参数：control：控件对象
+        content : 发送的内容
+        """
+        # content =  # 反转倒序content[::-1]
+        # print(content)
+        control.SendKeys(content)
+
+    @staticmethod
+    def set_value(control,value):
+        """设置编辑控件得值(qq编辑控件不起作用不知道是为什么)
+        参数：control：控件对象
+        value : 需要设置的值
+        """
+        print(control.GetValuePattern().Value)
+        control.GetValuePattern().SetValue(value)
+
+    @staticmethod
+    def send_key(control,content):
+        """向窗口发送按键消息
+        参数：control：控件对象
+        content : 发送文本
+        """
+        # self.edit_box.GetValuePattern().SetValue('sfsfsdfsfsdf')
+        # self.send_click(control)    # 必须先后台点击一下窗口激活，不然就会导致输出乱来
+        # content[::-1]
+        for char in content:
+            control.edit_box.SendKeys(char)
+        #
+
+    """消息写入相关(复制文本或图片，粘贴到编辑控件)"""
+    @staticmethod
+    def set_copy(content):
+        """把文本消息复制到剪切版(设置剪切板内容)
+        参数 ： content 设置剪切板的内容
+        """
+        uiautomation.SetClipboardText(content)
+
+    @staticmethod
+    def copy_pic(image_path):
+        """复制图片(把图片放到剪切板)"""
+        # 读取图片并转换为RGB模式
+        image = Image.open(image_path).convert("RGB")
+        # 将图片保存为BMP格式的内存字节流
+        output = io.BytesIO()
+        image.save(output, format="BMP")
+        bmp_data = output.getvalue()
+        output.close()
+        # 去除BMP文件头（14字节），获取DIB数据
+        dib_data = bmp_data[14:]
+        # 将DIB数据写入剪贴板
+        win32clipboard.OpenClipboard()
+        win32clipboard.EmptyClipboard()
+        win32clipboard.SetClipboardData(win32clipboard.CF_DIB, dib_data)
+        win32clipboard.CloseClipboard()
+
+    def edit_paste(self):
+        """把剪切板的内容粘贴到文本编辑控件"""
+        self.edit_box.SendKeys("{ctrl}v")
+
+    def edit_send_key(self,content):
+        """向QQ的消息编辑控件发送文本内容
+        参数 ： content 输入的内容
+        """
+        self.edit_box.SetFocus()           # 设置焦点
+        sleep(1)
+        self.edit_box.SendKeys(content)    # 发送内容
+
+    def send_message(self,text):
+        """通过复制粘贴文本到qq发送控件
+        参数：text ： 发送的文本
+        """
+        uiautomation.SetClipboardText(text)
+        self.edit_box.SetFocus()    # 设置焦点
+        self.edit_box.SendKeys("{ctrl}v")
+        """后台点击发送按钮"""
+        # 获取发送按钮中心x和y的绝对坐标
+        screen_x, screen_y = self.send_button.BoundingRectangle.xcenter(), self.send_button.BoundingRectangle.ycenter()
+        # 把屏幕坐标转换为客户端坐标（应用窗口的坐标）
+        client_x, client_y = win32gui.ScreenToClient(self.qq_chat_hwnd, (screen_x, screen_y))
+        # 模拟鼠标指针， 传送到指定坐标（坐标必须是相对坐标即客户端坐标）
+        long_position = win32api.MAKELONG(client_x, client_y)
+        # 模拟鼠标按下(窗口句柄和客户端坐标)
+        win32api.SendMessage(self.qq_chat_hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
+        # 模拟鼠标弹起(窗口句柄和客户端坐标)
+        win32api.SendMessage(self.qq_chat_hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
+
+    def get_edit_value(self):
+        """获取编辑控件的值
+        返回值： 文本编辑框的内容
+        """
+        return self.edit_box.GetValuePattern().Value
+
+    def set_edit_value(self,content):
+        """修改edit控件的值
+        参数 ： content ： 需要修改的文本内容
+        """
+        self.edit_box.SetFocus()   # 设置焦点
+        self.edit_box.GetValuePattern().SetValue("content")
+        pass
+
+
+
+    # def set_edit_title(self):
+    #     """获取窗口标题并修改窗口标题"""
+    #     print(self.edit_box.Name)
+    #     self.edit_box.SetWindowText("1234")
 
     """消息窗口监听相关"""
     @staticmethod
@@ -351,7 +487,6 @@ class QQMessageMonitor:
                 messages_txt.write(one_message + "\n")  # 换行
             messages_txt.flush()  # 立即写入硬盘（但需注意性能影响）
 
-
     def get_messages(self):
         """分割消息的控件数据获得消息
         返回值:
@@ -397,6 +532,7 @@ class QQMessageMonitor:
             self.AutomationId_list.append(message_control.AutomationId)  # 放置控件id
         for message_control in self.message_list_box.GetChildren():   # 以下标的形式遍历(方便后续处理)
             try:    # 估计有些消息体确实没有子孩子，或者突然过时了(实际猜测是最新的消息被顶掉了，导致控件为空)
+                self.message_list_box.Refind()  # 每次调用都刷新一次控件
                 message_control = message_control.GetChildren()[0]  # 进入组控件里面（所有都单个消息控件都得进入）
                 pass  # IndexError: list index out of range  提示我下标溢出
                 if len(message_control.GetChildren()) == 2: # 如果等于2代表时间被嵌入的
@@ -429,18 +565,21 @@ class QQMessageMonitor:
                         txt_split(message_control)
                 else:   # 超级复合文本（多个链接之类的）
                     txt_split(message_control)
+                if f"@ {self.monitor_name}" in one_message_join:    # 如果@我的消息在里面就做出反应
+                    self.message_processing_queues.append("")
                 self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + " \t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
                 # print(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join)
             except IndexError as e:  # 显式捕获IndexError
                 print(f"\033[33m下标溢出：无法获取子控件，原始错误：{e}\033[0m",end="\t")
-                print(f"\033[33m子孩子控件数:{len(message_control.GetChildren())}\033[0m")   # 打控件的子孩子数
+                print(f"\033[33m子孩子控件数:{len(message_control.GetChildren())}，文本控件解析失败\033[0m")   # 打控件的子孩子数
                 continue # 跳过这次控件访问
         return self.message_list, self.AutomationId_list, self.messages_count # 返回截获的消息列表、控件id列表、最大消息数
 
     def monitor_message(self):
         pass    # 修改逻辑，跳过旧消息的文本控件解析(这里其实是对比上一次消息列表和这次消息列表消息的不同，实际上能在逻辑上实现)
         """消息监听(对比上次的消息控件id来确认添加的消息数)"""
-        old_message_list = self.message_list.copy()   # 保存上一次的消息列表(注意这里是深拷贝)
+        # old_message_list = self.message_list.copy()   # 保存上一次的消息列表(注意这里是深拷贝)
+        pass    # 可以进行消息对比
         old_AutomationId_list = self.AutomationId_list.copy()  # 保存上一次的控件列表(注意这里是深拷贝)
         self.get_messages()  # 更新消息来进行对比(更新消息列表、控件id号、最大消息数)
         """三种情况:
@@ -476,6 +615,7 @@ class QQMessageMonitor:
         except IndexError as e:  # 显式捕获IndexError
             print(f"\033[93mmonitor_message下标溢出：无法获取子控件，原始错误：{e}\033[0m",end="\t")
             print(f"\033self.message_list子孩子控件数:{len(self.message_list)}\033[0m")  # 打控件的子孩子数
+
 if __name__ == '__main__':
     # chat1 = QQMessageMonitor("鸣潮自动刷声骸", "雁低飞")
     # chat1.move()     # 把窗口移动到最上角

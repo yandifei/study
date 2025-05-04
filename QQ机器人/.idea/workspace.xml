@@ -54,6 +54,7 @@
     &quot;Python.deepseek测试.executor&quot;: &quot;Run&quot;,
     &quot;Python.test (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.txt.executor&quot;: &quot;Run&quot;,
     &quot;Python.临时测试.executor&quot;: &quot;Run&quot;,
     &quot;Python.余额查询 (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.余额查询.executor&quot;: &quot;Run&quot;,
@@ -67,7 +68,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;&lt;未知&gt;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;B:/deepseek_v3_tokenizer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;B:/study/QQ机器人&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
@@ -97,8 +98,8 @@
       <recent name="B:\study\QQ机器人\deepseek研究\DeekseekClass" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.deepseek_conversation_engine (1)">
-    <configuration name="临时测试" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.QQ监控者">
+    <configuration name="实验" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="QQ机器人" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -111,7 +112,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/临时测试.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/实验.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -186,28 +187,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="实验" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="QQ机器人" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/实验.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="后台截图研究" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="QQ机器人" />
       <option name="ENV_FILES" value="" />
@@ -252,7 +231,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="多轮对话demo(官方)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="QQ机器人" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -265,7 +244,29 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/多轮对话demo(官方).py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="txt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="QQ机器人" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/txt.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -276,11 +277,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.deepseek_conversation_engine (1)" />
-        <item itemvalue="Python.临时测试" />
         <item itemvalue="Python.QQ监控者" />
+        <item itemvalue="Python.txt" />
         <item itemvalue="Python.QQMessageMonitor" />
-        <item itemvalue="Python.多轮对话demo(官方)" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.deepseek_conversation_engine (1)" />
       </list>
     </recent_temporary>
   </component>
