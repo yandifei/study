@@ -6,6 +6,7 @@ import os
 import re
 import io
 from datetime import datetime
+from tkinter import Tk  # 用来获取剪切板的内容的
 # 第三方库
 import uiautomation
 import win32api
@@ -16,10 +17,11 @@ from PIL import Image
 from time import sleep
 
 class QQMessageMonitor:
-    def __init__(self,win_name="",monitor_name=""):
+    def __init__(self,win_name="",monitor_name="",top_wait_time = 2):
         """
         :参数 win_name: 左上角窗口名字(如果有备注名就填备注名)
-        :参数 monitor_name: QQ号或发送者的名字
+        monitor_name: QQ号或发送者的名字
+        top_wait_time : 默认2秒，设置置顶后等待qq渲染完成的属性，（如果电脑卡的话可以调大属性）
         """
         self.win_name = str(win_name)    # 左上角窗口名字(如果有备注名就填备注名) 强制转为字符串
         self.monitor_name = str(monitor_name)   # 强制转为字符串
@@ -28,11 +30,10 @@ class QQMessageMonitor:
         self.group_or_friend = None # 记录窗口QQ群还是好友
         self.qq_chat_win = self.find_qq_chat_win(self.top_window_traversal())   # 遍历顶层窗口->从顶层窗口中找到指定的qq聊天窗口
         self.qq_chat_hwnd = self.qq_chat_win.NativeWindowHandle # 被监听窗口的句柄
-        self.cancel_top_win()   # 取消窗口置顶，防止窗口置顶失效
         self.show_win() # 如果窗口最小化就展示窗口
+        self.cancel_top_win()   # 取消窗口置顶，防止窗口置顶失效
         self.top_win()  # 把窗口置顶，防止窗口被遮挡导致渲染停止无法监控窗口
-        self.top_wait_time = 2  # 设置置顶后等待qq渲染完成的属性，（如果电脑卡的话可以调大属性）
-        sleep(self.top_wait_time)    # 等待2秒窗口完全置顶（qq置顶后渲染需要时间）
+        sleep(top_wait_time)   # 等待窗口完全置顶（qq置顶后渲染需要时间）
         self.pid = self.qq_chat_win.ProcessId   # 被监听窗口的进程ID
         self.geometry = self.qq_chat_win.BoundingRectangle  # 窗口的位置和大小
         self.x = self.geometry.left # 窗口x坐标
@@ -77,6 +78,7 @@ class QQMessageMonitor:
         self.messages_count = 0  # 记录最大消息数(调用消息监控会更新)
         self.AutomationId_list = list()   # 记录获得消息控件的所有ID(调用消息监控会更新)
         self.message_list = list()  # 设置一个列表接收消息
+        self.message_list_dict = list()  # 列表字典形式记录消息，用来完整记录消息体（和消息列表冲突了）
         self.get_messages() # 创建对象的时候就对窗口进行一次监听，并把记录保存下来(动态属性修改)
         self.control_id_index = 0  # 旧表的最后一个控件id下标，用来定位新表(默认新表的第一个控件遍历消息体)
         """编辑工具栏(edit_tool_bar)"""
@@ -135,6 +137,8 @@ class QQMessageMonitor:
         self.create_directory()  # 如果没有转义这里会报警告，不用管(创建目录)
         self.create_txt()  # 创建文本文件
         self.message_processing_queues = list() # 消息处理队列(接收到指定消息后就把消息进行处理)
+        self.tkinter = Tk() # 创建Tkinter 窗口
+        self.tkinter.withdraw()  # 隐藏主窗口
 
     def parameter_validation(self):
         """创建对象时对输入的信息进行校验"""
@@ -207,6 +211,7 @@ class QQMessageMonitor:
         """
         # 检查结构（不需要担心是QQ窗口，考虑qq群还是qq好友就行）
         # obj.Refind()    # 刷新控件
+        # self.qq_chat_win = self.find_qq_chat_win(self.top_window_traversal())  # 重新强制刷新窗口
         if obj.GetChildren()[0].LocalizedControlType != "文档":
             # sleep(1)
             print(obj.GetChildren()[0].LocalizedControlType)
@@ -338,6 +343,16 @@ class QQMessageMonitor:
         #
 
     """消息写入相关(复制文本或图片，粘贴到编辑控件)"""
+    def get_copy_text(self,out=False):
+        """获得剪切板的内容
+        参数 ： out: 默认False不输出提示
+        返回值：返回剪切的内容
+        """
+        # 获取剪切板内容
+        clipboard_content = self.tkinter .clipboard_get()
+        if out: print("剪切板内容:", clipboard_content)
+        return clipboard_content
+
     @staticmethod
     def set_copy(content):
         """把文本消息复制到剪切版(设置剪切板内容)
@@ -379,9 +394,12 @@ class QQMessageMonitor:
         """通过复制粘贴文本到qq发送控件
         参数：text ： 发送的文本
         """
-        uiautomation.SetClipboardText(text)
+        # 临时使用剪切板，但是又被影响之前的调用
+        # temp = self.tkinter.clipboard_get()     # 获得剪切板的内容
+        uiautomation.SetClipboardText(text) # 设置剪切板内容
         self.edit_box.SetFocus()    # 设置焦点
         self.edit_box.SendKeys("{ctrl}v")
+        # uiautomation.SetClipboardText(temp)  # 设置剪切板内容为本来的内容
         """后台点击发送按钮"""
         # 获取发送按钮中心x和y的绝对坐标
         screen_x, screen_y = self.send_button.BoundingRectangle.xcenter(), self.send_button.BoundingRectangle.ycenter()
@@ -526,6 +544,7 @@ class QQMessageMonitor:
         self.messages_count = len(self.message_list_box.GetChildren())  # 更新消息数属性
         # print(f"获得消息数:{messages_count}")
         self.message_list.clear()  # 设置一个列表接收消息(对属性的列表清空)
+        self.message_list_dict.clear()  # 清空列表字典
         self.AutomationId_list.clear()  # 用来放置控件的AutomationId(对属性的列表清空)
         # message_child = self.message_list_box.GetChildren()  # 这里多一个变量是为了2次遍历相同的控件
         for message_control in self.message_list_box.GetChildren()    :# 优先遍历控件id动态更改属性
@@ -565,9 +584,8 @@ class QQMessageMonitor:
                         txt_split(message_control)
                 else:   # 超级复合文本（多个链接之类的）
                     txt_split(message_control)
-                if f"@ {self.monitor_name}" in one_message_join:    # 如果@我的消息在里面就做出反应
-                    self.message_processing_queues.append("")
                 self.message_list.append(f"{datetime.now().time().strftime("%H:%M:%S")}" + " \t" + send_name + ":\t"+one_message_join) # 标准化后将一条消息放到列表里面
+                self.message_list_dict.append({"发送者": send_name,"发送消息": one_message_join,"发送时间": datetime.now().time().strftime("%H:%M:%S")})
                 # print(f"{datetime.now().time().strftime("%H:%M:%S")}" + "\t" + send_name + ":\t"+one_message_join)
             except IndexError as e:  # 显式捕获IndexError
                 print(f"\033[33m下标溢出：无法获取子控件，原始错误：{e}\033[0m",end="\t")
@@ -608,6 +626,8 @@ class QQMessageMonitor:
             for index in range(self.control_id_index,self.messages_count):
                 # print(index)
                 new_message_list.append(self.message_list[index])
+                message_dict = self.message_list_dict[index]   # 我还是增强可读性和减少引用吧
+                self.hook_message(message_dict)
             self.message_list = new_message_list # 把新消息的列表给消息列表属性(之前的空间都被垃圾回收机制回收掉)
             for one_message in self.message_list:   #输出监听到的消息
                 print(one_message)
@@ -615,6 +635,19 @@ class QQMessageMonitor:
         except IndexError as e:  # 显式捕获IndexError
             print(f"\033[93mmonitor_message下标溢出：无法获取子控件，原始错误：{e}\033[0m",end="\t")
             print(f"\033self.message_list子孩子控件数:{len(self.message_list)}\033[0m")  # 打控件的子孩子数
+
+    def hook_message(self,message_dict,max_processing_queues=10):
+        """设置需要截获的消息,可以是发送者，时间，发送消息的内容
+        参数： message_dict ： 单条消息字典{"发送者": "yan di fei","发送消息": "hello world","发送时间": "10:10:20"}
+        max_processing_queues : 默认10，最大处理队列，超过队列最大数就不进队了
+        """
+        if len(self.message_processing_queues) > max_processing_queues: # 超出最大处理数
+            print(f"\033[91m超出消息最大处理数:{max_processing_queues}，不对消息进行处理\033[0m")  # 亮红色
+        elif f"@{self.monitor_name}" in message_dict["发送消息"]:  # 最新列表获取消息
+            print(f"\033[94m我被{message_dict["发送者"]}艾特了，消息是:{message_dict["发送消息"]}\033[0m")
+            self.message_processing_queues.append(message_dict)  # 加入消息处理队列
+
+
 
 if __name__ == '__main__':
     # chat1 = QQMessageMonitor("鸣潮自动刷声骸", "雁低飞")
