@@ -18,6 +18,7 @@ class DeepseekConversationEngine:
     def __init__(self,role=None):
         """初始化DeepseekConversationEngine
         参数：role ： 对话人设，这个可以选择默认值None(提示库下的文件名)
+        :return: True
         """
         self.__DEEPSEEK_API_KEY = self.__get_check_key()    # 从`系统环境变量中读入密钥和检查密钥
         """-----------------------------------------------------核心业务-----------------------------------------------------"""
@@ -100,13 +101,18 @@ class DeepseekConversationEngine:
         """修改属性self.base_url对OpenAI进行兼容
         # 出于与 OpenAI 兼容考虑，您也可以将 base_url 设置为 https://api.deepseek.com/v1 来使用，
         但注意，此处 v1 与模型版本无关。
+        返回值：True
         """
         self.base_url = "https://api.deepseek.com/v1"
+        return True
 
     def use_beat(self):
         """修改self.base_url属性为"https://api.deepseek.com/beta"来开启api某些限制功能
-        部分功能必须是beat才能开启，如R1思维返回就必须使用这个url"""
+        部分功能必须是beat才能开启，如R1思维返回就必须使用这个url
+        返回值：True
+        """
         self.base_url = "https://api.deepseek.com/beta"
+        return True
 
     # 对话补充模式
     def set_model(self,model):
@@ -132,12 +138,13 @@ class DeepseekConversationEngine:
         模型默认V3(deepseek-chat)，R是(deepseek-reasoner)
         参数：out ： 是否打印修改提示，默认False
         """
-        if self.model_choice == "deepseek-chat":  # V3模型
-            self.model_choice = "deepseek-reasoner" # R1模型
+        if self.model_choice == "deepseek-chat":  # 本身就是V3模型
+            self.model_choice = "deepseek-reasoner" # 切换为R1模型
             self.clear_flag = 10  # 对话历史最大数，超过就清空最开始的那一次的对话(R1默认为10轮)
             if out: print(f"已切换至R1模型")
+        # elif self.model_choice == "deepseek-reasoner":    # 本身就是R1模型:
         else:
-            self.model_choice = "deepseek-chat" # V3模型
+            self.model_choice = "deepseek-chat" # 切换为V3模型
             self.clear_flag = 5  # 对话历史最大数，超过就清空最开始的那一次的对话(V3默认为5轮)
             if out: print(f"已切换至V3模型")
 
@@ -159,6 +166,7 @@ class DeepseekConversationEngine:
         out : 修改错误时是否打印输出参数范围
         返回值：修改错误返回False，成功修改返回True
         """
+        max_tokens = int(max_tokens)    # 怕字符串，先强转
         if max_tokens < 1 or max_tokens > 8192: # 不在1-8192的范围内
             if out: print("\033[91m参数不在范围内(1-8192)，不对该参数进行任何修改\033[0m")
             return False
@@ -190,6 +198,7 @@ class DeepseekConversationEngine:
         # elif score > 100:
         #     print("对此次回答评价为超级好评")
         #     score = 100
+        score = int(score)  # 怕字符串，先强转
         if score < 0 or score > 100:    # 小于0或大于100
             return False
         # 这里就直接结合2个参数使用好了(重复内容和新话题)
@@ -197,15 +206,16 @@ class DeepseekConversationEngine:
         self.presence_penalty = round(((score * 0.4) - 20) / 10, 1)      # 对结果进行四舍五入
         return True
 
-    def set_response_format(self,response_format="text"):
+    def set_response_format(self,response_format="text",out=False):
         """指定模型必须输出的格式("text"或"json")
         参数： response_format ： 默认 "text",字符串格式，可填"json"
+        out : 修改错误时是否输出参数范围
         返回值：修改错误返回False，成功修改返回True
         """
         if response_format == "text" or response_format == "json":
             self.response_format = response_format
             return True
-        print(f"\033[91m参数有误，指定模型必须输出的格式为\"text\"或\"json\"，不对该参数进行任何修改\033[0m")
+        if out: print(f"\033[91m参数有误，指定模型必须输出的格式为\"text\"或\"json\"，不对该参数进行任何修改\033[0m")
         return False
 
     def set_stop(self,stop=None):
@@ -219,8 +229,22 @@ class DeepseekConversationEngine:
         elif isinstance(stop, list) and len(stop) > 16:
             print("\033[91m参数有误，停止标志词最多16，不对该参数进行任何修改\033[0m")
             return False
-        self.stop = stop
+        self.stop.append(stop)  # 添加敏感词
         return True
+
+    def del_stop(self,stop):
+        """删除敏感词
+        参数 ： stop : 选需要删除的敏感词
+        这个词不存在也会返回Falsee,不存在可删的列表返回False，否则删除敏感词后返回True
+        """
+        if isinstance(self.stop,list) and len(self.stop) == 0:
+            return False
+        elif stop not in self.stop:
+            return False
+        else:
+            self.stop.pop(stop)
+        return True
+
 
     def set_stream(self,stream=False,out=False):
         """是否流式输出。如果设置为 True，将会以 SSE（server-sent events）的形式以流式发送消息增量。消息流以 data: [DONE] 结尾。
@@ -260,25 +284,28 @@ class DeepseekConversationEngine:
         """设置模型对话的温度
         默认为(1.0)代码生成/数学解题(0.0)数据抽取/分析(1.0)通用对话(1.3)翻译(1.3)创意类写作/诗歌创作(1.5)
         参数 ： temperature ： 温度参数。直接调用就是设置为1.0
-        out : 是否提示修改完成, 默认为False
+        out : 是否提示修改成功或失败, 默认为False
         返回值：如果修改成功返回True，否则返回False
         """
+        temperature = float(temperature)    # 怕字符串，先强转
         if temperature < 0.0 or temperature > 2.0:
-            print("\033[91m超出温度范围(0.0-2.0),不对该参数进行任何修改.0\033[0m")
+            if out: print("\033[91m超出温度范围(0.0-2.0),不对该参数进行任何修改.0\033[0m")
             return False
         else:
             if out: print(f"温度已修改为{temperature}")
             self.temperature = temperature
             return True
 
-    def set_top_p(self,top_p=1.0):
+    def set_top_p(self,top_p=1.0,out=False):
         """作为调节采样温度的替代方案，模型会考虑前 top_p 概率的 token 的结果。
         所以 0.1 就意味着只有包括在最高 10% 概率中的 token 会被考虑。我们通常建议修改这个值或者更改 temperature，但不建议同时对两者进行修改。
         参数： top_p ： 默认为1(0.0-1.0)
+        out : 是否提示修改结果
         返回值：如果修改成功返回True，否则返回False
         """
+        top_p = float(top_p)  # 怕字符串，先强转
         if top_p < 0 or top_p > 1:
-            print("\033[91m参数不在调用范围(0-1),不对该参数进行任何修改\033[0m")
+            if out: print("\033[91m参数不在调用范围(0-1),不对该参数进行任何修改\033[0m")
             return False
         self.top_p = top_p
         return True
@@ -565,15 +592,17 @@ class DeepseekConversationEngine:
             print(f"思考内容(思维链):{self.reasoning_content}")
             return True
 
-    def set_dialog_history(self,dialog_round=5):
+    def set_dialog_history(self,dialog_round=5,out=False):
         """设置对话最大轮次(必须是一个整数值或"max")
         参数 : round ； 设置的最大对话轮次，默认值为5
+        out ： 是否输出修改成功或失败
         """
-        if dialog_round == "max":
-            print("\033[91m已解除对话轮次限制，注意最大token数和高额消费\033[0m")
+        if isinstance(dialog_round,str) and dialog_round == "max":
+            if out: print("\033[91m已解除对话轮次限制，注意最大token数和高额消费\033[0m")
             self.dialog_history = "max"
         else:
-            print(f"\033[93m已设置对话轮次为{dialog_round}轮\033[0m")
+            dialog_round = int(dialog_round)    # 怕字符串，强转
+            if out: print(f"\033[93m已设置对话轮次为{dialog_round}轮\033[0m")
             self.dialog_history = dialog_round
 
     def  dialog_history_manage(self):
@@ -587,6 +616,7 @@ class DeepseekConversationEngine:
                 del self.dialog_history[1:3]    # 删除最开始的一轮对话(0是我人设(不能删)，1是我的提问，2是AI回答，不会到达3)
             else:   # 人设为空（没有设置人设）
                 del self.dialog_history[0:2]    # 删除最开始的一轮对话(0是我的提问，1是AI回答，不会到达2)
+        return True
 
     def print_dialog_history(self):
         """打印聊天历史记录
@@ -679,7 +709,7 @@ class DeepseekConversationEngine:
     def select_role_content(role_name):
         """查询提示库里面的人设内容
         参数： role_name ： 人设名称
-        返回值：如果打印成功返回True，否则返回False
+        返回值：如果读取成功返回读取值，否则返回False
         """
         role_name += ".txt"  # 补足后缀名
         path = os.path.join("提示库/", role_name)
@@ -688,7 +718,7 @@ class DeepseekConversationEngine:
             return False
         with open(path, "r", encoding="utf-8") as role_txt:
             print(f"人设内容:\n{role_txt.read()}\n")
-        return True
+        return f"人设内容:\n{role_txt.read()}\n"
 
     def print_role_content(self):
         """打印当前人设"""
@@ -724,7 +754,7 @@ class DeepseekConversationEngine:
                 return True
             else:
                 print("\033[91m当前人设，不需要进行删除\033[0m")
-                return False
+        return False    # 显式调用
 
     def scene_switch(self,scene_key,out=False):
         """9大场景切换，输入关键字自动调整合适参数（）
@@ -900,7 +930,7 @@ class DeepseekConversationEngine:
                 f"当前可用余额能生成最少 {int(min_token)} token，对话可使用最少约{characters}个汉字，对话可使用最少约{words}英文字符")
             print(
                 f"最少可生产:{round(((characters * 24) / 1024) / 1024, 2)}GB 的对话数据， 约{round(characters / 880000, 2)}本《三体》(88万字一本)")
-        return min_token, characters, words, round(((characters * 24) / 1024) / 1024, 2), round(characters / 880000, 2)
+        return int(min_token), characters, words, round(((characters * 24) / 1024) / 1024, 2), round(characters / 880000, 2)
 
     """Token分词和计算"""
     def calculate_token(self,input_text, out=False):
@@ -946,10 +976,13 @@ class DeepseekConversationEngine:
         return result
 
 if __name__ == '__main__':
-    deepseek = DeepseekConversationEngine()  # 实例化对象(设置人设为专属猫娘)"专属猫娘"
-    deepseek.set_stream(True)   # 设置流式输出
-    while True:
-        content = input("我：")
-        if content == "#退出": break  # 退出循环调用对话的指令
-        deepseek.conversation_engine(content)  # 调用对话引擎
-    print("已退出对话引擎的调用")
+    deepseek = DeepseekConversationEngine("魅魔模式")  # 实例化对象(设置人设为专属猫娘)"专属猫娘"
+    # deepseek.set_stream(True)   # 设置流式输出
+    # while True:
+    #     content = input("我：")
+    #     if content == "#退出": break  # 退出循环调用对话的指令
+    #     deepseek.conversation_engine(content)  # 调用对话引擎
+    # print("已退出对话引擎的调用")
+    deepseek.switch_model(True)
+    deepseek.switch_model(True)
+    deepseek.switch_model(True)

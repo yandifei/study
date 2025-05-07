@@ -18,3 +18,6 @@ clipboard_content = root.clipboard_get()
 print("剪切板内容:", clipboard_content)
 # 销毁窗口
 root.destroy()
+
+def __init__(self):
+    return True
