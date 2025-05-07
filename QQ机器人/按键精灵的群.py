@@ -7,13 +7,13 @@ import sys
 qq_group_name = "Free my WW"
 qq_monitor_name = "猫猫"
 administrator = ["雁低飞","yandifei"]  # 设置超级管理员
-role = "蓝宝专属"   # (设置人设为专属猫娘)编程教师
+role = None   # (设置人设为专属猫娘)编程教师
 """--------------------------------------------------QQ窗口绑定处理----------------------------------------------------"""
 chat_win1 = QQMessageMonitor(qq_group_name, qq_monitor_name)    # 会自动置顶和自动展示(最小化显示)
 chat_win1.show_win()    # 展示窗口
 chat_win1.top_win()     # 置顶窗口
 # chat_win1.cancel_top_win()  # 取消置顶
-chat_win1.move(-579,590)        # 把窗口移动到最上角 0,1010
+# chat_win1.move(-579,590)        # 把窗口移动到最上角 0,1010
 print("窗口已放置最左上角并置顶，可通过鼠标拖拽拉伸")
 print(f"数据存放路径:\t{chat_win1.message_data_txt}")
 for one_message in chat_win1.message_list:  # 打印初次绑定后的消息
@@ -67,6 +67,7 @@ def qq_quick_order(message: str):
     order = message.split("#")[1]  # 通过#键分割@对象和指令
     args = ""  # 用来放置参数
     # 函数映射表(使用lambda来匿名函数)
+    print(f"--------------------{deepseek.model_choice}-*-------------------")
     function_map = {
         "测试": [lambda: test(), None, "切换中途发生异常"],
         "余额": [lambda: money_inquiry(),None,"发生异常"],
@@ -138,8 +139,8 @@ def qq_quick_order(message: str):
             if isinstance(result,str):  # 如果是字符串
                 chat_win1.send_message(result)  # 返回值就是字符串，就直接返回
             elif result is None:    # 没有返回值
-                print(f"-----------------------------{function_map[order][1]}")
                 chat_win1.send_message(function_map[order][1])  # 执行成功但是没有返回值
+                print(f"========================{deepseek.model_choice}========================")
             else:   # 判断返回值和发送返回值
                 chat_win1.send_message(function_map[order][1]) if result else chat_win1.send_message(function_map[order][2])
         return True  # 成功执行指令
@@ -154,7 +155,6 @@ while True:
     chat_win1.show_win()    # 展示窗口
     chat_win1.top_win()     # 置顶开窗口
     chat_win1.monitor_message() # 始监控
-    print(deepseek.model_choice)
     """消息处理"""
     if len(chat_win1.message_processing_queues) > 0:    # 队列不为空，进行队列处理
         # 这里是发送者的名字，我接收它的名字

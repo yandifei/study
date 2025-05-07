@@ -7,11 +7,8 @@ deepseek = DeepseekConversationEngine("专属猫娘")  # 实例化对象(设置�
 #     print(f"\033[91m{deepseek.dialog_history}\033[0m")
 #     deepseek.ask(input("我："))
 
-# while True:
-#     sleep(1)
-#     print(deepseek.model_choice)
-#     deepseek.switch_model(True)
-#     print(deepseek.model_choice)
-deepseek.switch_model(True)
-deepseek.switch_model(True)
-deepseek.switch_model(True)
+function_map = {
+    "模型切换": [lambda: deepseek.switch_model(True),"已切换至R1模型" if deepseek.model_choice == "deepseek-chat" else "已切换至V3模型", "切换中途发生异常"],
+}
+# print("已切换至V3模型" if deepseek.model_choice == "deepseek-chat" else "已切换至R1模型")
+print(function_map["模型切换"][1])

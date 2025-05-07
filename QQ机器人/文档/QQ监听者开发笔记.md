@@ -252,3 +252,20 @@ end = perf_counter()
 print(f"耗时: {end - start:.6f} 秒")
 
 ```
+这里不得不放弃模型切换的方法，因为会出现bug，改了更没改一样，真的不知道为什么
+```python
+"模型切换": [lambda: deepseek.switch_model(True),f"已切换至模型", "切换中途发生异常"],
+function_map = {
+        "测试": [lambda: test(), None, "切换中途发生异常"],
+        "余额": [lambda: money_inquiry(),None,"发生异常"],
+        # 特殊指令
+        "兼容": [lambda: deepseek.compatible_openai(),"已经切换至兼容OpenAI的接口","切换中途发生异常"],
+        "测试接口": [lambda: deepseek.use_beat(),"已切换至测试接口","切换中途发生异常"],
+        "格式化": [lambda: deepseek.__init__(),"已格式化deepseek对话引擎","初始化中途发生异常"],  # 恢复最开始设置的参数（创建对象时的默认参数）
+        # 对话参数调节指令
+        "模型切换": [lambda: deepseek.switch_model(True),f"已切换至模型", "切换中途发生异常"],
+        "V3模型": [lambda: deepseek.set_model("V3"),"已切换至V3模型", "切换中途发生异常"],
+        "R1模型": [lambda: deepseek.set_model("R1"),"已切换至R1模型", "切换中途发生异常"],
+        ........
+    }
+```
