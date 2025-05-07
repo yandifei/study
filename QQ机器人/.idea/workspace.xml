@@ -32,59 +32,60 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Notification.DisplayName-DoNotAsk-Vcs Important Messages&quot;: &quot;VCS 重要消息&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-git.bad.executable&quot;: &quot;无法运行 Git&quot;,
-    &quot;Notification.DoNotAsk-Vcs Important Messages&quot;: &quot;true&quot;,
-    &quot;Notification.DoNotAsk-git.bad.executable&quot;: &quot;true&quot;,
-    &quot;Python.1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.BGI.executor&quot;: &quot;Run&quot;,
-    &quot;Python.BalanceInquiry (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.QQMessageMonitor (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.QQMessageMonitor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.QQ图片读取.executor&quot;: &quot;Run&quot;,
-    &quot;Python.QQ消息监听 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.QQ消息监听 .executor&quot;: &quot;Run&quot;,
-    &quot;Python.QQ消息监听.executor&quot;: &quot;Run&quot;,
-    &quot;Python.QQ监控者.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Study.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.deepseek_conversation_engine (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.deepseek_conversation_engine.executor&quot;: &quot;Run&quot;,
-    &quot;Python.deepseek_tokenizer (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.deepseek_tokenizer (2).executor&quot;: &quot;Run&quot;,
-    &quot;Python.deepseek_tokenizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.deepseek测试.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.txt.executor&quot;: &quot;Run&quot;,
-    &quot;Python.临时测试.executor&quot;: &quot;Run&quot;,
-    &quot;Python.余额查询 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.余额查询.executor&quot;: &quot;Run&quot;,
-    &quot;Python.后台截图研究.executor&quot;: &quot;Run&quot;,
-    &quot;Python.多轮对话demo(官方).executor&quot;: &quot;Run&quot;,
-    &quot;Python.学习.executor&quot;: &quot;Run&quot;,
-    &quot;Python.实验.executor&quot;: &quot;Run&quot;,
-    &quot;Python.我的群 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.我的群接入deepseek.executor&quot;: &quot;Run&quot;,
-    &quot;Python.测试.executor&quot;: &quot;Run&quot;,
-    &quot;Python.窗口消息监听.executor&quot;: &quot;Run&quot;,
-    &quot;Python.第三个群.executor&quot;: &quot;Run&quot;,
-    &quot;Python.第二个群.executor&quot;: &quot;Run&quot;,
-    &quot;Python.蓝宝的群 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.蓝宝的群.executor&quot;: &quot;Run&quot;,
-    &quot;Python.鸣潮想睡觉（三）.executor&quot;: &quot;Run&quot;,
-    &quot;Python.鸣潮自动刷声骇的群.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;B:/study/QQ机器人/提示库&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;cn.yiiguxing.plugin.translate&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-Vcs Important Messages": "VCS 重要消息",
+    "Notification.DisplayName-DoNotAsk-git.bad.executable": "无法运行 Git",
+    "Notification.DoNotAsk-Vcs Important Messages": "true",
+    "Notification.DoNotAsk-git.bad.executable": "true",
+    "Python.1.executor": "Run",
+    "Python.BGI.executor": "Run",
+    "Python.BalanceInquiry (1).executor": "Run",
+    "Python.QQMessageMonitor (1).executor": "Run",
+    "Python.QQMessageMonitor.executor": "Run",
+    "Python.QQ图片读取.executor": "Run",
+    "Python.QQ消息监听 (1).executor": "Run",
+    "Python.QQ消息监听 .executor": "Run",
+    "Python.QQ消息监听.executor": "Run",
+    "Python.QQ监控者.executor": "Run",
+    "Python.Study.executor": "Run",
+    "Python.__init__.executor": "Run",
+    "Python.deepseek_conversation_engine (1).executor": "Run",
+    "Python.deepseek_conversation_engine.executor": "Run",
+    "Python.deepseek_tokenizer (1).executor": "Run",
+    "Python.deepseek_tokenizer (2).executor": "Run",
+    "Python.deepseek_tokenizer.executor": "Run",
+    "Python.deepseek测试.executor": "Run",
+    "Python.test (1).executor": "Run",
+    "Python.test.executor": "Run",
+    "Python.txt.executor": "Run",
+    "Python.临时测试.executor": "Run",
+    "Python.余额查询 (1).executor": "Run",
+    "Python.余额查询.executor": "Run",
+    "Python.后台截图研究.executor": "Run",
+    "Python.多轮对话demo(官方).executor": "Run",
+    "Python.学习.executor": "Run",
+    "Python.实验.executor": "Run",
+    "Python.我的群 (1).executor": "Run",
+    "Python.我的群接入deepseek.executor": "Run",
+    "Python.按键精灵的群.executor": "Run",
+    "Python.测试.executor": "Run",
+    "Python.窗口消息监听.executor": "Run",
+    "Python.第三个群.executor": "Run",
+    "Python.第二个群.executor": "Run",
+    "Python.蓝宝的群 (1).executor": "Run",
+    "Python.蓝宝的群.executor": "Run",
+    "Python.鸣潮想睡觉（三）.executor": "Run",
+    "Python.鸣潮自动刷声骇的群.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "B:/study/QQ机器人/提示库",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "cn.yiiguxing.plugin.translate"
   }
-}</component>
+}]]></component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings module-name="QQ机器人" sdk-home="$PROJECT_DIR$/../../Pycharm/Anaconda3/envs/QQ机器人/python.exe">
@@ -114,8 +115,8 @@
       <recent name="B:\study\QQ机器人\deepseek研究" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.鸣潮自动刷声骇的群">
-    <configuration name="鸣潮想睡觉（三）" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.test">
+    <configuration name="按键精灵的群" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="QQ机器人" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,7 +129,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/鸣潮想睡觉（三）.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/按键精灵的群.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -381,11 +382,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.鸣潮自动刷声骇的群" />
-        <item itemvalue="Python.QQ监控者" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.QQ监控者" />
+        <item itemvalue="Python.按键精灵的群" />
+        <item itemvalue="Python.鸣潮自动刷声骇的群" />
         <item itemvalue="Python.deepseek_conversation_engine" />
-        <item itemvalue="Python.鸣潮想睡觉（三）" />
       </list>
     </recent_temporary>
   </component>

@@ -137,6 +137,7 @@ class DeepseekConversationEngine:
         """模型切自动换，如果为 V3 模型就切换为 R1模型， 如果为 R1 模型则切换为 V3模型
         模型默认V3(deepseek-chat)，R是(deepseek-reasoner)
         参数：out ： 是否打印修改提示，默认False
+        返回值：True
         """
         if self.model_choice == "deepseek-chat":  # 本身就是V3模型
             self.model_choice = "deepseek-reasoner" # 切换为R1模型
