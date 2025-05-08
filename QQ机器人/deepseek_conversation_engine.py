@@ -18,6 +18,7 @@ class DeepseekConversationEngine:
     def __init__(self,role=None):
         """初始化DeepseekConversationEngine
         参数：role ： 对话人设，这个可以选择默认值None(提示库下的文件名)
+        参数：out ： 是否输出打印初始化成功
         :return: True
         """
         self.__DEEPSEEK_API_KEY = self.__get_check_key()    # 从`系统环境变量中读入密钥和检查密钥
@@ -35,7 +36,7 @@ class DeepseekConversationEngine:
         # response_format。一个 object，指定模型必须输出的格式。设置为 { "type": "json_object" } 以启用 JSON 模式，该模式保证模型生成的消息是有效的 JSON。
         self.response_format = {"type": "text"}   # 默认为text，{"type": "json_object"}强制 JSON 输出
         # 停止生成标志词，string 或最多包含 16 个 string 的 list。比如","则在生成这个字符 前 就停止生成
-        self.stop = None
+        self.stop = list()  # 为了方便统一，这里采用列表吧
         # 是否流式输出。如果设置为 True，将会以 SSE（server-sent events）的形式以流式发送消息增量。消息流以 data: [DONE] 结尾。
         self.stream = False
         # 只有在stream参数为true时才可设置此参数。如果设置为true，在流式消息最后的data: [DONE] 之前将会传输一个额外的块。此块上的 usage 字段显示整个请求的 token 使用统计信息
@@ -76,6 +77,15 @@ class DeepseekConversationEngine:
         # add_special_tokens=True是模型输入格式要求,False是纯文本Token计算
         self.tokenizer = transformers.AutoTokenizer.from_pretrained("./deepseek_v3_tokenizer/",trust_remote_code=True)
 
+    def reset(self,out=False):
+        """初始化或格式化类的属性1
+        参数 ： out ： 初始化后是否打印提示
+        """
+        role =  self.role # 提前把人设拿出来
+        self.__init__(None)    # 初始化所有参数，清空人设
+        self.dialog_history.append({"role": "system", "content": role})  # 添加人设
+        if out: print("初始化成功")
+
 
     """密钥安全读取和校验"""
     @staticmethod
@@ -97,21 +107,25 @@ class DeepseekConversationEngine:
         return DEEPSEEK_API_KEY
 
     """对话输出参数"""
-    def compatible_openai(self):
+    def compatible_openai(self,out=False):
         """修改属性self.base_url对OpenAI进行兼容
         # 出于与 OpenAI 兼容考虑，您也可以将 base_url 设置为 https://api.deepseek.com/v1 来使用，
         但注意，此处 v1 与模型版本无关。
+        参数：out ： 是否输出打印修改成功
         返回值：True
         """
         self.base_url = "https://api.deepseek.com/v1"
+        if out: print("已切换至兼容模式")
         return True
 
-    def use_beat(self):
+    def use_beat(self,out=False):
         """修改self.base_url属性为"https://api.deepseek.com/beta"来开启api某些限制功能
         部分功能必须是beat才能开启，如R1思维返回就必须使用这个url
+        参数：out ： 是否输出打印修改成功
         返回值：True
         """
         self.base_url = "https://api.deepseek.com/beta"
+        if out: print("已切换测试接口")
         return True
 
     # 对话补充模式
@@ -172,6 +186,7 @@ class DeepseekConversationEngine:
             if out: print("\033[91m参数不在范围内(1-8192)，不对该参数进行任何修改\033[0m")
             return False
         self.max_tokens = max_tokens
+        if out: print(f"已修改修改输出最大token数为{max_tokens}")
         return True
 
     def set_presence_penalty(self,presence_penalty=0.0):
@@ -186,10 +201,11 @@ class DeepseekConversationEngine:
         self.presence_penalty = presence_penalty
         return True
 
-    def score_answer(self,score=50):
+    def score_answer(self,score=50,out=False):
         """对回答进行打分，不过这个是百分制
         分数越高重复内容越少，新话题也多。分数越低重复内容越多，新话题越少
         参数：score ： 0-100之间的数，默认50
+        out : 是否打印输出修改提示
         返回值：超出返回False，修改成功返回True
         """
         # 小于0或大于100会自动转换
@@ -201,10 +217,12 @@ class DeepseekConversationEngine:
         #     score = 100
         score = int(score)  # 怕字符串，先强转
         if score < 0 or score > 100:    # 小于0或大于100
+            if out: print("\033[91m超出打分范围([0-100]分,默认50分)\033[0m")
             return False
         # 这里就直接结合2个参数使用好了(重复内容和新话题)
         self.frequency_penalty = round(((score * 0.4) - 20) / 10, 1)      # 对结果进行四舍五入
         self.presence_penalty = round(((score * 0.4) - 20) / 10, 1)      # 对结果进行四舍五入
+        if out: print(f"已给此次回答评分为{score}")
         return True
 
     def set_response_format(self,response_format="text",out=False):
@@ -215,22 +233,24 @@ class DeepseekConversationEngine:
         """
         if response_format == "text" or response_format == "json":
             self.response_format = response_format
+            if out: print(f"已指定模型必须输出的格式为{response_format}")
             return True
         if out: print(f"\033[91m参数有误，指定模型必须输出的格式为\"text\"或\"json\"，不对该参数进行任何修改\033[0m")
         return False
 
-    def set_stop(self,stop=None):
+    def set_stop(self,stop=None,out=False):
         """停止生成标志词
-        参数： stop ： 可以是单个字符，也可以是字符组成的列表（最多16个元素）
+        参数： stop ： 可以是单个字符，也可以是字符组成的列表（敏感词最多16个）
+        out : 是否打印修改提示
         返回值：修改错误返回False，成功修改返回True
         """
-        if stop is None:
-            self.stop = None
-            return True
-        elif isinstance(stop, list) and len(stop) > 16:
-            print("\033[91m参数有误，停止标志词最多16，不对该参数进行任何修改\033[0m")
+        if isinstance(stop, list) and (len(stop) + len(self.stop)) > 16:    # 如果是列表或
+            if out: print(f"\033[91m停止标志词最多16，当前{len(self.stop)}个，添加后超出最大值\033[0m")
             return False
+        elif isinstance(stop, list):    # 输入的是列表
+            self.stop.extend(stop)  # 把列表添加进去
         self.stop.append(stop)  # 添加敏感词
+        if out: print(f"添加成功，当前敏感字词：{self.stop}个")
         return True
 
     def del_stop(self,stop):
@@ -245,7 +265,6 @@ class DeepseekConversationEngine:
         else:
             self.stop.pop(stop)
         return True
-
 
     def set_stream(self,stream=False,out=False):
         """是否流式输出。如果设置为 True，将会以 SSE（server-sent events）的形式以流式发送消息增量。消息流以 data: [DONE] 结尾。
@@ -263,21 +282,22 @@ class DeepseekConversationEngine:
         self.stream = stream
         return True
 
-    def set_stream_options(self,stream_options=None):
+    def set_stream_options(self,stream_options=None,out=False):
         """流式消息最后的data多一个usage 字段，这个字段包括token 使用统计信息
         参数： stream_options ： 默认为None(不返回这个usage 字段),只能填None或True
+        out : 是否打印修改提示，默认为False
         """
         if stream_options is None:
-            print("已关闭请求用量统计")
+            if out: print("已关闭请求用量统计")
             self.stream_options = None
             return True
         elif not self.stream:     # self.stream必须为True(开启流式才能开启这个选项)
-            print("\033[91m必须先开启流式(stream)才能开启修改开启这个字段\033[0m")
+            if out: print("\033[91m必须先开启流式(stream)才能开启修改开启这个字段\033[0m")
             return False
         elif not isinstance(stream_options, bool):
-            print("\033[91m参数有误，True或False，不对该参数进行任何修改\033[0m")
+            if out: print("\033[91m参数有误，True或False，不对该参数进行任何修改\033[0m")
             return False
-        print("已开启请求用量统计")
+        if out: print("已开启请求用量统计")
         self.stream_options = {"include_usage": True}
         return True
 
@@ -290,7 +310,7 @@ class DeepseekConversationEngine:
         """
         temperature = float(temperature)    # 怕字符串，先强转
         if temperature < 0.0 or temperature > 2.0:
-            if out: print("\033[91m超出温度范围(0.0-2.0),不对该参数进行任何修改.0\033[0m")
+            if out: print("\033[91m超出温度范围(0.0-2.0),不对该参数进行任何修改\033[0m")
             return False
         else:
             if out: print(f"温度已修改为{temperature}")
@@ -301,7 +321,7 @@ class DeepseekConversationEngine:
         """作为调节采样温度的替代方案，模型会考虑前 top_p 概率的 token 的结果。
         所以 0.1 就意味着只有包括在最高 10% 概率中的 token 会被考虑。我们通常建议修改这个值或者更改 temperature，但不建议同时对两者进行修改。
         参数： top_p ： 默认为1(0.0-1.0)
-        out : 是否提示修改结果
+        out : 是否提示修改结果,默认False
         返回值：如果修改成功返回True，否则返回False
         """
         top_p = float(top_p)  # 怕字符串，先强转
@@ -309,13 +329,16 @@ class DeepseekConversationEngine:
             if out: print("\033[91m参数不在调用范围(0-1),不对该参数进行任何修改\033[0m")
             return False
         self.top_p = top_p
+        if out: print(f"已将采样温度修改为{top_p}")
         return True
 
-    def set_tools(self,tools=None):
+    def set_tools(self,tools=None,out=False):
         """模型可能会调用的 tool 的列表。目前，仅支持 function 作为工具。使用此参数来提供以 JSON 作为输入参数的 function 列表。最多支持 128 个 function。
         返回值：如果修改成功返回True，否则返回False
+        out : 是否提示修改结果,默认False
         """
         self.tools = tools
+        if out: print("修改成功")
         return True
 
     def set_tool_choice(self,tool_choice="none"):
@@ -331,45 +354,49 @@ class DeepseekConversationEngine:
         self.tool_choice = "none"
         return True
 
-    def switch_tool_choice(self):
-        """自动切换模型调用 tool 的行为"""
+    def switch_tool_choice(self,out=False):
+        """自动切换模型调用 tool 的行为
+        参数 ： out ： 是否打印修改输出,默认False
+        """
         if self.tool_choice == "none":
-            print("已开启工具调用")
+            if out: print("已开启工具调用")
             self.tool_choice = "auto"
             return True
-        print("已关闭工具调用")
+        if out: print("已关闭工具调用")
         self.tool_choice = "none"
         return True
 
-    def set_logprobs(self,log_probs=False):
+    def set_logprobs(self,log_probs=False,out=False):
         """是否返回所输出 token 的对数概率。如果为 true，则在 message 的 content 中返回每个输出 token 的对数概率。
         参数：log_probs ： 默认False
+        out ： 是否打印修改输出,默认False
         返回值：如果修改成功返回True，否则返回False
         """
         if not isinstance(log_probs,bool):
-            print("\033[91m参数错误,参数不是True或False,不对该参数进行任何修改\033[0m")
+            if out: print("\033[91m参数错误,参数不是True或False,不对该参数进行任何修改\033[0m")
             return False
         elif log_probs:
-            print("已开启对数概率输出")
+            if out: print("已开启对数概率输出")
         elif not log_probs:
             print("已关闭对数概率输出")
         self.logprobs = log_probs
         return True
 
-    def set_top_logprobs(self,top_logprobs=None):
+    def set_top_logprobs(self,top_logprobs=None,out=False):
         """一个介于 0 到 20 之间的整数 N，指定每个输出位置返回输出概率 top N 的 token，且返回这些 token 的对数概率。
         指定此参数时，logprobs 必须为 true。
         参数：top_logprobs ： 默认为None
+        out ： 是否打印修改输出,默认False
         返回值：如果修改成功返回True，否则返回False
         """
         if top_logprobs is None:
             self.top_logprobs = None
             return True
         elif not self.logprobs:
-            print("\033[91m无效修改，必须当self.logprobs为True才能修改\033[0m")
+            if out: print("\033[91m无效修改，必须先开启对数概率输出才能修改\033[0m")
             return False
         elif top_logprobs < 0 or top_logprobs > 20:
-            print("\033[91m参数不在调用范围(0-20),不对该参数进行任何修改\033[0m")
+            if out: print("\033[91m参数不在调用范围(0-20),不对该参数进行任何修改\033[0m")
             return False
         self.top_logprobs = top_logprobs
         return True
@@ -388,14 +415,16 @@ class DeepseekConversationEngine:
             print(f"已将开头修改为“{prompt}”")
         self.prompt = prompt
 
-    def set_echo(self,echo=False):
+    def set_echo(self,echo=False,out=False):
         """在输出中，把 prompt 的内容也输出出来
         参数：echo : 默认False,
+        out ： 是否打印修改输出,默认False
         返回值：返回True
         """
         if echo:
             self.echo = None    # 因为服务器那边不接受True，只接受False和None
         self.echo = True
+        if out: print("因为服务器那边不接受True，只接受False和None,所以这个功能无效")
         return True
 
     def set_FIM_logprobs(self,FIM_logprobs=0):
@@ -406,7 +435,7 @@ class DeepseekConversationEngine:
         if FIM_logprobs < 0 or FIM_logprobs > 20:
             print("\033[91m参数不在调用范围(0-20),不对该参数进行任何修改\033[0m")
             return False
-        print(f"已制定输出中包含logprobs{FIM_logprobs}个最可能输出token的对数概率")
+        print(f"已制定输出中保留{FIM_logprobs}个最可能输出token的对数概率")
         self.FIM_logprobs = FIM_logprobs
         return True
 
@@ -582,41 +611,45 @@ class DeepseekConversationEngine:
             else:
                 print(f"\033[91m未知错误: {Error}\033[0m")
 
-    def reasoning_content_output(self):
+    def reasoning_content_output(self,out=False):
         """思考内容输出
-        返回值：如果存在思维链接返回True，否则返回False
+        参数 ： out ： 是否打印输出提示，默认为False
+        返回值：如果存在思维链接就返回内容，否则返回False
         """
-        if self.reasoning_content != "":
-            print("最近的一次对话没有思考内容(思维链)")
+        if self.reasoning_content == "" or self.reasoning_content is None:  # 思维链为空或None
+            if out: print("最近的一次对话没有思考内容(思维链)")
             return False
         else:
-            print(f"思考内容(思维链):{self.reasoning_content}")
-            return True
+            if out: print(f"思考内容(思维链):{self.reasoning_content}")
+            return f"思考内容(思维链):{self.reasoning_content}"
 
     def set_dialog_history(self,dialog_round=5,out=False):
-        """设置对话最大轮次(必须是一个整数值或"max")
+        """设置对话最大轮次(必须是一个整数值，如果解除限制就填-1)
         参数 : round ； 设置的最大对话轮次，默认值为5
-        out ： 是否输出修改成功或失败
+        out ： 是否输出修改成功或失败,默认False
         """
-        if isinstance(dialog_round,str) and dialog_round == "max":
+        if dialog_round== -1:
             if out: print("\033[91m已解除对话轮次限制，注意最大token数和高额消费\033[0m")
-            self.dialog_history = "max"
+            self.clear_flag = -1
         else:
-            dialog_round = int(dialog_round)    # 怕字符串，强转
+            # dialog_round = int(dialog_round)    # 怕字符串，强转
             if out: print(f"\033[93m已设置对话轮次为{dialog_round}轮\033[0m")
-            self.dialog_history = dialog_round
+            self.clear_flag = dialog_round
 
-    def  dialog_history_manage(self):
+    def  dialog_history_manage(self,out=False):
         """多轮对话管理，判断是否删除最旧的一轮对话，V3是5轮，R1是10轮
         返回值： 如果self.dialog_history为"max"意味这不需要进行删除
+        out ： 是否输出修改成功或失败,默认False
         """
-        if self.dialog_history == "max":
-            return False
+        if self.dialog_history == -1:  # 全增量记录
+            if out: print("\033[33m已开启全增量记录，注意避免高额消费\033[0m")
+            return True
         while int(len(self.dialog_history) / 2) > self.clear_flag:  # 超过对话轮次了
             if self.role is not None:   # 人设不为空的情况
                 del self.dialog_history[1:3]    # 删除最开始的一轮对话(0是我人设(不能删)，1是我的提问，2是AI回答，不会到达3)
             else:   # 人设为空（没有设置人设）
                 del self.dialog_history[0:2]    # 删除最开始的一轮对话(0是我的提问，1是AI回答，不会到达2)
+        if out: print("处理完毕")
         return True
 
     def print_dialog_history(self):
@@ -656,10 +689,11 @@ class DeepseekConversationEngine:
         while True:
             txt_file_name += ".txt"  # 补足后缀名
             path = os.path.join("提示库/", txt_file_name)
+            path2 = os.path.join("../提示库/", txt_file_name)  # 上级目录
             if not os.path.isfile(path):  # 检查是否有这个文件（文件不存在）
-                print(
-                    f"\033[91m\"{os.path.join(os.getcwd(), "提示库")}\"中没有“{txt_file_name}”这个文件，请检查该txt文件是否存在\033[0m")
-                txt_file_name = input("\033[92m请重新输入文件名(不用输入全名，路径自动补足)：\033[0m")
+                if not os.path.isfile(path):  # 检查是否有这个文件（文件不存在）
+                    print(f"\033[91m\"{os.path.join(os.getcwd(), "提示库")}\"中没有“{txt_file_name}”这个文件，请检查该txt文件是否存在\033[0m")
+                    txt_file_name = input("\033[92m请重新输入文件名(不用输入全名，路径自动补足)：\033[0m")
             else:  # 检查是否有这个文件（文件存在）:
                 break  # 跳出循环
         with open(path, "r", encoding="utf-8") as role_txt:
@@ -790,37 +824,37 @@ class DeepseekConversationEngine:
         # 函数映射表(使用lambda来匿名函数)
         function_map = {
             # 特殊指令
-            "#兼容": lambda : self.compatible_openai(),
-            "#测试接口": lambda: self.use_beat(),
-            "#初始化": lambda: self.__init__(),  # 恢复最开始设置的参数（创建对象时的默认参数）
+            "#兼容": lambda : self.compatible_openai(True),
+            "#测试接口": lambda: self.use_beat(True),
+            "#初始化": lambda: self.reset(True),  # 恢复最开始设置的参数（创建对象时的默认参数）
             # 对话参数调节指令
-            "#模型切换": lambda : self.switch_model,
+            "#模型切换": lambda : self.switch_model(True),
             "#V3模型": lambda: self.set_model("V3"),
             "#R1模型" : lambda : self.set_model("R1"),
-            "#打分": lambda : self.score_answer(int(input("对此次回答进行打分(0-100分,默认50分):"))),
-            "#最大token": lambda : self.set_max_tokens(int(input("请输入最大token限制(1-8192,默认4096):"))),
-            "#输出格式": lambda : self.set_response_format(input("请输入指定输出格式(text或json):")),
-            "#敏感词": lambda : self.set_stop(input("设置敏感词:")),
-            "#流式": lambda : self.set_stream(True),
-            "#非流式": lambda : self.set_stream,
-            "#请求统计": lambda : self.set_stream_options(True),
-            "#关闭请求统计": lambda : self.set_stream_options(),
-            "#温度": lambda : self.set_temperature(float(input("请输入温度,数值越小全文逻越严谨(0.0-2.0,默认1.0):"))),
-            "#核采样": lambda : self.set_top_p(float(input("请输入核采样,数值越小内容部分逻越严谨(0.0-1.0,默认1.0):"))),
-            "#工具列表": lambda : self.set_tools(input("请输入模型可能会调用的 tool 的列表(默认为None):")),
-            "#工具选择": lambda : self.switch_tool_choice(),
-            "#开启对数概率输出": lambda : self.set_logprobs(True),
-            "#关闭对数概率输出": lambda : self.set_logprobs,
-            "#位置输出概率": lambda : self.set_top_logprobs(int(input("请指定的每个输出位置返回输出概率top为几的token(0-20，默尔为None):"))),
+            "#打分": lambda : self.score_answer(int(input("对此次回答进行打分(0-100分,默认50分):")),True),
+            "#最大token数": lambda : self.set_max_tokens(int(input("请输入最大token限制(1-8192,默认4096):")),True),
+            "#输出格式": lambda : self.set_response_format(input("请输入指定输出格式(text或json):"),True),
+            "#敏感词": lambda : self.set_stop(input("设置敏感词:"),True),
+            "#流式": lambda : self.set_stream(True,True),
+            "#非流式": lambda : self.set_stream(False,True),
+            "#请求统计": lambda : self.set_stream_options(True if input("请输入 True 或 None :")== "True" else None,True),
+            "#关闭请求统计": lambda : self.set_stream_options(None,True),
+            "#温度": lambda : self.set_temperature(float(input("请输入温度,数值越小全文逻越严谨(0.0-2.0,默认1.0):")),True),
+            "#核采样": lambda : self.set_top_p(float(input("请输入核采样,数值越小内容部分逻越严谨(0.0-1.0,默认1.0):")),True),
+            "#工具列表": lambda : self.set_tools(input("请输入模型可能会调用的 tool 的列表(默认为None):"),True),
+            "#工具选择": lambda : self.switch_tool_choice(True),
+            "#开启对数概率输出": lambda : self.set_logprobs(True,True),
+            "#关闭对数概率输出": lambda : self.set_logprobs(False,True),
+            "#位置输出概率": lambda : self.set_top_logprobs(int(input("请指定的每个输出位置返回输出概率top为几的token(0-20，默尔为None):")),True),
             # FIM对话参数
             "#补全开头": lambda : self.set_prompt(input("请输入需要补全的开头:")),
-            "#完整输出": lambda : self.set_echo(),    # 这个参数就只有False和None了，改不了一点
-            "#FIM对数概率输出": lambda : self.set_FIM_logprobs(int(input("请输入需要多少个候选token数量输出对数概率(默认0):"))),
+            "#完整输出": lambda : self.set_echo(False,True),    # 这个参数就只有False和None了，改不了一点
+            "#FIM对数概率输出": lambda : self.set_FIM_logprobs(int(input("请输入需要多少个候选token数量输出对数概率(0-20,默认0):"))),
             "#补全后缀": lambda : self.set_suffix(input("请输入需要补全的后缀(可以不填):")),
             # 上下文参数
-            "#思维链": lambda : self.reasoning_content_output(),
-            "#对话轮次": lambda : self.set_dialog_history(int(input("请输入最大对话轮数(超过自动删除):"))),
-            "聊天记录": lambda : self.print_dialog_history(),
+            "#思维链": lambda : self.reasoning_content_output(True),
+            "#对话轮次": lambda : self.set_dialog_history(int(input("请输入最大对话轮数(超过自动删除):")),True),
+            "#聊天记录": lambda : self.print_dialog_history(),
             "#清空对话历史": lambda : self.clear_dialog_history(),
             # 多人设管理
             "#人设切换": lambda: self.role_switch(input("请输入切换的人设:")),
@@ -858,7 +892,7 @@ class DeepseekConversationEngine:
             self.set_suffix(input("请输入需要补全的后缀(可以不填):"),False)   # 不输出
             self.fill_in_the_middle_ask()
         else:
-            self.ask(text) # 进行提问
+            self.ask(text,True) # 进行提问并将结果打印出来
         self.dialog_history_manage()  # 自动管理之前的对话历史
 
     """余额计算和监控"""
@@ -978,12 +1012,9 @@ class DeepseekConversationEngine:
 
 if __name__ == '__main__':
     deepseek = DeepseekConversationEngine("魅魔模式")  # 实例化对象(设置人设为专属猫娘)"专属猫娘"
-    # deepseek.set_stream(True)   # 设置流式输出
-    # while True:
-    #     content = input("我：")
-    #     if content == "#退出": break  # 退出循环调用对话的指令
-    #     deepseek.conversation_engine(content)  # 调用对话引擎
-    # print("已退出对话引擎的调用")
-    deepseek.switch_model(True)
-    deepseek.switch_model(True)
-    deepseek.switch_model(True)
+    deepseek.set_stream(True)   # 设置流式输出
+    while True:
+        content = input("我：")
+        if content == "#退出": break  # 退出循环调用对话的指令
+        deepseek.conversation_engine(content)  # 调用对话引擎
+    print("已退出对话引擎的调用")

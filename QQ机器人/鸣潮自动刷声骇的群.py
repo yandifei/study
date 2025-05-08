@@ -7,7 +7,7 @@ import sys
 qq_group_name = "鸣潮自动刷声骸"
 qq_monitor_name = "猫猫"
 administrator = ["雁低飞","yandifei"]  # 设置超级管理员
-role = "变态猫娘"   # (设置人设为专属猫娘)编程教师
+role = "专属猫娘"   # (设置人设为专属猫娘)编程教师
 """--------------------------------------------------QQ窗口绑定处理----------------------------------------------------"""
 chat_win1 = QQMessageMonitor(qq_group_name, qq_monitor_name)    # 会自动置顶和自动展示(最小化显示)
 chat_win1.show_win()    # 展示窗口
@@ -67,7 +67,6 @@ def qq_quick_order(message: str):
     order = message.split("#")[1]  # 通过#键分割@对象和指令
     args = ""  # 用来放置参数
     # 函数映射表(使用lambda来匿名函数)
-    print(f"--------------------{deepseek.model_choice}-*-------------------")
     function_map = {
         "测试": [lambda: test(), None, "切换中途发生异常"],
         "余额": [lambda: money_inquiry(),None,"发生异常"],
@@ -76,12 +75,12 @@ def qq_quick_order(message: str):
         "测试接口": [lambda: deepseek.use_beat(),"已切换至测试接口","切换中途发生异常"],
         "格式化": [lambda: deepseek.__init__(),"已格式化deepseek对话引擎","初始化中途发生异常"],  # 恢复最开始设置的参数（创建对象时的默认参数）
         # 对话参数调节指令
-        "模型切换": [lambda: deepseek.switch_model(True),f"已切换至模型", "切换中途发生异常"],
+        "模型切换": [lambda: deepseek.switch_model(True),"已切换至V3模型" if deepseek.model_choice == "deepseek-chat" else "已切换至R1模型", "切换中途发生异常"],
         "V3模型": [lambda: deepseek.set_model("V3"),"已切换至V3模型", "切换中途发生异常"],
         "R1模型": [lambda: deepseek.set_model("R1"),"已切换至R1模型", "切换中途发生异常"],
         "评分": [lambda: deepseek.score_answer(score=50),"评分成功", "超出打分范围([0-100]分,默认50分)"],
         "最大token": [lambda: deepseek.set_max_tokens(),f"已修改为{deepseek.max_tokens}", "超出最大token数范围([1-8192]分,默认4096)"],
-        "输出格式": [lambda: deepseek.set_response_format(),"修改成功", "格式有误，指定模型必须输出的格式为\"text\"或\"json\""],    # input("请输入指定输出格式(text或json,],默认text):")
+        "输出格式": [lambda: deepseek.set_response_format(),f"已修改为{deepseek.response_format}格式", "格式有误，指定模型必须输出的格式为\"text\"或\"json\""],    # input("请输入指定输出格式(text或json,],默认text):")
         "敏感词": [lambda: deepseek.set_stop(),"添加成功","添加失败"],    # input("设置敏感词(默认为None):")
         "删除敏感词": [lambda : deepseek.del_stop(""),"删除成功","敏感词不存在"],
         # "流式": [lambda: deepseek.set_stream(True),"已切换至流式输出","切换中途发生异常"],
@@ -113,15 +112,15 @@ def qq_quick_order(message: str):
         "人设自定": [lambda: deepseek.set_role(args),"人设设定成功", "自定义人设失败"],# input("请输入人设内容:")
         "删除人设": [lambda: deepseek.remove_role(),"人设删除成功", "人设删除失败"],
         # 场景关键词自动调控参数
-        "代码": [lambda: deepseek.scene_switch("代码"),deepseek.scene_switch("代码"),"切换失败"],
-        "数学": [lambda: deepseek.scene_switch("代码"),deepseek.scene_switch("代码"),"切换失败"],
-        "数据": [lambda: deepseek.scene_switch("数据"),deepseek.scene_switch("数据"),"切换失败"],
-        "分析": [lambda: deepseek.scene_switch("分析"),deepseek.scene_switch("分析"),"切换失败"],
-        "对话": [lambda: deepseek.scene_switch("对话"),deepseek.scene_switch("对话"),"切换失败"],
-        "翻译": [lambda: deepseek.scene_switch("翻译"),deepseek.scene_switch("翻译"),"切换失败"],
-        "创作": [lambda: deepseek.scene_switch("创作"),deepseek.scene_switch("创作"),"切换失败"],
-        "写作": [lambda: deepseek.scene_switch("写作"),deepseek.scene_switch("写作"),"切换失败"],
-        "作诗": [lambda: deepseek.scene_switch("作诗"),deepseek.scene_switch("作诗"),"切换失败"]
+        "代码": [lambda: deepseek.scene_switch("代码"),"已切换至代码场景","切换场景失败"],
+        "数学": [lambda: deepseek.scene_switch("代码"),"已切换至数学场景","切换场景失败"],
+        "数据": [lambda: deepseek.scene_switch("数据"),"已切换至数据场景","切换场景失败"],
+        "分析": [lambda: deepseek.scene_switch("分析"),"已切换至分析场景","切换场景失败"],
+        "对话": [lambda: deepseek.scene_switch("对话"),"已切换至对话场景","切换场景失败"],
+        "翻译": [lambda: deepseek.scene_switch("翻译"),"已切换至翻译场景","切换场景失败"],
+        "创作": [lambda: deepseek.scene_switch("创作"),"已切换至创作场景","切换场景失败"],
+        "写作": [lambda: deepseek.scene_switch("写作"),"已切换至写作场景","切换场景失败"],
+        "作诗": [lambda: deepseek.scene_switch("作诗"),"已切换至作诗场景","切换场景失败"],
     }
     if ":" in order:  # 如何指令中存在:代表的是参数
         order_and_args = order.split(":")  # 分割指令和参数
@@ -131,7 +130,7 @@ def qq_quick_order(message: str):
     if order in function_map:
         # 成功返回的结果和失败返回的结果是动态的，需要使用函数后才能获取
         function = function_map[order][0]  # 拿到映射的函数
-        if args != "":
+        if args != "":  # 如果存在参数
             result = function(args)  # 传入参数执行映射的函数
             chat_win1.send_message(function_map[order][1]) if result else chat_win1.send_message(function_map[order][2])
         else:  # 没有参数直接执行函数
@@ -139,13 +138,14 @@ def qq_quick_order(message: str):
             if isinstance(result,str):  # 如果是字符串
                 chat_win1.send_message(result)  # 返回值就是字符串，就直接返回
             elif result is None:    # 没有返回值
+                print(f"-----------------------------{function_map[order][1]}")
                 chat_win1.send_message(function_map[order][1])  # 执行成功但是没有返回值
-                print(f"========================{deepseek.model_choice}========================")
             else:   # 判断返回值和发送返回值
                 chat_win1.send_message(function_map[order][1]) if result else chat_win1.send_message(function_map[order][2])
         return True  # 成功执行指令
     else:
         chat_win1.send_message("不存在该指令")
+        print("\033[93m接收到了不存在的指令\033[0m")
         return False  # 没有这个指令
 
 
