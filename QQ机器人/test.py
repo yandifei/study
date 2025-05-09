@@ -24,7 +24,7 @@ function_map = {
 # if isinstance(function_map["模型切换"][1],):  # 如果是字符串
 #     print(1)
 
-a = True
-b = list()
-if b:
-    print(1)
+a = ["1"]
+print(a)
+a.pop("1")
+print(a)
