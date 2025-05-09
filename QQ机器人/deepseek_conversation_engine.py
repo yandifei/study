@@ -266,7 +266,7 @@ class DeepseekConversationEngine:
             if out: print("敏感词不存在")
             return False
         else:
-            self.stop.pop(stop)
+            self.stop.remove(stop)
             if out: print("删除成功")
         return True
 
@@ -290,6 +290,7 @@ class DeepseekConversationEngine:
         """流式消息最后的data多一个usage 字段，这个字段包括token 使用统计信息
         参数： stream_options ： 默认为None(不返回这个usage 字段),只能填None或True
         out : 是否打印修改提示，默认为False
+        返回值：修改成功返回True，否则返回False
         """
         if stream_options is None:
             if out: print("已关闭请求用量统计")
@@ -319,7 +320,7 @@ class DeepseekConversationEngine:
         else:
             if out: print(f"温度已修改为{temperature}")
             self.temperature = temperature
-            return True
+            return True # 显式返回
 
     def set_top_p(self,top_p=1.0,out=False):
         """作为调节采样温度的替代方案，模型会考虑前 top_p 概率的 token 的结果。
@@ -431,15 +432,16 @@ class DeepseekConversationEngine:
         if out: print("因为服务器那边不接受True，只接受False和None,所以这个功能无效")
         return True
 
-    def set_FIM_logprobs(self,FIM_logprobs=0):
+    def set_FIM_logprobs(self,FIM_logprobs=0,out=False):
         """制定输出中包含 logprobs 最可能输出 token 的对数概率，包含采样的 token。最大20
         参数：FIM_logprobs : 默认0,最大20
+        out ： 是否打印修改输出,默认False
         返回值：如果修改成功返回True，否则返回False
         """
         if FIM_logprobs < 0 or FIM_logprobs > 20:
-            print("\033[91m参数不在调用范围(0-20),不对该参数进行任何修改\033[0m")
+            if out: print("\033[91m参数不在调用范围(0-20),不对该参数进行任何修改\033[0m")
             return False
-        print(f"已制定输出中保留{FIM_logprobs}个最可能输出token的对数概率")
+        if out: print(f"已制定输出中保留{FIM_logprobs}个最可能输出token的对数概率")
         self.FIM_logprobs = FIM_logprobs
         return True
 
@@ -614,6 +616,7 @@ class DeepseekConversationEngine:
                 print("\033[91m服务器负载过高，请稍后重试您的请求\033[0m")
             else:
                 print(f"\033[91m未知错误: {Error}\033[0m")
+        return False
 
     def reasoning_content_output(self,out=False):
         """思考内容输出
@@ -785,7 +788,7 @@ class DeepseekConversationEngine:
                 self.dialog_history[0] = {"role": "system", "content": self.role}   # 把之前的人设替换掉
             else:   # 在消息头插入人设
                 self.dialog_history.insert(0,{"role": "system", "content": self.role})
-        if out: print("自定义人设修改成功")
+        if out: print("自定义人设成功")
 
     def remove_role(self,out=False):
         """删除人设
@@ -856,7 +859,7 @@ class DeepseekConversationEngine:
             "#温度": lambda : self.set_temperature(float(input("请输入温度,数值越小全文逻越严谨(0.0-2.0,默认1.0):")),True),
             "#核采样": lambda : self.set_top_p(float(input("请输入核采样,数值越小内容部分逻越严谨(0.0-1.0,默认1.0):")),True),
             "#工具列表": lambda : self.set_tools(input("请输入模型可能会调用的 tool 的列表(默认为None):"),True),
-            "#工具选择": lambda : self.switch_tool_choice(True),
+            "#工具开关": lambda : self.switch_tool_choice(True),
             "#开启对数概率输出": lambda : self.set_logprobs(True,True),
             "#关闭对数概率输出": lambda : self.set_logprobs(False,True),
             "#位置输出概率": lambda : self.set_top_logprobs(int(input("请指定的每个输出位置返回输出概率top为几的token(0-20，默尔为None):")),True),
