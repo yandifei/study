@@ -241,7 +241,7 @@ class DeepseekConversationEngine:
     def set_stop(self,stop=None,out=False):
         """停止生成标志词
         参数： stop ： 可以是单个字符，也可以是字符组成的列表（敏感词最多16个）
-        out : 是否打印修改提示
+        out : 是否打印修改提示，默认False
         返回值：修改错误返回False，成功修改返回True
         """
         if isinstance(stop, list) and (len(stop) + len(self.stop)) > 16:    # 如果是列表或
@@ -253,17 +253,21 @@ class DeepseekConversationEngine:
         if out: print(f"添加成功，当前敏感字词：{self.stop}个")
         return True
 
-    def del_stop(self,stop):
+    def del_stop(self,stop,out=False):
         """删除敏感词
         参数 ： stop : 选需要删除的敏感词
-        这个词不存在也会返回Falsee,不存在可删的列表返回False，否则删除敏感词后返回True
+        out : 是否打印修改提示，默认False
+        这个词不存在也会返回False,不存在可删的列表返回False，否则删除敏感词后返回True
         """
-        if isinstance(self.stop,list) and len(self.stop) == 0:
+        if isinstance(self.stop,list) and len(self.stop) == 0:  # 没有可以删除的提示词
+            if out: print("敏感词列表为空，没有可以删除的敏感词")
             return False
         elif stop not in self.stop:
+            if out: print("敏感词不存在")
             return False
         else:
             self.stop.pop(stop)
+            if out: print("删除成功")
         return True
 
     def set_stream(self,stream=False,out=False):
@@ -627,6 +631,7 @@ class DeepseekConversationEngine:
         """设置对话最大轮次(必须是一个整数值，如果解除限制就填-1)
         参数 : round ； 设置的最大对话轮次，默认值为5
         out ： 是否输出修改成功或失败,默认False
+        返回值: True
         """
         if dialog_round== -1:
             if out: print("\033[91m已解除对话轮次限制，注意最大token数和高额消费\033[0m")
@@ -635,6 +640,7 @@ class DeepseekConversationEngine:
             # dialog_round = int(dialog_round)    # 怕字符串，强转
             if out: print(f"\033[93m已设置对话轮次为{dialog_round}轮\033[0m")
             self.clear_flag = dialog_round
+        return True
 
     def  dialog_history_manage(self,out=False):
         """多轮对话管理，判断是否删除最旧的一轮对话，V3是5轮，R1是10轮
@@ -667,17 +673,19 @@ class DeepseekConversationEngine:
             dialog_history.append(split_record) # 添加到列表
         return dialog_history
 
-    def clear_dialog_history(self):
+    def clear_dialog_history(self,out=False):
         """清空历史记录（不包括人设）
+        参数 ： out ： 是否输出修改成功或失败,默认False
         返回值： 如果历史为空则返回False,否则为True
         """
         if len(self.dialog_history) == 0:   # 对话记录为空
-            print("\033[91m对话历史为空无需清空\033[0m")
+            if out: print("\033[91m对话历史为空无需清空\033[0m")
             return False
         if self.dialog_history[0]["role"] == "system":  # 设置了人设
             self.dialog_history = self.dialog_history[0:1]  # 切片清空除人设外的对话记录
         else:
             self.dialog_history.clear() # 直接清空，没有任何
+        if out: print("已清空历史记录")
         return True
 
     @staticmethod
@@ -707,7 +715,7 @@ class DeepseekConversationEngine:
         role_name_txt = role_name + ".txt"  # 补足后缀名
         path = os.path.join("提示库/", role_name_txt)
         if not os.path.isfile(path):  # 检查是否有这个文件（文件不存在）
-            print("不存在该人设，不对人设进行任何任何修改")
+            print("提示库不存在该人设，不对人设进行任何任何修改")
             return False
         self.role = self.role_read(role_name)   # 修改人设属性
         # 在对话中启用人设
@@ -722,9 +730,10 @@ class DeepseekConversationEngine:
         return True
 
     @staticmethod
-    def role_list():
+    def role_list(out=False):
         """打印并返回提示库里面的所有人设
-        返回值：如果人设库为空则返回False,成功读入为True
+        参数 ： out ： 是否输出修改成功或失败,默认False
+        返回值：如果人设库为空则返回False,成功读入则返回列表
         """
         all_role_list = list()  # 创建放置人设的列表
         for role_txt in os.listdir("提示库/"):  # 遍历该文件夹所有文件
@@ -732,13 +741,14 @@ class DeepseekConversationEngine:
                 rol_name = role_txt.replace(".txt", "")  # 把文件名的.txt替换掉
                 all_role_list.append(rol_name)  # 存放人设
         if len(all_role_list) == 0:
-            print("\033[91m\提示库中为空，不存在任何人设\033[0m")
+            if out: print("\033[91m\提示库中为空，不存在任何人设\033[0m")
             return False
         print("提示库的所有人设:",end=" ")
-        for role_name in all_role_list:
-            print(role_name,end=" ")
-        print() # 换行
-        return True
+        if out: # 是否打印输出
+            for role_name in all_role_list:
+                print(role_name,end=" ")
+            print() # 换行
+        return all_role_list
 
     @staticmethod
     def select_role_content(role_name):
@@ -752,8 +762,9 @@ class DeepseekConversationEngine:
             print("不存在该人设，无法进行打印")
             return False
         with open(path, "r", encoding="utf-8") as role_txt:
-            print(f"人设内容:\n{role_txt.read()}\n")
-        return f"人设内容:\n{role_txt.read()}\n"
+            role_content = role_txt.read()  # 必须临时保存，不然返回值无法处理
+            print(f"人设内容:\n{role_content}")
+        return f"人设内容:\n{role_content}"
 
     def print_role_content(self):
         """打印当前人设"""
@@ -776,19 +787,21 @@ class DeepseekConversationEngine:
                 self.dialog_history.insert(0,{"role": "system", "content": self.role})
         if out: print("自定义人设修改成功")
 
-    def remove_role(self):
+    def remove_role(self,out=False):
         """删除人设
+        参数 ： out ： 是否输出修改成功或失败,默认False
         返回值：修改成功返回True，否则返回False
         """
         if len(self.dialog_history) == 0:  # 没有任何消息头，即没有设置人设
-            print("\033[91m当前人设，不需要进行删除\033[0m")
+            if out: print("\033[91m未设置人设，不需要进行删除\033[0m")
             return False
         elif len(self.dialog_history) > 0: # 存在对话记录，需要进一步确认是否有人设
             if self.dialog_history[0]["role"] == "system":  # 设置了人设
                 self.dialog_history.pop(0)  # 删除第一个元素(人设)
+                if out: print("成功删除人设")
                 return True
             else:
-                print("\033[91m当前人设，不需要进行删除\033[0m")
+                if out: print("\033[91m未设置人设，不需要进行删除\033[0m")
         return False    # 显式调用
 
     def scene_switch(self,scene_key,out=False):
@@ -813,8 +826,8 @@ class DeepseekConversationEngine:
         self.temperature = scene[scene_key][2]      # 温度调控
         self.frequency_penalty = scene[scene_key][3]# 重复抑制系数(频次惩罚系数)
         self.presence_penalty = scene[scene_key][4] # 内容创新系数(存在惩罚系数)
-        if out: print(f"已切换至{scene_key}模式")
-        return  f"已切换至{scene_key}模式"
+        if out: print(f"已切换至{scene_key}场景")
+        return  f"已切换至{scene_key}场景"
 
     def quick_order(self,order):
         """快捷指令（调用此方法后可通过关键字快速找到其他方法）
@@ -831,10 +844,11 @@ class DeepseekConversationEngine:
             "#模型切换": lambda : self.switch_model(True),
             "#V3模型": lambda: self.set_model("V3"),
             "#R1模型" : lambda : self.set_model("R1"),
-            "#打分": lambda : self.score_answer(int(input("对此次回答进行打分(0-100分,默认50分):")),True),
+            "#评分": lambda : self.score_answer(int(input("对此次回答进行评分(0-100分,默认50分):")),True),
             "#最大token数": lambda : self.set_max_tokens(int(input("请输入最大token限制(1-8192,默认4096):")),True),
             "#输出格式": lambda : self.set_response_format(input("请输入指定输出格式(text或json):"),True),
             "#敏感词": lambda : self.set_stop(input("设置敏感词:"),True),
+            "#删除敏感词": lambda: self.del_stop(input("请输入需要删除的敏感词:"),True),
             "#流式": lambda : self.set_stream(True,True),
             "#非流式": lambda : self.set_stream(False,True),
             "#请求统计": lambda : self.set_stream_options(True if input("请输入 True 或 None :")== "True" else None,True),
@@ -855,24 +869,27 @@ class DeepseekConversationEngine:
             "#思维链": lambda : self.reasoning_content_output(True),
             "#对话轮次": lambda : self.set_dialog_history(int(input("请输入最大对话轮数(超过自动删除):")),True),
             "#聊天记录": lambda : self.print_dialog_history(),
-            "#清空对话历史": lambda : self.clear_dialog_history(),
+            "#清空对话历史": lambda : self.clear_dialog_history(True),
             # 多人设管理
             "#人设切换": lambda: self.role_switch(input("请输入切换的人设:")),
-            "#所有人设": lambda : self.role_list(),
+            "#所有人设": lambda : self.role_list(True),
             "#人设查询": lambda : self.select_role_content(input("请输入要查询的人设:")),
             "#当前人设": lambda : self.print_role_content(),
             "#人设自定": lambda : self.set_role(input("请输入人设内容:")),
-            "#删除人设": lambda : self.remove_role(),
+            "#删除人设": lambda : self.remove_role(True),
             # 场景关键词自动调控参数
-            "#代码": lambda : self.scene_switch("代码"),
-            "#数学": lambda: self.scene_switch("数学"),
-            "#数据": lambda: self.scene_switch("数据"),
-            "#分析": lambda: self.scene_switch("分析"),
-            "#对话": lambda: self.scene_switch("对话"),
-            "#翻译": lambda: self.scene_switch("翻译"),
-            "#创作": lambda: self.scene_switch("创作"),
-            "#写作": lambda: self.scene_switch("写作"),
-            "#作诗": lambda: self.scene_switch("作诗")
+            "#代码": lambda : self.scene_switch("代码",True),
+            "#数学": lambda : self.scene_switch("数学",True),
+            "#数据": lambda : self.scene_switch("数据",True),
+            "#分析": lambda : self.scene_switch("分析",True),
+            "#对话": lambda : self.scene_switch("对话",True),
+            "#翻译": lambda : self.scene_switch("翻译",True),
+            "#创作": lambda : self.scene_switch("创作",True),
+            "#写作": lambda : self.scene_switch("写作",True),
+            "#作诗": lambda : self.scene_switch("作诗",True),
+            # 余额和token数查询
+            "#余额": lambda : self.return_balance(),
+            "#toekn": lambda : self.return_token()
         }
         if order in function_map:   # 检查指令是否在函数映射字典中
             function = function_map[order]  # 拿到映射的函数
@@ -966,6 +983,21 @@ class DeepseekConversationEngine:
             print(
                 f"最少可生产:{round(((characters * 24) / 1024) / 1024, 2)}GB 的对话数据， 约{round(characters / 880000, 2)}本《三体》(88万字一本)")
         return int(min_token), characters, words, round(((characters * 24) / 1024) / 1024, 2), round(characters / 880000, 2)
+
+    def return_balance(self):
+        """输出余额（简化不必要的参数，仅提取常用有效返回值组成字符串）
+        返回值：字符串
+        """
+        detail_list = self.balance_inquiry(True)
+        return f"DeepSeek API余额：{detail_list[2]}{detail_list[1]}"
+
+    def return_token(self):
+        """量化可用token和字数（简化不必要的参数，仅提取常用有效返回值组成字符串）
+        返回值：字符串
+        """
+        min_token, characters, words, data, books = self.calculate_token_capacity(True)
+        text = f"""当前可用余额能生成最少 {min_token} token，对话可使用最少约{characters}个汉字，对话可使用最少约{words}英文字符，最少可生产:{data}GB 的对话数据， 约{books}本《三体》(88万字一本)"""
+        return text
 
     """Token分词和计算"""
     def calculate_token(self,input_text, out=False):

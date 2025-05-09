@@ -7,7 +7,7 @@ import sys
 qq_group_name = "1"
 qq_monitor_name = "猫猫"
 administrator = ["雁低飞","yandifei"]  # 设置超级管理员
-role = None   # (设置人设为专属猫娘)编程教师
+role = "变态猫娘"  # (设置人设为专属猫娘)编程教师
 """--------------------------------------------------QQ窗口绑定处理----------------------------------------------------"""
 chat_win1 = QQMessageMonitor(qq_group_name, qq_monitor_name)    # 会自动置顶和自动展示(最小化显示)
 chat_win1.show_win()    # 展示窗口
@@ -73,7 +73,7 @@ def qq_quick_order(message: str):
         # 特殊指令
         "兼容": [lambda: deepseek.compatible_openai(),"已经切换至兼容OpenAI的接口","切换中途发生异常"],
         "测试接口": [lambda: deepseek.use_beat(),"已切换至测试接口","切换中途发生异常"],
-        "格式化": [lambda: deepseek.__init__(),"已格式化deepseek对话引擎","初始化中途发生异常"],  # 恢复最开始设置的参数（创建对象时的默认参数）
+        "初始化": [lambda: deepseek.reset(),"已格式化deepseek对话引擎","初始化中途发生异常"],  # 恢复最开始设置的参数（创建对象时的默认参数）
         # 对话参数调节指令
         "模型切换": [lambda: deepseek.switch_model(True),"已切换至V3模型" if deepseek.model_choice == "deepseek-chat" else "已切换至R1模型", "切换中途发生异常"],
         "V3模型": [lambda: deepseek.set_model("V3"),"已切换至V3模型", "切换中途发生异常"],
@@ -130,7 +130,7 @@ def qq_quick_order(message: str):
     if order in function_map:
         # 成功返回的结果和失败返回的结果是动态的，需要使用函数后才能获取
         function = function_map[order][0]  # 拿到映射的函数
-        if args != "":
+        if args != "":  # 如果存在参数
             result = function(args)  # 传入参数执行映射的函数
             chat_win1.send_message(function_map[order][1]) if result else chat_win1.send_message(function_map[order][2])
         else:  # 没有参数直接执行函数

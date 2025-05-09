@@ -7,7 +7,7 @@ import sys
 qq_group_name = "鸣潮想睡觉（三）"
 qq_monitor_name = "猫猫"
 administrator = ["雁低飞","yandifei"]  # 设置超级管理员
-role = "变态猫娘"   # (设置人设为专属猫娘)编程教师
+role = "蓝宝专属"   # (设置人设为专属猫娘)编程教师
 """--------------------------------------------------QQ窗口绑定处理----------------------------------------------------"""
 chat_win1 = QQMessageMonitor(qq_group_name, qq_monitor_name)    # 会自动置顶和自动展示(最小化显示)
 chat_win1.show_win()    # 展示窗口

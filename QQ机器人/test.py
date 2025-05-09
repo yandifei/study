@@ -1,3 +1,4 @@
+import types
 from time import sleep
 from deepseek_conversation_engine import DeepseekConversationEngine
 deepseek = DeepseekConversationEngine("专属猫娘")  # 实例化对象(设置人设为专属猫娘)编程教师
@@ -23,9 +24,7 @@ function_map = {
 # if isinstance(function_map["模型切换"][1],):  # 如果是字符串
 #     print(1)
 
-def a():
-    pass
-print(type(a))
-if isinstance(a(),填什么):  # 如果是函数
+a = True
+b = list()
+if b:
     print(1)
-
