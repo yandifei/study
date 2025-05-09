@@ -23,6 +23,7 @@ import types
 # def __init__(self):
 #     return True
 
+a = ["1","2","5"]
 
-a = lambda : True
+print("数字" + " ".join(a))
 

@@ -234,14 +234,16 @@ self.edit_box.SendKeys(content)    # 发送内容
 
 # 发送效率
 实际测试发送100条消息要 `54.836289` 秒，拿的是蓝宝的200多人的第三个群进行测试
+
 ```python
 from time import perf_counter
-from QQScript.QQMessageMonitor import * # 导包
+from QQMessageMonitor import *  # 导包
+
 qq_group_name = "鸣潮想睡觉（三）"
 qq_monitor_name = "雁低飞"
-chat_win1 = QQMessageMonitor(qq_group_name, qq_monitor_name)    # 会自动置顶和自动展示(最小化显示)
-chat_win1.show_win()    # 展示窗口
-chat_win1.top_win()     # 置顶窗口
+chat_win1 = QQMessageMonitor(qq_group_name, qq_monitor_name)  # 会自动置顶和自动展示(最小化显示)
+chat_win1.show_win()  # 展示窗口
+chat_win1.top_win()  # 置顶窗口
 sleep(2)
 count_1 = 0
 start = perf_counter()  # 最高精度计时器
