@@ -426,8 +426,6 @@ class QQMessageMonitor:
         self.edit_box.GetValuePattern().SetValue("content")
         pass
 
-
-
     # def set_edit_title(self):
     #     """获取窗口标题并修改窗口标题"""
     #     print(self.edit_box.Name)
@@ -644,13 +642,13 @@ class QQMessageMonitor:
         if len(self.message_processing_queues) > max_processing_queues: # 超出最大处理数
             print(f"\033[91m超出消息最大处理数:{max_processing_queues}，不对消息进行处理\033[0m")  # 亮红色
         elif f"@{self.monitor_name}" in message_dict["发送消息"]:  # 最新列表获取消息
+            if self.monitor_name == message_dict["发送者"]:        # 自己@自己
+                message_dict["发送者"] = "自己"  # 给自己改名
             print(f"\033[94m我被{message_dict["发送者"]}艾特了，消息是:{message_dict["发送消息"]}\033[0m")
             self.message_processing_queues.append(message_dict)  # 加入消息处理队列
 
-
-
 if __name__ == '__main__':
-    # chat1 = QQMessageMonitor("鸣潮自动刷声骸", "雁低飞")
+    # chat1 = QQMessageMonitor("Q群号", "Q群中你的名字")
     # chat1.move()     # 把窗口移动到最上角
     # print(f"数据存放路径:\t{chat1.message_data_txt}")
     # for one_message in chat1.message_list:  # 打印初次绑定后的消息
