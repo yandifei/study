@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/QQ机器人.iml" filepath="$PROJECT_DIR$/.idea/QQ机器人.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../deepseek_v3_tokenizer/.idea/deepseek_v3_tokenizer.iml" filepath="$PROJECT_DIR$/../../deepseek_v3_tokenizer/.idea/deepseek_v3_tokenizer.iml" />
-    </modules>
-  </component>
-</project>
