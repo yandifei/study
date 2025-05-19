@@ -23,4 +23,12 @@ public class Teacher extends Person{
     public void teacher() {
         System.out.println("我承诺，我会认真教学");
     }
+
+    public void printInfo() {
+        System.out.println("老师的信息：");
+        System.out.println(super.basicInfo());
+        System.out.println("工龄" + work_age);
+        teacher();
+        System.out.println(play());
+    }
 }

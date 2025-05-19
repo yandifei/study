@@ -5,6 +5,7 @@ public class Person {
     private char sex;
     private int age;
 
+
     public Person(String name, char sex, int age) {
         this.name = name;
         this.sex = sex;
@@ -37,5 +38,9 @@ public class Person {
 
     public String play() {
          return "调用了父类的play方法";
+    }
+
+    public String basicInfo() {
+        return "姓名: " + name + "\n年龄：" + age + "\n性别" + sex;
     }
 }
