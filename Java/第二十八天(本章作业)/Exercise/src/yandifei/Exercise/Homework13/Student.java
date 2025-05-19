@@ -23,4 +23,12 @@ public class Student extends Person {
     public void study() {
         System.out.println("我承诺，我会好好学习");
     }
+
+    public void printlnInfo() {
+        System.out.println("学生的信息");
+        System.out.println(super.basicInfo());
+        System.out.println("学号: " + stu_id);
+        study();    //组合，变化万千
+        System.out.println(play());
+    }
 }
