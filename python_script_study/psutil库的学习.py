@@ -63,8 +63,7 @@ def get_cpu_count(logic_count=True):
         real_cpu_count = psutil.cpu_count(False)    # 获得真实的物理核心数
         if real_cpu_count:     # 返回值不是None
             return real_cpu_count   # 返回物理核心数
-        else:
-            return "该系统不支持物理核心的统计"
+    return "该系统不支持物理核心的统计"
 
 def get_cup_stats():
     """获取各种 CPU 统计信息
