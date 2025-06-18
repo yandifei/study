@@ -10,7 +10,9 @@ notice = """
 本程序没有使用任何协议，只有一个要求：禁止使用在非法领域。
 """
 
-url = "https://t.alcy.cc/moe"
+# url = "https://t.alcy.cc/moe" # 二次元萌图
+# url = "https://v2.xxapi.cn/api/baisi?return=302"    # 三次元白丝
+url = "https://v2.xxapi.cn/api/heisi?return=302"    # 三次元黑丝
 r = requests.get(url,timeout=60)    # 1分钟超时
 
 # print(r.content)
@@ -22,7 +24,6 @@ try:
         # 转换为RGB模式（确保兼容性）
         if img.mode != 'RGB':
             img = img.convert('RGB')
-            print(1)
 
         # 文件名字以当前时间命名
         image_name = f"{datetime.now().strftime("%Y-%m-%d %H-%M-%S")}.png"
