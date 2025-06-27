@@ -13,7 +13,7 @@ OpenRGB_path =  os.path.join(os.getcwd(),"OpenRGB Windows 64-bit","OpenRGB.exe")
 try:
     def start_server():
         """启动OpenRGB的服务端"""
-        # 执行命令启动服务并获取输出(非流式)
+        # 执行命令启动服务并获取输出(非流式)20
         result = subprocess.run(
             # 命令列表（避免注入风险）
             [OpenRGB_path, "--server", "--server-port", "6742", "--profile", "default"],
