@@ -41,7 +41,8 @@ logger.critical("5")
 flt = logging.Filter("cn.cccb")
 
 # 关联过滤器
-logger.addFilter(flt)
+logger.addFilter(flt)   # 给logger添加这个过滤器
+# fileHandler.addFilter(flt)  # 给fileHandel加过滤器
 
 # 打印日志的代码
 logger.debug("使用过滤器：1")

@@ -34,6 +34,7 @@
     "Python.main.executor": "Run",
     "Python.视频学习.executor": "Run",
     "Python.视频学习2.executor": "Run",
+    "Python.视频学习2_1.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "settings.editor.selected.configurable": "File.Encoding"
   }
@@ -43,7 +44,7 @@
       <recent name="B:\study\python logging study" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.视频学习2">
+  <component name="RunManager" selected="Python.视频学习2_1">
     <configuration name="视频学习" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="python logging study" />
       <option name="ENV_FILES" value="" />
@@ -88,7 +89,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="视频学习2_1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="python logging study" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -101,7 +102,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/视频学习2_1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -178,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.视频学习2_1" />
         <item itemvalue="Python.视频学习2" />
         <item itemvalue="Python.视频学习" />
         <item itemvalue="Python.4 时间" />
         <item itemvalue="Python.3 更改显示消息的格式" />
-        <item itemvalue="Python.2" />
       </list>
     </recent_temporary>
   </component>
