@@ -1,4 +1,5 @@
 import logging
+import sys
 
 # 编程的方式来写一下高级的写法
 # 记录器
@@ -9,7 +10,7 @@ print(type(logger))
 
 
 # 处理器handler(1这是流式处理器)
-consoleHandler = logging.StreamHandler()    # 流式处理器（控制台输出）
+consoleHandler = logging.StreamHandler(stream=sys.stdout)    # 流式处理器（控制台输出）
 consoleHandler.setLevel(logging.DEBUG)
 
 # 处理器handler(2这是文件处理器)(没有给handler指定日志级别，将使用logger的级别)

@@ -1,0 +1,4 @@
+consoleHandler = logging.StreamHandler(stream=sys.stdout)    # 流式处理器（控制台输出）
+修改处理器的stream就可以实现输出的颜色了，因为默认为None，所以应该是sys.stderr这个，导致了输出全都是红色。
+
+或者使用colorlog实现自定义的颜色输出
