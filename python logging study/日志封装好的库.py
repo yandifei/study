@@ -91,63 +91,80 @@ sys.excepthook = exception_hook # 开启全局异常捕获
 log.info("主程序开始(导包完成，全局异常捕获加载完成)")
 
 """=======================================================方法定义=================================================================="""
+# def debug(msg: object,
+#           *args: object,
+#           exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[
+#               None, None, None] | BaseException = None,
+#           stack_info: bool = False,
+#           stacklevel: int = 1,
+#           extra: Mapping[str, object] | None = None) -> None:
+#     """调试日志输出"""
+#     # log.debug(f"\033[90m{message}\033[0m")
+#     log.debug(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra)
 
-
-def debug(msg: object,
-            *args: object,
-            exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[None, None, None] | BaseException = None,
-            stack_info: bool = False,
-            stacklevel: int = 1,
-            extra: Mapping[str, object] | None = None) -> None:
+def debug(msg: object,*args: object):
     """调试日志输出"""
     # log.debug(f"\033[90m{message}\033[0m")
-    log.debug(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra)
+    log.debug(msg, *args)
 
-
-def info(msg: object,
-            *args: object,
-            exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[None, None, None] | BaseException = None,
-            stack_info: bool = False,
-            stacklevel: int = 1,
-            extra: Mapping[str, object] | None = None) -> None:
+# def info(msg: object,
+#          *args: object,
+#          exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[
+#              None, None, None] | BaseException = None,
+#          stack_info: bool = False,
+#          stacklevel: int = 1,
+#          extra: Mapping[str, object] | None = None) -> None:
+#     """运行正常日志输出"""
+#     # log.info(f"\033[97m{message}\033[0m")
+#     log.info(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra)
+def info(msg: object,*args: object):
     """运行正常日志输出"""
-    # log.info(f"\033[97m{message}\033[0m")
-    log.info(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra)
+    log.info(msg, *args)
 
+# def warning(msg: object,
+#             *args: object,
+#             exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[
+#                 None, None, None] | BaseException = None,
+#             stack_info: bool = False,
+#             stacklevel: int = 1,
+#             extra: Mapping[str, object] | None = None) -> None:
+#     """警告日志输出"""
+#     # log.warning(f"\033[93m{message}\033[0m")
+#     log.warning(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra)
 
-def warning(msg: object,
-            *args: object,
-            exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[None, None, None] | BaseException = None,
-            stack_info: bool = False,
-            stacklevel: int = 1,
-            extra: Mapping[str, object] | None = None) -> None:
+def warning(msg: object,*args: object):
     """警告日志输出"""
-    # log.warning(f"\033[93m{message}\033[0m")
-    log.warning(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra)
+    log.warning(msg, *args)
 
+# def critical(msg: object,
+#              *args: object,
+#              exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[
+#                  None, None, None] | BaseException = None,
+#              stack_info: bool = False,
+#              stacklevel: int = 1,
+#              extra: Mapping[str, object] | None = None) -> None:
+#     """致命错误日志输出"""
+#     # log.critical(f"\033[31m{message}\033[0m")
+#     log.critical(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra)
 
-def critical(msg: object,
-             *args: object,
-             exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[
-                 None, None, None] | BaseException = None,
-             stack_info: bool = False,
-             stacklevel: int = 1,
-             extra: Mapping[str, object] | None = None) -> None:
+def critical(msg: object,*args: object):
     """致命错误日志输出"""
-    # log.critical(f"\033[31m{message}\033[0m")
-    log.critical(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=stacklevel)
+    log.critical(msg, *args)
 
+# def exception(msg: object,
+#              *args: object,
+#              exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[None, None, None] | BaseException = None,
+#              stack_info: bool = False,
+#              stacklevel: int = 1,
+#              extra: Mapping[str, object] | None = None) -> None:
+#     """异常捕获日志输出（比致命错误日志输出强）"""
+#     # 保持原始调用，颜色应由日志处理器控制
+#     log.exception(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra)
 
-def exception(msg: object,
-              *args: object,
-              exc_info: None | bool | tuple[type[BaseException], BaseException, TracebackType | None] | tuple[
-                  None, None, None] | BaseException = True,
-              stack_info: bool = False,
-              stacklevel: int = 1,
-              extra: Mapping[str, object] | None = None) -> None:
+def exception(msg: object,*args: object):
     """异常捕获日志输出（比致命错误日志输出强）"""
-    # log.exception(f"\033[91m{message}\033[0m")
-    log.exception(msg, *args, exc_info=exc_info, stack_info=stack_info, stacklevel=stacklevel, extra=extra)
+    # 保持原始调用，颜色应由日志处理器控制
+    log.exception(msg, *args)
 
 
 if __name__ == '__main__':
