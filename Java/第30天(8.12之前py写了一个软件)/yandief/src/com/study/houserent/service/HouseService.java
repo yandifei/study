@@ -21,6 +21,17 @@ public class HouseService {
         houses[0] = new House(1, "jack", "112", "海淀区", 2000, "未出租");
     }
 
+    //findById方法,返回House对象或者null
+    public House findById(int findId) {
+        //遍历数组
+        for (int i = 0; i < houseNums; i++) {
+            if (findId == houses[i].getId()) {
+                return houses[i];
+            }
+        }
+        return null;
+    }
+
     //del方法，删除一个房屋信息
     public boolean del(int delId) {
 
