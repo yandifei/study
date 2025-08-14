@@ -38,6 +38,20 @@ public class HouseView {
         }
     }
 
+    //房屋查找
+    public void findHouse() {
+        System.out.println("===============查找房屋信息===============");
+        System.out.print("请输入你要查找的id：");
+        int findId = Utility.readInt();
+        //调用方法
+        House house = houseService.findById(findId);
+        if (house != null) {
+            System.out.println(house);
+        } else {
+            System.out.println("===============查找房屋信息id不存在===============");
+        }
+    }
+
     //编写delHouse()接收输入的id,调用Service的del方法
     public void delHouse() {
         System.out.println("===============删除房屋信息===============");
@@ -61,7 +75,10 @@ public class HouseView {
 
     }
 
+    //根据id修改房屋信息
+    public void update() {
 
+    }
     //编写listHouses()显示房屋列表
     public void listHouses() {
         System.out.println("===============房屋列表===============");
@@ -74,6 +91,15 @@ public class HouseView {
             System.out.println(houses[i]);
         }
         System.out.println("===============房屋列表显示完毕===============\n");
+    }
+
+    //完成退出确认
+    public void exit() {
+        //这里我们使用Utility提供方法，完成确认
+        char choice = Utility.readConfirmSelection();
+        if (choice == 'Y') {
+            loop = false;
+        }
     }
 
     //显示主菜单
@@ -94,7 +120,7 @@ public class HouseView {
                     addHouse();
                     break;
                 case '2' :
-                    System.out.println("查 找 房 屋");
+                    findHouse();
                     break;
                 case '3' :
                     delHouse();
@@ -103,11 +129,10 @@ public class HouseView {
                     System.out.println("修 改 房 屋 信 息");
                     break;
                 case '5' :
-                    System.out.println("房 屋 列 表");
                     listHouses();
                     break;
                 case '6' :
-                    loop = false;
+                    exit();
                     break;
             }
         } while (loop);
