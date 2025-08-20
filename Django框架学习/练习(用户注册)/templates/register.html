@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+<body>
+<h1>用户注册</h1>
+<!--method是指提交方式是get还是post，action是提交地址-->
+<form method="post" action="/post/reg">
+<!--    必须要写上name，因为这是post提交数据的字典键-->
+<!--    {"user_name"：输入的用户名，'password'：输入的密码}-->
+    用户名：<input type="text" name="user_name">
+
+    密码：<input type="password" name="password">
+
+    <input type="button" value="按钮提交">
+    <input type="submit" value="表单提交1">
+</form>
+</body>
+</html>
