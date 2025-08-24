@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <h1>1级标题</h1>
+    <div>块级标签，强制霸占一整行</div>
+    <span>行内标签</span><span>、内联标签</span>
+    <h2>2级标题</h2>
+    <a href="https://github.com">跳转GitHub</a>
+    <h3>3级标题</h3>
+    <!--跳转到自己网站其他的地址-->
+    <a href="http://127.0.0.1:5000/get/news">查看更多</a>
+    <!相对地址的跳转>
+    <a href="/get/news">查看更多</a>
+    <h4>4级标题</h4>
+    <div>蔚蓝档案图床链接的图片</div>
+<!--    <img style="height: 400px" src="https://api.seaya.link/random?type=file"/>-->
+    <img style="height: 400px" src="https://cdnimg-v2.gamekee.com/wiki2.0/images/w_800/h_1834/829/43637/2025/7/6/276362.png"/>
+    <h5>5级标题</h5>
+    <div>本地的图片</div>
+    <img src="/static/img.png" style="width: 50%"/>
+    <h6>6级标题</h6>
+        <div>列表标签</div>
+        <br>
+        <div>无序列表标签</div>
+        <ul>
+            <li>中国移动</li>
+            <li>中国联通</li>
+            <li>中国电信</li>
+        </ul>
+        <br>
+        <div>有序列表标签</div>
+        <ol>
+                <li>中国移动</li>
+                <li>中国联通</li>
+                <li>中国电信</li>
+        </ol>
+    <br>
+    <h1>表单学习</h1>
+    <div>我是表单（不是表格）</div>
+    <table border="1">
+<!--        表单头-->
+        <thead>
+            <tr> <th>ID</th> <th>姓名</th> <th>年龄</th> </tr>
+        </thead>
+<!--        表主题-->
+        <tbody>
+            <tr>    <td>10</td> <td>钟离</td>  <td>19</td>    </tr>
+            <tr>    <td>11</td> <td>钟离</td>  <td>19</td>    </tr>
+            <tr>    <td>12</td> <td>钟离</td>  <td>19</td>    </tr>
+            <tr>    <td>13</td> <td>钟离</td>  <td>19</td>    </tr>
+            <tr>    <td>14</td> <td>钟离</td>  <td>19</td>    </tr>
+        </tbody>
+    </table>
+    <h1>input输入框</h1>
+    <div>文本输入框</div>
+    <input type="text">
+    <div>密码输入框</div>
+    <input type="password">
+    <div>文件输入框</div>
+    <input type="file">
+    <div>单选框</div>
+<!--    需要加上name才能达到2个单选框互斥-->
+    <input type="radio" name="1">男
+    <input type="radio" name="1">女
+    <div>复选框</div>
+    <input type="checkbox">足球
+    <input type="checkbox">篮球
+    <input type="checkbox">羽毛球
+    <input type="checkbox">悠悠球
+    <div>按钮</div>
+    <input type="button" value="按钮">我是按钮 <!--普通按钮-->
+    <div>提交按钮</div>
+    <input type="submit" value="提交">我是提交按钮<!--提交表单-->
+    <h1>下拉框</h1>
+    <div>单选下拉框</div>
+    <select>
+        <option>北京</option>
+        <option>上海</option>
+        <option>重庆</option>
+        <option>广州</option>
+    </select>
+    <div>多选下拉框</div>
+    <select multiple>
+        <option>北京</option>
+        <option>上海</option>
+        <option>重庆</option>
+        <option>广州</option>
+    </select>
+    <h1>多行文本</h1>
+    <div>多行文本输入</div>
+    <!--rows表示限制最多三行数据-->
+    <textarea rows="3">多行文本</textarea>
+</body>
+</html>
