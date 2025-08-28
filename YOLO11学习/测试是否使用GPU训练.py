@@ -29,4 +29,11 @@ nvidia-smi
 
 # 检查CUDA版本
 nvcc --version
+
+开放神经网络交流
+Open Neural Network Exchange = onnx模型
+
+onnx: Open Neural Network Exchange 格式的核心库，用于模型转换和操作
+onnxslim: 用于优化和压缩 ONNX 模型的工具
+onnxruntime-gpu: ONNX 模型的 GPU 加速推理运行时（如果您有 CUDA 环境）
 """
