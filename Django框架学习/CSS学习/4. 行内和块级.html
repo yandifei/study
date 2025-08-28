@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .c1{
+            /*inline-block是行内-块级的意思*/
+            display: inline-block;  /*解决div太霸道和span太软弱的问题*/
+            height: 100px;
+            width:300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<span class="c1">中国</span>
+
+<span class="c1">联通</span>
+
+<span class="c1">联通</span>
+
+<span class="c1">联通</span>
+<!--行内标签变成块级标签-->
+<div style="display: inline;">中国</div>
+
+<!--块级标签变成行内标签-->
+<span style="display: block;">联通</span>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*类选择器(用的最多)*/
+        .c1{
+            color: red;
+        }
+        /*id选择器(只能有1个地方被用，不能多个标签都用这个选择器)*/
+        #c2{
+            color: gold;
+        }
+        /*标签选择器是类比最为广泛的(div、head等等都可以定义样式*/
+        div{
+        }
+        /*标签选择器的一个，不需要说明这里是默认对全局列表都有的*/
+        li{
+            color: pink;
+        }
+        /*属性选择器*/
+        input[type="text"]{
+            border: 1px solid red;
+        }
+        .v1[xx="456"]{
+            color: gold;
+        }
+        /*后代选择器，在yy属性中早到li标签并赋予样式
+        .yy li{
+            color: pink;
+        }
+        .yy a{/*默认.yy属性下的所有a标签都是这个样式*/
+            color: dodgerblue;
+        }
+        .yy > a{ /*仅找yy属性下的第一层a标签*/
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="c1">中国</div>
+<div id="c2">广西</div>
+<div>联通</div>
+<ul>
+    <li>北京</li>
+    <li>上海</li>
+    <li>深圳</li>
+</ul>
+<input type="text">
+<input type="password">
+<div class="v1" xx="123">s</div>
+<div class="v1" xx="456">f</div>
+<div class="v1" xx="999">a</div>
+<div class=="yy">
+    <a href="">百度</a>
+    <div>
+        <a href="">谷歌</a>
+    </div>
+    <ul>
+        <li>美国</li>
+        <li>韩国</li>
+        <li>日本</li>
+    </ul>
+</div>
+<!--多：类选择器、标签选择器、后代选择器-->
+<!--少：属性选择器、ID选择器-->
+</body>
+</html>
