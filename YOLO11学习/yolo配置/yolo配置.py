@@ -1,9 +1,9 @@
 from ultralytics import settings
 
-# View all settings
+# 查看所有设置
 print(settings)
 
-# Return a specific setting
+# 返回特定设置
 value = settings["runs_dir"]
 
 
