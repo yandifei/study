@@ -13,3 +13,20 @@ if __name__ == '__main__':
 
     # 训练模型
     results = model.train(data="coco8.yaml", epochs=100, imgsz=640)
+
+    """
+    从预训练模型开始（推荐）
+from ultralytics import YOLO
+from ultralytics import YOLO
+model = YOLO("yolo11n.pt")  # pass any model type
+results = model.train(epochs=5)
+
+从头开始
+from ultralytics import YOLO
+model = YOLO("yolo11n.yaml")
+results = model.train(data="coco8.yaml", epochs=5)
+
+恢复训练
+model = YOLO("last.pt")
+results = model.train(resume=True)
+    """
