@@ -1,13 +1,15 @@
 # 自带的包
 import os
+import socket
 import subprocess
 import threading
 import time
 # 第三方包
 from openrgb import OpenRGBClient
 
+# OpenRGB的绝对路径(当前路径和相对路径拼接)
+OpenRGB_path =  os.path.join(os.getcwd(),"OpenRGB Windows 64-bit","OpenRGB.exe")
 
-OpenRGB_path =  os.path.join(os.getcwd(),"OpenRGB Windows 64-bit","OpenRGB.exe")  # OpenRGB的绝对路径(当前路径和相对路径拼接)
 def start_server():
     """启动OpenRGB的服务端"""
     # 执行命令启动服务并获取输出(非流式)
@@ -20,12 +22,16 @@ def start_server():
     )
     print(result.stdout)
 
+# 检查是否开启了服务器
 try:
-    start_server_thread = threading.Thread(target=start_server, daemon=True) # 创建启动OpenRGB的服务的线程(守护线程：设置 daemon=True 使线程随主线程结束)
-    start_server_thread.start()  # 启动线程
-    time.sleep(10)  # 等待服务器初始化
-except IndexError:
+    socket.create_connection(("localhost", 6742), timeout=1)
+except (socket.error, socket.timeout):
+    start_server()  # 启动OpenRGB的服务端
+    time.sleep(5)  # 等待服务器初始化
     print("OpenRGB的服务端已启动")
+
+
+
 
 # 实例化对象
 cli = OpenRGBClient()
