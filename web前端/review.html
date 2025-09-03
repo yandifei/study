@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML复习指南</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: #2575fc;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2575fc;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .example code {
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+        
+        .practice {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        button {
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #1c64e0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+        }
+        
+        .quiz-container {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .quiz-question {
+            margin-bottom: 15px;
+        }
+        
+        .quiz-options {
+            list-style-type: none;
+        }
+        
+        .quiz-options li {
+            margin-bottom: 10px;
+        }
+        
+        .quiz-options label {
+            margin-left: 10px;
+        }
+        
+        .result {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML复习指南</h1>
+        <p>掌握HTML基础知识，构建优秀网页</p>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>HTML基础结构</h2>
+            <p>每个HTML文档都应包含以下基本结构：</p>
+            <div class="example">
+                <code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;页面标题&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- 页面内容 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+            </div>
+            <ul>
+                <li><strong>&lt;!DOCTYPE html&gt;</strong> - 声明文档类型</li>
+                <li><strong>&lt;html&gt;</strong> - 根元素</li>
+                <li><strong>&lt;head&gt;</strong> - 包含元数据和文档信息</li>
+                <li><strong>&lt;body&gt;</strong> - 包含可见的页面内容</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>常用HTML标签</h2>
+            <ul>
+                <li><strong>标题</strong>: &lt;h1&gt; 到 &lt;h6&gt;</li>
+                <li><strong>段落</strong>: &lt;p&gt;</li>
+                <li><strong>链接</strong>: &lt;a href="url"&gt;链接文本&lt;/a&gt;</li>
+                <li><strong>图像</strong>: &lt;img src="image.jpg" alt="描述"&gt;</li>
+                <li><strong>列表</strong>: &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</li>
+                <li><strong>表格</strong>: &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;</li>
+                <li><strong>表单</strong>: &lt;form&gt;, &lt;input&gt;, &lt;button&gt;</li>
+            </ul>
+            
+            <div class="example">
+                <code>&lt;h1&gt;这是一个标题&lt;/h1&gt;
+&lt;p&gt;这是一个段落&lt;/p&gt;
+&lt;a href="https://example.com"&gt;这是一个链接&lt;/a&gt;</code>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>HTML属性</h2>
+            <p>属性提供有关HTML元素的附加信息：</p>
+            <ul>
+                <li><strong>id</strong> - 元素的唯一标识符</li>
+                <li><strong>class</strong> - 为元素指定一个或多个类名</li>
+                <li><strong>style</strong> - 内联CSS样式</li>
+                <li><strong>src</strong> - 指定外部资源的路径（如图像）</li>
+                <li><strong>href</strong> - 指定链接的目标URL</li>
+                <li><strong>alt</strong> - 图像的替代文本</li>
+            </ul>
+            
+            <div class="example">
+                <code>&lt;img src="photo.jpg" alt="风景照片" class="image-style" id="main-photo"&gt;
+&lt;a href="page.html" style="color: blue;"&gt;链接&lt;/a&gt;</code>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>HTML5新特性</h2>
+            <ul>
+                <li><strong>语义化标签</strong>: &lt;header&gt;, &lt;footer&gt;, &lt;nav&gt;, &lt;article&gt;, &lt;section&gt;</li>
+                <li><strong>多媒体</strong>: &lt;audio&gt;, &lt;video&gt;</li>
+                <li><strong>图形</strong>: &lt;canvas&gt;, &lt;svg&gt;</li>
+                <li><strong>表单增强</strong>: 新的input类型 (email, date, range等)</li>
+                <li><strong>API</strong>: 本地存储, 地理定位, 拖放功能</li>
+            </ul>
+            
+            <div class="example">
+                <code>&lt;header&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#home"&gt;首页&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+&lt;article&gt;
+    &lt;h2&gt;文章标题&lt;/h2&gt;
+    &lt;p&gt;文章内容...&lt;/p&gt;
+&lt;/article&gt;
+&lt;footer&gt;
+    &lt;p&gt;版权信息&lt;/p&gt;
+&lt;/footer&gt;</code>
+            </div>
+        </div>
+    </div>
+    
+    <div class="practice">
+        <button onclick="toggleQuiz()">测试你的HTML知识</button>
+        
+        <div id="quiz" class="quiz-container">
+            <div class="quiz-question">
+                <h3>1. 哪个标签用于创建超链接？</h3>
+                <ul class="quiz-options">
+                    <li><input type="radio" name="q1" value="a"> a) &lt;link&gt;</li>
+                    <li><input type="radio" name="q1" value="b"> b) &lt;a&gt;</li>
+                    <li><input type="radio" name="q1" value="c"> c) &lt;href&gt;</li>
+                </ul>
+            </div>
+            
+            <div class="quiz-question">
+                <h3>2. 哪个属性用于指定图像的替代文本？</h3>
+                <ul class="quiz-options">
+                    <li><input type="radio" name="q2" value="a"> a) title</li>
+                    <li><input type="radio" name="q2" value="b"> b) alt</li>
+                    <li><input type="radio" name="q2" value="c"> c) src</li>
+                </ul>
+            </div>
+            
+            <div class="quiz-question">
+                <h3>3. 哪个HTML5标签用于定义文档的页脚？</h3>
+                <ul class="quiz-options">
+                    <li><input type="radio" name="q3" value="a"> a) &lt;bottom&gt;</li>
+                    <li><input type="radio" name="q3" value="b"> b) &lt;footer&gt;</li>
+                    <li><input type="radio" name="q3" value="c"> c) &lt;end&gt;</li>
+                </ul>
+            </div>
+            
+            <button onclick="checkAnswers()">提交答案</button>
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>HTML复习指南 &copy; 2023 - 持续学习，不断进步！</p>
+    </footer>
+
+    <script>
+        function toggleQuiz() {
+            const quiz = document.getElementById('quiz');
+            if (quiz.style.display === 'block') {
+                quiz.style.display = 'none';
+            } else {
+                quiz.style.display = 'block';
+            }
+        }
+        
+        function checkAnswers() {
+            const answers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'b'
+            };
+            
+            let score = 0;
+            const totalQuestions = Object.keys(answers).length;
+            
+            for (const question in answers) {
+                const selectedOption = document.querySelector(`input[name=${question}]:checked`);
+                if (selectedOption && selectedOption.value === answers[question]) {
+                    score++;
+                }
+            }
+            
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `你的得分: ${score}/${totalQuestions}`;
+            
+            if (score === totalQuestions) {
+                resultElement.style.color = 'green';
+                resultElement.innerHTML += ' - 太棒了！你掌握了HTML基础知识！';
+            } else {
+                resultElement.style.color = 'red';
+                resultElement.innerHTML += ' - 继续努力，复习一下上面的内容吧！';
+            }
+        }
+    </script>
+// ... 前面的代码保持不变 ...
+
+<div class="container">
+    <!-- 现有的卡片保持不变 -->
+    
+    <div class="card">
+        <h2>HTML基本语法规则</h2>
+        <p>根据MDN文档，HTML遵循以下基本语法规则：</p>
+        
+        <h3>1. 元素结构</h3>
+        <p>HTML元素由开始标签、内容和结束标签组成：</p>
+        <div class="example">
+            <code>&lt;tagname&gt;内容&lt;/tagname&gt;</code>
+        </div>
+        
+        <h3>2. 空元素</h3>
+        <p>某些元素没有内容，称为空元素或自闭合元素：</p>
+        <div class="example">
+            <code>&lt;img src="image.jpg" alt="描述"&gt;
+&lt;br&gt;
+&lt;input type="text"&gt;</code>
+        </div>
+        
+        <h3>3. 嵌套元素</h3>
+        <p>元素可以嵌套在其他元素内部，但必须正确闭合：</p>
+        <div class="example">
+            <code>&lt;div&gt;
+    &lt;p&gt;这是一个&lt;strong&gt;重要&lt;/strong&gt;的段落&lt;/p&gt;
+&lt;/div&gt;</code>
+        </div>
+        <p class="warning">⚠️ 错误示例：&lt;p&gt;这是&lt;em&gt;错误&lt;/p&gt;的嵌套&lt;/em&gt;</p>
+        
+        <h3>4. 属性语法</h3>
+        <p>属性提供元素的额外信息：</p>
+        <div class="example">
+            <code>&lt;a href="https://example.com" title="示例网站" target="_blank"&gt;链接&lt;/a&gt;</code>
+        </div>
+        <ul>
+            <li>属性名和值之间用等号分隔</li>
+            <li>属性值通常用引号包围（单引号或双引号）</li>
+            <li>多个属性用空格分隔</li>
+        </ul>
+        
+        <h3>5. 布尔属性</h3>
+        <p>某些属性只有存在与否的区别，没有值：</p>
+        <div class="example">
+            <code>&lt;input type="checkbox" checked&gt;
+&lt;button disabled&gt;不可点击&lt;/button&gt;</code>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>HTML文档结构最佳实践</h2>
+        
+        <h3>1. 文档类型声明</h3>
+        <div class="example">
+            <code>&lt;!DOCTYPE html&gt;</code>
+        </div>
+        
+        <h3>2. 语言声明</h3>
+        <div class="example">
+            <code>&lt;html lang="zh-CN"&gt;</code>
+        </div>
+        
+        <h3>3. 字符编码</h3>
+        <div class="example">
+            <code>&lt;meta charset="UTF-8"&gt;</code>
+        </div>
+        
+        <h3>4. 视口设置（响应式设计）</h3>
+        <div class="example">2. 空元素
+        某些元素没有内容，称为空元素或自闭合元素：
+        
+        
+            <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>
+        </div>
+        
+        <h3>5. 语义化结构示例</h3>
+        <div class="example">
+            <code>&lt;header&gt;
+    &lt;h1&gt;网站标题&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#home"&gt;首页&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#about"&gt;关于&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;h2&gt;文章标题&lt;/h2&gt;
+        &lt;p&gt;文章内容...&lt;/p&gt;
+    &lt;/article&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;&copy; 2023 我的网站&lt;/p&gt;
+&lt;/footer&gt;</code>
+        </div>
+    </div>
+</div>
+
+// ... 后面的代码保持不变 ...
+
+<script>
+// 更新测验部分，添加新的问题
+function checkAnswers() {
+    const answers = {
+        q1: 'b',
+        q2: 'b', 
+        q3: 'b',
+        q4: 'a', // 新增问题
+        q5: 'c'  // 新增问题
+    };
+    
+    let score = 0;
+    const totalQuestions = Object.keys(answers).length;
+    
+    for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name=${question}]:checked`);
+        if (selectedOption && selectedOption.value === answers[question]) {
+            score++;
+        }
+    }
+    
+    const resultElement = document.getElementById('result');
+    resultElement.innerHTML = `你的得分: ${score}/${totalQuestions}`;
+    
+    if (score === totalQuestions) {
+        resultElement.style.color = 'green';
+        resultElement.innerHTML += ' - 太棒了！你掌握了HTML基础知识！';
+    } else if (score >= totalQuestions * 0.7) {
+        resultElement.style.color = 'orange';
+        resultElement.innerHTML += ' - 很好！继续巩固知识！';
+    } else {
+        resultElement.style.color = 'red';
+        resultElement.innerHTML += ' - 继续努力，复习一下上面的内容吧！';
+    }
+}
+</script>
+
+// ... 在测验部分添加新的问题 ...
+
+<div class="quiz-question">
+    <h3>4. 哪个是HTML5的正确文档类型声明？</h3>
+    <ul class="quiz-options">
+        <li><input type="radio" name="q4" value="a"> a) &lt;!DOCTYPE html&gt;</li>
+        <li><input type="radio" name="q4" value="b"> b) &lt;!DOCTYPE HTML5&gt;</li>
+        <li><input type="radio" name="q4" value="c"> c) &lt;DOCTYPE html&gt;</li>
+    </ul>
+</div>
+
+<div class="quiz-question">
+    <h3>5. 哪个meta标签用于设置字符编码？</h3>
+    <ul class="quiz-options">
+        <li><input type="radio" name="q5" value="a"> a) &lt;meta name="encoding"&gt;</li>
+        <li><input type="radio" name="q5" value="b"> b) &lt;meta charset-set="UTF-8"&gt;</li>
+        <li><input type="radio" name="q5" value="c"> c) &lt;meta charset="UTF-8"&gt;</li>
+    </ul>
+</div>
+</body>
+</html>
