@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="B:/study/JSP编程学习/JSP配置问题/study/src/main/webapp">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="B:/study/JSP编程学习/JSP配置问题/study/target/classes" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PostResources base="B:/study/JSP编程学习/JSP配置问题/study/src/main/webapp/WEB-INF/lib/servlet-api.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/servlet-api.jar"/>
+  </Resources>
+</Context>

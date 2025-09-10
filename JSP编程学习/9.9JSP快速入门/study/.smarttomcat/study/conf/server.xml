@@ -18,7 +18,8 @@
      define subcomponents such as "Valves" at this level.
      Documentation at /docs/config/server.html
  --><Server port="8005" shutdown="SHUTDOWN">
-                      
+                        
+  
   
   
   
@@ -29,7 +30,8 @@
   
   
   <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
-                      
+                        
+  
   
   
   
@@ -42,7 +44,8 @@
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
   -->
-                      
+                        
+  
   
   
   
@@ -53,7 +56,8 @@
   
   
   <!-- OpenSSL support using Tomcat Native -->
-                      
+                        
+  
   
   
   
@@ -64,7 +68,8 @@
   
   
   <Listener className="org.apache.catalina.core.AprLifecycleListener"/>
-                      
+                        
+  
   
   
   
@@ -75,7 +80,8 @@
   
   
   <!-- OpenSSL support using FFM API from Java 22 -->
-                      
+                        
+  
   
   
   
@@ -86,7 +92,8 @@
   
   
   <!-- <Listener className="org.apache.catalina.core.OpenSSLLifecycleListener" /> -->
-                      
+                        
+  
   
   
   
@@ -97,7 +104,8 @@
   
   
   <!-- Prevent memory leaks due to use of particular java/javax APIs-->
-                      
+                        
+  
   
   
   
@@ -108,7 +116,8 @@
   
   
   <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
-                      
+                        
+  
   
   
   
@@ -119,7 +128,8 @@
   
   
   <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
-                      
+                        
+  
   
   
   
@@ -130,7 +140,8 @@
   
   
   <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
-                      
+                        
+  
   
   
   
@@ -143,7 +154,8 @@
   <!-- Global JNDI resources
        Documentation at /docs/jndi-resources-howto.html
   -->
-                      
+                        
+  
   
   
   
@@ -154,7 +166,8 @@
   
   
   <GlobalNamingResources>
-                                            
+                                                
+    
     
     
     
@@ -167,7 +180,8 @@
     <!-- Editable user database that can also be used by
          UserDatabaseRealm to authenticate users
     -->
-                                            
+                                                
+    
     
     
     
@@ -178,7 +192,8 @@
     
     
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
-                                          
+                                              
+  
   
   
   
@@ -189,7 +204,8 @@
   
   
   </GlobalNamingResources>
-                      
+                        
+  
   
   
   
@@ -204,7 +220,8 @@
        so you may not define subcomponents such as "Valves" at this level.
        Documentation at /docs/config/service.html
    -->
-                      
+                        
+  
   
   
   
@@ -215,7 +232,8 @@
   
   
   <Service name="Catalina">
-                                            
+                                                
+    
     
     
     
@@ -226,7 +244,8 @@
     
     
     <!--The connectors can use a shared executor, you can define one or more named thread pools-->
-                                            
+                                                
+    
     
     
     
@@ -240,7 +259,8 @@
     <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
         maxThreads="150" minSpareThreads="4"/>
     -->
-                                            
+                                                
+    
     
     
     
@@ -256,7 +276,8 @@
          AJP  Connector: /docs/config/ajp.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-                                            
+                                                
+    
     
     
     
@@ -267,7 +288,8 @@
     
     
     <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1"/>
-                                            
+                                                
+    
     
     
     
@@ -278,7 +300,8 @@
     
     
     <!-- A "Connector" using the shared thread pool-->
-                                            
+                                                
+    
     
     
     
@@ -294,7 +317,8 @@
                connectionTimeout="20000"
                redirectPort="8443" />
     -->
-                                            
+                                                
+    
     
     
     
@@ -311,7 +335,8 @@
          Either JSSE or OpenSSL style configuration may be used regardless of
          the SSLImplementation selected. JSSE style configuration is used below.
     -->
-                                            
+                                                
+    
     
     
     
@@ -331,7 +356,8 @@
         </SSLHostConfig>
     </Connector>
     -->
-                                            
+                                                
+    
     
     
     
@@ -342,7 +368,8 @@
     
     
     <!-- Define an AJP 1.3 Connector on port 8009 -->
-                                            
+                                                
+    
     
     
     
@@ -358,7 +385,8 @@
                port="8009"
                redirectPort="8443" />
     -->
-                                            
+                                                
+    
     
     
     
@@ -373,7 +401,8 @@
          analyzes the HTTP headers included with the request, and passes them
          on to the appropriate Host (virtual host).
          Documentation at /docs/config/engine.html -->
-                                            
+                                                
+    
     
     
     
@@ -386,7 +415,8 @@
     <!-- You should set jvmRoute to support load-balancing via AJP ie :
     <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
     -->
-                                            
+                                                
+    
     
     
     
@@ -397,7 +427,8 @@
     
     
     <Engine defaultHost="localhost" name="Catalina">
-                                                                  
+                                                                        
+      
       
       
       
@@ -410,7 +441,8 @@
       <!--For clustering, please take a look at documentation at:
           /docs/cluster-howto.html  (simple how to)
           /docs/config/cluster.html (reference documentation) -->
-                                                                  
+                                                                        
+      
       
       
       
@@ -423,7 +455,8 @@
       <!--
       <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>
       -->
-                                                                  
+                                                                        
+      
       
       
       
@@ -435,7 +468,8 @@
       
       <!-- Use the LockOutRealm to prevent attempts to guess user passwords
            via a brute-force attack -->
-                                                                  
+                                                                        
+      
       
       
       
@@ -446,7 +480,8 @@
       
       
       <Realm className="org.apache.catalina.realm.LockOutRealm">
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -460,7 +495,8 @@
              resources under the key "UserDatabase".  Any edits
              that are performed against this UserDatabase are immediately
              available for use by the Realm.  -->
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -471,7 +507,8 @@
         
         
         <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
-                                                                                      
+                                                                                              
+      
       
       
       
@@ -482,7 +519,8 @@
       
       
       </Realm>
-                                                                  
+                                                                        
+      
       
       
       
@@ -493,7 +531,8 @@
       
       
       <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -505,7 +544,8 @@
         
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -518,7 +558,8 @@
         <!--
         <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
         -->
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -531,7 +572,8 @@
         <!-- Access log processes all example.
              Documentation at: /docs/config/valve.html
              Note: The pattern used is equivalent to using pattern="common" -->
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -542,7 +584,8 @@
         
         
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
-                                                                                      
+                                                                                              
+      
       
       
       
@@ -553,7 +596,8 @@
       
       
       </Host>
-                                                                
+                                                                      
+    
     
     
     
@@ -564,7 +608,8 @@
     
     
     </Engine>
-                                          
+                                              
+  
   
   
   
@@ -575,7 +620,8 @@
   
   
   </Service>
-                    
+                      
+
 
 
 
