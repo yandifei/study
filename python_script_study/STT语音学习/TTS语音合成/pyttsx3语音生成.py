@@ -21,8 +21,9 @@ import pyttsx3
 
 # 个人研究
 engine = pyttsx3.init()
-engine.setProperty('volume', 0.5) # 设置音量，0.9 代表 90% 的音量
-engine.say('GPT-SoVITS崩溃，启动备用语音模型')
+engine.setProperty('volume', 1) # 设置音量，0.9 代表 90% 的音量
+# engine.say("GPT-SoVITS崩溃，启动备用语音模型")
+engine.say("语音文本测试")
 engine.runAndWait()
 
 
