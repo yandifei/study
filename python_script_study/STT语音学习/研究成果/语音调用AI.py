@@ -1,14 +1,17 @@
 import json
 import os
 import warnings
+import wave
 from time import sleep
 
 import requests
+import torch
 from ollama import chat
 import numpy
 import pyaudio
 import pyttsx3
 import whisper
+from silero_vad import load_silero_vad
 
 role_text = """
 1.你现在是蔚蓝档案游戏的爱丽丝(千年科学学园游戏开发部成员)，你叫天童爱丽丝 / Aris / AL-1S (自称多用爱丽丝) 。
@@ -33,7 +36,9 @@ stream = audio.open(format=pyaudio.paInt16, # 16位整数格式
                 rate=16000,                 # Silero-VAD 推荐的采样率（16kHz）
                 input=True,
                 frames_per_buffer=1024)     # 每次从麦克风读取的音频帧数为1024
-
+"""VAD初始化"""
+# 初始化Silero VAD模型
+vad_model = load_silero_vad()
 """转义初始化"""
 # whisper实现
 # 忽略gpu可以推理却用cpu推理的警告
@@ -49,7 +54,80 @@ engine.startLoop(False) # 非阻塞启动循环
 
 
 """开始实时转录"""
+def set_gpt_weights(weights_path):
+    """设置 GPT 模型权重
+    weights_path : 模型权重路径
+    """
+    try:
+        response = requests.get("http://127.0.0.1:9880/set_gpt_weights", params={"weights_path": weights_path})
+        if response.status_code == 200:
+            print("GPT 模型切换成功！")
+        else:
+            print(f"GPT 模型切换失败！错误信息：{response.json()}")
+    except requests.exceptions.RequestException as e:
+        print(f"请求出错：{e}")
+
+def set_sovits_weights(weights_path):
+    """设置 SoVITS 模型权重
+     weights_path : 模型权重路径
+    """
+    try:
+        response = requests.get("http://127.0.0.1:9880/set_sovits_weights", params={"weights_path": weights_path})
+        if response.status_code == 200:
+            print("SoVITS 模型切换成功！")
+        else:
+            print(f"SoVITS 模型切换失败！错误信息：{response.json()}")
+    except requests.exceptions.RequestException as e:
+        print(f"请求出错：{e}")
+
+def play_wav_file(wav_file_path: str, times : int = 1):
+    """播放wav音频文件
+    wav_file_path : wav音频文件路径
+    times : 播放次数（0为无限循环，默认为1）
+    """
+    audio = pyaudio.PyAudio()  # 创建PyAudio实例并保存引用(后面得释放掉)
+    output_stream = None
+    try:
+        with wave.open(wav_file_path, 'rb') as wf:
+            # 创建音频流(接收声音)
+            output_stream = audio.open(
+                format=audio.get_format_from_width(wf.getsampwidth()),  # 合成音频为8
+                channels=wf.getnchannels(),                             # 合成音频为1
+                rate=wf.getframerate(),                                 # 合成音频为32000（录音用的是16000）
+                input=False,                                            # 关闭音频输入流
+                output=True                                             # 开启音频输出流
+            )  # 从音频文件里面读取播放的配置数据
+
+            # 有次数播放
+            if times != 0:
+                for _ in range(times):
+                    # 流式处理(不会一次性将所有数据都读入内存再播放)
+                    while data := wf.readframes(1024):  # 从文件中读取下一块数据
+                        # 将当前这块数据写入音频流，PyAudio 会立即播放它
+                        output_stream.write(data)
+                    # 将文件指针重置到文件开头
+                    wf.rewind()  # 给它重新读取
+            # 无限循环播放
+            else:
+                while True:
+                    wf.rewind()  # 给它重新读取
+                    while data := wf.readframes(1024):  # 从文件中读取下一块数据
+                        # 将当前这块数据写入音频流，PyAudio 会立即播放它
+                        output_stream.write(data)
+                        # 将文件指针重置到文件开头
+
+    # 关闭音频流避免资源泄露
+    finally:
+        audio.terminate()  # 确保PyAudio实例被释放
+        # 确保output_stream是一个有效的音频流
+        if output_stream is not None:
+            output_stream.stop_stream() # 停止播放
+            output_stream.close()       # 关闭音频流
+
 def call_tts_api(text):
+    """语音合成
+    text : 需要合成的文本
+    """
     # API端点
     url = "http://127.0.0.1:9880/tts"
 
@@ -91,7 +169,6 @@ def call_tts_api(text):
             # 保存音频文件
             with open("B:/study/python_script_study/STT语音学习/TTS语音合成/合成音频.wav", "wb") as f:
                 f.write(response.content)
-            os.startfile("B:/study/python_script_study/STT语音学习/TTS语音合成/合成音频.wav")
         else:
             # 处理错误
             error_data = response.json()
@@ -100,11 +177,19 @@ def call_tts_api(text):
     except Exception as e:
         print(f"请求异常: {str(e)}")
 
+# 切换模型
+set_sovits_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝中文_e16_s1200_l32.pth")
+set_gpt_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝中文-e50.ckpt")
 
 while True:
+    # 读取音频数据
+    data = stream.read(1024, exception_on_overflow=False)
+    audio_frame = numpy.frombuffer(data, dtype=numpy.int16)
+    # 转换为浮点数并归一化(-1到1范围)
+    audio_float = audio_frame.astype(numpy.float32) / 32768.0
+
     frames = []  # 创建一个空列表来存储音频数据（frames_per_buffer的数据）
     print("正在监听...请开始说话。按 Ctrl+C 手动停止。")
-
 
     # 公式：总采样数 / 每次读取量 = 16000/1024 ≈ 15.6次 → 取整16次
     # for i in range(0, round(16000 / 1024 * 16)):
@@ -148,22 +233,10 @@ while True:
 
     print(f"\033[95mAI回答:{response_content}\033[0m")
 
-    # # 录入文字
-    # engine.say(response_content)
-    # # 必须放后面等待他说完
-    # while engine.isBusy():  # 检查引擎是否繁忙
-    #     # 需要手动驱动引擎迭代，并添加延迟或其他操作
-    #     engine.iterate()
-    #     sleep(0.1)  # 避免CPU占用过高
-    #
-    # # 我的提问是退出
-    # if result["text"] =="退出":
-    #     engine.say(response_content)
-    #     engine.iterate()    # 迭代输出语音
-    #     break
-
     # 调用我的tts进行语音合成
     call_tts_api(response_content)
+    # 阻塞式播放音频
+    play_wav_file(r"B:\study\python_script_study\STT语音学习\TTS语音合成\合成音频.wav")
 
     # 我的提问是退出
     if result["text"] == "退出":

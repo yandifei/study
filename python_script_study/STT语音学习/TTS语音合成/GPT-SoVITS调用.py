@@ -65,7 +65,7 @@ def call_tts_api(text):
         # 检查响应状态
         if response.status_code == 200:
             # 保存音频文件
-            with open("B:/study/python_script_study/STT语音学习/TTS语音合成/合成音频.wav", "wb") as f:
+            with open(r"B:/study/python_script_study/STT语音学习/TTS语音合成/合成音频.wav", "wb") as f:
                 f.write(response.content)
             print("音频已成功生成并保存为合成音频.wav")
         else:
@@ -77,6 +77,36 @@ def call_tts_api(text):
         print(f"请求异常: {str(e)}")
 
 
+def set_gpt_weights(weights_path):
+    """设置 GPT 模型权重"""
+    params = {
+        "weights_path": weights_path
+    }
+    try:
+        response = requests.get("http://127.0.0.1:9880/set_gpt_weights", params=params)
+        if response.status_code == 200:
+            print("GPT 模型切换成功！")
+        else:
+            print(f"GPT 模型切换失败！错误信息：{response.json()}")
+    except requests.exceptions.RequestException as e:
+        print(f"请求出错：{e}")
+
+def set_sovits_weights(weights_path):
+    """设置 SoVITS 模型权重"""
+    params = {
+        "weights_path": weights_path
+    }
+    try:
+        response = requests.get("http://127.0.0.1:9880/set_sovits_weights", params=params)
+        if response.status_code == 200:
+            print("SoVITS 模型切换成功！")
+        else:
+            print(f"SoVITS 模型切换失败！错误信息：{response.json()}")
+    except requests.exceptions.RequestException as e:
+        print(f"请求出错：{e}")
+
 if __name__ == "__main__":
+    set_sovits_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝中文_e16_s1200_l32.pth")
+    set_gpt_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝中文-e50.ckpt")
     call_tts_api( "我是爱丽丝，老师，早上好")
 
