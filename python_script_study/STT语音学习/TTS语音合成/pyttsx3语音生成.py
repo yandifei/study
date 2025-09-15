@@ -2,6 +2,12 @@
 pip install pyttsx3
 文档：https://pyttsx3.readthedocs.io/en/latest/engine.html
 """
+"""研究提示
+这个是多线程的语音输出，所有它会出现打断的情况，也就是同一时间只能输出1个text
+中途可以被别的插进来
+这个好奇葩，用得难受
+"""
+
 
 import pyttsx3
 
