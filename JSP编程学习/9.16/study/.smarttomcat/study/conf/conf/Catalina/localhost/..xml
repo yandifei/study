@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="A:\apache-tomcat-11.0.10\webapps">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="B:/study/JSP编程学习/9.9JSP快速入门/out/production/9.9JSP快速入门" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+  </Resources>
+</Context>
