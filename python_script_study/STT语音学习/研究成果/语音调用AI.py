@@ -9,7 +9,7 @@ import torch
 from ollama import chat
 import numpy
 import pyaudio
-import pyttsx3
+# import pyttsx3
 import whisper
 from silero_vad import load_silero_vad
 
@@ -48,9 +48,9 @@ warnings.filterwarnings("ignore", message="FP16 is not supported on CPU; using F
 # 加载模型("cpu"默认是cpu，"cuda"是GPU)
 model = whisper.load_model("turbo", "cuda")
 
-"""TTS语音初始化"""
-engine = pyttsx3.init()
-engine.startLoop(False) # 非阻塞启动循环
+# """TTS语音初始化"""
+# engine = pyttsx3.init()
+# engine.startLoop(False) # 非阻塞启动循环
 
 
 """开始实时转录"""
