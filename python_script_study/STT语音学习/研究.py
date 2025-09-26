@@ -1,3 +1,4 @@
+# 模型位置：C:\Users\yandifei\.cache\whisper（6个GB，我的天呀）
 import numpy
 import pyaudio
 import whisper
