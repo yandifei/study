@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="B:/study/JSP编程学习/9.9JSP快速入门/study/src/main/webapp">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="B:/study/JSP编程学习/9.9JSP快速入门/study/target/classes" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/el-api.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/el-api.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/jasper.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jasper.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/jsp-api.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jsp-api.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/catalina.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/catalina.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/ecj-4.36.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/ecj-4.36.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/jasper-el.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jasper-el.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/jaspic-api.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jaspic-api.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-api.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-api.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-jni.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-jni.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/catalina-ha.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/catalina-ha.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/servlet-api.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/servlet-api.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-dbcp.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-dbcp.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-jdbc.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-jdbc.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-util.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-util.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/catalina-ant.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/catalina-ant.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/catalina-ssi.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/catalina-ssi.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-coyote.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-coyote.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/websocket-api.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/websocket-api.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-i18n-cs.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-i18n-cs.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-i18n-de.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-i18n-de.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-i18n-es.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-i18n-es.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-i18n-fr.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-i18n-fr.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-i18n-ja.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-i18n-ja.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-i18n-ko.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-i18n-ko.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-i18n-ru.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-i18n-ru.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/annotations-api.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/annotations-api.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/catalina-tribes.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/catalina-tribes.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-util-scan.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-util-scan.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-websocket.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-websocket.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-coyote-ffm.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-coyote-ffm.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-i18n-pt-BR.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-i18n-pt-BR.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/tomcat-i18n-zh-CN.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/tomcat-i18n-zh-CN.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/catalina-storeconfig.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/catalina-storeconfig.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/websocket-client-api.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/websocket-client-api.jar"/>
+    <PostResources base="A:/apache-tomcat-11.0.10/lib/jakartaee-migration-1.0.9-shaded.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/jakartaee-migration-1.0.9-shaded.jar"/>
+  </Resources>
+</Context>

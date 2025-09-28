@@ -1,0 +1,2 @@
+https://juejin.cn/post/7521708544724582439
+经常被反爬虫？我们知道反爬虫机制主要针对Selenium的特征进行检测，特别是window.navigator.webdriver属性。在普通浏览器中这个属性是undefined，而在Selenium控制的浏览器中会变成true，这是网站检测Selenium的主要手段。所以解决方案中需要包含如何隐藏或修改这个特征，才能解决反爬。
