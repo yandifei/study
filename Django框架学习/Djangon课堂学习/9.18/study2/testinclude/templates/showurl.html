@@ -1,0 +1,10 @@
+﻿<!--chapter3\testinclude\templates\showUrl.html-->
+<html>
+<head>
+    <title>在模板中反向解析网址</title>
+</head>
+<body>
+    当前页面的URL路径：{% url 'urlTemplate' data %}<br>
+    views.getUrlKwargs的URL路径：{% url 'UrlKwargs' 123 %}<br>
+</body>
+</html>
