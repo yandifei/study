@@ -1,4 +1,4 @@
-import { CType, GameLogic, Coordinate } from './entry/src/main/ets/ConsoleReversiGame/GameLogic';
+import { CType, GameLogic, Coordinate } from './GameLogic';
 import * as readline from 'readline';
 // 创建 readline 接口用于接收用户输入
 const rl = readline.createInterface({
