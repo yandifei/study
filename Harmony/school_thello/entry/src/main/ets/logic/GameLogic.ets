@@ -15,7 +15,6 @@ export class Coordinate {
   }
 }
 
-
 // 使用 class 来定义 每一步落子后的结果
 export class MoveCheckResult {
   isValid: boolean; // 标记当前走法是否有效
@@ -89,7 +88,7 @@ export class GameLogic {
     // 用于存储所有可以被翻转的棋子
     let allPiecesToFlip: Coordinate[] = [];
 
-    // 规则 2：遍历 8 个方向，检查是否能形成“夹击”
+    // 规则 2：遍历 8 个方向，检查是否能形成"夹击"
     for (const dir of this.directions) {
       // 存储当前方向上可能被翻转的棋子
       let piecesInThisLine: Coordinate[] = [];
@@ -104,7 +103,7 @@ export class GameLogic {
         currentRow += dir.row;
         currentCol += dir.col;
       }
-      // 循环结束后，如果仍在棋盘内，并且遇到了自己的棋子，说明形成了有效的“夹击”
+      // 循环结束后，如果仍在棋盘内，并且遇到了自己的棋子，说明形成了有效的"夹击"
       if (currentRow >= 0 && currentRow < 8 && currentCol >= 0 && currentCol < 8 &&
         board[currentRow][currentCol] === player) {
         // 只有在中间有对手棋子时，这个方向的走法才算有效
@@ -132,12 +131,12 @@ export class GameLogic {
    */
 
   public applyMove(board: CType[][], move: Coordinate, piecesToFlip: Coordinate[], player:
-  CType): CType[][] {
+    CType): CType[][] {
     // 创建棋盘的深拷贝以避免直接修改原棋盘
     const newBoard = board.map(row => [...row]);
     // 在指定位置落子
     newBoard[move.row][move.col] = player;
-    // 翻转所有“夹击”的棋子
+    // 翻转所有"夹击"的棋子
     for (const piece of piecesToFlip) {
       newBoard[piece.row][piece.col] = player;
     }
@@ -155,6 +154,7 @@ export class GameLogic {
     [-20, -40, -5, -5, -5, -5, -40, -20],
     [120, -20, 20, 5, 5, 20, -20, 120]
   ];
+
   // // 16x16 棋盘上每个位置的战略价值分数
   // private static readonly positionalValueMatrix = [
   //   [120, 120, -20, -20, 20, 20, 5, 5, 5, 5, 20, 20, -20, -20, 120, 120],
@@ -203,5 +203,24 @@ export class GameLogic {
     return bestMoves[randomIndex];
   }
 
-
+  /**
+   * 检查游戏是否结束(检查指定玩家在当前棋盘上是否至少有一个合法走法)
+   * @param player 当前玩家类型 (B 或 W)
+   * @param board 当前棋盘状态
+   * @returns 是否有合法走法
+   */
+  public gameOver(player: CType, board: CType[][]): boolean {
+    // 遍历所有空位 (CType.E)
+    for (let r = 0; r < board.length; r++) {
+      for (let c = 0; c < board[r].length; c++) {
+        if (board[r][c] === CType.E) {
+          // 调用已有的 checkValidMove，只关心是否有效
+          if (this.checkValidMove(r, c, player, board).isValid) {
+            return true; // 找到一个有效走法
+          }
+        }
+      }
+    }
+    return false; // 没有找到有效走法即为无路可走
+  }
 }
