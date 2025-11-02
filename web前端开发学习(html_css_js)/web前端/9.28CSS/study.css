@@ -1,0 +1,20 @@
+/*选择器*/
+#title{
+	text-align: center;
+	font-family: "楷体";
+}
+
+/*类选择器*/
+.author{
+	text-align: center;
+	font-family: "楷体";
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/*标签选择器*/
+p{
+	text-indent: 2em; /*缩进2个字符*/
+	font-size: 20px;
+	font-family: "宋体";
+}

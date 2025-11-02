@@ -1,0 +1,16 @@
+p{
+	font-family: "宋体";  	/*设置字体类型为宋体*/
+	font-size: 20px;		/*设置字体大小*/
+	font-weight: bold; 		/*设置字体粗细*/
+	font-style: italic;		/*设置字体斜体*/
+	color: #666;			/*设置字体颜色*/
+	text-indent: 2em;       /*首行缩进*/
+}
+span{
+	text-decoration: line-through; /*删除线*/
+}
+div{
+	text-overflow: clip;
+	line-height: 2; /*2倍行号*/
+}
+
