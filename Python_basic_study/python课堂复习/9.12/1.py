@@ -1,0 +1,10 @@
+print("="*20)
+print("名片管理器 V1.0")
+a = lambda i, j : f"{i}. {j}名片"
+print(a(1,"添加"))
+print(a(2,"删除"))
+print(a(3,"修改"))
+print(a(4,"查询"))
+print(a(5,"显示所有"))
+print(a(6,"退出"))
+print("="*20)
