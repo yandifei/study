@@ -1,0 +1,532 @@
+Ôr@Ÿªassertions¤code´customTransformCache¬dependencies¢id¤meta±moduleSideEffects¬originalCode±originalSourcemap«resolvedIds®sourcemapChainµsyntheticNamedExportsµtransformDependencies®transformFiles¨cacheAstÔrAÚ&// å®šä¹‰æ£‹ç›˜ä¸Šæ ¼å­çš„ä¸‰ç§çŠ¶æ€ï¼šE (Empty) - ç©ºï¼ŒB (Black) - é»‘æ£‹ï¼ŒW (White) - ç™½æ£‹
+export var CType;
+(function (CType) {
+    CType[CType["E"] = 0] = "E";
+    CType[CType["B"] = 1] = "B";
+    CType[CType["W"] = 2] = "W"; // ç™½æ£‹
+})(CType || (CType = {}));
+// æ ¹æ® ArkTS çš„ä¸¥æ ¼æ¨¡å¼è¦æ±‚ï¼Œä½¿ç”¨ class æ¥å®šä¹‰åæ ‡
+export class Coordinate {
+    constructor(row, col) {
+        this.row = row;
+        this.col = col;
+    }
+}
+// ä½¿ç”¨ class æ¥å®šä¹‰ æ¯ä¸€æ­¥è½å­åçš„ç»“æœ
+export class MoveCheckResult {
+    constructor(isValid, piecesToFlip) {
+        this.isValid = isValid;
+        this.piecesToFlip = piecesToFlip;
+    }
+}
+// æ¸¸æˆæ ¸å¿ƒé€»è¾‘ç±»
+export class GameLogic {
+    constructor() {
+        // å®šä¹‰ 8 ä¸ªæ–¹å‘çš„åæ ‡åç§»é‡ï¼Œç”¨äºæ£€æŸ¥æ£‹å­å‘¨å›´çš„æƒ…å†µ
+        this.directions = [
+            new Coordinate(-1, 0), new Coordinate(1, 0),
+            new Coordinate(0, -1), new Coordinate(0, 1),
+            new Coordinate(-1, -1), new Coordinate(-1, 1),
+            new Coordinate(1, -1), new Coordinate(1, 1) // å·¦ä¸‹ã€å³ä¸‹ (å¯¹è§’çº¿)
+        ];
+    }
+    /**
+     * AI é€»è¾‘ï¼šä»æ‰€æœ‰æœ‰æ•ˆè½å­ä½ç½®ä¸­éšæœºé€‰æ‹©ä¸€ä¸ª
+     * @param player - AI ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W)
+     * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+     * @returns è¿”å›ä¸€ä¸ªéšæœºé€‰æ‹©çš„æœ‰æ•ˆè½å­åæ ‡ï¼Œå¦‚æœæ²¡æœ‰æœ‰æ•ˆèµ°æ³•åˆ™è¿”å›null
+     * */
+    findRandomMove(player, board) {
+        const validMoves = this.findAllValidMoves(player, board);
+        if (validMoves.length === 0) {
+            return null; // æ²¡æœ‰æœ‰æ•ˆèµ°æ³•
+        }
+        const randomIndex = Math.floor(Math.random() * validMoves.length);
+        return validMoves[randomIndex];
+    }
+    /**
+     * æ‰¾å‡ºæŒ‡å®šç©å®¶æ‰€æœ‰æœ‰æ•ˆçš„è½å­ä½ç½®
+     * @param player - å½“å‰ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W) * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+     * @returns è¿”å›ä¸€ä¸ªåŒ…å«æ‰€æœ‰æœ‰æ•ˆè½å­åæ ‡çš„æ•°ç»„
+     */
+    findAllValidMoves(player, board) {
+        const validMoves = [];
+        for (let row = 0; row < 8; row++) {
+            for (let col = 0; col < 8; col++) {
+                if (board[row][col] === CType.E) {
+                    const result = this.checkValidMove(row, col, player, board);
+                    if (result.isValid) {
+                        validMoves.push(new Coordinate(row, col));
+                    }
+                }
+            }
+        }
+        return validMoves;
+    }
+    /**
+     * æ£€æŸ¥åœ¨ç»™å®šçš„åæ ‡è½å­æ˜¯å¦ä¸ºä¸€æ­¥æœ‰æ•ˆçš„èµ°æ³•
+     * @param row - è½å­çš„è¡Œå·
+     * @param col - è½å­çš„åˆ—å·
+     * @param player - å½“å‰ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W) * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+     * @returns MoveCheckResult - åŒ…å«èµ°æ³•æ˜¯å¦æœ‰æ•ˆä»¥åŠå¯ç¿»è½¬æ£‹å­åˆ—è¡¨çš„å¯¹è±¡
+     * */
+    checkValidMove(row, col, player, board) {
+        // è§„åˆ™ 1ï¼šè½å­çš„ä½ç½®å¿…é¡»æ˜¯ç©ºçš„
+        if (board[row][col] !== CType.E) {
+            return new MoveCheckResult(false, []); // å¦‚æœéç©ºï¼Œç›´æ¥è¿”å›æ— æ•ˆ
+        }
+        // ç¡®å®šå¯¹æ‰‹çš„æ£‹å­ç±»å‹
+        const opponent = player === CType.B ? CType.W : CType.B;
+        // ç”¨äºå­˜å‚¨æ‰€æœ‰å¯ä»¥è¢«ç¿»è½¬çš„æ£‹å­
+        let allPiecesToFlip = [];
+        // è§„åˆ™ 2ï¼šéå† 8 ä¸ªæ–¹å‘ï¼Œæ£€æŸ¥æ˜¯å¦èƒ½å½¢æˆ"å¤¹å‡»"
+        for (const dir of this.directions) {
+            // å­˜å‚¨å½“å‰æ–¹å‘ä¸Šå¯èƒ½è¢«ç¿»è½¬çš„æ£‹å­
+            let piecesInThisLine = [];
+            // ä»è½å­ç‚¹çš„é‚»è¿‘ç‚¹å¼€å§‹æ²¿å½“å‰æ–¹å‘æ£€æŸ¥
+            let currentRow = row + dir.row;
+            let currentCol = col + dir.col;
+            // åªè¦è¿˜åœ¨æ£‹ç›˜å†…ï¼Œå¹¶ä¸”é‡åˆ°çš„æ˜¯å¯¹æ‰‹çš„æ£‹å­ï¼Œå°±ç»§ç»­æ²¿è¯¥æ–¹å‘å‰è¿›
+            while (currentRow >= 0 && currentRow < 8 && currentCol >= 0 && currentCol < 8 &&
+                board[currentRow][currentCol] === opponent) {
+                // å°†è¿™ä¸ªå¯¹æ‰‹æ£‹å­çš„åæ ‡è®°å½•ä¸‹æ¥
+                piecesInThisLine.push(new Coordinate(currentRow, currentCol));
+                currentRow += dir.row;
+                currentCol += dir.col;
+            }
+            // å¾ªç¯ç»“æŸåï¼Œå¦‚æœä»åœ¨æ£‹ç›˜å†…ï¼Œå¹¶ä¸”é‡åˆ°äº†è‡ªå·±çš„æ£‹å­ï¼Œè¯´æ˜å½¢æˆäº†æœ‰æ•ˆçš„"å¤¹å‡»"
+            if (currentRow >= 0 && currentRow < 8 && currentCol >= 0 && currentCol < 8 &&
+                board[currentRow][currentCol] === player) {
+                // åªæœ‰åœ¨ä¸­é—´æœ‰å¯¹æ‰‹æ£‹å­æ—¶ï¼Œè¿™ä¸ªæ–¹å‘çš„èµ°æ³•æ‰ç®—æœ‰æ•ˆ
+                if (piecesInThisLine.length > 0) {
+                    // å°†è¿™ä¸ªæ–¹å‘ä¸Šæ‰€æœ‰å¯ç¿»è½¬çš„æ£‹å­æ·»åŠ åˆ°æ€»åˆ—è¡¨ä¸­
+                    allPiecesToFlip.push(...piecesInThisLine);
+                }
+            }
+            // è§„åˆ™ 3ï¼šå¦‚æœæ€»çš„å¯ç¿»è½¬æ£‹å­åˆ—è¡¨ä¸ä¸ºç©ºï¼Œè¯´æ˜è¿™æ˜¯ä¸€ä¸ªæœ‰æ•ˆçš„èµ°æ³•
+            if (allPiecesToFlip.length > 0) {
+                return new MoveCheckResult(true, allPiecesToFlip);
+            }
+        }
+        // å¦‚æœéå†å®Œæ‰€æœ‰æ–¹å‘éƒ½æ²¡æœ‰å¯ç¿»è½¬çš„æ£‹å­ï¼Œåˆ™ä¸ºæ— æ•ˆèµ°æ³•
+        return new MoveCheckResult(false, []);
+    }
+    /**
+     * å°†ä¸€æ­¥æ£‹åº”ç”¨åˆ°æ£‹ç›˜ä¸Šï¼Œå¹¶ç¿»è½¬ç›¸åº”çš„æ£‹å­
+     * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+     * @param move - è¦æ‰§è¡Œçš„è½å­åæ ‡
+     * @param piecesToFlip - éœ€è¦ç¿»è½¬çš„æ£‹å­åæ ‡åˆ—è¡¨
+     * @param player - å½“å‰ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W) * @returns è¿”å›æ›´æ–°åçš„æ£‹ç›˜çŠ¶æ€
+     */
+    applyMove(board, move, piecesToFlip, player) {
+        // åˆ›å»ºæ£‹ç›˜çš„æ·±æ‹·è´ä»¥é¿å…ç›´æ¥ä¿®æ”¹åŸæ£‹ç›˜
+        const newBoard = board.map(row => [...row]);
+        // åœ¨æŒ‡å®šä½ç½®è½å­
+        newBoard[move.row][move.col] = player;
+        // ç¿»è½¬æ‰€æœ‰"å¤¹å‡»"çš„æ£‹å­
+        for (const piece of piecesToFlip) {
+            newBoard[piece.row][piece.col] = player;
+        }
+        return newBoard;
+    }
+    // // 16x16 æ£‹ç›˜ä¸Šæ¯ä¸ªä½ç½®çš„æˆ˜ç•¥ä»·å€¼åˆ†æ•°
+    // private static readonly positionalValueMatrix = [
+    //   [120, 120, -20, -20, 20, 20, 5, 5, 5, 5, 20, 20, -20, -20, 120, 120],
+    //   [120, 120, -20, -20, 20, 20, 5, 5, 5, 5, 20, 20, -20, -20, 120, 120],
+    //   [-20, -20, -40, -40, -5, -5, -5, -5, -5, -5, -5, -5, -40, -40, -20, -20],
+    //   [-20, -20, -40, -40, -5, -5, -5, -5, -5, -5, -5, -5, -40, -40, -20, -20],
+    //   [20, 20, -5, -5, 15, 15, 3, 3, 3, 3, 15, 15, -5, -5, 20, 20],
+    //   [20, 20, -5, -5, 15, 15, 3, 3, 3, 3, 15, 15, -5, -5, 20, 20],
+    //   [5, 5, -5, -5, 3, 3, 3, 3, 3, 3, 3, 3, -5, -5, 5, 5],
+    //   [5, 5, -5, -5, 3, 3, 3, 3, 3, 3, 3, 3, -5, -5, 5, 5],
+    //   [5, 5, -5, -5, 3, 3, 3, 3, 3, 3, 3, 3, -5, -5, 5, 5],
+    //   [5, 5, -5, -5, 3, 3, 3, 3, 3, 3, 3, 3, -5, -5, 5, 5],
+    //   [20, 20, -5, -5, 15, 15, 3, 3, 3, 3, 15, 15, -5, -5, 20, 20],
+    //   [20, 20, -5, -5, 15, 15, 3, 3, 3, 3, 15, 15, -5, -5, 20, 20],
+    //   [-20, -20, -40, -40, -5, -5, -5, -5, -5, -5, -5, -5, -40, -40, -20, -20],
+    //   [-20, -20, -40, -40, -5, -5, -5, -5, -5, -5, -5, -5, -40, -40, -20, -20],
+    //   [120, 120, -20, -20, 20, 20, 5, 5, 5, 5, 20, 20, -20, -20, 120, 120],
+    //   [120, 120, -20, -20, 20, 20, 5, 5, 5, 5, 20, 20, -20, -20, 120, 120]
+    // ];
+    /**
+     * AI è´ªå¿ƒç®—æ³•ï¼šåŸºäºä½ç½®ä»·å€¼é€‰æ‹©æœ€ä½³èµ°æ³•
+     * @param player - AI ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W)
+     * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+     * @returns è¿”å›ä»·å€¼æœ€é«˜çš„æœ‰æ•ˆè½å­åæ ‡ï¼Œå¦‚æœæ²¡æœ‰æœ‰æ•ˆèµ°æ³•åˆ™è¿”å› null
+     */
+    findGreedyMove(player, board) {
+        const validMoves = this.findAllValidMoves(player, board);
+        if (validMoves.length === 0) {
+            return null;
+        }
+        let bestScore = -Infinity;
+        let bestMoves = [];
+        for (const move of validMoves) {
+            const score = GameLogic.positionalValueMatrix[move.row][move.col];
+            if (score > bestScore) {
+                bestScore = score;
+                bestMoves = [move];
+            }
+            else if (score === bestScore) {
+                bestMoves.push(move);
+            }
+        }
+        // å¦‚æœæœ‰å¤šä¸ªä»·å€¼ç›¸åŒçš„æœ€ä½³èµ°æ³•ï¼Œä»ä¸­éšæœºé€‰æ‹©ä¸€ä¸ªï¼Œè®© AI è¡Œä¸ºä¸é‚£ä¹ˆå›ºå®š
+        const randomIndex = Math.floor(Math.random() * bestMoves.length);
+        return bestMoves[randomIndex];
+    }
+    /**
+     * æ£€æŸ¥æ¸¸æˆæ˜¯å¦ç»“æŸ(æ£€æŸ¥æŒ‡å®šç©å®¶åœ¨å½“å‰æ£‹ç›˜ä¸Šæ˜¯å¦è‡³å°‘æœ‰ä¸€ä¸ªåˆæ³•èµ°æ³•)
+     * @param player å½“å‰ç©å®¶ç±»å‹ (B æˆ– W)
+     * @param board å½“å‰æ£‹ç›˜çŠ¶æ€
+     * @returns æ˜¯å¦æœ‰åˆæ³•èµ°æ³•
+     */
+    gameOver(player, board) {
+        // éå†æ‰€æœ‰ç©ºä½ (CType.E)
+        for (let r = 0; r < board.length; r++) {
+            for (let c = 0; c < board[r].length; c++) {
+                if (board[r][c] === CType.E) {
+                    // è°ƒç”¨å·²æœ‰çš„ checkValidMoveï¼Œåªå…³å¿ƒæ˜¯å¦æœ‰æ•ˆ
+                    if (this.checkValidMove(r, c, player, board).isValid) {
+                        return true; // æ‰¾åˆ°ä¸€ä¸ªæœ‰æ•ˆèµ°æ³•
+                    }
+                }
+            }
+        }
+        return false; // æ²¡æœ‰æ‰¾åˆ°æœ‰æ•ˆèµ°æ³•å³ä¸ºæ— è·¯å¯èµ°
+    }
+}
+// 8x8 æ£‹ç›˜ä¸Šæ¯ä¸ªä½ç½®çš„æˆ˜ç•¥ä»·å€¼åˆ†æ•°
+GameLogic.positionalValueMatrix = [
+    [120, -20, 20, 5, 5, 20, -20, 120],
+    [-20, -40, -5, -5, -5, -5, -40, -20],
+    [20, -5, 15, 3, 3, 15, -5, 20],
+    [5, -5, 3, 3, 3, 3, -5, 5],
+    [5, -5, 3, 3, 3, 3, -5, 5],
+    [20, -5, 15, 3, 3, 15, -5, 20],
+    [-20, -40, -5, -5, -5, -5, -40, -20],
+    [120, -20, 20, 5, 5, 20, -20, 120]
+];
+//# sourceMappingURL=GameLogic.js.mapÂÙEB:\study\Harmony\school_thello\entry\src\main\ets\logic\GameLogic.etsÔrB›ªmoduleName±isLocalDependency¯isNodeEntryFile§pkgPath±belongProjectPath§pkgNameªpkgVersion±dependencyPkgInfo¯hostModulesInfo°belongModulePath¬shouldEmitJs¥entryÃÂÙ$B:\study\Harmony\school_thello\entry¾B:\study\Harmony\school_thello¥entry¥1.0.0Ô  ‘ÔrC’²hostDependencyName®hostModuleName²../logic/GameLogic¥entryÙ$B:\study\Harmony\school_thello\entryÃÃÚ%2// å®šä¹‰æ£‹ç›˜ä¸Šæ ¼å­çš„ä¸‰ç§çŠ¶æ€ï¼šE (Empty) - ç©ºï¼ŒB (Black) - é»‘æ£‹ï¼ŒW (White) - ç™½æ£‹
+export enum CType {
+  E, // ç©º
+  B, // é»‘æ£‹
+  W // ç™½æ£‹
+}
+
+// æ ¹æ® ArkTS çš„ä¸¥æ ¼æ¨¡å¼è¦æ±‚ï¼Œä½¿ç”¨ class æ¥å®šä¹‰åæ ‡
+export class Coordinate {
+  row: number; // è¡Œ
+  col: number; // åˆ—
+  constructor(row: number, col: number) {
+    this.row = row;
+    this.col = col;
+  }
+}
+
+// ä½¿ç”¨ class æ¥å®šä¹‰ æ¯ä¸€æ­¥è½å­åçš„ç»“æœ
+export class MoveCheckResult {
+  isValid: boolean; // æ ‡è®°å½“å‰èµ°æ³•æ˜¯å¦æœ‰æ•ˆ
+  piecesToFlip: Coordinate[]; // è®°å½•å¦‚æœå½“å‰èµ°æ³•æœ‰æ•ˆï¼Œå¯ä»¥ç¿»è½¬çš„å¯¹æ–¹æ£‹å­åæ ‡åˆ—è¡¨
+  constructor(isValid: boolean, piecesToFlip: Coordinate[]) {
+    this.isValid = isValid;
+    this.piecesToFlip = piecesToFlip;
+  }
+}
+
+// æ¸¸æˆæ ¸å¿ƒé€»è¾‘ç±»
+export class GameLogic {
+  // å®šä¹‰ 8 ä¸ªæ–¹å‘çš„åæ ‡åç§»é‡ï¼Œç”¨äºæ£€æŸ¥æ£‹å­å‘¨å›´çš„æƒ…å†µ
+  private directions: Coordinate[] = [
+    new Coordinate(-1, 0), new Coordinate(1, 0), // ä¸Šã€ä¸‹
+    new Coordinate(0, -1), new Coordinate(0, 1), // å·¦ã€å³
+    new Coordinate(-1, -1), new Coordinate(-1, 1), // å·¦ä¸Šã€å³ä¸Š(å¯¹è§’çº¿)
+    new Coordinate(1, -1), new Coordinate(1, 1)// å·¦ä¸‹ã€å³ä¸‹ (å¯¹è§’çº¿)
+  ];
+
+  /**
+   * AI é€»è¾‘ï¼šä»æ‰€æœ‰æœ‰æ•ˆè½å­ä½ç½®ä¸­éšæœºé€‰æ‹©ä¸€ä¸ª
+   * @param player - AI ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W)
+   * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+   * @returns è¿”å›ä¸€ä¸ªéšæœºé€‰æ‹©çš„æœ‰æ•ˆè½å­åæ ‡ï¼Œå¦‚æœæ²¡æœ‰æœ‰æ•ˆèµ°æ³•åˆ™è¿”å›null
+   * */
+  public findRandomMove(player: CType, board: CType[][]): Coordinate | null {
+    const validMoves = this.findAllValidMoves(player, board);
+    if (validMoves.length === 0) {
+      return null; // æ²¡æœ‰æœ‰æ•ˆèµ°æ³•
+    }
+    const randomIndex = Math.floor(Math.random() * validMoves.length);
+    return validMoves[randomIndex];
+  }
+
+  /**
+   * æ‰¾å‡ºæŒ‡å®šç©å®¶æ‰€æœ‰æœ‰æ•ˆçš„è½å­ä½ç½®
+   * @param player - å½“å‰ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W) * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+   * @returns è¿”å›ä¸€ä¸ªåŒ…å«æ‰€æœ‰æœ‰æ•ˆè½å­åæ ‡çš„æ•°ç»„
+   */
+  public findAllValidMoves(player: CType, board: CType[][]): Coordinate[] {
+    const validMoves: Coordinate[] = [];
+    for (let row = 0; row < 8; row++) {
+      for (let col = 0; col < 8; col++) {
+        if (board[row][col] === CType.E) {
+          const result = this.checkValidMove(row, col, player, board);
+          if (result.isValid) {
+            validMoves.push(new Coordinate(row, col));
+          }
+        }
+      }
+    }
+    return validMoves;
+  }
+
+  /**
+   * æ£€æŸ¥åœ¨ç»™å®šçš„åæ ‡è½å­æ˜¯å¦ä¸ºä¸€æ­¥æœ‰æ•ˆçš„èµ°æ³•
+   * @param row - è½å­çš„è¡Œå·
+   * @param col - è½å­çš„åˆ—å·
+   * @param player - å½“å‰ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W) * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+   * @returns MoveCheckResult - åŒ…å«èµ°æ³•æ˜¯å¦æœ‰æ•ˆä»¥åŠå¯ç¿»è½¬æ£‹å­åˆ—è¡¨çš„å¯¹è±¡
+   * */
+
+  public checkValidMove(row: number, col: number, player: CType, board: CType[][]): MoveCheckResult {
+    // è§„åˆ™ 1ï¼šè½å­çš„ä½ç½®å¿…é¡»æ˜¯ç©ºçš„
+    if (board[row][col] !== CType.E) {
+      return new MoveCheckResult(false, []); // å¦‚æœéç©ºï¼Œç›´æ¥è¿”å›æ— æ•ˆ
+    }
+    // ç¡®å®šå¯¹æ‰‹çš„æ£‹å­ç±»å‹
+    const opponent: CType = player === CType.B ? CType.W : CType.B;
+    // ç”¨äºå­˜å‚¨æ‰€æœ‰å¯ä»¥è¢«ç¿»è½¬çš„æ£‹å­
+    let allPiecesToFlip: Coordinate[] = [];
+
+    // è§„åˆ™ 2ï¼šéå† 8 ä¸ªæ–¹å‘ï¼Œæ£€æŸ¥æ˜¯å¦èƒ½å½¢æˆ"å¤¹å‡»"
+    for (const dir of this.directions) {
+      // å­˜å‚¨å½“å‰æ–¹å‘ä¸Šå¯èƒ½è¢«ç¿»è½¬çš„æ£‹å­
+      let piecesInThisLine: Coordinate[] = [];
+      // ä»è½å­ç‚¹çš„é‚»è¿‘ç‚¹å¼€å§‹æ²¿å½“å‰æ–¹å‘æ£€æŸ¥
+      let currentRow = row + dir.row;
+      let currentCol = col + dir.col;
+      // åªè¦è¿˜åœ¨æ£‹ç›˜å†…ï¼Œå¹¶ä¸”é‡åˆ°çš„æ˜¯å¯¹æ‰‹çš„æ£‹å­ï¼Œå°±ç»§ç»­æ²¿è¯¥æ–¹å‘å‰è¿›
+      while (currentRow >= 0 && currentRow < 8 && currentCol >= 0 && currentCol < 8 &&
+        board[currentRow][currentCol] === opponent) {
+        // å°†è¿™ä¸ªå¯¹æ‰‹æ£‹å­çš„åæ ‡è®°å½•ä¸‹æ¥
+        piecesInThisLine.push(new Coordinate(currentRow, currentCol));
+        currentRow += dir.row;
+        currentCol += dir.col;
+      }
+      // å¾ªç¯ç»“æŸåï¼Œå¦‚æœä»åœ¨æ£‹ç›˜å†…ï¼Œå¹¶ä¸”é‡åˆ°äº†è‡ªå·±çš„æ£‹å­ï¼Œè¯´æ˜å½¢æˆäº†æœ‰æ•ˆçš„"å¤¹å‡»"
+      if (currentRow >= 0 && currentRow < 8 && currentCol >= 0 && currentCol < 8 &&
+        board[currentRow][currentCol] === player) {
+        // åªæœ‰åœ¨ä¸­é—´æœ‰å¯¹æ‰‹æ£‹å­æ—¶ï¼Œè¿™ä¸ªæ–¹å‘çš„èµ°æ³•æ‰ç®—æœ‰æ•ˆ
+        if (piecesInThisLine.length > 0) {
+          // å°†è¿™ä¸ªæ–¹å‘ä¸Šæ‰€æœ‰å¯ç¿»è½¬çš„æ£‹å­æ·»åŠ åˆ°æ€»åˆ—è¡¨ä¸­
+          allPiecesToFlip.push(...piecesInThisLine);
+        }
+      }
+
+      // è§„åˆ™ 3ï¼šå¦‚æœæ€»çš„å¯ç¿»è½¬æ£‹å­åˆ—è¡¨ä¸ä¸ºç©ºï¼Œè¯´æ˜è¿™æ˜¯ä¸€ä¸ªæœ‰æ•ˆçš„èµ°æ³•
+      if (allPiecesToFlip.length > 0) {
+        return new MoveCheckResult(true, allPiecesToFlip);
+      }
+    }
+    // å¦‚æœéå†å®Œæ‰€æœ‰æ–¹å‘éƒ½æ²¡æœ‰å¯ç¿»è½¬çš„æ£‹å­ï¼Œåˆ™ä¸ºæ— æ•ˆèµ°æ³•
+    return new MoveCheckResult(false, []);
+  }
+
+  /**
+   * å°†ä¸€æ­¥æ£‹åº”ç”¨åˆ°æ£‹ç›˜ä¸Šï¼Œå¹¶ç¿»è½¬ç›¸åº”çš„æ£‹å­
+   * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+   * @param move - è¦æ‰§è¡Œçš„è½å­åæ ‡
+   * @param piecesToFlip - éœ€è¦ç¿»è½¬çš„æ£‹å­åæ ‡åˆ—è¡¨
+   * @param player - å½“å‰ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W) * @returns è¿”å›æ›´æ–°åçš„æ£‹ç›˜çŠ¶æ€
+   */
+
+  public applyMove(board: CType[][], move: Coordinate, piecesToFlip: Coordinate[], player:
+    CType): CType[][] {
+    // åˆ›å»ºæ£‹ç›˜çš„æ·±æ‹·è´ä»¥é¿å…ç›´æ¥ä¿®æ”¹åŸæ£‹ç›˜
+    const newBoard = board.map(row => [...row]);
+    // åœ¨æŒ‡å®šä½ç½®è½å­
+    newBoard[move.row][move.col] = player;
+    // ç¿»è½¬æ‰€æœ‰"å¤¹å‡»"çš„æ£‹å­
+    for (const piece of piecesToFlip) {
+      newBoard[piece.row][piece.col] = player;
+    }
+    return newBoard;
+  }
+
+  // 8x8 æ£‹ç›˜ä¸Šæ¯ä¸ªä½ç½®çš„æˆ˜ç•¥ä»·å€¼åˆ†æ•°
+  private static readonly positionalValueMatrix = [
+    [120, -20, 20, 5, 5, 20, -20, 120], // è§’
+    [-20, -40, -5, -5, -5, -5, -40, -20], // è¾¹çš„æ—è¾¹
+    [20, -5, 15, 3, 3, 15, -5, 20],
+    [5, -5, 3, 3, 3, 3, -5, 5],
+    [5, -5, 3, 3, 3, 3, -5, 5],
+    [20, -5, 15, 3, 3, 15, -5, 20],
+    [-20, -40, -5, -5, -5, -5, -40, -20],
+    [120, -20, 20, 5, 5, 20, -20, 120]
+  ];
+
+  // // 16x16 æ£‹ç›˜ä¸Šæ¯ä¸ªä½ç½®çš„æˆ˜ç•¥ä»·å€¼åˆ†æ•°
+  // private static readonly positionalValueMatrix = [
+  //   [120, 120, -20, -20, 20, 20, 5, 5, 5, 5, 20, 20, -20, -20, 120, 120],
+  //   [120, 120, -20, -20, 20, 20, 5, 5, 5, 5, 20, 20, -20, -20, 120, 120],
+  //   [-20, -20, -40, -40, -5, -5, -5, -5, -5, -5, -5, -5, -40, -40, -20, -20],
+  //   [-20, -20, -40, -40, -5, -5, -5, -5, -5, -5, -5, -5, -40, -40, -20, -20],
+  //   [20, 20, -5, -5, 15, 15, 3, 3, 3, 3, 15, 15, -5, -5, 20, 20],
+  //   [20, 20, -5, -5, 15, 15, 3, 3, 3, 3, 15, 15, -5, -5, 20, 20],
+  //   [5, 5, -5, -5, 3, 3, 3, 3, 3, 3, 3, 3, -5, -5, 5, 5],
+  //   [5, 5, -5, -5, 3, 3, 3, 3, 3, 3, 3, 3, -5, -5, 5, 5],
+  //   [5, 5, -5, -5, 3, 3, 3, 3, 3, 3, 3, 3, -5, -5, 5, 5],
+  //   [5, 5, -5, -5, 3, 3, 3, 3, 3, 3, 3, 3, -5, -5, 5, 5],
+  //   [20, 20, -5, -5, 15, 15, 3, 3, 3, 3, 15, 15, -5, -5, 20, 20],
+  //   [20, 20, -5, -5, 15, 15, 3, 3, 3, 3, 15, 15, -5, -5, 20, 20],
+  //   [-20, -20, -40, -40, -5, -5, -5, -5, -5, -5, -5, -5, -40, -40, -20, -20],
+  //   [-20, -20, -40, -40, -5, -5, -5, -5, -5, -5, -5, -5, -40, -40, -20, -20],
+  //   [120, 120, -20, -20, 20, 20, 5, 5, 5, 5, 20, 20, -20, -20, 120, 120],
+  //   [120, 120, -20, -20, 20, 20, 5, 5, 5, 5, 20, 20, -20, -20, 120, 120]
+  // ];
+
+  /**
+   * AI è´ªå¿ƒç®—æ³•ï¼šåŸºäºä½ç½®ä»·å€¼é€‰æ‹©æœ€ä½³èµ°æ³•
+   * @param player - AI ç©å®¶çš„æ£‹å­ç±»å‹ (B æˆ– W)
+   * @param board - å½“å‰çš„ 8x8 æ£‹ç›˜çŠ¶æ€
+   * @returns è¿”å›ä»·å€¼æœ€é«˜çš„æœ‰æ•ˆè½å­åæ ‡ï¼Œå¦‚æœæ²¡æœ‰æœ‰æ•ˆèµ°æ³•åˆ™è¿”å› null
+   */
+  public findGreedyMove(player: CType, board: CType[][]): Coordinate |
+  null {
+    const validMoves = this.findAllValidMoves(player, board);
+    if (validMoves.length === 0) {
+      return null;
+    }
+    let bestScore = -Infinity;
+    let bestMoves: Coordinate[] = [];
+    for (const move of validMoves) {
+      const score = GameLogic.positionalValueMatrix[move.row][move.col];
+      if (score > bestScore) {
+        bestScore = score;
+        bestMoves = [move];
+      } else if (score === bestScore) {
+        bestMoves.push(move);
+      }
+    }
+    // å¦‚æœæœ‰å¤šä¸ªä»·å€¼ç›¸åŒçš„æœ€ä½³èµ°æ³•ï¼Œä»ä¸­éšæœºé€‰æ‹©ä¸€ä¸ªï¼Œè®© AI è¡Œä¸ºä¸é‚£ä¹ˆå›ºå®š
+    const randomIndex = Math.floor(Math.random() * bestMoves.length);
+    return bestMoves[randomIndex];
+  }
+
+  /**
+   * æ£€æŸ¥æ¸¸æˆæ˜¯å¦ç»“æŸ(æ£€æŸ¥æŒ‡å®šç©å®¶åœ¨å½“å‰æ£‹ç›˜ä¸Šæ˜¯å¦è‡³å°‘æœ‰ä¸€ä¸ªåˆæ³•èµ°æ³•)
+   * @param player å½“å‰ç©å®¶ç±»å‹ (B æˆ– W)
+   * @param board å½“å‰æ£‹ç›˜çŠ¶æ€
+   * @returns æ˜¯å¦æœ‰åˆæ³•èµ°æ³•
+   */
+  public gameOver(player: CType, board: CType[][]): boolean {
+    // éå†æ‰€æœ‰ç©ºä½ (CType.E)
+    for (let r = 0; r < board.length; r++) {
+      for (let c = 0; c < board[r].length; c++) {
+        if (board[r][c] === CType.E) {
+          // è°ƒç”¨å·²æœ‰çš„ checkValidMoveï¼Œåªå…³å¿ƒæ˜¯å¦æœ‰æ•ˆ
+          if (this.checkValidMove(r, c, player, board).isValid) {
+            return true; // æ‰¾åˆ°ä¸€ä¸ªæœ‰æ•ˆèµ°æ³•
+          }
+        }
+      }
+    }
+    return false; // æ²¡æœ‰æ‰¾åˆ°æœ‰æ•ˆèµ°æ³•å³ä¸ºæ— è·¯å¯èµ°
+  }
+}ÀA“ÔrD–§version¤fileªsourceRoot§sources¥names¨mappings¬GameLogic.js ‘­GameLogic.etsÜ Ñ’”    ”;  ;•”   ” ”  ” ” “”   ” ” “” ” ”  “” ” ”  •” ” ”  ”! ”& 	—”   ” ” ” ” ” ” ’”   ”" "””   ” ” ” •” ” ” ” ” &—” ” ” 	” ” ” ” —” ” ” 	” ” ” ” ’” ” ‘” ’”   ” ””   ” ” ” •” ” ” ”  ”% :—” ” ” 	” ” ” ” —” ” ” 	” ” ”( $”) %’” ” ‘” ’”   ”
+ 
+””   ” ” ” ‘”  ’” ”% “” 
+” ” %Ü ” ” ” ” ” ” ” ”  ”! ”# ”' ”1 )”2 *”3 +”5 -”6 .”7 /Ü ”  ”  ”  ”  ”  ”  ”  ”   ”!  ”#  ”'  ”1  )”2  *”3  +”5  -”6  .”7  /Ü ” !” !” !” !” !” !” !”  !”! !”" !”$ !”( ! ”2 !*”3 !+”4 !,”5 !-”7 !/”8 !0”9 !1Ü ” "” "” "” "” "” "” "”  "”! "”# "”' "”1 ")”2 "*”3 "+”5 "-”6 ".”7 "/”8 "/”ÌF "=’”	 #”
+ #’” Ìá ” Ìá‘” %‘”	 *–” +	” +” +” +%” +'”  +7” ,” ,
+” ,” ,” ,”  ,”1 ,-”2 ,.”8 ,4”: ,6”? ,;”Ì@ ,<”ÌA ,=˜” -” -” -” -” -”" -”# -”% -!–” .” .” .” .” .”" .‘”	 /Ü ” 0” 0
+” 0” 0”  0”! 0”& 0"”' 0#”+ 0'”, 0(”2 0.”4 00”7 03”ÌA 0=”ÌB 0>”ÌH 0ÌD”ÌI 0ÌE”ÌJ 0ÌF—” 1” 1” 1” 1”% 1!”& 1"”' 1#’” 2” 2‘” 4‘” 8–” 9	” 9” 9” 9(” 9*”# 9:–” :” :
+” :” :%” :'” :(” ;” ;	” ;” ;” ;” ;” ;” ;”  ;”! ;”# ;”& ;"”( ;$”* ;&” <” <” <” <” <” <” <”! <”$ <”% <”' <!”* <$”, <&”. <(” =” =” =” =” =” =” =”" =”# =”( = ”- =%”. =&”/ ='”1 =)Ü ” >
+” >”  >”# >”' >”( >”6 >,”7 >-”: >0”< >2”? >5”ÌA >7”ÌG >=”ÌI >?”ÌN >ÌD”ÌO >ÌE”ÌP >ÌF–” ?
+” ?” ?” ?”& ?”( ?” Ì@”" Ì@”# Ì@”' Ì@”( Ì@”, Ì@ ”6 Ì@*”7 Ì@+”: Ì@.”< Ì@0”? Ì@3”Ì@ Ì@4”ÌA Ì@5”ÌB Ì@6‘” ÌA‘” ÌB	‘” ÌC‘”	 ÌD”” ÌE” ÌE” ÌE” ÌE’” ÌF” ÌF‘” ÌH‘”	 ÌNš” ÌP	” ÌP” ÌP” ÌP#” ÌP%” ÌP0” ÌP2”# ÌP?”% ÌPÌA”* ÌPÌQ’” ÌQ” ÌQ” ÌR” ÌR” ÌR” ÌR” ÌR” ÌR” ÌR” ÌR” ÌR”  ÌR”% ÌR!”& ÌR"”' ÌR#”) ÌR%œ” ÌS” ÌS” ÌS”& ÌS ”' ÌS!”, ÌS&”. ÌS(”0 ÌS*”1 ÌS+”2 ÌS,”3 ÌS-”ÌA ÌS;‘”	 ÌT’” ÌU” ÌUÜ ” ÌV” ÌV
+” ÌV” ÌV” ÌV"”$ ÌV'”) ÌV,”* ÌV-”+ ÌV.”, ÌV/”- ÌV0”. ÌV1”3 ÌV6”4 ÌV7”5 ÌV8”6 ÌV9”7 ÌV:”8 ÌV;”= ÌVÌ@”> ÌVÌA”? ÌVÌB”Ì@ ÌVÌC’” ÌW” ÌW–” ÌX” ÌX” ÌX” ÌX(”  ÌX*”! ÌX+’” ÌZ”$ ÌZ ™” Ì[” Ì[	” Ì[” Ì[” Ì[” Ì[” Ì[”) Ì[%”+ Ì['’” Ì\” Ì\–” Ì]” Ì]
+”  Ì]”# Ì]+”% Ì]-”& Ì].’” Ì^”  Ì^š” Ì_” Ì_
+” Ì_” Ì_”  Ì_”# Ì_”& Ì_ ”' Ì_!”* Ì_$”+ Ì_%š” Ì`” Ì`
+” Ì`” Ì`”  Ì`”# Ì`”& Ì` ”' Ì`!”* Ì`$”+ Ì`%’” Ìa”, Ìa&Ü ” Ìb” Ìb” Ìb”! Ìb”" Ìb”& Ìb ”0 Ìb*”3 Ìb-”4 Ìb.”8 Ìb2”ÌB Ìb<”ÌF ÌbÌ@”ÌG ÌbÌA”ÌK ÌbÌE”ÌU ÌbÌO”ÌX ÌbÌR”ÌY ÌbÌS›” Ìc” Ìc” Ìc”  Ìc”! Ìc”" Ìc”, Ìc$”- Ìc%”2 Ìc*”: Ìc2”< Ìc4’” Ìd”! Ìd” Ìe”  Ìe”! Ìe”% Ìe”& Ìe”* Ìe"”4 Ìe,”5 Ìe-”? Ìe7”ÌA Ìe9”ÌK ÌeÌC”ÌL ÌeÌD”ÌM ÌeÌE”ÌN ÌeÌF—” Ìf” Ìf” Ìf”! Ìf”" Ìf”% Ìf”& Ìf—” Ìg” Ìg” Ìg”! Ìg”" Ìg”% Ìg”& Ìg‘” Ìh’” Ìi”4 Ìi.Ü ” Ìj” Ìj
+” Ìj” Ìj” Ìj”# Ìj”- Ìj'”0 Ìj*”1 Ìj+”5 Ìj/”? Ìj9”ÌC Ìj=”ÌD Ìj>”ÌH ÌjÌB”ÌR ÌjÌL”ÌU ÌjÌO”ÌV ÌjÌP›” Ìk” Ìk” Ìk”  Ìk”! Ìk”" Ìk”, Ìk$”- Ìk%”2 Ìk*”8 Ìk0”: Ìk2’” Ìl”* Ìl"˜” Ìm” Ìm”$ Ìm”% Ìm”+ Ìm#”. Ìm&”/ Ìm'”1 Ìm)’” Ìn
+”, Ìn"™” Ìo
+”# Ìo”$ Ìo”( Ìo”) Ìo”, Ìo"”< Ìo2”= Ìo3”> Ìo4‘” Ìp	‘” Ìq’” Ìs”. Ìs(˜” Ìt” Ìt
+” Ìt”  Ìt”& Ìt ”) Ìt#”* Ìt$”, Ìt&š” Ìu” Ìu” Ìu”* Ìu"”+ Ìu#”/ Ìu'”1 Ìu)”Ì@ Ìu8”ÌA Ìu9”ÌB Ìu:‘” Ìv‘”	 Ìw’” Ìx”$ Ìx š” Ìy” Ìy” Ìy”" Ìy”# Ìy”( Ìy$”* Ìy&”, Ìy(”- Ìy)”. Ìy*’” Ìz” Ìz‘” Ì|‘” Ì‚š” Ì„	” Ì„” Ì„” Ì„#” Ì„%” Ì„5” Ì„7”' Ì„ÌQ”) Ì„ÌS”/ Ì…	’” Ì†” Ì†Ü ” Ì‡” Ì‡
+” Ì‡” Ì‡” Ì‡” Ì‡”" Ì‡”# Ì‡”& Ì‡"”' Ì‡#”) Ì‡%”* Ì‡&”+ Ì‡'”. Ì‡*”1 Ì‡-”2 Ì‡.”3 Ì‡/”4 Ì‡0’” Ìˆ” ÌˆŸ” Ì‰” Ì‰” Ì‰” Ì‰” Ì‰” Ì‰” Ì‰” Ì‰” Ì‰”  Ì‰”# Ì‰”$ Ì‰ ”' Ì‰#”- Ì‰)”. Ì‰*’” ÌŠ” ÌŠ—” Ì‹” Ì‹	” Ì‹” Ì‹” Ì‹”( Ì‹$”* Ì‹&Ÿ” ÌŒ” ÌŒ” ÌŒ” ÌŒ” ÌŒ” ÌŒ” ÌŒ”  ÌŒ”% ÌŒ”& ÌŒ ”) ÌŒ#”* ÌŒ$”- ÌŒ'”3 ÌŒ-”4 ÌŒ.‘”	 Ì”” Ì” Ì” Ì” Ì’” Ì” Ì’” Ì” Ì’” Ì”8 Ì6’” ÌŸ”ÌN ÌŸÌL’” Ì ”ÌN Ì ÌL’” Ì¡”ÌR Ì¡ÌP’” Ì¢”ÌR Ì¢ÌP’” Ì£”ÌF Ì£ÌD’” Ì¤”ÌF Ì¤ÌD’” Ì¥”> Ì¥<’” Ì¦”> Ì¦<’” Ì§”> Ì§<’” Ì¨”> Ì¨<’” Ì©”ÌF Ì©ÌD’” Ìª”ÌF ÌªÌD’” Ì«”ÌR Ì«ÌP’” Ì¬”ÌR Ì¬ÌP’” Ì­”ÌN Ì­ÌL’” Ì®”ÌM Ì®ÌK’” Ì¯”	 Ì¯‘” Ì±‘” Ì¶–” Ì·	” Ì·” Ì·” Ì·%” Ì·'”  Ì·7” Ì¹” Ì¹
+” Ì¹” Ì¹” Ì¹”  Ì¹”1 Ì¹-”2 Ì¹.”8 Ì¹4”: Ì¹6”? Ì¹;”Ì@ Ì¹<”ÌA Ì¹=˜” Ìº” Ìº” Ìº” Ìº” Ìº”" Ìº”# Ìº”% Ìº!”” Ì»” Ì»” Ì»” Ì»‘”	 Ì¼—” Ì½” Ì½” Ì½” Ì½” Ì½”! Ì½”" Ì½–” Ì¾” Ì¾” Ì¾” Ì¾"” Ì¾$” Ì¾%—” Ì¿” Ì¿	” Ì¿” Ì¿” Ì¿”% Ì¿!”' Ì¿#Ü ” ÌÀ” ÌÀ” ÌÀ” ÌÀ”# ÌÀ”$ ÌÀ”9 ÌÀ3”: ÌÀ4”> ÌÀ8”? ÌÀ9”ÌB ÌÀ<”ÌC ÌÀ=”ÌD ÌÀ>”ÌH ÌÀÌB”ÌI ÌÀÌC”ÌL ÌÀÌF”ÌM ÌÀÌG”ÌN ÌÀÌH–” ÌÁ” ÌÁ
+” ÌÁ” ÌÁ”! ÌÁ”# ÌÁ•” ÌÂ” ÌÂ” ÌÂ”! ÌÂ”" ÌÂ—” ÌÃ” ÌÃ” ÌÃ” ÌÃ”! ÌÃ”" ÌÃ”# ÌÃ‘” ÌÄ–” ÌÄ” ÌÄ” ÌÄ” ÌÄ”( ÌÄ$”* ÌÄ&˜” ÌÅ” ÌÅ” ÌÅ” ÌÅ” ÌÅ”# ÌÅ”$ ÌÅ”% ÌÅ‘” ÌÆ‘”	 ÌÇ’” ÌÈ”/ ÌÈ+Ü ” ÌÉ” ÌÉ
+” ÌÉ” ÌÉ”  ÌÉ”! ÌÉ”& ÌÉ"”' ÌÉ#”+ ÌÉ'”, ÌÉ(”2 ÌÉ.”4 ÌÉ0”7 ÌÉ3”Ì@ ÌÉ<”ÌA ÌÉ=”ÌG ÌÉÌC”ÌH ÌÉÌD”ÌI ÌÉÌE—” ÌÊ” ÌÊ” ÌÊ” ÌÊ”$ ÌÊ ”% ÌÊ!”& ÌÊ"’” ÌË” ÌË‘” ÌÍ‘” ÌÒ–” ÌÓ	” ÌÓ” ÌÓ” ÌÓ” ÌÓ!” ÌÓ1’” ÌÔ” ÌÔÜ ” ÌÕ” ÌÕ	” ÌÕ” ÌÕ” ÌÕ” ÌÕ” ÌÕ” ÌÕ” ÌÕ”! ÌÕ”" ÌÕ”( ÌÕ$”* ÌÕ&”+ ÌÕ'”- ÌÕ)”/ ÌÕ+Ü ” ÌÖ” ÌÖ” ÌÖ” ÌÖ” ÌÖ” ÌÖ” ÌÖ” ÌÖ”  ÌÖ”% ÌÖ”& ÌÖ ”' ÌÖ!”( ÌÖ"”) ÌÖ#”/ ÌÖ)”1 ÌÖ+”2 ÌÖ,”4 ÌÖ.”6 ÌÖ0” Ì×” Ì×” Ì×” Ì×” Ì×” Ì×” Ì×” Ì×” Ì×”$ Ì×”) Ì×!”* Ì×"”+ Ì×#”- Ì×%’” ÌØ
+”3 ÌØ)Ü ” ÌÙ
+” ÌÙ” ÌÙ” ÌÙ”+ ÌÙ!”, ÌÙ"”- ÌÙ#”/ ÌÙ%”0 ÌÙ&”2 ÌÙ(”8 ÌÙ.”: ÌÙ0”? ÌÙ5”Ì@ ÌÙ6”ÌA ÌÙ7”ÌH ÌÙ>”ÌJ ÌÙÌ@–” ÌÚ” ÌÚ”# ÌÚ”$ ÌÚ”% ÌÚ”0 ÌÚ$‘” ÌÛ‘” ÌÜ	‘” Ìİ‘”	 ÌŞ–” Ìß” Ìß” Ìß” Ìß” Ìß”' Ìß#’” Ìà” Ìà’”  Ì‘” Ì‘“”  Ì’” Ì’/”" Ì’2Ü ” Ì“” Ì“” Ì“”
+ Ì“
+” Ì“” Ì“” Ì“” Ì“” Ì“” Ì“” Ì“” Ì“” Ì“” Ì“” Ì“” Ì“”  Ì“ ”" Ì“"”% Ì“%”& Ì“&Ü ” Ì”” Ì”” Ì”” Ì””
+ Ì”
+” Ì”” Ì”” Ì”” Ì”” Ì”” Ì”” Ì”” Ì”” Ì”” Ì”” Ì”” Ì”” Ì”” Ì”” Ì””  Ì” ”" Ì”"”$ Ì”$”% Ì”%”' Ì”'”( Ì”(Ü ” Ì•” Ì•” Ì•”	 Ì•	”
+ Ì•
+” Ì•” Ì•” Ì•” Ì•” Ì•” Ì•” Ì•” Ì•” Ì•” Ì•” Ì•” Ì•” Ì•”! Ì•!”" Ì•"Ü ” Ì–” Ì–” Ì–” Ì–”	 Ì–	”
+ Ì–
+” Ì–” Ì–” Ì–” Ì–” Ì–” Ì–” Ì–” Ì–” Ì–” Ì–” Ì–” Ì–” Ì–” Ì–Ü ” Ì—” Ì—” Ì—” Ì—”	 Ì—	”
+ Ì—
+” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—” Ì—Ü ” Ì˜” Ì˜” Ì˜”	 Ì˜	”
+ Ì˜
+” Ì˜” Ì˜” Ì˜” Ì˜” Ì˜” Ì˜” Ì˜” Ì˜” Ì˜” Ì˜” Ì˜” Ì˜” Ì˜”! Ì˜!”" Ì˜"Ü ” Ì™” Ì™” Ì™” Ì™”
+ Ì™
+” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™” Ì™”  Ì™ ”" Ì™"”$ Ì™$”% Ì™%”' Ì™'”( Ì™(Ü ” Ìš” Ìš” Ìš”
+ Ìš
+” Ìš” Ìš” Ìš” Ìš” Ìš” Ìš” Ìš” Ìš” Ìš” Ìš” Ìš” Ìš”  Ìš ”" Ìš"”% Ìš%”& Ìš&’” Ì›” Ì›ÔrE–§version¤file§sources®sourcesContent¥names¨mappingsÀ‘À‘ÀÜ Ò‘”    ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”  	 ‘”  
+ ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”   ‘”    ‘”  ! ‘”  " ‘”  # ‘”  $ ‘”  % ‘”  & ‘”  ' ‘”  ( ‘”  ) ‘”  * ‘”  + ‘”  , ‘”  - ‘”  . ‘”  / ‘”  0 ‘”  1 ‘”  2 ‘”  3 ‘”  4 ‘”  5 ‘”  6 ‘”  7 ‘”  8 ‘”  9 ‘”  : ‘”  ; ‘”  < ‘”  = ‘”  > ‘”  ? ‘”  Ì@ ‘”  ÌA ‘”  ÌB ‘”  ÌC ‘”  ÌD ‘”  ÌE ‘”  ÌF ‘”  ÌG ‘”  ÌH ‘”  ÌI ‘”  ÌJ ‘”  ÌK ‘”  ÌL ‘”  ÌM ‘”  ÌN ‘”  ÌO ‘”  ÌP ‘”  ÌQ ‘”  ÌR ‘”  ÌS ‘”  ÌT ‘”  ÌU ‘”  ÌV ‘”  ÌW ‘”  ÌX ‘”  ÌY ‘”  ÌZ ‘”  Ì[ ‘”  Ì\ ‘”  Ì] ‘”  Ì^ ‘”  Ì_ ‘”  Ì` ‘”  Ìa ‘”  Ìb ‘”  Ìc ‘”  Ìd ‘”  Ìe ‘”  Ìf ‘”  Ìg ‘”  Ìh ‘”  Ìi ‘”  Ìj ‘”  Ìk ‘”  Ìl ‘”  Ìm ‘”  Ìn ‘”  Ìo ‘”  Ìp ‘”  Ìq ‘”  Ìr ‘”  Ìs ‘”  Ìt ‘”  Ìu ‘”  Ìv ‘”  Ìw ‘”  Ìx ‘”  Ìy ‘”  Ìz ‘”  Ì{ ‘”  Ì| ‘”  Ì} ‘”  Ì~ ‘”  Ì ‘”  Ì€ ‘”  Ì ‘”  Ì‚ ‘”  Ìƒ ‘”  Ì„ ‘”  Ì… ‘”  Ì† ‘”  Ì‡ ‘”  Ìˆ ‘”  Ì‰ ‘”  ÌŠ ‘”  Ì‹ ‘”  ÌŒ ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì ‘”  Ì‘ ‘”  Ì’ ‘”  Ì“ ‘”  Ì” ‘”  Ì• ‘”  Ì– ‘”  Ì— ‘”  Ì˜ ‘”  Ì™ ‘”  Ìš ‘”  Ì› ‘”  Ìœ ‘”  Ì ‘”  Ì ‘”  ÌŸ ‘”  Ì  ‘”  Ì¡ ‘”  Ì¢ ‘”  Ì£ ‘”  Ì¤ ‘”  Ì¥ ‘”  Ì¦ ‘”  Ì§ ‘”  Ì¨ ‘”  Ì© ‘”  Ìª ‘”  Ì« ‘”  Ì¬ ‘”  Ì­ ‘”  Ì® ‘”  Ì¯ ‘”  Ì° ‘”  Ì± ‘”  Ì² ‘”  Ì³ ‘”  Ì´ ‘”  Ìµ ‘”  Ì¶ ‘”  Ì· ‘”  Ì¸ ‘”  Ì¹ ‘”  Ìº ‘”  Ì» ‘”  Ì¼ ‘”  Ì½ ‘”  Ì¾ ‘”  Ì¿ ‘”  ÌÀ ‘”  ÌÁ ‘”  ÌÂ ‘”  ÌÃ ‘”  ÌÄ ‘”  ÌÅ ‘”  ÌÆ ‘”  ÌÇ ‘”  ÌÈ ‘”  ÌÉ ‘”  ÌÊ ‘”  ÌË ‘”  ÌÌ ‘”  ÌÍ ‘”  ÌÎ ‘”  ÌÏ ‘”  ÌĞ ‘”  ÌÑ ÔrF’§missing¦pluginÃ¦genAbcÂÔ  ÔrG”²dynamicImportCache¹exportAllDeclarationCache»exportNamedDeclarationCache«importCache”ÔrH–¤type¥start£end«declarationªspecifiers¦source¶ExportNamedDeclaration=ÌNÔrI•¤type¥start£end¬declarations¤kind³VariableDeclarationÌDÌN‘ÔrJ•¤type¥start£end¢id¤init²VariableDeclaratorÌHÌMÔrK”¤type¥start£end¤nameªIdentifierÌHÌM¥CTypeÀ£varÀH¶ExportNamedDeclarationÍÍƒÔrL–¤type¥start£end¢idªsuperClass¤body°ClassDeclarationÍÍƒKªIdentifierÍÍ(ªCoordinateÀÔrM”¤type¥start£end¤body©ClassBodyÍ)Íƒ‘ÔrN˜¤type¥start£end¦static¨computed£key¤kind¥value°MethodDefinitionÍ0Í€ÂÂKªIdentifierÍ0Í;«constructor«constructorÔrO™¤type¥start£end¢idªexpression©generator¥async¦params¤body²FunctionExpressionÍ;Í€ÀÂÂÂ’KªIdentifierÍ<Í?£rowKªIdentifierÍAÍD£colM®BlockStatementÍFÍ€’ÔrP”¤type¥start£endªexpression³ExpressionStatementÍQÍ`ÔrQ–¤type¥start£end¨operator¤left¥right´AssignmentExpressionÍQÍ_¡=ÔrR—¤type¥start£end¦object¨property¨computed¨optional°MemberExpressionÍQÍYÔrS“¤type¥start£end®ThisExpressionÍQÍUKªIdentifierÍVÍY£rowÂÂKªIdentifierÍ\Í_£rowP³ExpressionStatementÍjÍyQ´AssignmentExpressionÍjÍx¡=R°MemberExpressionÍjÍrS®ThisExpressionÍjÍnKªIdentifierÍoÍr£colÂÂKªIdentifierÍuÍx£colÀH¶ExportNamedDeclarationÍ Í>L°ClassDeclarationÍ§Í>KªIdentifierÍ­Í¼¯MoveCheckResultÀM©ClassBodyÍ½Í>‘N°MethodDefinitionÍÄÍ;ÂÂKªIdentifierÍÄÍÏ«constructor«constructorO²FunctionExpressionÍÏÍ;ÀÂÂÂ’KªIdentifierÍĞÍ×§isValidKªIdentifierÍÙÍå¬piecesToFlipM®BlockStatementÍçÍ;’P³ExpressionStatementÍòÍ	Q´AssignmentExpressionÍòÍ¡=R°MemberExpressionÍòÍşS®ThisExpressionÍòÍöKªIdentifierÍ÷Íş§isValidÂÂKªIdentifierÍÍ§isValidP³ExpressionStatementÍÍ4Q´AssignmentExpressionÍÍ3¡=R°MemberExpressionÍÍ$S®ThisExpressionÍÍKªIdentifierÍÍ$¬piecesToFlipÂÂKªIdentifierÍ'Í3¬piecesToFlipÀH¶ExportNamedDeclarationÍLÍÌL°ClassDeclarationÍSÍÌKªIdentifierÍYÍb©GameLogicÀM©ClassBodyÍcÍÌ—N°MethodDefinitionÍjÍÈÂÂKªIdentifierÍjÍu«constructor«constructorO²FunctionExpressionÍuÍÈÀÂÂÂM®BlockStatementÍxÍÈ‘P³ExpressionStatementÍªÍÁQ´AssignmentExpressionÍªÍÀ¡=R°MemberExpressionÍªÍ¹S®ThisExpressionÍªÍ®KªIdentifierÍ¯Í¹ªdirectionsÂÂÔrT”¤type¥start£end¨elements¯ArrayExpressionÍ¼ÍÀ˜ÔrU•¤type¥start£end¦callee©arguments­NewExpressionÍËÍàKªIdentifierÍÏÍÙªCoordinate’ÔrV–¤type¥start£end¨operator¦prefix¨argument¯UnaryExpressionÍÚÍÜ¡-ÃÔrW•¤type¥start£end¥value£raw§LiteralÍÛÍÜ¡1W§LiteralÍŞÍß ¡0U­NewExpressionÍâÍöKªIdentifierÍæÍğªCoordinate’W§LiteralÍñÍò¡1W§LiteralÍôÍõ ¡0U­NewExpressionÍÍKªIdentifierÍ	ÍªCoordinate’W§LiteralÍÍ ¡0V¯UnaryExpressionÍÍ¡-ÃW§LiteralÍÍ¡1U­NewExpressionÍÍ0KªIdentifierÍ Í*ªCoordinate’W§LiteralÍ+Í, ¡0W§LiteralÍ.Í/¡1U­NewExpressionÍ?ÍUKªIdentifierÍCÍMªCoordinate’V¯UnaryExpressionÍNÍP¡-ÃW§LiteralÍOÍP¡1V¯UnaryExpressionÍRÍT¡-ÃW§LiteralÍSÍT¡1U­NewExpressionÍWÍlKªIdentifierÍ[ÍeªCoordinate’V¯UnaryExpressionÍfÍh¡-ÃW§LiteralÍgÍh¡1W§LiteralÍjÍk¡1U­NewExpressionÍ{ÍKªIdentifierÍÍ‰ªCoordinate’W§LiteralÍŠÍ‹¡1V¯UnaryExpressionÍÍ¡-ÃW§LiteralÍÍ¡1U­NewExpressionÍ’Í¦KªIdentifierÍ–Í ªCoordinate’W§LiteralÍ¡Í¢¡1W§LiteralÍ¤Í¥¡1N°MethodDefinitionÍÍ¶ÂÂKªIdentifierÍÍ®findRandomMove¦methodO²FunctionExpressionÍÍ¶ÀÂÂÂ’KªIdentifierÍÍ–¦playerKªIdentifierÍ˜Í¥boardM®BlockStatementÍŸÍ¶”I³VariableDeclarationÍªÍã‘J²VariableDeclaratorÍ°ÍâKªIdentifierÍ°ÍºªvalidMovesÔrX–¤type¥start£end¦callee©arguments¨optional®CallExpressionÍ½ÍâR°MemberExpressionÍ½ÍÓS®ThisExpressionÍ½ÍÁKªIdentifierÍÂÍÓ±findAllValidMovesÂÂ’KªIdentifierÍÔÍÚ¦playerKªIdentifierÍÜÍá¥boardÂ¥constÔrY–¤type¥start£end¤testªconsequent©alternate«IfStatementÍíÍ:ÔrZ–¤type¥start£end¤left¨operator¥right°BinaryExpressionÍñÍR°MemberExpressionÍñÍKªIdentifierÍñÍûªvalidMovesKªIdentifierÍüÍ¦lengthÂÂ£===W§LiteralÍÍ ¡0M®BlockStatementÍ
+Í:‘Ôr[”¤type¥start£end¨argument¯ReturnStatementÍÍ%W§LiteralÍ Í$À¤nullÀI³VariableDeclarationÍDÍ†‘J²VariableDeclaratorÍJÍ…KªIdentifierÍJÍU«randomIndexX®CallExpressionÍXÍ…R°MemberExpressionÍXÍbKªIdentifierÍXÍ\¤MathKªIdentifierÍ]Íb¥floorÂÂ‘Z°BinaryExpressionÍcÍ„X®CallExpressionÍcÍpR°MemberExpressionÍcÍnKªIdentifierÍcÍg¤MathKªIdentifierÍhÍn¦randomÂÂÂ¡*R°MemberExpressionÍsÍ„KªIdentifierÍsÍ}ªvalidMovesKªIdentifierÍ~Í„¦lengthÂÂÂ¥const[¯ReturnStatementÍÍ¯R°MemberExpressionÍ—Í®KªIdentifierÍ—Í¡ªvalidMovesKªIdentifierÍ¢Í­«randomIndexÃÂN°MethodDefinitionÍQÍMÂÂKªIdentifierÍQÍb±findAllValidMoves¦methodO²FunctionExpressionÍbÍMÀÂÂÂ’KªIdentifierÍcÍi¦playerKªIdentifierÍkÍp¥boardM®BlockStatementÍrÍM“I³VariableDeclarationÍ}Í“‘J²VariableDeclaratorÍƒÍ’KªIdentifierÍƒÍªvalidMovesT¯ArrayExpressionÍÍ’¥constÔr\—¤type¥start£end¤init¤test¦update¤body¬ForStatementÍÍ*I³VariableDeclarationÍ¢Í­‘J²VariableDeclaratorÍ¦Í­KªIdentifierÍ¦Í©£rowW§LiteralÍ¬Í­ ¡0£letZ°BinaryExpressionÍ¯Í¶KªIdentifierÍ¯Í²£row¡<W§LiteralÍµÍ¶¡8V°UpdateExpressionÍ¸Í½¢++ÂKªIdentifierÍ¸Í»£rowM®BlockStatementÍ¿Í*‘\¬ForStatementÍÎÍI³VariableDeclarationÍÓÍŞ‘J²VariableDeclaratorÍ×ÍŞKªIdentifierÍ×ÍÚ£colW§LiteralÍİÍŞ ¡0£letZ°BinaryExpressionÍàÍçKªIdentifierÍàÍã£col¡<W§LiteralÍæÍç¡8V°UpdateExpressionÍéÍî¢++ÂKªIdentifierÍéÍì£colM®BlockStatementÍğÍ‘Y«IfStatementÍÍZ°BinaryExpressionÍÍ"R°MemberExpressionÍÍR°MemberExpressionÍÍKªIdentifierÍÍ¥boardKªIdentifierÍÍ£rowÃÂKªIdentifierÍÍ£colÃÂ£===R°MemberExpressionÍÍ"KªIdentifierÍÍ ¥CTypeKªIdentifierÍ!Í"¡EÂÂM®BlockStatementÍ$Í’I³VariableDeclarationÍ;Íw‘J²VariableDeclaratorÍAÍvKªIdentifierÍAÍG¦resultX®CallExpressionÍJÍvR°MemberExpressionÍJÍ]S®ThisExpressionÍJÍNKªIdentifierÍOÍ]®checkValidMoveÂÂ”KªIdentifierÍ^Ía£rowKªIdentifierÍcÍf£colKªIdentifierÍhÍn¦playerKªIdentifierÍpÍu¥boardÂ¥constY«IfStatementÍÍıR°MemberExpressionÍ‘ÍŸKªIdentifierÍ‘Í—¦resultKªIdentifierÍ˜ÍŸ§isValidÂÂM®BlockStatementÍ¡Íı‘P³ExpressionStatementÍ¼ÍæX®CallExpressionÍ¼ÍåR°MemberExpressionÍ¼ÍËKªIdentifierÍ¼ÍÆªvalidMovesKªIdentifierÍÇÍË¤pushÂÂ‘U­NewExpressionÍÌÍäKªIdentifierÍĞÍÚªCoordinate’KªIdentifierÍÛÍŞ£rowKªIdentifierÍàÍã£colÂÀÀ[¯ReturnStatementÍ4ÍFKªIdentifierÍ;ÍEªvalidMovesN°MethodDefinitionÍ	:ÍÂÂKªIdentifierÍ	:Í	H®checkValidMove¦methodO²FunctionExpressionÍ	HÍÀÂÂÂ”KªIdentifierÍ	IÍ	L£rowKªIdentifierÍ	NÍ	Q£colKªIdentifierÍ	SÍ	Y¦playerKªIdentifierÍ	[Í	`¥boardM®BlockStatementÍ	bÍ•Y«IfStatementÍ	‰Í	ùZ°BinaryExpressionÍ	Í	¨R°MemberExpressionÍ	Í	œR°MemberExpressionÍ	Í	—KªIdentifierÍ	Í	’¥boardKªIdentifierÍ	“Í	–£rowÃÂKªIdentifierÍ	˜Í	›£colÃÂ£!==R°MemberExpressionÍ	¡Í	¨KªIdentifierÍ	¡Í	¦¥CTypeKªIdentifierÍ	§Í	¨¡EÂÂM®BlockStatementÍ	ªÍ	ù‘[¯ReturnStatementÍ	¹Í	ßU­NewExpressionÍ	ÀÍ	ŞKªIdentifierÍ	ÄÍ	Ó¯MoveCheckResult’W§LiteralÍ	ÔÍ	ÙÂ¥falseT¯ArrayExpressionÍ	ÛÍ	İÀI³VariableDeclarationÍ
+Í
+Q‘J²VariableDeclaratorÍ
+Í
+PKªIdentifierÍ
+Í
+'¨opponentYµConditionalExpressionÍ
+*Í
+PZ°BinaryExpressionÍ
+*Í
+<KªIdentifierÍ
+*Í
+0¦player£===R°MemberExpressionÍ
+5Í
+<KªIdentifierÍ
+5Í
+:¥CTypeKªIdentifierÍ
+;Í
+<¡BÂÂR°MemberExpressionÍ
+?Í
+FKªIdentifierÍ
+?Í
+D¥CTypeKªIdentifierÍ
+EÍ
+F¡WÂÂR°MemberExpressionÍ
+IÍ
+PKªIdentifierÍ
+IÍ
+N¥CTypeKªIdentifierÍ
+OÍ
+P¡BÂÂ¥constI³VariableDeclarationÍ
+vÍ
+‘J²VariableDeclaratorÍ
+zÍ
+KªIdentifierÍ
+zÍ
+‰¯allPiecesToFlipT¯ArrayExpressionÍ
+ŒÍ
+£letÔr]—¤type¥start£end¥await¤left¥right¤body®ForOfStatementÍ
+¿Í¿ÂI³VariableDeclarationÍ
+ÄÍ
+Í‘J²VariableDeclaratorÍ
+ÊÍ
+ÍKªIdentifierÍ
+ÊÍ
+Í£dirÀ¥constR°MemberExpressionÍ
+ÑÍ
+àS®ThisExpressionÍ
+ÑÍ
+ÕKªIdentifierÍ
+ÖÍ
+àªdirectionsÂÂM®BlockStatementÍ
+âÍ¿–I³VariableDeclarationÍÍ+‘J²VariableDeclaratorÍÍ*KªIdentifierÍÍ%°piecesInThisLineT¯ArrayExpressionÍ(Í*£letI³VariableDeclarationÍ[Íz‘J²VariableDeclaratorÍ_ÍyKªIdentifierÍ_ÍiªcurrentRowZ°BinaryExpressionÍlÍyKªIdentifierÍlÍo£row¡+R°MemberExpressionÍrÍyKªIdentifierÍrÍu£dirKªIdentifierÍvÍy£rowÂÂ£letI³VariableDeclarationÍˆÍ§‘J²VariableDeclaratorÍŒÍ¦KªIdentifierÍŒÍ–ªcurrentColZ°BinaryExpressionÍ™Í¦KªIdentifierÍ™Íœ£col¡+R°MemberExpressionÍŸÍ¦KªIdentifierÍŸÍ¢£dirKªIdentifierÍ£Í¦£colÂÂ£letÔr^•¤type¥start£end¤test¤body®WhileStatementÍãÍDZ±LogicalExpressionÍêÍoZ±LogicalExpressionÍêÍ0Z±LogicalExpressionÍêÍZ±LogicalExpressionÍêÍZ°BinaryExpressionÍêÍùKªIdentifierÍêÍôªcurrentRow¢>=W§LiteralÍøÍù ¡0¢&&Z°BinaryExpressionÍıÍKªIdentifierÍıÍªcurrentRow¡<W§LiteralÍ
+Í¡8¢&&Z°BinaryExpressionÍÍKªIdentifierÍÍªcurrentCol¢>=W§LiteralÍÍ ¡0¢&&Z°BinaryExpressionÍ"Í0KªIdentifierÍ"Í,ªcurrentCol¡<W§LiteralÍ/Í0¡8¢&&Z°BinaryExpressionÍEÍoR°MemberExpressionÍEÍbR°MemberExpressionÍEÍVKªIdentifierÍEÍJ¥boardKªIdentifierÍKÍUªcurrentRowÃÂKªIdentifierÍWÍaªcurrentColÃÂ£===KªIdentifierÍgÍo¨opponentM®BlockStatementÍqÍD“P³ExpressionStatementÍ§ÍåX®CallExpressionÍ§ÍäR°MemberExpressionÍ§Í¼KªIdentifierÍ§Í·°piecesInThisLineKªIdentifierÍ¸Í¼¤pushÂÂ‘U­NewExpressionÍ½ÍãKªIdentifierÍÁÍËªCoordinate’KªIdentifierÍÌÍÖªcurrentRowKªIdentifierÍØÍâªcurrentColÂP³ExpressionStatementÍ÷ÍQ´AssignmentExpressionÍ÷Í¢+=KªIdentifierÍ÷ÍªcurrentRowR°MemberExpressionÍÍKªIdentifierÍÍ£dirKªIdentifierÍ	Í£rowÂÂP³ExpressionStatementÍÍ5Q´AssignmentExpressionÍÍ4¢+=KªIdentifierÍÍ)ªcurrentColR°MemberExpressionÍ-Í4KªIdentifierÍ-Í0£dirKªIdentifierÍ1Í4£colÂÂY«IfStatementÍˆÍZ±LogicalExpressionÍŒÍZ±LogicalExpressionÍŒÍÒZ±LogicalExpressionÍŒÍÀZ±LogicalExpressionÍŒÍ­Z°BinaryExpressionÍŒÍ›KªIdentifierÍŒÍ–ªcurrentRow¢>=W§LiteralÍšÍ› ¡0¢&&Z°BinaryExpressionÍŸÍ­KªIdentifierÍŸÍ©ªcurrentRow¡<W§LiteralÍ¬Í­¡8¢&&Z°BinaryExpressionÍ±ÍÀKªIdentifierÍ±Í»ªcurrentCol¢>=W§LiteralÍ¿ÍÀ ¡0¢&&Z°BinaryExpressionÍÄÍÒKªIdentifierÍÄÍÎªcurrentCol¡<W§LiteralÍÑÍÒ¡8¢&&Z°BinaryExpressionÍçÍR°MemberExpressionÍçÍR°MemberExpressionÍçÍøKªIdentifierÍçÍì¥boardKªIdentifierÍíÍ÷ªcurrentRowÃÂKªIdentifierÍùÍªcurrentColÃÂ£===KªIdentifierÍ	Í¦playerM®BlockStatementÍÍ‘Y«IfStatementÍPÍóZ°BinaryExpressionÍTÍoR°MemberExpressionÍTÍkKªIdentifierÍTÍd°piecesInThisLineKªIdentifierÍeÍk¦lengthÂÂ¡>W§LiteralÍnÍo ¡0M®BlockStatementÍqÍó‘P³ExpressionStatementÍ¶ÍàX®CallExpressionÍ¶ÍßR°MemberExpressionÍ¶ÍÊKªIdentifierÍ¶ÍÅ¯allPiecesToFlipKªIdentifierÍÆÍÊ¤pushÂÂ‘[­SpreadElementÍËÍŞKªIdentifierÍÎÍŞ°piecesInThisLineÂÀÀY«IfStatementÍ@Í´Z°BinaryExpressionÍDÍ^R°MemberExpressionÍDÍZKªIdentifierÍDÍS¯allPiecesToFlipKªIdentifierÍTÍZ¦lengthÂÂ¡>W§LiteralÍ]Í^ ¡0M®BlockStatementÍ`Í´‘[¯ReturnStatementÍsÍ¥U­NewExpressionÍzÍ¤KªIdentifierÍ~Í¯MoveCheckResult’W§LiteralÍÍ’Ã¤trueKªIdentifierÍ”Í£¯allPiecesToFlipÀ[¯ReturnStatementÍïÍU­NewExpressionÍöÍKªIdentifierÍúÍ	¯MoveCheckResult’W§LiteralÍ
+ÍÂ¥falseT¯ArrayExpressionÍÍN°MethodDefinitionÍıÍkÂÂKªIdentifierÍıÍ©applyMove¦methodO²FunctionExpressionÍÍkÀÂÂÂ”KªIdentifierÍÍ¥boardKªIdentifierÍÍ¤moveKªIdentifierÍÍ ¬piecesToFlipKªIdentifierÍ"Í(¦playerM®BlockStatementÍ*Ík”I³VariableDeclarationÍTÍ€‘J²VariableDeclaratorÍZÍKªIdentifierÍZÍb¨newBoardX®CallExpressionÍeÍR°MemberExpressionÍeÍnKªIdentifierÍeÍj¥boardKªIdentifierÍkÍn£mapÂÂ‘O·ArrowFunctionExpressionÍoÍ~ÀÃÂÂ‘KªIdentifierÍoÍr£rowT¯ArrayExpressionÍvÍ~‘[­SpreadElementÍwÍ}KªIdentifierÍzÍ}£rowÂ¥constP³ExpressionStatementÍÍÄQ´AssignmentExpressionÍÍÃ¡=R°MemberExpressionÍÍºR°MemberExpressionÍÍ°KªIdentifierÍÍ¦¨newBoardR°MemberExpressionÍ§Í¯KªIdentifierÍ§Í«¤moveKªIdentifierÍ¬Í¯£rowÂÂÃÂR°MemberExpressionÍ±Í¹KªIdentifierÍ±Íµ¤moveKªIdentifierÍ¶Í¹£colÂÂÃÂKªIdentifierÍ½ÍÃ¦player]®ForOfStatementÍæÍJÂI³VariableDeclarationÍëÍö‘J²VariableDeclaratorÍñÍöKªIdentifierÍñÍö¥pieceÀ¥constKªIdentifierÍúÍ¬piecesToFlipM®BlockStatementÍÍJ‘P³ExpressionStatementÍÍ?Q´AssignmentExpressionÍÍ>¡=R°MemberExpressionÍÍ5R°MemberExpressionÍÍ*KªIdentifierÍÍ¨newBoardR°MemberExpressionÍ Í)KªIdentifierÍ Í%¥pieceKªIdentifierÍ&Í)£rowÂÂÃÂR°MemberExpressionÍ+Í4KªIdentifierÍ+Í0¥pieceKªIdentifierÍ1Í4£colÂÂÃÂKªIdentifierÍ8Í>¦player[¯ReturnStatementÍTÍdKªIdentifierÍ[Íc¨newBoardN°MethodDefinitionÍ3Í4ÂÂKªIdentifierÍ3ÍA®findGreedyMove¦methodO²FunctionExpressionÍAÍ4ÀÂÂÂ’KªIdentifierÍBÍH¦playerKªIdentifierÍJÍO¥boardM®BlockStatementÍQÍ4—I³VariableDeclarationÍ\Í•‘J²VariableDeclaratorÍbÍ”KªIdentifierÍbÍlªvalidMovesX®CallExpressionÍoÍ”R°MemberExpressionÍoÍ…S®ThisExpressionÍoÍsKªIdentifierÍtÍ…±findAllValidMovesÂÂ’KªIdentifierÍ†ÍŒ¦playerKªIdentifierÍÍ“¥boardÂ¥constY«IfStatementÍŸÍâZ°BinaryExpressionÍ£ÍºR°MemberExpressionÍ£Í´KªIdentifierÍ£Í­ªvalidMovesKªIdentifierÍ®Í´¦lengthÂÂ£===W§LiteralÍ¹Íº ¡0M®BlockStatementÍ¼Íâ‘[¯ReturnStatementÍËÍ×W§LiteralÍÒÍÖÀ¤nullÀI³VariableDeclarationÍìÍ‘J²VariableDeclaratorÍğÍKªIdentifierÍğÍù©bestScoreV¯UnaryExpressionÍüÍ¡-ÃKªIdentifierÍıÍ¨Infinity£letI³VariableDeclarationÍÍ#‘J²VariableDeclaratorÍÍ"KªIdentifierÍÍ©bestMovesT¯ArrayExpressionÍ Í"£let]®ForOfStatementÍ-Í‰ÂI³VariableDeclarationÍ2Í<‘J²VariableDeclaratorÍ8Í<KªIdentifierÍ8Í<¤moveÀ¥constKªIdentifierÍ@ÍJªvalidMovesM®BlockStatementÍLÍ‰’I³VariableDeclarationÍ[Í‘J²VariableDeclaratorÍaÍœKªIdentifierÍaÍf¥scoreR°MemberExpressionÍiÍœR°MemberExpressionÍiÍ’R°MemberExpressionÍiÍˆKªIdentifierÍiÍr©GameLogicKªIdentifierÍsÍˆµpositionalValueMatrixÂÂR°MemberExpressionÍ‰Í‘KªIdentifierÍ‰Í¤moveKªIdentifierÍÍ‘£rowÂÂÃÂR°MemberExpressionÍ“Í›KªIdentifierÍ“Í—¤moveKªIdentifierÍ˜Í›£colÂÂÃÂ¥constY«IfStatementÍ«Í~Z°BinaryExpressionÍ¯ÍÀKªIdentifierÍ¯Í´¥score¡>KªIdentifierÍ·ÍÀ©bestScoreM®BlockStatementÍÂÍ’P³ExpressionStatementÍÕÍçQ´AssignmentExpressionÍÕÍæ¡=KªIdentifierÍÕÍŞ©bestScoreKªIdentifierÍáÍæ¥scoreP³ExpressionStatementÍùÍQ´AssignmentExpressionÍùÍ¡=KªIdentifierÍùÍ©bestMovesT¯ArrayExpressionÍÍ‘KªIdentifierÍÍ
+¤moveY«IfStatementÍ.Í~Z°BinaryExpressionÍ2ÍEKªIdentifierÍ2Í7¥score£===KªIdentifierÍ<ÍE©bestScoreM®BlockStatementÍGÍ~‘P³ExpressionStatementÍZÍoX®CallExpressionÍZÍnR°MemberExpressionÍZÍhKªIdentifierÍZÍc©bestMovesKªIdentifierÍdÍh¤pushÂÂ‘KªIdentifierÍiÍm¤moveÂÀI³VariableDeclarationÍÄÍ‘J²VariableDeclaratorÍÊÍKªIdentifierÍÊÍÕ«randomIndexX®CallExpressionÍØÍR°MemberExpressionÍØÍâKªIdentifierÍØÍÜ¤MathKªIdentifierÍİÍâ¥floorÂÂ‘Z°BinaryExpressionÍãÍX®CallExpressionÍãÍğR°MemberExpressionÍãÍîKªIdentifierÍãÍç¤MathKªIdentifierÍèÍî¦randomÂÂÂ¡*R°MemberExpressionÍóÍKªIdentifierÍóÍü©bestMovesKªIdentifierÍıÍ¦lengthÂÂÂ¥const[¯ReturnStatementÍÍ-R°MemberExpressionÍÍ,KªIdentifierÍÍ©bestMovesKªIdentifierÍ Í+«randomIndexÃÂN°MethodDefinitionÍĞÍÉÂÂKªIdentifierÍĞÍØ¨gameOver¦methodO²FunctionExpressionÍØÍÉÀÂÂÂ’KªIdentifierÍÙÍß¦playerKªIdentifierÍáÍæ¥boardM®BlockStatementÍèÍÉ’\¬ForStatementÍÍ™I³VariableDeclarationÍÍ‘J²VariableDeclaratorÍÍKªIdentifierÍÍ¡rW§LiteralÍÍ ¡0£letZ°BinaryExpressionÍ Í0KªIdentifierÍ Í!¡r¡<R°MemberExpressionÍ$Í0KªIdentifierÍ$Í)¥boardKªIdentifierÍ*Í0¦lengthÂÂV°UpdateExpressionÍ2Í5¢++ÂKªIdentifierÍ2Í3¡rM®BlockStatementÍ7Í™‘\¬ForStatementÍFÍI³VariableDeclarationÍKÍT‘J²VariableDeclaratorÍOÍTKªIdentifierÍOÍP¡cW§LiteralÍSÍT ¡0£letZ°BinaryExpressionÍVÍiKªIdentifierÍVÍW¡c¡<R°MemberExpressionÍZÍiR°MemberExpressionÍZÍbKªIdentifierÍZÍ_¥boardKªIdentifierÍ`Ía¡rÃÂKªIdentifierÍcÍi¦lengthÂÂV°UpdateExpressionÍkÍn¢++ÂKªIdentifierÍkÍl¡cM®BlockStatementÍpÍ‘Y«IfStatementÍƒÍZ°BinaryExpressionÍ‡ÍR°MemberExpressionÍ‡Í’R°MemberExpressionÍ‡ÍKªIdentifierÍ‡ÍŒ¥boardKªIdentifierÍÍ¡rÃÂKªIdentifierÍÍ‘¡cÃÂ£===R°MemberExpressionÍ—ÍKªIdentifierÍ—Íœ¥CTypeKªIdentifierÍÍ¡EÂÂM®BlockStatementÍ Í‘Y«IfStatementÍìÍlR°MemberExpressionÍğÍ X®CallExpressionÍğÍR°MemberExpressionÍğÍS®ThisExpressionÍğÍôKªIdentifierÍõÍ®checkValidMoveÂÂ”KªIdentifierÍÍ¡rKªIdentifierÍÍ¡cKªIdentifierÍ
+Í¦playerKªIdentifierÍÍ¥boardÂKªIdentifierÍÍ §isValidÂÂM®BlockStatementÍ"Íl‘[¯ReturnStatementÍ=ÍIW§LiteralÍDÍHÃ¤trueÀÀ[¯ReturnStatementÍ£Í°W§LiteralÍªÍ¯Â¥falseÀ

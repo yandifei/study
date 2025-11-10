@@ -1,0 +1,23 @@
+{
+  "modulePathMap": {
+    "entry": "B:\\study\\Harmony\\school_10_30\\entry"
+  },
+  "compileMode": "esmodule",
+  "projectRootPath": "B:\\study\\Harmony\\school_10_30",
+  "nodeModulesPath": "B:\\study\\Harmony\\school_10_30\\entry\\.preview\\default\\intermediates\\loader_out\\default\\node_modules",
+  "byteCodeHarInfo": {},
+  "declarationEntry": [],
+  "moduleName": "entry",
+  "hspNameOhmMap": {},
+  "harNameOhmMap": {},
+  "packageManagerType": "ohpm",
+  "compileEntry": [],
+  "otherCompileFiles": [],
+  "dynamicImportLibInfo": {},
+  "routerMap": [],
+  "hspResourcesMap": {},
+  "updateVersionInfo": {},
+  "anBuildOutPut": "B:\\study\\Harmony\\school_10_30\\entry\\.preview\\default\\intermediates\\loader_out\\default\\an\\arm64-v8a",
+  "anBuildMode": "type",
+  "buildConfigPath": ".preview\\config\\buildConfig.json"
+}

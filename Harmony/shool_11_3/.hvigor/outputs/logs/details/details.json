@@ -1,0 +1,46 @@
+{
+  "HVIGOR_OHOS_PLUGIN": {
+    "MODULES": [
+      {
+        "MODULE_NAME": "1043bfc77febe75fafec0c4309faccf1",
+        "API_TYPE": "stageMode"
+      }
+    ],
+    "BUILD_MODE": "debug",
+    "USE_NORMALIZED_OHMURL": true
+  },
+  "HVIGOR": {
+    "IS_INCREMENTAL": true,
+    "IS_DAEMON": true,
+    "IS_PARALLEL": true,
+    "IS_HVIGORFILE_TYPE_CHECK": false,
+    "TASK_TIME": {
+      "1043bfc77febe75fafec0c4309faccf1": {
+        "init": 408200,
+        "PreBuild": 61511000,
+        "CreateModuleInfo": 1169800,
+        "MergeProfile": 3338700,
+        "CreateBuildProfile": 1863200,
+        "PreCheckSyscap": 257900,
+        "GeneratePkgContextInfo": 766100,
+        "ProcessProfile": 436241300,
+        "ProcessRouterMap": 3148300,
+        "PreviewProcessResource": 1768000,
+        "GenerateLoaderJson": 10163500,
+        "PreviewCompileResource": 272737600,
+        "PreviewHookCompileResource": 285700,
+        "CopyPreviewProfile": 3818500,
+        "ReplacePreviewerPage": 1442300,
+        "buildPreviewerResource": 163600,
+        "PreviewUpdateAssets": 1479400,
+        "PreviewArkTS": 4590772100,
+        "PreviewBuild": 142400
+      },
+      "APP": {
+        "init": 175100
+      }
+    },
+    "BUILD_ID": "202511031529539260",
+    "TOTAL_TIME": 5510495400
+  }
+}
