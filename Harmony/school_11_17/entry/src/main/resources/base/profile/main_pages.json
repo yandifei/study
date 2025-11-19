@@ -1,0 +1,8 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/DetailPage",
+    "pages/EditPage",
+    "pages/LoginPage"
+  ]
+}
