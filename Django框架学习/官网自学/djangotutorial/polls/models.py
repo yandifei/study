@@ -1,8 +1,10 @@
-from django.db import models
+import datetime
 
-# ====================================================================
-# 1. Question 模型（问题）
-# ====================================================================
+from django.db import models
+from django.utils import timezone
+
+
+# Question 模型（问题）
 class Question(models.Model):
     # 'question_text' 字段用于存储问题的内容。
     # CharField 适用于短字符串。
@@ -14,9 +16,14 @@ class Question(models.Model):
     # "date published" 是可选的人类可读名称，用于管理界面等地方显示。
     pub_date = models.DateTimeField("date published")
 
-# ====================================================================
-# 2. Choice 模型（选项）
-# ====================================================================
+    def __str__(self):
+        return self.question_text
+
+    def was_published_recently(self):
+        # 当前时间减去1天，得到"24小时前"的时间点
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+# Choice 模型（选项）
 class Choice(models.Model):
     # 'question' 字段是连接到 Question 模型的关键。
     # ForeignKey 定义了多对一关系：一个 Question 可以有多个 Choice，但一个 Choice 只属于一个 Question。
@@ -30,3 +37,6 @@ class Choice(models.Model):
     # IntegerField 用于存储整数值。
     # default=0 设置了新创建的选项的票数默认为 0。
     votes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.choice_text
