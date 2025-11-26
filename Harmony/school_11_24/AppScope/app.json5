@@ -3,8 +3,8 @@
     "bundleName": "edu.yandifei.myapplication",
     "vendor": "example",
     "versionCode": 1000000,
-    "versionName": "1.0.0",
-    "icon": "$media:layered_image",
+    "versionName": "1.1.0",
+    "icon": "$media:QQ",
     "label": "$string:app_name"
   }
 }
