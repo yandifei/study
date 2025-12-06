@@ -11,7 +11,7 @@ import requests
 from PIL import Image   # 图片格式转换(统一jpg)
 from bs4 import BeautifulSoup
 
-num_top_images = 3     # 抓取排行前几的图片
+num_top_images = 10     # 抓取排行前几的图片
 r18: bool = False      # 是否r18(必须加cookie)
 
 url = f"https://www.pixiv.net/ranking.php?mode=daily{"_r18" if r18 else ""}&content=illust"     # 今日排行
