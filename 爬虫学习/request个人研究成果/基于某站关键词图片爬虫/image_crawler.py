@@ -110,7 +110,6 @@ class ImageCrawler:
         # 需求小于总数
         return f"已下载{theme}图片{quantity - request_fail_num}张，其中{request_fail_num}张图片请求失败"
 
-
 if __name__ == '__main__':
     ic = ImageCrawler()
     while True:

