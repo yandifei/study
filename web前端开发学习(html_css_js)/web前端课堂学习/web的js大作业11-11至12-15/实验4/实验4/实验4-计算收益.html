@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>实验4-计算银行存款收益</title>
+	</head>
+	<body>
+		<script> 
+			// 银行初始存款金额（所有银行初始存款均为 10,000）
+			var initialDepositBank1 = 10000; // 银行 1 (中国建设银行) 初始存款
+			var initialDepositBank2 = 10000; // 银行 2 (中国工商银行) 初始存款
+			var initialDepositBank3 = 10000; // 银行 3 (中国农业银行) 初始存款
+			// --- 计算中国建设银行 (Bank 1) 的最终收益 ---
+			// 利率为 3.75%，存款周期为 4 年 (循环 4 次)
+			for (var i = 1; i < 5; i++) {
+				initialDepositBank1 += initialDepositBank1 * 3.75 / 100;	// 计算每年利息并将其加回到本金中
+			}
+			// 计算中国工商银行 (Bank 2) 的最终收益
+			// 利率为 3.25%，存款周期为 5 年 (循环 5 次)
+			for (var j = 1; j < 6; j++) {
+				initialDepositBank2 += initialDepositBank2 * 3.25 / 100;	// 计算每年利息并将其加回到本金中
+			}
+			// 计算中国农业银行 (Bank 3) 的最终收益
+			// 利率为 3.00%，存款周期为 6 年 (循环 6 次)
+			for (var k = 1; k < 7; k++) {
+				initialDepositBank3 += initialDepositBank3 * 3 / 100; // 计算每年利息并将其加回到本金中
+			}
+			var resultString = "中国建设银行最终总额：" + initialDepositBank1.toFixed(2) +
+			                               "\n中国工商银行最终总额：" + initialDepositBank2.toFixed(2) +
+			                               "\n中国农业银行最终总额：" + initialDepositBank3.toFixed(2);
+			if (initialDepositBank1 > initialDepositBank2 && initialDepositBank1 > initialDepositBank3) {
+				alert(resultString + '\n\n中国建设银行收益最高');	// 如果银行 1 (中国建设银行) 收益最高
+			} else if (initialDepositBank2 > initialDepositBank1 && initialDepositBank2 > initialDepositBank3){
+				alert(resultString + '\n\n中国工商银行收益最高');	// 如果银行 2 (中国工商银行) 收益最高
+			} else if (initialDepositBank3 > initialDepositBank1 && initialDepositBank3 > initialDepositBank2){
+				alert(resultString + '\n\n中国农业银行收益最高'); // 如果银行 3 (中国农业银行) 收益最高
+			}
+		</script>
+	</body>
+</html>

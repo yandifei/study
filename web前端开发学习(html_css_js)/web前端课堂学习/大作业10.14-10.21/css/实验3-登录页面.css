@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+/*登录 开始*/
+.login_bg {
+	width: 100%;/* 背景容器宽度 */
+	height: 870px; /* 背景容器高度 */
+	background: url("../img/book_bg.png") no-repeat;/* 背景样式 */
+	overflow: hidden; /* 隐藏溢出内容 */
+}
+
+.login_box {
+	width: 1200px;/* 登录框宽度 */
+	margin: 150px auto;/* 登录框外边距 */
+	height: auto/* 登录框高度 */
+	overflow: hidden; /* 隐藏溢出内容 */
+	
+}
+
+.login_b1 {
+	padding-top: 60px;/* 上内边距 */
+	width: 532px;/* 区块宽度 */
+	height: auto;/* 区块高度 */
+	overflow: hidden; /* 隐藏溢出内容 */
+	color: #12ad6f;/* 文字颜色 */
+}
+
+.login_b1 img {
+	padding-bottom: 90px; /* 图片下内边距 */
+}
+
+.login_b1>h2 {
+	font-size: 40px; /* 二级标题字体大小 */
+}
+
+.login_b1>h3{
+	font-size: 22px;/* 三级标题字体大小 */
+	margin: 40px 0px;/* 三级标题外边距 */
+}
+
+.login_content {
+	padding: 25px 20px; /* 内容区内边距 */
+	width: 500px;/* 内容区宽度 */
+	height: 81px;/* 内容区高度 */
+	background: rgba(255, 255, 255, 0.25);/* 内容区背景 */
+	border-radius: 10px;/* 内容区圆角 */
+	overflow: hidden; /* 隐藏溢出内容 */
+}
+
+.login_content>h4 {
+	font-size: 26px; /* 四级标题字体大小 */
+}
+
+.login_content>p {
+	font-size: 19px; /* 段落字体大小 */
+	margin-top: 15px; /* 段落上外边距 */
+}
+
+/* 登录注册模块 */
+.login_b2 {
+	padding: 0px 60px;/* 登录注册模块内边距 */
+	width: 360px;/* 登录注册模块宽度 */
+	height: 540px;/* 登录注册模块高度 */
+	background-color: #fff;/* 登录注册模块背景颜色 */
+	overflow: hidden; /* 隐藏溢出内容 */
+}
+/* 登录注册模块列表 */
+.login_b2_ul {
+	width: 360px;/* 列表宽度 */
+	padding-top: 34px;/* 列表上内边距 */
+	font-size: 24px;/* 列表字体大小 */
+	text-align: center;/* 列表文本对齐方式 */
+	color: #656565;/* 列表文字颜色 */
+}
+
+.login_b2_ul>li {
+	width: 50%;/* 列表项宽度 */
+	float: left;/* 列表项浮动方式 */
+	line-height: 66px;/* 列表项行高 */
+	border-bottom: solid 2px #999; /* 列表项底部边框 */
+	cursor: pointer; /* 列表项鼠标指针样式 */
+}
+
+.login_b2_ul>li:hover,.login_b2_ul>li.active {
+	color: #0e905c;/* 悬停/激活状态文字颜色 */
+	font-weight: bold;/* 悬停/激活状态字体粗细 */
+	border-bottom: solid 4px #387e46;/* 悬停/激活状态底部边框 */
+}
+/* 登录注册模块表单控件 */
+.login_b2 input {
+	width: 360px;/* 输入框宽度 */
+	height: 46px;/* 输入框高度 */
+	line-height: 46px;/* 输入框行高 */
+	color: #a5a5a5;/* 输入框文字颜色 */
+	font-size: 16px;/* 输入框字体大小 */
+	border: none;/* 输入框边框 */
+	border-bottom: solid 2px #CBCBCB;/* 输入框底部边框 */
+	margin-top: 30px;/* 输入框上外边距 */
+}
+.login_b2 input:focus{
+	border-bottom: solid 4px #0e905c;/* 输入框聚焦时底部边框 */
+}
+.login_b2_span {
+	color: #a8a8a8; /* 提示文字颜色 */
+	font-size: 14px; /* 提示文字字体大小 */
+	margin-top: 20px;/* 提示文字上外边距 */
+}
+
+.login_btn {
+	width: 360px;/* 登录按钮宽度 */
+	height: 40px;/* 登录按钮高度 */
+	border: none;/* 登录按钮边框 */
+	border-radius: 20px;/* 登录按钮圆角 */
+	color: #fff;/* 登录按钮文字颜色 */
+	font-size: 22px;/* 登录按钮字体大小 */
+	font-weight: bold; /* 登录按钮字体粗细 */
+	background-color: #0e905c;/* 登录按钮背景颜色 */
+	cursor: pointer; /* 登录按钮鼠标指针样式 */
+	margin-top: 100px;/* 登录按钮上外边距 */
+}
+/*登录 结束*/	

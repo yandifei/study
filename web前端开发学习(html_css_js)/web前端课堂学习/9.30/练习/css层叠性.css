@@ -1,0 +1,7 @@
+#divid p{
+	color: red;
+}
+.divclass .pclass{
+	color: green; //!important这个代表正无穷的权重,无法被覆盖,当有多个!important时选取最后的!important进行覆盖
+	//开发大忌,!important会破坏原有的规则
+}

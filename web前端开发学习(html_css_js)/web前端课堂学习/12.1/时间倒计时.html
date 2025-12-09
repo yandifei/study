@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>时间倒计时</title>
+	</head>
+	<body>
+		<p>距离:2026-1-1 00:00:00秒</p>
+		<p>还剩</p>
+		<p>
+			<span id="day"></span>天
+			<span id="hour"></span>时
+			<span id="minute"></span>分
+			<span id="second"></span>秒
+		</p>
+		<script>
+			// 目标日期
+			let target = new Date(2026, 1, 1, 0, 0, 0)
+			console.log(target)
+			
+			
+			// 提取时间并修改元素来显示
+			let time_counter = () => {
+				// 当前日期
+				let now_time = Date.now()
+				console.log(now_time)
+				// 相差时间
+				let time_difference = target - now_time
+				console.log(time_difference)
+				
+				// 确保时间差是正数，如果用于倒计时，负数表示时间已过
+				let total_ms = Math.abs(time_difference);
+				// 1. 计算总天数
+				const MS_PER_DAY = 1000 * 60 * 60 * 24;
+				let day = Math.floor(total_ms / MS_PER_DAY);
+				// 2. 计算剩余毫秒中的小时数 (剩余毫秒取模 MS_PER_DAY)
+				const MS_PER_HOUR = 1000 * 60 * 60;
+				let hour = Math.floor((total_ms % MS_PER_DAY) / MS_PER_HOUR);
+				// 3. 计算剩余毫秒中的分钟数 (剩余毫秒取模 MS_PER_HOUR)
+				const MS_PER_MINUTE = 1000 * 60;
+				let minute = Math.floor((total_ms % MS_PER_HOUR) / MS_PER_MINUTE);
+				// 4. 计算剩余毫秒中的秒数 (剩余毫秒取模 MS_PER_MINUTE)
+				const MS_PER_SECOND = 1000;
+				let second = Math.floor((total_ms % MS_PER_MINUTE) / MS_PER_SECOND);
+				// 格式化时间
+				document.getElementById("day").textContent = day
+				document.getElementById("hour").textContent = hour
+				document.getElementById("minute").textContent = minute
+				document.getElementById("second").textContent = second
+			}
+			
+			const intervalId = setInterval(time_counter , 1000);
+			
+			
+		</script>
+	</body>
+</html>

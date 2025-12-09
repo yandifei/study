@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/* 设置浮动结束 */
+		.d1 {
+			overflow: hidden;
+		}
+		.fd_1 {
+		    height: 30px;
+		    padding: 10px;
+		    margin: 10px;
+		    border: solid 2px black;
+		    background-color: aliceblue;
+		    float: left;	/*设置左边浮动*/
+		}
+		.f1 {
+		    position: absolute;
+		    left: 70px;
+		}
+		.f2 {
+		    position: absolute;
+		    left: 150px;
+		}
+		.box2 {
+		    z-index: -1; /*设置Z序为-1*/
+		}
+		.box3 {
+		    z-index: -2; /*设置Z序为-2*/
+		}
+		</style>
+	</head>
+	
+	<body>
+		<div class="d1">
+			<div class="fd_1" style="width: 50px;">box1</div>
+			<div class="fd_1 f1" style="width: 80px;">box2</div>
+			<div class="fd_1 f2" style="width: 100px;">box3</div>
+		</div>
+		<div class="d1">
+			<div class="fd_1" style="width: 50px;">box1</div>
+			<div class="fd_1 f1 box2" style="width: 80px;">box2</div>
+			<div class="fd_1 f2 box3" style="width: 100px;">box3</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+@charset "utf-8"; /* 设置样式表字符编码为UTF-8 */
+
+/* 精品课程 开始 */
+#main_course{
+    width: 1200px;/* 容器宽度 */
+	height: 420px; /* 容器高度  */
+    overflow: hidden; /* 隐藏溢出内容 */
+    background: url("../img/book_bg.png") 50% no-repeat #F9F9F9;/* 背景样式 */
+    padding-bottom: 100px;/* 底部内边距 */
+	margin-top: 40px;/* 顶部外边距 */
+}
+/* 精品课程标题 开始 */
+.course_title{
+    width: 1200px;/* 标题容器宽度 */
+    height: auto; /* 标题容器高度 */
+    margin: 40px auto;/* 外边距设置 */
+    font-size: 30px;/* 字体大小 */
+    font-weight: bold;/* 字体粗细 */
+	text-align: center;/* 文本对齐方式 */
+}
+.course_title>h3{
+    color: #9BDBC6;/* 标题文字颜色 */
+}
+.course_title h3>i{
+    color: #CFE3DE;/* 图标颜色 */
+	/* 文字倾斜 */
+	font-style: italic;
+}
+.course_title>h4{
+    width: 210px;/* 副标题宽度 */
+    border-bottom: 1px solid #009C78;/* 底部边框样式 */
+    position: auto;/* 定位方式 */
+    padding: 20px;/* 内边距设置 */
+	margin: auto; /* 外边距设置 */
+    color: #009C78;/* 文字颜色 */
+}
+.course_title>h4::before{
+    content: ''; /* 伪元素内容为空 */
+    width: 40px; /* 装饰线宽度 */
+    height: 4px; /* 装饰线高度 */
+    border-radius: 2px; /* 装饰线圆角 */
+    position: absolute; /* 绝对定位 */
+    background-color: #009C78; /* 装饰线颜色 */
+    bottom: 148px; /* 距离底部位置 */
+    left: 844px; /* 距离左侧位置 */
+}
+
+/* 精品课程标题 结束 */
+
+/* 精品课程表 开始 */
+table{
+	width: 1180px; /* 表格宽度 */
+	border-collapse: collapse;/* 表格边框合并方式 */
+	margin: 0 auto;/* 表格外边距 */
+}
+th{
+	font-family: "隶书";/* 表头字体 */
+	font-size: 40px;/* 表头字体大小 */
+	color: #009C78;/* 表头文字颜色 */
+	border: solid 1px #b9b9b9;/* 表头边框样式 */
+}
+td{
+	font-size: 20px;/* 单元格字体大小 */
+	color: #434343;/* 单元格文字颜色 */
+	height: 40px;/* 单元格高度 */
+	border: solid 1px #b9b9b9;/* 单元格边框样式 */
+}
+td strong{
+	color: #d30000;/* 强调文字颜色 */
+	margin-right: 20px;/* 强调文字右外边距 */
+}
+td del{
+	color: #c2c2c2;/* 删除线文字颜色 */
+	font-size: 15px;/* 删除线字体大小 */
+}
+/* 精品课程表 结束 */
+
+/* 精品课程 结束 */

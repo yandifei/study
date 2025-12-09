@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>实验4-线上点餐</title>
+		<style>
+			li {
+				margin-top: 20px;
+			}
+			span {
+				display: inline-block;
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>已点菜品</h1>
+		<ul>
+			<li>
+				<span>麻辣水煮鱼</span>
+				<button class="delete-btn" onclick="deleteNode(this);">删除</button>
+			</li>  
+		</ul>
+		<div>
+			<input type="text" width="200px">
+			<button id="add-btn">添加菜品</button>
+		</div>
+
+		<script>
+			// 为“添加菜品”按钮绑定点击事件
+			document.getElementById('add-btn').onclick = function() {
+				// 获取输入框元素
+				var $input = ;
+				// 如果未输入任何内容，使用alert提示
+				if ($input.value.length === 0) {
+					alert('请输入想添加的菜品');
+					return;
+				}
+				// 调用addFood方法，并传入输入值
+				
+				// 将输入框内容清空
+				
+			}
+			
+			// 定义添加菜品函数
+			function addFood(value) {
+				// 创建对应的<li>、<span>节点
+				var liNode = ;
+				var spanNode = ;
+				// 为<span>节点添加文本
+				appendTextNode(spanNode, value);
+				// 创建<button>节点
+				var buttonNode = ;
+				// 为<button>节点添加文本内容、class属性以及onclick属性
+				appendTextNode(buttonNode, '删除');
+				appendClassAttribute(buttonNode, 'delete-btn');
+				appendClickAttribute(buttonNode);
+				// 将<span>和<button>节点添加到<li>节点
+				
+				
+				// 将<li>添加到列表<ul>节点中
+				
+			}
+			
+			// 定义节点操作函数
+			function appendTextNode(node, value) {
+				// 创建文本节点
+				var textNode = document.createTextNode(value);
+				// 将文本节点添加到对应节点
+				node.appendChild(textNode);
+			}
+			// 定义添加class属性节点函数
+			function appendClassAttribute(node, value) {
+				// 创建class属性
+				var attributeNode = ;
+				// 设置属性值
+				attributeNode.value = ;
+				// 将class属性设置到对应节点
+				
+			}
+			// 定义添加onclick属性节点函数
+			function appendClickAttribute(node) {
+				// 创建onclick属性
+				var attributeNode = ;
+				// 设置属性值
+				attributeNode.value = ;
+				// 将onclick属性设置到对应节点
+				
+			}
+			// 定义删除节点函数，由删除按钮点击触发
+			function deleteNode(dom) {
+				// 获取删除按钮的父节点<li>节点，然后从<ul>节点中删除
+				const liNode = dom.parentNode;
+				
+			}
+			
+		</script>
+	</body>
+</html>
