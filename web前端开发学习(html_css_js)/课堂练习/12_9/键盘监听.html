@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>键盘监听</title>
+    <style>
+        .body {
+            background-color: grey;
+        }
+
+        #bigfont {
+            font-size: 100px;
+            color: blue;
+        }
+
+        #input_box {
+            border-radius: 10%;
+            border-width: 3px;
+            height: 50px;
+            border-style: solid;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p id="bigfont">1</p>
+    </div>
+    <div>
+        <input id="input_box" type="text">
+    </div>
+    <script>
+        let show_text = document.getElementById("bigfont")
+
+
+        let inp_ele = document.getElementById("input_box")
+        inp_ele.addEventListener("input", (event) => {
+            show_text.innerHTML = event.target.value;
+        });
+    </script>
+</body>
+
+</html>

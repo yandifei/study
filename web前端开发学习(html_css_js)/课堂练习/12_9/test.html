@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的第一个HTML页面</title>
+    <style>
+        img {
+            filter: brightness(50%);
+            /* 50% 的亮度 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <a id="link" href="https://www.baidu.com">单击前往百度首页</a>
+    <script>
+        let a = document.getElementById("link");
+        a.addEventListener("click", function (event) {
+            let result = confirm("确认跳转界面吗?");
+            if (!result) {
+                event.preventDefault();
+            }
+        }, false);
+    </script> -->
+    <div style="text-align: center; background-color: black;">
+        <img id="pic" src="pic.png" alt="图片" height="800px">
+    </div>
+    <script>
+        const pic = document.getElementById("pic");
+        // 鼠标进入图片区域时，将亮度设置为 100%
+        pic.addEventListener("mouseenter", () => {
+            // 修正：使用正确的滤镜函数 brightness()
+            pic.style.filter = "brightness(100%)";
+        }, false);
+        // 鼠标离开图片区域时，将亮度设置回 50%
+        pic.addEventListener("mouseleave", () => {
+            pic.style.filter = "brightness(50%)";
+        }, false);
+    </script>
+</body>
+
+</html>
