@@ -12,6 +12,42 @@ from yaml.scanner import ScannerError
 # 自己的模块
 from utils.path_utils import is_path_exist, get_root, mkdir
 
+"""日志路径相关
+先加载默认硬编码配置，如果配置文件无法解析就检查日志输出路径是否存在
+如果不存在就创建这个日志输出路径
+最后抛出致命错误写入日志文件和输出到控制台
+"""
+def is_logs_path_exist(path: str | Path, depth: int = 2) -> Path | bool:
+    """检查指定路径下是否存在 outputs/logs 目录
+
+    在指定的目录层级范围内查找 logs 目录，默认向上搜索2层。
+
+    :param path: 基准路径
+    :param depth: 向上搜索的深度，默认为2层
+    :return: 如果找到 logs 目录返回路径，否则返回 False
+    """
+    # 检查当前路径下的 outputs/logs
+    if is_path_exist(logs_path := Path(path) / "outputs" / "logs"):
+        return logs_path
+
+    # 向上搜索指定层级
+    logs_path = Path(path)
+    # 层级减1
+    for _ in range(depth):
+        logs_path = logs_path.parent
+        # 如果路径存在就退出
+        if is_path_exist(logs_path / "outputs" / "logs"):
+            return logs_path
+
+    return False
+
+def create_logs_path() -> Path:
+    """在项目目录下创建日志输出路径 "./outputs/logs"
+    :return: 日志输出的绝对路径（项目根路径/outputs/log）
+    """
+    # 在根目录下创建 outputs/logs 目录
+    mkdir(logs_dir := get_root() / "outputs" / "logs")
+    return logs_dir
 
 class LoggingConfigurator:
     """日志配置器"""
@@ -53,6 +89,7 @@ class LoggingConfigurator:
         """
         # 检查文件是否存在
         if not Path(path).is_file():
+            self.error_msg = (f"日志配置文件不存在：{path}", FileNotFoundError(path))
             return False
         # 检查文件配置是否正确
         try:
@@ -103,54 +140,15 @@ class LoggingConfigurator:
     #     return False
 
 
-    """日志路径相关"""
-    """日志路径相关
-    先加载默认硬编码配置，如果配置文件无法解析就检查日志输出路径是否存在
-    如果不存在就创建这个日志输出路径
-    最后抛出致命错误写入日志文件和输出到控制台
-    """
-    @staticmethod
-    def is_logs_path_exist(path: str | Path, depth: int = 2) -> Path | bool:
-        """检查指定路径下是否存在 outputs/logs 目录
 
-        在指定的目录层级范围内查找 logs 目录，默认向上搜索2层。
-
-        :param path: 基准路径
-        :param depth: 向上搜索的深度，默认为2层
-        :return: 如果找到 logs 目录返回路径，否则返回 False
-        """
-        # 检查当前路径下的 outputs/logs
-        if is_path_exist(logs_path := Path(path) / "outputs" / "logs"):
-            return logs_path
-
-        # 向上搜索指定层级
-        logs_path = Path(path)
-        # 层级减1
-        for _ in range(depth):
-            logs_path = logs_path.parent
-            # 如果路径存在就退出
-            if is_path_exist(logs_path / "outputs" / "logs"):
-                return logs_path
-
-        return False
-
-    @staticmethod
-    def create_logs_path() -> Path:
-        """在项目目录下创建日志输出路径 "./outputs/logs"
-        :return: 日志输出的绝对路径（项目根路径/outputs/log）
-        """
-        # 在根目录下创建 outputs/logs 目录
-        mkdir(logs_dir := get_root() / "outputs" / "logs")
-        return logs_dir
 
 if __name__ == '__main__':
     logging_configurator = LoggingConfigurator()
     if json := logging_configurator.load_logging_config("../user_data/logging_config.yaml"):
         print(json)
     else:
-        if not logging_configurator.is_logs_path_exist("outputs/logs/日志记录.log"):
+        if not is_logs_path_exist("outputs/logs/日志记录.log"):
             # 创建日志输出目录和创建日志文件
-            (logging_configurator.create_logs_path() / "error.log").touch(exist_ok=True)
+            (create_logs_path() / "error.log").touch(exist_ok=True)
         print(logging_configurator.error_msg[0])
         print(logging_configurator.error_msg[1])
-

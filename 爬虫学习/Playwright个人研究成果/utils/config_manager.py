@@ -10,8 +10,8 @@ from typing import Dict, Any
 # 第三方库
 import yaml
 # 自己的模块
-from .logging_configurator import LoggingConfigurator
-from .path_utils import get_root
+from utils.logging_configurator import LoggingConfigurator, create_logs_path, is_logs_path_exist
+from utils.path_utils import get_root
 
 
 class ConfigManager:
@@ -43,7 +43,7 @@ class ConfigManager:
             # 日志配制器
             self.logging_configurator = LoggingConfigurator()
             # 加载所有配置文件
-            self.load_config()
+            self.config = self.load_config()
 
 
     def load_config(self) -> Dict[str, Any] | bool:
@@ -69,33 +69,37 @@ class ConfigManager:
     def load_logging_config(self) -> Dict[str, Any] | bool:
         """加载默认的日志配置并进行覆盖"""
         # 检查日志配置文件是否存在
-        if not self.logging_configurator.is_logs_path_exist(get_root() / "config" / "logging_config.yaml"):
-            # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
-            (self.logging_configurator.create_logs_path() / "error.log").touch(exist_ok=True)
+        if not is_logs_path_exist(get_root() / "config" / "logging_config.yaml"):
+            # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
+            # (create_logs_path() / "error.log").touch(exist_ok=True)
+            # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
             return False  # 直接返回False
         # 加载全局的日志配置
         if json := self.logging_configurator.load_logging_config(get_root() / "config" / "logging_config.yaml"):
             # 进行层叠覆盖
             return self.deep_merge(self.config_data, json)
-        # 配置存在错误
-        # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
-        (self.logging_configurator.create_logs_path() / "error.log").touch(exist_ok=True)
+        # 配置存在错误(error_msg已经记录错误信息了)
+        # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
+        # (create_logs_path() / "error.log").touch(exist_ok=True)
+        # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
         return False  # 直接返回False
 
     def load_user_logging_config(self) -> Dict[str, Any] | bool:
         """加载用户的日志配置并进行覆盖"""
         # 检查用户的日志配置文件是否存在
-        if not self.logging_configurator.is_logs_path_exist(get_root() / "user_data" / "logging_config.yaml"):
-            # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
-            (self.logging_configurator.create_logs_path() / "error.log").touch(exist_ok=True)
+        if not is_logs_path_exist(get_root() / "user_data" / "logging_config.yaml"):
+            # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
+            # (create_logs_path() / "error.log").touch(exist_ok=True)
+            # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
             return False  # 直接返回False
         # 加载用户的日志配置
         if json := self.logging_configurator.load_logging_config(get_root() / "user_data" / "logging_config.yaml"):
             # 进行层叠覆盖
-            self.deep_merge(self.config_data, json)
-        # 配置存在错误
-        # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
-        (self.logging_configurator.create_logs_path() / "error.log").touch(exist_ok=True)
+            return self.deep_merge(self.config_data, json)
+        # 配置存在错误(error_msg已经记录错误信息了)
+        # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
+        # (create_logs_path() / "error.log").touch(exist_ok=True)
+        # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
         return False  # 直接返回False
 
 

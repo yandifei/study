@@ -1,19 +1,40 @@
 # logging_config.yaml
 # 用户级别的日志配置文件（覆盖全局配置的配置）
 # 不会改请用户不要动
-
+1
 version: 1  # dictConfig 标准版本号，必须为 1
-
 disable_existing_loggers: False  # 是否禁用已经存在的日志器；False 表示保留第三方库日志器
 
 formatters:  # 定义日志格式器（决定日志输出格式）
+
   verbose:  # 崩溃文件日志
-    format: "%(asctime)s %(levelname)s %(name)s:%(lineno)d %(threadName)s - %(message)s" # 含时间、级别、模块、行号、线程、日志信息
-    datefmt: "%Y-%m-%d %H:%M:%S"  # 时间格式，精确到秒
+    format: "%(asctime)s %(levelname)s %(name)s:%(lineno)d %(threadName)s - %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
 
   simple:  # 控制台/主日志
-    format: "%(asctime)s %(levelname)s %(message)s" # 时间，等级，消息
-    datefmt: "%Y-%m-%d %H:%M:%S"  # 时间格式
+    format: "%(asctime)s %(levelname)s %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+  # 新增的彩色 formatter（控制台使用）
+  colored:
+    (): colorlog.ColoredFormatter  # 使用 colorlog 的格式化器
+    format: "%(log_color)s%(asctime)s %(levelname)s:%(reset)s %(message_log_color)s%(message)s"
+    datefmt: "%H:%M:%S"
+    reset: true  # 颜色重置
+    log_colors:
+      DEBUG: cyan
+      INFO: green
+      WARNING: yellow
+      ERROR: bold_light_red
+      CRITICAL: bold_light_red
+    secondary_log_colors:
+      message:
+        DEBUG: cyan
+        INFO: light_green
+        WARNING: light_yellow
+        ERROR: red
+        CRITICAL: red
+    style: "%"
 # 未来有需要再扩展实现
 #  json:  # JSON 格式日志，用于 ELK / Loki 之类系统解析
 #    format: |  # JSON 多行格式模板
@@ -41,16 +62,16 @@ formatters:  # 定义日志格式器（决定日志输出格式）
 
 handlers:  # 日志处理器（决定日志输出到哪里）
   console:  # 控制台输出处理器
-    class: logging.StreamHandler  # 标准流输出处理器
+    class: colorlog.StreamHandler  # 标准流输出处理器(这里用的是colorlog库)
     level: INFO  # 控制台允许最低级别为 INFO，我不想看这么多东西
-    formatter: verbose  # 使用 detailed 格式
+    formatter: colored  # 使用 彩色输出 格式(colorlog库)
     stream: ext://sys.stdout  # 输出到标准输出
 
   file:  # 主业务日志文件处理器
     class: logging.handlers.TimedRotatingFileHandler  # 按时间滚动的文件处理器（这个是日志库的类）
     level: INFO  # 最低记录 INFO 日志
     formatter: simple  # 使用简单格式
-    filename: /outputs/logs/日志记录.log  # 主日志文件路径
+    filename: ./outputs/logs/日志记录.log  # 主日志文件路径
     when: midnight  # 每天 0 点轮转
     interval: 1  # 每 1 天轮转一次
     backupCount: 2  # 保留2天历史日志
@@ -61,7 +82,7 @@ handlers:  # 日志处理器（决定日志输出到哪里）
     class: logging.handlers.TimedRotatingFileHandler  # 时间轮转文件处理器
     level: ERROR  # 只记录 ERROR 以上级别
     formatter: verbose  # 详细格式记录错误信息
-    filename: /outputs/logs/error.log  # 错误日志路径
+    filename: ./outputs/logs/error.log  # 错误日志路径
     when: midnight  # 每日轮转
     interval: 1  # 间隔 1 天
     backupCount: 31  # 错误日志保留31天（一个月应该够多了，最会记得或1个月都没更新啊！！！）
@@ -164,4 +185,4 @@ handlers:  # 日志处理器（决定日志输出到哪里）
 
 root:  # 根日志器（所有未指定 logger 的默认策略）
   level: DEBUG  # DEBUG 分配处理器的日志等级，我这里开发权限
-  handlers: [console, file]  # 控制台 + 主日志文件
+  handlers: [console, file, error_file]  # 控制台 + 主日志文件

@@ -30,7 +30,7 @@ def get_parent_path(path: str) -> Path:
     return Path(path).resolve().parent
 
 
-def mkdir(path: str| Path) -> Path:
+def mkdir(path: str | Path) -> Path:
     """递归创建目录
 
     使用 pathlib 的 mkdir 方法递归创建目录，并确保：
