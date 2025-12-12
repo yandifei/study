@@ -218,7 +218,21 @@ graph TD
     }
 }
 ```
-缺点是没法校验yaml配置路径等字段的有效性，如果路径错误那么就只有控制台输出了，我想实现的是无论如何都有日志输出即使是日志记录器本身出错了。
+缺点是没法校验yaml配置路径等字段的有效性，仅仅能用默认配置好的路径（硬编码检查确保默认配置路径有效），必须结合`ConfigManager`使用，不结合使用设计的这个日志配置就没有什么意义了。
+```python
+# 导入配置管理模块
+from utils import ConfigManager
+# 创建配置管理器实例（这是个单例）
+config_manager = ConfigManager()
+# 层叠覆盖原来的日志配置
+logger_manager.use_logging_config(config_manager)
+```
+
+如果真的仅仅用日志体系，但是不要层叠覆盖就得确保根目录下有`outputs/logs`这个文件夹路径(日志放置的地方)。
+```python
+from utils import logger_manager, info
+info("第一条程序已经加载完成，日志记录器、全局异常捕获已完成")
+```
 ***
 
 # 工具包

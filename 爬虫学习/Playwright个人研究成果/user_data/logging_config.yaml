@@ -1,7 +1,7 @@
 # logging_config.yaml
 # 用户级别的日志配置文件（覆盖全局配置的配置）
 # 不会改请用户不要动
-1
+
 version: 1  # dictConfig 标准版本号，必须为 1
 disable_existing_loggers: False  # 是否禁用已经存在的日志器；False 表示保留第三方库日志器
 

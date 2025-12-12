@@ -173,25 +173,17 @@ class LoggerManager:
         :type config_manager: ConfigManager
         :return: True
         """
-        # 判断日志配置器解析配置错误
-        if config_manager.config is False:
-            # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
-            # (create_logs_path() / "error.log").touch(exist_ok=True)
-            # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
-            # 检查是否是日志解析的错误
-            if hasattr(config_manager.logging_configurator, "error_msg"):
-                # 存在错误信息属性，抛出错误
-                msg, exc = config_manager.logging_configurator.error_msg
-                error(msg, exc_info=exc)
-            # 逆天bug，必须存在logs目录才输出错误信息，什么鬼？
-            else:
-                print(1)
+        # 判断日志配置器解析配置是否错误
+        if config_manager.success_flag is False:
+            # 确保日志输出目录存在(配置加载失败才有)
+            create_logs_path()
+            # 存在错误信息属性，抛出错误（error_msg必定存在）
+            msg, exc = config_manager.logging_configurator.error_msg
+            error(msg, exc_info=exc)
         else:
-            # 确保自定义日志配置的日志输出路径存在
-            if not Path(config_manager.config_data["handlers"]["file"]["filename"]).parent.exists():
-                mkdir(Path(config_manager.config_data["handlers"]["file"]["filename"]).parent)
-            if not Path(config_manager.config_data["handlers"]["error_file"]["filename"]).parent.exists():
-                mkdir(Path(config_manager.config_data["handlers"]["error_file"]["filename"]).parent)
+            # 确保自定义日志配置的日志输出目录存在
+            mkdir(Path(config_manager.config_data["handlers"]["file"]["filename"]).parent)
+            mkdir(Path(config_manager.config_data["handlers"]["error_file"]["filename"]).parent)
             # 更新日志记录器(全局处理后跟着文件和控制台输出的处理器)
             logging.config.dictConfig(config_manager.config_data)
             # 更新日志记录器

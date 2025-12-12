@@ -10,7 +10,7 @@ from typing import Dict, Any
 # 第三方库
 import yaml
 # 自己的模块
-from utils.logging_configurator import LoggingConfigurator, create_logs_path, is_logs_path_exist
+from utils.logging_configurator import LoggingConfigurator, create_logs_path
 from utils.path_utils import get_root
 
 
@@ -42,34 +42,34 @@ class ConfigManager:
             self.config_data = {}
             # 日志配制器
             self.logging_configurator = LoggingConfigurator()
-            # 加载所有配置文件
-            self.config = self.load_config()
+            # 加载所有配置文件（拿到标志位）
+            self.success_flag = self.load_config()
 
 
     def load_config(self) -> Dict[str, Any] | bool:
         """加载所有配置文件(会进行层叠覆盖)
         日志置加载失败返回False，其他直接抛出异常，如果配置加载成功返回字典
 
-        :return:返回配置数据或False
+        :return:配置有效且层叠成功返回True否则返回False
         """
 
         # 框架默认日志配置(日志配置错误就没必要加载后面的了)
-        if not self.load_logging_config():
+        if self.load_logging_config() is False:
             return False
         # 用户私有日志配置(日志配置错误就没必要加载后面的了)
-        if not self.load_user_logging_config():
+        if self.load_user_logging_config() is False:
             return False
         # 框架默认设置配置
 
         # 用户私有设置配置
 
         # 最后返回配置数据
-        return self.config_data
+        return True
 
     def load_logging_config(self) -> Dict[str, Any] | bool:
         """加载默认的日志配置并进行覆盖"""
         # 检查日志配置文件是否存在
-        if not is_logs_path_exist(get_root() / "config" / "logging_config.yaml"):
+        if not Path(get_root() / "config" / "logging_config.yaml").exists():
             # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
             # (create_logs_path() / "error.log").touch(exist_ok=True)
             # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
@@ -87,7 +87,7 @@ class ConfigManager:
     def load_user_logging_config(self) -> Dict[str, Any] | bool:
         """加载用户的日志配置并进行覆盖"""
         # 检查用户的日志配置文件是否存在
-        if not is_logs_path_exist(get_root() / "user_data" / "logging_config.yaml"):
+        if not Path(get_root() / "user_data" / "logging_config.yaml").exists():
             # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
             # (create_logs_path() / "error.log").touch(exist_ok=True)
             # (create_logs_path() / "日志记录.log").touch(exist_ok=True)

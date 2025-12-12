@@ -17,7 +17,7 @@ from utils.path_utils import is_path_exist, get_root, mkdir
 如果不存在就创建这个日志输出路径
 最后抛出致命错误写入日志文件和输出到控制台
 """
-def is_logs_path_exist(path: str | Path, depth: int = 2) -> Path | bool:
+def is_logs_outputs_path_exist(path: str | Path, depth: int = 2) -> Path | bool:
     """检查指定路径下是否存在 outputs/logs 目录
 
     在指定的目录层级范围内查找 logs 目录，默认向上搜索2层。
@@ -147,7 +147,7 @@ if __name__ == '__main__':
     if json := logging_configurator.load_logging_config("../user_data/logging_config.yaml"):
         print(json)
     else:
-        if not is_logs_path_exist("outputs/logs/日志记录.log"):
+        if not is_logs_outputs_path_exist("outputs/logs/日志记录.log"):
             # 创建日志输出目录和创建日志文件
             (create_logs_path() / "error.log").touch(exist_ok=True)
         print(logging_configurator.error_msg[0])
