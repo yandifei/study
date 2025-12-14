@@ -1,0 +1,40 @@
+[playwright]
+headless = true  # 是否以无头模式启动
+browser_type = "chromium"  # 可选项：chromium, firefox, webkit
+launch_options = { headless = true, args = ["--no-sandbox", "--disable-setuid-sandbox"] }
+page_timeout = 30000  # 页面加载超时设置为30秒
+
+[data_storage]
+data_format = "json"
+output_dir = "/data/spider_results/"
+
+[AI.doubao]
+display_name = "豆包"
+login_url = "https://www.doubao.com/chat/"
+chat_url = "https://www.doubao.com/chat/"
+
+[AI.deepseek]
+display_name = "深度求索"
+login_url = "https://chat.deepseek.com/sign_in"
+chat_url = "https://chat.deepseek.com/"
+
+[AI.gemini]
+display_name = "gemini"
+login_url = "https://accounts.google.com/"
+chat_url = "https://gemini.google.com/app"
+
+#[spider]
+#user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+#timeout = 30
+#retry_count = 3
+#request_interval = 1  # 每次请求间隔1秒
+#enable_proxy = false
+#proxy = "http://your.proxy.server:port"
+
+#[database]
+#database_type = "mysql"
+#host = "localhost"
+#port = 3306
+#user = "root"
+#password = "password"
+#database_name = "spider_db"

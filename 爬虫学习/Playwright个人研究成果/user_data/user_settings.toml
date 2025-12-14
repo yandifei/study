@@ -1,0 +1,26 @@
+[playwright]
+headless = true  # 是否以无头模式启动
+browser_type = "chromium"  # 可选项：chromium, firefox, webkit
+launch_options = { headless = true, args = ["--no-sandbox", "--disable-setuid-sandbox"] }
+page_timeout = 30000  # 页面加载超时设置为30秒
+
+
+[data_storage]
+data_format = "json"
+output_dir = "/data/spider_results/"
+
+[AI.doubao]
+display_name = "豆包"
+login_url = "https://www.doubao.com/chat/"
+chat_url = "https://www.doubao.com/chat/"
+
+[AI.deepseek]
+display_name = "深度求索"
+login_url = "https://chat.deepseek.com/sign_in"
+chat_url = "https://chat.deepseek.com/"
+
+[AI.gemini]
+display_name = "gemini"
+login_url = "https://accounts.google.com/"
+chat_url = "https://gemini.google.com/app"
+
