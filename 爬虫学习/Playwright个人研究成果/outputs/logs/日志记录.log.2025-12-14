@@ -1,0 +1,189 @@
+2025-12-14 03:32:49 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 03:33:07 INFO Playwright 关闭完成
+2025-12-14 03:46:56 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 03:48:32 ERROR Cancelling an overlapped future failed
+future: <_OverlappedFuture pending cb=[_ProactorReadPipeTransport._loop_reading()]>
+Traceback (most recent call last):
+  File [35m"A:\Anaconda3\envs\Study\Lib\asyncio\windows_events.py"[0m, line [35m72[0m, in [35m_cancel_overlapped[0m
+    self._ov.cancel()
+[1;35mOSError[0m: [35m[WinError 6] 句柄无效。[0m
+2025-12-14 03:48:32 ERROR Task was destroyed but it is pending!
+task: <Task pending name='Task-16' coro=<Page.wait_for_timeout() running at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py:1101> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[SyncBase._sync.<locals>.<lambda>() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py:111, ProtocolCallback.__init__.<locals>.cb() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py:230]>
+2025-12-14 03:49:13 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 03:49:30 ERROR Cancelling an overlapped future failed
+future: <_OverlappedFuture pending cb=[_ProactorReadPipeTransport._loop_reading()]>
+Traceback (most recent call last):
+  File [35m"A:\Anaconda3\envs\Study\Lib\asyncio\windows_events.py"[0m, line [35m72[0m, in [35m_cancel_overlapped[0m
+    self._ov.cancel()
+[1;35mOSError[0m: [35m[WinError 6] 句柄无效。[0m
+2025-12-14 03:49:30 ERROR Task was destroyed but it is pending!
+task: <Task pending name='Task-16' coro=<Page.wait_for_timeout() running at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py:1101> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[SyncBase._sync.<locals>.<lambda>() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py:111, ProtocolCallback.__init__.<locals>.cb() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py:230]>
+2025-12-14 03:49:30 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 03:49:47 INFO Playwright 关闭完成
+2025-12-14 03:51:16 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 03:51:42 ERROR 发生致命异常导致程序崩溃:
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\WebAIPilot.py"[0m, line [35m52[0m, in [35m<module>[0m
+    [31mpage.wait_for_timeout[0m[1;31m(100000)[0m
+    [31m~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\sync_api\_generated.py"[0m, line [35m11532[0m, in [35mwait_for_timeout[0m
+    [31mself._sync[0m[1;31m(self._impl_obj.wait_for_timeout(timeout=timeout))[0m
+    [31m~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py"[0m, line [35m115[0m, in [35m_sync[0m
+    return [31mtask.result[0m[1;31m()[0m
+           [31m~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py"[0m, line [35m1101[0m, in [35mwait_for_timeout[0m
+    await self._main_frame.wait_for_timeout(timeout)
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_frame.py"[0m, line [35m862[0m, in [35mwait_for_timeout[0m
+    await self._channel.send("waitForTimeout", None, {"waitTimeout": timeout})
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m69[0m, in [35msend[0m
+    return [1;31mawait self._connection.wrap_api_call([0m
+           [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    ...<3 lines>...
+    [1;31m)[0m
+    [1;31m^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m559[0m, in [35mwrap_api_call[0m
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+[1;35mplaywright._impl._errors.TargetClosedError[0m: [35mPage.wait_for_timeout: Target page, context or browser has been closed[0m
+2025-12-14 03:57:18 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 03:58:05 ERROR 发生致命异常导致程序崩溃:
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\WebAIPilot.py"[0m, line [35m55[0m, in [35m<module>[0m
+    [31mpage.wait_for_timeout[0m[1;31m(100000)[0m
+    [31m~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\sync_api\_generated.py"[0m, line [35m11532[0m, in [35mwait_for_timeout[0m
+    [31mself._sync[0m[1;31m(self._impl_obj.wait_for_timeout(timeout=timeout))[0m
+    [31m~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py"[0m, line [35m115[0m, in [35m_sync[0m
+    return [31mtask.result[0m[1;31m()[0m
+           [31m~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py"[0m, line [35m1101[0m, in [35mwait_for_timeout[0m
+    await self._main_frame.wait_for_timeout(timeout)
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_frame.py"[0m, line [35m862[0m, in [35mwait_for_timeout[0m
+    await self._channel.send("waitForTimeout", None, {"waitTimeout": timeout})
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m69[0m, in [35msend[0m
+    return [1;31mawait self._connection.wrap_api_call([0m
+           [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    ...<3 lines>...
+    [1;31m)[0m
+    [1;31m^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m559[0m, in [35mwrap_api_call[0m
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+[1;35mplaywright._impl._errors.TargetClosedError[0m: [35mPage.wait_for_timeout: Target page, context or browser has been closed[0m
+2025-12-14 03:58:52 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 03:59:25 ERROR 发生致命异常导致程序崩溃:
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\WebAIPilot.py"[0m, line [35m60[0m, in [35m<module>[0m
+    [31mpage.wait_for_timeout[0m[1;31m(100000)[0m
+    [31m~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\sync_api\_generated.py"[0m, line [35m11532[0m, in [35mwait_for_timeout[0m
+    [31mself._sync[0m[1;31m(self._impl_obj.wait_for_timeout(timeout=timeout))[0m
+    [31m~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py"[0m, line [35m115[0m, in [35m_sync[0m
+    return [31mtask.result[0m[1;31m()[0m
+           [31m~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py"[0m, line [35m1101[0m, in [35mwait_for_timeout[0m
+    await self._main_frame.wait_for_timeout(timeout)
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_frame.py"[0m, line [35m862[0m, in [35mwait_for_timeout[0m
+    await self._channel.send("waitForTimeout", None, {"waitTimeout": timeout})
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m69[0m, in [35msend[0m
+    return [1;31mawait self._connection.wrap_api_call([0m
+           [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    ...<3 lines>...
+    [1;31m)[0m
+    [1;31m^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m559[0m, in [35mwrap_api_call[0m
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+[1;35mplaywright._impl._errors.TargetClosedError[0m: [35mPage.wait_for_timeout: Target page, context or browser has been closed[0m
+2025-12-14 04:00:30 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 04:00:46 ERROR 发生致命异常导致程序崩溃:
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\WebAIPilot.py"[0m, line [35m60[0m, in [35m<module>[0m
+    [31mpage.wait_for_timeout[0m[1;31m(100000)[0m
+    [31m~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\sync_api\_generated.py"[0m, line [35m11532[0m, in [35mwait_for_timeout[0m
+    [31mself._sync[0m[1;31m(self._impl_obj.wait_for_timeout(timeout=timeout))[0m
+    [31m~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py"[0m, line [35m115[0m, in [35m_sync[0m
+    return [31mtask.result[0m[1;31m()[0m
+           [31m~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py"[0m, line [35m1101[0m, in [35mwait_for_timeout[0m
+    await self._main_frame.wait_for_timeout(timeout)
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_frame.py"[0m, line [35m862[0m, in [35mwait_for_timeout[0m
+    await self._channel.send("waitForTimeout", None, {"waitTimeout": timeout})
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m69[0m, in [35msend[0m
+    return [1;31mawait self._connection.wrap_api_call([0m
+           [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    ...<3 lines>...
+    [1;31m)[0m
+    [1;31m^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m559[0m, in [35mwrap_api_call[0m
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+[1;35mplaywright._impl._errors.TargetClosedError[0m: [35mPage.wait_for_timeout: Target page, context or browser has been closed[0m
+2025-12-14 04:01:33 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 04:01:45 ERROR 发生致命异常导致程序崩溃:
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\WebAIPilot.py"[0m, line [35m62[0m, in [35m<module>[0m
+    [31mpage.wait_for_timeout[0m[1;31m(100000)[0m
+    [31m~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\sync_api\_generated.py"[0m, line [35m11532[0m, in [35mwait_for_timeout[0m
+    [31mself._sync[0m[1;31m(self._impl_obj.wait_for_timeout(timeout=timeout))[0m
+    [31m~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py"[0m, line [35m115[0m, in [35m_sync[0m
+    return [31mtask.result[0m[1;31m()[0m
+           [31m~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py"[0m, line [35m1101[0m, in [35mwait_for_timeout[0m
+    await self._main_frame.wait_for_timeout(timeout)
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_frame.py"[0m, line [35m862[0m, in [35mwait_for_timeout[0m
+    await self._channel.send("waitForTimeout", None, {"waitTimeout": timeout})
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m69[0m, in [35msend[0m
+    return [1;31mawait self._connection.wrap_api_call([0m
+           [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    ...<3 lines>...
+    [1;31m)[0m
+    [1;31m^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m559[0m, in [35mwrap_api_call[0m
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+[1;35mplaywright._impl._errors.TargetClosedError[0m: [35mPage.wait_for_timeout: Target page, context or browser has been closed[0m
+2025-12-14 04:07:15 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 04:07:34 ERROR Task was destroyed but it is pending!
+task: <Task pending name='Task-9' coro=<Page.wait_for_timeout() done, defined at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py:1100> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[SyncBase._sync.<locals>.<lambda>() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py:111, ProtocolCallback.__init__.<locals>.cb() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py:230]>
+2025-12-14 04:07:38 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 04:09:19 INFO Playwright 关闭完成
+2025-12-14 04:09:24 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 04:18:57 ERROR Task was destroyed but it is pending!
+task: <Task pending name='Task-9' coro=<Page.wait_for_timeout() done, defined at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py:1100> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[SyncBase._sync.<locals>.<lambda>() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py:111, ProtocolCallback.__init__.<locals>.cb() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py:230]>
+2025-12-14 04:23:06 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 04:24:13 ERROR Cancelling an overlapped future failed
+future: <_OverlappedFuture pending cb=[_ProactorReadPipeTransport._loop_reading()]>
+Traceback (most recent call last):
+  File [35m"A:\Anaconda3\envs\Study\Lib\asyncio\windows_events.py"[0m, line [35m72[0m, in [35m_cancel_overlapped[0m
+    self._ov.cancel()
+[1;35mOSError[0m: [35m[WinError 6] 句柄无效。[0m
+2025-12-14 04:24:13 ERROR Task was destroyed but it is pending!
+task: <Task pending name='Task-37' coro=<Page.wait_for_timeout() running at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py:1101> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[SyncBase._sync.<locals>.<lambda>() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py:111, ProtocolCallback.__init__.<locals>.cb() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py:230]>
+2025-12-14 04:24:15 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-14 04:24:44 ERROR 发生致命异常导致程序崩溃:
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\WebAIPilot.py"[0m, line [35m86[0m, in [35m<module>[0m
+    [31mpage.wait_for_timeout[0m[1;31m(1000000)[0m
+    [31m~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\sync_api\_generated.py"[0m, line [35m11532[0m, in [35mwait_for_timeout[0m
+    [31mself._sync[0m[1;31m(self._impl_obj.wait_for_timeout(timeout=timeout))[0m
+    [31m~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py"[0m, line [35m115[0m, in [35m_sync[0m
+    return [31mtask.result[0m[1;31m()[0m
+           [31m~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py"[0m, line [35m1101[0m, in [35mwait_for_timeout[0m
+    await self._main_frame.wait_for_timeout(timeout)
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_frame.py"[0m, line [35m862[0m, in [35mwait_for_timeout[0m
+    await self._channel.send("waitForTimeout", None, {"waitTimeout": timeout})
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m69[0m, in [35msend[0m
+    return [1;31mawait self._connection.wrap_api_call([0m
+           [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    ...<3 lines>...
+    [1;31m)[0m
+    [1;31m^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py"[0m, line [35m559[0m, in [35mwrap_api_call[0m
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+[1;35mplaywright._impl._errors.TargetClosedError[0m: [35mPage.wait_for_timeout: Target page, context or browser has been closed[0m
