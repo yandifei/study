@@ -10,7 +10,7 @@ from utils import ConfigManager # 导入配置管理模块
 # 创建配置管理器实例（这是个单例）
 config_manager = ConfigManager()
 # 层叠覆盖原来的日志配置
-logger_manager.use_logging_config(config_manager)
+config_manager.config_override()    # 层叠覆盖原来的配置
 info("日志模块加载完成，全局异常捕获开启")
 
 # 开始执行主业务逻辑

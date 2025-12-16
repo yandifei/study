@@ -77,7 +77,7 @@ class LoggingConfigurator:
             # 设置被初始化的标志位
             self._initialized = True
             # 记录错误信息
-            self.error_msg: Tuple[str | None, Exception | None] = (None, None)
+            self.error_msg : Tuple[str | None, Exception | None]= (None, None)
             # 初始化配置数据(字典)
 
     """加载日志配置"""

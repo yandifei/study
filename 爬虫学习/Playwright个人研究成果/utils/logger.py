@@ -13,7 +13,7 @@ from typing import Mapping, Optional, Type, Tuple
 # 第三方库
 # import colorlog  # 颜色处理库
 # 自己的模块
-from utils import ConfigManager
+# from utils.config_manager import ConfigManager    # 存在依赖问题，不能导入
 from utils.logging_configurator import create_logs_path
 from utils.path_utils import get_root, is_path_exist, mkdir  # 根路径导入
 # from utils.logging_configurator import is_logs_path_exist, create_logs_path
@@ -163,7 +163,8 @@ class LoggerManager:
     #     self.setup_exception_hook()
 
     """自定义的日志配置"""
-    def use_logging_config(self, config_manager: ConfigManager) -> bool:
+    # def use_logging_config(self, config_manager: ConfigManager) -> bool:  存在互相依赖的错误
+    def use_logging_config(self, config_manager) -> bool:
         """使用自定义的日志配置更新当前日志管理器
         
         该方法会检查配置管理器中的日志配置是否包含错误信息，如果有则记录错误日志；
@@ -173,8 +174,8 @@ class LoggerManager:
         :type config_manager: ConfigManager
         :return: True
         """
-        # 判断日志配置器解析配置是否错误
-        if config_manager.success_flag is False:
+        # 判断日志配置器解析配置是否错误(错误标志以及有错误信息)
+        if config_manager.success_flag is False and hasattr(config_manager.logging_configurator, "error_msg"):
             # 确保日志输出目录存在(配置加载失败才有)
             create_logs_path()
             # 存在错误信息属性，抛出错误（error_msg必定存在）

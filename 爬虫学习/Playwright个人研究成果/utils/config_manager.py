@@ -5,13 +5,15 @@
 """
 # 内置库
 import threading
+import tomllib
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, Tuple
 # 第三方库
 import yaml
 # 自己的模块
-from utils.logging_configurator import LoggingConfigurator, create_logs_path
+from utils.logging_configurator import LoggingConfigurator
 from utils.path_utils import get_root
+from utils.logger import logger_manager, error
 
 
 class ConfigManager:
@@ -38,6 +40,8 @@ class ConfigManager:
         if not hasattr(self, '_initialized'):
             # 设置被初始化的标志位
             self._initialized = True
+            # 错误信息记录（非日志错误信息）
+            self.error_msg: Tuple[str | None, Exception | None] = (None, None)
             # 初始化配置数据(字典)
             self.config_data = {}
             # 日志配制器
@@ -45,6 +49,18 @@ class ConfigManager:
             # 加载所有配置文件（拿到标志位）
             self.success_flag = self.load_config()
 
+    def config_override(self):
+        """配置覆盖
+        :return: 覆盖成功返回True，覆盖失败返回False
+        """
+        # 覆盖日志配置(最底层的配置)
+        logger_manager.use_logging_config(self)
+        # 检查其他配置是否覆盖成功
+        if self.success_flag is False:
+            # 存在错误信息属性，抛出错误
+            msg, exc = self.error_msg
+            error(msg, exc_info=exc)
+        return True
 
     def load_config(self) -> Dict[str, Any] | bool:
         """加载所有配置文件(会进行层叠覆盖)
@@ -54,52 +70,55 @@ class ConfigManager:
         """
 
         # 框架默认日志配置(日志配置错误就没必要加载后面的了)
-        if self.load_logging_config() is False:
+        if self.load_default_logging_config() is False:
             return False
         # 用户私有日志配置(日志配置错误就没必要加载后面的了)
         if self.load_user_logging_config() is False:
             return False
         # 框架默认设置配置
-
+        if self.load_default_settings_config() is False:
+            return False
         # 用户私有设置配置
-
+        if self.load_user_settings_config() is False:
+            return False
         # 最后返回配置数据
         return True
 
-    def load_logging_config(self) -> Dict[str, Any] | bool:
+    def load_default_logging_config(self) -> Dict[str, Any] | bool:
         """加载默认的日志配置并进行覆盖"""
-        # 检查日志配置文件是否存在
-        if not Path(get_root() / "config" / "logging_config.yaml").exists():
-            # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
-            # (create_logs_path() / "error.log").touch(exist_ok=True)
-            # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
-            return False  # 直接返回False
-        # 加载全局的日志配置
+        # 加载全局的日志配置(自动检查配置是否存在和有效)
         if json := self.logging_configurator.load_logging_config(get_root() / "config" / "logging_config.yaml"):
             # 进行层叠覆盖
             return self.deep_merge(self.config_data, json)
         # 配置存在错误(error_msg已经记录错误信息了)
-        # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
-        # (create_logs_path() / "error.log").touch(exist_ok=True)
-        # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
         return False  # 直接返回False
 
     def load_user_logging_config(self) -> Dict[str, Any] | bool:
         """加载用户的日志配置并进行覆盖"""
-        # 检查用户的日志配置文件是否存在
-        if not Path(get_root() / "user_data" / "logging_config.yaml").exists():
-            # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
-            # (create_logs_path() / "error.log").touch(exist_ok=True)
-            # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
-            return False  # 直接返回False
-        # 加载用户的日志配置
+        # 加载用户的日志配置(自动检查配置是否存在和有效)
         if json := self.logging_configurator.load_logging_config(get_root() / "user_data" / "logging_config.yaml"):
             # 进行层叠覆盖
             return self.deep_merge(self.config_data, json)
         # 配置存在错误(error_msg已经记录错误信息了)
-        # # 确保日志输出目录和日志文件存在（打印和记录全局配置文件丢失的错误）
-        # (create_logs_path() / "error.log").touch(exist_ok=True)
-        # (create_logs_path() / "日志记录.log").touch(exist_ok=True)
+        return False  # 直接返回False
+
+    def load_default_settings_config(self) -> Dict[str, Any] | bool:
+        """加载默认的设置配置并进行覆盖"""
+        # 加载默认的设置配置(自动检查配置是否存在和有效)
+        # if json := self.load_toml(get_root() / "config" / "user_settings.toml"):
+        if json := self.load_toml(get_root() / "config" / "settings.toml"):
+            # 进行层叠覆盖
+            return self.deep_merge(self.config_data, json)
+        # 配置存在错误(error_msg已经记录错误信息了)
+        return False  # 直接返回False
+
+    def load_user_settings_config(self) -> Dict[str, Any] | bool:
+        """加载用户的设置配置并进行覆盖"""
+        # 加载用户的设置配置(自动检查配置是否存在和有效)
+        if json := self.load_toml(get_root() / "user_data" / "user_settings.toml"):
+            # 进行层叠覆盖
+            return self.deep_merge(self.config_data, json)
+        # 配置存在错误(error_msg已经记录错误信息了)
         return False  # 直接返回False
 
 
@@ -116,6 +135,34 @@ class ConfigManager:
         with path.open("r", encoding="utf-8") as yaml_file:
             config_data = yaml.safe_load(yaml_file) or {}
         return config_data
+
+    def load_toml(self, path: str | Path) -> dict | bool:
+        """
+        加载TOML配置文件并将其解析为Python字典，使用UTF-8编码读取文件
+        :param path: 配置文件路径对象，必须是Path类型
+        :return: 解析后的配置字典，如果文件为空则返回False
+        """
+
+        # 检查设置配置文件是否存在
+        if not Path(path).exists():
+            self.error_msg = (f"设置配置文件不存在:{path}", FileNotFoundError(path))
+            return False
+        # 检查文件配置是否正确
+        try:
+            with path.open("rb") as toml_file:
+                # 如果加载成功，则认为格式正确
+                return tomllib.load(toml_file)
+        except tomllib.TOMLDecodeError as e:
+            # 其内容不符合 TOML 格式规范时产生
+            self.error_msg = f"设置配置文件语法错误:（{path}）", e
+            return False
+        except Exception as e:
+            # 捕获其他文件操作错误（如文件不存在、被加权限了等等）
+            self.error_msg = f"设置配置文件操作错误:（{path}）", e
+            return False
+
+
+
 
     def deep_merge(self, base: dict, override: dict) -> dict:
         """配置深度合并：override 覆盖 base，但保持 base 原有结构不被破坏"""
