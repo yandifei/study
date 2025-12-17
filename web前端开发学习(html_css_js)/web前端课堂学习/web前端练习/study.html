@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>学习资料与进度跟踪 - Study Template</title>
+</head>
+
+<body>
+    <!-- <div id="hello">hello</div>
+    <a name="link">链接</a>
+    <p>title</p>
+    <p class="tom">tom</p>
+    <script>
+        console.log(document.getElementById("hello"));
+        console.log(document.getElementsByName("link"));
+        console.log(document.getElementsByTagName("p"));
+        console.log(document.getElementsByClassName("tom"));
+    </script> -->
+    <div>
+        <h1>鸿蒙开发</h1>
+    </div>
+    <div id="a">鸿蒙介绍</div>
+    <div class="gs" style="color: blue;">公司介绍</div>
+    <script>
+        // console.log(document.getElementsByTagName("h1")[0])
+        // let h1 = document.getElementsByTagName("h1")[0];
+        // h1.innerHTML = "鸿蒙开发？";
+        // let 介绍 = document.getElementById("a");
+        // 介绍.innerText = "介绍？";
+        // let gs = document.getElementsByClassName("gs");
+        // gs.innerText = "你好?";
+
+        let a = document.getElementsByTagName("h1")[0];
+        a.classList.add("title")
+
+        a = document.getElementsByTagName("div")[0];
+
+        // DOM插入标签
+        let harmony_link = document.createElement('a');
+        harmony_link.textContent = "鸿蒙官网";
+        harmony_link.href = "https://www.harmonyos.com/"; // 加上链接地址
+        // 插入到末尾
+        a.appendChild(harmony_link, "这是末尾的文本");
+
+    </script>
+
+</body>
+
+</html>
