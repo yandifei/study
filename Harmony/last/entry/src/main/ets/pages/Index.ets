@@ -28,6 +28,7 @@ struct Index {
       List({ space: 10 }) {
         ForEach(this.vm.movies, (item: MovieItem) => {
           ListItem() {
+            // Text(item.title + '，评分：' + item.rating?.star_count)
             Text(item.title + '，评分：' + item.rating?.value)
               .fontSize(18)
               .width('100%')
