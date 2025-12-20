@@ -23,12 +23,13 @@
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 
-playwright = sync_playwright().start()
+# playwright = sync_playwright().start()
+#
+# browser = playwright.chromium.launch(headless=True)
+# ctx = browser.new_context()
+# stealth = Stealth()
+# stealth.apply_stealth_sync(ctx)
+#
+#
+# playwright.stop()
 
-browser = playwright.chromium.launch(headless=True)
-ctx = browser.new_context()
-stealth = Stealth()
-stealth.apply_stealth_sync(ctx)
-
-
-playwright.stop()

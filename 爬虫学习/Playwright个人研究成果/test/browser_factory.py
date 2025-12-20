@@ -14,16 +14,14 @@ from typing import Any, Dict, Optional, Generator
 # 第三方库
 import yaml
 from playwright.sync_api import sync_playwright, Playwright, Browser, BrowserContext, Page
-
-from .logger import get_logger  # 假设 logger.py 暴露 get_logger(name) 方法
-
-logger = get_logger(__name__)
+# 自己的模块
+from utils import warning
 
 
 def _load_yaml(path: Path) -> Dict[str, Any]:
     """安全读取 YAML 文件，若不存在则返回空 dict。"""
     if not path.exists():
-        logger.warning("配置文件不存在：%s，使用默认配置", path)
+        warning("配置文件不存在：%s，使用默认配置", path)
         return {}
     with path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f) or {}

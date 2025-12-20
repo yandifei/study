@@ -60,6 +60,13 @@ Playwright个人研究成果/
 └─ READE.md                      # 项目说明文档（运行方式、依赖、结构说明）
 ```
 
+# Playwright 架构 
+    Playwright：框架会话 / 类似驱动连接（入口），实际是node.js 
+        BrowserType（chromium/firefox/webkit）
+            Browser：一次启动的浏览器实例（进程/连接）
+                BrowserContext：隔离会话（像无痕窗口/独立用户）
+                    Page：标签页/页面
+
 # 配置管理
 1. `ConfigManager`实现了线程安全的单例模式，采用了业界 认的双重检查锁定`DCL(Double-Checked Locking) `模式
 2. 使用配置层叠（Configuration Cascading），设计让高优先级的配置文件去覆盖（Override）低优先级配置文件中的同名配置项。

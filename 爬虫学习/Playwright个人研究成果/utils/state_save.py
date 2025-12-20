@@ -2,11 +2,15 @@
 保存浏览器的用户数据并复用
 cookies + localStorage + 可选 IndexedDB
 """
+# 内置库
 import threading
 from pathlib import Path
-
-from playwright.sync_api import sync_playwright
+# 三方库
+# from playwright.sync_api import sync_playwright
 from playwright.sync_api import BrowserContext
+
+from utils import info
+
 
 class StateSaving:
     _instance = None  # 单例实例
@@ -26,7 +30,7 @@ class StateSaving:
                     cls._instance = super().__new__(cls)
 
     def __init__(self):
-        pass
+        info("StateSaving 单例化完成")
 
     @staticmethod
     def save_browser_status(context : BrowserContext, save_path: str | Path):
