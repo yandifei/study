@@ -5,7 +5,7 @@
 </h1>
 
 # **引言**
-- 这个是基于一个完成PO模型构建的项目，用的是playwright框架实现的web端AI提问。
+- 这个是基于一个PO模型构建的项目，用的是playwright框架实现的web端AI提问。
 - 本质上项目可以迁移到其他任何地方，还有就是这个项目使用的是多种数据结构(我学习和认识不同的数据结构来配置文件)
 - 理所当然的是这个项目工程结构设计可以直接迁移到deepseek、文心、Gemini等等(可以是视频sora、也可以是图片香蕉)
 # **使用声明**
@@ -62,10 +62,62 @@ Playwright个人研究成果/
 
 # Playwright 架构 
     Playwright：框架会话 / 类似驱动连接（入口），实际是node.js 
-        BrowserType（chromium/firefox/webkit）
-            Browser：一次启动的浏览器实例（进程/连接）
-                BrowserContext：隔离会话（像无痕窗口/独立用户）
-                    Page：标签页/页面
+        Browser：一次启动的浏览器实例chromium/firefox/webkit（进程/连接）
+            BrowserContext：隔离会话（像无痕窗口/独立用户）
+                Page：标签页/页面
+
+`sync_playwright()`只有`start`和`stop`         
+<br>
+
+##  **Playwright 架构层级全览**
+```mermaid
+flowchart TD
+    A[Playwright 实例<br>（单例，驱动入口）] --> B[Browser 实例 1<br>（如 Chromium 进程）]
+    A --> C[Browser 实例 N<br>（如 Firefox 进程）]
+    
+    B --> D[BrowserContext 1-1<br>（隔离会话，如用户A）]
+    B --> E[BrowserContext 1-2<br>（隔离会话，如用户B）]
+    
+    C --> F[BrowserContext N-1<br>（独立无痕会话）]
+    
+    D --> G[Page 1-1-1<br>（标签页）]
+    D --> H[Page 1-1-2<br>（标签页）]
+    
+    E --> I[Page 1-2-1]
+    
+    F --> J[Page N-1-1]
+```
+## **代码样例**
+单个谷歌浏览器单个上下文单个标签页的实现
+```python
+playwright = sync_playwright().start()
+browser = playwright.chromium.launch(**launch_options.to_dict())
+context = browser.new_context(**context_options.to_dict())
+page1 = context.new_page()
+page2 = context.new_page()
+page3 = context.new_page()
+page4 = context.new_page()
+context.close()
+browser.close()
+playwright.stop()
+```
+## **设计原则**
+1. **单例 Factory**：同一时刻只允许存在一个活跃的 `PlaywrightFactory` 实例（并发安全）；调用 `close()` 后会释放单例（`_instance=None`）
+
+2. **显式关闭优先**：提供 `close()` 作为统一的幂等回收入口；业务代码应显式调用 `close()`（必要时可封装 `with` 管理，但当前实现未内置 `with`）。
+
+3. **退出兜底**：在 Factory 初始化时注册 `atexit.register(self.close)`，在解释器正常退出时自动触发 `close()` 做兜底回收（不依赖 `__del__`）。
+
+4. **Browser 复用由调用方决定，Factory 保留多策略扩展能力**：Factory 提供 `new_browser()` 创建并登记多个 Browser；同时提供 `get_browser_()` 返回已登记 Browser 的副本列表，调用方可自行选择复用哪一个 Browser。后续可扩展“默认复用单 Browser / 按 launch 策略复用”的策略方法，但当前默认不自动复用。
+
+5. **所有权（ownership）严格**：Factory 仅管理并回收由自己创建并登记的 Browser/Context。`new_context(browser=...)` 要求传入的 browser 必须来自本 Factory（已登记），否则抛出异常；不支持对外部 browser/context 的隐式接管（后续若需要可新增显式 `adopt_*` 接口）。
+
+6. **回收顺序固定且 stop 至多一次**：统一回收顺序为 `Contexts → Browsers → Playwright`。通过 `_playwright_flag` 保证 `close()` 幂等：一旦关闭完成，后续再调用 `close()` 不会重复 stop。
+
+7. **注册表线程安全，关闭在锁外执行**：所有创建/登记/移除（Browser/Context registry）操作均在同一把可重入锁保护下完成；`close()` 在锁内完成“置状态 + 拷贝 + 清空 registry”，随后在锁外执行实际 `close()`/`stop()`，避免阻塞其他线程。
+
+8. **Page 不纳入生命周期管理**：Factory 仅提供 `new_page(context)` 的便捷创建，不追踪 Page；Page 的回收依赖 `context.close()` 的级联行为，如需 Page 级别的特殊回收策略由上层业务实现。
+
 
 # 配置管理
 1. `ConfigManager`实现了线程安全的单例模式，采用了业界 认的双重检查锁定`DCL(Double-Checked Locking) `模式
