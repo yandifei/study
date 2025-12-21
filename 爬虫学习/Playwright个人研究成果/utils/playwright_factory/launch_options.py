@@ -9,7 +9,6 @@ from playwright.async_api import ProxySettings
 @dataclass
 class LaunchOptions:
     """浏览器启动选项配置类
-    # 浏览器可执行文件路径，不使用 Playwright 自带的浏览器时使用。
     # 注意：Playwright 只保证与捆绑的 Chromium、Firefox 或 WebKit 正常工作，使用此选项需自行承担风险。
     executable_path: Path | str | None = None,
     # 浏览器发行渠道。
@@ -23,24 +22,24 @@ class LaunchOptions:
     args: Sequence[str] | None = None,
     # 如果为 True，Playwright 将不传递其默认配置参数，只使用 args 中的参数。
     # 如果为数组，则过滤掉指定的默认参数。此为危险选项，请谨慎使用。默认值为 False。
-    ignore_default_args: bool | Sequence[str] | None = None,
+    ignore_default_args: bool | Sequence[str] | None = False,
     # 在收到 Ctrl-C 时关闭浏览器进程。默认值为 True。
-    handle_sigint: bool | None = None,
+    handle_sigint: bool | None = True,
     # 在收到 SIGTERM 信号时关闭浏览器进程。默认值为 True。
-    handle_sigterm: bool | None = None,
+    handle_sigterm: bool | None = True,
     # 在收到 SIGHUP 信号时关闭浏览器进程。默认值为 True。
-    handle_sighup: bool | None = None,
+    handle_sighup: bool | None = True,
     # 等待浏览器实例启动的最大时间（毫秒）。默认值为 30000（30秒）。设置为 0 表示禁用超时。
-    timeout: float | None = None,
+    timeout: float | None = 30000,
     # 指定浏览器可见的环境变量。默认使用 process.env。
-    env: dict[str, str | float | bool] | None = None,
+    env: dict[str, str | float | bool] | None = None,  # 默认 None，内部使用 process.env
     # 是否以无头模式运行浏览器。
     # 如果 devtools 选项为 True，则此选项默认为 False，否则默认为 True。
-    headless: bool | None = None,
+    headless: bool | None = None,  # 默认 None，内部根据 devtools 自动处理
     # 仅限 Chromium：是否为每个标签页自动打开开发者工具面板。
     # 如果此选项为 True，headless 选项将被设置为 False。
     # 已弃用：建议使用调试工具代替。
-    devtools: bool | None = None,
+    devtools: bool | None = False,
     # 网络代理设置。
     proxy: ProxySettings | None = None,
     # 如果指定，已接受的下载将保存到此目录。
@@ -49,16 +48,15 @@ class LaunchOptions:
     downloads_path: Path | str | None = None,
     # 以指定的毫秒数减慢 Playwright 操作速度。
     # 有助于观察正在进行的操作。
-    slow_mo: float | None = None,
+    slow_mo: float | None = 0,
     # 如果指定，跟踪记录将保存到此目录。
     traces_dir: Path | str | None = None,
     # 启用 Chromium 沙盒。默认值为 False。
-    chromium_sandbox: bool | None = None,
+    chromium_sandbox: bool | None = False,
     # Firefox 用户偏好设置。可在 about:config 页面了解 Firefox 用户偏好设置。
     # 也可以通过 PLAYWRIGHT_FIREFOX_POLICIES_JSON 环境变量提供自定义的 policies.json 文件路径。
     firefox_user_prefs: dict[str, str | float | bool] | None = None
     """
-    # 浏览器可执行文件路径，不使用 Playwright 自带的浏览器时使用。
     # 注意：Playwright 只保证与捆绑的 Chromium、Firefox 或 WebKit 正常工作，使用此选项需自行承担风险。
     executable_path: Path | str | None = None,
     # 浏览器发行渠道。
@@ -72,24 +70,24 @@ class LaunchOptions:
     args: Sequence[str] | None = None,
     # 如果为 True，Playwright 将不传递其默认配置参数，只使用 args 中的参数。
     # 如果为数组，则过滤掉指定的默认参数。此为危险选项，请谨慎使用。默认值为 False。
-    ignore_default_args: bool | Sequence[str] | None = None,
+    ignore_default_args: bool | Sequence[str] | None = False,
     # 在收到 Ctrl-C 时关闭浏览器进程。默认值为 True。
-    handle_sigint: bool | None = None,
+    handle_sigint: bool | None = True,
     # 在收到 SIGTERM 信号时关闭浏览器进程。默认值为 True。
-    handle_sigterm: bool | None = None,
+    handle_sigterm: bool | None = True,
     # 在收到 SIGHUP 信号时关闭浏览器进程。默认值为 True。
-    handle_sighup: bool | None = None,
+    handle_sighup: bool | None = True,
     # 等待浏览器实例启动的最大时间（毫秒）。默认值为 30000（30秒）。设置为 0 表示禁用超时。
-    timeout: float | None = None,
+    timeout: float | None = 30000,
     # 指定浏览器可见的环境变量。默认使用 process.env。
-    env: dict[str, str | float | bool] | None = None,
+    env: dict[str, str | float | bool] | None = None,  # 默认 None，内部使用 process.env
     # 是否以无头模式运行浏览器。
     # 如果 devtools 选项为 True，则此选项默认为 False，否则默认为 True。
-    headless: bool | None = None,
+    headless: bool | None = None,  # 默认 None，内部根据 devtools 自动处理
     # 仅限 Chromium：是否为每个标签页自动打开开发者工具面板。
     # 如果此选项为 True，headless 选项将被设置为 False。
     # 已弃用：建议使用调试工具代替。
-    devtools: bool | None = None,
+    devtools: bool | None = False,
     # 网络代理设置。
     proxy: ProxySettings | None = None,
     # 如果指定，已接受的下载将保存到此目录。
@@ -98,11 +96,11 @@ class LaunchOptions:
     downloads_path: Path | str | None = None,
     # 以指定的毫秒数减慢 Playwright 操作速度。
     # 有助于观察正在进行的操作。
-    slow_mo: float | None = None,
+    slow_mo: float | None = 0,
     # 如果指定，跟踪记录将保存到此目录。
     traces_dir: Path | str | None = None,
     # 启用 Chromium 沙盒。默认值为 False。
-    chromium_sandbox: bool | None = None,
+    chromium_sandbox: bool | None = False,
     # Firefox 用户偏好设置。可在 about:config 页面了解 Firefox 用户偏好设置。
     # 也可以通过 PLAYWRIGHT_FIREFOX_POLICIES_JSON 环境变量提供自定义的 policies.json 文件路径。
     firefox_user_prefs: dict[str, str | float | bool] | None = None

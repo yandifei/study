@@ -1,0 +1,102 @@
+2025-12-15 01:12:57 ERROR 设置配置文件语法错误:（B:\study\爬虫学习\Playwright个人研究成果\config\logging_config.yaml）
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\utils\config_manager.py"[0m, line [35m153[0m, in [35mload_toml[0m
+    return [31mtomllib.load[0m[1;31m(toml_file)[0m
+           [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m66[0m, in [35mload[0m
+    return loads(s, parse_float=parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m102[0m, in [35mloads[0m
+    pos = key_value_rule(src, pos, out, header, parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m326[0m, in [35mkey_value_rule[0m
+    pos, key, value = [31mparse_key_value_pair[0m[1;31m(src, pos, parse_float)[0m
+                      [31m~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m366[0m, in [35mparse_key_value_pair[0m
+    raise suffixed_err(src, pos, "Expected '=' after a key in a key/value pair")
+[1;35mtomllib.TOMLDecodeError[0m: [35mExpected '=' after a key in a key/value pair (at line 4, column 8)[0m
+2025-12-15 01:12:57 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-15 01:15:41 ERROR 设置配置文件语法错误:（B:\study\爬虫学习\Playwright个人研究成果\config\logging_config.yaml）
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\utils\config_manager.py"[0m, line [35m154[0m, in [35mload_toml[0m
+    return [31mtomllib.load[0m[1;31m(toml_file)[0m
+           [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m66[0m, in [35mload[0m
+    return loads(s, parse_float=parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m102[0m, in [35mloads[0m
+    pos = key_value_rule(src, pos, out, header, parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m326[0m, in [35mkey_value_rule[0m
+    pos, key, value = [31mparse_key_value_pair[0m[1;31m(src, pos, parse_float)[0m
+                      [31m~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m366[0m, in [35mparse_key_value_pair[0m
+    raise suffixed_err(src, pos, "Expected '=' after a key in a key/value pair")
+[1;35mtomllib.TOMLDecodeError[0m: [35mExpected '=' after a key in a key/value pair (at line 4, column 8)[0m
+2025-12-15 01:15:41 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-15 01:15:45 ERROR Task was destroyed but it is pending!
+task: <Task pending name='Task-8' coro=<Page.goto() done, defined at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_page.py:545> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[SyncBase._sync.<locals>.<lambda>() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_sync_base.py:111, ProtocolCallback.__init__.<locals>.cb() at A:\Anaconda3\envs\Study\Lib\site-packages\playwright\_impl\_connection.py:230]>
+2025-12-15 01:16:25 ERROR 设置配置文件语法错误:（B:\study\爬虫学习\Playwright个人研究成果\config\logging_config.yaml）
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\utils\config_manager.py"[0m, line [35m154[0m, in [35mload_toml[0m
+    return [31mtomllib.load[0m[1;31m(toml_file)[0m
+           [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m66[0m, in [35mload[0m
+    return loads(s, parse_float=parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m102[0m, in [35mloads[0m
+    pos = key_value_rule(src, pos, out, header, parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m326[0m, in [35mkey_value_rule[0m
+    pos, key, value = [31mparse_key_value_pair[0m[1;31m(src, pos, parse_float)[0m
+                      [31m~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m366[0m, in [35mparse_key_value_pair[0m
+    raise suffixed_err(src, pos, "Expected '=' after a key in a key/value pair")
+[1;35mtomllib.TOMLDecodeError[0m: [35mExpected '=' after a key in a key/value pair (at line 4, column 8)[0m
+2025-12-15 01:16:25 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-15 01:16:27 ERROR 设置配置文件语法错误:（B:\study\爬虫学习\Playwright个人研究成果\config\logging_config.yaml）
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\utils\config_manager.py"[0m, line [35m154[0m, in [35mload_toml[0m
+    return [31mtomllib.load[0m[1;31m(toml_file)[0m
+           [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m66[0m, in [35mload[0m
+    return loads(s, parse_float=parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m102[0m, in [35mloads[0m
+    pos = key_value_rule(src, pos, out, header, parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m326[0m, in [35mkey_value_rule[0m
+    pos, key, value = [31mparse_key_value_pair[0m[1;31m(src, pos, parse_float)[0m
+                      [31m~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m366[0m, in [35mparse_key_value_pair[0m
+    raise suffixed_err(src, pos, "Expected '=' after a key in a key/value pair")
+[1;35mtomllib.TOMLDecodeError[0m: [35mExpected '=' after a key in a key/value pair (at line 4, column 8)[0m
+2025-12-15 01:16:27 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-15 01:16:29 ERROR 设置配置文件语法错误:（B:\study\爬虫学习\Playwright个人研究成果\config\logging_config.yaml）
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\utils\config_manager.py"[0m, line [35m154[0m, in [35mload_toml[0m
+    return [31mtomllib.load[0m[1;31m(toml_file)[0m
+           [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m66[0m, in [35mload[0m
+    return loads(s, parse_float=parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m102[0m, in [35mloads[0m
+    pos = key_value_rule(src, pos, out, header, parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m326[0m, in [35mkey_value_rule[0m
+    pos, key, value = [31mparse_key_value_pair[0m[1;31m(src, pos, parse_float)[0m
+                      [31m~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m366[0m, in [35mparse_key_value_pair[0m
+    raise suffixed_err(src, pos, "Expected '=' after a key in a key/value pair")
+[1;35mtomllib.TOMLDecodeError[0m: [35mExpected '=' after a key in a key/value pair (at line 4, column 8)[0m
+2025-12-15 01:16:29 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-15 01:16:39 ERROR 设置配置文件语法错误:（B:\study\爬虫学习\Playwright个人研究成果\config\logging_config.yaml）
+Traceback (most recent call last):
+  File [35m"B:\study\爬虫学习\Playwright个人研究成果\utils\config_manager.py"[0m, line [35m154[0m, in [35mload_toml[0m
+    return [31mtomllib.load[0m[1;31m(toml_file)[0m
+           [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m66[0m, in [35mload[0m
+    return loads(s, parse_float=parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m102[0m, in [35mloads[0m
+    pos = key_value_rule(src, pos, out, header, parse_float)
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m326[0m, in [35mkey_value_rule[0m
+    pos, key, value = [31mparse_key_value_pair[0m[1;31m(src, pos, parse_float)[0m
+                      [31m~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"A:\Anaconda3\envs\Study\Lib\tomllib\_parser.py"[0m, line [35m366[0m, in [35mparse_key_value_pair[0m
+    raise suffixed_err(src, pos, "Expected '=' after a key in a key/value pair")
+[1;35mtomllib.TOMLDecodeError[0m: [35mExpected '=' after a key in a key/value pair (at line 4, column 8)[0m
+2025-12-15 01:16:39 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-15 01:19:51 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-15 01:19:59 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-15 01:20:08 INFO 日志模块加载完成，全局异常捕获开启
+2025-12-15 01:20:27 INFO 日志模块加载完成，全局异常捕获开启
