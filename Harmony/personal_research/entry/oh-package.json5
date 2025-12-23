@@ -1,10 +1,10 @@
 {
   "name": "entry",
   "version": "1.0.0",
-  "description": "Please describe the basic information.",
+  "description": "空的，什么包都没有",
   "main": "",
-  "author": "",
-  "license": "",
+  "author": "yandifei",
+  "license": "MIT",
   "dependencies": {}
 }
 

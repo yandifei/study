@@ -13,7 +13,7 @@ export class MovieViewModel {
   private start: number = 0;
   private count: number = 20;
   private total: number = 0;
-  fetchData(isRefresh: boolean): void {
+  fetchData(isRefresh: boolean): 0 {
     console.info(`[DoubanMovie VM] fetchData called. isRefresh: ${isRefresh},isLoading: ${this.isLoading}, movies.length: ${this.movies.length}`);if (this.isLoading) {
       console.info(`[DoubanMovie VM] Already loading, returning.`);
       return;
@@ -84,4 +84,10 @@ export class MovieViewModel {
       }
     );
   }
+  async loadMore() {
+    if (this.start < this.total) {
+      await this.fetchData(false);
+    }
+  }
+
 }

@@ -1,10 +1,10 @@
 {
   "app": {
     "bundleName": "edu.yandifei.myapplication",
-    "vendor": "example",
+    "vendor": "yandifei",
     "versionCode": 1000000,
     "versionName": "1.0.0",
-    "icon": "$media:layered_image",
-    "label": "$string:app_name"
+    "icon": "$media:pixiv",
+    "label": "$string:pixiv"
   }
 }

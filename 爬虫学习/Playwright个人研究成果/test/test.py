@@ -33,3 +33,14 @@ from playwright_stealth import Stealth
 #
 # playwright.stop()
 
+from dataclasses import dataclass, asdict
+
+@dataclass
+class Password:
+    username: str = "2"
+    password: str = "1"
+
+
+a = {"username": "你好", "1": "1"}
+a = Password(**a)
+print(a)

@@ -1,13 +1,13 @@
-from dataclasses import dataclass, asdict
+# from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Any,Sequence
 # 第三方库
 from playwright.async_api import ProxySettings
+from pydantic import BaseModel
 # 自己的模块
 # from utils import debug
 
-@dataclass
-class LaunchOptions:
+class LaunchOptions(BaseModel):
     """浏览器启动选项配置类
     # 注意：Playwright 只保证与捆绑的 Chromium、Firefox 或 WebKit 正常工作，使用此选项需自行承担风险。
     executable_path: Path | str | None = None,
@@ -105,6 +105,6 @@ class LaunchOptions:
     # 也可以通过 PLAYWRIGHT_FIREFOX_POLICIES_JSON 环境变量提供自定义的 policies.json 文件路径。
     firefox_user_prefs: dict[str, str | float | bool] | None = None
 
-    def to_dict(self) -> dict[str, Any]:
-        # 转换为字典格式，过滤掉None值
-        return {k: v for k, v in asdict(self).items() if v is not None}
+    # def to_dict(self) -> dict[str, Any]:
+    #     # 转换为字典格式，过滤掉None值
+    #     return {k: v for k, v in asdict(self).items() if v is not None}
