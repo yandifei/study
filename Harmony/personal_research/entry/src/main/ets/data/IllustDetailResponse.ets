@@ -15,17 +15,17 @@ export interface body {
   urls: urls;
 }
 
-// 图片地址（这才是最终提取的）
+// 图片地址（这才是最终提取的）有些图片没有登陆不给看
 export interface urls {
   // 超小方形预览图 (48x48)
-  mini: string;
+  mini: string | null;
   // 方形缩略图 (250x250)
-  thumb: string;
+  thumb: string | null;
   // 小尺寸预览图
-  small: string;
+  small: string | null;
   // 常规尺寸展示图
-  regular: string;
+  regular: string | null;
   // 原始尺寸原图（无压缩）
-  original: string;
+  original: string | null;
 }
 
