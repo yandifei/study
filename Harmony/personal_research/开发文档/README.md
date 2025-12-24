@@ -12,7 +12,12 @@
 - 优化先滚一边去（赶时间2025.12.22 17:09）
 - 文档别写太好，记录要点就行，没必要把软件工程或其他开发的全套流程搬过来，**Real developers ship.**
 
-# 额外下载
+# 外部问题
+如果没有图片有2种情况，1图片是r18需要cookie，2当前IP被禁止了（短时间爬太多了）
+
+单次图片加载网络请求就50次，确实感觉会爆炸，这也是移动端要注意了，待优化，限制并发，比如一次最多 6～8 个请求。
+UI 卡顿（JSON parse + push + sort）
+## 额外下载
 `ohpm install @ohos/imageknife`
 666，这个库必须真机，而且不演了，pixiv在chrome无痕下是无法显示部分图的，但是鸿蒙的请求通过了，也就是imageknife不是无痕，他会自动管理cookie和session绕过pixiv的反爬机制。
 
@@ -196,3 +201,57 @@ Button("切换为R18")
     this.aboutToAppear()
   })
 ```
+
+原来json5在鸿蒙中这个文件是当作json处理+可以重复键值对。有数据校验，我提交git commit的时候IDE给我讲键值重复了，但是又能使用且不报错，仅仅git commit才给出警告
+
+
+设计图片的请求超时没有意义，直接检测有没有cookie和cookie是否有效就ok了
+
+### 列表计算
+1次请求有50个列表，那我在列表35的时候再请求后面的50个也行呀
+如果说开头是超过了50我也能销毁呀
+但是如果把前面的销毁了，也就是滚轮滚到前面的时候我又得请求50
+如何设计呢?
+
+
+我想要列表滚到35的时候进行请求，滚到85进行请求，以此类推
+
+目标：拿到page
+
+把50个列表当成1页`const currentPage = Math.floor(start / 50)`
+还剩15个列表的时候刷新`const triggerIndex = (currentPage + 1) * 50 - 15;`
+触发刷新
+```
+if (start >= triggerIndex) {
+  // 更新网络请求url
+  this.requests.update_requests(currentPage + 1)
+  // 补充列表数据(下一页)
+  this.show_model_arr.push(...await this.requests.get_show_model(this.requests.url))
+}
+```
+
+
+```
+.onScrollIndex(async (start, end) => {
+  // console.info("pixiv", start, end, `列表：${start} - ${end}`)
+  // 把50个列表当成1页
+  const currentPage = Math.floor(start / 50);
+  // 还剩15个列表的时候刷新
+  const triggerIndex = (currentPage + 1) * 50 - 15;
+  // 触发刷新
+  if (start >= triggerIndex) {
+    // 更新网络请求url
+    this.requests.refreshUrls(currentPage + 2, false)
+    console.info("pixiv", this.requests.url)
+    // 补充列表数据(下一页)
+    this.show_model_arr.push(...await this.requests.get_show_model(this.requests.url))
+  }
+})
+```
+不行，得否定掉，换个方法，因为排名就是列表数量，省去线程锁的问题
+核心要点是触发刷新的条件：列表数-15
+需要处理触发刷新条件后停止后续再次触发
+        
+
+
+

@@ -11,30 +11,65 @@ import { IllustDetailResponse } from '../data/IllustDetailResponse';
 
 // 请求类（封装get、post）
 export class Requests {
-  // 是否r18(r18必须加cookies)
-  public r18: boolean = false;
-
-
+  // cookie
+  public cookie: string = "";
   // 页数，1页有50张图
   public page: number = 1;
-
+  // 是否r18(r18必须加cookies)
+  public r18: boolean = false;
   // 请求使用的url（默认每日）
   public url: string = `https://www.pixiv.net/ranking.php?mode=daily${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
-  
   // 本日排行
   public dailyUrl: string = `https://www.pixiv.net/ranking.php?mode=daily${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
-  
   // 本周排行
   public weeklyUrl: string = `https://www.pixiv.net/ranking.php?mode=weekly${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
-  
   // 本月排行
   public monthlyUrl: string = `https://www.pixiv.net/ranking.php?mode=monthly${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
-
   // 新人排行
   public rookieUrl: string = `https://www.pixiv.net/ranking.php?mode=rookie${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
 
-  // cookie
-  public cookie: string = "";
+  // 更新url
+  public refreshUrls(page: number, r18: boolean) {
+    // 页码
+    this.page = page;
+    // 是否r18(r18必须加cookies)
+    this.r18 = r18
+    // 请求使用的url（默认每日）
+    this.url = `https://www.pixiv.net/ranking.php?mode=daily${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+    // 本日排行
+    this.dailyUrl = `https://www.pixiv.net/ranking.php?mode=daily${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+    // 本周排行
+    this.weeklyUrl = `https://www.pixiv.net/ranking.php?mode=weekly${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+    // 本月排行
+    this.monthlyUrl = `https://www.pixiv.net/ranking.php?mode=monthly${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+    // 新人排行
+    this.rookieUrl = `https://www.pixiv.net/ranking.php?mode=rookie${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+  }
+  // 报废的东西
+  // update_requests(page: number = this.page, r18: boolean =  this.r18, cookie: string = this.cookie){
+  //   /*
+  //   * 更新请求参数
+  //   * 参数：页数，是否r18,cookie
+  //   * 返回无
+  //    */
+  //   // 页数，1页有50张图
+  //   this.page = page;
+  //   // 是否r18(r18必须加cookies)
+  //   this.r18 = r18;
+  //   // 请求使用的url（默认每日）
+  //   this.url = `https://www.pixiv.net/ranking.php?mode=daily${r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+  //   // 本日排行
+  //   this.dailyUrl = `https://www.pixiv.net/ranking.php?mode=daily${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+  //   // 本周排行
+  //   this.weeklyUrl = `https://www.pixiv.net/ranking.php?mode=weekly${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+  //   // 本月排行
+  //   this.monthlyUrl = `https://www.pixiv.net/ranking.php?mode=monthly${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+  //   // 新人排行
+  //   this.rookieUrl = `https://www.pixiv.net/ranking.php?mode=rookie${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+  //   //  cookie
+  //   this.cookie = cookie;
+  //   console.info("pixiv", `请求参数已更新，当前页数：${this.page}，是否r18：${this.r18}，cookie：${this.cookie}`);
+  // }
 
   get(url: string): Promise<http.HttpResponse> {
     /**
@@ -110,28 +145,28 @@ export class Requests {
     return show_model_arr;
   }
 
-  // 校验UI模型图片是否有效
-  async check_show_model(show_model: ShowModel[]): Promise<ShowModel[]> {
-    // 创建请求实例
-    // const requests = new Requests();
-    const requests = this;
-    const tasks = show_model.map(async (item: ShowModel) => {
-      await requests.get(item.image_url!).then(
-        (res) => {
-          // 响应成功
-          if (res.responseCode == 200) {
-            item.can_show = true;
-          } else {
-            item.can_show = false;
-          }
-        }
-      )
-    });
-    // 等待任务完成
-    await Promise.all(tasks);
-    // 返回模型数组
-    return show_model;
-  }
+  // // 校验UI模型图片是否有效（性能爆炸）
+  // async check_show_model(show_model: ShowModel[]): Promise<ShowModel[]> {
+  //   // 创建请求实例
+  //   // const requests = new Requests();
+  //   const requests = this;
+  //   const tasks = show_model.map(async (item: ShowModel) => {
+  //     await requests.get(item.image_url!).then(
+  //       (res) => {
+  //         // 响应成功
+  //         if (res.responseCode == 200) {
+  //           item.can_show = true;
+  //         } else {
+  //           item.can_show = false;
+  //         }
+  //       }
+  //     )
+  //   });
+  //   // 等待任务完成
+  //   await Promise.all(tasks);
+  //   // 返回模型数组
+  //   return show_model;
+  // }
 }
 
 

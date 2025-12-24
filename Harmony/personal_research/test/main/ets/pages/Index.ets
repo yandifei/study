@@ -61,8 +61,7 @@ struct Index {
       .width('90%')
       .divider({ strokeWidth: 1, color: '#e0e0e0' })
       .onScrollIndex(async (start, end) => {
-        if (!this.vm.isLoading && end === this.vm.movies.length -1){await this.vm.loadMore();
-        }
+        if (!this.vm.isLoading && end === this.vm.movies.length -1){await this.vm.loadMore();}
       })
 
 
