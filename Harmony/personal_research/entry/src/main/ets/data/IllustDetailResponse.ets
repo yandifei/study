@@ -1,16 +1,15 @@
 /*
  * IllustDetailResponse
- * https://www.pixiv.net/ajax/illust/{作品id}?lang=zh
+ * https://www.pixiv.net/ajax/illust/{作品id}/pages?lang=zh
  * 获取作品详情，从NextDataMode拿到作品id
  */
 export interface IllustDetailResponse {
   // error: boolean;
   // message: string;
-  body: body;
+  body: body[];
 }
+
 export interface body {
-  // 作品id
-  id: string;
   // 图片地址
   urls: urls;
 }

@@ -12,29 +12,92 @@ import { IllustDetailResponse } from '../data/IllustDetailResponse';
 // 请求类（封装get、post）
 export class Requests {
   // 是否r18(r18必须加cookies)
-  public r18: boolean = false;
+  private _r18: boolean = false;
 
+  public set r18(value: boolean) {
+    this._r18 = value;
+  }
+
+  public get r18(): boolean {
+    return this._r18;
+  }
 
   // 页数，1页有50张图
-  public page: number = 1;
+  private _page: number = 1;
+
+  public set page(value: number) {
+    this._page = value;
+  }
+
+  public get page(): number {
+    return this._page;
+  }
 
   // 请求使用的url（默认每日）
-  public url: string = `https://www.pixiv.net/ranking.php?mode=daily${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
-  
+  private _url: string = `https://www.pixiv.net/ranking.php?mode=daily${this._r18 ? "_r18" : ""}&content=illust&p=${this._page}&format=json`;
+
+  public set url(value: string) {
+    this._url = value;
+  }
+
+  public get url(): string {
+    return this._url;
+  }
+
   // 本日排行
-  public dailyUrl: string = `https://www.pixiv.net/ranking.php?mode=daily${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
-  
+  private _dailyUrl: string = `https://www.pixiv.net/ranking.php?mode=daily${this._r18 ? "_r18" : ""}&content=illust&p=${this._page}&format=json`;
+
+  public set dailyUrl(value: string) {
+    this._dailyUrl = value;
+  }
+
+  public get dailyUrl(): string {
+    return this._dailyUrl;
+  }
+
   // 本周排行
-  public weeklyUrl: string = `https://www.pixiv.net/ranking.php?mode=weekly${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
-  
+  private _weeklyUrl: string = `https://www.pixiv.net/ranking.php?mode=weekly${this._r18 ? "_r18" : ""}&content=illust&p=${this._page}&format=json`;
+
+  public set weeklyUrl(value: string) {
+    this._weeklyUrl = value;
+  }
+
+  public get weeklyUrl(): string {
+    return this._weeklyUrl;
+  }
+
   // 本月排行
-  public monthlyUrl: string = `https://www.pixiv.net/ranking.php?mode=monthly${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+  private _monthlyUrl: string = `https://www.pixiv.net/ranking.php?mode=monthly${this._r18 ? "_r18" : ""}&content=illust&p=${this._page}&format=json`;
+
+  public set monthlyUrl(value: string) {
+    this._monthlyUrl = value;
+  }
+
+  public get monthlyUrl(): string {
+    return this._monthlyUrl;
+  }
 
   // 新人排行
-  public rookieUrl: string = `https://www.pixiv.net/ranking.php?mode=rookie${this.r18 ? "_r18" : ""}&content=illust&p=${this.page}&format=json`;
+  private _rookieUrl: string = `https://www.pixiv.net/ranking.php?mode=rookie${this._r18 ? "_r18" : ""}&content=illust&p=${this._page}&format=json`;
+
+  public set rookieUrl(value: string) {
+    this._rookieUrl = value;
+  }
+
+  public get rookieUrl(): string {
+    return this._rookieUrl;
+  }
 
   // cookie
-  public cookie: string = "";
+  private _cookie: string = "";
+
+  public set cookie(value: string) {
+    this._cookie = value;
+  }
+
+  public get cookie(): string {
+    return this._cookie;
+  }
 
   get(url: string): Promise<http.HttpResponse> {
     /**
@@ -54,7 +117,7 @@ export class Requests {
           // 伪装请求来自合法来源（这个关键）
           "referer": "https://www.pixiv.net",
           // 添加cookies，模拟登录
-          "cookie": this.cookie,
+          "cookie": this._cookie,
         }
       },
     ).finally(() => {

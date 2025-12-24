@@ -1,7 +1,7 @@
 import { http } from '@kit.NetworkKit';
-import { IllustDetailResponse } from '../data/IllustDetailResponse';
-import { NextDataModel, Contents } from '../data/NextDataModel';
-import { ShowModel } from '../data/ShowModel';
+import { IllustDetailResponse } from './IllustDetailResponse';
+import { NextDataModel, Contents } from './NextDataModel';
+import { ShowModel } from '../entry/src/main/ets/data/ShowModel';
 
 
 
