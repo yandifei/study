@@ -84,15 +84,21 @@ export struct PixivImage {
       // // 关键：使用自定义的、支持超时设置的下载函数
       // customGetImage: customDownloadWithTimeout,
       // 缩放策略
-      objectFit: ImageFit.Auto,
+      // // 自动填充
+      // objectFit: ImageFit.Auto,
+      // // 宁愿变形也要全铺满
+      // objectFit: ImageFit.Fill,
+      // 不变形，允许裁切
+      objectFit: ImageFit.Cover,
 
     };
   }
 
   build() {
     ImageKnifeComponent({ imageKnifeOption: this.makeOption() }, )
-      .width(100)
-      .height(100)
+      .width('100%')
+      .height('100%')
+      .backgroundColor(Color.Grey)
   }
 }
 

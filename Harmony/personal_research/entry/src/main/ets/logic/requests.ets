@@ -123,10 +123,11 @@ export class Requests {
             // console.log("pixiv", `原图地址：${illuset_detail_response.body[0].urls.original}`)
             // 添加数据
             show_model_arr.push({
-              can_show: null,
+              // can_show: null,
               image_url: illuset_detail_response.body[0]!.urls.original, // 图片url
               rank: content.rank, // 排行
-              user_name: content.user_name, // 作者
+              author: content.user_name, // 作者
+              author_img: content.profile_img, // 作者头像
               title: content.title, // 图片名称
             });
           }

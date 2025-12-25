@@ -7,6 +7,7 @@ export struct MovieItemView {
   @Prop movie: MovieItem;
   build() {
     Column() {
+      Text("潘炜德").fontSize(20)
       Row() {
         Image(this.movie.pic?.normal ?? '')
           .width(100)

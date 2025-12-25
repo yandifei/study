@@ -1,0 +1,212 @@
+<!-- templates/err.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作提示 - {{ site_name|default:"系统" }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .success .icon {
+            color: #4CAF50;
+        }
+
+        .error .icon {
+            color: #f44336;
+        }
+
+        .warning .icon {
+            color: #ff9800;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .message {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .code {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .redirect-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-size: 14px;
+            color: #1976d2;
+        }
+
+        .countdown {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+        .btn-home {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-home:hover {
+            background: #1e7e34;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            .error-container {
+                padding: 25px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container {% if error_code >= 400 and error_code < 500 %}warning{% else %}error{% endif %}">
+        <div class="icon">
+            {% if error_code >= 400 and error_code < 500 %}
+                ⚠️
+            {% else %}
+                ❌
+            {% endif %}
+        </div>
+
+        <h1>{% if error_msg %}{{ error_msg }}{% else %}操作提示{% endif %}</h1>
+
+        <div class="message">
+            {% if error_code %}
+                <div class="code">错误代码: {{ error_code }}</div>
+            {% endif %}
+
+            <p>{% if error_msg %}{{ error_msg }}{% else %}操作过程中出现了问题{% endif %}</p>
+        </div>
+
+        {% if redirect_url %}
+        <div class="redirect-info">
+            <p>页面将在 <span class="countdown" id="countdown">{{ redirect_time|default:5 }}</span> 秒后自动跳转</p>
+            <p>跳转到: <a href="{{ redirect_url }}" style="color: #1976d2; text-decoration: underline;">{{ redirect_url }}</a></p>
+        </div>
+        {% endif %}
+
+        <div class="actions">
+            {% if redirect_url %}
+            <a href="{{ redirect_url }}" class="btn btn-primary">立即跳转</a>
+            {% endif %}
+            <a href="/" class="btn btn-home">返回首页</a>
+            <button onclick="history.back()" class="btn btn-secondary">返回上一页</button>
+        </div>
+    </div>
+
+    {% if redirect_url %}
+    <script>
+        // 倒计时跳转
+        let countdownElement = document.getElementById('countdown');
+        let countdown = parseInt(countdownElement.textContent);
+
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = '{{ redirect_url }}';
+            }
+        }, 1000);
+
+        // 允许用户手动停止倒计时
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            clearInterval(countdownInterval);
+        });
+    </script>
+    {% endif %}
+</body>
+</html>
