@@ -50,9 +50,7 @@ class BasePage:
         """
         self.page = page
 
-    # -------------------------
-    # Helper / 转换方法
-    # -------------------------
+    """Helper / 转换方法"""
     def _ensure_locator(self, selector_or_locator: str | Locator, by: By | None = None, **by_kwargs: Any) -> Locator:
         """
         将输入（selector 字符串或 Locator）标准化为 Locator 对象。
@@ -96,9 +94,7 @@ class BasePage:
         # 默认使用通用 locator（CSS / XPath）
         return self.page.locator(selector_or_locator)
 
-    # -------------------------
-    # 页面级操作
-    # -------------------------
+    """页面级操作"""
     def open(self, url: str, timeout: int = 30000) -> None:
         """
         打开指定 URL。
@@ -126,9 +122,7 @@ class BasePage:
         """
         return self.page.url
 
-    # -------------------------
-    # Locator 基础动作（所有方法接收 Locator 或 selector）
-    # -------------------------
+    """Locator 基础动作（所有方法接收 Locator 或 selector）"""
     def click(self, target: str | Locator, by: str | None = None, timeout: int | None = None, force: bool = False, button: Literal["left", "middle", "right"] | None = None, modifiers: List[str] | None = None, position: Dict[str, int] | None = None, no_wait_after: bool = False, **kwargs: Any) -> None:
         """
         点击元素（直接封装 Locator.click，参数透传）。
@@ -303,9 +297,7 @@ class BasePage:
         # Playwright 提供 press_sequentially
         locator.press_sequentially(text) if hasattr(locator, "press_sequentially") else locator.type(text, delay=delay or 0)
 
-    # -------------------------
-    # Checkbox / Radio / Select / Upload
-    # -------------------------
+    """Checkbox / Radio / Select / Upload"""
     def set_checked(self, target: str | Locator, checked: bool = True, by: str | None = None) -> None:
         """
         设置 checkbox / radio 的选中状态（使用 locator.set_checked）。
@@ -363,9 +355,7 @@ class BasePage:
         locator = self._ensure_locator(target, by=by)  # type: ignore[arg-type]
         locator.set_input_files(files)
 
-    # -------------------------
-    # 读取 / 列表操作
-    # -------------------------
+    """读取 / 列表操作"""
     def get_text(self, target: str | Locator, by: str | None = None) -> str:
         """
         获取元素文本（inner_text）。
@@ -452,9 +442,7 @@ class BasePage:
         locator = self._ensure_locator(target, by=by)  # type: ignore[arg-type]
         return locator.all_text_contents()
 
-    # -------------------------
-    # 等待 / 断言 / 导航辅助
-    # -------------------------
+    """等待 / 断言 / 导航辅助"""
     def wait_for(self, target: str | Locator, by: str | None = None, state: Literal["attached", "detached", "hidden", "visible"] | None = None, timeout: int = 5000) -> None:
         """
         等待 locator 达到指定 state（'visible' | 'hidden' | 'attached' | 'detached'）。
@@ -515,6 +503,10 @@ class BasePage:
     def wait_for_load_state(self, state: Literal["domcontentloaded", "load", "networkidle"] | None = None, timeout: int = 30000) -> None:
         """
         等待页面达到某个加载状态（'load' | 'domcontentloaded' | 'networkidle'）。
+        "domcontentloaded" # DOM 加载完成
+        "load"             # 页面完全加载（默认）
+        "networkidle"      # 网络空闲（推荐）
+        "commit"           # 收到响应头
 
         :param state: 加载状态
         :type state: str
@@ -523,9 +515,7 @@ class BasePage:
         """
         self.page.wait_for_load_state(state, timeout=timeout)
 
-    # -------------------------
-    # 截图 / 调试
-    # -------------------------
+    """截图 / 调试"""
     def screenshot(self, name: str, directory: str = "outputs/screenshots", full_page: bool = False) -> str:
         """
         对当前页面进行截图并保存到指定目录（带时间戳）。
@@ -598,9 +588,7 @@ class BasePage:
         except (PlaywrightTimeoutError, PlaywrightError):
             exception("高亮元素失败。")
 
-    # -------------------------
-    # 低级扩展（evaluate / element handle）
-    # -------------------------
+    """低级扩展（evaluate / element handle）"""
     def evaluate_on_locator(self, target: str | Locator, expression: str, arg: Any = None, by: str | None = None) -> Any:
         """
         在 locator 指向的元素上执行 JS 表达式 / 函数（返回值可序列化）。
@@ -619,9 +607,7 @@ class BasePage:
         # 若想对所有匹配节点执行，请使用 evaluate_all
         return locator.evaluate(expression, arg) if hasattr(locator, "evaluate") else locator.evaluate_all(expression, arg)
 
-    # -------------------------
-    # 装饰器：方法出错时自动截图（可用于 test helper）
-    # -------------------------
+    """装饰器：方法出错时自动截图（可用于 test helper）"""
     @staticmethod
     def screenshot_on_error(directory: str = "outputs/screenshots"):
         """

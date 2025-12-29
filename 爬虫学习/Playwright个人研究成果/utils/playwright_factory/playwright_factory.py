@@ -17,9 +17,9 @@ from typing import Literal
 
 # 内置库
 from playwright.sync_api import sync_playwright, Browser, BrowserContext, Page
-from launch_options import LaunchOptions
 # 自己的模块
-from context_options import ContextOptions
+from utils.playwright_factory.launch_options import LaunchOptions
+from utils.playwright_factory.context_options import ContextOptions
 from utils import debug
 
 
@@ -214,8 +214,8 @@ class PlaywrightFactory:
             if not self._playwright_flag:
                 raise RuntimeError("PlaywrightFactory已关闭，无法创建新资源")
             # 转换 launch_options
-            launch_options = (
-                launch_options.to_dict() if launch_options is not None else self.__launch_options.to_dict())
+            launch_options = (launch_options.model_dump() if launch_options is not None else self.__launch_options.model_dump())
+            # print(launch_options)
             # 判断需要创建的浏览器类型
             if browser_type == "chromium":
                 browser = self.playwright.chromium.launch(**launch_options)
@@ -229,7 +229,7 @@ class PlaywrightFactory:
             self._browser_list.append(browser)
             return browser
 
-    def get_browser_(self) -> list[Browser]:
+    def get_browser_list(self) -> list[Browser]:
         """
         安全获得浏览器列表，方便复用
 
@@ -264,14 +264,14 @@ class PlaywrightFactory:
 
             # 转换 context_options
             context_options = (
-                context_options.to_dict() if context_options is not None else self.__context_options.to_dict())
+                context_options.model_dump() if context_options is not None else self.__context_options.model_dump())
             # 创建 context
             context = browser.new_context(**context_options)
             # 将 context 添加到 context 列表中进行管理
             self._context_list.append(context)
             return context
 
-    def get_context_(self) -> list[BrowserContext]:
+    def get_context_list(self) -> list[BrowserContext]:
         """
         安全获得 context 列表，方便复用
 
@@ -409,7 +409,7 @@ class PlaywrightFactory:
         """
         if browser is None:
             # 默认策略：有就复用第一个，没有就新建
-            browsers = self.get_browser_()
+            browsers = self.get_browser_list()
             browser = browsers[0] if browsers else self.new_browser()
         ctx = self.new_context(browser, context_options)
         try:

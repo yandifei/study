@@ -1,19 +1,122 @@
+# 用不上直接注释掉
 [playwright]
-headless = true  # 是否以无头模式启动
 browser_type = "chromium"  # 可选项：chromium, firefox, webkit
-launch_options = { headless = true, args = ["--no-sandbox", "--disable-setuid-sandbox"] }
-page_timeout = 30000  # 页面加载超时设置为30秒
+# 截图路径保存
+screen_dir = "outputs/screenshots"
 
-# 浏览器数据目录
-[playwright.browser_data]
-chromium_data_dir = "./user_data/chrome_data"
-firefox_data_dir = "./user_data/firefox_data"
-webkit_data_dir = "./user_data/webkit_data"
+# 浏览器启动选项配置
+# 注意：Playwright 只保证与捆绑的 Chromium、Firefox 或 WebKit 正常工作，使用此选项需自行承担风险。
+[playwright.launch_options]
+# executable_path和channel是二选一，一个是写死路径，一个是自动从你系统找
+## 浏览器可执行文件路径，不使用 Playwright 自带的浏览器时使用。# 注意：Playwright 只保证与捆绑的 Chromium、Firefox 或 WebKit 正常工作，使用此选项需自行承担风险。
+#executable_path = "C:/Program Files/Google/Chrome/Application/chrome.exe"
+## 浏览器发行渠道。# 设置为 "chromium" 以启用新的无头模式# 可设置为 "chrome"、"chrome-beta"、"chrome-dev"、"chrome-canary"、"msedge"、"msedge-beta"、"msedge-dev" 或 "msedge-canary" 来使用官方的 Google Chrome 或 Microsoft Edge
+#channel = "chrome"
+# 传递给浏览器实例的额外命令行参数。# 警告：使用自定义浏览器参数需自行承担风险，某些参数可能会破坏 Playwright 功能。# Chromium 的可用参数列表：https://peter.sh/experiments/chromium-command-line-switches/
+args = []
+# 如果为 True，Playwright 将不传递其默认配置参数，只使用 args 中的参数。如果为数组，则过滤掉指定的默认参数。此为危险选项，请谨慎使用。默认值为 False。
+ignore_default_args = ['--disable-blink-features=AutomationControlled']    # 和文档不符必须列表
+# 在收到 Ctrl-C 时关闭浏览器进程。默认值为 True。
+handle_sigint = true
+# 在收到 SIGTERM 信号时关闭浏览器进程。默认值为 True。
+handle_sigterm = true
+# 在收到 SIGHUP 信号时关闭浏览器进程。默认值为 True。
+handle_sighup = true
+# 等待浏览器实例启动的最大时间（毫秒）。默认值为 30000（30秒）。设置为 0 表示禁用超时。
+timeout = 30000
+# 指定浏览器可见的环境变量。默认使用 process.env。
+env = {}
+# 是否以无头模式运行浏览器。# 如果 devtools 选项为 True，则此选项默认为 False，否则默认为 True。
+headless = false
+# 仅限 Chromium：是否为每个标签页自动打开开发者工具面板。# 如果此选项为 True，headless 选项将被设置为 False。# 已弃用：建议使用调试工具代替。
+devtools = false
+## 网络代理设置(没有的字段直接删)【用不上 直接注释掉】。
+#proxy = { server = "http://127.0.0.1:7890", bypass = "", username = "", password = "" }
+# 如果指定，已接受的下载将保存到此目录。# 否则将创建临时目录，并在浏览器关闭时删除。# 无论哪种情况，下载都会在创建它们的浏览器上下文关闭时被删除。
+downloads_path = "outputs/downloads"
+# 以指定的毫秒数减慢 Playwright 操作速度。# 有助于观察正在进行的操作。
+slow_mo = 0
+# 如果指定，跟踪记录将保存到此目录。
+traces_dir = "outputs/traces"
+# 启用 Chromium 沙盒。默认值为 False。
+chromium_sandbox = true
+# Firefox 用户偏好设置。可在 about:config 页面了解 Firefox 用户偏好设置。# 也可以通过 PLAYWRIGHT_FIREFOX_POLICIES_JSON 环境变量提供自定义的 policies.json 文件路径。
+firefox_user_prefs = {}
 
-
-[data_storage]
-data_format = "json"
-output_dir = "./data/spider_results/"
+# 浏览器上下文选项配置# 用于配置浏览器上下文的各种参数，如视口大小、JavaScript启用状态、代理设置等。# 所有参数都提供了与Playwright官方文档一致的默认值。
+[playwright.context_options]
+# 设置每个页面的固定视口大小。默认为1280x720视口。no_viewport参数可禁用固定视口。
+viewport = { width = 1280, height = 720 }
+# 通过window.screen模拟网页内可用的窗口屏幕大小。仅在设置viewport时使用。
+screen = { width = 1280, height = 720 }
+# 不强制执行固定视口，允许在headed模式下调整窗口大小。
+no_viewport = false
+# 发送网络请求时是否忽略HTTPS错误。默认为false。
+ignore_https_errors = false
+# 是否在上下文中启用JavaScript。默认为true。
+java_script_enabled = true
+# 是否绕过页面的内容安全策略。默认为false。
+bypass_csp = false
+# 在此上下文中使用的特定用户代理字符串。
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+# 指定用户区域设置，例如en-GB, de-DE, zh-CN等。区域设置会影响navigator.language值、Accept-Language请求头值以及数字和日期格式化规则。默认为系统默认区域设置。
+locale = "zh-CN"
+# 更改上下文的时区。支持时区ID列表请参考ICU的metaZones.txt。默认为系统时区。
+timezone_id = "Asia/Shanghai"
+# 地理位置信息，包括纬度和经度。
+geolocation = { latitude = 0.0, longitude = 0.0, accuracy = 0.0 }
+# 授予此上下文中所有页面的权限列表。默认为无。
+permissions = ['clipboard-read', 'clipboard-write'] # 剪切板复制和粘贴
+# 包含要随每个请求发送的额外HTTP头的对象。默认为无。
+extra_http_headers = {}
+# 是否模拟网络离线状态。默认为false。
+offline = false
+## HTTP身份验证的凭据。如果未指定来源，则在收到未经授权的响应时，用户名和密码将发送到任何服务器。
+#http_credentials = { username = "", password = "", origin = "" }   # 用不上直接注释
+# 指定设备缩放因子（可视为dpr）。默认为1。
+device_scale_factor = 1.0
+# 是否考虑meta viewport标签并启用触摸事件。isMobile是设备的一部分，因此实际上不需要手动设置它。默认为false，Firefox不支持。
+is_mobile = false
+# 指定视口是否支持触摸事件。默认为false。
+has_touch = false
+# 模拟prefers-colors-scheme媒体功能，支持的值有'light'、'dark'。传递'null'将重置为系统默认值。默认为'light'。
+color_scheme = "light"
+# 模拟'prefers-reduced-motion'媒体功能，支持的值有'reduce'、'no-preference'。传递'null'将重置为系统默认值。默认为'no-preference'。
+reduced_motion = "no-preference"
+# 模拟'forced-colors'媒体功能，支持的值有'active'、'none'。传递'null'将重置为系统默认值。默认为'none'。
+forced_colors = "none"
+# 模拟'prefers-contrast'媒体功能，支持的值有'no-preference'、'more'。传递'null'将重置为系统默认值。默认为'no-preference'。
+contrast = "no-preference"
+# 是否自动下载所有附件。默认为true，接受所有下载。
+accept_downloads = true
+## 默认浏览器类型。如果已经配置了 [playwright] 部分的 browser_type，这里不能设置(以前才要)
+#default_browser_type = "chrome"
+## 与此上下文一起使用的网络代理设置。默认为无（不使用就注释掉）。
+#proxy = { server = "", bypass = "", username = "", password = "" }
+# 为所有页面启用HAR记录，将HAR文件保存到文件系统的指定路径。如果未指定，则不记录HAR。确保调用browser_context.close()以保存HAR。
+record_har_path = "outputs/har"
+# 可选设置，控制是否从HAR中省略请求内容。默认为false。
+record_har_omit_content = false
+## 为所有页面启用视频录制，将视频保存到指定目录。如果未指定，则不录制视频。确保调用browser_context.close()以保存视频。
+#record_video_dir = "outputs/videos"
+## 录制视频的尺寸。如果未指定，尺寸将等于视口按比例缩小以适合800x800。如果未显式配置视口，视频尺寸默认为800x450。
+#record_video_size = { width = 1280, height = 720 }
+# 用给定的存储状态填充上下文。此选项可用于使用通过browser_context.storage_state()获取的已登录信息初始化上下文。
+storage_state = "user_data/chrome_data/content_data.json"
+## 在使用page.goto()、page.route()、page.wait_for_url()、page.expect_request()或page.expect_response()时，会通过使用URL()构造函数构建相应的URL来考虑基础URL。默认未设置。
+#base_url = "https://github.com/yandifei"   # 不用就不设置
+# 如果设置为true，则为此上下文启用严格选择器模式。在严格选择器模式下，所有意味着单个目标DOM元素的选择器操作在多个元素匹配选择器时将抛出异常。此选项不影响任何定位器API（定位器始终是严格的）。默认为false。
+strict_selectors = false
+# 是否允许站点注册Service workers。默认为'allow'。'allow'：可以注册Service Workers；'block'：Playwright将阻止所有Service Workers的注册。
+service_workers = "allow"
+## 记录HAR时的URL过滤器，可以是正则表达式模式或字符串。
+#record_har_url_filter = ""
+## 当设置为minimal时，仅记录从HAR进行路由所必需的信息。这会省略大小、时间、页面、cookie、安全和其他在从HAR重放时不使用的HAR信息类型。默认为full。
+#record_har_mode = "full"
+# 控制资源内容管理的可选设置。如果指定omit，则不保留内容。如果指定attach，则资源作为单独文件保留，所有这些文件都与HAR文件一起存档。默认为embed，根据HAR规范将内容内联存储在HAR文件中。
+record_har_content = "embed"
+# TLS客户端身份验证，允许服务器请求客户端证书并进行验证。要使用的客户端证书数组。当提供至少一个客户端证书时，客户端证书身份验证才处于活动状态。
+client_certificates = []
 
 [AI.doubao]
 display_name = "豆包"
@@ -30,3 +133,18 @@ display_name = "gemini"
 login_url = "https://accounts.google.com/"
 chat_url = "https://gemini.google.com/app"
 
+#[spider]
+#user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+#timeout = 30
+#retry_count = 3
+#request_interval = 1  # 每次请求间隔1秒
+#enable_proxy = false
+#proxy = "http://your.proxy.server:port"
+
+#[database]
+#database_type = "mysql"
+#host = "localhost"
+#port = 3306
+#user = "root"
+#password = "password"
+#database_name = "spider_db"

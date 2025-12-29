@@ -5,10 +5,10 @@ from typing import Any, Sequence, Pattern, Literal
 # 第三方库
 from playwright.async_api import ViewportSize, Geolocation, HttpCredentials, ProxySettings, StorageState
 from playwright._impl._api_structures import ClientCertificate
+from pydantic import BaseModel
 
 
-@dataclass
-class ContextOptions:
+class ContextOptions(BaseModel):
     """浏览器上下文选项配置类
     用于配置浏览器上下文的各种参数，如视口大小、JavaScript启用状态、代理设置等。
     所有参数都提供了与Playwright官方文档一致的默认值。
@@ -163,6 +163,6 @@ class ContextOptions:
     # TLS客户端身份验证，允许服务器请求客户端证书并进行验证。要使用的客户端证书数组。当提供至少一个客户端证书时，客户端证书身份验证才处于活动状态。
     client_certificates: list[ClientCertificate] | None = None
 
-    def to_dict(self) -> dict[str, Any]:
-        """转换为字典格式，过滤掉None值"""
-        return {k: v for k, v in asdict(self).items() if v is not None}
+    # def to_dict(self) -> dict[str, Any]:
+    #     """转换为字典格式，过滤掉None值"""
+    #     return {k: v for k, v in asdict(self).items() if v is not None}

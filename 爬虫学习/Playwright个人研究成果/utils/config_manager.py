@@ -10,10 +10,14 @@ from pathlib import Path
 from typing import Dict, Any, Tuple
 # 第三方库
 import yaml
+
+from utils import critical
 # 自己的模块
 from utils.logging_configurator import LoggingConfigurator
 from utils.path_utils import get_root
 from utils.logger import logger_manager, error
+from utils.playwright_factory.context_options import ContextOptions
+from utils.playwright_factory.launch_options import LaunchOptions
 
 
 class ConfigManager:
@@ -81,6 +85,9 @@ class ConfigManager:
         # 用户私有设置配置
         if self.load_user_settings_config() is False:
             return False
+        # 配置校验和模型转化
+        if not self.model_check_transformation():
+            return False
         # 最后返回配置数据
         return True
 
@@ -120,6 +127,24 @@ class ConfigManager:
             return self.deep_merge(self.config_data, json)
         # 配置存在错误(error_msg已经记录错误信息了)
         return False  # 直接返回False
+
+    def model_check_transformation(self) -> bool:
+        """配置校验和模型转化
+
+        :return: 成功为True否则为false
+        """
+        try:
+            # 将字典转换为模型对象(销毁原来的字典对象直接替换为模型)
+            # print(self.config_data["playwright"]["launch_options"])
+            self.config_data["playwright"]["launch_options"] = LaunchOptions(**self.config_data["playwright"]["launch_options"])
+            # print(self.config_data["playwright"]["launch_options"])
+            # print(self.config_data["playwright"]["context_options"])
+            self.config_data["playwright"]["context_options"] = ContextOptions(**self.config_data["playwright"]["context_options"])
+            # print(self.config_data["playwright"]["context_options"])
+            return  True
+        except Exception as e:
+            self.error_msg = (f"配置文件转化模型错误: {e}", e)
+            return False
 
 
     @staticmethod
