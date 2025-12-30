@@ -1,12 +1,11 @@
 """doubao_flows.py
 豆包工作流
 """
-from pathlib import Path
 from time import sleep
 
 from pages.doubao.home_page import HomePage
 from pages.doubao.login_page import LoginPage
-from utils import ConfigManager
+from utils import ConfigManager, info
 from utils.playwright_factory.playwright_factory import PlaywrightFactory
 
 class DoubaoFlows:
@@ -19,45 +18,39 @@ class DoubaoFlows:
         context = self.pf.new_context(browser)
         # 基础伪装：清除 webdriver 标志
         context.add_init_script("""Object.defineProperty(navigator, 'webdriver', { get: () => false });""")
+        # 为了拿到回答返回结果，需要hook
+        context.add_init_script("""
+        // 初始化全局变量
+        window.tempCopyBuffer = ""; 
+        // 改变js行为
+        document.addEventListener('copy', (event) => {
+            // 阻止原来的startMonitoring 运行
+            event.stopImmediatePropagation();
+            // 拦截行为：阻止事件冒泡和默认行为
+            event.preventDefault();
+            // 同步获取：直接从当前选区抓取文本，存储到变量
+            window.tempCopyBuffer = document.getSelection().toString();
+        }, true);""")
         # 创建标签页
         page = context.new_page()
         # 创建登录页面
-        self.login_pate = LoginPage(page, config_manager)
+        login_pate = LoginPage(page, config_manager)
         # 检查是否登陆成功
-        self.login_pate.login()
+        login_pate.login()
         # 保存登录状态
         context.storage_state(path=self.cm.config_data["playwright"]["context_options"].storage_state)
         # 创建主页面
-        self.home_page = HomePage(page, config_manager)
-        # self.home_page.ask("识别图片中的角色并生成一张另一张相似的图片", "data/test.png")
-        self.home_page.ask("识别图片中的角色", "data/test.png")
-        self.home_page.get_answer()
+        home_page = HomePage(page, config_manager)
+        # 开个模式
+        home_page.deep_thinking_mode()
+        # 提问
+        text_answer, img_urls = home_page.ask("识别图片中的角色并生成多张相似的", "data/test.png")
+        info(f"最终拿到的文本回答: {text_answer}")
+        info(f"原图生成链接：{img_urls}")
+        # 创建会话
+        home_page.create_conversation()
+        # 删除会话
+        home_page.del_conversation()
         sleep(20)
 
-        # # 访问豆包网页
-        # page.goto(config_manager.config_data["AI"]["doubao"]["chat_url"])
-        # # 等待输入框加载完成
-        # page.get_by_placeholder("发消息或输入 / 选择技能").wait_for()
-        # # 输入内容
-        # page.get_by_placeholder("发消息或输入 / 选择技能").fill("识别图片中的角色")
-        # page.wait_for_timeout(3000)
-        # # 点击按钮会触发 file chooser
-        # with page.expect_file_chooser() as fc_info:
-        #     # 定位文件输入框
-        #     page.get_by_test_id("upload_file_button").click()
-        #     # 文件选择
-        #     file_chooser = fc_info.value
-        #     page.wait_for_timeout(3000)
-        #     # 上传单个文件
-        #     file_chooser.set_files("./data/test.png")
-        #     page.wait_for_timeout(3000)
-        #     # 等待文件上传完毕
-        #     page.get_by_test_id("chat_input_send_button").is_enabled()
-        #     page.wait_for_timeout(3000)
-        # # 点击发送
-        # page.get_by_test_id("chat_input_send_button").click()
-        # # 截图
-        # page.screenshot(path=Path(config_manager.config_data["playwright"]["screen_dir"], "baidu.png"))
-        # sleep(10)
-        # 关闭所有浏览器
         self.pf.close_browser(browser)
