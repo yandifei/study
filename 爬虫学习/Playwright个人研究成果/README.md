@@ -325,3 +325,195 @@ info("第一条程序已经加载完成，日志记录器、全局异常捕获�
 3. 问题输入（包括文本、文件）
 4. 发送请求
 5. 拿到回复
+
+
+# 豆包
+必须要有鼠标移动轨迹在发送的情况下
+```python
+# 鼠标从输入框移动到发送按钮(悬浮2个控件会自动移动)
+self.page.get_by_placeholder("发消息或输入 / 选择技能").hover()
+# self.page.get_by_test_id("chat_input_send_button").hover()
+send_btn = self.page.get_by_test_id("chat_input_send_button")
+box = send_btn.bounding_box()
+self.page.mouse.move(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2,steps=20)
+```
+
+test_id
+问题输入前：asr_btn
+问题输入后：chat_input_send_button
+问题回复中：chat_input_local_break_button
+问题回复后：sr_btn
+
+
+flex-row flex w-full 我的问题标签
+flex-row flex w-full justify-end AI的回答标签
+`.message_content`能拿到当前AI与我的会话html窗口
+
+## 图片下载解析
+```
+正常原图地址
+https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/1cc0dae82c3c4b6cad70c6b6303d91c5preview.jpeg
+附上了水印的图
+https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/1cc0dae82c3c4b6cad70c6b6303d91c5preview.jpeg~tplv-a9rns2rl98-image_pre_watermark_1_6b.png?rcl=202512301847465774984230AE11391AD9&rk3s=8e244e95&rrcfp=827586d3&x-expires=2082451688&x-signature=lwqSV2GdJyhtcQJbmLb2MR9If8c%3D
+```
+URL 包含三个部分：基础路径 + 模板参数（Template） + 鉴权参数（Token）。
+
+绕过 ImageX 的处理规则
+如果你接截断 ~ 之后的所有内容，有时会因为 CDN 签名（Signature）失效而无法访问。
+tos-cn... 这一段是文件在服务器上的唯一 ID。
+x-expires 定义了链接的寿命。
+x-signature 是必须带上的，否则会返回 403。
+
+签名校验：ImageX 的签名 x-signature 是根据 ~tplv... 这一串规则计算出来的。如果你手动修改了模板（比如把 downsize 改掉），签名就会失效，导致链接打不开。
+
+tplv 代表 Template View（模板视图）。
+downsize 是压缩模板。
+watermark 是水印模板。
+
+实际上我也能理解，豆包把我自己发的图片也存到它的服务器去了还是ImageX的服务器。说他不拿你的图片数据训练我觉得是不可能的了。
+
+### 图片机制
+从网页端很容易理解，图片生成后返回实际是流式输出的且必须是异步处理
+
+采用了 SSE (Server-Sent Events) 协议，即服务器像“挤牙膏”一样一小块一小块地推送 JSON 补丁（Patches）
+
+它会对接可灵的接口然后生成图片并拿到返回的json数据，而这个数据就是ImageX返回的，为了速度它会拿到一张原始的图片然后在这个图片上打上水印，最后给我的是打上水印后的url（基础路径 + 模板参数（Template） + 鉴权参数（Token））
+
+所以很明显我直接利用的给我直接返回原图链接的漏洞，本地拿到的json去解析出来用
+
+### 具体实现
+**实现“不带水印”或“高清原图”的抓取，思路通常不是靠“修图”，而是利用网页版大模型在前端展示和后端存储之间的策略差。**
+
+字段名称,模板参数 (Template),含义
+| 字段名称        | 模板参数 (Template)       | 含义                                                       |
+| :-------------- | :------------------------ | :--------------------------------------------------------- |
+| `image_thumb`   | `~downsize_watermark...`  | 缩略图（带水印，体积小）                                   |
+| `image_preview` | `~image_pre_watermark...` | 预览图（带水印，网页显示用）                               |
+| `image_ori`     | `~image_dld_watermark...` | 下载图（虽然是原尺寸，但通常被强行加了下载水印）           |
+| `image_ori_raw` | `~image_raw_b.png`        | **核心目标**：这是原始生成的图像，通常水印最少或质量最高。 |
+
+#### 非编程实现
+**图片生成前大的实现方案：**
+1. F12打开浏览器开发者工具 (Browser Developer Tools)
+2. 上面导航栏选中网络(Network)
+3. 点击保留日志
+4. 点击Fetch/XHR这个选项框
+5. 向豆包提出问题并等待它生成图片
+6. 在DevTools的请求列表中找到类似`completion?aid=后面省略`列表
+<img src="开发随笔/image.png" width="宽度" height="高度" style="border: 2px solid #000; border-radius: 5px;" />
+1. 点击后ctrl+F快捷键打开搜索功能，输入`image_ori_raws`
+2. url后面的"http://内容太多省略"就是无水印的高清原图了
+<img src="开发随笔/image2.png" width="宽度" height="高度" style="border: 2px solid #000; border-radius: 5px;" />
+
+
+**生成图片后的实现方案**
+1. F12打开浏览器开发者工具 (Browser Developer Tools)
+2. 上面导航栏选中网络(Network)
+3. 点击保留日志
+4. 点击Fetch/XHR这个选项框
+5. 然后F5刷新网页
+6. 在DevTools的请求列表中找到类似 `singleversion_code=后面省略` 列表<img src="开发随笔/image3.png" width="宽度" height="高度" style="border: 2px solid #000; border-radius: 5px;" />
+7. 点击后ctrl+F快捷键打开搜索功能，输入`image_ori_raws`，这时候会出现6个，一般是第5个，找不到就如下图所示的结果。无脑的方案就是全部url都试试<img src="开发随笔/image4.png" width="宽度" height="高度" style="border: 2px solid #000; border-radius: 5px;" />
+
+#### 编程实现
+js就直接hook这个api的数据然后解析
+python实现
+
+在拦截到`https://www.doubao.com/chat/completion?aid=任意字符`后里面有2个`image_ori_raw`字段，其中url结尾没有`\`就是需要提取的，url结尾有`\`是有水印的
+```python
+def img_hook(self, response):
+    """从豆包对话中获取图片的没有水印下载链接
+
+    :param response: 回调参数
+    :return:
+    """
+    # 不看完整 URL，只看关键字
+    if "https://www.doubao.com/chat/completion?aid=" in response.url:
+        # 正则提取所有 image_ori_raw 下的 url 内容
+        matches = re.findall(r'"image_ori_raw":\{"url":"(.*?)"', response.text())
+        # 遍历所有匹配项
+        for raw_url in matches:
+            # 判定条件：过滤掉以反斜杠 \ 结尾的“中间态”或“假”URL
+            if raw_url.endswith('\\'):
+                continue
+            # Unicode 解码并存储这个真实的无水印url
+            self.img_hook_list.append(raw_url.encode().decode('unicode_escape'))
+```
+
+## 没用的笔记
+```python
+# # 记录当前AI的对话数量
+# count = self.page.locator('.flex-row.flex.w-full.justify-end').count()
+# info("点击发送")
+# # 不可靠的等待回复加载完成（完成后，发送图标会变成语音图标）
+# self.page.get_by_test_id("asr_btn").wait_for(timeout=0)
+# # AI回复数增加1才算是回复完毕
+# while self.page.locator('.flex-row.flex.w-full.justify-end').count() == count:
+#     self.page.wait_for_timeout(1000)
+# 等待回复完毕(等待停止按钮出现并消失)
+
+// 初始化全局变量
+window.tempCopyBuffer = ""; 
+// 改变js行为
+document.addEventListener('copy', (event) => {
+    // 阻止原来的startMonitoring 运行
+    event.stopImmediatePropagation();
+    // 拦截行为：阻止事件冒泡和默认行为
+    event.preventDefault();
+    // 同步获取：直接从当前选区抓取文本
+    const selection = document.getSelection().toString();
+    // 存储到变量
+    window.tempCopyBuffer = selection;
+}, true);
+
+# 遍历文件路径列表并发送
+# for file_path in file_path_list:
+#     # 点击按钮会触发 file chooser
+#     with self.page.expect_file_chooser() as fc_info:
+#         # 定位文件输入框
+#         self.page.get_by_test_id("upload_file_button").click()
+#         # 文件选择
+#         file_chooser = fc_info.value
+#         self.page.wait_for_timeout(3000)
+#         # 上传单个文件
+#         file_chooser.set_files(file_path)
+#         self.page.wait_for_timeout(3000)
+#         # 等待文件上传完毕
+#         self.page.get_by_test_id("chat_input_send_button").is_enabled()
+#         self.page.wait_for_timeout(3000)
+
+
+document.addEventListener('copy', (event) => {
+    // 获取用户当前选中的文本
+    const selection = document.getSelection().toString();
+    console.log('用户复制了内容：', selection);
+    event.preventDefault(); // 阻止默认行为以应用你的修改
+});
+
+
+
+document.addEventListener('copy', () => {
+  // 延迟一瞬确保剪贴板已更新，或者直接获取当前选区内容
+  setTimeout(async () => {
+    const text = await navigator.clipboard.readText();
+    console.log(text);
+  }, 10);
+}, true);
+
+// 改进版(没有数据输出)
+const answer
+document.addEventListener('copy', () => {
+    const text = navigator.clipboard.readText();
+    return text;
+});
+
+
+// 找到所有带有埋点定义的元素（没有html）
+const telemetryElements = document.querySelectorAll('[data-copy-telemetry]');
+telemetryElements.forEach(el => {
+    console.log('目标元素:', el);
+    console.log('对应的埋点值:', el.getAttribute('data-copy-telemetry'));
+    // 你可以直接读取这些元素的 innerText，这就是它想保护或监控的内容
+    console.log('元素内容:', el.innerText);
+});
+```
