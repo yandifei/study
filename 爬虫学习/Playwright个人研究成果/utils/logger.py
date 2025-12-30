@@ -221,10 +221,10 @@ class LoggerManager:
             """
             # 忽略键盘中断的异常，比如pycharm的停止运行或控制台的Ctrl+C
             if issubclass(exc_type, KeyboardInterrupt):
+                # "忽略键盘中断的异常"
                 sys.__excepthook__(exc_type, exc_value, exc_traceback)
-                return "忽略键盘中断的异常"
 
-            return self.logger.exception("发生致命异常导致程序崩溃:", exc_info=(exc_type, exc_value, exc_traceback))
+            self.logger.exception("发生致命异常导致程序崩溃:", exc_info=(exc_type, exc_value, exc_traceback))
 
         # 启动函数：开启全局异常捕获
         sys.excepthook = exception_hook
