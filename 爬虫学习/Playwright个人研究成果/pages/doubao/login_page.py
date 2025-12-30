@@ -47,6 +47,8 @@ class LoginPage(BasePage):
         self.page.wait_for_timeout(3000)  # 强制等待 2 秒
         # 检查登陆按钮是否可见
         if self.page.get_by_test_id("to_login_button").is_visible():
+            # # 鼠标悬浮到按钮上
+            # self.page.get_by_test_id("to_login_button").hover()
             # 点击登陆按钮
             self.page.get_by_test_id("to_login_button").click()
             info("需要用户手动登陆豆包")

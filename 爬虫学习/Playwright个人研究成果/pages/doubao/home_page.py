@@ -10,7 +10,7 @@ from playwright.sync_api import FilePayload, expect
 from playwright.sync_api import Page
 
 from pages.base_page import BasePage
-from utils import ConfigManager, info
+from utils import ConfigManager, info, debug
 
 
 class HomePage(BasePage):
@@ -24,6 +24,8 @@ class HomePage(BasePage):
         super().__init__(page)
         # 界面对象
         self.page: Page = page
+        # 生成原图url列表
+        self.img_hook_list = []
         # 访问豆包对话网页
         self.page.goto(config_manager.config_data["AI"]["doubao"]["chat_url"])
         # 等待界面加载完成
@@ -38,24 +40,12 @@ class HomePage(BasePage):
         :param files: 要上传的文件路径，支持以下格式：
                       - 单个字符串路径 (str)
                       - 单个 Path 对象 (Path)
+                      - FilePayload 对象
                       - 文件路径列表 (list[str | Path])
+                      - FilePayload 对象列表 (list[FilePayload])
                       - 为 None 时不上传文件
-        :return: None
+        :return: 元组 (text_answer: str, img_urls: list[str]) - 返回文本回答和图片URL列表
         """
-        self.page.add_init_script("""
-        // 初始化全局变量
-        window.tempCopyBuffer = ""; 
-        // 改变js行为
-        document.addEventListener('copy', (event) => {
-            // 阻止原来的startMonitoring 运行
-            event.stopImmediatePropagation();
-            // 拦截行为：阻止事件冒泡和默认行为
-            event.preventDefault();
-            // 同步获取：直接从当前选区抓取文本
-            const selection = document.getSelection().toString();
-            // 存储到变量
-            window.tempCopyBuffer = selection;
-        }, true);""")
         # 文件参数不是none，上传文件
         if files is not None:
             self.page.locator('input[type="file"]').set_input_files(files)
@@ -65,86 +55,55 @@ class HomePage(BasePage):
         self.page.get_by_placeholder("发消息或输入 / 选择技能").wait_for()
         # 输入内容
         self.page.get_by_placeholder("发消息或输入 / 选择技能").fill(text)
+        # 鼠标从输入框移动到发送按钮(悬浮2个控件会自动移动)
+        self.page.get_by_placeholder("发消息或输入 / 选择技能").hover()
+        # self.page.get_by_test_id("chat_input_send_button").hover()
+        send_btn = self.page.get_by_test_id("chat_input_send_button")
+        box = send_btn.bounding_box()
+        self.page.mouse.move(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2,steps=20)
         # 等待发送按钮可见且可点击
         expect(self.page.get_by_test_id("chat_input_send_button")).to_be_visible()
         expect(self.page.get_by_test_id("chat_input_send_button")).to_be_enabled()
-        info("问题构造完毕")
+        debug(f"问题输入完毕:{text}\n文件{files}")
         # 发送（click会被风控）
         self.page.get_by_test_id("chat_input_send_button").press("Enter")
-        # 记录当前AI的对话数量
-        count = self.page.locator('.flex-row.flex.w-full.justify-end').count()
-        info("点击发送")
-        # 不可靠的等待回复加载完成（完成后，发送图标会变成语音图标）
-        self.page.get_by_test_id("asr_btn").wait_for(timeout=0)
-        # AI回复数增加1才算是回复完毕
-        while self.page.locator('.flex-row.flex.w-full.justify-end').count() == count:
-            self.page.wait_for_timeout(1000)
-
-
-    def get_answer(self):
-        """
-        获取豆包回复内容
-
-        :return: 豆包回复内容
-        """
-
-        # # 等待回复完毕出现复制标签
-        # self.page.locator(".message_content").last.get_by_test_id("message_action_copy").wait_for()
-        # self.page.wait_for_timeout(3000)
-        info("回复完毕")
-        # # 检查回复是否可见
-        # if not self.page.locator(".message_content").last.is_visible():
-        #     info("没有对话内容")
-        #     return False
-        # 获取图片下载链接(传递最后1个会话的html)
-        print(self.get_img_scr_list(self.page.locator('.flex-row.flex.w-full.justify-end').last.inner_html()))
-#         # 获取回复内容
-#         self.page.add_init_script("""
-# // 初始化全局变量
-# window.tempCopyBuffer = "";
-# // 改变js行为
-# document.addEventListener('copy', (event) => {
-#     // 阻止原来的startMonitoring 运行
-#     event.stopImmediatePropagation();
-#     // 拦截行为：阻止事件冒泡和默认行为
-#     event.preventDefault();
-#     // 同步获取：直接从当前选区抓取文本
-#     const selection = document.getSelection().toString();
-#     // 存储到变量
-#     window.tempCopyBuffer = selection;
-# }, true);""")
-        # # 如果你不想点按钮，直接触发事件即可
-        # self.page.evaluate("document.dispatchEvent(new ClipboardEvent('copy'))")
+        # 在页面启动时挂载图片生成监听器(先清空列表)
+        self.page.on("response", self.img_hook); self.img_hook_list.clear()
+        # 等待回复完成
+        self.page.get_by_test_id("chat_input_local_break_button").wait_for(state="hidden")
+        self.page.get_by_test_id("asr_btn").wait_for(state="visible")
+        debug("豆包回答生成完毕")
         # 等待复制标签出现
         self.page.get_by_test_id("message_action_copy").wait_for()
         # 点击复制标签
         self.page.get_by_test_id("message_action_copy").click()
-        # 等待复制完毕
-        self.page.wait_for_timeout(3000)
-        # 4. 同步获取捕获到的变量
-        # evaluate 会等待并返回结果
-        answer = self.page.evaluate("window.tempCopyBuffer")
-        print(f"最终拿到的回答: {answer}")
-        return answer
+        # 同步获取捕获到的变量，evaluate 会等待并返回结果
+        text_answer = self.page.evaluate("window.tempCopyBuffer")
+        debug(f"最终拿到的文本回答: {text_answer}")
+        debug(f"原图生成链接：{self.img_hook_list}")
+        return text_answer, self.img_hook_list.copy()
 
-    def get_img_scr_list(self, html: str):
-        """从指定对话html中获取图片的下载链接
-
-        :param html:
-        :return:
+    def get_last_answer(self):
         """
-        # 获取html回复的链接内容
-        urls = re.findall(r'https://[^\s"\'<>]+?byteimg\.com[^\s"\'<>]+', html)
-        # 清洗链接：HTML 反转义 + 去重
-        image_links = []
-        for url in urls:
-            # 处理 HTML 转义：把 &amp; 替换回 & (这是下载成功的核心)
-            # 处理 srcset 格式：截取空格前的内容（防止带上 1x, 2x 标识）
-            clean_url = url.replace('&amp;', '&').split(' ')[0]
-            if clean_url not in image_links:
-                image_links.append(clean_url)
-        return image_links
+        获取最后对话中豆包回复的内容
 
+        :return: 元组 (text_answer: str, img_urls: list[str]) - 返回文本回答和图片URL列表
+        """
+        # 等待复制标签出现
+        self.page.get_by_test_id("message_action_copy").wait_for()
+        # 点击复制标签
+        self.page.get_by_test_id("message_action_copy").click()
+        # 同步获取捕获到的变量，evaluate 会等待并返回结果
+        text_answer = self.page.evaluate("window.tempCopyBuffer")
+        # 放置图片钩子
+        self.page.on("response", self.img_all_hook)
+        # 清空图片列表
+        self.img_hook_list.clear()
+        # 刷新网页（启动钩子）
+        self.page.reload()
+        info(f"最终拿到的文本回答: {text_answer}")
+        info(f"所有生成的图像链接：{self.img_hook_list}")
+        return text_answer, self.img_hook_list.copy()
 
     def get_all_conversation_tags(self):
         """
@@ -154,60 +113,216 @@ class HomePage(BasePage):
         """
         return self.page.locator(".message_content").all()
 
+    def get_imgs_urls(self):
+        """
+        获取当前对话中所有图片没有水印下载链接
 
-"""
-flex-row flex w-full 我的问题标签
-flex-row flex w-full justify-end AI的回答标签
+        :return: 所有图片的没有水印下载链接
+        """
+        # 放置图片钩子
+        self.page.on("response", self.img_all_hook)
+        # 刷新网页（启动钩子）
+        self.page.reload()
+        return self.img_hook_list.copy()
+
+    def img_hook(self, response):
+        """从豆包对话中获取图片的没有水印下载链接
+
+        :param response: 回调参数
+        :return:
+        """
+        # 不看完整 URL，只看关键字
+        if "https://www.doubao.com/chat/completion?aid=" in response.url:
+            # 正则提取所有 image_ori_raw 下的 url 内容
+            matches = re.findall(r'"image_ori_raw":\{"url":"(.*?)"', response.text())
+            # 遍历所有匹配项
+            for raw_url in matches:
+                # 判定条件：过滤掉以反斜杠 \ 结尾的“中间态”或“假”URL
+                if raw_url.endswith('\\'):
+                    continue
+                # Unicode 解码并存储这个真实的无水印url
+                self.img_hook_list.append(raw_url.encode().decode('unicode_escape'))
+
+    def img_all_hook(self, response):
+        """从豆包对话中获取所有图片的没有水印下载链接
+
+        :param response: 回调参数
+        :return:
+        """
+        # 不看完整 URL，只看关键字
+        if "https://www.doubao.com/im/chain/single?version_code=" in response.url:
+            # 正则提取所有 image_ori_raw 下的 url 内容
+            matches = re.findall(r'"image_ori_raw":\{"url":"(.*?)"', response.text())
+            # 遍历所有匹配项
+            for raw_url in matches:
+                # 判定条件：过滤掉以反斜杠 \ 结尾的“中间态”或“假”URL
+                if raw_url.endswith('\\'):
+                    continue
+                # Unicode 解码并存储这个真实的无水印url
+                self.img_hook_list.append(raw_url.encode().decode('unicode_escape'))
+
+    """web对话相关"""
+    def create_conversation(self):
+        """创建新对话
+
+        :return: None
+        """
+        self.page.get_by_test_id("create_conversation_button").click()
+
+    def get_conversation_count(self):
+        """获取当前会话数量
+
+        :return: 当前会话数量
+        """
+        return self.page.get_by_test_id('chat_list_thread_item').count()
+
+    def get_conversation_title_list(self):
+        """获取当前会话列表（标题存储）
+
+        :return: 当前会话列表(标题存储)
+        """
+        conversation_list = []
+        # 遍历所有会话
+        for item in self.page.get_by_test_id('chat_list_item_title').all():
+            # 获取标题并添加到列表中
+            conversation_list.append(item.text_content())
+        return conversation_list
+
+    def switch_conversation(self, index: int | str = 0):
+        """切换会话
+
+        :param index: 会话索引，可以是下标、会话的标题
+        :return: 成功切换返回True，否则返回False
+        """
+        # 下标索引
+        if isinstance(index, int):
+            try:
+                # 点击这个对话
+                self.page.get_by_test_id('chat_list_thread_item').nth(index).click()
+            except IndexError:
+                return False
+        # 标题索引
+        for item in self.page.get_by_test_id('chat_list_item_title').all():
+            # 标题对上
+            if item.text_content() == index:
+                # 点击这个对话
+                item.click()
+                break
+        else:
+            return False
+        return True
+
+    def del_conversation(self, index: int | str = 0):
+        """删除会话
+
+        :param index: 会话索引，可以是下标、会话的标题
+        :return: 删除成功返回True，否则返回False
+        """
+        # 下标索引
+        if isinstance(index, int):
+            try:
+                # 点击更多按钮
+                self.page.get_by_test_id('chat_list_thread_item').nth(index).locator(".size-14.bg-transparent").click()
+                # 点击删除按钮
+                self.page.get_by_test_id('chat_item_menu_remove_icon').click()
+                # 点击确认删除按钮
+                self.page.get_by_label("confirm").click()
+            except IndexError:
+                return False
+        # 标题索引
+        for item in self.page.get_by_test_id('chat_list_item_title').all():
+            if item.text_content() == index:
+                # 点击更多按钮
+                item.locator(".size-14.bg-transparent").click()
+                # 点击删除按钮
+                self.page.get_by_test_id('chat_item_menu_remove_icon').click()
+                # 点击确认删除按钮
+                self.page.get_by_label("confirm").click()
+                break
+        else:
+            return False
+        return True
+
+    def deep_thinking_mode(self, switch: bool = True) -> None:
+        """
+        控制深度思考模式的开关
+
+        :param switch: 布尔值，True为开启深度思考模式，False为关闭深度思考模式，默认为True
+        :return: None
+        """
+        if switch:
+            # 判断是否处于关闭
+            if self.page.get_by_role("button", name="深度思考").get_attribute("data-checked") == "false":
+                self.page.get_by_role("button", name="深度思考").click()
+        else:
+            # 判断是否处于开启
+            if self.page.get_by_role("button", name="深度思考").get_attribute("data-checked") == "true":
+                self.page.get_by_role("button", name="深度思考").click()
+
+    def image_generation_mode(self, switch: bool = True) -> None:
+        """
+        控制图片生成模式的开关
+
+        :param switch: 布尔值，True为开启图片生成模式，False为关闭图片生成模式，默认为True
+        :return: None
+        """
+        if switch:
+            # 判断是否处于关闭
+            if self.page.get_by_role("button", name="图像生成").get_attribute("data-checked") == "false":
+                self.page.get_by_role("button", name="图像生成").click()
+        else:
+            # 判断是否处于开启
+            if self.page.get_by_role("button", name="图像生成").get_attribute("data-checked") == "true":
+                self.page.get_by_role("button", name="图像生成").click()
+
+    def help_me_write_mode(self, switch: bool = True) -> None:
+        """
+        控制帮我写作模式的开关
+
+        :param switch: 布尔值，True为开启帮我写作模式，False为关闭帮我写作模式，默认为True
+        :return: None
+        """
+        if switch:
+            # 判断是否处于关闭
+            if self.page.get_by_role("button", name="帮我写作").get_attribute("data-checked") == "false":
+                self.page.get_by_role("button", name="帮我写作").click()
+        else:
+            # 判断是否处于开启
+            if self.page.get_by_role("button", name="帮我写作").get_attribute("data-checked") == "true":
+                self.page.get_by_role("button", name="帮我写作").click()
+
+    def video_generation_mode(self, switch: bool = True) -> None:
+        """
+        控制视频生成模式的开关
+
+        :param switch: 布尔值，True为开启视频生成模式，False为关闭视频生成模式，默认为True
+        :return: None
+        """
+        if switch:
+            # 判断是否处于关闭
+            if self.page.get_by_role("button", name="视频生成").get_attribute("data-checked") == "false":
+                self.page.get_by_role("button", name="视频生成").click()
+        else:
+            # 判断是否处于开启
+            if self.page.get_by_role("button", name="视频生成").get_attribute("data-checked") == "true":
+                self.page.get_by_role("button", name="视频生成").click()
+
+    def translation_mode(self, switch: bool = True) -> None:
+        """
+        控制翻译模式的开关
+
+        :param switch: 布尔值，True为开启翻译模式，False为关闭翻译模式，默认为True
+        :return: None
+        """
+        if switch:
+            # 判断是否处于关闭
+            if self.page.get_by_role("button", name="翻译").get_attribute("data-checked") == "false":
+                self.page.get_by_role("button", name="翻译").click()
+        else:
+            # 判断是否处于开启
+            if self.page.get_by_role("button", name="翻译").get_attribute("data-checked") == "true":
+                self.page.get_by_role("button", name="翻译").click()
 
 
-# 遍历文件路径列表并发送
-# for file_path in file_path_list:
-#     # 点击按钮会触发 file chooser
-#     with self.page.expect_file_chooser() as fc_info:
-#         # 定位文件输入框
-#         self.page.get_by_test_id("upload_file_button").click()
-#         # 文件选择
-#         file_chooser = fc_info.value
-#         self.page.wait_for_timeout(3000)
-#         # 上传单个文件
-#         file_chooser.set_files(file_path)
-#         self.page.wait_for_timeout(3000)
-#         # 等待文件上传完毕
-#         self.page.get_by_test_id("chat_input_send_button").is_enabled()
-#         self.page.wait_for_timeout(3000)
-
-
-document.addEventListener('copy', (event) => {
-    // 获取用户当前选中的文本
-    const selection = document.getSelection().toString();
-    console.log('用户复制了内容：', selection);
-    event.preventDefault(); // 阻止默认行为以应用你的修改
-});
-
-
-
-document.addEventListener('copy', () => {
-  // 延迟一瞬确保剪贴板已更新，或者直接获取当前选区内容
-  setTimeout(async () => {
-    const text = await navigator.clipboard.readText();
-    console.log(text);
-  }, 10);
-}, true);
-
-// 改进版(没有数据输出)
-const answer
-document.addEventListener('copy', () => {
-    const text = navigator.clipboard.readText();
-    return text;
-});
-
-
-// 找到所有带有埋点定义的元素（没有html）
-const telemetryElements = document.querySelectorAll('[data-copy-telemetry]');
-telemetryElements.forEach(el => {
-    console.log('目标元素:', el);
-    console.log('对应的埋点值:', el.getAttribute('data-copy-telemetry'));
-    // 你可以直接读取这些元素的 innerText，这就是它想保护或监控的内容
-    console.log('元素内容:', el.innerText);
-});
-"""
+    # 还有更多模型，这个就不搞了，太多了
+    pass
