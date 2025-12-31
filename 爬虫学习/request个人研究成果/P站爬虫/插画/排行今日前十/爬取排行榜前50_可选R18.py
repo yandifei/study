@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 
 num_top_images = 10     # 抓取排行前几的图片
 r18: bool = False      # 是否r18(必须加cookie)
-
+# 每周、每日、每月、新人
 url = f"https://www.pixiv.net/ranking.php?mode=daily{"_r18" if r18 else ""}&content=illust"     # 今日排行
 # url = f"https://www.pixiv.net/ranking.php?mode=weekly{"_r18" if r18 else ""}&content=illust"    # 本周排行
 # url = f"https://www.pixiv.net/ranking.php?mode=monthly{"_r18" if r18 else ""}&content=illust"   # 本月排行
