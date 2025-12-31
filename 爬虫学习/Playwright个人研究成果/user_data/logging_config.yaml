@@ -185,4 +185,4 @@ handlers:  # 日志处理器（决定日志输出到哪里）
 
 root:  # 根日志器（所有未指定 logger 的默认策略）
   level: DEBUG  # DEBUG 分配处理器的日志等级，我这里开发权限
-  handlers: [console, file, error_file]  # 控制台 + 主日志文件
+  handlers: [file, error_file, console]   # 控制台 + 主日志文件

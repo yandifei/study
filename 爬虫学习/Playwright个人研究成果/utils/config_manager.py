@@ -10,8 +10,6 @@ from pathlib import Path
 from typing import Dict, Any, Tuple
 # 第三方库
 import yaml
-
-from utils import critical
 # 自己的模块
 from utils.logging_configurator import LoggingConfigurator
 from utils.path_utils import get_root
@@ -26,7 +24,8 @@ class ConfigManager:
     # 类级锁，确保多线程环境下的线程安全
     _lock = threading.Lock()
 
-    def __new__(cls):
+    # 防止因为参数不匹配报错__init__报错
+    def __new__(cls, *args, **kwargs):
         """确保创建为单例:线程安全双重检查锁定 (DCL)"""
         # 如果实例已经存在，直接返回
         if cls._instance is None:
@@ -39,7 +38,7 @@ class ConfigManager:
         # 返回单例
         return cls._instance
 
-    def __init__(self):
+    def __init__(self, is_debug: bool =  False):
         # 确保配置只加载一次(Pythonic写法)
         if not hasattr(self, '_initialized'):
             # 设置被初始化的标志位
@@ -52,6 +51,8 @@ class ConfigManager:
             self.logging_configurator = LoggingConfigurator()
             # 加载所有配置文件（拿到标志位）
             self.success_flag = self.load_config()
+            # 是否为debug模式(开发模式)
+            self.is_debug: bool = is_debug
 
     def config_override(self):
         """配置覆盖
@@ -84,6 +85,9 @@ class ConfigManager:
             return False
         # 用户私有设置配置
         if self.load_user_settings_config() is False:
+            return False
+        # debug模型的设置配置(处于debug开启才触发合并)
+        if self.is_debug and self.load_debug_settings_config() is False:
             return False
         # 配置校验和模型转化
         if not self.model_check_transformation():
@@ -123,6 +127,15 @@ class ConfigManager:
         """加载用户的设置配置并进行覆盖"""
         # 加载用户的设置配置(自动检查配置是否存在和有效)
         if json := self.load_toml(get_root() / "user_data" / "user_settings.toml"):
+            # 进行层叠覆盖
+            return self.deep_merge(self.config_data, json)
+        # 配置存在错误(error_msg已经记录错误信息了)
+        return False  # 直接返回False
+
+    def load_debug_settings_config(self) -> Dict[str, Any] | bool:
+        """加载开发的设置配置并进行覆盖"""
+        # 加载开发的设置配置(自动检查配置是否存在和有效)
+        if json := self.load_toml(get_root() / "debug_data" / "user_settings.toml"):
             # 进行层叠覆盖
             return self.deep_merge(self.config_data, json)
         # 配置存在错误(error_msg已经记录错误信息了)

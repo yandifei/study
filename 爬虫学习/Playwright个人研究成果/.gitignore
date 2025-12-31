@@ -73,5 +73,5 @@ debug_data/
 # 忽略 outputs 目录下所有内容
 outputs/**/*
 
-# 排除所有的 .gitkeep 文件（删除中间的空格）
+# 排除所有的 .gitkeep 文件 (确保没有空格)
 !**/.gitkeep
