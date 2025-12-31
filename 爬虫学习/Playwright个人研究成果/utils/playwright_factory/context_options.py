@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any, Sequence, Pattern, Literal
 
 # 第三方库
-from playwright.async_api import ViewportSize, Geolocation, HttpCredentials, ProxySettings, StorageState
+from playwright.sync_api import ViewportSize, Geolocation, HttpCredentials, ProxySettings, StorageState
 from playwright._impl._api_structures import ClientCertificate
 from pydantic import BaseModel
 

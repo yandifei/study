@@ -14,8 +14,8 @@ class DoubaoFlows:
     def __init__(self, config_manager: ConfigManager, playwright_factory: PlaywrightFactory):
         self.cm: ConfigManager = config_manager
         self.pf = playwright_factory
-        browser = self.pf.new_browser()
-        context = self.pf.new_context(browser)
+        self.browser = self.pf.new_browser()
+        context = self.pf.new_context(self.browser)
         # 基础伪装：清除 webdriver 标志
         context.add_init_script("""Object.defineProperty(navigator, 'webdriver', { get: () => false });""")
         # 为了拿到回答返回结果，需要hook
@@ -39,18 +39,23 @@ class DoubaoFlows:
         login_pate.login()
         # 保存登录状态
         context.storage_state(path=self.cm.config_data["playwright"]["context_options"].storage_state)
-        # 创建主页面
-        home_page = HomePage(page, config_manager)
-        # 开个模式
-        home_page.deep_thinking_mode()
-        # 提问
-        text_answer, img_urls = home_page.ask("识别图片中的角色并生成多张相似的", "data/test.png")
-        info(f"最终拿到的文本回答: {text_answer}")
-        info(f"原图生成链接：{img_urls}")
-        # 创建会话
-        home_page.create_conversation()
-        # 删除会话
-        home_page.del_conversation()
-        sleep(20)
+        # 创建主页面(后面操作都是这个界面)
+        self.home_page = HomePage(page, config_manager)
+        # # 开个模式
+        # home_page.deep_thinking_mode()
+        # # 提问
+        # text_answer, img_urls = home_page.ask("识别图片中的角色并生成多张相似的", "data/test.png")
+        # info(f"最终拿到的文本回答: {text_answer}")
+        # info(f"原图生成链接：{img_urls}")
+        # # 创建会话
+        # home_page.create_conversation()
+        # # 删除会话
+        # home_page.del_conversation()
+        # sleep(20)
+        #
+        # self.pf.close_browser(browser)
 
-        self.pf.close_browser(browser)
+    def close_browser(self):
+        """关闭浏览器
+        """
+        self.pf.close_browser(self.browser)

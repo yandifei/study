@@ -38,21 +38,25 @@ class ConfigManager:
         # 返回单例
         return cls._instance
 
-    def __init__(self, is_debug: bool =  False):
+    def __init__(self, debug: bool =  False):
+        """初始化
+        :param debug: 是否为debug模式，默认为false
+        """
         # 确保配置只加载一次(Pythonic写法)
         if not hasattr(self, '_initialized'):
             # 设置被初始化的标志位
             self._initialized = True
             # 错误信息记录（非日志错误信息）
             self.error_msg: Tuple[str | None, Exception | None] = (None, None)
+            # 是否为debug模式(开发模式，开始合并之前定义这个属性)
+            self.debug: bool = debug
             # 初始化配置数据(字典)
             self.config_data = {}
             # 日志配制器
             self.logging_configurator = LoggingConfigurator()
             # 加载所有配置文件（拿到标志位）
             self.success_flag = self.load_config()
-            # 是否为debug模式(开发模式)
-            self.is_debug: bool = is_debug
+
 
     def config_override(self):
         """配置覆盖
@@ -87,7 +91,7 @@ class ConfigManager:
         if self.load_user_settings_config() is False:
             return False
         # debug模型的设置配置(处于debug开启才触发合并)
-        if self.is_debug and self.load_debug_settings_config() is False:
+        if self.debug and self.load_debug_settings_config() is False:
             return False
         # 配置校验和模型转化
         if not self.model_check_transformation():

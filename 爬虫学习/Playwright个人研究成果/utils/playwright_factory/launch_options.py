@@ -2,7 +2,7 @@
 from pathlib import Path
 from typing import Any,Sequence
 # 第三方库
-from playwright.async_api import ProxySettings
+from playwright.sync_api import ProxySettings
 from pydantic import BaseModel
 # 自己的模块
 # from utils import debug

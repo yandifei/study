@@ -69,9 +69,9 @@ class HomePage(BasePage):
         self.page.get_by_test_id("chat_input_send_button").press("Enter")
         # 在页面启动时挂载图片生成监听器(先清空列表)
         self.page.on("response", self.img_hook); self.img_hook_list.clear()
-        # 等待回复完成
-        self.page.get_by_test_id("chat_input_local_break_button").wait_for(state="hidden")
-        self.page.get_by_test_id("asr_btn").wait_for(state="visible")
+        # 等待回复完成(时间是无限等待)
+        self.page.get_by_test_id("chat_input_local_break_button").wait_for(state="hidden", timeout=0)
+        self.page.get_by_test_id("asr_btn").wait_for(state="visible", timeout=0)
         debug("豆包回答生成完毕")
         # 等待复制标签出现
         self.page.get_by_test_id("message_action_copy").wait_for()
