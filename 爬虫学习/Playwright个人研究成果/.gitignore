@@ -69,7 +69,9 @@ dist/
 .run/
 data/
 debug_data/
-#先忽略 outputs 目录下所有子文件夹里的内容
+
+# 忽略 outputs 目录下所有内容
 outputs/**/*
-#排除所有的 .gitkeep 文件，确保它们能被 Git 追踪
-!**/ .gitkeep
+
+# 排除所有的 .gitkeep 文件（删除中间的空格）
+!**/.gitkeep
