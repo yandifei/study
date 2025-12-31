@@ -27,7 +27,6 @@ logs/
 .coverage
 htmlcov/
 .coverage*/
-.pytest_cache/
 
 # 依赖管理
 pip-log.txt
@@ -45,11 +44,6 @@ playwright-report/
 test-results/
 user_data/
 *.crx
-
-# 项目特定的用户数据和配置
-user_data/
-config/user_settings.toml
-*.tmp
 
 # 编译输出
 build/
@@ -70,3 +64,12 @@ dist/
 *.tmp
 *.temp
 .DS_Store?
+
+# 项目本身
+.run/
+data/
+debug_data/
+#先忽略 outputs 目录下所有子文件夹里的内容
+outputs/**/*
+#排除所有的 .gitkeep 文件，确保它们能被 Git 追踪
+!**/ .gitkeep
