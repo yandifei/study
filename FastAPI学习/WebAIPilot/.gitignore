@@ -1,0 +1,79 @@
+# PyCharm 配置文件
+.idea/
+cmake-build-*/
+
+# Python 编译和缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 虚拟环境
+venv/
+ENV/
+.env
+.venv
+env/
+env.bak/
+pyenv/
+.python-version
+
+# 日志文件
+logs/
+
+# 测试和覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage*/
+
+# 依赖管理
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# OS 生成的文件
+.DS_Store
+Thumbs.db
+
+# Playwright 相关
+playwright-report/
+test-results/
+user_data/
+*.crx
+
+# 编译输出
+build/
+dist/
+*.egg-info/
+
+# 备份文件
+*~
+*.bak
+*.swp
+
+# IDE 特定的配置
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# 其他临时文件
+*.tmp
+*.temp
+.DS_Store?
+
+# 项目本身
+.run/
+data/
+debug_data/
+
+# 忽略 outputs 目录下所有内容
+outputs/**/*
+
+# 排除所有的 .gitkeep 文件 (确保没有空格)
+!**/.gitkeep
+
+pyinstaller/
