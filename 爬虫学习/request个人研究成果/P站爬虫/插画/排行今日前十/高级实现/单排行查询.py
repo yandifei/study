@@ -54,7 +54,6 @@ def download_image(page: int, position_in_page: int):
         img.save(f"../data/{mode}{rank}.png", "PNG")
 
 
-
 # 遍历排行列表
 for rank in rank_list:
     if rank > 500:
