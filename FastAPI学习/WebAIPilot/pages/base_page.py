@@ -271,7 +271,7 @@ class BasePage(ABC):
 
     """截图 / 调试"""
 
-    async def screenshot(self, name: str, directory: str = "outputs/screenshots", full_page: bool = False) -> str:
+    async def screenshot(self, name: str, directory: str | Path = "outputs/screenshots", full_page: bool = False) -> str:
         directory_path = Path(directory)
         if not directory_path.exists():
             mkdir(str(directory_path))

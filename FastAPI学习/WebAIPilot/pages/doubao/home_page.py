@@ -60,11 +60,11 @@ class HomePage(BasePage):
             # 等待文件加载完成（无限等待直到完成）
             await self.page.get_by_test_id("chat_input_send_button").wait_for(timeout=0)
         # 等待输入框加载完成
-        await self.page.get_by_placeholder("发消息或输入 / 选择技能").wait_for()
+        await self.page.get_by_test_id("chat_input_input").wait_for()
         # 输入内容
-        await self.page.get_by_placeholder("发消息或输入 / 选择技能").fill(question)
+        await self.page.get_by_test_id("chat_input_input").fill(question)
         # 鼠标从输入框移动到发送按钮(悬浮2个控件会自动移动)
-        await self.page.get_by_placeholder("发消息或输入 / 选择技能").hover()
+        await self.page.get_by_test_id("chat_input_input").hover()
         # await self.page.get_by_test_id("chat_input_send_button").hover()
         send_btn = self.page.get_by_test_id("chat_input_send_button")
         box = await send_btn.bounding_box()
@@ -82,9 +82,9 @@ class HomePage(BasePage):
         await self.page.get_by_test_id("asr_btn").wait_for(state="visible", timeout=0)
         debug("豆包回答生成完毕")
         # 等待复制标签出现
-        await self.page.get_by_test_id("message_action_copy").wait_for()
+        await self.page.get_by_test_id("message_action_copy").last.wait_for()
         # 点击复制标签
-        await self.page.get_by_test_id("message_action_copy").click()
+        await self.page.get_by_test_id("message_action_copy").last.click()
         # 同步获取捕获到的变量，evaluate 会等待并返回结果
         text_answer = await self.page.evaluate("window.tempCopyBuffer")
         debug(f"最终拿到的文本回答: {text_answer}")
