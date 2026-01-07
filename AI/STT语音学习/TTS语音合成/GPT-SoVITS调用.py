@@ -106,7 +106,7 @@ def set_sovits_weights(weights_path):
         print(f"请求出错：{e}")
 
 if __name__ == "__main__":
-    set_sovits_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝中文_e16_s1200_l32.pth")
-    set_gpt_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝中文-e50.ckpt")
+    set_sovits_weights(r"GPT-SoVITS-File/爱丽丝中文_e16_s1200_l32.pth")
+    set_gpt_weights(r"GPT-SoVITS-File/爱丽丝中文-e50.ckpt")
     call_tts_api("老师？性压抑了吗？要爱丽丝帮帮你吗？")
 

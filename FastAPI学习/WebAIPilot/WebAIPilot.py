@@ -24,6 +24,12 @@ from logic.doubao_logic.doubao_flows import DoubaoFlows
 # warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed transport")
 # warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed event loop")
 
+# 协议
+PROTOCOL = "http"
+# 主机号
+HOST = "127.0.0.1"
+# 端口号
+PORT = 21325
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -62,15 +68,40 @@ def index():
         "版本": "1.0.0"
     }
 
+
+@app.get("/screenshots",  response_class=FileResponse)
+async def screenshots():
+    # 直接从app.state获取对象
+    df: DoubaoFlows = app.state.doubao_flows
+    await df.home_page.page.screenshot(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
+    return FileResponse(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
+
+
 @app.get("/status",  response_class=HTMLResponse)
 async def status():
     # 直接从app.state获取对象
     df: DoubaoFlows = app.state.doubao_flows
     await df.home_page.page.screenshot(path=get_root() / "outputs" / "screenshots" / "status.png")
-    return FileResponse(path=get_root() / "outputs" / "screenshots" / "status.png")
+    html_content = f"""
+<html>
+<head>
+    <title>Playwright 状态监控</title>
+    <style>.{{margin: 0;padding: 0px;}}</style>
+</head>
+<body>
+    <img id="status_img" src="{get_root() / "outputs" / "screenshots" / "status.png"}" style="width: 100%; border: 3px solid #000;">
+    <script>
+        const img = document.getElementById("status_img");
+        setInterval(() => {{
+            img.src = "{PROTOCOL}://{HOST}:{PORT}/screenshots?t=" + new Date().getTime();
+        }}, 33);
+    </script>
+</body>
+</html>
+"""
+    # img.src = "{PROTOCOL}://{HOST}:{PORT}/screenshots?t=" + new Date().getTime();
+    return HTMLResponse(content=html_content)
 
-
-@app.get("/status",  response_class=HTMLResponse)
 
 @app.post("/ask")
 async def ask_post(ask_model: AskModel):
@@ -90,4 +121,5 @@ async def ask_post(ask_model: AskModel):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8001)
+    # 2021.03.25是爱丽丝的生日
+    uvicorn.run(app, host=HOST, port=PORT)

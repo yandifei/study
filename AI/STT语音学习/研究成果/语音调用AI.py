@@ -30,12 +30,18 @@ role_text1 = ("1句话为你的1次回答，偶尔会超过2句话"
 """音频对象创建"""
 # 创建音频对象
 audio = pyaudio.PyAudio()
+default_input = audio.get_default_input_device_info()
+device_index = default_input['index']
+print(f"默认输入设备: {default_input['name']}")
 # 打开音频流
 stream = audio.open(format=pyaudio.paInt16, # 16位整数格式
                 channels=1,                 # 单声道
                 rate=16000,                 # Silero-VAD 推荐的采样率（16kHz）
                 input=True,
-                frames_per_buffer=1024)     # 每次从麦克风读取的音频帧数为1024
+                frames_per_buffer=1024,     # 每次从麦克风读取的音频帧数为1024
+)
+
+
 """VAD初始化"""
 # 初始化Silero VAD模型
 vad_model = load_silero_vad()
@@ -135,7 +141,7 @@ def call_tts_api(text):
     payload = {
         "text": text, # 合成的文本内容
         "text_lang": "zh",                  # 合成文本的语言
-        "ref_audio_path": r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\参考文本.ogg",    # 参考音频文件路径
+        "ref_audio_path": r"GPT-SoVITS-File\参考文本.ogg",    # 参考音频文件路径
         "aux_ref_audio_paths": [],  # 辅助参考音频路径列表。用于多说话人音色融合。提供多个参考音频路径，模型会尝试将它们的声音特征融合后生成新音频。
         "prompt_text": "邦邦卡邦~！老师购买了道具！附赠的微笑，也请您收下吧~！", # 参考音频对应文本
         "prompt_lang": "zh",    # 参考音频的语言
@@ -167,7 +173,7 @@ def call_tts_api(text):
         # 检查响应状态
         if response.status_code == 200:
             # 保存音频文件
-            with open("B:/study/python_script_study/STT语音学习/TTS语音合成/合成音频.wav", "wb") as f:
+            with open("TTS语音合成/合成音频.wav", "wb") as f:
                 f.write(response.content)
         else:
             # 处理错误
@@ -178,8 +184,8 @@ def call_tts_api(text):
         print(f"请求异常: {str(e)}")
 
 # 切换模型
-set_sovits_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝中文_e16_s1200_l32.pth")
-set_gpt_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝中文-e50.ckpt")
+set_sovits_weights(r"GPT-SoVITS-File\爱丽丝中文_e16_s1200_l32.pth")
+set_gpt_weights(r"GPT-SoVITS-File\爱丽丝中文-e50.ckpt")
 # set_sovits_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝_e16_s1264_l128.pth")
 # set_gpt_weights(r"B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\爱丽丝-e50.ckpt")
 
@@ -238,7 +244,7 @@ while True:
     # 调用我的tts进行语音合成
     call_tts_api(response_content)
     # 阻塞式播放音频
-    play_wav_file(r"B:\study\python_script_study\STT语音学习\TTS语音合成\合成音频.wav")
+    play_wav_file(r"TTS语音合成\合成音频.wav")
 
     # 我的提问是退出
     if result["text"] == "退出":
