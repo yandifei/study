@@ -76,7 +76,6 @@ async def screenshots():
     await df.home_page.page.screenshot(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
     return FileResponse(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
 
-
 @app.get("/status",  response_class=HTMLResponse)
 async def status():
     # 直接从app.state获取对象
