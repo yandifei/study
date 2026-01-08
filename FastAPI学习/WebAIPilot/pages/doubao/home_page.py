@@ -39,7 +39,7 @@ class HomePage(BasePage):
         self.img_hook_list = []
         self.cm = config_manager
 
-
+    """问答相关方法"""
     async def ask(self, question: str, files: str | Path | FilePayload | Sequence[str | Path] | Sequence[FilePayload] | None = None):
         """
         在豆包主页上执行提问操作，支持文本和文件上传（异步版本）
@@ -90,7 +90,6 @@ class HomePage(BasePage):
         debug(f"最终拿到的文本回答: {text_answer}")
         debug(f"原图生成链接：{self.img_hook_list}")
         return text_answer, self.img_hook_list.copy()
-
 
     async def get_last_answer(self):
         """
@@ -170,56 +169,13 @@ class HomePage(BasePage):
                 # Unicode 解码并存储这个真实的无水印url
                 self.img_hook_list.append(raw_url.encode().decode('unicode_escape'))
 
-    """web对话相关"""
+    """会话管理方法"""
     async def create_conversation(self):
         """创建新对话（异步版本）
 
         :return: None
         """
         await self.page.get_by_test_id("create_conversation_button").click()
-
-    async def get_conversation_count(self):
-        """获取当前会话数量（异步版本）
-
-        :return: 当前会话数量
-        """
-        return await self.page.get_by_test_id('chat_list_thread_item').count()
-
-    async def get_conversation_title_list(self):
-        """获取当前会话列表（标题存储）（异步版本）
-
-        :return: 当前会话列表(标题存储)
-        """
-        conversation_list = []
-        # 遍历所有会话
-        for item in await self.page.get_by_test_id('chat_list_item_title').all():
-            # 获取标题并添加到列表中
-            conversation_list.append(await item.text_content())
-        return conversation_list
-
-    async def switch_conversation(self, index: int | str = 0):
-        """切换会话（异步版本）
-
-        :param index: 会话索引，可以是下标、会话的标题
-        :return: 成功切换返回True，否则返回False
-        """
-        # 下标索引
-        if isinstance(index, int):
-            try:
-                # 点击这个对话
-                await self.page.get_by_test_id('chat_list_thread_item').nth(index).click()
-            except IndexError:
-                return False
-        # 标题索引
-        for item in await self.page.get_by_test_id('chat_list_item_title').all():
-            # 标题对上
-            if await item.text_content() == index:
-                # 点击这个对话
-                await item.click()
-                break
-        else:
-            return False
-        return True
 
     async def del_conversation(self, index: int | str = 0):
         """删除会话（异步版本）
@@ -253,6 +209,50 @@ class HomePage(BasePage):
             return False
         return True
 
+    async def switch_conversation(self, identifier: int | str = 0):
+        """切换会话（异步版本）
+
+        :param identifier: 会话索引，可以是下标、会话的标题
+        :return: 成功切换返回True，否则返回False
+        """
+        # 下标索引
+        if isinstance(identifier, int):
+            try:
+                # 点击这个对话
+                await self.page.get_by_test_id('chat_list_thread_item').nth(identifier).click()
+            except IndexError:
+                return False
+        # 标题索引
+        for item in await self.page.get_by_test_id('chat_list_item_title').all():
+            # 标题对上
+            if await item.text_content() == identifier:
+                # 点击这个对话
+                await item.click()
+                break
+        else:
+            return False
+        return True
+
+    async def get_conversation_count(self):
+        """获取当前会话数量（异步版本）
+
+        :return: 当前会话数量
+        """
+        return await self.page.get_by_test_id('chat_list_thread_item').count()
+
+    async def get_conversation_title_list(self):
+        """获取当前会话列表（标题存储）（异步版本）
+
+        :return: 当前会话列表(标题存储)
+        """
+        conversation_list = []
+        # 遍历所有会话
+        for item in await self.page.get_by_test_id('chat_list_item_title').all():
+            # 获取标题并添加到列表中
+            conversation_list.append(await item.text_content())
+        return conversation_list
+
+    """模式控制方法"""
     async def deep_thinking_mode(self, switch: bool = True) -> None:
         """
         控制深度思考模式的开关

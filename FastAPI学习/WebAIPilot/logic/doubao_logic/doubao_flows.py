@@ -66,6 +66,31 @@ class DoubaoFlows:
         # 确保调用的是异步方法
         return await self.home_page.ask(question, files)
 
+    """会话管理(增删改查)"""
+    async def create_conversation(self):
+        """创建会话"""
+        return await self.home_page.create_conversation()
+
+    async def del_conversation(self):
+        """删除会话"""
+        return await self.home_page.del_conversation()
+
+    async def switch_conversation(self, identifier: int | str = 0):
+        """切换会话（异步版本）
+
+        :param identifier: 会话索引，可以是下标、会话的标题
+        :return: 成功切换返回True，否则返回False
+        """
+        return await self.home_page.switch_conversation(identifier)
+
+    async def get_conversation_list(self):
+        """获取会话列表"""
+        return await self.home_page.get_conversation_title_list()
+
+    async def get_conversation_count(self):
+        """获取会话列表数量"""
+        return await self.home_page.get_conversation_count()
+
     # async def close(self):
     #     """异步关闭浏览器"""
     #     if self.browser:
