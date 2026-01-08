@@ -42,3 +42,13 @@ async def main():
     info("Playwright工厂已关闭")
 
 asyncio.run(main())
+# app = FastAPI()
+# router= APIRouter()
+# @router.get("/foo")
+# async def foo():
+# return "foo"
+# @router.get("/bar")
+# async def get_item_by_id(item_id:int):
+# return "bar"
+# app.include_router(router,
+# prefix="/items

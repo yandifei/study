@@ -3,18 +3,21 @@
 优先加载日志记录器
 """
 # 内置库
-import warnings
+import asyncio
 from contextlib import asynccontextmanager
+from typing import Union
+
+import requests
 # 三方库
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
-
+# 自己的模块
 import utils.path_utils
 from requests_model import AskModel
-# 自己的模块
-from utils import logger_manager, info, critical    # 导入日志记录器模块
+from requests_model.identifier_model import IdentifierModel
+from utils import logger_manager, info, critical, warning  # 导入日志记录器模块
 from utils import ConfigManager # 导入配置管理模块
 from utils.path_utils import get_root
 from utils.playwright_factory.playwright_factory import PlaywrightFactory
@@ -76,32 +79,98 @@ async def screenshots():
     await df.home_page.page.screenshot(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
     return FileResponse(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
 
+# websocket实现状态截图传输
+@app.websocket("/ws/monitor")
+async def ws_monitor(websocket: WebSocket):
+    await websocket.accept()
+    page = app.state.doubao_flows.home_page.page
+
+    try:
+        while True:
+            # 不传 path，直接获取 bytes 对象（内存操作，无磁盘读取）
+            screenshot_bytes = await page.screenshot(
+                type="jpeg",    # 使用 jpeg 格式降低单帧体积
+                quality=60,
+                scale="css"  # 缩放模式，可以进一步减小传输体积
+            )
+            # 发送二进制数据
+            await websocket.send_bytes(screenshot_bytes)
+            # 30帧/秒(0.01s 约等于 60FPS)，对于监控自动化流程绰绰有余
+            await asyncio.sleep(0.03)
+
+    except WebSocketDisconnect:
+        info("远程查看连接已断开")
+    except Exception as e:
+        critical(f"远程状态查看异常: {e}")
+
 @app.get("/status",  response_class=HTMLResponse)
 async def status():
     # 直接从app.state获取对象
     df: DoubaoFlows = app.state.doubao_flows
-    await df.home_page.page.screenshot(path=get_root() / "outputs" / "screenshots" / "status.png")
-    html_content = f"""
-<html>
-<head>
-    <title>Playwright 状态监控</title>
-    <style>.{{margin: 0;padding: 0px;}}</style>
-</head>
-<body>
-    <img id="status_img" src="{get_root() / "outputs" / "screenshots" / "status.png"}" style="width: 100%; border: 3px solid #000;">
-    <script>
-        const img = document.getElementById("status_img");
-        setInterval(() => {{
-            img.src = "{PROTOCOL}://{HOST}:{PORT}/screenshots?t=" + new Date().getTime();
-        }}, 33);
-    </script>
-</body>
-</html>
-"""
+    try:
+        # FastAPI 内部调用 requests 访问 9222 端口
+        response = requests.get("http://127.0.0.1:9222/json", timeout=10)
+    except Exception as e:
+        return {"error": f"无法连接到浏览器: {str(e)}"}
+    html_content = f'''
+        <!DOCTYPE html>
+        <html>
+        <head><title>实时监控</title></head>
+        <body>
+            <canvas id="display" style="width:100%; height:100vh; display:block;"></canvas>
+            <script>
+                // 获取Canvas和上下文
+                const canvas = document.getElementById('display');
+                const ctx = canvas.getContext('2d');
+                // 建立WebSocket连接
+                const ws = new WebSocket(`ws://${{location.host}}/ws/monitor`);
+                //const ws = new WebSocket(`{response.json()[0]["webSocketDebuggerUrl"]}`);
+                // WebSocket 接收的是二进制字节流
+                ws.binaryType = "arraybuffer";
+                ws.onmessage = async (event) => {{
+                    try {{
+                        // 将 ArrayBuffer 转为 Blob (JPEG 格式)
+                        const blob = new Blob([event.data], {{ type: 'image/jpeg' }});
+                        // 使用 createImageBitmap 进行异步解码（不阻塞 UI 线程）
+                        const bitmap = await createImageBitmap(blob);
+                        // 如果尺寸变化，调整画布
+                        if (canvas.width !== bitmap.width) {{
+                            canvas.width = bitmap.width;
+                            canvas.height = bitmap.height;
+                        }}
+                        // 绘制并立即释放资源
+                        ctx.drawImage(bitmap, 0, 0);
+                        bitmap.close(); 
+                        
+                    }} catch (err) {{
+                        console.error("解析帧失败:", err);
+                    }}
+                }};
+                ws.onclose = () => console.log("监控已断开");
+                ws.onerror = (e) => console.error("连接错误:", e);
+            </script>
+        </body>
+        </html>
+        '''
     # img.src = "{PROTOCOL}://{HOST}:{PORT}/screenshots?t=" + new Date().getTime();
     return HTMLResponse(content=html_content)
 
+# get文本对话
+@app.get("/ask/{question}")
+async def ask_get(question: str):
+    df: DoubaoFlows = app.state.doubao_flows
+    if question == "":
+        return {
+            "error": "大哥，你输入问题呀"
+        }
+    # 提问（转成字典并解引用）
+    text_answer, img_urls = await df.home_page.ask(question)
+    return {
+        "AI回复": text_answer,
+        "图片链接": img_urls
+    }
 
+# post对话
 @app.post("/ask")
 async def ask_post(ask_model: AskModel):
     # 直接从app.state获取对象
@@ -118,6 +187,27 @@ async def ask_post(ask_model: AskModel):
         "图片链接": img_urls
     }
 
+#
+@app.get("create/conversation")
+async def create_conversation():
+    df: DoubaoFlows = app.state.doubao_flows
+    return await df.home_page.create_conversation()
+
+# 获得会话列表
+
+
+# 删除会话
+@app.get("/delete/conversation/{identifier}")
+async def delete_conversation(identifier: int |str):
+    df: DoubaoFlows = app.state.doubao_flows
+    # 判断是否为数字
+    if identifier.isdigit():
+        identifier = int(identifier)
+    # 使用下标删除会话
+    if await df.home_page.del_conversation(identifier) is False:
+        return {"error": f"删除会话失败：找不到下标为 '{identifier}' 的会话"}
+
+    return {"info": f"下标为{identifier}的会话删除成功" if isinstance(identifier, int) else f"标题为{identifier}的对话删除成功"}
 
 if __name__ == "__main__":
     # 2021.03.25是爱丽丝的生日
