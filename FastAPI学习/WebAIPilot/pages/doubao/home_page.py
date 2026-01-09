@@ -98,9 +98,9 @@ class HomePage(BasePage):
         :return: 元组 (text_answer: str, img_urls: list[str]) - 返回文本回答和图片URL列表
         """
         # 等待复制标签出现
-        await self.page.get_by_test_id("message_action_copy").wait_for()
+        await self.page.get_by_test_id("message_action_copy").last.wait_for()
         # 点击复制标签
-        await self.page.get_by_test_id("message_action_copy").click()
+        await self.page.get_by_test_id("message_action_copy").last.click()
         # 同步获取捕获到的变量，evaluate 会等待并返回结果
         text_answer = await self.page.evaluate("window.tempCopyBuffer")
         # 放置图片钩子
@@ -113,11 +113,11 @@ class HomePage(BasePage):
         info(f"所有生成的图像链接：{self.img_hook_list}")
         return text_answer, self.img_hook_list.copy()
 
-    async def get_all_conversation_tags(self):
+    async def get_all_conversation_turn (self):
         """
-        获取所有会话标签（异步版本）
+        获取所有对话历史（异步版本）
 
-        :return: 所有会话标签
+        :return: 所有对话历史的控件
         """
         return await self.page.locator(".message_content").all()
 
@@ -177,29 +177,37 @@ class HomePage(BasePage):
         """
         await self.page.get_by_test_id("create_conversation_button").click()
 
-    async def del_conversation(self, index: int | str = 0):
+    async def del_conversation(self, identifier: int | str = 0):
         """删除会话（异步版本）
 
-        :param index: 会话索引，可以是下标、会话的标题
+        :param identifier: 会话标识，可以是下标、会话的标题
         :return: 删除成功返回True，否则返回False
         """
         # 下标索引
-        if isinstance(index, int):
+        if isinstance(identifier, int):
             try:
-                # 点击更多按钮
-                item = self.page.get_by_test_id('chat_list_thread_item').nth(index)
-                await item.locator(".size-14.bg-transparent").click()
+                # 获取对应索引的会话项
+                item = self.page.get_by_test_id('chat_list_thread_item').nth(identifier)
+                # 悬浮（避免豆包检测后又改进）
+                await item.hover()
+                # 点击更多按钮（三个点）
+                await item.get_by_test_id("chat_item_dropdown_entry").click()
                 # 点击删除按钮
                 await self.page.get_by_test_id('chat_item_menu_remove_icon').click()
                 # 点击确认删除按钮
                 await self.page.get_by_label("confirm").click()
+                return True
             except IndexError:
                 return False
         # 标题索引
-        for item in await self.page.get_by_test_id('chat_list_item_title').all():
-            if await item.text_content() == index:
-                # 点击更多按钮
-                await item.locator(".size-14.bg-transparent").click()
+        for item in await self.page.get_by_test_id('chat_list_thread_item').all():
+            info(item.text_content())
+            info(identifier)
+            if await item.text_content() == identifier:
+                # 悬浮（避免豆包检测后又改进）
+                await item.hover()
+                # 点击更多按钮（三个点）
+                await item.get_by_test_id("chat_item_dropdown_entry").click()
                 # 点击删除按钮
                 await self.page.get_by_test_id('chat_item_menu_remove_icon').click()
                 # 点击确认删除按钮
@@ -218,19 +226,23 @@ class HomePage(BasePage):
         # 下标索引
         if isinstance(identifier, int):
             try:
+                # 判断是否存在改下标的会话
+                if identifier > await self.page.get_by_test_id('chat_list_thread_item').count():
+                    return False
                 # 点击这个对话
                 await self.page.get_by_test_id('chat_list_thread_item').nth(identifier).click()
             except IndexError:
                 return False
-        # 标题索引
-        for item in await self.page.get_by_test_id('chat_list_item_title').all():
-            # 标题对上
-            if await item.text_content() == identifier:
-                # 点击这个对话
-                await item.click()
-                break
         else:
-            return False
+            # 标题索引
+            for item in await self.page.get_by_test_id('chat_list_item_title').all():
+                # 标题对上
+                if await item.text_content() == identifier:
+                    # 点击这个对话
+                    await item.click()
+                    break
+            else:
+                return False
         return True
 
     async def get_conversation_count(self):
