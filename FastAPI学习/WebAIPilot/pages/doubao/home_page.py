@@ -68,7 +68,7 @@ class HomePage(BasePage):
         # await self.page.get_by_test_id("chat_input_send_button").hover()
         send_btn = self.page.get_by_test_id("chat_input_send_button")
         box = await send_btn.bounding_box()
-        await self.page.mouse.move(box["x"] + box["width"] / 2 + 1, box["y"] + box["height"] / 2 + 3, steps=20)
+        await self.page.mouse.move(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2, steps=20)
         # 等待发送按钮可见且可点击
         await expect(self.page.get_by_test_id("chat_input_send_button")).to_be_visible()
         await expect(self.page.get_by_test_id("chat_input_send_button")).to_be_enabled()

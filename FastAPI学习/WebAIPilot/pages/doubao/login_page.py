@@ -68,6 +68,7 @@ class LoginPage(BasePage):
             while await self.page.get_by_test_id("to_login_button").is_visible() or await self.page.locator('#dialog-0').is_visible():
                 # 等待1秒
                 await self.page.wait_for_timeout(1000)
+            info("上下文状态注入成功，已完成豆包登陆")
         else:
             info("上下文状态注入成功，已完成豆包登陆")
         return True

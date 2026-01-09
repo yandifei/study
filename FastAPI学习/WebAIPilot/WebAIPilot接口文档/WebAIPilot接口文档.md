@@ -11,10 +11,112 @@
 ## RESTful API 接口地址
 - 协议 - Protocol：`http`
 - 主机名/IP地址 - Host：`127.0.0.1`
-- 端口号 - Port：`21325`!
+- 端口号 - Port：`21325`
 
-## 基础设计核心点
-# HomePage类方法对照表
+这些配置都能通过用户的配置文件修改，在`user_data/user_settings.toml`(开发模式是`debug_data/user_settings.toml`)的`[server]`字段中
+
+## 对话操作
+
+
+## 对话管理
+
+# AI对话接口
+因为各家网页版的AI各有不同，所以根据方式可能有些API无法使用
+
+
+
+# 状态查看（远程调试）
+- 最简单的状态查看就是有头模式，`user_data/user_settings.toml`(开发模式是`debug_data/user_settings.toml`)中的`headless`字段改为`false`。
+- 接下来介绍的是无头模式下的状态查看，无头模式运行速度快但是不能像有头一样显示操作就导致卡在哪一步无法进行操了或无法观测进行了错误操作。
+- 2种方式进行状态查询
+  - 直接访问API（简单操作，浏览器直接查看状态，强烈建议这个）
+  - 远程调试模式（复杂操作且仅限于chromium内核的浏览器，进行开发者远程调试，高级状态查看和**调试**）
+## 状态查看
+所有浏览器通过的状态监控:http://127.0.0.1:21325/status
+
+这个状态下仅仅能查看浏览器界面而已，不能进行任何操作
+## 远程调试
+**作者：“上帝视角”**
+`9922`端口是谷歌（Chromium）默认的远程调试端口号，访问`chrome://inspect/#devices`能手动添加自定义的远程调试端口。
+- CDP(Chrome DevTools Protocol)，这是开发者的高级调试模式，也就是playwright无头模式浏览器下能访问playwright产出的Page，并且你还能进行操作，也就是实现了无头模式下的有头模式。
+- 首先确保`user_data/user_settings.toml`(开发模式是`debug_data/user_settings.toml`)中的args字段有以下参数，目的是创建浏览器的时候开启远程调试模式
+    ```python
+    args = [
+        # 开启远程调试的“窗口”（chrome://inspect/#devices Configure添加ip和端口）
+        "--remote-debugging-port=9000",
+        # 仅允许自己的IP访问
+        "--remote-debugging-address=127.0.0.1",
+    ]
+    ```
+- 然后确保无头模式下启动了服务`INFO:     Uvicorn running on http://127.0.0.1:21325 (Press CTRL+C to quit)`
+
+- 文档参考：https://developer.chrome.com/docs/devtools/remote-debugging/local-server?hl=zh-cn
+- 安卓远程调试：https://developer.chrome.com/docs/devtools/remote-debugging
+
+一般来说，访问`http://127.0.0.1:9000/json`后能拿到`devtoolsFrontendUrl`对应的url，访问能直接抵达了，但就是不行，AI回答:
+1. Playwright 浏览器内核版本确实没有内置静态资源文件
+2. 访问`http://127.0.0.1:9000/json`后，`devtoolsFrontendUrl`就是需要的url了，但是必须改用 wss（加密 WebSocket），把链接里的 ws= 部分改成 wss=（注意是 wss，不是 ws）
+3. 因为 chrome://inspect 页面是你当前使用的浏览器提供的“翻译官”。它自己内置了所有需要的 HTML/JS 资源，它只需要从你的 9000 端口拿原始数据就行。 而当你直接在地址栏输入 http://127.0.0.1:9000/... 时，你是要求无头浏览器自己提供这些资源，它给不了，所以挂了。兄弟，你把 headless 改成 False 再跑一次试试。如果还是不行，那咱们就得看是不是你的 Playwright 用的浏览器内核版本太精简，把 devtools 资源包给阉割了。
+4. 你之所以一直报错、白屏，是因为你正在尝试做一件违反浏览器安全限制的事，断连：是因为 Google 的 appspot 页面对本地 127.0.0.1 的 WebSocket 连接有极其严格的跨域校验（CORS），通常会被防火墙或代理拦截。
+
+有用的端点：
+1. http://127.0.0.1:9000/json
+2. http://127.0.0.1:9000/json/version
+3. http://127.0.0.1:9000/devtools/inspector.html
+4. chrome://inspect/#devices
+### 具体流程
+**稳定的“官方路径”，edge和chrome都可以实现，下面是chrome浏览器的例子** ：
+
+1. 访问`chrome://inspect/#devices`CDP端点进入远程调试页面，俗称“Chrome 开发者工具 - 远程设备”或 “检查设备”页面<img src="1.png" style="border: 2px solid #000;"/>
+2. 点击`Configure...`按钮，弹出Remote Targets（远程目标列表）弹窗，添加端口号和IP。<img src="2.png" style="border: 2px solid #000;"/>
+
+3. 端口号和IP默认是127.0.0.1:9000，具体设置是在`user_settings.toml`文件中设置的，用户自定义<img src="3.png" style="border: 2px solid #000;"/>
+4. 添加完后等待5~600秒会出现(最左侧的东西全都点一遍可能会更快出现，可能机魂不悦吧)`Remote Target`远程目标<img src="4.png" style="border: 2px solid #000;"/>
+5. 点击`inspect`后就会出现以下界面(我点击后没有反应需要等待一段时间)，谷歌浏览器（chrome）和微软浏览器(edge)都可以实现<img src="5.png" style="border: 2px solid #000;"/><img src="6.png" style="border: 2px solid #000;"/>
+6. 最后在这个界面playwright自动化的所有操作都可以看到并且用户还能直接在界面上进行操作。
+
+**注意：只要是chorme内核的就是实现，比如Edge和Chrome，但是参数`user_settins.toml`参数可能有所不同。**
+
+#### Remote Target参数解析
+1. **inspect**（检查）  
+   - 最常用的按钮。  
+   - 点击后：会弹出一个完整的 Chrome DevTools 窗口，连接到这个具体的标签页。  
+   - 你可以在里面查看 Elements（元素）、Console（控制台）、Network（网络）、Sources（源码断点）、Performance（性能）等，所有标准 DevTools 功能都可用。  
+   - 用途：实时调试页面，查看 Playwright 操作后页面的状态、JS 错误、DOM 变化等。
+
+2. **pause**（暂停）  
+   - 点击后：暂停这个标签页中所有 JavaScript 的执行（相当于在 Sources 面板按 F8 暂停脚本）。  
+   - 用途：调试时冻结页面 JS 执行，方便查看某个时刻的状态。再次点击或在 DevTools 里恢复即可继续运行。  
+   - 注意：不是所有版本都显示这个按钮，有时只在已打开 inspect 的标签页上出现。
+
+3. **focus tab**（聚焦标签页）  
+   - 点击后：把这个标签页切换到前台（激活它，让它成为当前可见的标签页）。  
+   - 用途：如果你浏览器有多个标签页，这个按钮能快速把目标页面切到最前面，方便你手动查看或操作。
+
+4. **reload**（重新加载）  
+   - 点击后：刷新这个标签页（相当于 F5 或 Ctrl+R）。  
+   - 用途：手动强制刷新页面，常用于调试缓存问题或重现某个状态。
+
+5. **close**（关闭）  
+   - 点击后：直接关闭这个标签页。  
+   - 用途：清理多余的标签页（比如你现在有两个豆包页面，可以点一个的 close 关掉一个）。
+
+6. **inspect fallback**（备用检查）  
+   - 这个按钮不常用，通常只在某些情况下出现。  
+   - 作用：如果正常的 inspect 失败，它会尝试用另一种方式打开 DevTools（fallback 机制）。  
+   - 一般不需要点它，直接用第一个 inspect 即可。
+7. **Open tab with url** + **Open** 按钮  
+   - 在 Remote Target 标题旁边有一个输入框和 Open 按钮。  
+    - 功能：在这个远程浏览器实例中新建一个标签页并打开你输入的 URL。  
+    - 用途：不用改 Playwright 脚本，就能手动在这个浏览器里再开一个新页面测试。
+8. **trace**  
+    - 点击后：开启 Performance Trace（性能追踪），会自动录制一段时间的页面性能数据，然后打开 Timeline/Performance 面板查看。  
+    - 用途：分析页面加载速度、JS 执行耗时等。
+9. 点击 inspect 按钮后弹出的那个窗口叫：Chrome DevTools（Chrome 开发者工具）更具体地说，是 一个独立的 Chrome DevTools 窗口（Detached DevTools Window），或者叫 远程连接的 DevTools 实例（Remote DevTools Instance）。
+
+
+
+# 基础设计核心点
 
 ## 已实现方法
 
@@ -124,111 +226,3 @@
 | `get_available_models`     | 获取可用模型列表   |
 | `set_conversation_context` | 设置对话上下文     |
 | `get_system_prompt`        | 获取系统提示词     |
-
-
-# AI对话接口
-因为各家网页版的AI各有不同，所以根据方式可能有些API无法使用
-
-## 基础接口
-基本文本对话(GET)：http://127.0.0.1:21325/ask/你好/ask/{question} {question} 是要提问的问题，提交的文本问题。
-
-新对话
-
-附带文件的对话(POST)：
-
-
-## 对话管理接口
-删除对话
-
-对话重命名
-获取特定对话历史
-
-
-# 状态查看（远程调试）
-- 最简单的状态查看就是有头模式，`user_data/user_settings.toml`(开发模式是`debug_data/user_settings.toml`)中的`headless`字段改为`false`。
-- 接下来介绍的是无头模式下的状态查看，无头模式运行速度快但是不能像有头一样显示操作就导致卡在哪一步无法进行操了或无法观测进行了错误操作。
-- 2种方式进行状态查询
-  - 直接访问API（简单操作，浏览器直接查看状态，强烈建议这个）
-  - 远程调试模式（复杂操作且仅限于chromium内核的浏览器，进行开发者远程调试，高级状态查看和**调试**）
-## 状态查看
-所有浏览器通过的状态监控:http://127.0.0.1:21325/status
-
-这个状态下仅仅能查看浏览器界面而已，不能进行任何操作
-## 远程调试
-**作者：“上帝视角”**
-`9922`端口是谷歌（Chromium）默认的远程调试端口号，访问`chrome://inspect/#devices`能手动添加自定义的远程调试端口。
-- CDP(Chrome DevTools Protocol)，这是开发者的高级调试模式，也就是playwright无头模式浏览器下能访问playwright产出的Page，并且你还能进行操作，也就是实现了无头模式下的有头模式。
-- 首先确保`user_data/user_settings.toml`(开发模式是`debug_data/user_settings.toml`)中的args字段有以下参数，目的是创建浏览器的时候开启远程调试模式
-    ```python
-    args = [
-        # 开启远程调试的“窗口”（chrome://inspect/#devices Configure添加ip和端口）
-        "--remote-debugging-port=9000",
-        # 仅允许自己的IP访问
-        "--remote-debugging-address=127.0.0.1",
-    ]
-    ```
-- 然后确保无头模式下启动了服务`INFO:     Uvicorn running on http://127.0.0.1:21325 (Press CTRL+C to quit)`
-
-- 文档参考：https://developer.chrome.com/docs/devtools/remote-debugging/local-server?hl=zh-cn
-- 安卓远程调试：https://developer.chrome.com/docs/devtools/remote-debugging
-
-一般来说，访问`http://127.0.0.1:9000/json`后能拿到`devtoolsFrontendUrl`对应的url，访问能直接抵达了，但就是不行，AI回答:
-1. Playwright 浏览器内核版本确实没有内置静态资源文件
-2. 访问`http://127.0.0.1:9000/json`后，`devtoolsFrontendUrl`就是需要的url了，但是必须改用 wss（加密 WebSocket），把链接里的 ws= 部分改成 wss=（注意是 wss，不是 ws）
-3. 因为 chrome://inspect 页面是你当前使用的浏览器提供的“翻译官”。它自己内置了所有需要的 HTML/JS 资源，它只需要从你的 9000 端口拿原始数据就行。 而当你直接在地址栏输入 http://127.0.0.1:9000/... 时，你是要求无头浏览器自己提供这些资源，它给不了，所以挂了。兄弟，你把 headless 改成 False 再跑一次试试。如果还是不行，那咱们就得看是不是你的 Playwright 用的浏览器内核版本太精简，把 devtools 资源包给阉割了。
-4. 你之所以一直报错、白屏，是因为你正在尝试做一件违反浏览器安全限制的事，断连：是因为 Google 的 appspot 页面对本地 127.0.0.1 的 WebSocket 连接有极其严格的跨域校验（CORS），通常会被防火墙或代理拦截。
-
-有用的端点：
-1. http://127.0.0.1:9000/json
-2. http://127.0.0.1:9000/json/version
-3. http://127.0.0.1:9000/devtools/inspector.html
-4. chrome://inspect/#devices
-### 具体流程
-**稳定的“官方路径”，edge和chrome都可以实现，下面是chrome浏览器的例子** ：
-
-1. 访问`chrome://inspect/#devices`CDP端点进入远程调试页面，俗称“Chrome 开发者工具 - 远程设备”或 “检查设备”页面<img src="1.png" style="border: 2px solid #000;"/>
-2. 点击`Configure...`按钮，弹出Remote Targets（远程目标列表）弹窗，添加端口号和IP。<img src="2.png" style="border: 2px solid #000;"/>
-
-3. 端口号和IP默认是127.0.0.1:9000，具体设置是在`user_settings.toml`文件中设置的，用户自定义<img src="3.png" style="border: 2px solid #000;"/>
-4. 添加完后等待5~600秒会出现(最左侧的东西全都点一遍可能会更快出现，可能机魂不悦吧)`Remote Target`远程目标<img src="4.png" style="border: 2px solid #000;"/>
-5. 点击`inspect`后就会出现以下界面(我点击后没有反应需要等待一段时间)，谷歌浏览器（chrome）和微软浏览器(edge)都可以实现<img src="5.png" style="border: 2px solid #000;"/><img src="6.png" style="border: 2px solid #000;"/>
-6. 最后在这个界面playwright自动化的所有操作都可以看到并且用户还能直接在界面上进行操作。
-
-**注意：只要是chorme内核的就是实现，比如Edge和Chrome，但是参数`user_settins.toml`参数可能有所不同。**
-
-#### Remote Target参数解析
-1. **inspect**（检查）  
-   - 最常用的按钮。  
-   - 点击后：会弹出一个完整的 Chrome DevTools 窗口，连接到这个具体的标签页。  
-   - 你可以在里面查看 Elements（元素）、Console（控制台）、Network（网络）、Sources（源码断点）、Performance（性能）等，所有标准 DevTools 功能都可用。  
-   - 用途：实时调试页面，查看 Playwright 操作后页面的状态、JS 错误、DOM 变化等。
-
-2. **pause**（暂停）  
-   - 点击后：暂停这个标签页中所有 JavaScript 的执行（相当于在 Sources 面板按 F8 暂停脚本）。  
-   - 用途：调试时冻结页面 JS 执行，方便查看某个时刻的状态。再次点击或在 DevTools 里恢复即可继续运行。  
-   - 注意：不是所有版本都显示这个按钮，有时只在已打开 inspect 的标签页上出现。
-
-3. **focus tab**（聚焦标签页）  
-   - 点击后：把这个标签页切换到前台（激活它，让它成为当前可见的标签页）。  
-   - 用途：如果你浏览器有多个标签页，这个按钮能快速把目标页面切到最前面，方便你手动查看或操作。
-
-4. **reload**（重新加载）  
-   - 点击后：刷新这个标签页（相当于 F5 或 Ctrl+R）。  
-   - 用途：手动强制刷新页面，常用于调试缓存问题或重现某个状态。
-
-5. **close**（关闭）  
-   - 点击后：直接关闭这个标签页。  
-   - 用途：清理多余的标签页（比如你现在有两个豆包页面，可以点一个的 close 关掉一个）。
-
-6. **inspect fallback**（备用检查）  
-   - 这个按钮不常用，通常只在某些情况下出现。  
-   - 作用：如果正常的 inspect 失败，它会尝试用另一种方式打开 DevTools（fallback 机制）。  
-   - 一般不需要点它，直接用第一个 inspect 即可。
-7. **Open tab with url** + **Open** 按钮  
-   - 在 Remote Target 标题旁边有一个输入框和 Open 按钮。  
-    - 功能：在这个远程浏览器实例中新建一个标签页并打开你输入的 URL。  
-    - 用途：不用改 Playwright 脚本，就能手动在这个浏览器里再开一个新页面测试。
-8. **trace**  
-    - 点击后：开启 Performance Trace（性能追踪），会自动录制一段时间的页面性能数据，然后打开 Timeline/Performance 面板查看。  
-    - 用途：分析页面加载速度、JS 执行耗时等。
-9. 点击 inspect 按钮后弹出的那个窗口叫：Chrome DevTools（Chrome 开发者工具）更具体地说，是 一个独立的 Chrome DevTools 窗口（Detached DevTools Window），或者叫 远程连接的 DevTools 实例（Remote DevTools Instance）。

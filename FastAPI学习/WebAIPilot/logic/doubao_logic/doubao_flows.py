@@ -35,6 +35,35 @@ class DoubaoFlows:
         self.login_page: LoginPage | None = None
         self.home_page: HomePage | None = None
 
+    # async def _async_init(self):
+    #     """内部初始化逻辑"""
+    #     # # 进行登陆操作
+    #     # await self.login()
+    #     # 创建浏览器
+    #     self.browser = await self.pf.new_browser()
+    #     # 创建浏览器上下文
+    #     self.context = await self.pf.new_context(self.browser)
+    #     # 创建标签页
+    #     self.page = await self.context.new_page()
+    #     # 创建登录页面
+    #     self.login_page = await LoginPage.create(self.page, self.cm)
+    #     # 进行登陆操作
+    #     await self.login_page.login()
+    #     # 保存登录状态
+    #     await self.context.storage_state(path=self.cm.config_data["playwright"]["context_options"].storage_state)
+    #     # 注入反爬脚本与 Hook
+    #     await self.context.add_init_script("""
+    #                     Object.defineProperty(navigator, 'webdriver', { get: () => false });
+    #                     window.tempCopyBuffer = "";
+    #                     document.addEventListener('copy', (event) => {
+    #                         event.stopImmediatePropagation();
+    #                         event.preventDefault();
+    #                         window.tempCopyBuffer = document.getSelection().toString();
+    #                     }, true);
+    #                 """)
+    #     # 创建主页面
+    #     self.home_page = await HomePage.create(self.page, self.cm)
+
     async def _async_init(self):
         """内部初始化逻辑"""
         self.browser = await self.pf.new_browser()
@@ -59,8 +88,37 @@ class DoubaoFlows:
         await self.context.storage_state(path=self.cm.config_data["playwright"]["context_options"].storage_state)
         # 创建主页面
         self.home_page = await HomePage.create(self.page, self.cm)
+    """登陆流程"""
+    async def login(self):
+        """登陆流程"""
+        # 保存原来的headless配置
+        headless = self.cm.config_data["playwright"]["launch_options"].headless
+        # 修改配置为有头标志
+        self.cm.config_data["playwright"]["launch_options"].headless = False
+        # 创建浏览器
+        self.browser = await self.pf.new_browser()
+        # 创建浏览器上下文
+        self.context = await self.pf.new_context(self.browser)
+        # 创建标签页
+        self.page = await self.context.new_page()
+        # # 中途进入全屏模式（最大化要改args参数，如果原来有--start-maximized就不好处理了）
+        # await self.page.keyboard.press("F11")
+        # 创建登录页面
+        self.login_page = await LoginPage.create(self.page, self.cm)
+        # 进行登陆操作
+        await self.login_page.login()
+        # 保存登录状态
+        await self.context.storage_state(path=self.cm.config_data["playwright"]["context_options"].storage_state)
+        # 关闭当前有头浏览器的会话
+        await self.pf.close_context(self.context)
+        # 关闭当前有头浏览器
+        await self.pf.close_browser(self.browser)
+        # 修改配置为原来配置文件中的配置
+        self.cm.config_data["playwright"]["launch_options"].headless = headless
 
-    """问答相关方法"""
+
+
+    """对话操作"""
     async def ask(self, question: str, files: str | Path | FilePayload | Sequence[str | Path] | Sequence[FilePayload] | None = None):
         """业务方法示例"""
         # 确保调用的是异步方法

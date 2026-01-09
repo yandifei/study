@@ -26,22 +26,26 @@ from logic.doubao_logic.doubao_flows import DoubaoFlows
 # warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed transport")
 # warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed event loop")
 
+"""初始化"""
+# 是否为开发模式
+debug = True
+# 创建配置管理器实例（这是个单例）
+config_manager = ConfigManager(debug=debug)
+info("日志模块加载完成，全局异常捕获开启")
+# 层叠覆盖原来的配置
+config_manager.config_override()  # 层叠覆盖原来的配置
+info("层叠覆盖原来的配置完成")
 # 协议
-PROTOCOL = "http"
+PROTOCOL: str = config_manager.config_data["server"]["protocol"]
 # 主机号
-HOST = "127.0.0.1"
+HOST: str = config_manager.config_data["server"]["host"]
 # 端口号
-PORT = 21325
+PORT: int = config_manager.config_data["server"]["port"]
+info(f"服务器配置，协议：{PROTOCOL}，主机：{HOST}，端口：{PORT}")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """使用异步生命周期管理"""
-    """初始化"""
-    # 创建配置管理器实例（这是个单例）
-    config_manager = ConfigManager(debug=True)
-    # 层叠覆盖原来的日志配置
-    config_manager.config_override()  # 层叠覆盖原来的配置
-    info("日志模块加载完成，全局异常捕获开启")
     # 创建Playwright工厂实例
     playwright_factory = PlaywrightFactory(config_manager.config_data["playwright"]["launch_options"],config_manager.config_data["playwright"]["context_options"])
     # 创建豆包工作流实例
@@ -104,13 +108,13 @@ async def ws_monitor(websocket: WebSocket):
 
 @app.get("/status",  response_class=HTMLResponse)
 async def status():
-    # 直接从app.state获取对象
-    df: DoubaoFlows = app.state.doubao_flows
-    try:
-        # FastAPI 内部调用 requests 访问 9222 端口
-        response = requests.get("http://127.0.0.1:9222/json", timeout=10)
-    except Exception as e:
-        return {"error": f"无法连接到浏览器: {str(e)}"}
+    # # 直接从app.state获取对象
+    # df: DoubaoFlows = app.state.doubao_flows
+    # try:
+    #     # FastAPI 内部调用 requests 访问 9222 端口
+    #     response = requests.get("http://127.0.0.1:9222/json", timeout=10)
+    # except Exception as e:
+    #     return {"error": f"无法连接到浏览器: {str(e)}"}
     html_content = f'''
         <!DOCTYPE html>
         <html>
@@ -123,7 +127,7 @@ async def status():
                 const ctx = canvas.getContext('2d');
                 // 建立WebSocket连接
                 const ws = new WebSocket(`ws://${{location.host}}/ws/monitor`);
-                //const ws = new WebSocket(`{response.json()[0]["webSocketDebuggerUrl"]}`);
+                //const ws = new WebSocket(`{{response.json()[0]["webSocketDebuggerUrl"]}}`);
                 // WebSocket 接收的是二进制字节流
                 ws.binaryType = "arraybuffer";
                 ws.onmessage = async (event) => {{
@@ -154,8 +158,7 @@ async def status():
     # img.src = "{PROTOCOL}://{HOST}:{PORT}/screenshots?t=" + new Date().getTime();
     return HTMLResponse(content=html_content)
 
-"""问答相关方法"""
-
+"""对话操作"""
 # get文本对话
 @app.get("/ask/{question}")
 async def ask_get(question: str):
@@ -200,14 +203,14 @@ async def answer(answer_index: int = 0):
 
 """会话管理(增删改查)"""
 # 创建新会话
-@app.get("/create/conversation")
+@app.post("/conversations")
 async def create_conversation():
     df: DoubaoFlows = app.state.doubao_flows
     return await df.create_conversation()
 
 # 删除会话
-@app.get("/delete/conversation")
-@app.get("/delete/conversation/{identifier}")
+@app.delete("/conversations")
+@app.delete("/conversations/{identifier}")
 async def delete_conversation(identifier: int |str = 0):
     df: DoubaoFlows = app.state.doubao_flows
     # 判断是否为数字
@@ -220,8 +223,8 @@ async def delete_conversation(identifier: int |str = 0):
     return {"info": f"下标为{identifier}的会话删除成功" if isinstance(identifier, int) else f"标题为{identifier}的对话删除成功"}
 
 # 切换会话
-@app.get("/switch/conversation")
-@app.get("/switch/conversation/{identifier}")
+@app.put("/conversations")
+@app.put("/conversations/{identifier}")
 async def switch_conversation(identifier: int |str = 0):
     df: DoubaoFlows = app.state.doubao_flows
     # 判断是否为数字
@@ -234,13 +237,13 @@ async def switch_conversation(identifier: int |str = 0):
     return {"info": f"下标为{identifier}的会话切换成功" if isinstance(identifier, int) else f"标题为{identifier}的对话切换成功"}
 
 # 获得会话标题列表
-@app.get("/get/conversation/title/list")
+@app.get("/conversations/title/list")
 async def get_conversation_title_list():
     df: DoubaoFlows = app.state.doubao_flows
     return await df.get_conversation_title_list()
 
 # 获取会话数量
-@app.get("/get/conversation/count")
+@app.get("/conversations/count")
 async def get_conversation_count():
     df: DoubaoFlows = app.state.doubao_flows
     return await df.get_conversation_count()
