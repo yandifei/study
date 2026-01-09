@@ -70,7 +70,14 @@ data/
 debug_data/
 
 # 忽略 outputs 目录下所有内容
-outputs/**/*
+outputs/downloads/*
+outputs/har/*
+outputs/logs/*
+outputs/pyinstaller/*
+outputs/reports/*
+outputs/screenshots/*
+outputs/traces/*
+outputs/videos/*
 
 # 排除所有的 .gitkeep 文件 (确保没有空格)
 !**/.gitkeep
