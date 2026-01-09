@@ -60,20 +60,36 @@ class DoubaoFlows:
         # 创建主页面
         self.home_page = await HomePage.create(self.page, self.cm)
 
-
+    """问答相关方法"""
     async def ask(self, question: str, files: str | Path | FilePayload | Sequence[str | Path] | Sequence[FilePayload] | None = None):
         """业务方法示例"""
         # 确保调用的是异步方法
         return await self.home_page.ask(question, files)
+
+    async def get_last_answer(self):
+        """
+        获取最后对话中豆包回复的内容（异步版本）
+
+        :return: 元组 (text_answer: str, img_urls: list[str]) - 返回文本回答和图片URL列表
+        """
+        return await self.home_page.get_last_answer()
+
+    async def get_all_conversation_turn (self):
+        """
+        获取所有对话历史（异步版本）
+
+        :return: 所有对话历史的控件
+        """
+        return self.home_page.get_all_conversation_turn()
 
     """会话管理(增删改查)"""
     async def create_conversation(self):
         """创建会话"""
         return await self.home_page.create_conversation()
 
-    async def del_conversation(self):
-        """删除会话"""
-        return await self.home_page.del_conversation()
+    async def del_conversation(self, identifier: int | str = 0):
+        """删除会话（异步版本）"""
+        return await self.home_page.del_conversation(identifier)
 
     async def switch_conversation(self, identifier: int | str = 0):
         """切换会话（异步版本）
@@ -83,7 +99,7 @@ class DoubaoFlows:
         """
         return await self.home_page.switch_conversation(identifier)
 
-    async def get_conversation_list(self):
+    async def get_conversation_title_list(self):
         """获取会话列表"""
         return await self.home_page.get_conversation_title_list()
 
