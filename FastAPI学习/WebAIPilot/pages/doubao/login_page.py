@@ -37,20 +37,18 @@ class LoginPage(BasePage):
         self.cm: ConfigManager = config_manager
 
 
-
-
-    # def check_login(self):
-    #     """检查是否登陆成功
-    #     """
-    #     # 检查登陆按钮是否可见
-    #     if self.page.get_by_test_id("to_login_button").wait_for(timeout=2000, state="visible"):
-    #         self.page.get_by_test_id("to_login_button").click()
-    #         info("需要手动登陆豆包")
-    #         # 直到登陆按钮检测不到才算登陆成功
-    #         while not self.page.get_by_test_id("to_login_button").wait_for(timeout=1000, state="visible"):
-    #             sleep(1)
-    #         info("手动登陆豆包成功")
-    #     return True
+    async def check_login(self):
+        """检查是否已登陆成功
+        检测到已经登陆返回ture，否则返回false
+        """
+        # 检查登陆按钮是否可见
+        await self.page.wait_for_timeout(3000)  # 强制等待 3 秒
+        # 检查登陆按钮是否可见
+        if await self.page.get_by_test_id("to_login_button").is_visible():
+            info("需要用户手动登陆豆包")
+            return False
+        info("上下文状态注入成功，已完成豆包登陆")
+        return True
 
 
     async def login(self):
@@ -63,7 +61,7 @@ class LoginPage(BasePage):
             # self.page.get_by_test_id("to_login_button").hover()
             # 点击登陆按钮
             await self.page.get_by_test_id("to_login_button").click()
-            info("需要用户手动登陆豆包")
+            info("请用户手动输入账号和验证码完成豆包登陆")
             # 等待登陆弹窗出现
             await self.page.locator('#dialog-0').wait_for()
             # 直到登陆按钮和登陆界面检测不到才算登陆成功
