@@ -81,5 +81,3 @@ outputs/videos/*
 
 # 排除所有的 .gitkeep 文件 (确保没有空格)
 !**/.gitkeep
-
-pyinstaller/
