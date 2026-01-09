@@ -15,8 +15,7 @@ from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 # 自己的模块
 import utils.path_utils
-from requests_model import AskModel
-from requests_model.identifier_model import IdentifierModel
+from models import AskModel
 from utils import logger_manager, info, critical, warning  # 导入日志记录器模块
 from utils import ConfigManager # 导入配置管理模块
 from utils.path_utils import get_root
@@ -63,6 +62,7 @@ app = FastAPI(lifespan=lifespan)
 # 关键：将硬盘目录映射到网络路径 "/outputs"
 app.mount("/outputs", StaticFiles(directory=get_root() / "outputs"), name="outputs")
 
+"""服务器提供的服务"""
 @app.get("/")
 def index():
     return {
@@ -70,7 +70,6 @@ def index():
         "服务": "WebAIPilot API",
         "版本": "1.0.0"
     }
-
 
 @app.get("/screenshots",  response_class=FileResponse)
 async def screenshots():
@@ -155,6 +154,8 @@ async def status():
     # img.src = "{PROTOCOL}://{HOST}:{PORT}/screenshots?t=" + new Date().getTime();
     return HTMLResponse(content=html_content)
 
+"""问答相关方法"""
+
 # get文本对话
 @app.get("/ask/{question}")
 async def ask_get(question: str):
@@ -164,7 +165,7 @@ async def ask_get(question: str):
             "error": "大哥，你输入问题呀"
         }
     # 提问（转成字典并解引用）
-    text_answer, img_urls = await df.home_page.ask(question)
+    text_answer, img_urls = await df.ask(question)
     return {
         "AI回复": text_answer,
         "图片链接": img_urls
@@ -180,34 +181,70 @@ async def ask_post(ask_model: AskModel):
             "error": "大哥，你输入问题呀"
         }
     # 提问（转成字典并解引用）
-    text_answer, img_urls =  await df.home_page.ask(**ask_model.model_dump())
+    text_answer, img_urls =  await df.ask(**ask_model.model_dump())
 
     return {
         "AI回复": text_answer,
         "图片链接": img_urls
     }
 
-#
-@app.get("create/conversation")
+# 根据下标获得对话内容（目前只能（默认）获取最后一个）
+@app.get("/answer")
+async def answer(answer_index: int = 0):
+    df: DoubaoFlows = app.state.doubao_flows
+    text_answer, img_urls = await df.get_last_answer()
+    return {
+        "AI回复": text_answer,
+        "图片链接": img_urls
+    }
+
+"""会话管理(增删改查)"""
+# 创建新会话
+@app.get("/create/conversation")
 async def create_conversation():
     df: DoubaoFlows = app.state.doubao_flows
-    return await df.home_page.create_conversation()
-
-# 获得会话列表
-
+    return await df.create_conversation()
 
 # 删除会话
+@app.get("/delete/conversation")
 @app.get("/delete/conversation/{identifier}")
-async def delete_conversation(identifier: int |str):
+async def delete_conversation(identifier: int |str = 0):
     df: DoubaoFlows = app.state.doubao_flows
     # 判断是否为数字
-    if identifier.isdigit():
+    if isinstance(identifier, str) and identifier.isdigit():
         identifier = int(identifier)
     # 使用下标删除会话
-    if await df.home_page.del_conversation(identifier) is False:
+    if await df.del_conversation(identifier) is False:
         return {"error": f"删除会话失败：找不到下标为 '{identifier}' 的会话"}
 
     return {"info": f"下标为{identifier}的会话删除成功" if isinstance(identifier, int) else f"标题为{identifier}的对话删除成功"}
+
+# 切换会话
+@app.get("/switch/conversation")
+@app.get("/switch/conversation/{identifier}")
+async def switch_conversation(identifier: int |str = 0):
+    df: DoubaoFlows = app.state.doubao_flows
+    # 判断是否为数字
+    if isinstance(identifier, str) and identifier.isdigit():
+        identifier = int(identifier)
+    # 使用下标删除会话
+    if await df.switch_conversation(identifier) is False:
+        return {"error": f"切换会话失败：找不到下标为 '{identifier}' 的会话"}
+
+    return {"info": f"下标为{identifier}的会话切换成功" if isinstance(identifier, int) else f"标题为{identifier}的对话切换成功"}
+
+# 获得会话标题列表
+@app.get("/get/conversation/title/list")
+async def get_conversation_title_list():
+    df: DoubaoFlows = app.state.doubao_flows
+    return await df.get_conversation_title_list()
+
+# 获取会话数量
+@app.get("/get/conversation/count")
+async def get_conversation_count():
+    df: DoubaoFlows = app.state.doubao_flows
+    return await df.get_conversation_count()
+
 
 if __name__ == "__main__":
     # 2021.03.25是爱丽丝的生日
