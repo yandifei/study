@@ -42,7 +42,6 @@ Thumbs.db
 # Playwright 相关
 playwright-report/
 test-results/
-user_data/
 *.crx
 
 # 编译输出

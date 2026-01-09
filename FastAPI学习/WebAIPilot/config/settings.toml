@@ -1,4 +1,15 @@
-# 用不上直接注释掉
+# 用不的上直接注释掉
+
+# 服务器信息
+[server]
+# 请求协议（http或https）
+protocol = "http"
+# 监听的主机地址，"0.0.0.0"：允许所有网络接口访问（外网可访问，有风险）
+host = "127.0.0.1"  # "127.0.0.1"：只允许本机访问（最安全），"localhost"：同 127.0.0.1
+# 端口号（2021.03.25是爱丽丝的生日）
+port = 21325
+
+# Playwright配置
 [playwright]
 browser_type = "chromium"  # 可选项：chromium, firefox, webkit
 # 截图路径保存
@@ -13,9 +24,14 @@ screen_dir = "outputs/screenshots"
 ## 浏览器发行渠道。# 设置为 "chromium" 以启用新的无头模式# 可设置为 "chrome"、"chrome-beta"、"chrome-dev"、"chrome-canary"、"msedge"、"msedge-beta"、"msedge-dev" 或 "msedge-canary" 来使用官方的 Google Chrome 或 Microsoft Edge
 #channel = "chrome"
 # 传递给浏览器实例的额外命令行参数。# 警告：使用自定义浏览器参数需自行承担风险，某些参数可能会破坏 Playwright 功能。# Chromium 的可用参数列表：https://peter.sh/experiments/chromium-command-line-switches/
-args = []
+args = [
+    # 谷歌沙盒模式
+    "--no-sandbox",
+    # 过掉浏览器自动化标志检测
+    '--disable-blink-features=AutomationControlled'
+]
 # 如果为 True，Playwright 将不传递其默认配置参数，只使用 args 中的参数。如果为数组，则过滤掉指定的默认参数。此为危险选项，请谨慎使用。默认值为 False。
-ignore_default_args = ['--disable-blink-features=AutomationControlled']    # 和文档不符必须列表
+ignore_default_args = []# 和文档不符必须列表
 # 在收到 Ctrl-C 时关闭浏览器进程。默认值为 True。
 handle_sigint = true
 # 在收到 SIGTERM 信号时关闭浏览器进程。默认值为 True。
@@ -27,7 +43,7 @@ timeout = 30000
 # 指定浏览器可见的环境变量。默认使用 process.env。
 env = {}
 # 是否以无头模式运行浏览器。# 如果 devtools 选项为 True，则此选项默认为 False，否则默认为 True。
-headless = false
+headless = true
 # 仅限 Chromium：是否为每个标签页自动打开开发者工具面板。# 如果此选项为 True，headless 选项将被设置为 False。# 已弃用：建议使用调试工具代替。
 devtools = false
 ## 网络代理设置(没有的字段直接删)【用不上 直接注释掉】。
@@ -46,9 +62,9 @@ firefox_user_prefs = {}
 # 浏览器上下文选项配置# 用于配置浏览器上下文的各种参数，如视口大小、JavaScript启用状态、代理设置等。# 所有参数都提供了与Playwright官方文档一致的默认值。
 [playwright.context_options]
 # 设置每个页面的固定视口大小。默认为1280x720视口。no_viewport参数可禁用固定视口。
-viewport = { width = 1280, height = 720 }
+viewport = { width = 1920, height = 1080 }
 # 通过window.screen模拟网页内可用的窗口屏幕大小。仅在设置viewport时使用。
-screen = { width = 1280, height = 720 }
+screen = { width = 1920, height = 1080 }
 # 不强制执行固定视口，允许在headed模式下调整窗口大小。
 no_viewport = false
 # 发送网络请求时是否忽略HTTPS错误。默认为false。
@@ -58,7 +74,7 @@ java_script_enabled = true
 # 是否绕过页面的内容安全策略。默认为false。
 bypass_csp = false
 # 在此上下文中使用的特定用户代理字符串。
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+#user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 # 指定用户区域设置，例如en-GB, de-DE, zh-CN等。区域设置会影响navigator.language值、Accept-Language请求头值以及数字和日期格式化规则。默认为系统默认区域设置。
 locale = "zh-CN"
 # 更改上下文的时区。支持时区ID列表请参考ICU的metaZones.txt。默认为系统时区。
@@ -66,7 +82,7 @@ timezone_id = "Asia/Shanghai"
 # 地理位置信息，包括纬度和经度。
 geolocation = { latitude = 0.0, longitude = 0.0, accuracy = 0.0 }
 # 授予此上下文中所有页面的权限列表。默认为无。
-permissions = []
+permissions = ['clipboard-read', 'clipboard-write'] # 剪切板复制和粘贴
 # 包含要随每个请求发送的额外HTTP头的对象。默认为无。
 extra_http_headers = {}
 # 是否模拟网络离线状态。默认为false。
@@ -102,7 +118,7 @@ record_har_omit_content = false
 ## 录制视频的尺寸。如果未指定，尺寸将等于视口按比例缩小以适合800x800。如果未显式配置视口，视频尺寸默认为800x450。
 #record_video_size = { width = 1280, height = 720 }
 # 用给定的存储状态填充上下文。此选项可用于使用通过browser_context.storage_state()获取的已登录信息初始化上下文。
-storage_state = "user_data/chrome_data/content_data.json"
+storage_state = "debug_data/chrome_data/content_data.json"
 ## 在使用page.goto()、page.route()、page.wait_for_url()、page.expect_request()或page.expect_response()时，会通过使用URL()构造函数构建相应的URL来考虑基础URL。默认未设置。
 #base_url = "https://github.com/yandifei"   # 不用就不设置
 # 如果设置为true，则为此上下文启用严格选择器模式。在严格选择器模式下，所有意味着单个目标DOM元素的选择器操作在多个元素匹配选择器时将抛出异常。此选项不影响任何定位器API（定位器始终是严格的）。默认为false。
