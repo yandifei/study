@@ -3,7 +3,7 @@
 """
 
 __author__ = "yandifei"
-__package__ = "requests_model"
+__package__ = "models"
 # 顶层封装
 from .ask_model import AskModel
 # 允许的外部导出
