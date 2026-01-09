@@ -74,7 +74,7 @@ java_script_enabled = true
 # 是否绕过页面的内容安全策略。默认为false。
 bypass_csp = false
 # 在此上下文中使用的特定用户代理字符串。
-#user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 # 指定用户区域设置，例如en-GB, de-DE, zh-CN等。区域设置会影响navigator.language值、Accept-Language请求头值以及数字和日期格式化规则。默认为系统默认区域设置。
 locale = "zh-CN"
 # 更改上下文的时区。支持时区ID列表请参考ICU的metaZones.txt。默认为系统时区。

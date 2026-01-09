@@ -35,37 +35,10 @@ class DoubaoFlows:
         self.login_page: LoginPage | None = None
         self.home_page: HomePage | None = None
 
-    # async def _async_init(self):
-    #     """内部初始化逻辑"""
-    #     # # 进行登陆操作
-    #     # await self.login()
-    #     # 创建浏览器
-    #     self.browser = await self.pf.new_browser()
-    #     # 创建浏览器上下文
-    #     self.context = await self.pf.new_context(self.browser)
-    #     # 创建标签页
-    #     self.page = await self.context.new_page()
-    #     # 创建登录页面
-    #     self.login_page = await LoginPage.create(self.page, self.cm)
-    #     # 进行登陆操作
-    #     await self.login_page.login()
-    #     # 保存登录状态
-    #     await self.context.storage_state(path=self.cm.config_data["playwright"]["context_options"].storage_state)
-    #     # 注入反爬脚本与 Hook
-    #     await self.context.add_init_script("""
-    #                     Object.defineProperty(navigator, 'webdriver', { get: () => false });
-    #                     window.tempCopyBuffer = "";
-    #                     document.addEventListener('copy', (event) => {
-    #                         event.stopImmediatePropagation();
-    #                         event.preventDefault();
-    #                         window.tempCopyBuffer = document.getSelection().toString();
-    #                     }, true);
-    #                 """)
-    #     # 创建主页面
-    #     self.home_page = await HomePage.create(self.page, self.cm)
-
     async def _async_init(self):
         """内部初始化逻辑"""
+        # 进行登陆操作
+        await self.login()
         self.browser = await self.pf.new_browser()
         self.context = await self.pf.new_context(self.browser)
         # 注入反爬脚本与 Hook
@@ -80,14 +53,11 @@ class DoubaoFlows:
         """)
         # 创建标签页
         self.page = await self.context.new_page()
-        # 创建登录页面
-        self.login_page = await LoginPage.create(self.page, self.cm)
-        # 检查是否登陆成功
-        await self.login_page.login()
         # 保存登录状态
         await self.context.storage_state(path=self.cm.config_data["playwright"]["context_options"].storage_state)
         # 创建主页面
         self.home_page = await HomePage.create(self.page, self.cm)
+
     """登陆流程"""
     async def login(self):
         """登陆流程"""
