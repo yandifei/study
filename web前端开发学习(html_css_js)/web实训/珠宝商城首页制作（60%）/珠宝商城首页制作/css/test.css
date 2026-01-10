@@ -1,0 +1,183 @@
+/* 导航栏样式 */
+.top-nav ul li a.active {
+    background-color: #a336a2;
+    /* 品牌紫色背景 */
+    border-top-left-radius: 10px;
+    /* 左上圆角 */
+    border-top-right-radius: 10px;
+    /* 右上圆角 */
+    height: 100%;
+    /* 确保填满导航条高度 */
+}
+
+
+/* 改变原来的链接标签 */
+.top-nav ul li a {
+    /* 去掉a标签原来的颜色 */
+    color: #ffffff;
+    /* 去掉a标签的下划线 */
+    text-decoration: none;
+    /* padding: 0 20px; */
+    display: block;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+
+
+
+
+/* 改变原来的链接标签 */
+.top-nav ul li a {
+    /* 去掉a标签原来的颜色 */
+    color: #ffffff;
+    /* 去掉a标签的下划线 */
+    text-decoration: none;
+    /* padding: 0 20px; */
+    display: block;
+    line-height: 50px;
+    font-size: 14px;
+    /* padding-bottom: 20px; */
+    margin-bottom: 10px;
+}
+
+/* 导航栏样式 */
+.top-nav ul li a.active {
+    /* 品牌紫色背景 */
+    background-color: #a336a2;
+    /* 左上圆角 */
+    border-top-left-radius: 10px;
+    /* 右上圆角 */
+    border-top-right-radius: 10px;
+}
+
+
+/* 左侧边栏 (content-left) */
+.content-left {
+    width: 30%;
+    /* 侧边栏宽度 */
+    /* flex-shrink: 0; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* gap: 10px; */
+    padding: 20px 15px;
+}
+
+/* 背景设置 */
+.content-top {
+    background-color: #255;
+    /* background-image: url("../resources/content-left/pic3.png"); */
+    background-image: url("../resources/content-left/ri.jpg");
+
+    background-color: #f0f0f0;
+    /* 这里设置露出来的边框颜色 */
+    /* padding: 100px; */
+    /* 设置你想要的内边距 */
+    /* 核心代码 */
+    background-origin: content-box;
+    /* 背景图片的坐标从内容区开始算 */
+    background-clip: content-box;
+    /* 背景图片只在内容区显示，裁掉 padding 区 */
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* 改为 contain 确保图片在缩小后依然完整 */
+
+
+
+    /* 设置好宽度 */
+    width: 100%;
+    /* 自动设置宽高比 ，宽 / 高*/
+    aspect-ratio: 123 / 126;
+    /* 防止重复 */
+    background-repeat: no-repeat;
+    /* 居中 */
+    background-position: center;
+    /* 覆盖整个元素 */
+    background-size: cover;
+    /* 开启弹性布局 */
+    display: flex;
+    /* 让内部 p 和 a 标签垂直堆叠 */
+    flex-direction: column;
+    /* 垂直方向对齐 */
+    justify-content: space-between;
+    /* 内边距 */
+    padding: 10px 0px;
+
+}
+
+/* 第1个p：今日特惠 */
+.content-top>p:nth-of-type(1) {
+    color: #a336a2;
+    font-size: large;
+    padding-left: 60%;
+
+
+}
+
+/* 第2个p：原价 */
+.content-top>p:nth-of-type(2) {
+    color: #000;
+    padding-left: 70%;
+    /* font-weight: bold; */
+    font-size: 15px;
+}
+
+/* 第3个p：现价 */
+.content-top>p:nth-of-type(3) {
+    color: #000;
+    font-size: larger;
+    padding-left: 50%;
+}
+
+.content-top a {
+    text-decoration: none;
+    color: #cf3da3;
+    padding-left: 65%;
+
+}
+
+/* 第5个p：特色产品 */
+.content-top>p:nth-of-type(4) {
+    /* flex脱离文档流 */
+    /* display: flex; */
+    /* 让内部的 li 贴着 ul 的底部对齐 */
+    /* align-items: flex-end; */
+    /* 列表间的间隙 */
+    /* gap: 10px; */
+    /* 去掉无序列表的圆点 */
+    /* list-style: none; */
+    /* 垂直居中 */
+    /* justify-content: center; */
+
+    /* 灰色条高度 */
+    padding-top: 10px;
+    height: 20%;
+    padding-left: 10px;
+
+    background-color: #4d4a4a;
+}
+
+/* 左边的第三部分 */
+.content-middle {
+    /* 设置整体背景为白色 */
+    background-color: #fff;
+    /* 设置圆角 */
+    border-radius: 10px;
+    /* 给个边框，根据原图看起来是很细的灰色边框 */
+    /* border: 1.3px solid #4a4a4a; */
+    border: 1.6px solid #4a4a4a;
+    /* 溢出隐藏，为了让底部的灰色条也拥有父元素的圆角 */
+    overflow: hidden;
+}
+
+.content-middle>img {
+    width: 100%;
+    /* 强制图片宽度占满容器 */
+    height: 180px;
+    /* 设定一个固定高度，确保和原图比例一致 */
+    display: block;
+    /* 去除图片下方的空白间隙 */
+    object-fit: cover;
+    /* 确保图片缩放时始终居中显示 */
+    object-position: center;
+}

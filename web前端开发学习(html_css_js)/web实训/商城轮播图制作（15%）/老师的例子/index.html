@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.box {
+			width: 570px;
+			height: 470px;
+			margin: 0 auto;
+			position: relative;
+			background-color: aquamarine;
+			top: 100px;
+		}
+
+		.box-img {
+			width: 570px;
+			/* height: 470px; */
+			position: absolute;
+			opacity: 0;
+			transition: all 1s;
+			/*设置过渡效果*/
+		}
+
+		.box-left {
+			width: 35px;
+			height: 50px;
+			background-color: #00000020;
+			position: absolute;
+			line-height: 50px;
+			text-align: center;
+			border-radius: 0 25px 25px 0;
+			top: 210px;
+			color: #00000050;
+		}
+
+		.box-left:hover {
+			background-color: #00000050;
+			color: white;
+			cursor: pointer;
+		}
+
+		.box-right {
+			width: 35px;
+			height: 50px;
+			background-color: #00000020;
+			position: absolute;
+			line-height: 50px;
+			text-align: center;
+			border-radius: 25px 0 0 25px;
+			top: 210px;
+			right: -20px;
+			color: #00000050;
+		}
+
+		.box-right:hover {
+			background-color: #00000050;
+			color: white;
+			cursor: pointer;
+		}
+
+		.box-select {
+			position: absolute;
+			bottom: 20px;
+			left: 40px;
+		}
+
+		.box-select li {
+			list-style: none;
+			width: 10px;
+			height: 10px;
+			background-color: #00000050;
+			border-radius: 5px;
+			float: left;
+			margin: 3px;
+			border: 1px solid #00000000;
+		}
+
+		.box-select li:hover {
+			background-color: white;
+			box-shadow: 0 0 0 3px #00000020;
+			cursor: pointer;
+		}
+
+		.box-img:nth-child(1) {
+			opacity: 1;
+		}
+
+		.box-select li:nth-child(1) {
+			background-color: white;
+			box-shadow: 0 0 0 3px #00000020;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<div class="box-img"><a href=""><img src="img/0.jpg" alt=""></a></div>
+		<div class="box-img"><a href=""><img src="img/1.jpg" alt=""></a></div>
+		<div class="box-img"><a href=""><img src="img/2.jpg" alt=""></a></div>
+		<div class="box-img"><a href=""><img src="img/3.jpg" alt=""></a></div>
+		<div class="box-img"><a href=""><img src="img/4.jpg" alt=""></a></div>
+		<div class="box-img"><a href=""><img src="img/5.jpg" alt=""></a></div>
+		<div class="box-left">&lt</div>
+		<div class="box-right">&gt</div>
+		<div class="box-select">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		let index = 0;//设置图片索引
+		let mytime;//设置定时器全局变量			
+		let imgs = document.querySelectorAll(".box-img");//获取所有页面图片元素盒子
+		let lis = document.querySelectorAll(".box-select ul li");//获取所有页面列表项目
+		//给li元素对象添加dataindex属性
+		for (let i = 0; i < lis.length; i++) {
+			lis[i].dataindex = i;
+		}
+		play();//播放轮播图			
+		//隐藏所有图片功能
+		function hideall() {
+			for (let i = 0; i < imgs.length; i++) {
+				imgs[i].setAttribute("style", "opacity:0;");//将每个图片透明度设为0，进行隐藏
+				lis[i].setAttribute("style", "background-color: #00000050;border: 1px solid #00000000;box-shadow: 0 0 0 0px #00000000;");//隐藏时恢复项目未被选中样式
+			}
+		}
+		//隐藏所有图片功能结束			
+		//显示当前图片功能
+		function showindex() {
+			hideall();//先隐藏所有图片盒子
+			imgs[index].setAttribute("style", "opacity:1");//再将当前图片透明属性设置为1，即不透明显示
+			//再将图片对应的圆点设置为被选中的样式
+			lis[index].setAttribute("style", "background-color: white;border: 1px solid #00000020;box-shadow: 0 0 0 3px #00000020;")
+		}
+		//显示当前图片功能结束			
+		//播放函数实现播放功能
+		function play() {
+			//设置一个定时器,每2秒根据index值显示对应图片,并判断边界值,到达边界值,重置index为0,重头开始显示，并将定时器保持到定时器变量mytime
+			mytime = setInterval(function () {
+				if (index < imgs.length - 1) {//判断是否到达边界值
+					index++;//显示当前图片之后，将当前图片索引值++，变为下一张图片的索引值
+					hideall();//显示图片前，先隐藏所有图片
+					showindex();//并显示当前的图片						
+				}
+				else {
+					index = 0;
+					hideall();//显示图片前，先隐藏所有图片
+					showindex();//如果没有达到边界值，显示当前图片						
+				}
+			}, 3000);
+		}
+		//播放函数功能结束		
+		//设置停止播放
+		function stop() {
+			clearInterval(mytime);
+		}
+		//停止播放设置结束			
+		//鼠标移入图片，停止播放，移出图片，继续播放功能
+		for (let i = 0; i < imgs.length; i++) {
+			imgs[i].addEventListener("mouseover", stop);
+			imgs[i].addEventListener("mouseleave", play);
+		}
+		//鼠标移入图片停止播放，移出继续播放功能结束			
+		//圆点功能实现
+		//显示鼠标选中圆点项目对应的图片功能
+		for (let i = 0; i < lis.length; i++) {
+			lis[i].addEventListener("mouseover", showselect);
+			lis[i].addEventListener("mouseleave", play);
+		}
+		//显示鼠标选中圆点项目对应的图片功能结束		
+		//显示鼠标当前选中圆点对应的图片
+		function showselect() {
+			stop();
+			index = this.dataindex;
+			showindex();
+		}
+		//圆点项目显示对应图片功能实现结束			
+		//左右控制播放功能实现
+		//实现左切换功能
+		let boxleft = document.querySelector(".box-left");
+		boxleft.addEventListener("click", function () {
+			stop();
+			hideall();
+			index--;
+			if (index >= 0) {//判断前一张的边界值
+				showindex();
+			}
+			else {
+				index = imgs.length - 1;
+				showindex();
+			}
+			play();
+		});
+		//实现左切换功能结束			
+		//实现右切换功能
+		let boxright = document.querySelector(".box-right");
+		boxright.addEventListener("click", function () {
+			stop();//停止播放
+			hideall();
+			index++;
+			if (index <= imgs.length - 1) {//判断后一张的边界值					
+				showindex();//显示index对应的当前图片					
+			}
+			else {
+				index = 0;
+				showindex();//显示index对应的当前图片					
+			}
+			play();
+		});
+		//实现右切换功能结束			
+	</script>
+</body>
+
+</html>

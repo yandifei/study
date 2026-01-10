@@ -1,0 +1,621 @@
+/* --- 基础重置与通用样式 --- */
+* {
+    /* 移除默认外边距 */
+    margin: 0;
+    /* 移除默认内边距 */
+    padding: 0;
+    /* 使用 border-box 盒模型 */
+    box-sizing: border-box;
+}
+
+body {
+    /* 设置中文字体 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 整体紫色背景 */
+    background-color: #cb60b3;
+    /* 默认文字颜色 */
+    color: #000;
+    /* 行高 */
+    line-height: 1.5;
+    /* 启用 Flex 布局，实现全高布局 */
+    display: flex;
+    /* 垂直排列 */
+    flex-direction: column;
+    /* 最小高度占满视口 */
+    min-height: 100vh;
+}
+
+/* --- 主容器（白色主体区域） --- */
+.container {
+    /* 左上圆角 */
+    border-top-left-radius: 25px;
+    /* 右上圆角 */
+    border-top-right-radius: 25px;
+    /* 白色背景 */
+    background-color: #ffffff;
+    /* 固定宽度 */
+    width: 1200px;
+    /* 水平居中 */
+    margin: 0 auto;
+    /* 占满 body 剩余垂直空间 */
+    flex: 1;
+    /* 内部垂直 Flex 布局 */
+    display: flex;
+    /* 子元素垂直排列 */
+    flex-direction: column;
+}
+
+/* --- 顶部工具条（登录/注册等） --- */
+.header {
+    /* 固定高度 */
+    height: 40px;
+}
+
+.header>.container {
+    /* 占满 header 高度 */
+    height: 100%;
+    /* 固定宽度 */
+    width: 1200px;
+    /* Flex 布局 */
+    display: flex;
+    /* 右对齐 */
+    justify-content: flex-end;
+    /* 底部对齐 */
+    align-items: flex-end;
+    /* 下内边距 */
+    padding-bottom: 5px;
+    /* 右内边距 */
+    padding-right: 10px;
+    /* 小号字体 */
+    font-size: small;
+    /* 设置背景颜色 */
+    background-color: #cb60b3;
+}
+
+.header ul {
+    /* 去除列表符号 */
+    list-style: none;
+    /* 横向排列 */
+    display: flex;
+    /* 项间距 */
+    gap: 15px;
+}
+
+.header>.container>ul>li>a {
+    /* 白色文字 */
+    color: #ffffff;
+    /* 去除下划线 */
+    text-decoration: none;
+}
+
+.header>.container>ul>li>a:hover {
+    /* 悬停时变黑 */
+    color: #000;
+}
+
+.header>.container>ul>.line {
+    /* 分隔线“|”颜色 */
+    color: #ffffff;
+}
+
+/* --- 头部区域（logo + 购物车） --- */
+.header-top {
+    /* 固定高度 */
+    height: 150px;
+    /* 内外边距 */
+    padding: 10px 20px;
+}
+
+.header-top-in {
+    /* 占满高度 */
+    height: 100%;
+    /* 占满宽度 */
+    width: 100%;
+    /* Flex 布局 */
+    display: flex;
+    /* 两端对齐 */
+    justify-content: space-between;
+    /* 垂直居中 */
+    align-items: center;
+}
+
+.top-header {
+    /* 横向排列 logo 和 stone 图 */
+    display: flex;
+    /* 垂直居中 */
+    align-items: center;
+    /* 两端分布 */
+    justify-content: space-between;
+    /* 左侧占 65% */
+    width: 65%;
+}
+
+.logo,
+.left-head {
+    /* Flex 对齐 */
+    display: flex;
+    /* 垂直居中 */
+    align-items: center;
+}
+
+.logo img,
+.left-head img {
+    /* 去除图片底部间隙 */
+    display: block;
+    /* 不超出容器高度 */
+    max-height: 100%;
+}
+
+.top-header-in {
+    /* 右侧购物车占 35% */
+    width: 35%;
+    /* Flex 布局 */
+    display: flex;
+    /* 靠右对齐 */
+    justify-content: flex-end;
+}
+
+.shop {
+    /* 购物车图标与文字横向排列 */
+    display: flex;
+    /* 垂直居中 */
+    align-items: center;
+}
+
+.shop-info {
+    /* 占满高度 */
+    height: 100%;
+    /* 微调文字垂直位置 */
+    padding-top: 5%;
+}
+
+.shop div a:nth-child(1) {
+    /* “购物车”文字颜色 */
+    color: #631261;
+    /* 字号 */
+    font-size: 16px;
+    /* 加粗 */
+    font-weight: bold;
+    /* 与下方间距 */
+    margin-bottom: 4px;
+    /* 去除下划线 */
+    text-decoration: none;
+}
+
+.shop div p:nth-child(2) {
+    /* 商品数量与价格字号 */
+    font-size: 14px;
+    /* 上下间距 */
+    margin: 4px 0;
+}
+
+.shop div a:nth-child(3) {
+    /* “查看购物车”颜色 */
+    color: #c75dc4;
+    /* 字号 */
+    font-size: 16px;
+    /* 更粗 */
+    font-weight: bolder;
+    /* 去除下划线 */
+    text-decoration: none;
+}
+
+/* --- 导航栏 --- */
+.top-nav {
+    /* 深灰背景 */
+    background-color: #4d4a4a;
+    /* 固定高度 */
+    height: 65px;
+    /* 上下阴影 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 -5px 15px rgba(0, 0, 0, 0.5);
+    /* 保留原有定位上下文 */
+    position: relative;
+}
+
+.top-nav ul {
+    /* 横向排列 */
+    display: flex;
+    /* 底部对齐 */
+    align-items: flex-end;
+    /* 项间距 */
+    gap: 20px;
+    /* 去除列表符号 */
+    list-style: none;
+    /* 水平居中 */
+    justify-content: center;
+    /* 占满高度 */
+    height: 100%;
+}
+
+.top-nav a {
+    /* 块级便于控制高度 */
+    display: block;
+    /* 左右内边距（控制紫色块宽度） */
+    padding: 0 16px;
+    /* 控制紫色块高度 */
+    height: 48px;
+    /* 文字垂直居中 */
+    line-height: 40px;
+    /* 白色文字 */
+    color: #fff;
+    /* 去除下划线 */
+    text-decoration: none;
+}
+
+.top-nav a.active,
+.top-nav a:hover {
+    /* 当前/悬停紫色背景 */
+    background-color: #a336a2;
+    /* 左上圆角 */
+    border-top-left-radius: 8px;
+    /* 右上圆角 */
+    border-top-right-radius: 8px;
+}
+
+/* --- 主内容区 --- */
+.content {
+    /* 占满容器宽度 */
+    width: 100%;
+    /* 居中（备用） */
+    margin: 0 auto;
+    /* 左右分栏 */
+    display: flex;
+    /* 左右间距 */
+    gap: 20px;
+    /* 上下左右内边距 */
+    padding: 20px 17px;
+    /* 与导航栏间距 */
+    margin-top: 20px;
+    /* 占满剩余空间 */
+    flex: 1;
+}
+
+/* --- 左侧边栏 --- */
+.content-left {
+    /* 左侧宽度占比 */
+    width: 32%;
+}
+
+.content-left a {
+    /* 左侧所有链接白色 */
+    color: #fff;
+    /* 去除下划线 */
+    text-decoration: none;
+}
+
+.search {
+    /* Flex 布局容纳输入区与放大镜 */
+    display: flex;
+    /* 垂直居中 */
+    align-items: center;
+    /* 占满宽度 */
+    width: 100%;
+    /* 固定宽高比 */
+    aspect-ratio: 450 / 140;
+    /* 搜索背景图 */
+    background-image: url("../resources/content-left/se.png");
+    /* 不重复 */
+    background-repeat: no-repeat;
+    /* 居中 */
+    background-position: center;
+    /* 覆盖整个区域 */
+    background-size: cover;
+    /* 圆角 */
+    border-radius: 13px;
+    /* 上内边距（微调文字位置） */
+    padding-top: 7px;
+    /* 与下方模块间距 */
+    margin-bottom: 30px;
+}
+
+.search-components {
+    /* 占满高度 */
+    height: 100%;
+    /* 占满宽度 */
+    width: 100%;
+    /* 文字白色 */
+    color: #fff;
+    /* 左内边距 */
+    padding-left: 13px;
+    /* 垂直 Flex 布局 */
+    display: flex;
+    /* 垂直排列 */
+    flex-direction: column;
+    /* 上下两端对齐 */
+    justify-content: space-between;
+    /* 左对齐 */
+    align-items: flex-start;
+}
+
+input[name="shop_search"] {
+    /* 输入框高度占比 */
+    height: 30%;
+    /* 占满宽度 */
+    width: 100%;
+}
+
+/* 左侧四个模块的公共样式 */
+.content-top,
+.content-middle,
+.content-middle-in,
+.content-bottom {
+    /* 白色背景 */
+    background-color: #fff;
+    /* 圆角 */
+    border-radius: 10px;
+    /* 灰色边框 */
+    border: 1.6px solid #4a4a4a;
+    /* 确保底部灰条圆角生效 */
+    overflow: hidden;
+    /* 模块间垂直间距 */
+    margin-bottom: 30px;
+}
+
+/* 今日特惠模块专有样式 */
+.ct-main {
+    /* 图片与文字横向排列 */
+    display: flex;
+    /* 垂直居中 */
+    align-items: center;
+    /* 内边距 */
+    padding: 10px 20px;
+    /* 固定高度 */
+    height: 160px;
+}
+
+.ct-img {
+    /* 图片区域宽度 */
+    width: 45%;
+}
+
+.ct-img img {
+    /* 图片占满容器 */
+    width: 100%;
+    /* 去除底部间隙 */
+    display: block;
+}
+
+.ct-text {
+    /* 占据剩余空间 */
+    flex: 1;
+    /* 占满高度 */
+    height: 100%;
+    /* 文字右对齐 */
+    text-align: right;
+    /* 垂直 Flex 分布文字 */
+    display: flex;
+    flex-direction: column;
+    /* 四行文字平均分布 */
+    justify-content: space-between;
+}
+
+.ct-title {
+    /* 右内边距 */
+    padding-right: 50px;
+    /* 紫色标题 */
+    color: #a336a2;
+    /* 字号 */
+    font-size: 15px;
+    /* 加粗 */
+    font-weight: bold;
+}
+
+.ct-old-price {
+    /* 原价字号 */
+    font-size: 13px;
+    /* 加粗 */
+    font-weight: bold;
+}
+
+.ct-new-price {
+    /* 现价字号 */
+    font-size: 18px;
+    /* 加粗 */
+    font-weight: bold;
+    /* 右内边距 */
+    padding-right: 40px;
+}
+
+.ct-text>a {
+    /* “更多信息”链接颜色 */
+    color: #c040b0;
+    /* 去除下划线 */
+    text-decoration: none;
+    /* 字号 */
+    font-size: 13px;
+    /* 加粗 */
+    font-weight: bold;
+    /* 右内边距 */
+    padding-right: 29px;
+}
+
+/* 其他三个图片模块的图片样式 */
+.content-middle>img,
+.content-middle-in>img,
+.content-bottom>img {
+    /* 占满宽度 */
+    width: 100%;
+    /* 固定高度 */
+    height: 163px;
+    /* 去除底部间隙 */
+    display: block;
+    /* 裁剪填充 */
+    object-fit: cover;
+    /* 图片显示焦点 */
+    object-position: 50% 20%;
+}
+
+/* 所有左侧模块底部灰条公共样式 */
+.ct-bar {
+    /* 深灰背景 */
+    background: #4d4a4a;
+    /* 白色文字 */
+    color: #fff;
+    /* 固定高度 */
+    height: 50px;
+    /* 垂直居中文字 */
+    line-height: 50px;
+    /* 左内边距 */
+    padding-left: 20px;
+    /* 字号 */
+    font-size: 14px;
+}
+
+/* --- 右侧主要内容 --- */
+.content-right {
+    /* 占据剩余宽度 */
+    flex: 1;
+    /* 垂直 Flex 布局 */
+    display: flex;
+    flex-direction: column;
+    /* 子模块间距 */
+    gap: 10px;
+    /* 左内边距 */
+    padding-left: 16px;
+}
+
+.banner img {
+    /* 轮播图占满宽度（修正原 > 选择器错误） */
+    width: 100%;
+    /* 去除底部间隙 */
+    display: block;
+}
+
+.content-right-in {
+    /* 上下左右外边距 */
+    margin: 30px 10px;
+}
+
+.section-title {
+    /* 标题字号 */
+    font-size: 18px;
+    /* 加粗 */
+    font-weight: bold;
+    /* 黑色文字 */
+    color: #000;
+    /* 与商品列表间距 */
+    margin-bottom: 20px;
+}
+
+.section-title .highlight {
+    /* 高亮文字颜色（如“订婚”） */
+    color: #d653d5;
+}
+
+.product-list {
+    /* 横向排列商品 */
+    display: flex;
+    /* 两端对齐（4 个商品平均分布） */
+    justify-content: space-between;
+    /* 占满宽度 */
+    width: 100%;
+    /* 左右内边距 */
+    padding: 0 35px;
+}
+
+.product-item {
+    /* 商品文字居中 */
+    text-align: center;
+}
+
+.p-img-box {
+    /* 正方形图片框 */
+    aspect-ratio: 1 / 1;
+    /* 深色阴影 */
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.9);
+    /* 与下方文字间距 */
+    margin-bottom: 10px;
+}
+
+.p-img-box img {
+    /* 图片占满框 */
+    width: 100%;
+    /* 图片占满框 */
+    height: 100%;
+    /* 裁剪填充 */
+    object-fit: cover;
+    /* 去除底部间隙 */
+    display: block;
+}
+
+.p-price {
+    /* 价格文字字号 */
+    font-size: 14px;
+    /* 黑色 */
+    color: #000;
+    /* 加粗 */
+    font-weight: bold;
+    /* 与操作区间距 */
+    margin-bottom: 5px;
+}
+
+.p-price b {
+    /* 实际价格稍小 */
+    font-size: 13px;
+    /* 加粗 */
+    font-weight: bold;
+}
+
+.p-action {
+    /* 操作区字号 */
+    font-size: 16px;
+    /* 默认灰色 */
+    color: #ccc;
+}
+
+.p-action a {
+    /* 链接紫粉色 */
+    color: #d653d5;
+    /* 去除下划线 */
+    text-decoration: none;
+}
+
+.p-action a:hover {
+    /* 悬停下划线 */
+    text-decoration: underline;
+}
+
+.p-action span {
+    /* “|”分隔符间距 */
+    margin: 0 8px;
+    /* 黑色 */
+    color: #000;
+    /* 加粗 */
+    font-weight: bold;
+}
+
+.content-right-bottom a {
+    /* 文字区链接默认黑色 */
+    color: #000;
+    /* 去除下划线 */
+    text-decoration: none;
+}
+
+.content-right-bottom a:hover {
+    /* 悬停变紫色 */
+    color: #cb60b3;
+}
+
+.content-right-bottom>h3 {
+    /* 标题与正文间距 */
+    margin-bottom: 10px;
+}
+
+/* --- 底部 --- */
+.footer {
+    /* 底部紫色背景 */
+    background-color: #cf3da3;
+    /* 文字居中 */
+    text-align: center;
+    /* 上内边距 */
+    padding-top: 40px;
+}
+
+.footer>a {
+    /* 白色文字 */
+    color: #fff;
+    /* 去除下划线 */
+    text-decoration: none;
+    /* 小号字体 */
+    font-size: smaller;
+}

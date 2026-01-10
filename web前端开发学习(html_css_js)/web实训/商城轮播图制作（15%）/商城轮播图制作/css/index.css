@@ -1,0 +1,101 @@
+/* 全球统一 */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* 轮播图 */
+.carousel {
+    width: 570px;
+    height: 470px;
+    margin: 0 auto;
+    position: relative;
+    top: 20px;
+}
+
+.carousel-img {
+    width: 570px;
+    height: 470px;
+    /*设置过渡效果*/
+    transition: all 1.5s;
+    /* 绝对定位，让图片堆叠 */
+    position: absolute;
+    /* 设置其他图片透明度为1 */
+    opacity: 0;
+}
+
+/* 左右滚动按钮通用样式 */
+.turn {
+    width: 35px;
+    height: 50px;
+    background-color: #00000020;
+    position: absolute;
+    line-height: 50px;
+    text-align: center;
+    top: 210px;
+    color: #00000050;
+}
+
+/* 左边 */
+.turn-left {
+    border-radius: 0 25px 25px 0;
+    top: 210px;
+}
+
+/* 右边 */
+.turn-right {
+    border-radius: 25px 0 0 25px;
+    right: -20px;
+}
+
+
+/* 状态选择器 */
+.turn-left:hover {
+    background-color: #00000050;
+    color: white;
+    cursor: pointer;
+}
+
+.turn-right:hover {
+    background-color: #00000050;
+    color: white;
+    cursor: pointer;
+}
+
+/* div的选择框（轮播图的小圆点） */
+.carousel-select-ul {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+}
+
+/* 选择里列表 */
+.carousel-select-ul-li {
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #00000050;
+    border-radius: 5px;
+    /* 浮动，实现列表圆点都是横向的 */
+    float: left;
+    margin: 3px;
+    border: 1px solid #00000000;
+}
+
+/* 鼠标悬浮小圆点 */
+.carousel-select-ul-li:hover {
+    background-color: white;
+    box-shadow: 0 0 0 3px #00000020;
+    cursor: pointer;
+}
+
+/* 图片子孩子的透明度，配合js使用 */
+.carousel-img:nth-child(1) {
+    opacity: 1;
+}
+
+/* 图片子孩子的透明度，配合js使用 */
+.carousel-select-ul-li:nth-child(1) {
+    background-color: white;
+    box-shadow: 0 0 0 3px #00000020;
+}
