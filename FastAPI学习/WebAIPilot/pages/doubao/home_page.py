@@ -11,7 +11,6 @@ from playwright.async_api import Page
 from pages.base_page import BasePage
 from utils import ConfigManager, info, debug
 
-
 class HomePage(BasePage):
     """豆包主界面"""
 
@@ -39,7 +38,7 @@ class HomePage(BasePage):
         self.img_hook_list = []
         self.cm = config_manager
 
-    """问答相关方法"""
+    """对话操作"""
     async def ask(self, question: str, files: str | Path | FilePayload | Sequence[str | Path] | Sequence[FilePayload] | None = None):
         """
         在豆包主页上执行提问操作，支持文本和文件上传（异步版本）
@@ -264,7 +263,7 @@ class HomePage(BasePage):
             conversation_list.append(await item.text_content())
         return conversation_list
 
-    """模式控制方法"""
+    """对话模式控制"""
     async def deep_thinking_mode(self, switch: bool = True) -> None:
         """
         控制深度思考模式的开关
@@ -344,7 +343,6 @@ class HomePage(BasePage):
             # 判断是否处于开启
             if await self.page.get_by_role("button", name="翻译").get_attribute("data-checked") == "true":
                 await self.page.get_by_role("button", name="翻译").click()
-
 
     # 还有更多模型，这个就不搞了，太多了
     pass

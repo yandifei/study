@@ -66,7 +66,7 @@ app = FastAPI(lifespan=lifespan)
 # 关键：将硬盘目录映射到网络路径 "/outputs"
 app.mount("/outputs", StaticFiles(directory=get_root() / "outputs"), name="outputs")
 
-"""服务器提供的服务"""
+"""系统接口"""
 @app.get("/")
 def index():
     return {
@@ -183,13 +183,17 @@ async def ask_post(ask_model: AskModel):
         return {
             "error": "大哥，你输入问题呀"
         }
-    # 提问（转成字典并解引用）
-    text_answer, img_urls =  await df.ask(**ask_model.model_dump())
-
-    return {
-        "AI回复": text_answer,
-        "图片链接": img_urls
-    }
+    try:
+        # 提问（转成字典并解引用）
+        text_answer, img_urls =  await df.ask(**ask_model.model_dump())
+        return {
+            "AI回复": text_answer,
+            "图片链接": img_urls
+        }
+    except Exception as e:
+        return {
+            "error": f"{e}"
+        }
 
 # 根据下标获得对话内容（目前只能（默认）获取最后一个）
 @app.get("/answer")
@@ -200,6 +204,49 @@ async def answer(answer_index: int = 0):
         "AI回复": text_answer,
         "图片链接": img_urls
     }
+
+# 深度思考
+@app.get("/deep_think")
+@app.get("/deep_think/{switch}")
+async def deep_think(switch: bool = True):
+    df: DoubaoFlows = app.state.doubao_flows
+    await df.home_page.deep_thinking_mode(switch)
+    if switch:
+        return {"info": "已开启深度思考模式"}
+    else:
+        return {"error": "已关闭深度思考模式"}
+# 图片生成模式
+@app.get("/image_generation")
+@app.get("/image_generation/{switch}")
+async def image_generation(switch: bool = True):
+    df: DoubaoFlows = app.state.doubao_flows
+    await df.home_page.image_generation_mode(switch)
+    if switch:
+        return {"info": "已开启图片生成模式"}
+    else:
+        return {"error": "已关闭图片生成模式"}
+
+# 帮我写作模式
+@app.get("/help_me_write")
+@app.get("/help_me_write/{switch}")
+async def help_me_write(switch: bool = True):
+    df: DoubaoFlows = app.state.doubao_flows
+    await df.home_page.help_me_write_mode(switch)
+    if switch:
+        return {"info": "已开启帮我写作模式"}
+    else:
+        return {"error": "已关闭帮我写作模式"}
+
+# 视频生成模式
+@app.get("/video_generation")
+@app.get("/video_generation/{switch}")
+async def video_generation(switch: bool = True):
+    df: DoubaoFlows = app.state.doubao_flows
+    await df.home_page.video_generation_mode(switch)
+    if switch:
+        return {"info": "已开启视频生成模式"}
+    else:
+        return {"error": "已关闭视频生成模式"}
 
 """会话管理(增删改查)"""
 # 创建新会话

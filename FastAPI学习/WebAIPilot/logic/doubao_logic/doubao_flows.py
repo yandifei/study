@@ -86,8 +86,6 @@ class DoubaoFlows:
         # 修改配置为原来配置文件中的配置
         self.cm.config_data["playwright"]["launch_options"].headless = headless
 
-
-
     """对话操作"""
     async def ask(self, question: str, files: str | Path | FilePayload | Sequence[str | Path] | Sequence[FilePayload] | None = None):
         """业务方法示例"""
