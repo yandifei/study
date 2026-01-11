@@ -30,8 +30,8 @@ async def main():
     # 创建deepseek工作流实例
     df =  await DeepseekFlows.create(config_manager, playwright_factory)
     # # 提问
-    # text_answer = await df.ask("你好")
-    # info(f"答案：{text_answer}")
+    text_answer = await df.ask("你好", "data/验证码1.jpg")
+    info(f"答案：{text_answer}")
     # text_answer = await df.ask("你能干啥？20字")
     # info(f"答案：{text_answer}")
     # # 获取最后一次的答案
@@ -50,8 +50,8 @@ async def main():
     # # 删除会话
     # await df.home_page.del_conversation(titles[0])
     # await df.home_page.page.wait_for_timeout(3000000)
-    await df.deep_thinking_mode()
-    await df.network_mode()
+    # await df.deep_thinking_mode()
+    # await df.network_mode()
     await df.home_page.page.wait_for_timeout(10000)
     # 关闭Playwright工厂实例（手动好看，但也能自动管理的）
     await playwright_factory.close_factory()

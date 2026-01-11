@@ -15,6 +15,7 @@ from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 # 自己的模块
 import utils.path_utils
+from logic.deepseek_logic.deepseek_flows import DeepseekFlows
 from models import AskModel
 from utils import logger_manager, info, critical, warning  # 导入日志记录器模块
 from utils import ConfigManager # 导入配置管理模块
@@ -48,12 +49,14 @@ async def lifespan(app: FastAPI):
     """使用异步生命周期管理"""
     # 创建Playwright工厂实例
     playwright_factory = PlaywrightFactory(config_manager.config_data["playwright"]["launch_options"],config_manager.config_data["playwright"]["context_options"])
-    # 创建豆包工作流实例
-    doubao_flows =  await DoubaoFlows.create(config_manager, playwright_factory)
+    # # 创建豆包工作流实例
+    # doubao_flows =  await DoubaoFlows.create(config_manager, playwright_factory)
+    # 创建deepseek工作流实例
+    ai_task_flows = deepseek_flows =  await DeepseekFlows.create(config_manager, playwright_factory)
     # 存储在应用程序的状态
     app.state.config_manager = config_manager
     app.state.playwright_factory = playwright_factory
-    app.state.doubao_flows = doubao_flows
+    app.state.ai_task_flows = ai_task_flows
     """干活"""
     yield
     """资源释放"""
@@ -78,7 +81,7 @@ def index():
 @app.get("/screenshots",  response_class=FileResponse)
 async def screenshots():
     # 直接从app.state获取对象
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     await df.home_page.page.screenshot(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
     return FileResponse(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
 
@@ -86,7 +89,7 @@ async def screenshots():
 @app.websocket("/ws/monitor")
 async def ws_monitor(websocket: WebSocket):
     await websocket.accept()
-    page = app.state.doubao_flows.home_page.page
+    page = app.state.ai_task_flows.home_page.page
 
     try:
         while True:
@@ -109,7 +112,7 @@ async def ws_monitor(websocket: WebSocket):
 @app.get("/status",  response_class=HTMLResponse)
 async def status():
     # # 直接从app.state获取对象
-    # df: DoubaoFlows = app.state.doubao_flows
+    # df: DoubaoFlows = app.state.ai_task_flows
     # try:
     #     # FastAPI 内部调用 requests 访问 9222 端口
     #     response = requests.get("http://127.0.0.1:9222/json", timeout=10)
@@ -120,7 +123,7 @@ async def status():
         <html>
         <head><title>实时监控</title></head>
         <body>
-            <canvas id="display" style="width:100%; height:100vh; display:block;"></canvas>
+            <canvas id="display" style="width:100%; height:100vh; display:block; object-fit: contain;"></canvas>
             <script>
                 // 获取Canvas和上下文
                 const canvas = document.getElementById('display');
@@ -162,33 +165,46 @@ async def status():
 # get文本对话
 @app.get("/ask/{question}")
 async def ask_get(question: str):
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     if question == "":
         return {
             "error": "大哥，你输入问题呀"
         }
-    # 提问（转成字典并解引用）
-    text_answer, img_urls = await df.ask(question)
+    # 提问（结果可能是元组或文本）
+    result = await df.ask(question)
+    # 判断返回结果是否为元组
+    if isinstance(result, tuple):
+        text_answer, img_urls = result
+        return {
+            "AI回复": text_answer,
+            "图片链接": img_urls
+        }
     return {
-        "AI回复": text_answer,
-        "图片链接": img_urls
+        "AI回复": result
     }
+
 
 # post对话
 @app.post("/ask")
 async def ask_post(ask_model: AskModel):
     # 直接从app.state获取对象
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     if ask_model.question == "":
         return {
             "error": "大哥，你输入问题呀"
         }
     try:
-        # 提问（转成字典并解引用）
-        text_answer, img_urls =  await df.ask(**ask_model.model_dump())
+        # 提问（问题转成字典并解引用，结果可能是元组或文本）
+        result = await df.ask(**ask_model.model_dump())
+        # 判断返回结果是否为元组
+        if isinstance(result, tuple):
+            text_answer, img_urls = result
+            return {
+                "AI回复": text_answer,
+                "图片链接": img_urls
+            }
         return {
-            "AI回复": text_answer,
-            "图片链接": img_urls
+            "AI回复": result
         }
     except Exception as e:
         return {
@@ -198,7 +214,7 @@ async def ask_post(ask_model: AskModel):
 # 根据下标获得对话内容（目前只能（默认）获取最后一个）
 @app.get("/answer")
 async def answer(answer_index: int = 0):
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     text_answer, img_urls = await df.get_last_answer()
     return {
         "AI回复": text_answer,
@@ -209,7 +225,7 @@ async def answer(answer_index: int = 0):
 @app.get("/deep_think")
 @app.get("/deep_think/{switch}")
 async def deep_think(switch: bool = True):
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     await df.home_page.deep_thinking_mode(switch)
     if switch:
         return {"info": "已开启深度思考模式"}
@@ -219,7 +235,7 @@ async def deep_think(switch: bool = True):
 @app.get("/image_generation")
 @app.get("/image_generation/{switch}")
 async def image_generation(switch: bool = True):
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     await df.home_page.image_generation_mode(switch)
     if switch:
         return {"info": "已开启图片生成模式"}
@@ -230,7 +246,7 @@ async def image_generation(switch: bool = True):
 @app.get("/help_me_write")
 @app.get("/help_me_write/{switch}")
 async def help_me_write(switch: bool = True):
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     await df.home_page.help_me_write_mode(switch)
     if switch:
         return {"info": "已开启帮我写作模式"}
@@ -241,7 +257,7 @@ async def help_me_write(switch: bool = True):
 @app.get("/video_generation")
 @app.get("/video_generation/{switch}")
 async def video_generation(switch: bool = True):
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     await df.home_page.video_generation_mode(switch)
     if switch:
         return {"info": "已开启视频生成模式"}
@@ -252,14 +268,14 @@ async def video_generation(switch: bool = True):
 # 创建新会话
 @app.post("/conversations")
 async def create_conversation():
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     return await df.create_conversation()
 
 # 删除会话
 @app.delete("/conversations")
 @app.delete("/conversations/{identifier}")
 async def delete_conversation(identifier: int |str = 0):
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     # 判断是否为数字
     if isinstance(identifier, str) and identifier.isdigit():
         identifier = int(identifier)
@@ -273,7 +289,7 @@ async def delete_conversation(identifier: int |str = 0):
 @app.put("/conversations")
 @app.put("/conversations/{identifier}")
 async def switch_conversation(identifier: int |str = 0):
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     # 判断是否为数字
     if isinstance(identifier, str) and identifier.isdigit():
         identifier = int(identifier)
@@ -286,13 +302,13 @@ async def switch_conversation(identifier: int |str = 0):
 # 获得会话标题列表
 @app.get("/conversations/title/list")
 async def get_conversation_title_list():
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     return await df.get_conversation_title_list()
 
 # 获取会话数量
 @app.get("/conversations/count")
 async def get_conversation_count():
-    df: DoubaoFlows = app.state.doubao_flows
+    df: DoubaoFlows = app.state.ai_task_flows
     return await df.get_conversation_count()
 
 
