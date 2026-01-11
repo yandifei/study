@@ -133,6 +133,15 @@ class DeepseekFlows:
         """获取会话列表数量"""
         return await self.home_page.get_conversation_count()
 
+    """对话模式"""
+    async def deep_thinking_mode(self, switch: bool = True):
+        """切换对话模式"""
+        return await self.home_page.deep_thinking_mode(switch)
+
+    async def network_mode(self, switch: bool = True):
+        """切换网络模式"""
+        return await self.home_page.network_mode(switch)
+
     # async def close(self):
     #     """异步关闭浏览器"""
     #     if self.browser:
