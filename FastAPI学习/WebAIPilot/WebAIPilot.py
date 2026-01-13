@@ -5,23 +5,20 @@
 # 内置库
 import asyncio
 from contextlib import asynccontextmanager
-from typing import Union
-
-import requests
 # 三方库
 import uvicorn
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 # 自己的模块
-import utils.path_utils
-from logic.deepseek_logic.deepseek_flows import DeepseekFlows
 from models import AskModel
 from utils import logger_manager, info, critical, warning  # 导入日志记录器模块
 from utils import ConfigManager # 导入配置管理模块
 from utils.path_utils import get_root
 from utils.playwright_factory.playwright_factory import PlaywrightFactory
 from logic.doubao_logic.doubao_flows import DoubaoFlows
+from logic.deepseek_logic.deepseek_flows import DeepseekFlows
+from logic.skywork_logic.skywork_flows import SkyworkFlows
 
 # # 忽略 asyncio 关于未关闭传输的 ResourceWarning（工厂会自动回收资源）
 # warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed transport")
@@ -49,10 +46,19 @@ async def lifespan(app: FastAPI):
     """使用异步生命周期管理"""
     # 创建Playwright工厂实例
     playwright_factory = PlaywrightFactory(config_manager.config_data["playwright"]["launch_options"],config_manager.config_data["playwright"]["context_options"])
-    # # 创建豆包工作流实例
-    # doubao_flows =  await DoubaoFlows.create(config_manager, playwright_factory)
-    # 创建deepseek工作流实例
-    ai_task_flows = deepseek_flows =  await DeepseekFlows.create(config_manager, playwright_factory)
+    # 根据配置创建工作流实例
+    if config_manager.config_data["AI"]["startup_type"] == "deepseek":
+        # 创建deepseek工作流实例
+        ai_task_flows =  await DeepseekFlows.create(config_manager, playwright_factory)
+    elif config_manager.config_data["AI"]["startup_type"] == "doubao":
+        # 创建豆包工作流实例
+        ai_task_flows =  await DoubaoFlows.create(config_manager, playwright_factory)
+    elif config_manager.config_data["AI"]["startup_type"] == "skywork":
+        # 创建豆包工作流实例
+        ai_task_flows =  await SkyworkFlows.create(config_manager, playwright_factory)
+    else:
+        critical("配置中存在不支持的AI任务类型")
+        exit()   # 退出程序
     # 存储在应用程序的状态
     app.state.config_manager = config_manager
     app.state.playwright_factory = playwright_factory

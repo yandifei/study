@@ -4,7 +4,6 @@
 """
 # 内置库
 import asyncio
-import warnings
 # 自己的模块
 from utils import logger_manager, info, critical    # 导入日志记录器模块
 from utils import ConfigManager # 导入配置管理模块
@@ -12,6 +11,7 @@ from utils.playwright_factory.playwright_factory import PlaywrightFactory
 from logic.deepseek_logic.deepseek_flows import DeepseekFlows
 from logic.doubao_logic.doubao_flows import DoubaoFlows
 
+# import warnings
 # # 忽略 asyncio 关于未关闭传输的 ResourceWarning（工厂会自动回收资源）
 # warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed transport")
 # warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed event loop")
