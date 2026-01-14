@@ -20,6 +20,9 @@ if torch.cuda.is_available():
 else:
     print("训练使用CPU")
 
+print(f"cuDNN 是否可用: {torch.backends.cudnn.is_available()}")
+print(f"cuDNN 版本: {torch.backends.cudnn.version()}")
+
 """
 # 卸载当前PyTorch
 pip uninstall torch torchvision torchaudio
