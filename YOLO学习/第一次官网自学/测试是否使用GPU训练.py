@@ -1,0 +1,42 @@
+"""
+需要注意的点是如果直接使用官网的 pip install ultralytics 指令下载的pytorch是cpu版本
+去pytorch官网https://pytorch.org/get-started/locally/找下载指令
+我的下载指令(5080)
+我的显卡cuda版本是CUDA Version: 13.0，但是我pip的是12.6版本，显示我不兼容(我显卡版本太新了，pytorch的cuda太垃圾)
+pytorch cuda 12.9下载指令: pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129
+这东西3.6GB，cpu版本的一秒下好
+这个指令的报错能提示PyTorch版本是否兼容
+"""
+import torch
+
+# 查看当前PyTorch版本
+print(f"PyTorch版本:{torch.__version__}")
+
+# 检查GPU是否可用
+print("CUDA 是否可以使用:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("训练使用的GPU设备:", torch.cuda.get_device_name(0))
+    print("训练使用的GPU数量:", torch.cuda.device_count())
+else:
+    print("训练使用CPU")
+
+print(f"cuDNN 是否可用: {torch.backends.cudnn.is_available()}")
+print(f"cuDNN 版本: {torch.backends.cudnn.version()}")
+
+"""
+# 卸载当前PyTorch
+pip uninstall torch torchvision torchaudio
+
+# 检查NVIDIA驱动
+nvidia-smi
+
+# 检查CUDA版本
+nvcc --version
+
+开放神经网络交流
+Open Neural Network Exchange = onnx模型
+
+onnx: Open Neural Network Exchange 格式的核心库，用于模型转换和操作
+onnxslim: 用于优化和压缩 ONNX 模型的工具
+onnxruntime-gpu: ONNX 模型的 GPU 加速推理运行时（如果您有 CUDA 环境）
+"""
