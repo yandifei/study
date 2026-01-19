@@ -1,4 +1,4 @@
-"""
+"""B站视频和yolo官网的大坑！！！！踏马的
 需要注意的点是如果直接使用官网的 pip install ultralytics 指令下载的pytorch是cpu版本
 去pytorch官网https://pytorch.org/get-started/locally/找下载指令
 我的下载指令(5080)
@@ -30,7 +30,7 @@ pip uninstall torch torchvision torchaudio
 # 检查NVIDIA驱动
 nvidia-smi
 
-# 检查CUDA版本
+# 检查CUDA版本（如果下载了nvcc工具才有效，一般下载了ultralytics就不用了，因为内置了C++的深度学习和cuda库）
 nvcc --version
 
 开放神经网络交流
