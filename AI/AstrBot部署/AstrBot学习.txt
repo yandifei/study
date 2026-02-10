@@ -1,0 +1,22 @@
+使用指令：
+docker compose -f astrbot_napcat_shipyard.yml up -d
+
+# 执行过程（Docker内部完成）：
+1. 创建网络：astrbot_network
+2. 拉取镜像（如果本地没有）：
+   - soulter/astrbot:latest
+   - soulter/shipyard-bay:latest
+3. 创建容器：
+   - astrbot
+   - astrbot_shipyard
+4. 配置容器：
+   - 设置环境变量
+   - 挂载数据卷
+   - 映射端口
+   - 连接到网络
+5. 启动容器
+
+docker部署完成
+
+
+self_learning插件密码：self_learning_pwd

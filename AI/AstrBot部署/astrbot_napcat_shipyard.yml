@@ -1,0 +1,73 @@
+# 部署AstrBot接入 QQ NapCat、沙箱，使用compose 文件一键
+services:
+  astrbot:
+    environment:
+      - TZ=Asia/Shanghai
+    image: soulter/astrbot:latest
+    container_name: astrbot
+    restart: unless-stopped
+    ports:
+      - "6185:6185"      # AstrBot WebUI（必选）
+      - "7833:7833"      # 自主学习插件端口
+      #- "6195:6195"     # 可选，其他端口
+      #- "6199:6199"      # QQ WebSocket
+    volumes:
+      - ./data:/AstrBot/data
+      - /etc/localtime:/etc/localtime:ro  # 时间同步
+    networks:
+      - astrbot_network
+    # 启动的依赖关系
+    depends_on:
+          - napcat
+          - shipyard
+
+  napcat:
+    environment:
+      - NAPCAT_UID=${NAPCAT_UID:-1000}
+      - NAPCAT_GID=${NAPCAT_GID:-1000}
+      - MODE=astrbot
+    ports:
+      - "6099:6099"
+    container_name: napcat
+    restart: unless-stopped
+    image: mlikiowa/napcat-docker:latest
+    volumes:
+      - ./data:/AstrBot/data
+      - ./napcat/config:/app/napcat/config
+      - ./ntqq:/app/.config/QQ
+    networks:
+      - astrbot_network
+    #mac_address: "02:42:ac:11:00:02"  # 可选，取消注释可固定MAC地址
+
+  shipyard:
+    image: soulter/shipyard-bay:latest
+    container_name: astrbot_shipyard
+    restart: unless-stopped
+    ports:
+    # 8156端口：用于API访问（对外公开，供agent访问）
+    - "8156:8156"
+    # 8157端口：用于仪表盘（dashboard）访问（可选，可以隐藏在NAT后面）
+    # Dashboard 端口 (8157)：强烈建议不要直接暴露到公网,可以使用以下方式更安全地访问："127.0.0.1:8157:8157"
+    # 或者使用反向代理（推荐）
+    # 不映射此端口，通过 Nginx/Caddy 等反向代理访问
+    - "127.0.0.1:8157:8157"
+    environment:
+      - PORT=8156
+      - DATABASE_URL=sqlite+aiosqlite:///./data/bay.db
+      - ACCESS_TOKEN=yandifei  # ⚠️ 请修改为强密码！默认密码：secret-token
+      - MAX_SHIP_NUM=10
+      - BEHAVIOR_AFTER_MAX_SHIP=reject
+      - DOCKER_IMAGE=soulter/shipyard-ship:latest
+      - DOCKER_NETWORK=astrbot_network
+      - SHIP_DATA_DIR=./data/shipyard/ship_mnt_data
+      - DEFAULT_SHIP_CPUS=1.0
+      - DEFAULT_SHIP_MEMORY=512m
+    volumes:
+      - ./data/shipyard/bay_data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro  # 必须！让Shipyard能管理Docker
+    networks:
+      - astrbot_network
+
+networks:
+  astrbot_network:
+    driver: bridge
