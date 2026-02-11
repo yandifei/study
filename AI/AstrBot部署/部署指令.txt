@@ -1,0 +1,15 @@
+使用指令：
+docker-compose -f astrbot_napcat_shipyard.yml up -d
+
+self_learning插件密码：self_learning_pwd
+
+禁漫插件问题(自己下载库)：
+cd data/plugins/astrbot_plugin_jm_cosmos
+pip install -r requirements.txt
+
+其他插件问题:
+pip install playwright
+playwright install
+
+TTS和STT语音
+pip install openai-whisper
