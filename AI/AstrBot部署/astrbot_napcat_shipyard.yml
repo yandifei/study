@@ -14,27 +14,56 @@ services:
     volumes:
       - ./data:/AstrBot/data
       - /etc/localtime:/etc/localtime:ro  # 时间同步
+    # 下载库的指令
+    command: >
+      sh -c "
+      pip install playwright &&
+      playwright install-deps &&
+      playwright install &&
+      pip install -r https://github.com/GEMILUXVII/astrbot_plugin_jm_cosmos/raw/refs/heads/main/requirements.txt &&
+      pip install openai-whisper &&
+      cd /AstrBot &&
+      python main.py
+      "
+
     networks:
       - astrbot_network
     # 启动的依赖关系
     depends_on:
-          - napcat
           - shipyard
 
-  napcat:
+  napcat1:
     environment:
       - NAPCAT_UID=${NAPCAT_UID:-1000}
       - NAPCAT_GID=${NAPCAT_GID:-1000}
       - MODE=astrbot
     ports:
       - "6099:6099"
-    container_name: napcat
+    container_name: napcat1
     restart: unless-stopped
     image: mlikiowa/napcat-docker:latest
     volumes:
-      - ./data:/AstrBot/data
-      - ./napcat/config:/app/napcat/config
-      - ./ntqq:/app/.config/QQ
+      - ./napcat1/data:/AstrBot/data
+      - ./napcat1/config:/app/napcat/config
+      - ./napcat1/ntqq:/app/.config/QQ
+    networks:
+      - astrbot_network
+    #mac_address: "02:42:ac:11:00:02"  # 可选，取消注释可固定MAC地址
+  
+  napcat2:
+    environment:
+      - NAPCAT_UID=${NAPCAT_UID:-1000}
+      - NAPCAT_GID=${NAPCAT_GID:-1000}
+      - MODE=astrbot
+    ports:
+      - "6100:6099"
+    container_name: napcat2
+    restart: unless-stopped
+    image: mlikiowa/napcat-docker:latest
+    volumes:
+      - ./napcat2/data:/AstrBot/data
+      - ./napcat2/config:/app/napcat/config
+      - ./napcat2/ntqq:/app/.config/QQ
     networks:
       - astrbot_network
     #mac_address: "02:42:ac:11:00:02"  # 可选，取消注释可固定MAC地址
