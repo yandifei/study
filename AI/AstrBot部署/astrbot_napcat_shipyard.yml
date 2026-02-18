@@ -14,17 +14,6 @@ services:
     volumes:
       - ./data:/AstrBot/data
       - /etc/localtime:/etc/localtime:ro  # 时间同步
-    # 下载库的指令
-    command: >
-      sh -c "
-      pip install playwright &&
-      playwright install-deps &&
-      playwright install &&
-      pip install -r https://github.com/GEMILUXVII/astrbot_plugin_jm_cosmos/raw/refs/heads/main/requirements.txt &&
-      pip install openai-whisper &&
-      cd /AstrBot &&
-      python main.py
-      "
 
     networks:
       - astrbot_network
@@ -88,7 +77,7 @@ services:
       - BEHAVIOR_AFTER_MAX_SHIP=reject
       - DOCKER_IMAGE=soulter/shipyard-ship:latest
       - DOCKER_NETWORK=astrbot_network
-      - SHIP_DATA_DIR=./data/shipyard/ship_mnt_data
+      - SHIP_DATA_DIR=${PWD}/data/shipyard/ship_mnt_data   # 使用绝对路径
       - DEFAULT_SHIP_CPUS=1.0
       - DEFAULT_SHIP_MEMORY=512m
     volumes:
@@ -99,4 +88,5 @@ services:
 
 networks:
   astrbot_network:
+    name: astrbot_network   # 关键：强制网络名称
     driver: bridge
