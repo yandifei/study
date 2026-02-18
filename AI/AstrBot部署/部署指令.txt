@@ -1,6 +1,11 @@
 使用指令：
 docker-compose -f astrbot_napcat_shipyard.yml up -d
 
+docker pull soulter/shipyard-ship:latest
+
+# 可选：手动删除可能存在的错误网络
+docker network prune -f
+
 self_learning插件密码：self_learning_pwd
 
 禁漫插件问题(自己下载库)：
@@ -13,3 +18,16 @@ playwright install
 
 TTS和STT语音
 pip install openai-whisper
+
+
+    # 下载库的指令
+    command: >
+      sh -c "
+      pip install playwright &&
+      playwright install-deps &&
+      playwright install &&
+      pip install -r https://github.com/GEMILUXVII/astrbot_plugin_jm_cosmos/raw/refs/heads/main/requirements.txt &&
+      pip install openai-whisper &&
+      cd /AstrBot &&
+      python main.py
+      "
