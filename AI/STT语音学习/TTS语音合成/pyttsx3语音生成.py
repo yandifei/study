@@ -29,7 +29,7 @@ import pyttsx3
 engine = pyttsx3.init()
 engine.setProperty('volume', 1) # 设置音量，0.9 代表 90% 的音量
 # engine.say("GPT-SoVITS崩溃，启动备用语音模型")
-engine.say("语音文本测试")
+engine.say("命令大家新年全部起飞")
 engine.runAndWait()
 
 
@@ -57,3 +57,4 @@ engine.setProperty('rate', rate - 50) # 减慢语速
 volume = engine.getProperty('volume') # 获取当前音量（0.0-1.0）
 print(f"当前音量: {volume}")
 engine.setProperty('volume', 0.9) # 设置音量，0.9 代表 90% 的音量
+

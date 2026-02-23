@@ -33,7 +33,7 @@ def call_tts_api(text):
     payload = {
         "text": text, # 合成的文本内容
         "text_lang": "zh",                  # 合成文本的语言
-        "ref_audio_path": "B:\study\python_script_study\STT语音学习\GPT-SoVITS-File\参考文本.ogg",    # 参考音频文件路径
+        "ref_audio_path": r"B:\study\AI\STT语音学习\GPT-SoVITS-File\参考文本.ogg",    # 参考音频文件路径
         "aux_ref_audio_paths": [],  # 辅助参考音频路径列表。用于多说话人音色融合。提供多个参考音频路径，模型会尝试将它们的声音特征融合后生成新音频。
         "prompt_text": "邦邦卡邦~！老师购买了道具！附赠的微笑，也请您收下吧~！", # 参考音频对应文本
         "prompt_lang": "zh",    # 参考音频的语言
@@ -65,7 +65,7 @@ def call_tts_api(text):
         # 检查响应状态
         if response.status_code == 200:
             # 保存音频文件
-            with open(r"B:/study/python_script_study/STT语音学习/TTS语音合成/合成音频.wav", "wb") as f:
+            with open(r"B:\study\AI\STT语音学习\研究成果\TTS语音合成\合成音频.wav", "wb") as f:
                 f.write(response.content)
             print("音频已成功生成并保存为合成音频.wav")
         else:
@@ -106,7 +106,7 @@ def set_sovits_weights(weights_path):
         print(f"请求出错：{e}")
 
 if __name__ == "__main__":
-    set_sovits_weights(r"GPT-SoVITS-File/爱丽丝中文_e16_s1200_l32.pth")
-    set_gpt_weights(r"GPT-SoVITS-File/爱丽丝中文-e50.ckpt")
-    call_tts_api("老师？性压抑了吗？要爱丽丝帮帮你吗？")
+    set_sovits_weights(r"B:\study\AI\STT语音学习\GPT-SoVITS-File\爱丽丝中文_e16_s1200_l32.pth")
+    set_gpt_weights(r"B:\study\AI\STT语音学习\GPT-SoVITS-File\爱丽丝中文-e50.ckpt")
+    call_tts_api("以武道破界，以哲思照心")
 
