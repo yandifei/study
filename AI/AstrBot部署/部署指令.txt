@@ -6,6 +6,9 @@ docker pull soulter/shipyard-ship:latest
 # 可选：手动删除可能存在的错误网络
 docker network prune -f
 
+# 控制台指令
+docker exec -it astrbot /bin/bash
+
 self_learning插件密码：self_learning_pwd
 
 禁漫插件问题(自己下载库)：
