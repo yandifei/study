@@ -32,7 +32,8 @@ services:
     restart: unless-stopped
     image: mlikiowa/napcat-docker:latest
     volumes:
-      - ./napcat1/data:/AstrBot/data
+    # data保持和AstrBot一致
+      - ./data:/AstrBot/data
       - ./napcat1/config:/app/napcat/config
       - ./napcat1/ntqq:/app/.config/QQ
     networks:
@@ -50,7 +51,8 @@ services:
     restart: unless-stopped
     image: mlikiowa/napcat-docker:latest
     volumes:
-      - ./napcat2/data:/AstrBot/data
+      # data保持和AstrBot一致
+      - ./data:/AstrBot/data
       - ./napcat2/config:/app/napcat/config
       - ./napcat2/ntqq:/app/.config/QQ
     networks:
