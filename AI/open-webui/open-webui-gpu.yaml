@@ -1,0 +1,24 @@
+services:
+  open-webui:
+    # image: ghcr.io/open-webui/open-webui:cuda  # open-webui官方的(NVIDIA显卡使用cuda加速的版本)
+    image: openwebui/open-webui:cuda          # 使用DockerHub镜像(NVIDIA显卡使用cuda加速的版本)
+    container_name: open-webui
+    ports:
+      - "3000:8080"  # 将主机的 3000 端口映射到容器的 8080
+    volumes:
+      - open-webui-data:/app/backend/data   # 引用命名卷
+    extra_hosts:
+      # 对应 --add-host，允许容器访问宿主机（例如访问宿主机上的 Ollama）
+      - "host.docker.internal:host-gateway"  # 让容器能访问宿主机
+        # 对应 --gpus all，开启显卡支持
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+volumes:
+  open-webui-data:

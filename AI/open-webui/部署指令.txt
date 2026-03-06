@@ -1,0 +1,6 @@
+部署说明：
+Nvidia GPU 的 Open WebUI
+宿主机(也就是本机)有ollama
+
+部署指令：
+docker-compose -f open-webui-gpu.yaml up -d
