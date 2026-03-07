@@ -7,11 +7,11 @@ from ultralytics import YOLO
 
 """需要改的地方"""
 # 加载训练好的模型
-model = YOLO("yolo26n.pt")  # 替换为您的模型路径
+model = YOLO("runs/detect/200/weights/best.pt")  # 替换为您的模型路径
 # 图片文件夹路径
-img_folder = "output"
+img_folder = "images/val/2"
 # 输出标签文件夹（与图片同名的 txt 文件）
-label_folder = "自动标注的标签"
+label_folder = "labels/val/2"
 os.makedirs(label_folder, exist_ok=True)
 
 
