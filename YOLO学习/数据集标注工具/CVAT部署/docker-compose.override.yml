@@ -1,0 +1,26 @@
+services:
+  cvat_server:
+    environment:
+      CVAT_HOST: 电脑IP # 电脑IP
+      # 开启 SMTP 后端
+      EMAIL_BACKEND: 'django.core.mail.backends.smtp.EmailBackend'
+      # 邮件服务器配置
+      EMAIL_HOST: 'smtp.qq.com'      # 换成你的 SMTP 地址
+      EMAIL_PORT: 465                # 端口
+      EMAIL_USE_SSL: 'True'          # 如果是 465 端口通常设为 True
+      EMAIL_USE_TLS: 'False'         # 如果是 587 端口通常设为 True
+      EMAIL_HOST_USER: '你的邮箱@qq.com'
+      EMAIL_HOST_PASSWORD: '你的授权码' # 并非登录密码
+      DEFAULT_FROM_EMAIL: '你的邮箱@qq.com'
+    labels:
+      - "traefik.http.routers.cvat.rule=Host(`电脑IP`) && (PathPrefix(`/api/`) || PathPrefix(`/static/`) || PathPrefix(`/admin`) || PathPrefix(`/django-rq`))"
+
+  cvat_ui:
+    environment:
+      CVAT_HOST: 电脑IP # 电脑IP
+    labels:
+      - "traefik.http.routers.cvat-ui.rule=Host(`电脑IP`)"
+
+  traefik:
+    environment:
+      CVAT_HOST: 电脑IP # 电脑IP
