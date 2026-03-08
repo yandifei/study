@@ -83,6 +83,8 @@ class DrawWindow(QWidget):
         # 如果传递的是self的列表必须是深度拷贝，不然还没解析完就把结果干掉了
         self.detections = new_detections
         if self.detections: print(self.detections)
+        # 重新置顶
+        self.topLevelWidget()
         # 刷新界面重新绘制
         self.update()
 
