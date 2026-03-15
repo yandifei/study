@@ -4,3 +4,15 @@ Nvidia GPU 的 Open WebUI
 
 部署指令：
 docker-compose -f open-webui-gpu.yaml up -d
+
+忘记密码：
+set WEBUI_AUTH=False
+然后
+docker-compose -f open-webui-gpu.yaml up -d
+
+方法二
+在open-webui-gpu.yaml中添加以下内容
+    environment:
+      - 'WEBUI_AUTH=False'  # 暂时关闭登录验证
+
+文档：https://docs.openwebui.com/getting-started/quick-start/
