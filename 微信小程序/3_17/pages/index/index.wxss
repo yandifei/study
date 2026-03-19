@@ -1,0 +1,29 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.img {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.img image {
+  width: 100px;
+  height: 100px;
+  padding: 0px 10px;
+}
+
+.hiddent_cls {
+  background-color: blue;
+}

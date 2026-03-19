@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<navigation-bar title="首页" back="{{false}}" background="#fffacd" color="red"></navigation-bar>
+<view class="content">
+    <text class="description">这是我的首页\n主要显示首页内容</text>
+    
+    <view class="agreement-section">
+      <checkbox value="agree" />
+      <text class="agreement-text">同意</text>
+    </view>
+  </view>

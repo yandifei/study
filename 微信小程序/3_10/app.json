@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/find/find",
+    "pages/my/my"
+  ],
+  "window": {
+    "navigationStyle": "default",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#BBFFFF",
+    "navigationBarTitleText": "软件工程特色文化",
+    "backgroundColor": "#FAEDB7"
+  },
+  "tabBar": {
+    "color": "#548B54",
+    "selectedColor": "#000000",
+    "backgroundColor": "#FFE4E1",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "资源展示"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "style": "v2",
+  "renderer": "webview",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

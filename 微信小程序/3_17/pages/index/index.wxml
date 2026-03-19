@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<navigation-bar title="测试" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view>姓名：{{Person.name}}</view>
+    <view>年龄：{{Person.age}}</view>
+    <view>随机值：{{randNum}}</view>
+    <view class="img">
+      <image src="/resources/index/1.png" mode="aspectFill"/>
+      <image src="/resources/index/2.jpg" mode="aspectFill"/>
+      <image src="/resources/index/3.jpg" mode="aspectFill"/>
+    </view>
+    <view>
+      <view>当前数字：{{count}}</view>
+      <button type="primary" bind:tap="add">点击+1</button>
+    </view>
+    <view>
+      <text>你输入的是：{{inputValue}}</text>
+      <input model:value="{{inputValue}}" placeholder="输入内容" />
+    </view>
+    <view>
+      <view wx:if="{{count===1}}">男</view>
+      <view wx:elif="{{count===2}}">女</view>
+      <view wx:else>保密</view>
+    </view>
+    <view class="hiddent_cls">
+      <view hidden="{{count===1}}">男</view>
+      <view hidden="{{count===2}}">女</view>
+      <view hidden="{{count!==3}}">保密</view>
+    </view>
+    <view>
+      <view wx:for="{{item}} "></view>
+    </view>
+  </view>
+</scroll-view>
