@@ -1,0 +1,16 @@
+services:
+  mongodb:
+    # 容器名字
+    container_name: mongodb
+    image: mongodb/mongodb-atlas-local
+    hostname: mongodb
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=yandifei
+      - MONGODB_INITDB_ROOT_PASSWORD=yandifei
+    ports:
+      - 27017:27017
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - ./db:/data/db
+      - ./configdb:/data/configdb
+      - ./mongot:/data/mongot

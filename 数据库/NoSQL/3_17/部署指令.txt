@@ -1,0 +1,8 @@
+启动和更新指令
+docker-compose -f docker-compose.yaml up -d
+
+删除容器和所有挂载卷，不会删除镜像
+docker-compose down -v
+
+查看指令
+docker exec -it mongodb mongosh -u yandifei -p yandifei
