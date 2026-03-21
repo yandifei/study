@@ -7,7 +7,7 @@ docker pull soulter/shipyard-ship:latest
 docker network prune -f
 
 # 控制台指令
-docker exec -it astrbot /bin/bash
+docker exec -it astrbot bash
 
 self_learning插件密码：self_learning_pwd
 

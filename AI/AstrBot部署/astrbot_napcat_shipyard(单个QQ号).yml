@@ -1,4 +1,4 @@
-# 部署AstrBot接入 QQ NapCat、沙箱，使用compose 文件一键
+# 部署AstrBot接入 QQ NapCat、沙箱，使用compose 文件一键部署
 services:
   astrbot:
     environment:
@@ -8,33 +8,56 @@ services:
     restart: unless-stopped
     ports:
       - "6185:6185"      # AstrBot WebUI（必选）
-      - "7833:7833"      # 自主学习插件端口
+      # - "7833:7833"      # 自主学习插件端口
+      # - "4141:4141"      # API聚合端口
       #- "6195:6195"     # 可选，其他端口
       #- "6199:6199"      # QQ WebSocket
     volumes:
       - ./data:/AstrBot/data
       - /etc/localtime:/etc/localtime:ro  # 时间同步
+      # 额外的库同步
+      - ./data/site-packages:/usr/local/lib/python3.12/site-packages
+
     networks:
       - astrbot_network
     # 启动的依赖关系
     depends_on:
-          - napcat
           - shipyard
 
-  napcat:
+  napcat1:
     environment:
       - NAPCAT_UID=${NAPCAT_UID:-1000}
       - NAPCAT_GID=${NAPCAT_GID:-1000}
       - MODE=astrbot
     ports:
       - "6099:6099"
-    container_name: napcat
+    container_name: napcat1
     restart: unless-stopped
     image: mlikiowa/napcat-docker:latest
     volumes:
+    # data保持和AstrBot一致
       - ./data:/AstrBot/data
-      - ./napcat/config:/app/napcat/config
-      - ./ntqq:/app/.config/QQ
+      - ./napcat1/config:/app/napcat/config
+      - ./napcat1/ntqq:/app/.config/QQ
+    networks:
+      - astrbot_network
+    #mac_address: "02:42:ac:11:00:02"  # 可选，取消注释可固定MAC地址
+  
+  napcat2:
+    environment:
+      - NAPCAT_UID=${NAPCAT_UID:-1000}
+      - NAPCAT_GID=${NAPCAT_GID:-1000}
+      - MODE=astrbot
+    ports:
+      - "6100:6099"
+    container_name: napcat2
+    restart: unless-stopped
+    image: mlikiowa/napcat-docker:latest
+    volumes:
+      # data保持和AstrBot一致
+      - ./data:/AstrBot/data
+      - ./napcat2/config:/app/napcat/config
+      - ./napcat2/ntqq:/app/.config/QQ
     networks:
       - astrbot_network
     #mac_address: "02:42:ac:11:00:02"  # 可选，取消注释可固定MAC地址
@@ -54,12 +77,12 @@ services:
     environment:
       - PORT=8156
       - DATABASE_URL=sqlite+aiosqlite:///./data/bay.db
-      - ACCESS_TOKEN=yandifei  # ⚠️ 请修改为强密码！默认密码：secret-token
+      - ACCESS_TOKEN=改自己的密码  # ⚠️ 请修改为强密码！默认密码：secret-token
       - MAX_SHIP_NUM=10
       - BEHAVIOR_AFTER_MAX_SHIP=reject
       - DOCKER_IMAGE=soulter/shipyard-ship:latest
       - DOCKER_NETWORK=astrbot_network
-      - SHIP_DATA_DIR=./data/shipyard/ship_mnt_data
+      - SHIP_DATA_DIR=${PWD}/data/shipyard/ship_mnt_data   # 使用绝对路径
       - DEFAULT_SHIP_CPUS=1.0
       - DEFAULT_SHIP_MEMORY=512m
     volumes:
@@ -70,4 +93,5 @@ services:
 
 networks:
   astrbot_network:
+    name: astrbot_network   # 关键：强制网络名称（不然docker会在此基础上乱命名）
     driver: bridge
