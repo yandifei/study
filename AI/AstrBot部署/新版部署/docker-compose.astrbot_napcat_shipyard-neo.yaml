@@ -1,0 +1,148 @@
+# Shipyard Neo + AstrBot + Napcat 一体化部署
+# 使用预构建镜像，无需本地源码
+
+
+
+services:
+  # AstrBot: 机器人框架
+  # AstrBot + Bay 联合部署
+  #
+  # 此扩展配置在 Bay 服务旁添加了 AstrBot 服务。
+  # AstrBot 通过共享的 bay-data 卷自动发现 Bay 的 API 密钥。
+  #
+  # 使用方法：
+  #   docker compose -f docker-compose.yaml -f docker-compose.with-astrbot.yaml up -d
+  #
+  # 启动后：
+  #   1. 打开 AstrBot 控制台：http://localhost:6185
+  #   2. 进入 AI 配置 → Computer Use
+  #   3. 设置 runtime = sandbox，booter = shipyard_neo
+  #   4. 设置 endpoint = http://bay:8114（使用 Docker 内部 DNS）
+  #   5. access token 留空（将通过 bay-data 卷自动发现）
+  #   6. 保存 — 看到“保存成功~”提示且无任何警告即表示配置正确
+  astrbot:
+    image: soulter/astrbot:latest       # AstrBot 镜像
+    container_name: astrbot             # AstrBot 容器名
+    restart: unless-stopped             # 重启策略：除非停止，否则重启
+    environment:
+      # - TZ=Asia/Shanghai                # 时区设置(自己加的)
+      - BAY_DATA_DIR=/bay-data          # 让 AstrBot 自动读取 Bay 的 credentials.json(容器中的/bay-data)
+      # # Napcat WebSocket 地址（根据你下面 napcat 服务的配置修改）
+    ports:
+      - "${ASTRBOT_PORT:-6185}:6185"    # AstrBot WebUI（必选），默认值6185，可以通过设置ASTRBOT_PORT环境变量来部署
+      - "4141:4141"                     # API聚合端口
+      # - "7833:7833"                   # 自主学习插件端口
+      #- "6195:6195"                    # 可选，其他端口
+      #- "6199:6199"                    # QQ WebSocket
+    volumes:
+      # - /etc/localtime:/etc/localtime:ro  # 时间同步（自己加的）
+      - ./astrbot-data:/AstrBot/data    # AstrBot 持久化数据到相对路径下
+      - ./bay-data:/bay-data:ro         # 只读挂载 Bay 数据卷，用于自动发现 API Key
+    depends_on:
+      bay:
+        condition: service_healthy
+    networks:
+      - astrbot_network
+    logging:
+      driver: json-file # 指定 Docker 的日志驱动(防止日志无限增长)
+      options:
+        max-size: "50m" # 每个日志文件最大 50MB
+        max-file: "3"   # 最多保留 3 个文件 
+  
+  napcat1:
+    image: mlikiowa/napcat-docker:latest
+    container_name: napcat1
+    restart: unless-stopped
+    environment:
+      - NAPCAT_UID=${NAPCAT_UID:-1000}
+      - NAPCAT_GID=${NAPCAT_GID:-1000}
+      - MODE=astrbot
+    ports:
+      - "6099:6099"
+    volumes:
+    # data保持和AstrBot一致
+      - ./napcat1/config:/app/napcat/config
+      - ./napcat1/ntqq:/app/.config/QQ
+    networks:
+      - astrbot_network
+    #mac_address: "02:42:ac:11:00:02"  # 可选，取消注释可固定MAC地址
+  
+  napcat2:
+    image: mlikiowa/napcat-docker:latest
+    container_name: napcat2
+    restart: unless-stopped
+    environment:
+      - NAPCAT_UID=${NAPCAT_UID:-1000}
+      - NAPCAT_GID=${NAPCAT_GID:-1000}
+      - MODE=astrbot
+    ports:
+      - "6100:6099"
+    volumes:
+      # data保持和AstrBot一致
+      - ./napcat2/config:/app/napcat/config
+      - ./napcat2/ntqq:/app/.config/QQ
+    networks:
+      - astrbot_network
+    #mac_address: "02:42:ac:11:00:02"  # 可选，取消注释可固定MAC地址
+
+  # Bay: Shipyard Neo 控制面 API
+  # Bay 生产部署 - Docker Compose
+  #
+  # 自包含部署：Bay API 网关 + 共享 Docker 网络。
+  # Bay 通过 Docker 套接字动态创建 Ship/Gull 沙盒容器。
+  #
+  # 使用方法：
+  #   1. 编辑 config.yaml（搜索 CHANGE-ME 修改必须项）
+  #   2. docker compose up -d
+  #   3. curl http://localhost:8114/health
+  #
+  # 完整文档请参阅 README.md。
+  #
+  # API 密钥自动生成：
+  #   首次启动时，Bay 自动生成 API 密钥（格式 sk-bay-...）并写入
+  #   {BAY_DATA_DIR}/credentials.json。配套服务（例如 AstrBot）可以通过
+  #   以只读方式挂载 bay-data 卷来自动发现该密钥。
+  #   如需注入指定密钥，请在环境变量部分设置 BAY_API_KEY。
+  bay:
+    image: ghcr.io/astrbotdevs/shipyard-neo-bay:latest
+    container_name: bay
+    restart: unless-stopped
+    environment:
+      - BAY_CONFIG_FILE=/app/config.yaml
+      - BAY_DATA_DIR=/app/data
+      # 如需固定 API Key，可设置此环境变量（优先级高于 config.yaml）
+      # - BAY_API_KEY=sk-你的固定key
+    ports:
+      - "8114:8114"                     # Bay API 端口（可选，供外部访问）
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock     # 用于动态创建沙箱容器
+      - ./config.yaml:/app/config.yaml:ro             # 挂载配置文件
+      - ./bay-data:/app/data                          # SQLite 数据库持久化
+      - ./bay-cargos:/var/lib/bay/cargos              # Cargo 工作区持久化
+    networks:
+      - astrbot_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8114/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 15s
+    logging:
+      driver: json-file # 指定 Docker 的日志驱动(防止日志无限增长)
+      options:
+        max-size: "50m" # 每个日志文件最大 50MB
+        max-file: "3"   # 最多保留 3 个文件 
+
+# 网络改为astrbot_network，原来的配置文件网络是bay-network
+networks:
+  astrbot_network:
+    name: astrbot_network
+    driver: bridge
+
+volumes:
+  bay-data:
+    name: bay-data
+  bay-cargos:
+    name: bay-cargos
+  astrbot-data:
+    name: astrbot-data
