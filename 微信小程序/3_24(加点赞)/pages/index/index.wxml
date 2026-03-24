@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<navigation-bar title="广东特色文化" back="{{false}}" color="white" background="#FF0000"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="card" wx:for="{{blockList}}" wx:key="id" hover-class="card-hover">
+      <view class="card-head">
+        <text>{{item.name}}</text>
+      </view>
+      
+      <view class="card-content">
+      <!-- 图片存在就使用显示 -->
+        <image wx:if="{{item.imgsrc}}" src="{{item.imgsrc}}" mode="aspectFill" class="card-img"></image>
+        <view class="card-text">
+          <text>{{item.blocktext}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
