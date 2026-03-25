@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>计算BMI值</title>
+</head>
+<body>
+<form name="table_BMI" method="post" action="/getBMI">
+    <p>请输入你的身高和体重:</p>
+    <p>身高（米）：<input type="text" name="height"/></p>
+    <p>体重（公斤）：<input type="text" name="weight"/></p>
+    <input type="submit" name="button" value="提交" />
+</form>
+<!--给他整上条件渲染，根据后端数据决定是否显示（js校验不可靠）-->
+<div>
+    <!-- 错误就显示这个 -->
+    <div th:if="${res != null and errorType != null}" class="error-box">
+        <p><span th:text="${res}"></span></p>
+    </div>
+    <!-- 成功结果显示 -->
+    <div th:if="${res != null and errorType == null}" class="result-box">
+        <p><strong>身体健康状态：</strong><span th:text="${res}" style="color: #e74c3c; font-size: 20px;"></span></p>
+        <p th:if="${bmiValue != null}"><strong>BMI 值：</strong><span th:text="${bmiValue}"></span></p>
+    </div>
+</div>
+</body>
+</html>
