@@ -1,0 +1,5 @@
+挂载卷问题
+config.yaml中cargo:root_path这个默认是/var/lib/bay/cargos，但是对于Windows系统来说他是读取了docker-compose.astrbot_napcat_shipyard-neo.yaml里面的内容所以本质是映射./bay-data的数据，所以就会导致沙箱内容读取有效，仅仅在相对路径有效，绝对路径就是空，因为他在Linux下
+
+网络问题
+代理无法使用，我是Windows系统

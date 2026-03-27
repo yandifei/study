@@ -37,6 +37,7 @@ services:
     volumes:
       # - /etc/localtime:/etc/localtime:ro  # 时间同步（自己加的）
       - ./astrbot-data:/AstrBot/data    # AstrBot 持久化数据到相对路径下
+      # - ${PWD}/astrbot-data:/AstrBot/data    # AstrBot 持久化数据到绝对路径下
       - ./bay-data:/bay-data:ro         # 只读挂载 Bay 数据卷，用于自动发现 API Key
     depends_on:
       bay:
@@ -61,6 +62,7 @@ services:
       - "6099:6099"
     volumes:
     # data保持和AstrBot一致
+      - ./astrbot-data:/AstrBot/data  # 让 NapCat 也能看到 AstrBot 的数据目录
       - ./napcat1/config:/app/napcat/config
       - ./napcat1/ntqq:/app/.config/QQ
     networks:
@@ -81,6 +83,7 @@ services:
       # data保持和AstrBot一致
       - ./napcat2/config:/app/napcat/config
       - ./napcat2/ntqq:/app/.config/QQ
+      - ./astrbot-data:/AstrBot/data  # 让 NapCat 也能看到 AstrBot 的数据目录
     networks:
       - astrbot_network
     #mac_address: "02:42:ac:11:00:02"  # 可选，取消注释可固定MAC地址
@@ -113,12 +116,15 @@ services:
       # 如需固定 API Key，可设置此环境变量（优先级高于 config.yaml）
       # - BAY_API_KEY=sk-你的固定key
     ports:
-      - "8114:8114"                     # Bay API 端口（可选，供外部访问）
+      - "8114:8114"                     # Bay API 端口（可选，供宿主机外部访问）
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock     # 用于动态创建沙箱容器
       - ./config.yaml:/app/config.yaml:ro             # 挂载配置文件
       - ./bay-data:/app/data                          # SQLite 数据库持久化
-      - ./bay-cargos:/var/lib/bay/cargos              # Cargo 工作区持久化
+      # - ./bay-cargos:/var/lib/bay/cargos              # Cargo 工作区持久化
+      - ./bay-cargos:/workspace
+      # - ${PWD}/bay-data:/app/data                          # SQLite 数据库持久化
+      # - ${PWD}/bay-cargos:/var/lib/bay/cargos              # Cargo 工作区持久化
     networks:
       - astrbot_network
     healthcheck:
@@ -144,5 +150,3 @@ volumes:
     name: bay-data
   bay-cargos:
     name: bay-cargos
-  astrbot-data:
-    name: astrbot-data

@@ -1,2 +1,0 @@
-录入skills
-https://github.com/anthropics/skills
