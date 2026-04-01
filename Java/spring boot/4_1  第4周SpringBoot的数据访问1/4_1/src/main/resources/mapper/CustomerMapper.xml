@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yandifei.study.dao.CustomerMapper">
+    <!-- 查询所有客户 -->
+    <select id="findAllCustomer" resultType="yandifei.study.domain.Customer">
+        select * from t_customer
+    </select>
+</mapper>

@@ -1,0 +1,120 @@
+文件夹 PATH 列表
+卷序列号为 1E87-1E4A
+D:.
+│  .gitattributes
+│  .gitignore
+│  1.txt
+│  HELP.md
+│  mvnw
+│  mvnw.cmd
+│  pom.xml
+│  
+├─.idea
+│  │  .gitignore
+│  │  compiler.xml
+│  │  dataSources.local.xml
+│  │  dataSources.xml
+│  │  encodings.xml
+│  │  jarRepositories.xml
+│  │  misc.xml
+│  │  uiDesigner.xml
+│  │  workspace.xml
+│  │  
+│  └─dataSources
+│      │  509c110c-7e5e-4444-b790-cf0414afac62.xml
+│      │  
+│      └─509c110c-7e5e-4444-b790-cf0414afac62
+│          └─storage_v2
+│              └─_src_
+│                  └─schema
+│                          information_schema.FNRwLQ.meta
+│                          mybatis.03UUWg.meta
+│                          mysql.osA4Bg.meta
+│                          performance_schema.kIw0nw.meta
+│                          sys.zb4BAA.meta
+│                          
+├─.mvn
+│  └─wrapper
+│          maven-wrapper.properties
+│          
+├─src
+│  ├─main
+│  │  ├─java
+│  │  │  └─yandifei
+│  │  │      └─study
+│  │  │          │  Application.java
+│  │  │          │  
+│  │  │          ├─controller
+│  │  │          ├─dao
+│  │  │          │      CustomerMapper.java
+│  │  │          │      UserMapper.java
+│  │  │          │      
+│  │  │          └─domain
+│  │  │                  Customer.java
+│  │  │                  User.java
+│  │  │                  
+│  │  └─resources
+│  │      │  application.properties
+│  │      │  
+│  │      ├─mapper
+│  │      │      UserMapper.xml
+│  │      │      
+│  │      ├─static
+│  │      └─templates
+│  └─test
+│      └─java
+│          └─yandifei
+│              └─study
+│                  │  ApplicationTests.java
+│                  │  
+│                  └─domain
+│                          UserTest.java
+│                          
+└─target
+    ├─classes
+    │  │  application.properties
+    │  │  
+    │  ├─mapper
+    │  │      UserMapper.xml
+    │  │      
+    │  └─yandifei
+    │      └─study
+    │          │  Application.class
+    │          │  
+    │          ├─dao
+    │          │      UserMapper.class
+    │          │      
+    │          └─domain
+    │                  User.class
+    │                  
+    ├─generated-sources
+    │  └─annotations
+    ├─generated-test-sources
+    │  └─test-annotations
+    ├─maven-status
+    │  └─maven-compiler-plugin
+    │      ├─compile
+    │      │  └─default-compile
+    │      │          createdFiles.lst
+    │      │          inputFiles.lst
+    │      │          
+    │      └─testCompile
+    │          └─default-testCompile
+    │                  createdFiles.lst
+    │                  inputFiles.lst
+    │                  
+    ├─surefire-reports
+    │      2026-04-01T09-35-48_286.dumpstream
+    │      TEST-yandifei.study.ApplicationTests.xml
+    │      TEST-yandifei.study.domain.UserTest.xml
+    │      yandifei.study.ApplicationTests.txt
+    │      yandifei.study.domain.UserTest.txt
+    │      
+    └─test-classes
+        └─yandifei
+            └─study
+                │  ApplicationTests.class
+                │  
+                └─domain
+                        UserTest.class
+                        
