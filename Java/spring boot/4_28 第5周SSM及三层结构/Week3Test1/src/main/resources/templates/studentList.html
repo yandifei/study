@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息查询</title>
+</head>
+<body>
+
+<!-- 查询表单 -->
+<form id="searchForm" method="post" action="/searchStudent">
+    <p>请输入姓名关键字：</p>
+    <p>
+        <input type="text" name="sname" id="sname" th:value="${sname}" />
+        <input type="submit" value="查询" />
+    </p>
+</form>
+
+<hr/>
+
+<!-- 显示学生列表 -->
+<div th:if="${studentList != null}">
+    <p th:each="student : ${studentList}">
+        学生ID：<span th:text="${student.sid}"></span>，
+        姓名：<span th:text="${student.sname}"></span>，
+        年龄：<span th:text="${student.sage}"></span>
+    </p>
+</div>
+<div th:if="${studentList == null or studentList.empty}">
+    <p>暂无学生数据。</p>
+</div>
+
+</body>
+</html>

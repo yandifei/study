@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="/getValue">
+    <p>请输入值:</p>
+    <p>
+        <input type="text" name="text1" id="text1" />
+       *
+        <input type="text" name="text2" id="text2" />
+        <input type="submit" name="button" id="button" value="提交" />
+    </p>
+</form>
+运算结果=<span th:text="${cValue}"></span>
+</body>
+</html>

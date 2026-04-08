@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.dao.UserMapper">
+
+   <select id="findUserById" parameterType="int" resultType="User">
+       select * from users where uid=#{uid}
+    </select>
+
+
+    <select id="findAllUser" resultType="User">
+    -- select语句中, limit n表示显示前n条记录.
+        Select * from users limit 5
+    </select>
+
+    <select id="findUserByName" parameterType="String" resultType="User">
+        select * from users where uname like concat('%',#{uname},'%')
+    </select>
+</mapper>

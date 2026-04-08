@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.dao.StudentMapper">
+    <select id="findStudent" parameterType="String" resultType="Student">
+        select * from t_student where sname=#{sname}
+    </select>
+
+    <!-- 查询所有学生 -->
+    <select id="findAllStudent" resultType="Student">
+        select * from t_student
+    </select>
+
+    <!-- 按姓名模糊查询 -->
+    <select id="findStudentByName" parameterType="String" resultType="Student">
+        select * from t_student where sname like concat('%', #{sname}, '%')
+    </select>
+
+</mapper>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="/getuser">
+    <p>请输入姓名:
+        <input type="text" name="text1" id="text1" th:value="${username}" />
+        <input type="submit" name="button" id="button" value="提交" />
+    </p>
+</form>
+<div th:if="${userList} != null">
+    <!--    这里的内容只有在userList对象不为空时才会显示。-->
+    <p th:each="user:${userList}">
+        用户ID： <span th:text="${user.uid}"/>，用户姓名：<span th:text="${user.uname}" />,用户年龄:<span th:text="${user.uage}" />
+
+    </p>
+</div>
+</body>
+</html>
