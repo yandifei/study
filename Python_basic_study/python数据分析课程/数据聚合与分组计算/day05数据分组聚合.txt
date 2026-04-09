@@ -1,0 +1,75 @@
+df = pd.DataFrame({"Key":['C','B','C','A','B','B','A','C','A'],
+                   "Data":[2,4,6,8,10,1,14,16,18]})
+
+
+df = pd.DataFrame({'keyl': ['A', 'A', 'B', 'B', 'A'],
+                   'key2': ['one','two','one', 'two', 'one'],
+                    'datal': [2, 3, 4, 6,8],
+                    'data2': [3, 5, 6, 3, 7]})
+
+
+mapping={'a':'第一组','b':'第二组','c':'第一组',
+        'd':'第三组','e':'第二组'}
+
+
+
+df = pd.DataFrame({'a': [1, 2, 3, 4, 5],
+                   'b': [6, 7, 8, 9, 10],
+                   'c': [5, 4, 3, 2, 1]},
+                    index=['Sun', 'Jack', 'Alice', 'Helen', 'Job'])
+
+
+
+
+
+
+df = pd.DataFrame({'key1': ['A', 'A', 'B', 'B','A'],
+                    'key2': ['one','two','one','two','one'],
+                    "datal": [2, 3, 4, 6, 8],
+                    "data2": [3, 5, 2, 3,7]})
+
+
+data_frame = pd.DataFrame (np.arange(36).reshape ((6, 6)),
+                           columns=list('abcdef'))
+data_frame['key'] = pd.Series(list('aaabbb'), name='key')
+
+
+df = pd.DataFrame({'a':[0,1,6,10,3],
+                   'b':[1,2,7,11,4],
+                   'c':[2,3,8,12,4],
+                   'd':[3,4,9,13,5],
+                   'e':[4,5,10,14,3],
+                   'key':['A','A','B','B','B'],
+})
+
+
+
+df=pd.DataFrame({'A':[2,3,3,4,2],
+                 'B':[4,2,3,6,6],
+                 'C':[9,7,0,7,8],
+                 'D':[3, 4,8,6,10]})
+
+
+data_frame = pd.DataFrame({'datal': [80,23,25,63,94,92,99,92,82,99],
+                            'data2': [41,87,58,68,72,89,60,42,53,65],
+                            'data3': [30,78,23,66,16,59,20,23,24,40]})
+
+
+
+data = pd.DataFrame({'k1': ['a','b','a','a','c','c','b','a','c','a','b','c'],
+                     'k2': ['one','two','three','two','one','one','three','one','two','three','one','two'],
+                     'w': np.random.rand(12),
+                     'y': np.random.randn(12)})
+
+
+stu = {'name': ['小明','王芳','赵平','李红','李涵'],
+       'sex': ['male','female','female','female','male'],
+       'year': [1996,1997,1994,1999,1996]}
+
+
+
+df = pd.DataFrame(
+    np.random.randint(1, 100, size=(3, 3)),
+    index=['one', 'two', 'three'],
+    columns=['I1', 'I2', 'I3']
+)
