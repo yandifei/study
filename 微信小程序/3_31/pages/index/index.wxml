@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<navigation-bar title="组件基础" back="{{false}}" color="white" background="blue"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view hover-class="hv1" hover-stay-time="10000">
+  容器视图1
+    <view hover-class="hv2" hover-stay-time="5000" hover-stop-propagation>容器视图2</view>
+  </view>
+
+  <!-- 横向滚动区域 -->
+<!-- <scroll-view scroll-x class="sv" bounces bindscrolltoupper="scrollTop" bindscrolltolower="scrollLower"> -->
+<scroll-view scroll-x class="sv">
+  <view wx:for="{{scrollList}}" class="sv-item">
+    {{item}}
+  </view>
+</scroll-view>
+
+<!-- 纵向滚动区域 -->
+<!-- <scroll-view scroll-x class="sv1" bounces bindscrolltoupper="scrollTop" bindscrolltolower="scrollLower"> -->
+<scroll-view scroll-y class="sv1">
+  <view wx:for="{{scrollList}}" class="sv-item1">
+    {{item}}
+  </view>
+</scroll-view>
+
+<swiper 
+  autoplay="{{true}}" 
+  interval="1000" 
+  circular 
+  easing-function="linear" 
+  indicator-dots
+  indicator-color="7fff9b"
+>
+  <swiper-item wx:for="{{swiperList}}">
+    <image src="{{item.imgUrl}}" mode="aspectFit"/>
+  </swiper-item>
+</swiper>
+</scroll-view>
+
+

@@ -1,0 +1,80 @@
+针对Ultralytics YOLO Detection 1.0格式进行的问题集合
+
+
+B:.
+│  data.yaml
+│  Train.txt
+│
+├─images
+│  └─Train
+│          1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg
+│
+└─labels
+    └─Train
+            1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt
+
+data.yaml
+Train: Train.txt
+names:
+  0: normal
+  1: fire
+path: .
+
+1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt
+0 0.359508 0.198573 0.122484 0.354604
+0 0.752117 0.265125 0.194641 0.349000
+
+Train.txt
+data/images/Train/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg
+
+这个是CVAT官方的文件夹目录，我实验了很多次，现在就是记录我遇到的问题：
+1. 上传过的不能在上传了，不然会报错，必须删了才能在上传
+错误提示：
+Could not import dataset to the 
+KeyError: 0
+2.data.yaml文件可以随便命名,即使是项目名称都可以
+yaml文件写法
+train: .\train\images
+val: .\val\images
+或者
+train: ./train/images
+val: ./val/images
+都没有问题
+但是加Path字段必须要注意你的路径，假如项目名是a，解压后是a/a/train这就代表你是单个文件夹解压的，你的Path字段就得填 ./a了
+3. yaml标签名问题
+names:
+  0: normal
+  1: fire
+不要搞成
+names:
+  2: normal
+  4: fire
+它会报错不给你传
+path: ./ 应改为 path: .（去掉斜杠）千万别加，加了必出事
+4. 最后就是注意路径问题就行了
+即使是下面这样也是可以的
+path: .\
+train: .\images\train
+
+names:
+  0: normal
+  1: fire
+path是根路径，还有就是Path和path都是有效的
+
+5.数据集的标签必须对的上cvat项目里面的标签，不然一定会报错
+比如cvat只有1个，你这里2个，对不上就会报错
+
+6.最后我他妈要骂
+错误提示：
+cvat.apps.dataset_manager.bindings.CvatImportError: Failed to import dataset 'yolo_ultralytics_detection' at '/home/django/data/tmp/tmp6ral1ger'.
+
+yaml数据：
+train: images\train
+nc: 2
+names:
+  0: normal
+  1: fire
+我操了，搞了我一晚上，居然是nc的错误，这个指的的标签个数，但是他写了就错，我真他妈服了
+
+
+还有	"/"和"\"这个路径符号是没有区别的，可以用的

@@ -1,0 +1,59 @@
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollarea {
+  flex: 1;  /* 撑满剩余高度 */
+  width: 100%;
+}
+
+.hv1 {
+  font-size: 24px;
+  color: red;
+}
+
+.hv2 {
+  font-size: 24px;
+  color: blue;
+}
+
+.sv {
+  height: 220rpx;      /* 与子元素实际高度匹配，避免溢出 */
+  width: 100%;
+  white-space: nowrap;
+}
+
+.sv-item {
+  height: 200rpx;
+  width: 200rpx;
+  line-height: 200rpx;
+  background-color: aquamarine;
+  text-align: center;
+  display: inline-block;
+  margin: 10rpx;
+}
+
+.sv1 {
+  height: 400rpx;      /* 与子元素实际高度匹配，避免溢出 */
+  width: 100%;
+  /* white-space: nowrap; */
+}
+
+.sv-item1 {
+  height: 200rpx;
+  width: 200rpx;
+  line-height: 200rpx;
+  background-color: red;
+  text-align: center;
+  margin: 10rpx;      
+  /* display: inline-block; */
+}
+image {
+  width: 100%;
+}
+swiper {
+  width: 100%;
+  height: calc(750rpx*2114/800);
+}

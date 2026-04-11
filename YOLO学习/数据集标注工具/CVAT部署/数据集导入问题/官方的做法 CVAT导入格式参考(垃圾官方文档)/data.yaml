@@ -1,0 +1,5 @@
+train: images\train
+
+names:
+  0: normal
+  1: fire
