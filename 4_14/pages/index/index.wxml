@@ -1,0 +1,61 @@
+<navigation-bar title="Weixin" back="{{false}}" 
+color="black" background="#FFF"></navigation-bar>
+
+<view>
+  <checkbox value=""/>复选框
+</view>
+
+<label for="test">
+复选框2
+</label>
+
+<checkbox value="" id="test"/>
+
+<checkbox-group bindchange="cbchange">
+  <checkbox value="阅读" disabled="{{true}}"/>阅读
+  <checkbox value="健身" checked/>健身
+  <checkbox value="艺术" color="pink"/>艺术
+  <checkbox value="语言"/>语言
+</checkbox-group>
+<view>
+当前选中：{{value}}
+</view>
+<radio-group bindchange="rdchange">
+  <radio value="男"/>男
+  <radio value="女"/>女
+  <radio value="保密"/>保密
+</radio-group>  
+<view>
+当前选中：{{value_radio}}
+</view>
+<!--type可以改为switch这个按钮或者checkbox这个复选框 -->
+<switch checked="true" bindchange="shchange" type="checkbox"/>hello world
+<view>
+当前选中：{{value_switch}}
+</view>
+<!-- 属性功能说明当前值value滑块的初始值30min / max允许滑动的最小值和最大值20 / 80step步长（每次滑动的最小幅度）5 (只能选20, 25, 30...)show-value是否在右侧显示当前数字是backgroundColor滑块右侧未选择轨道的颜色pink (粉色)activeColor滑块左侧已选择轨道的颜色yellow (黄色)block-size滑块（圆点）的大小 (取值范围12-28)16block-color滑块（圆点）的颜色green (绿色) -->
+<slider bindchange="" value="30" show-value min="20"
+max="80" step="5" backgroundColor="pink"
+activeColor="yellow" block-size="16"
+block-color="green"/>
+<picker mode="selector" range="{{selist}}" value="{{index}}" bindchange="prchange">
+  <view>{{selist[index]}}</view>
+</picker>
+
+<picker mode="time" value="hh:mm" bindchange="timechange" start="9:00" end="17:50">
+  <view>
+    {{value_picker}}
+  </view>
+</picker>
+
+<picker mode="date" value="YYYY-MM-DD" bindchange="timechange2">
+  <view>
+    {{value_picker2}}
+  </view>
+</picker>
+
+<picker mode="region" value="{{region}}" bindchange="regionchange">
+  <view>
+    {{region[0]}}-{{region[1]}}-{{region[2]}}
+  </view>
+</picker>
