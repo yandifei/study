@@ -1,0 +1,205 @@
+读写数据操作
+df = pd.DataFrame({'col1': ['广','东'], 'col2': ['培','正'],'col3': ['学','院']})
+
+
+
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+}
+
+
+
+DROP TABLE IF EXISTS user_info;
+
+CREATE TABLE user_info (
+    id INT PRIMARY KEY AUTO_INCREMENT,  -- 自增主键（唯一标识）
+    username VARCHAR(50) NOT NULL,      -- 用户名（不能为空）
+    age INT,                           -- 年龄
+    gender VARCHAR(10),                -- 性别
+    email VARCHAR(100) UNIQUE,         -- 邮箱（唯一）
+    create_time DATETIME DEFAULT NOW() -- 创建时间（默认当前时间）
+);
+
+INSERT INTO user_info (username, age, gender, email)
+VALUES
+    ('张三', 22, '男', 'zhangsan@test.com'),
+    ('李四', 25, '女', 'lisi@test.com'),
+    ('王五', 28, '男', 'wangwu@test.com'),
+    ('赵六', 21, '女', 'zhaoliu@test.com'),
+    ('钱七', 30, '男', 'qianqi@test.com');
+
+SELECT * FROM user_info;
+
+
+
+
+
+df = pd.DataFrame({"班级":["一年级","二年级","三年级","四年级"],
+                              "男生人数":[25,23,27,30],
+                              "女生人数":[19,17,20,20]})
+df
+
+
+
+
+案例—读取北京市2006~2018年高考分数线表格信息及分析
+1.读取一二本各科最高和最低分数线
+2.求出最高分与最低分之差
+3.求出2018年与2017年各科的分数变化
+4.求出常用的计算量
+
+
+数据清洗
+空值和缺失值的处理
+df_obj = pd.DataFrame({"类别":['小说', '散文随笔', '青春文学', '传记'],
+                       "书名":[np.nan, '《皮囊》', '《旅程结束时》', '《老舍自传》'],
+                       "作者":["老舍", None, "张其鑫", "老舍"]})
+df_obj
+
+
+
+
+df_obj = pd.DataFrame({'A': [1, 2, 3, NaN],
+                       'B': [NaN, 4, NaN, 6],
+                       'C': ['a', 7, 8, 9],
+                       'D':[NaN, 2, 3, NaN]})
+df_obj
+
+
+
+
+
+df_obj = pd.DataFrame({'A': [1, 2, 3, NaN],
+                       'B': [NaN, 4, NaN, 6],
+                       'C': ['a', 7, 8, 9],
+                       'D': [NaN, 2, 3, NaN]})
+df_obj
+
+
+
+
+
+
+df = pd.DataFrame({'A': [1, 2, 3, None],
+                   'B': [NaN, 4, None, 6],
+                   'C': ['a', 7, 8, 9],
+                   'D': [None, 2, 3, NaN]})
+df
+
+
+
+重复值的处理
+person_info = pd.DataFrame({'id': [1, 2, 3, 4, 4, 5],
+                            'name': ['小铭', '小月月', '彭岩', '刘华', '刘华', '周华'],
+                            'age': [18, 18, 29, 58, 58, 36],
+                            'height': [180, 180, 185, 175, 175, 178],
+                            'gender': ['女', '女', '男', '男', '男', '男']})
+person_info
+
+
+
+异常值的处理
+df = pd.DataFrame({'A': [1, 2, 3, 4],
+                   'B': [2, 3, 5, 2],
+                   'C': [1, 4, 7, 4],
+                   'D': [1, 5, 30, 3]})
+
+
+
+df = pd.DataFrame ({'菜谱名': ['红烧肉', '铁板鱿鱼', 
+                    '小炒肉', '干锅鸭掌', '酸菜鱼'],
+                    '价格': [38, 25, 26, 388, 35]})
+
+
+
+
+
+更改数据类型
+df = pd.DataFrame({'A':['5', '6', '7'], 'B':['3', '2', '1']})
+
+
+
+
+df = pd.DataFrame({'A': ['1', '1.2', '4.2'],
+                   'B': ['-9', '70', '88'],
+                   'C': ['x', '5.0', '0']})
+
+
+数据合并
+轴向堆叠数据
+df1 = pd.DataFrame({'A': ['A0', 'A0', 'A1'],
+                    'B': ['B0', 'B0', 'B1']})
+df2 = pd.DataFrame({'C': ['C0', 'C0', 'C1', 'C3'],
+                    'D': ['D0', 'D2', 'D2', 'D3']})
+
+
+
+
+
+first = pd.DataFrame({'A': ['A0', 'A1', 'A2'],
+                      'B': ['B0', 'B1', 'B2'],
+                      'C': ['C0', 'C1', 'C2']})
+second = pd.DataFrame({'B': ['B3', 'B4', 'B5'],
+                       'C': ['C3', 'C4', 'C5'],
+                       'D': ['D3', 'D4', 'D5']})
+
+
+主键合并数据
+left = pd.DataFrame({'key':['K0','K1','K2'],
+                       'A':['A0','A1','A2'],
+                        'B':['B0','B1','B2']})
+right = pd.DataFrame({'key':['K0','K1','K2','K3'],
+                         'C':['C0','C1','C2','C3'],
+                         'D':['D0','D1','D2','D3']})
+
+
+
+left = pd.DataFrame({'key':['K0','K1','K2'],
+                       'A':['A0','A1','A2'],
+                       'B':['B0','B1','B2']})
+right = pd.DataFrame({'key':['K0','K5','K2','K4'],
+                         'B':['B0','B1','B2','B5'],
+                         'C':['C0','C1','C2','C3'],
+                         'D':['D0','D1','D2','D3']})
+
+
+
+left = pd.DataFrame({'A':['A0','A1','A2'],
+                       'B':['B0','B1','B2']})
+right = pd.DataFrame({'C':['C0','C1','C2'],
+                         'D':['D0','D1','D2']})
+
+
+根据索引合并数据
+left = pd.DataFrame({'A': ['A0', 'A1', 'A2'],
+                        'B': ['B0', 'B1', 'B2']})
+right = pd.DataFrame({'C': ['C0', 'C1', 'C2'],
+                         'D': ['D0', 'D1', 'D2']},
+                        index=[ 'a','b','c'])
+
+
+
+
+left = pd.DataFrame({'A': ['A0', 'A1', 'A2'],
+                        'B': ['B0', 'B1', 'B2'],
+                      'key': ['K0', 'K1', 'K2']})
+right = pd.DataFrame({'C': ['C0', 'C1','C2'],
+                         'D': ['D0', 'D1','D2']},
+                        index=['K0', 'K1','K2'])
+
+
+
+合并重叠数据
+left = pd.DataFrame({'A': [np.nan, 'A1', 'A2', 'A3'],
+                        'B': [np.nan, 'B1', np.nan, 'B3'],
+                        'key': ['K0', 'K1', 'K2', 'K3']})
+right = pd.DataFrame({'A': ['C0', 'C1','C2'],
+                         'B': ['D0', 'D1','D2']},
+                         index=[1,0,2])
+
+
+
+
+
+
+
