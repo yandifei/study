@@ -1,0 +1,11 @@
+<!--pages/news/news.wxml-->
+<!-- homeButton 的显示有两个关键点：
+显示条件：它只在特定页面出现。根据微信官方文档，homeButton 按钮会在“非首页、非页面栈最底层页面或非 tabBar 内页面”中展示
+ -->
+<navigation-bar title="新闻墙" back="{{false}}" color="#FFF" background="#2b4b6b" ></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    Weixin
+  </view>
+</scroll-view>
