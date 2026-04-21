@@ -1,0 +1,48 @@
+<!--index.wxml-->
+<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<form bindsubmit="iptsubmit">
+<view class="iptitem">
+<view>
+<text>姓名：</text>
+<input type="text" placeholder="请输入姓名" name="name"
+placeholder-style="color:red; font-size:30rpx"/>
+</view>
+
+<view>
+<text>年龄：</text>
+<input type="number" placeholder="请输入年龄" name="age"
+placeholder-style="color:red; font-size:30rpx"/>
+</view>
+
+<view>
+<text>身份证：</text>
+<input type="text" placeholder="请输入身份证" name="id"
+placeholder-style="color:red; font-size:30rpx"/>
+</view>
+
+<view>
+<text>密码：</text>
+<input type="number" placeholder="请输入密码" password="{{true}}" maxlength="5" focus name="password"
+placeholder-style="color:red; font-size:30rpx" confirm-type="send"/>
+</view>
+
+<view class="but">
+<button type="primary" size="mini" loading="{{true}}">提交</button>
+<button type="default" size="mini" disabled="{{true}}">按钮</button>
+<button type="warn" size="mini" plain="">重置</button>
+</view>
+</view>
+</form>
+
+
+<form bindsubmit="newssubmit">
+<view wx:for="{{newsarr}}" wx:key="id" style="border-bottom: dotted #ccc 1px;">
+{{item.id+"、"}}{{item.title}}
+</view>
+<view class="newsinput">
+<input type="text" name="newstitle" placeholder="请输入新闻" bindinput="titlechange" value="{{newTitle}}"/>
+<button type="primary" size="mini">提交</button>
+</view>
+
+</form>
