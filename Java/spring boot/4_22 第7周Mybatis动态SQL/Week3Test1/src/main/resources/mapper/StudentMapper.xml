@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.dao.StudentMapper">
+
+
+
+
+    <select id="findStudent" parameterType="String" resultType="Student">
+        select * from t_student where sname=#{sname}
+    </select>
+
+<!--    模仿UserMapper.xml的动态sql语句方法-->
+<!--    哈哈哈，老子把三个都改成模糊查询，这查不出数据？年龄2就直接把2在里面的都给你查了-->
+    <select id="findStudentDynamic" parameterType="Student" resultType="Student">
+        select * from t_student
+        <where>
+            <if test="sid != null and sid != 0">
+                and sid like CONCAT('%', #{sid}, '%')
+            </if>
+
+            <if test="sname != null and sname != ''">
+                and sname like CONCAT('%', #{sname}, '%')
+            </if>
+
+            <if test="sage != null and sage != 0">
+                and sage like CONCAT('%', #{sage}, '%')
+            </if>
+        </where>
+    </select>
+
+
+<!--    上机作业2：对Student添加使用动态SQL-->
+<!--    这里不是查询是增加学生所以绝对不能使用模糊不然等寄吧-->
+    <insert id="addStudentDynamic" parameterType="Student">
+        insert into t_student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sname != null and sname != ''">
+                sname,
+            </if>
+--             年龄必须不为空才行
+            <if test="sage != null and sage != 0">
+                sage,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sname != null and sname != ''">
+                #{sname},
+            </if>
+            <if test="sage != null and sage != 0">
+                #{sage},
+            </if>
+        </trim>
+    </insert>
+</mapper>
