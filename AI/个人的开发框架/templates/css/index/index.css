@@ -1,0 +1,281 @@
+:root {
+  --bg: #0d0d0d;
+  --text: #e0e0e0;
+  --accent: #00f0ff;
+  --accent-glow: #00f0ff44;
+  --card: rgba(22, 22, 22, 0.75);
+  --gradient: linear-gradient(135deg, #1a0033, #0d1a4d, #001a33);
+  --success: #00ff9d;
+  --danger: #ff4d4d;
+}
+
+[data-theme="light"] {
+  --bg: #f0f2f5;
+  --text: #1a1a1a;
+  --accent: #0066ff;
+  --accent-glow: #0066ff44;
+  --card: rgba(255, 255, 255, 0.85);
+  --gradient: linear-gradient(135deg, #e6f0ff, #f0f7ff, #e6faff);
+  --success: #00c853;
+  --danger: #d32f2f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--gradient);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-attachment: fixed;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  font-size: clamp(3.8rem, 12vw, 6.5rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  background: linear-gradient(90deg, #00f0ff, #a78bfa, #ff6ec7, #00f0ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 50px var(--accent-glow), 0 0 100px var(--accent-glow);
+  text-align: center;
+  margin: 1rem 0 1.5rem;
+  animation: float 8s ease-in-out infinite;
+}
+
+.status-line {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.92;
+}
+
+.status-line strong.running {
+  color: var(--success);
+  text-shadow: 0 0 15px var(--success);
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  transform: translateY(-14px) scale(1.015);
+  box-shadow: 0 40px 100px rgba(0, 240, 255, 0.22),
+    0 0 0 2px var(--accent-glow) inset;
+}
+
+h2 {
+  font-size: 2.2rem;
+  color: var(--accent);
+  margin-bottom: 1.4rem;
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.hint {
+  text-align: center;
+  font-size: 1.15rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
+  color: red;
+}
+
+.task-grid,
+.logs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.4rem;
+}
+
+.task-btn,
+.log-link {
+  display: block;
+  padding: 1.3rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  text-align: center;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  transition: all 0.4s;
+  backdrop-filter: blur(8px);
+}
+
+[data-theme="light"] .task-btn,
+[data-theme="light"] .log-link {
+  background: rgba(0, 0, 0, 0.04);
+  color: #111;
+  border-color: rgba(0, 102, 255, 0.2);
+}
+
+.task-btn:hover,
+.log-link:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0, 240, 255, 0.25);
+  background: linear-gradient(135deg, var(--accent), #9f7aea);
+  border-color: var(--accent);
+}
+
+.error {
+  background: linear-gradient(135deg, #7f1d1d, #991b1b) !important;
+  border-color: #ff4d4d !important;
+}
+
+/* 状态监控按钮 - 更突出一点 */
+.monitor-btn {
+  background: linear-gradient(135deg, #00c853, #00f0ff);
+  font-size: 1.3rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 200, 83, 0.4);
+}
+
+.monitor-btn:hover {
+  background: linear-gradient(135deg, #00f0ff, #00c853);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 240, 255, 0.5);
+}
+
+.shutdown-section {
+  margin: 1rem 0 3rem;
+  text-align: center;
+}
+
+.shutdown-btn {
+  display: block;
+  width: 100%;
+  padding: 2.2rem 1.5rem;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: white;
+  background: linear-gradient(90deg, #6b00ff, #00d4ff, #ff00aa, #6b00ff);
+  background-size: 300% 300%;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4), 0 0 0 4px rgba(0, 212, 255, 0.3);
+  transition: all 0.5s;
+  animation: bgFlow 12s linear infinite;
+}
+
+.shutdown-btn:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 40px 120px rgba(0, 212, 255, 0.6), 0 0 60px rgba(255, 0, 170, 0.5);
+  animation-duration: 4s;
+}
+
+.shutdown-btn .subtitle {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.88;
+  margin-top: 0.8rem;
+}
+
+.warning-card {
+  background: rgba(255, 77, 77, 0.12);
+  border: 1px solid rgba(255, 77, 77, 0.35);
+  border-radius: 20px;
+  padding: 1.8rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.warning-card h3 {
+  color: var(--danger);
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 15px rgba(255, 77, 77, 0.6);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1.4rem;
+  right: 1.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  padding: 0.8rem 1.4rem;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+@keyframes bgFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 3.8rem;
+  }
+
+  .shutdown-btn {
+    font-size: 2rem;
+    padding: 1.8rem 1rem;
+  }
+
+  .shutdown-btn .subtitle {
+    font-size: 1rem;
+  }
+
+  .monitor-btn {
+    font-size: 1.2rem;
+    padding: 1.3rem;
+  }
+}

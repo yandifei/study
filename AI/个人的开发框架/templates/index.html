@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>点点网自动化 · 控制台</title>
+    <link rel="stylesheet" href="/template/css/index/index.css">
+</head>
+
+<body>
+
+    <button class="theme-toggle" id="themeBtn">
+        <span id="themeIcon">🌙</span> 切换主题
+    </button>
+
+    <div class="content">
+        <h1>点点网自动化</h1>
+
+        <div class="status-line">
+            <span>状态：<strong class="running">运行正常</strong></span>
+            <span>版本：<span id="version-text">未知版本</span></span>
+        </div>
+
+        <div class="shutdown-section">
+            <button class="shutdown-btn" id="shutdownBtn">
+                ❌ 关闭程序
+                <span class="subtitle">清理上下文 / 浏览器 / Playwright 资源（将在新标签页触发，程序退出）</span>
+            </button>
+        </div>
+
+        <div class="card status-monitor-card">
+            <h2>💻 系统状态监控</h2>
+            <a href="/status" class="task-btn monitor-btn" target="_blank">
+                🔎 查看实时状态面板
+            </a>
+        </div>
+
+        <div class="card task-card">
+            <h2>⚡ 任务快速启动</h2>
+            <p class="hint">仅点击一次，多次点击=多开（注意稳定性）</p>
+            <div class="task-grid">
+                <a href="/start/求赞区" class="task-btn">点赞任务</a>
+                <a href="/start/求收藏区" class="task-btn">收藏任务</a>
+                <a href="/start/求分享区" class="task-btn">分享任务</a>
+                <a href="/start/求币区" class="task-btn">投币任务</a>
+                <a href="/start/求二连区" class="task-btn">点赞+收藏</a>
+                <a href="/start/求三连区" class="task-btn">点赞+收藏+投币</a>
+                <a href="/start/求观看区" class="task-btn">观看任务</a>
+                <a href="/start/观看有效率测试" class="task-btn">观看有效率测试</a>
+                <a href="/start/求关注区" class="task-btn">关注任务</a>
+            </div>
+        </div>
+
+        <div class="card logs-card">
+            <h2>ℹ️ 查看记录</h2>
+            <div class="logs-grid">
+                <a href="/outputs/logs/日志记录.log" target="_blank" class="log-link">运行日志</a>
+                <a href="/outputs/logs/error.log" target="_blank" class="log-link error">错误/崩溃日志</a>
+                <a href="/docs#/" target="_blank" class="log-link">接口文档</a>
+                <a href="/openapi.json" target="_blank" class="log-link">OpenAPI JSON</a>
+            </div>
+        </div>
+
+        <div class="warning-card">
+            <h3>⚠ 内存溢出警告</h3>
+            <p>FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory</p>
+            <small>出现此错误请立即重启程序</small>
+        </div>
+    </div>
+
+    <script src="/template/js/index/index.js"></script>
+</body>
+
+</html>

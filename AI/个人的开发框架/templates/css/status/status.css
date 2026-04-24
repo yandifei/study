@@ -1,0 +1,189 @@
+:root {
+    --bg: #0d0d0d;
+    --text: #e0e0e0;
+    --accent: #00f0ff;
+    --accent-glow: #00f0ff44;
+    --card: rgba(22, 22, 22, 0.78);
+    --gradient: linear-gradient(135deg, #1a0033, #0d1a4d, #001a33);
+    --success: #00ff9d;
+    --danger: #ff4d4d;
+}
+
+[data-theme="light"] {
+    --bg: #f0f2f5;
+    --text: #1a1a1a;
+    --accent: #0066ff;
+    --accent-glow: #0066ff44;
+    --card: rgba(255, 255, 255, 0.88);
+    --gradient: linear-gradient(135deg, #e6f0ff, #f0f7ff, #e6faff);
+    --success: #00c853;
+    --danger: #d32f2f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--gradient);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background-attachment: fixed;
+}
+
+.content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: clamp(3.5rem, 10vw, 5.8rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    background: linear-gradient(90deg, #00f0ff, #a78bfa, #ff6ec7, #00f0ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 50px var(--accent-glow);
+    text-align: center;
+    margin: 1rem 0 0.8rem;
+    animation: float 9s ease-in-out infinite;
+}
+
+.status-line {
+    text-align: center;
+    font-size: 1.35rem;
+    opacity: 0.9;
+    margin-bottom: 2.2rem;
+}
+
+.card {
+    background: var(--card);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 2.2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.015);
+    box-shadow: 0 35px 80px rgba(0, 240, 255, 0.2);
+}
+
+h2 {
+    font-size: 2.1rem;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    text-shadow: 0 0 18px var(--accent-glow);
+}
+
+h3 {
+    color: var(--danger);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.hint {
+    text-align: center;
+    font-size: 1.1rem;
+    opacity: 0.82;
+    margin-bottom: 1.8rem;
+    font-style: italic;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.3rem;
+}
+
+.monitor-card,
+.screenshot-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.18);
+    border-radius: 16px;
+    padding: 1.4rem;
+    text-align: center;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+    transition: all 0.35s;
+    backdrop-filter: blur(8px);
+}
+
+.monitor-card:hover,
+.screenshot-card:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(135deg, var(--accent), #9f7aea);
+    box-shadow: 0 15px 40px rgba(0, 240, 255, 0.3);
+    color: #000;
+    border-color: transparent;
+}
+
+.warning-card {
+    background: rgba(255, 77, 77, 0.1);
+    border-color: rgba(255, 77, 77, 0.4);
+}
+
+.warning-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.warning-card li {
+    margin: 0.9rem 0;
+    line-height: 1.5;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1.4rem;
+    right: 1.6rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    padding: 0.7rem 1.3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-22px);
+    }
+}
+
+@media (max-width: 720px) {
+    .content {
+        padding: 1.6rem 1rem;
+    }
+
+    h1 {
+        font-size: 3.6rem;
+    }
+}

@@ -1,0 +1,46 @@
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>实时监控</title>
+    </head>
+    <body>
+    <canvas id="display" style="width:100%; height:100vh; display:block; object-fit: contain;"></canvas>
+    <script>
+        // 获取Canvas和上下文
+        const canvas = document.getElementById('display');
+        const ctx = canvas.getContext('2d');
+
+         // 从URL获取index参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const index = urlParams.get('index') || '0';
+
+        // 建立WebSocket连接
+        const ws = new WebSocket(`ws://${location.host}/ws/monitor/${index}`);
+        //const ws = new WebSocket(`{response.json()[0]["webSocketDebuggerUrl"]}`);
+        // WebSocket 接收的是二进制字节流
+        ws.binaryType = "arraybuffer";
+        ws.onmessage = async (event) => {
+            try {
+                // 将 ArrayBuffer 转为 Blob (JPEG 格式)
+                const blob = new Blob([event.data], { type: 'image/jpeg' });
+                // 使用 createImageBitmap 进行异步解码（不阻塞 UI 线程）
+                const bitmap = await createImageBitmap(blob);
+                // 如果尺寸变化，调整画布
+                if (canvas.width !== bitmap.width) {
+                    canvas.width = bitmap.width;
+                    canvas.height = bitmap.height;
+                }
+                // 绘制并立即释放资源
+                ctx.drawImage(bitmap, 0, 0);
+                bitmap.close();
+
+            } catch (err) {
+                console.error("解析帧失败:", err);
+            }
+        };
+        ws.onclose = () => console.log("监控已断开");
+        ws.onerror = (e) => console.error("连接错误:", e);
+    </script>
+    </body>
+    </html>
