@@ -1,0 +1,1 @@
+OllamaSetup.exe DIR="下载的地址"
