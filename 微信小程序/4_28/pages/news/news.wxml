@@ -1,0 +1,3 @@
+<!--pages/news/news.wxml-->
+<text>pages/news/news.wxml</text>
+<navigator open-type="redirect" url="/pages/about/about">about</navigator>
