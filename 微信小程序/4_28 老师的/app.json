@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/news/news",
+    "pages/about/about",
+    "pages/text/text",
+    "pages/text1/text1",
+    "pages/text2/text2"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText":"第八周"
+  },
+  "tabBar":{
+    "list":[
+      {"pagePath": "pages/index/index",
+    "text": "首页",
+    "iconPath": "pages/images/tab1-selected.png",
+    "selectedIconPath": "pages/images/tab1-selected.png"
+    },
+    {"pagePath": "pages/news/news",
+    "text": "新闻",
+    "iconPath": "pages/images/手动.png"
+    },
+    {"pagePath": "pages/about/about",
+    "text": "关于",
+    "iconPath": "pages/images/Frame 67 (1).png"
+    }
+    ]
+  },
+  "style": "v2",
+  
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,3 @@
+<!--pages/text2/text2.wxml-->
+<text>pages/text2/text2.wxml</text>
+<navigator open-type="navigateBack" delta="3">返回</navigator>

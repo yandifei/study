@@ -1,0 +1,3 @@
+<!--pages/text1/text1.wxml-->
+<text>pages/text1/text1.wxml</text>
+跳转到：<navigator open-type="navigate" url="/pages/text2/text2">text2</navigator>

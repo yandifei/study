@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<button bindtap="showToast">消息提示框</button>
+<button bindtap="showModal">消息模态框</button>
+<button bindtap="showLoading">加载框</button>
+<button bindtap="hideLoading">取消加载框</button>
+<button bindtap="showTabbar">显示tabbar</button>
+<button bindtap="hideTabbar">隐藏tabbar</button>
+
+跳转到：
+  <navigator 	open-type="switchTab" url="/pages/news/news">新闻页</navigator>
+  <navigator 	open-type="navigate" url="/pages/text/text">text</navigator>
