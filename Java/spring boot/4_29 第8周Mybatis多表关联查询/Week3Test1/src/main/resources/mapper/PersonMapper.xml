@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my.dao.PersonMapper">
+    <select id="findPersonById" parameterType="int" resultMap="IdCardWithPerson">
+        select * from tb_person p join tb_idcard i on p.card_id=i.id where p.id=#{id}
+    </select>
+
+    <resultMap id="IdCardWithPerson" type="Person">
+        <id property="id" column="id" />
+        <association property="card" javaType="Idcard">
+            <id property="id" column="card_id" />
+            <result property="code" column="code" />
+        </association>
+    </resultMap>
+</mapper>

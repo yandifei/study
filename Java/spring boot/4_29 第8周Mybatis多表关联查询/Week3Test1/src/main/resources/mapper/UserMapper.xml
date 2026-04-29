@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.dao.UserMapper">
+
+   <select id="findUserById" parameterType="int" resultType="User">
+       select * from users where uid=#{uid}
+    </select>
+
+
+    <select id="findAllUser" resultType="User">
+        select * from users
+    </select>
+
+    <select id="findUserByName" parameterType="String" resultType="User">
+       select * from users where uname like concat('%',#{uname},'%')
+    </select>
+
+<!--    旧版的添加用户语句-->
+<!--    <insert id="addUser" parameterType="User">-->
+<!--        insert into users(uname,uage) values(#{uname},#{uage})-->
+<!--    </insert>-->
+<!--新版添加用户语句,动态sql,这里要不然我就是实现一个sql了-->
+    <insert id="addUser" parameterType="User">
+        insert into users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uname != null and uname != ''">
+                uname,
+            </if>
+            <if test="uage != null and uage != ''">
+                uage,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uname != null and uname != ''">
+                #{uname},
+            </if>
+            <if test="uage != null and uage != ''">
+                #{uage},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        update users set uname=#{uname},uage=#{uage} where uid=#{uid}
+    </update>
+
+<!--    <delete id="deleteUser" parameterType="int">-->
+<!--        delete from users where uid=#{uid}-->
+<!--    </delete>-->
+
+    <select id="findUser" parameterType="User" resultType="User">
+        select * from users
+        <where>
+            <if test="uid!=null  and uid!=''">
+                uid=#{uid}
+            </if>
+            <if test="uname!=null and uname!=''">
+                And uname like CONCAT('%',#{uname},'%')
+            </if>
+            <if test="uage!=null and uage!=''">
+                And uage=#{uage}
+            </if>
+        </where>
+    </select>
+
+<!--这个是方法二，但是还不太完美-->
+<!--    <select id="findUser" parameterType="pojo.User" resultType="pojo.User">-->
+<!--        select * from users-->
+<!--        <trim prefix="where" prefixOverrides="and | or">-->
+<!--            <if test="uid!=null  and uid!=''">-->
+<!--                uid=#{uid}-->
+<!--            </if>-->
+<!--            <if test="uname!=null and uname!=''">-->
+<!--                And uname like CONCAT('%',#{uname},'%')-->
+<!--            </if>-->
+<!--            <if test="uage!=null and uage!=''">-->
+<!--                and   uage=#{uage}-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--    </select>-->
+
+<!--    -->
+    <select id="findUserWithPasswordByName" parameterType="String" resultMap="UserWithPasswordResult">
+        select u.*, p.id as pid, p.password, p.role
+        from users u join tb_password p on u.uid = p.uid
+        where u.uname = #{uname}
+    </select>
+
+    <resultMap id="UserWithPasswordResult" type="Users">
+        <id property="uid" column="uid" />
+        <association property="passwordObj" javaType="Password">
+            <id property="id" column="pid" />
+            <result property="password" column="password" />
+            <result property="role" column="role" />
+        </association>
+    </resultMap>
+
+    <select id="findUserWithOrder" resultMap="UserWithOrder" parameterType="int">
+        select * from users u join tb_order o on u.uid=o.userid where uid=#{uid}
+    </select>
+    <resultMap id="UserWithOrder" type="Users">
+        <id property="uid" column="uid"/>
+        <collection property="orderList" ofType="Order">
+            <id property="id" column="id" />
+            <result property="productname" column="productname" />
+            <result property="price" column="price" />
+            <result property="number" column="number" />
+        </collection>
+    </resultMap>
+
+</mapper>
