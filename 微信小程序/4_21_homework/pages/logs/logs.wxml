@@ -1,2 +1,2 @@
 <!--pages/logs/logs.wxml-->
-<text>pages/logs/logs.wxml</text>
+<navigation-bar title="日志查看" back="{{false}}" color="black" background="#2b4b6b" />

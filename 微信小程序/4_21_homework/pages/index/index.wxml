@@ -1,7 +1,7 @@
 <!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
-    Weixin
+    <navigator url="/pages/news/news" open-type="redirect">点击新闻界面跳转</navigator>
   </view>
 </scroll-view>
+

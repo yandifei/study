@@ -1,1 +1,20 @@
 /* pages/news/news.wxss */
+input {
+  border: 1px solid #000;
+}
+
+.newsinput {
+  display: flex;
+  flex-direction: row;
+  background-color: aqua;
+  align-items: center;      /* 垂直居中对齐，使 input 和按钮高度中心对齐 */
+  padding: 20rpx;
+  padding-left: 100rpx;
+}
+
+.iptitem {
+  border: 2px solid red;
+  padding: 30rpx;
+  box-sizing: border-box;
+  margin: 30rpx;
+}

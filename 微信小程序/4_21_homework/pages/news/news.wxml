@@ -1,11 +1,29 @@
 <!--pages/news/news.wxml-->
-<!-- homeButton 的显示有两个关键点：
-显示条件：它只在特定页面出现。根据微信官方文档，homeButton 按钮会在“非首页、非页面栈最底层页面或非 tabBar 内页面”中展示
- -->
-<navigation-bar title="新闻墙" back="{{false}}" color="#FFF" background="#2b4b6b" ></navigation-bar>
-
 <scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    Weixin
+
+
+<!-- 新闻列表区域 -->
+<view wx:if="{{newsarr.length > 0}}">
+  <view wx:for="{{newsarr}}" wx:key="id" style="border-bottom: dotted #ccc 1px; display: flex; justify-content: space-between; align-items: center;">
+    <text>{{item.id + "、" + item.title}}</text>
+    <button size="mini" type="warn" bindtap="deleteNews" data-id="{{item.id}}">删除</button>
   </view>
-</scroll-view>
+</view>
+<view wx:else style="color: #999; text-align: center; padding: 20rpx;">
+  暂无信息，等待添加
+</view>
+
+<!-- 表单输入区域 -->
+<form bindsubmit="newssubmit">
+  <view class="newsinput">
+    <input type="text" name="newstitle" placeholder="请输入新闻" 
+           bindinput="titlechange" value="{{newTitle}}" />
+    <button type="primary" size="mini" form-type="submit">提交</button>
+  </view>
+</form>
+
+<!-- 显示多少条新闻 -->
+<view style="text-align: center; color: #999;">
+当前存在 <span style="color:indianred">{{newsarr.length}}</span> 条新闻
+</view>
+</scroll-view>  
