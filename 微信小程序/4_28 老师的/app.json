@@ -9,7 +9,8 @@
   ],
   "window": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText":"第八周"
+    "navigationBarTitleText":"第八周",
+    "homeButton": true
   },
   "tabBar":{
     "list":[
