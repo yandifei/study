@@ -1,0 +1,19 @@
+PyUIC
+qt文件转ui文件
+A:\Anaconda3\envs\Qt6\Scripts\pyuic6.exe
+$FileName$ -o $FileNameWithoutExtension$.py
+$FileDir$
+
+QtDesigner
+Qt设计师
+A:\Anaconda3\envs\Pyside6\Lib\site-packages\PySide6\designer.exe
+-stylesheet=A:\Pycharm\style.qss
+$FileDir$
+
+
+
+qrc转py(pyside6)
+资源转换
+A:\Anaconda3\envs\Pyside6\Scripts\pyside6-rcc.exe
+$FileName$ -o $FileNameWithoutExtension$.py
+$FileDir$
