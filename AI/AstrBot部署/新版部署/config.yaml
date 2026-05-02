@@ -57,21 +57,24 @@ cargo:
 
 security:
   # 必改项：设置一个强随机密钥，例如 openssl rand -hex 32
-  api_key: "CHANGE-ME"
+  api_key: "" # "CHANGE-ME" # 
   # 是否允许匿名访问。生产环境建议 false。
   allow_anonymous: false
 
 # 容器代理环境变量注入。
 # 启用后，Bay 会把 HTTP(S)_PROXY 和 NO_PROXY 注入到 sandbox 容器。
 proxy:
-  enabled: false
+  enabled: true
   # http_proxy: "http://proxy.example.com:7890"
   # https_proxy: "http://proxy.example.com:7890"
   # no_proxy: "my-internal.service"
-  # http_proxy: "http://host.docker.internal:7897"
-  # https_proxy: "http://host.docker.internal:7897"
+  http_proxy: "http://host.docker.internal:7897"
+  https_proxy: "http://host.docker.internal:7897"
   # no_proxy: "localhost,127.0.0.1,*.local,*.internal,astrbot_network"
-  # https_proxy: "http://127.0.0.1:7897"
+  no_proxy: "localhost,127.0.0.1,*.local,*.internal,host.docker.internal,astrbot_network,bay,astrbot,napcat1,napcat2"
+  # http_proxy: "http://127.0.0.1:7890"
+  # https_proxy: "http://127.0.0.1:7890"
+  # no_proxy: "my-internal.service"
 
 # Warm Pool：预热一批待命 sandbox，减少冷启动延迟。
 # 当用户创建 sandbox 时，Bay 会优先尝试领取一个已预热实例。

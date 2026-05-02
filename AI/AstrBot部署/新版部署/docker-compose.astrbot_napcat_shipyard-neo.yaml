@@ -27,10 +27,11 @@ services:
     environment:
       # - TZ=Asia/Shanghai                # 时区设置(自己加的)
       - BAY_DATA_DIR=/bay-data          # 让 AstrBot 自动读取 Bay 的 credentials.json(容器中的/bay-data)
-      # # Napcat WebSocket 地址（根据你下面 napcat 服务的配置修改）
+      # 额外添加的，为的是代理
+      # - NO_PR0XY=localhost,127.0.0.1
     ports:
       - "${ASTRBOT_PORT:-6185}:6185"    # AstrBot WebUI（必选），默认值6185，可以通过设置ASTRBOT_PORT环境变量来部署
-      - "4141:4141"                     # API聚合端口
+      # - "4141:4141"                     # API聚合端口
       # - "7833:7833"                   # 自主学习插件端口
       #- "6195:6195"                    # 可选，其他端口
       #- "6199:6199"                    # QQ WebSocket
