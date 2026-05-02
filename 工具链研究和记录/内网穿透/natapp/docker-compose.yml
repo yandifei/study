@@ -1,0 +1,15 @@
+services:
+  natapp:
+    image: natapp/natapp:latest
+    container_name: natapp
+    restart: unless-stopped
+    network_mode: "host"
+    environment:
+      - authtoken=<隧道authtoken>
+      # 如果需要更详细的日志，可以取消下一行的注释
+      # - loglevel=DEBUG
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1M"
+        max-file: "2"
