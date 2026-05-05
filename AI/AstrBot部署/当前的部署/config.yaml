@@ -57,7 +57,7 @@ cargo:
 
 security:
   # 必改项：设置一个强随机密钥，例如 openssl rand -hex 32
-  api_key: "58bf0f9e775b224c58525780cdbc5df012a21048ab44c8964bfd58980ad23dd5" # "CHANGE-ME" # 
+  api_key: "" # "CHANGE-ME" # 
   # 是否允许匿名访问。生产环境建议 false。
   allow_anonymous: false
 
