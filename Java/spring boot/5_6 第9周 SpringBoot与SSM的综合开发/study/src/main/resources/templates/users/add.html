@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加用户</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .btn-cancel {
+            background-color: #999;
+        }
+        .btn-cancel:hover {
+            background-color: #777;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>添加用户</h1>
+    <form th:action="@{/users/add}" method="post">
+        <div class="form-group">
+            <label for="uname">姓名：</label>
+            <input type="text" id="uname" name="uname" required>
+        </div>
+        <div class="form-group">
+            <label for="uage">年龄：</label>
+            <input type="number" id="uage" name="uage" required>
+        </div>
+        <button type="submit">保存</button>
+        <a href="/users/list"><button type="button" class="btn-cancel">取消</button></a>
+    </form>
+</body>
+</html>

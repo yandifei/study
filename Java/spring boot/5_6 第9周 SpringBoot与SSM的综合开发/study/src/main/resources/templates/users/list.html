@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            padding: 5px 10px;
+            margin: 2px;
+            text-decoration: none;
+            color: white;
+            border-radius: 3px;
+        }
+        .btn-add {
+            background-color: #4CAF50;
+        }
+        .btn-edit {
+            background-color: #2196F3;
+        }
+        .btn-delete {
+            background-color: #f44336;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>用户管理系统</h1>
+    <a href="/users/toAdd" class="btn btn-add">添加用户</a>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.uid}"></td>
+                <td th:text="${user.uname}"></td>
+                <td th:text="${user.uage}"></td>
+                <td>
+                    <a th:href="@{/users/toEdit/{uid}(uid=${user.uid})}" class="btn btn-edit">编辑</a>
+                    <a th:href="@{/users/delete/{uid}(uid=${user.uid})}" 
+                       class="btn btn-delete"
+                       onclick="return confirm('确定要删除吗？')">删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
