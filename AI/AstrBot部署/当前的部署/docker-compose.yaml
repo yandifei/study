@@ -29,7 +29,7 @@ services:
       # 额外添加的，为的是代理
       # - NO_PR0XY=localhost,127.0.0.1
     ports:
-      - "${ASTRBOT_PORT:-6185}:6185"    # AstrBot WebUI（必选），默认值6185，可以通过设置ASTRBOT_PORT环境变量来部署
+      - "6185:6185"    # AstrBot WebUI（必选），默认值6185，可以通过设置ASTRBOT_PORT环境变量来部署
       - "4141:4141"                     # API聚合端口
       - "5000:5000"                     # 表情包管理插件
       # - "7833:7833"                   # 自主学习插件端口
@@ -122,8 +122,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock     # 用于动态创建沙箱容器
       - ./config.yaml:/app/config.yaml:ro             # 挂载配置文件
       - ./bay-data:/app/data                          # SQLite 数据库持久化
-      # - ./bay-cargos:/var/lib/bay/cargos              # Cargo 工作区持久化
-      - ./bay-cargos:/workspace
+      - bay-cargos:/var/lib/bay/cargos              # Cargo 工作区持久化（放到wsl2中）
+      # - ./bay-cargos:/workspace                       # Cargo 工作区持久化（之前的）
       # - ${PWD}/bay-data:/app/data                          # SQLite 数据库持久化
       # - ${PWD}/bay-cargos:/var/lib/bay/cargos              # Cargo 工作区持久化
     networks:

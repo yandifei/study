@@ -47,13 +47,14 @@ cargo:
   # force_relative_path: true
   # Bay 容器内部用来存放数据的根路径，对应上面docker-compose.astrbot_napcat_shipyard-neo.yaml里的挂载点
   # Cargo 在 Bay 侧的存储根路径
-  # root_path: "./bay-cargos" # /var/lib/bay/cargos
+  root_path: "bay-cargos" # /var/lib/bay/cargos
   # (对应docker-compose.astrbot_napcat_shipyard-neo.yaml里Bay容器看到的路径)
-  root_path: "/workspace"
+  # root_path: "/workspace"
   # 默认工作区大小限制（MB）
-  default_size_limit_mb: 10240
+  default_size_limit_mb: 1024
   # Cargo 挂载到 sandbox 内的路径。AstrBot/Neo 的工作区根目录就是这里。
   mount_path: "/workspace" # /workspace
+
 
 security:
   # 必改项：设置一个强随机密钥，例如 openssl rand -hex 32
@@ -79,7 +80,8 @@ proxy:
 # Warm Pool：预热一批待命 sandbox，减少冷启动延迟。
 # 当用户创建 sandbox 时，Bay 会优先尝试领取一个已预热实例。
 warm_pool:
-  enabled: true
+  # 我要关闭预热池
+  enabled: false
   # 预热队列 worker 数量（就是需要用到容器的时候最多并发创建多少个容器使用）
   warmup_queue_workers: 2
   # 预热队列最大长度
@@ -107,8 +109,8 @@ profiles:
       - filesystem  # 包含 upload/download
       - shell
       - python
-    # 空闲超时（秒）
-    idle_timeout: 1800
+    # 沙箱存活时间
+    idle_timeout: 300
     # 保持 0 个预热实例
     warm_pool_size: 0
     env: {}
@@ -129,7 +131,8 @@ profiles:
       - filesystem  # 包含 upload/download
       - shell
       - python
-    idle_timeout: 1800
+    # 沙箱存活时间
+    idle_timeout: 300
     warm_pool_size: 0
     env: {}
 
@@ -164,7 +167,8 @@ profiles:
         capabilities:
           - browser
         env: {}
-    idle_timeout: 1800
+    # 沙箱存活时间
+    idle_timeout: 300
     warm_pool_size: 1
 
 gc:
@@ -172,7 +176,7 @@ gc:
   enabled: true
   run_on_startup: true
   # GC 扫描周期（秒）
-  interval_seconds: 300
+  interval_seconds: 60
 
   # 多实例部署时必须保证唯一
   instance_id: "bay-prod"
