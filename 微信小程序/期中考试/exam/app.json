@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/quiz/quiz",
+    "pages/lab/lab"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "文化首页",
+        "iconPath": "pages/images/index.png",
+        "selectedIconPath": "pages/images/bar_selected_icon/index.png"
+      },
+      {
+        "pagePath": "pages/quiz/quiz",
+        "text": "文化测验",
+        "iconPath": "pages/images/quiz.png",
+        "selectedIconPath": "pages/images/bar_selected_icon/quiz.png"
+      },
+      {
+        "pagePath": "pages/lab/lab",
+        "text": "体验馆",
+        "iconPath": "pages/images/lab.png",
+        "selectedIconPath": "pages/images/bar_selected_icon/lab.png"
+      }
+    ],
+    "selectedColor": "#e43d3d"
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#e43d3d",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText":"首页",
+    "homeButton": true
+  },
+  "style": "v2",
+  "renderer": "webview",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

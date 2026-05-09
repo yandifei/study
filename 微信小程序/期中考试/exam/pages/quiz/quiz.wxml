@@ -1,0 +1,55 @@
+<!--pages/quiz/quiz.wxml-->
+<form bindsubmit="submitQuiz" bindreset="resetQuiz">
+  <!-- 单选题：radio -->
+  <view class="card">
+    <view class="question">1. 广东传统戏剧是？</view>
+    <radio-group name="drama">
+      <label class="option" wx:for="{{dramaOptions}}" wx:key="value">
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.label}}
+      </label>
+    </radio-group>
+  </view>
+
+  <!-- 多选题：checkbox -->
+  <view class="card">
+    <view class="question">2. 以下哪些是广东早茶经典点心？（多选）</view>
+    <checkbox-group name="dimsum">
+      <label class="option" wx:for="{{dimsumOptions}}" wx:key="value">
+        <checkbox value="{{item.value}}" checked="{{item.checked}}"/>{{item.label}}
+      </label>
+    </checkbox-group>
+  </view>
+
+  <!-- 判断题：switch -->
+  <view class="card switch-card">
+    <view class="question">3. 粤语是广东主要方言</view>
+    <switch name="cantonese" checked="{{switchChecked}}" color="#e43d3d" />
+  </view>
+
+  <!-- 评分滑块 -->
+  <view class="card">
+    <view class="question">4. 你对广东文化的热爱程度（0-100）</view>
+    <slider name="love" min="0" max="100" value="{{loveValue}}" show-value block-size="20"
+            activeColor="#e43d3d" backgroundColor="#ddd" />
+  </view>
+
+  <!-- 文本输入 -->
+  <view class="card">
+    <view class="question">5. 你最喜欢的广东美食</view>
+    <input name="food" class="input-field" placeholder="请输入广东美食的名称" value="{{food}}" />
+  </view>
+
+  <!-- 下拉选择器 -->
+  <view class="card">
+    <view class="question">6. 选择最喜欢的广东城市</view>
+    <picker name="city" mode="selector" range="{{cities}}" value="{{cityIndex}}" bindchange="cityChange">
+      <view class="picker-display">{{cities[cityIndex]}}</view>
+    </picker>
+  </view>
+
+  <!-- 按钮组 -->
+  <view class="btn-group">
+    <button form-type="submit" type="primary" style="background-color:#e43d3d">提交</button>
+    <button form-type="reset" type="default">重置</button>
+  </view>
+</form>

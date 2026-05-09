@@ -1,0 +1,38 @@
+/* pages/lab/lab.wxss */
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+/* 卡片内第一个按钮 */
+.card button:first-child {
+  background: #e43d3d;
+  color: #fff; /*字体颜色为白色，不然字体和这个按钮背景都是红色*/
+  margin-bottom: 15rpx;
+}
+
+.card button {
+  margin-bottom: 20rpx; /* 增加按钮之间下边距，撑开间隙 */
+  color: #e43d3d; /*统一字体颜色为红色，贴合UI主题*/
+}
+
+.icon-row {
+  display: flex;
+  align-items: center;
+  gap: 40rpx;
+}
+.checkbox-label {
+  display: block;
+  padding: 10rpx 0;
+  font-size: 30rpx;
+}
+.selected-result {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background: #fff3f3;
+  border-left: 6rpx solid #e43d3d;
+  color: #333;
+  font-size: 28rpx;
+}

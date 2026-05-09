@@ -1,0 +1,46 @@
+<!--pages/lab/lab.wxml-->
+<view class="page">
+  <!-- API 演示按钮 -->
+  <view class="card">
+    <button bindtap="showToast" type="primary">Toast 提示</button>
+    <button bindtap="showModal" type="default">模态对话框</button>
+    <button bindtap="showLoading" type="warn">显示加载（2秒）</button>
+  </view>
+
+  <!-- 进度联动：slider + progress -->
+  <view class="card">
+    <view class="section-title">进度联动</view>
+    <progress percent="{{progressValue}}" stroke-width="12" activeColor="#e43d3d" backgroundColor="#f0f0f0"
+              border-radius="8" />
+    <!-- 这里需要注意 bindchange="interestChange"是拖动结束后才触发的事件，所以不能用 -->
+    <slider value="{{progressValue}}" bindchanging="sliderChange" min="0" max="100" show-value
+            activeColor="#e43d3d" backgroundColor="#ddd" style="margin-top:20rpx;" />
+  </view>
+
+  <!-- 图标展示 -->
+  <view class="card icon-row">
+    <view class="section-title">文化图标</view>
+    <icon type="success" size="40" color="#e43d3d"></icon>
+    <icon type="info" size="40" color="#e43d3d"></icon>
+    <icon type="waiting" size="40" color="#e43d3d"></icon>
+  </view>
+
+  <!-- 图片展示 -->
+  <view class="card">
+    <view class="section-title">爱丽丝的笑容(小登不想找图了，留个UID吧)</view>
+    <image src="/pages/images/lab/爱丽丝的笑容.jpg" mode="widthFix" style="width:100%;border-radius:12rpx;" />
+  </view>
+
+  <!-- 兴趣多选 + 条件渲染显示结果 -->
+  <view class="card">
+    <view class="section-title">选择你感兴趣的文化领域</view>
+    <checkbox-group bindchange="interestChange">
+      <label class="checkbox-label" wx:for="{{interests}}" wx:key="value">
+        <checkbox value="{{item.value}}" checked="{{item.checked}}"/>{{item.label}}
+      </label>
+    </checkbox-group>
+    <view wx:if="{{selectedInterests.length > 0}}" class="selected-result">
+      已选择：{{selectedInterests}}
+    </view>
+  </view>
+</view>

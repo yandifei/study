@@ -1,0 +1,114 @@
+/**index.wxss**/  
+/* ========== 页面根容器 ========== */
+/* 设置页面高度为视口高度，并使用纵向 flex 布局，保证 scroll-view 能占满剩余空间 */
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== 滚动区域 ========== */
+/* flex: 1 使其撑满可用高度；overflow-y: hidden 避免外层滚动条，由 scroll-view 自身控制滚动 */
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+/* ========== 加载状态 ========== */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.loading-text {
+  font-size: 36rpx;
+  color: #666;
+}
+
+/* ========== 轮播图 ========== */
+.swiper {
+  height: 400rpx;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  overflow: hidden;            /* 保证圆角生效 */
+}
+.swiper-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* ========== 文化简介卡片 ========== */
+.intro-card {
+  display: flex;
+  align-items: center;
+}
+.intro-text {
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: #333;
+  flex: 1;                     /* 文字填满剩余空间 */
+}
+
+/* ========== 文化传承热度进度条 ========== */
+.progress-label {
+  font-size: 28rpx;
+  color: #555;
+  margin-bottom: 12rpx;
+  display: block;              /* 独占一行 */
+}
+
+/* ========== 文化资讯流（新版图片展示区） ========== */
+/* 容器：左右内边距，垂直排列卡片 */
+.news-list {
+  padding: 0 20rpx;
+}
+
+/* 单张资讯卡片：白底、圆角、阴影、溢出隐藏（保证图片圆角） */
+.news-card {
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 16rpx rgba(0,0,0,0.06);
+}
+
+/* 卡片内图片：宽度占满，高度自适应（按图片原比例显示） */
+.news-image {
+  width: 100%;
+  display: block;
+}
+
+/* 卡片文字区域 */
+.news-body {
+  padding: 20rpx 24rpx;
+}
+
+/* 资讯标题：加粗、深色、稍大字号 */
+.news-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+/* 资讯正文：正常字号、灰色、行高适中，完整显示不截断 */
+.news-desc {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.7;            /* 行高稍大，提升阅读舒适度 */
+  text-align: justify;         /* 两端对齐，更像文章排版 */
+}
+
+/* ========== 底部跳转按钮 ========== */
+.nav-button {
+  background: #e43d3d;
+  color: #fff;
+  text-align: center;
+  padding: 24rpx 0;
+  margin: 30rpx 20rpx;
+  border-radius: 50rpx;
+  font-size: 34rpx;
+}

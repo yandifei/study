@@ -1,0 +1,53 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+
+<!-- 为了展示进度条加载得去掉用条件渲染 -->
+<!-- 条件渲染：加载中 vs 加载完成 -->
+<!-- <view wx:if="{{loading}}" class="loading-container">
+  <text class="loading-text">加载中...</text>
+</view> -->
+
+<!-- 为了展示进度条加载得去掉用条件渲染 -->
+<!-- <view wx:else class="page-content"> -->
+  <view class="page-content">
+  <!-- 文化轮播图 -->
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" circular="{{true}}"
+          class="swiper">
+    <block wx:for="{{banners}}" wx:key="id">
+      <swiper-item>
+        <image src="{{item.src}}" mode="aspectFill" class="swiper-image"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 文化简介卡片 -->
+  <view class="card intro-card">
+    <icon type="info" size="24" color="#e43d3d"></icon>
+    <text class="intro-text">广东是岭南文化的发源地，拥有粤剧、醒狮、早茶等丰富文化遗产。</text>
+  </view>
+
+  <!-- 文化传承热度进度条 -->
+  <view class="card">
+    <text class="progress-label">文化传承热度：{{heat}}%</text>
+    <progress percent="{{heat}}" stroke-width="10" activeColor="#e43d3d" backgroundColor="#f0f0f0"
+              border-radius="8" />
+  </view>
+
+<!-- 文化图片展示（资讯流列表渲染） -->
+<view class="news-list">
+  <block wx:for="{{cultureImages}}" wx:key="id">
+    <view class="news-card">
+      <!-- 图片 -->
+      <image src="{{item.src}}" mode="widthFix" class="news-image"></image>
+      <view class="news-body">
+        <text class="news-title">{{item.title}}</text>
+        <text class="news-desc">{{item.content}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+
+  <!-- 跳转按钮 -->
+  <navigator url="/pages/quiz/quiz" open-type="switchTab" class="nav-button">去答题</navigator>
+</view>
+</scroll-view>
