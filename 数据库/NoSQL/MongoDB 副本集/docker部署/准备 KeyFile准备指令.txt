@@ -1,0 +1,3 @@
+前提得要有git，不然只能下载openssl这个软件看了
+
+openssl rand -base64 756 > rs0.key
