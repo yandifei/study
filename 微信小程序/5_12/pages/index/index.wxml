@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- <button bind:tap="getData">网络请求</button>
+    <image src="{{imgurl}}"></image>
+    <text>响应数据{{imgurl}}</text> -->
+    <image src="{{imgurl}}"></image>
+    <!-- 相片的代码 -->
+    <button bindtap="getImg">选择相片</button>
+  </view>
+</scroll-view>
