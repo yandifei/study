@@ -1,0 +1,64 @@
+# =============================================================================
+# MongoDB 7.0 三节点副本集 Docker Compose 配置（无认证）
+# 适用环境：本地学习 / Windows 11 / Linux
+# 镜像：mongo:7.0（官方镜像）
+# 副本集名称：rs0
+# 认证：已禁用（无需用户名密码，节点间无需 keyfile）
+# =============================================================================
+
+services:
+  # ==================== 节点 0（通常希望成为 PRIMARY） ====================
+  mongodb:
+    container_name: mongodb          # 容器名称，方便 docker exec 进入
+    image: mongo:7.0                 # 官方 MongoDB 7.0 镜像（LTS 长期支持版）
+    hostname: mongodb                # 容器内部主机名，副本集成员之间通信用这个名字
+    restart: unless-stopped          # 除非手动停止，否则总是自动重启
+    ports:
+      - "27017:27017"                # 宿主机端口:容器端口（27017 是 MongoDB 默认端口）
+    volumes:
+      # 使用相对路径 ./rs0/db 挂载到容器内 /data/db，实现数据持久化
+      # 这样配置文件可以随项目移动，不依赖绝对路径
+      - ./rs0/db:/data/db
+    # mongod 启动参数：
+    # --replSet "rs0"   : 副本集名称，所有成员必须一致
+    # --bind_ip_all     : 绑定所有网络接口，允许其他容器通过主机名访问
+    # 注意：没有 --auth 和 --keyFile，表示不启用认证
+    command: 'mongod --replSet "rs0" --bind_ip_all'
+    networks:
+      - mongodb_network               # 加入自定义网络，容器间可通过主机名通信
+
+  # ==================== 节点 1（SECONDARY） ====================
+  mongodb1:
+    container_name: mongodb1
+    image: mongo:7.0
+    hostname: mongodb1                # 必须与副本集配置中的 host 一致
+    restart: unless-stopped
+    ports:
+      - "27018:27017"                 # 映射到宿主机 27018，避免与主节点端口冲突
+    volumes:
+      - ./rs1/db:/data/db             # 每个节点必须有独立的数据目录
+    command: 'mongod --replSet "rs0" --bind_ip_all'
+    networks:
+      - mongodb_network
+
+  # ==================== 节点 2（SECONDARY） ====================
+  mongodb2:
+    container_name: mongodb2
+    image: mongo:7.0
+    hostname: mongodb2
+    restart: unless-stopped
+    ports:
+      - "27019:27017"                 # 映射到宿主机 27019
+    volumes:
+      - ./rs2/db:/data/db
+    command: 'mongod --replSet "rs0" --bind_ip_all'
+    networks:
+      - mongodb_network
+
+# =============================================================================
+# 自定义桥接网络
+# 所有容器加入同一网络后，可以通过容器名（如 mongodb、mongodb1、mongodb2）互相通信
+# =============================================================================
+networks:
+  mongodb_network:
+    driver: bridge
