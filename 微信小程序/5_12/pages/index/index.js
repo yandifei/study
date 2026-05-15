@@ -16,9 +16,9 @@ Page({
         console.error('请求失败', err);
         wx.showToast({ title: '加载失败', icon: 'none' });
       },
-      // complete: () => {
-      //   wx.stopPullDownRefresh(); // 停止下拉刷新动画
-      // }
+      complete: () => {
+        wx.stopPullDownRefresh(); // 停止下拉刷新动画
+      }
     });
   },
 
