@@ -8,11 +8,14 @@ page {
 .scrollarea {
   flex: 1;
   overflow-y: hidden;
+  /*必须存在，否则无法判定存在滚动*/
+  /* height: 100rpx; */
 }
 /* 这个是关键，也算是个坑货，在之前的是实验中出现过的问题，全局默认200距离 */
 .container {
   padding: 0rpx;
   margin: 20rpx;
+  gap: 10rpx;
 }
 image {
   /* 图片宽度撑满 */

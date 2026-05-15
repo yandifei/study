@@ -1,6 +1,8 @@
 <!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container" wx:for="{{img_urls}}">
-    <image src="{{item}}" mode="aspectFill" />
+<scroll-view class="scrollarea" scroll-y="true" bindscroll="onScrollView">
+  <view class="container">
+    <image  wx:for="{{img_urls}}" wx:key="index"
+    src="{{item}}" mode="aspectFill" />
   </view>
 </scroll-view>
+<!-- 实在没办法呀，无论是gemini、gpt还是deepsseek的都没有办法解决页面滚动回开头的功能呀，还有就是动态滚动加载也没有非常好处理，好吧，我算是明白为什么要原生开发app了 -->
