@@ -3,22 +3,13 @@
     "pages/index/index"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationStyle": "default",
-    "navigationBarBackgroundColor": "#2b4b6b"
+    "navigationBarBackgroundColor": "#2b4b6b",
+    "navigationBarTitleText": "随机图片"
   },
   "style": "v2",
   "renderer": "webview",
-  "rendererOptions": {
-    "skyline": {
-      "defaultDisplayBlock": true,
-      "defaultContentBox": true,
-      "tagNameStyleIsolation": "legacy",
-      "disableABTest": true,
-      "sdkVersionBegin": "3.0.0",
-      "sdkVersionEnd": "15.255.255"
-    }
-  },
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
