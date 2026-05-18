@@ -1,0 +1,6 @@
+<view class="container">
+  <form bindsubmit="handleSubmit">
+    <input type="number" name="num" placeholder="请输入jm码"/>
+    <button form-type="submit" type="primary">点击观看</button>
+  </form>
+</view>

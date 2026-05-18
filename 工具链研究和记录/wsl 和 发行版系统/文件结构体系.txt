@@ -1,0 +1,11 @@
+Windows（主工作区）
+ ├── B:\AI Bot\MongoDB   ← YAML 在这里
+ ├── Docker Desktop (WSL backend)
+ │     ├── mongodb
+ │     ├── mongodb1
+ │     └── mongodb2
+ │
+ └── Debian WSL（工具箱）
+      ├── openssl
+      ├── bash
+      └── chmod

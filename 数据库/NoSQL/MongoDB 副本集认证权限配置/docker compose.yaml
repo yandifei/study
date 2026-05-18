@@ -1,0 +1,104 @@
+# =============================================================================
+# MongoDB 7.0 三节点副本集 Docker Compose 配置（带认证）
+# 适用环境：本地开发 / Windows 11（WSL2 内） / Linux
+# 镜像：mongo:7.0（官方镜像，非 atlas-local）
+# 副本集名称：rs0
+# 认证：已启用，使用 KeyFile 进行副本集内部认证
+# =============================================================================
+
+# -------------------------------------------------------------------
+# 关于卷挂载的说明
+# -------------------------------------------------------------------
+# 必须挂载：
+#   ./rs*/db:/data/db                 -> MongoDB 所有数据（文档、oplog、副本集配置）
+#   /mongodb/keyfile/rs0.key:ro       -> 副本集内部认证密钥（只读，绝对路径）
+#
+# 不需要（已移除）：
+#   ./rs*/init                        -> 初始化脚本，我们手动用 rs.initiate()
+#   ./rs*/configdb                    -> 分片集群配置服务器专用，副本集用不到
+#   ./rs*/mongot                      -> mongodb-atlas-local 镜像专用，官方镜像无此路径
+#
+# -------------------------------------------------------------------
+# ⚠️ 关键提醒（keyfile 必须在 Linux 文件系统中）：
+# 1. keyfile 路径为 WSL2 Linux 内的绝对路径 /mongodb/keyfile/rs0.key
+#    这样可以确保容器内满足 400 权限 + 属主 999 的要求。
+#    请勿使用 Windows 文件系统路径挂载，否则权限检查会失败。
+# 2. keyfile 权限必须为 400（仅 owner 可读），属主必须为 999（mongod 用户）
+#    在 WSL 中执行：
+#      chown 999:999 /mongodb/keyfile/rs0.key
+#      chmod 400 /mongodb/keyfile/rs0.key
+# 3. 本 compose 文件建议放在 /mongodb/ 目录下，以便相对路径 ./rs*/db 正常工作。
+# 4. 首次启动或重置环境时，请清空旧的脏数据目录：
+#      rm -rf ./rs0/db ./rs1/db ./rs2/db
+# -------------------------------------------------------------------
+
+services:
+  # ==================== 节点 0（通常希望成为 PRIMARY） ====================
+  mongodb:
+    container_name: mongodb
+    image: mongo:7.0
+    hostname: mongodb
+    restart: unless-stopped
+    environment:
+      # MONGO_INITDB_ROOT_* 会在首次启动时创建 root 用户
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./rs0/db:/data/db
+      - /mongodb/keyfile/rs0.key:/opt/keyfile/rs0.key:ro
+
+    # -------------------------------------------------------------------
+    # 启动命令说明：
+    # 1. 不使用 --auth，交由官方 entrypoint 在用户创建后自动添加，避免冲突
+    # 2. --bind_ip 包含 localhost 和当前容器 hostname，确保副本集节点可互通
+    # 3. --keyFile 指向容器内路径，文件权限要求 400 且属主 999
+    # -------------------------------------------------------------------
+    command: 'mongod --replSet "rs0" --bind_ip localhost,mongodb --keyFile /opt/keyfile/rs0.key'
+    networks:
+      - mongodb_network
+
+  # ==================== 节点 1（SECONDARY） ====================
+  mongodb1:
+    container_name: mongodb1
+    image: mongo:7.0
+    hostname: mongodb1
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    ports:
+      - "27018:27017"
+    volumes:
+      - ./rs1/db:/data/db
+      - /mongodb/keyfile/rs0.key:/opt/keyfile/rs0.key:ro
+    command: 'mongod --replSet "rs0" --bind_ip localhost,mongodb1 --keyFile /opt/keyfile/rs0.key'
+    networks:
+      - mongodb_network
+
+  # ==================== 节点 2（SECONDARY） ====================
+  mongodb2:
+    container_name: mongodb2
+    image: mongo:7.0
+    hostname: mongodb2
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    ports:
+      - "27019:27017"
+    volumes:
+      - ./rs2/db:/data/db
+      - /mongodb/keyfile/rs0.key:/opt/keyfile/rs0.key:ro
+    command: 'mongod --replSet "rs0" --bind_ip localhost,mongodb2 --keyFile /opt/keyfile/rs0.key'
+    networks:
+      - mongodb_network
+
+# =============================================================================
+# 自定义桥接网络
+# 所有容器加入同一网络后，可以通过容器名/hostname 互相通信
+# =============================================================================
+networks:
+  mongodb_network:
+    driver: bridge

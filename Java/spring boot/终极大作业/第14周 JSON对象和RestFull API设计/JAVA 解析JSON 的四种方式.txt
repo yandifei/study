@@ -1,0 +1,278 @@
+JAVA 解析JSON 的四种方式：
+
+JSON 是一种轻量级易与解析的数据格式，jquery 1.4 以后对 json 格式变严格
+
+格式：{"键":"值 ","键":"值 "}，boolean 类型，则不用加 引号
+
+ 具体形式 ：
+Json 以 key－value 的形式存储数据 
+Key 的取值 为 String 类型; 
+Value 的取值 为 String,boolean,Number,数组,Object,null
+Json 串以{开始,以}结尾
+Json 串中数组是以[开始,以]结尾; 
+Json 串中 Object 是以{开始,以}结尾; 
+
+我们在日常开发中少不了和JSON数据打交道，那么我们来看看JAVA中常用的JSON解析方式。
+1、JSON官方 JSON官方的解析最具有通用性，但是有点小麻烦。
+2、GSON GSON解析是谷歌的，也比较好用
+3、FastJSON FastJSON是阿里巴巴的产品，效率最高
+4、jackson SpringMVC内置的解析器就是这个
+
+演示：
+JSON操作涉及到的类：
+public class Student {
+
+  private int id;
+  private String name;
+  private int age;
+  public int getId() {
+    return id;
+  }
+  public void setId(int id) {
+    this.id = id;
+  }
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public int getAge() {
+    return age;
+  }
+  public void setAge(int age) {
+    this.age = age;
+  }
+  public Student(int id, String name, int age) {
+    super();
+    this.id = id;
+    this.name = name;
+    this.age = age;
+  }
+  public Student() {
+    super();
+  }
+  @Override
+  public String toString() {
+    return "Student [id=" + id + ", name=" + name + ", age=" + age + "]";
+  }
+}
+
+public class Grade {
+
+  private int id;
+  private String name;
+  private ArrayList<Student> stus;
+  public Grade(int id, String name, ArrayList<Student> stus) {
+    super();
+    this.id = id;
+    this.name = name;
+    this.stus = stus;
+  }
+  public Grade() {
+    super();
+  }
+  @Override
+  public String toString() {
+    return "Grade [id=" + id + ", name=" + name + ", stus=" + stus + "]";
+  }
+  public int getId() {
+    return id;
+  }
+  public void setId(int id) {
+    this.id = id;
+  }
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public ArrayList<Student> getStus() {
+    return stus;
+  }
+  public void setStus(ArrayList<Student> stus) {
+    this.stus = stus;
+  }
+
+}
+
+JSON官方的解析最具有通用性，但是有点小麻烦:
+public class JSONTest {
+
+  //解析JSON
+  @Test
+  public void test1() throws JSONException{
+    //对象嵌套数组嵌套对象
+    String json1="{'id':1,'name':'JAVAEE-1703','stus':[{'id':101,'name':'刘一','age':16}]}";
+    //数组
+    String json2="['北京','天津','杭州']";
+
+    //1、
+    //解析第一层---对象
+    JSONObject jObject1=new JSONObject(json1);
+    Grade grade=new Grade();
+    grade.setId(jObject1.getInt("id"));
+    grade.setName(jObject1.getString("name"));
+    ArrayList<Student> stus=new ArrayList<>();
+    grade.setStus(stus);
+    //解析第二层----数组
+    JSONArray jsonArray2=jObject1.getJSONArray("stus");
+    //遍历数组获取元素----对象
+    for(int i=0;i<jsonArray2.length();i++){
+      //解析第三层----对象
+      JSONObject jObject3=jsonArray2.getJSONObject(i);
+      Student student=new Student(jObject3.getInt("id"), jObject3.getString("name"), jObject3.getInt("age"));
+      grade.getStus().add(student);
+    }
+
+    System.out.println(grade);
+
+    //获取当前对象的所有属性的迭代器对象
+//   Iterator<String> iterator=jObject1.keys();
+//   while (iterator.hasNext()) {
+//     String key = iterator.next();
+//     System.out.println("属性："+key);
+//   }
+
+    //2、
+    //获取数组对象
+    JSONArray jArray=new JSONArray(json2);
+    ArrayList<String> list=new ArrayList<>();
+    //遍历获取元素
+    for(int i=0;i<jArray.length();i++){
+      //jArray.optString(i);//等价于getXXX
+      list.add(jArray.getString(i));
+    }
+    System.out.println("解析结果："+list);
+  }
+  //生成JSON
+  @Test
+  public void test2() throws JSONException{
+    JSONObject jo1=new JSONObject();
+    jo1.put("id", 1001);
+    jo1.put("name", "范老");
+    jo1.put("age", 20);
+    JSONObject jo2=new JSONObject();
+    jo2.put("id", 1002);
+    jo2.put("name", "平平");
+    jo2.put("age", 19);
+    JSONArray ja2=new JSONArray();
+    ja2.put(jo1);
+    ja2.put(jo2);
+    JSONObject jo3=new JSONObject();
+    jo3.put("id", 11);
+    jo3.put("name", "JAVAEE-1704");
+    jo3.put("stus",ja2);    
+    String json=jo3.toString();
+    System.out.println(json);
+
+  }
+
+}
+
+GSON解析是谷歌的，也比较好用:
+public class GSONTest {
+
+  //解析
+  @Test
+  public void test1() {
+    // 对象嵌套数组嵌套对象
+    String json1 = "{'id':1,'name':'JAVAEE-1703','stus':[{'id':101,'name':'刘一','age':16}]}";
+    // 数组
+    String json2 = "['北京','天津','杭州']";
+
+    Gson gson=new Gson();
+    //1、
+    //解析对象：第一个参数：待解析的字符串 第二个参数结果数据类型的Class对象
+    Grade grade=gson.fromJson(json1, Grade.class);
+    System.out.println(grade);
+
+    //2、
+    //解析数组要求使用Type
+    ArrayList<String> list=gson.fromJson(json2, 
+        new TypeToken<ArrayList<String>>(){}.getType());
+    System.out.println(list);
+  }
+  //生成
+  @Test
+  public void test2(){
+    ArrayList<Student> list=new ArrayList<>();
+    for(int i=1;i<3;i++){
+      list.add(new Student(101+i, "码子", 20+i));
+    }
+    Grade grade=new Grade(100001,"张三", list);
+    Gson gson=new Gson();
+    //将对象转换为诶JSON格式字符串
+    String json=gson.toJson(grade);
+    System.out.println(json);
+
+  }
+}
+
+FastJSON是阿里巴巴的产品，效率最高:
+public class FASTJson {
+
+  //解析
+  @Test
+  public void test1() {
+    // 对象嵌套数组嵌套对象
+    String json1 = "{'id':1,'name':'JAVAEE-1703','stus':[{'id':101,'name':'刘铭','age':16}]}";
+    // 数组
+    String json2 = "['北京','天津','杭州']";
+    //1、
+    //静态方法
+    Grade grade=JSON.parseObject(json1, Grade.class);
+    System.out.println(grade);
+    //2、
+    List<String> list=JSON.parseArray(json2, String.class);
+    System.out.println(list);
+  }
+  //生成
+  @Test
+  public void test2(){
+    ArrayList<Student> list=new ArrayList<>();
+    for(int i=1;i<3;i++){
+      list.add(new Student(101+i, "码子", 20+i));
+    }
+    Grade grade=new Grade(100001,"张三", list);
+    String json=JSON.toJSONString(grade);
+    System.out.println(json);
+  }
+}
+
+jackSon解析JSON，SpringMVC内置的解析器就是这个:
+public class JackSonTest {
+
+  //解析
+  @Test
+  public void test1() throws Exception{
+    // 对象嵌套数组嵌套对象
+    String json1 = "{\"id\":1,\"name\":\"JAVAEE-1703\",\"stus\":[{\"id\":101,\"name\":\"刘一\",\"age\":16}]}";
+    // 数组
+    String json2 = "[\"北京\",\"天津\",\"杭州\"]";
+    //1、
+    ObjectMapper mapper=new ObjectMapper();
+    Grade grade=mapper.readValue(json1, Grade.class);
+    System.out.println(grade);
+    //2、
+    ArrayList<String> list=mapper.readValue(json2, 
+        new TypeReference<ArrayList<String>>() {
+    });
+    System.out.println(list);
+
+  }
+  //生成
+  @Test
+  public void test2() throws JsonProcessingException{
+    ArrayList<Student> list=new ArrayList<>();
+    for(int i=1;i<3;i++){
+      list.add(new Student(101+i, "码子", 20+i));
+    }
+    Grade grade=new Grade(100001,"张三", list);
+    ObjectMapper mapper=new ObjectMapper();
+    //将对象转换为JSON格式字符串
+    String json=mapper.writeValueAsString(grade);
+    System.out.println(json);
+  }
+}

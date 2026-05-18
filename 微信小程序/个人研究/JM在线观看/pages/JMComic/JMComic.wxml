@@ -1,0 +1,7 @@
+<!--pages/JMComic/JMComic.wxml-->
+<scroll-view class="scrollarea" scroll-y="true" bindscroll="onScrollView">
+  <view class="container">
+    <image  wx:for="{{img_urls}}" wx:key="index"
+    src="{{item}}" mode="aspectFill" />
+  </view>
+</scroll-view>
