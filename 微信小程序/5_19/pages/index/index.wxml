@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view wx:for="{{c_list}}" wx:key="index">
+     <xq imgsrc="{{item.imgsrc}}" name="{{item.name}}" price="{{item.price}}" data-index="{{index}}" bind:changeNum="changeNum"></xq>
+    </view>
+  </view>
+</scroll-view>

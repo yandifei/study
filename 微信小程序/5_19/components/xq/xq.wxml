@@ -1,0 +1,7 @@
+<!--components/xq/xq.wxml-->
+<view class="box">
+    <image src="{{imgsrc}}" mode="aspectFill"/>
+    <view>{{name}}</view>
+    <view>{{price}}</view>
+    <button type="primary" bind:tap="changeNum">点赞</button>
+</view>

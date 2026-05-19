@@ -1,0 +1,12 @@
+/* components/xq/xq.wxss */
+.box {
+  display: flex;             /* 【核心：开启弹性盒模型】 */
+  flex-direction: column;    /* 【核心：让内部的图片和文字上下垂直排列】 */
+  align-items: center;       /* 真正实现水平居中 */
+  justify-content: center;   /* 垂直居中 */
+  background-color: rgb(0, 255, 247);
+  /* ====== 添加以下属性来制造间隔和美化 ====== */
+  margin: 20rpx;
+  padding: 20rpx;              /* 内部留白，防止文字贴边 */
+  border-radius: 16rpx;        /* 顺便加个圆角，看起来会更像卡片 */
+}
