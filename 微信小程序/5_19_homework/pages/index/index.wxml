@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y="true" bindscroll="onScrollView">
+  <view class="container">
+    <acg-images wx:for="{{img_urls}}" wx:key="index"
+    acg_url="{{item}}" />
+  </view>
+</scroll-view>

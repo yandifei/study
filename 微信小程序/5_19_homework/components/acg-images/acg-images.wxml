@@ -1,0 +1,5 @@
+<!--components/acg-images/acg-images.wxml-->
+<view>
+  <image src="{{acg_url}}" mode="aspectFill" />
+  <button type="primary">收藏</button>
+</view>

@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "components/acg-images/acg-images"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "default",
+    "navigationBarBackgroundColor": "#2b4b6b",
+    "navigationBarTitleText": "随机图片"
+  },
+  "style": "v2",
+  "renderer": "webview",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
