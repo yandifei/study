@@ -3,5 +3,6 @@
     "navigation-bar": "/components/navigation-bar/navigation-bar",
     "acg-images": "/components/acg-images/acg-images"
   },
+  "navigationBarTitleText": "自定义组件",
   "enablePullDownRefresh": true
-}
+} 
