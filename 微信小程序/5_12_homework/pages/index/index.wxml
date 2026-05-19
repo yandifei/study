@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container" wx:for="{{img_urls}}">
+    <image src="{{item}}" mode="aspectFill" />
+  </view>
+</scroll-view>
