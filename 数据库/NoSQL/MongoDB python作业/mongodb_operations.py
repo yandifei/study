@@ -12,7 +12,7 @@ class MongoDBOperations:
     """MongoDB操作类，封装所有数据库操作"""
 
     def __init__(self):
-        self.uri = "mongodb://yandifei:yandifei@127.0.0.1:27017/?authSource=admin"
+        self.uri = "mongodb://localhost:27017/"
         self.client = None
         self.db = None
 
