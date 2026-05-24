@@ -8,7 +8,8 @@ from playwright.async_api import FilePayload, expect
 from playwright.async_api import Page
 
 from pages.base_page import BasePage
-from utils import ConfigManager, info, debug
+from utils.config_manager import ConfigManager
+from logger import info
 
 class HomePage(BasePage):
     """deepseek主界面"""

@@ -13,7 +13,7 @@ from playwright.async_api import Page, Locator, expect, Error as PlaywrightError
 
 # 你原来的工具 (假设这些工具函数是同步的，非阻塞或耗时极短，可以直接混用)
 from utils.path_utils import mkdir
-from utils.logger import debug, info, error, critical, exception
+from logger import debug, info, error, critical, exception
 
 Role = Literal[
     "alert", "alertdialog", "application", "article", "banner", "blockquote", "button", "caption", "cell", "checkbox",

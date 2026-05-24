@@ -9,8 +9,9 @@ from playwright.async_api import Page, FilePayload
 # 自己的模块
 from pages.skywork.home_page import HomePage
 from pages.skywork.login_page import LoginPage
-from utils import ConfigManager, info
-from utils.playwright_factory.playwright_factory import PlaywrightFactory
+from utils.config_manager import ConfigManager
+from logger import info
+from utils.playwright_factory import PlaywrightFactory
 
 class SkyworkFlows:
     """天工工作流

@@ -11,9 +11,12 @@ port = 21325
 
 # Playwright配置
 [playwright]
-browser_type = "chromium"  # 可选项：chromium, firefox, webkit
+# 可选项：chromium, firefox, webkit
+browser_type = "chromium"
 # 截图路径保存
 screen_dir = "outputs/screenshots"
+# js的内存上限,默认4GB（GB）
+node_memory = 8192 # 32768设置32G
 
 # 浏览器启动选项配置
 # 注意：Playwright 只保证与捆绑的 Chromium、Firefox 或 WebKit 正常工作，使用此选项需自行承担风险。
@@ -140,17 +143,20 @@ record_har_content = "embed"
 # TLS客户端身份验证，允许服务器请求客户端证书并进行验证。要使用的客户端证书数组。当提供至少一个客户端证书时，客户端证书身份验证才处于活动状态。
 client_certificates = []
 
-[AI.doubao]
+[ai]
+startup_type = "deepseek"
+
+[ai.doubao]
 display_name = "豆包"
 login_url = "https://www.doubao.com/chat/"
 chat_url = "https://www.doubao.com/chat/"
 
-[AI.deepseek]
+[ai.deepseek]
 display_name = "深度求索"
 login_url = "https://chat.deepseek.com/sign_in"
 chat_url = "https://chat.deepseek.com/"
 
-[AI.gemini]
+[ai.gemini]
 display_name = "gemini"
 login_url = "https://accounts.google.com/"
 chat_url = "https://gemini.google.com/app"

@@ -1,8 +1,8 @@
 """flows_api.py
 统一接口
 """
-from utils import ConfigManager
-from utils.playwright_factory.playwright_factory import PlaywrightFactory
+from utils.config_manager import ConfigManager
+from utils.playwright_factory import PlaywrightFactory
 
 
 class FlowsAPI:

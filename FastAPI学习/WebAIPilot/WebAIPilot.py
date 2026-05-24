@@ -11,15 +11,14 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 # 自己的模块
-from models import AskModel
-from utils import logger_manager, info, critical, warning  # 导入日志记录器模块
-from utils import ConfigManager # 导入配置管理模块
+from logger import logger_manager, info, critical, warning  # 导入日志记录器模块
+from utils.config_manager import ConfigManager # 导入配置管理模块
 from utils.path_utils import get_root
-from utils.playwright_factory.playwright_factory import PlaywrightFactory
+from utils.playwright_factory import PlaywrightFactory
 from logic.doubao_logic.doubao_flows import DoubaoFlows
 from logic.deepseek_logic.deepseek_flows import DeepseekFlows
 from logic.skywork_logic.skywork_flows import SkyworkFlows
-
+from data_models import AskModel
 # # 忽略 asyncio 关于未关闭传输的 ResourceWarning（工厂会自动回收资源）
 # warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed transport")
 # warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed event loop")
@@ -34,27 +33,31 @@ info("日志模块加载完成，全局异常捕获开启")
 config_manager.config_override()  # 层叠覆盖原来的配置
 info("层叠覆盖原来的配置完成")
 # 协议
-PROTOCOL: str = config_manager.config_data["server"]["protocol"]
+PROTOCOL: str = config_manager.config_data.server.protocol
 # 主机号
-HOST: str = config_manager.config_data["server"]["host"]
+HOST: str = config_manager.config_data.server.host
 # 端口号
-PORT: int = config_manager.config_data["server"]["port"]
+PORT: int = config_manager.config_data.server.port
 info(f"服务器配置，协议：{PROTOCOL}，主机：{HOST}，端口：{PORT}")
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """使用异步生命周期管理"""
     # 创建Playwright工厂实例
-    playwright_factory = PlaywrightFactory(config_manager.config_data["playwright"]["launch_options"],config_manager.config_data["playwright"]["context_options"])
+    playwright_factory = PlaywrightFactory(
+        config_manager.config_data.playwright.launch_options,
+        config_manager.config_data.playwright.context_options
+    )
     # 根据配置创建工作流实例
-    if config_manager.config_data["AI"]["startup_type"] == "deepseek":
+    if config_manager.config_data.ai.startup_type == "deepseek":
         # 创建deepseek工作流实例
         ai_task_flows =  await DeepseekFlows.create(config_manager, playwright_factory)
-    elif config_manager.config_data["AI"]["startup_type"] == "doubao":
+    elif config_manager.config_data.ai.startup_type == "doubao":
         # 创建豆包工作流实例
         ai_task_flows =  await DoubaoFlows.create(config_manager, playwright_factory)
-    elif config_manager.config_data["AI"]["startup_type"] == "skywork":
-        # 创建豆包工作流实例
+    elif config_manager.config_data.ai.startup_type == "skywork":
+        # 创建天工工作流实例
         ai_task_flows =  await SkyworkFlows.create(config_manager, playwright_factory)
     else:
         critical("配置中存在不支持的AI任务类型")
@@ -87,8 +90,8 @@ def index():
 @app.get("/screenshots",  response_class=FileResponse)
 async def screenshots():
     # 直接从app.state获取对象
-    df: DoubaoFlows = app.state.ai_task_flows
-    await df.home_page.page.screenshot(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
+    await ai_task_flows.home_page.page.screenshot(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
     return FileResponse(path=get_root() / "outputs" / "screenshots" / "screenshots.png")
 
 # websocket实现状态截图传输
@@ -117,13 +120,6 @@ async def ws_monitor(websocket: WebSocket):
 
 @app.get("/status",  response_class=HTMLResponse)
 async def status():
-    # # 直接从app.state获取对象
-    # df: DoubaoFlows = app.state.ai_task_flows
-    # try:
-    #     # FastAPI 内部调用 requests 访问 9222 端口
-    #     response = requests.get("http://127.0.0.1:9222/json", timeout=10)
-    # except Exception as e:
-    #     return {"error": f"无法连接到浏览器: {str(e)}"}
     html_content = f'''
         <!DOCTYPE html>
         <html>
@@ -152,8 +148,8 @@ async def status():
                         }}
                         // 绘制并立即释放资源
                         ctx.drawImage(bitmap, 0, 0);
-                        bitmap.close(); 
-                        
+                        bitmap.close();
+
                     }} catch (err) {{
                         console.error("解析帧失败:", err);
                     }}
@@ -171,22 +167,32 @@ async def status():
 # get文本对话
 @app.get("/ask/{question}")
 async def ask_get(question: str):
-    df: DoubaoFlows = app.state.ai_task_flows
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
     if question == "":
         return {
-            "error": "大哥，你输入问题呀"
+            "code": 400,
+            "msg": "问题输入为空",
+            "data": None
         }
     # 提问（结果可能是元组或文本）
-    result = await df.ask(question)
+    result = await ai_task_flows.ask(question)
     # 判断返回结果是否为元组
     if isinstance(result, tuple):
         text_answer, img_urls = result
         return {
-            "AI回复": text_answer,
-            "图片链接": img_urls
+            "code": 200,
+            "msg": "success",
+            "data": {
+                "AI回复": text_answer,
+                "图片链接": img_urls
+            }
         }
     return {
-        "AI回复": result
+        "code": 200,
+        "msg": "success",
+        "data": {
+            "AI回复": result,
+        }
     }
 
 
@@ -194,129 +200,204 @@ async def ask_get(question: str):
 @app.post("/ask")
 async def ask_post(ask_model: AskModel):
     # 直接从app.state获取对象
-    df: DoubaoFlows = app.state.ai_task_flows
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
     if ask_model.question == "":
         return {
-            "error": "大哥，你输入问题呀"
+            "code": 400,
+            "msg": "问题输入为空",
+            "data": None
         }
     try:
         # 提问（问题转成字典并解引用，结果可能是元组或文本）
-        result = await df.ask(**ask_model.model_dump())
+        result = await ai_task_flows.ask(**ask_model.model_dump())
         # 判断返回结果是否为元组
         if isinstance(result, tuple):
             text_answer, img_urls = result
             return {
-                "AI回复": text_answer,
-                "图片链接": img_urls
+                "code": 200,
+                "msg": "success",
+                "data": {
+                    "AI回复": text_answer,
+                    "图片链接": img_urls
+                }
             }
         return {
-            "AI回复": result
+                "code": 200,
+                "msg": "success",
+                "data": {
+                    "AI回复": result,
+                }
         }
     except Exception as e:
         return {
-            "error": f"{e}"
+            "code": 500,
+            "msg": f"服务器错误，错误信息{e}",
+            "data": None
         }
 
 # 根据下标获得对话内容（目前只能（默认）获取最后一个）
 @app.get("/answer")
 async def answer(answer_index: int = 0):
-    df: DoubaoFlows = app.state.ai_task_flows
-    text_answer, img_urls = await df.get_last_answer()
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
+    text_answer, img_urls = await ai_task_flows.get_last_answer()
     return {
-        "AI回复": text_answer,
-        "图片链接": img_urls
+        "code": 200,
+        "msg": "success",
+        "data": {
+            "AI回复": text_answer,
+            "图片链接": img_urls
+        }
     }
 
 # 深度思考
 @app.get("/deep_think")
 @app.get("/deep_think/{switch}")
 async def deep_think(switch: bool = True):
-    df: DoubaoFlows = app.state.ai_task_flows
-    await df.home_page.deep_thinking_mode(switch)
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
+    await ai_task_flows.home_page.deep_thinking_mode(switch)
     if switch:
-        return {"info": "已开启深度思考模式"}
+        return {
+            "code": 200,
+            "msg": "已开启深度思考模式",
+            "data": None
+        }
     else:
-        return {"error": "已关闭深度思考模式"}
+        return {
+            "code": 200,
+            "msg": "已关闭深度思考模式",
+            "data": None
+        }
 # 图片生成模式
 @app.get("/image_generation")
 @app.get("/image_generation/{switch}")
 async def image_generation(switch: bool = True):
-    df: DoubaoFlows = app.state.ai_task_flows
-    await df.home_page.image_generation_mode(switch)
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
+    await ai_task_flows.home_page.image_generation_mode(switch)
     if switch:
-        return {"info": "已开启图片生成模式"}
+        return {
+            "code": 200,
+            "msg": "已开启图片生成模式",
+            "data": None
+        }
     else:
-        return {"error": "已关闭图片生成模式"}
+        return {
+            "code": 200,
+            "msg": "已关闭图片生成模式",
+            "data": None
+        }
 
 # 帮我写作模式
 @app.get("/help_me_write")
 @app.get("/help_me_write/{switch}")
 async def help_me_write(switch: bool = True):
-    df: DoubaoFlows = app.state.ai_task_flows
-    await df.home_page.help_me_write_mode(switch)
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
+    await ai_task_flows.home_page.help_me_write_mode(switch)
     if switch:
-        return {"info": "已开启帮我写作模式"}
+        return {
+            "code": 200,
+            "msg": "已开启帮我写作模式",
+            "data": None
+        }
     else:
-        return {"error": "已关闭帮我写作模式"}
+        return{
+            "code": 200,
+            "msg": "已关闭帮我写作模式",
+            "data": None
+        }
 
 # 视频生成模式
 @app.get("/video_generation")
 @app.get("/video_generation/{switch}")
 async def video_generation(switch: bool = True):
-    df: DoubaoFlows = app.state.ai_task_flows
-    await df.home_page.video_generation_mode(switch)
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
+    await ai_task_flows.home_page.video_generation_mode(switch)
     if switch:
+        return {
+            "code": 200,
+            "msg": "已开启视频生成模式",
+            "data": None
+        }
         return {"info": "已开启视频生成模式"}
     else:
-        return {"error": "已关闭视频生成模式"}
+        return {
+            "code": 200,
+            "msg": "已关闭视频生成模式",
+            "data": None
+        }
 
 """会话管理(增删改查)"""
 # 创建新会话
 @app.post("/conversations")
 async def create_conversation():
-    df: DoubaoFlows = app.state.ai_task_flows
-    return await df.create_conversation()
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
+    await ai_task_flows.create_conversation()
+    return {
+        "code": 200,
+        "msg": "已创建新会话",
+        "data": None
+    }
 
 # 删除会话
 @app.delete("/conversations")
 @app.delete("/conversations/{identifier}")
 async def delete_conversation(identifier: int |str = 0):
-    df: DoubaoFlows = app.state.ai_task_flows
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
     # 判断是否为数字
     if isinstance(identifier, str) and identifier.isdigit():
         identifier = int(identifier)
     # 使用下标删除会话
-    if await df.del_conversation(identifier) is False:
-        return {"error": f"删除会话失败：找不到下标为 '{identifier}' 的会话"}
-
-    return {"info": f"下标为{identifier}的会话删除成功" if isinstance(identifier, int) else f"标题为{identifier}的对话删除成功"}
+    if await ai_task_flows.del_conversation(identifier) is False:
+        return {
+            "code": 404,
+            "msg": f"删除会话失败：找不到下标为 '{identifier}' 的会话",
+            "data": None
+        }
+    return {
+        "code": 200,
+        "msg": f"下标为{identifier}的会话删除成功" if isinstance(identifier, int) else f"标题为{identifier}的对话删除成功",
+        "data": None
+    }
 
 # 切换会话
 @app.put("/conversations")
 @app.put("/conversations/{identifier}")
 async def switch_conversation(identifier: int |str = 0):
-    df: DoubaoFlows = app.state.ai_task_flows
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
     # 判断是否为数字
     if isinstance(identifier, str) and identifier.isdigit():
         identifier = int(identifier)
     # 使用下标删除会话
-    if await df.switch_conversation(identifier) is False:
-        return {"error": f"切换会话失败：找不到下标为 '{identifier}' 的会话"}
-
-    return {"info": f"下标为{identifier}的会话切换成功" if isinstance(identifier, int) else f"标题为{identifier}的对话切换成功"}
+    if await ai_task_flows.switch_conversation(identifier) is False:
+        return {
+            "code": 404,
+            "msg": f"切换会话失败：找不到下标为 '{identifier}' 的会话",
+            "data": None
+        }
+    return {
+        "code": 200,
+        "msg": f"下标为{identifier}的会话切换成功" if isinstance(identifier, int) else f"标题为{identifier}的对话切换成功",
+        "data": None
+    }
 
 # 获得会话标题列表
 @app.get("/conversations/title/list")
 async def get_conversation_title_list():
-    df: DoubaoFlows = app.state.ai_task_flows
-    return await df.get_conversation_title_list()
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
+    return {
+        "code": 200,
+        "msg": "success",
+        "data": await ai_task_flows.get_conversation_title_list()
+    }
 
 # 获取会话数量
 @app.get("/conversations/count")
 async def get_conversation_count():
-    df: DoubaoFlows = app.state.ai_task_flows
-    return await df.get_conversation_count()
-
+    ai_task_flows: DeepseekFlows | DoubaoFlows = app.state.ai_task_flows
+    return {
+        "code": 200,
+        "msg": "success",
+        "data": await ai_task_flows.get_conversation_count()
+    }
 
 if __name__ == "__main__":
     # 2021.03.25是爱丽丝的生日

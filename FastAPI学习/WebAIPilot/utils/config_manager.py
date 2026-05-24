@@ -11,11 +11,10 @@ from typing import Dict, Any, Tuple
 # 第三方库
 import yaml
 # 自己的模块
-from utils.logging_configurator import LoggingConfigurator
+from logger.logging_configurator import LoggingConfigurator
 from utils.path_utils import get_root
-from utils.logger import logger_manager, error
-from utils.playwright_factory.context_options import ContextOptions
-from utils.playwright_factory.launch_options import LaunchOptions
+from logger.logger import logger_manager, error
+from data_models.config_model import ConfigModel   # 数据模型
 
 
 class ConfigManager:
@@ -51,7 +50,9 @@ class ConfigManager:
             # 是否为debug模式(开发模式，开始合并之前定义这个属性)
             self.debug: bool = debug
             # 初始化配置数据(字典)
-            self.config_data = {}
+            self.config_data: dict | ConfigModel = {}
+            # 初始化日志配置数据（和上面的用户数据隔离）
+            self.log_config ={}
             # 日志配制器
             self.logging_configurator = LoggingConfigurator()
             # 加载所有配置文件（拿到标志位）
@@ -102,18 +103,18 @@ class ConfigManager:
     def load_default_logging_config(self) -> Dict[str, Any] | bool:
         """加载默认的日志配置并进行覆盖"""
         # 加载全局的日志配置(自动检查配置是否存在和有效)
-        if json := self.logging_configurator.load_logging_config(get_root() / "config" / "logging_config.yaml"):
+        if isinstance(json := self.logging_configurator.load_logging_config(get_root() / "config" / "logging_config.yaml"), dict):
             # 进行层叠覆盖
-            return self.deep_merge(self.config_data, json)
+            return self.deep_merge(self.log_config, json)
         # 配置存在错误(error_msg已经记录错误信息了)
         return False  # 直接返回False
 
     def load_user_logging_config(self) -> Dict[str, Any] | bool:
         """加载用户的日志配置并进行覆盖"""
         # 加载用户的日志配置(自动检查配置是否存在和有效)
-        if json := self.logging_configurator.load_logging_config(get_root() / "user_data" / "logging_config.yaml"):
+        if isinstance(json := self.logging_configurator.load_logging_config(get_root() / "user_data" / "logging_config.yaml"), dict):
             # 进行层叠覆盖
-            return self.deep_merge(self.config_data, json)
+            return self.deep_merge(self.log_config, json)
         # 配置存在错误(error_msg已经记录错误信息了)
         return False  # 直接返回False
 
@@ -121,27 +122,27 @@ class ConfigManager:
         """加载默认的设置配置并进行覆盖"""
         # 加载默认的设置配置(自动检查配置是否存在和有效)
         # if json := self.load_toml(get_root() / "config" / "user_settings.toml"):
-        if json := self.load_toml(get_root() / "config" / "settings.toml"):
+        if isinstance(json := self.load_toml(get_root() / "config" / "settings.toml"), dict):
             # 进行层叠覆盖
-            return self.deep_merge(self.config_data, json)
+            return self.deep_merge(self.config_data, json)  # type: ignore
         # 配置存在错误(error_msg已经记录错误信息了)
         return False  # 直接返回False
 
     def load_user_settings_config(self) -> Dict[str, Any] | bool:
         """加载用户的设置配置并进行覆盖"""
-        # 加载用户的设置配置(自动检查配置是否存在和有效)
-        if json := self.load_toml(get_root() / "user_data" / "user_settings.toml"):
+        # json判断防止返回空字典也给他过掉
+        if isinstance((json := self.load_toml(get_root() / "user_data" / "user_settings.toml")), dict) and json:
             # 进行层叠覆盖
-            return self.deep_merge(self.config_data, json)
+            return self.deep_merge(self.config_data, json) # type: ignore
         # 配置存在错误(error_msg已经记录错误信息了)
         return False  # 直接返回False
 
     def load_debug_settings_config(self) -> Dict[str, Any] | bool:
         """加载开发的设置配置并进行覆盖"""
-        # 加载开发的设置配置(自动检查配置是否存在和有效)
-        if json := self.load_toml(get_root() / "debug_data" / "user_settings.toml"):
+        # is not False是防止返回空字典也给他过掉
+        if isinstance((json := self.load_toml(get_root() / "config" / "settings.toml")), dict) and json:
             # 进行层叠覆盖
-            return self.deep_merge(self.config_data, json)
+            return self.deep_merge(self.config_data, json) # type: ignore
         # 配置存在错误(error_msg已经记录错误信息了)
         return False  # 直接返回False
 
@@ -152,12 +153,7 @@ class ConfigManager:
         """
         try:
             # 将字典转换为模型对象(销毁原来的字典对象直接替换为模型)
-            # print(self.config_data["playwright"]["launch_options"])
-            self.config_data["playwright"]["launch_options"] = LaunchOptions(**self.config_data["playwright"]["launch_options"])
-            # print(self.config_data["playwright"]["launch_options"])
-            # print(self.config_data["playwright"]["context_options"])
-            self.config_data["playwright"]["context_options"] = ContextOptions(**self.config_data["playwright"]["context_options"])
-            # print(self.config_data["playwright"]["context_options"])
+            self.config_data: ConfigModel = ConfigModel(**self.config_data) # type: ignore
             return  True
         except Exception as e:
             self.error_msg = (f"配置文件转化模型错误: {e}", e)
@@ -176,9 +172,10 @@ class ConfigManager:
             raise FileNotFoundError(f"配置文件不存在: {path}")
         with path.open("r", encoding="utf-8") as yaml_file:
             config_data = yaml.safe_load(yaml_file) or {}
+        # 最后是给log_config合并使用才对的
         return config_data
 
-    def load_toml(self, path: str | Path) -> dict | bool:
+    def load_toml(self, path: Path) -> dict | bool:
         """
         加载TOML配置文件并将其解析为Python字典，使用UTF-8编码读取文件
         :param path: 配置文件路径对象，必须是Path类型
@@ -202,9 +199,6 @@ class ConfigManager:
             # 捕获其他文件操作错误（如文件不存在、被加权限了等等）
             self.error_msg = f"设置配置文件操作错误:（{path}）", e
             return False
-
-
-
 
     def deep_merge(self, base: dict, override: dict) -> dict:
         """配置深度合并：override 覆盖 base，但保持 base 原有结构不被破坏"""

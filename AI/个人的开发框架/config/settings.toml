@@ -1,3 +1,0 @@
-[database]
-type = "sqlite"
-path = "user_data"

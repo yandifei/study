@@ -9,7 +9,8 @@ from playwright.async_api import FilePayload, expect
 from playwright.async_api import Page
 
 from pages.base_page import BasePage
-from utils import ConfigManager, info, debug
+from utils.config_manager import ConfigManager
+from logger import info, debug
 
 class HomePage(BasePage):
     """豆包主界面"""

@@ -9,8 +9,8 @@ from playwright.async_api import Page, FilePayload
 # 自己的模块
 from pages.doubao.home_page import HomePage
 from pages.doubao.login_page import LoginPage
-from utils import ConfigManager, info
-from utils.playwright_factory.playwright_factory import PlaywrightFactory
+from utils.config_manager import ConfigManager
+from utils.playwright_factory import PlaywrightFactory
 
 class DoubaoFlows:
     """豆包工作流

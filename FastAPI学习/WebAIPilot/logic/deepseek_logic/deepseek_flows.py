@@ -9,8 +9,9 @@ from playwright.async_api import Page, FilePayload
 # 自己的模块
 from pages.deepseek.home_page import HomePage
 from pages.deepseek.login_page import LoginPage
-from utils import ConfigManager, info
-from utils.playwright_factory.playwright_factory import PlaywrightFactory
+from utils.config_manager import ConfigManager
+from logger import info
+from utils.playwright_factory import PlaywrightFactory
 
 class DeepseekFlows:
     """深度求索工作流
@@ -54,7 +55,7 @@ class DeepseekFlows:
         # 创建标签页
         self.page = await self.context.new_page()
         # 保存登录状态
-        await self.context.storage_state(path=self.cm.config_data["playwright"]["context_options"].storage_state)
+        await self.context.storage_state(path=self.cm.config_data.playwright.context_options.storage_state)
         # 创建主页面
         self.home_page = await HomePage.create(self.page, self.cm)
 
@@ -62,9 +63,9 @@ class DeepseekFlows:
     async def login(self):
         """登陆流程"""
         # 保存原来的headless配置
-        headless = self.cm.config_data["playwright"]["launch_options"].headless
+        headless = self.cm.config_data.playwright.launch_options.headless
         # 修改配置为有头标志
-        self.cm.config_data["playwright"]["launch_options"].headless = False
+        self.cm.config_data.playwright.launch_options.headless = False
         # 创建浏览器
         self.browser = await self.pf.new_browser()
         # 创建浏览器上下文
@@ -78,13 +79,13 @@ class DeepseekFlows:
         # 进行登陆操作
         await self.login_page.login()
         # 保存登录状态
-        await self.context.storage_state(path=self.cm.config_data["playwright"]["context_options"].storage_state)
+        await self.context.storage_state(path=self.cm.config_data.playwright.context_options.storage_state)
         # 关闭当前有头浏览器的会话
         await self.pf.close_context(self.context)
         # 关闭当前有头浏览器
         await self.pf.close_browser(self.browser)
         # 修改配置为原来配置文件中的配置
-        self.cm.config_data["playwright"]["launch_options"].headless = headless
+        self.cm.config_data.playwright.launch_options.headless = headless
 
     """对话操作"""
     async def ask(self, question: str, files: str | Path | FilePayload | Sequence[str | Path] | Sequence[FilePayload] | None = None):

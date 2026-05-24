@@ -5,7 +5,8 @@
 from playwright.async_api import Page
 # 自己的模块
 from pages.base_page import BasePage
-from utils import ConfigManager, info
+from utils.config_manager import ConfigManager
+from logger import info
 
 
 class LoginPage(BasePage):
