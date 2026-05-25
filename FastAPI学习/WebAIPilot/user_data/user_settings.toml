@@ -152,7 +152,7 @@ record_har_omit_content = false
 ## 录制视频的尺寸。如果未指定，尺寸将等于视口按比例缩小以适合800x800。如果未显式配置视口，视频尺寸默认为800x450。
 #record_video_size = { width = 1280, height = 720 }
 # 用给定的存储状态填充上下文。此选项可用于使用通过browser_context.storage_state()获取的已登录信息初始化上下文。
-storage_state = "debug_data/chrome_data/content_data.json"
+storage_state = "user_data/chrome_data/content_data.json"
 ## 在使用page.goto()、page.route()、page.wait_for_url()、page.expect_request()或page.expect_response()时，会通过使用URL()构造函数构建相应的URL来考虑基础URL。默认未设置。
 #base_url = "https://github.com/yandifei"   # 不用就不设置
 # 如果设置为true，则为此上下文启用严格选择器模式。在严格选择器模式下，所有意味着单个目标DOM元素的选择器操作在多个元素匹配选择器时将抛出异常。此选项不影响任何定位器API（定位器始终是严格的）。默认为false。
