@@ -25,40 +25,129 @@
 
 # 项目结构
 ```bash
-Playwright个人研究成果/
+WebAIPilot/
 ├─ config/                        # 全局配置目录（环境、运行参数）
-│  ├─ env.yaml                    # 环境级配置：base_url、运行环境、浏览器配置等
-│  └─ settings.yaml               # 框架设置：重试、超时、报告格式、并发等
+│  ├─ .env                        # 环境变量配置文件
+│  ├─ WebAIPilot.ico              # 应用图标文件
+│  ├─ WebAIPilot.png              # 应用图标图片
+│  ├─ logging_config.yaml         # 日志配置文件：级别、输出路径、格式化等
+│  ├─ settings.toml               # 框架设置：浏览器配置、超时、重试等
+│  └─ 原图.jpg                    # 原始图片素材
 │
-├─ data/                          # 测试输入数据（用例需要读取的）
-│  ├─ user_settings.toml          # 默认用户数据 / 非敏感测试参数
-│  └─ 测试数据/                   # 用例使用的测试样本数据（json/yaml/csv/xlsx）
+├─ data_models/                   # 数据模型层（Pydantic 模型定义）
+│  ├─ __init__.py                 # 声明 data_models 为 Python 包
+│  ├─ ask_model.py                # 提问相关的数据模型
+│  ├─ config_model.py             # 配置相关的数据模型
+│  ├─ server_config.py            # 服务器配置数据模型
+│  ├─ ai_config/                  # AI 配置模型子模块
+│  │  ├─ __init__.py              # AI 配置包初始化
+│  │  ├─ ai_config.py             # AI 配置基类
+│  │  ├─ deepseek.py              # DeepSeek 配置模型
+│  │  ├─ doubao.py                # 豆包配置模型
+│  │  └─ gemini.py                # Gemini 配置模型
+│  └─ playwright/                 # Playwright 配置模型子模块
+│     ├─ __init__.py              # Playwright 配置包初始化
+│     ├─ context_options.py       # 浏览器上下文配置选项
+│     ├─ launch_options.py        # 浏览器启动配置选项
+│     └─ playwright_config.py     # Playwright 完整配置模型
+│
+├─ debug_data/                    # 调试数据目录（开发测试用）
+│  ├─ chrome_data/                # Chrome 浏览器调试数据
+│  │  └─ content_data.json        # Chrome 内容数据
+│  ├─ firefox_data/               # Firefox 浏览器调试数据
+│  │  └─ content_data.json        # Firefox 内容数据
+│  ├─ webkit_data/                # WebKit 浏览器调试数据
+│  │  └─ content_data.json        # WebKit 内容数据
+│  ├─ logging_config.yaml         # 调试用日志配置
+│  └─ user_settings.toml          # 调试用用户配置
+│
+├─ logger/                        # 日志模块
+│  ├─ __init__.py                 # 声明 logger 为 Python 包
+│  ├─ logger.py                   # 日志工具函数封装
+│  └─ logging_configurator.py     # 日志配置管理器
+│
+├─ logic/                         # 业务逻辑层（AI 工作流实现）
+│  ├─ deepseek_logic/             # DeepSeek 业务逻辑
+│  │  └─ deepseek_flows.py       # DeepSeek 自动化流程实现
+│  ├─ doubao_logic/               # 豆包业务逻辑
+│  │  └─ doubao_flows.py          # 豆包自动化流程实现
+│  ├─ skywork_logic/              # Skywork 业务逻辑
+│  │  └─ skywork_flows.py         # Skywork 自动化流程实现
+│  └─ flows_api.py                # 工作流 API 接口封装
 │
 ├─ outputs/                       # 运行产物（自动生成，不应提交到 git）
+│  ├─ downloads/                  # 下载文件目录
+│  ├─ har/                        # HAR 网络请求记录文件
 │  ├─ logs/                       # 运行日志文件（程序执行输出）
+│  ├─ pyinstaller/                # PyInstaller 打包输出目录
 │  ├─ reports/                    # 测试报告（HTML/Allure/JUnit 等）
-│  ├─ screenshots/                # 失败截图、自动截图
+│  ├─ screenshots/                # 截图文件（自动截图、失败截图）
 │  ├─ traces/                     # Playwright trace 调试文件
 │  └─ videos/                     # Playwright 自动录制的视频
 │
 ├─ pages/                         # Page Object 层（页面类）
 │  ├─ __init__.py                 # 声明 pages 为 Python 包
 │  ├─ base_page.py                # 所有页面的基类，封装 click/fill/goto/wait 等通用方法
-│  ├─ home_page.py                # 首页的页面对象（定位器 + 页面行为）
-│  └─ login_page.py               # 登录页的页面对象（定位器 + login 逻辑）
-│
-├─ user_data/                     # 本地用户私有数据（不建议提交 git）
-│  ├─ user_settings.toml          # 用户个人敏感配置（token、账号），建议加入 .gitignore
-│  └─ logging_config.yaml         # 用户覆盖：级别、输出路径、是否打印到控制台等
+│  ├─ deepseek/                   # DeepSeek 页面对象子模块
+│  │  ├─ __init__.py              # DeepSeek 页面包初始化
+│  │  ├─ home_page.py             # DeepSeek 首页的页面对象
+│  │  └─ login_page.py            # DeepSeek 登录页的页面对象
+│  ├─ doubao/                     # 豆包页面对象子模块
+│  │  ├─ __init__.py              # 豆包页面包初始化
+│  │  ├─ home_page.py             # 豆包首页的页面对象
+│  │  └─ login_page.py            # 豆包登录页的页面对象
+│  ├─ gemini/                     # Gemini 页面对象子模块
+│  │  ├─ __init__.py              # Gemini 页面包初始化
+│  │  ├─ home_page.py             # Gemini 首页的页面对象
+│  │  └─ login_page.py            # Gemini 登录页的页面对象
+│  └─ skywork/                    # Skywork 页面对象子模块
+│     ├─ __init__.py              # Skywork 页面包初始化
+│     ├─ home_page.py             # Skywork 首页的页面对象
+│     └─ login_page.py            # Skywork 登录页的页面对象
 │
 ├─ utils/                         # 工具库（公共方法、封装组件）
-│  ├─ logger.py                   # 日志模块（格式化、输出、log rotate）
-│  └─ playwright_factory.py       # Playwright 浏览器/上下文/page 工厂 & 管理封装
+│  ├─ __init__.py                 # 声明 utils 为 Python 包
+│  ├─ config_manager.py           # 配置管理器（单例模式、配置层叠）
+│  ├─ path_utils.py               # 路径工具函数
+│  ├─ playwright_factory.py       # Playwright 浏览器/上下文/page 工厂 & 管理封装
+│  └─ qrcode_manager.py           # 二维码管理工具
+│
+├─ user_data/                     # 本地用户私有数据（不建议提交 git）
+│  ├─ chrome_data/                # Chrome 用户数据
+│  │  └─ content_data.json        # Chrome 内容数据
+│  ├─ firefox_data/               # Firefox 用户数据
+│  │  └─ content_data.json        # Firefox 内容数据
+│  ├─ webkit_data/                # WebKit 用户数据
+│  │  └─ content_data.json        # WebKit 内容数据
+│  ├─ logging_config.yaml         # 用户覆盖：日志配置
+│  └─ user_settings.toml          # 用户个人配置（token、账号等敏感信息）
+│
+├─ WebAIPilot接口文档/             # 接口文档及相关素材
+│  ├─ WebAIPilot接口文档.md       # 接口文档主文件
+│  ├─ *.md                        # 其他文档说明
+│  └─ *.png                       # 文档配图
 │
 ├─ 开发随笔/                      # 开发笔记、实验代码、调试记录（不影响主项目）
+│  ├─ test.md                     # 开发笔记
+│  └─ *.png                       # 开发过程截图
 │
+├─ test/                          # 测试目录（临时测试文件）
+│  └─ test/                       # 测试脚本子目录
+│     ├─ WebAIPilot1.py           # 测试脚本
+│     ├─ api测试.py               # API 测试脚本
+│     ├─ browser_factory.py       # 浏览器工厂测试
+│     ├─ fast_api.py              # FastAPI 测试
+│     ├─ logger.py                # 日志测试
+│     ├─ state_save.py            # 状态保存测试
+│     ├─ test.py                  # 通用测试脚本
+│     ├─ toml_read.py             # TOML 读取测试
+│     └─ 截图动态刷新.html         # 截图刷新测试页面
+│
+├─ WebAIPilot.py                  # 主程序入口文件
+├─ _test_WebAIPilot.py            # 测试入口文件
+├─ requirements.txt               # Python 依赖包列表
 ├─ LICENSES                       # 协议文件(Apache2.0)
-└─ READE.md                      # 项目说明文档（运行方式、依赖、结构说明）
+└─ README.md                      # 项目说明文档（运行方式、依赖、结构说明）
 ```
 
 # Playwright 架构 

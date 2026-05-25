@@ -1,0 +1,24 @@
+html_content = f"""
+<html>
+
+<head>
+    <title>Playwright 状态监控</title>
+</head>
+
+<body>
+    <img id="status_img" src="{" outputs/screenshots/status.png"}" style="width: 100%; border: 1px solid #ccc;">
+
+    <script>
+        const img = document.getElementById("status_img");
+        setInterval(() => {
+            {
+                // 通过添加时间戳绕过浏览器缓存
+                img.src = "{"outputs / screenshots / status.png"}?t=" + new Date().getTime();
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
+"""
+return HTMLResponse(content=html_content)
