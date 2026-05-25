@@ -9,7 +9,7 @@ from contextlib import asynccontextmanager
 # 三方库
 import uvicorn
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from fastapi.responses import HTMLResponse, FileResponse
+from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 # 自己的模块
 from logger import logger_manager, info, critical, warning  # 导入日志记录器模块
@@ -82,11 +82,14 @@ app.mount("/outputs", StaticFiles(directory=get_root() / "outputs"), name="outpu
 """系统接口"""
 @app.get("/")
 def index():
-    return {
+    return JSONResponse(
+        content={
         "服务器状态": "运行正常",
         "服务": "WebAIPilot API",
         "版本": "1.0.0"
-    }
+        },
+        headers={"Content-Type": "application/json; charset=utf-8"}
+    )
 
 @app.get("/favicon.ico")
 async def favicon():
@@ -136,7 +139,9 @@ async def status():
                 const canvas = document.getElementById('display');
                 const ctx = canvas.getContext('2d');
                 // 建立WebSocket连接
-                const ws = new WebSocket(`ws://${{location.host}}/ws/monitor`);
+                // 自动判断当前页面的协议，如果是 https 就用 wss，否则用 ws
+                const wsProtocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+                const ws = new WebSocket(`${{wsProtocol}}${{window.location.host}}/ws/monitor`);
                 //const ws = new WebSocket(`{{response.json()[0]["webSocketDebuggerUrl"]}}`);
                 // WebSocket 接收的是二进制字节流
                 ws.binaryType = "arraybuffer";
