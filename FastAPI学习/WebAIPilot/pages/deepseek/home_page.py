@@ -63,12 +63,11 @@ class HomePage(BasePage):
         # 等待发送按钮可见且可点击
         await send_button.wait_for(state="visible")
         debug(f"问题输入完毕:{question}\n文件{files}")
-        # 发送
-        await send_button.click()
+        # 发送,强制等待1秒防止太快判断错误
+        await send_button.click(delay=1000)
         # 等待回复完成(时间是无限等待)
-        await expect(self.page.locator('._52c986b')).to_have_attribute("aria-disabled", "true", timeout=0)
-        # # 等待回复完成(复制框出来，时间是无限等待)
-        # await self.page.locator('div[class="_52c986b"]').last.wait_for(timeout=0)
+        # await expect(self.page.locator('._52c986b')).to_have_attribute("aria-disabled", "true", timeout=0)
+        await self.page.locator('path[d^="M8.3125"]').wait_for(timeout=0)
         debug("deepseek回答生成完毕")
         # 点击复制标签（最后1个对话的第一个控件）
         await self.page.locator('._965abe9').last.locator('.ds-icon-button').first.click()
