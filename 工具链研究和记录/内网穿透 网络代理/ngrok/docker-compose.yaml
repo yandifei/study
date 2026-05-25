@@ -1,0 +1,43 @@
+# ============================================
+# ngrok 内网穿透 Docker Compose 配置
+# 说明：
+# 1. 使用默认桥接网络，容器通过 host.docker.internal 访问宿主机上的服务。
+# 2. 映射了 4040 端口，可通 http://localhost:4040 打开本地 Web 管理界面。
+#    如果 4040 端口冲突，请修改冒号前的宿主机端口（如 "4041:4040"）。
+# 3. 请确保下面两处占位符已替换为真实值：
+#    - NGROK_AUTHTOKEN（你的 ngrok 认证令牌）
+#    - --url= 后面的固定域名（在 https://dashboard.ngrok.com/domains 复制）
+# 4. 请确保本地服务已在 自己的 端口正常监听。
+# ============================================
+
+services:
+  # ngrok 服务：负责建立内网穿透隧道
+  ngrok:
+    # 使用 ngrok 官方最新的 Docker 镜像
+    image: ngrok/ngrok:latest
+    # 容器名称，便于管理
+    container_name: ngrok
+    # 容器意外停止时自动重启，保证隧道长期在线
+    restart: unless-stopped
+    # 设置环境变量，用于 ngrok 认证
+    environment:
+      # 替换为你在 ngrok 官网获取的真实 Authtoken
+      NGROK_AUTHTOKEN: 你的真实token
+    # 启动时执行的命令，对应 ngrok 的 http 模式
+    command:
+      # 子命令：启动 HTTP 隧道
+      - "http"
+      # 指定使用已申请的固定域名，避免每次重启地址变化
+      # 这个域名需在 https://dashboard.ngrok.com/domains 中复制
+      - "--url=你的固定域名.ngrok-free.dev"
+      # 指定要暴露的本地服务端口（宿主机端口）
+      # 因为使用默认桥接网络，所以通过 host.docker.internal 访问宿主机服务
+      - "host.docker.internal:21325"
+    ports:
+      - "4040:4040"
+    # 日志轮转配置，防止日志撑满磁盘
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"   # 单个日志文件最大 10MB
+        max-file: "3"     # 最多保留 3 个文件，总大小不超过 30MB
