@@ -95,7 +95,7 @@ class DeepseekFlows:
 
     async def get_last_answer(self):
         """
-        获取最后对话中豆包回复的内容（异步版本）
+        获取最后对话中deepseek回复的内容（异步版本）
 
         :return: 元组 (text_answer: str, img_urls: list[str]) - 返回文本回答和图片URL列表
         """

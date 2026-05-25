@@ -9,7 +9,8 @@ from playwright.async_api import Page
 
 from pages.base_page import BasePage
 from utils.config_manager import ConfigManager
-from logger import info
+from logger import info, debug
+
 
 class HomePage(BasePage):
     """deepseek主界面"""
@@ -20,7 +21,7 @@ class HomePage(BasePage):
         :return: None
         """
         # 访问deepseek对话网页
-        await self.page.goto(self.cm.config_data["AI"]["deepseek"]["chat_url"])
+        await self.page.goto(self.cm.config_data.ai.deepseek.chat_url)
         self._is_initialized = True  # 更新自身状态
 
     def __init__(self, page, config_manager: ConfigManager):
@@ -64,16 +65,13 @@ class HomePage(BasePage):
         debug(f"问题输入完毕:{question}\n文件{files}")
         # 发送
         await send_button.click()
-        # # 等待回复完成(时间是无限等待)
-        # await expect(self.page.locator('div[style="width: fit-content;"]').last.get_by_role("button")).to_have_attribute("aria-disabled", "true")
-        # await expect(self.page.locator('div[style="width: fit-content;"]').get_by_role("button")).to_have_attribute("aria-disabled", "true", timeout=0)
-        # 等待回复完成(复制框出来，时间是无限等待)
-        # await self.page.locator('div[style="--panel-width: 0px;"]').last.locator('div[role="button"]:has(path[d^="M6.14923"])').last.wait_for()
-        await self.page.locator('div[role="button"]:has(path[d^="M6.14923"])').last.wait_for(timeout=0)
+        # 等待回复完成(时间是无限等待)
+        await expect(self.page.locator('._52c986b')).to_have_attribute("aria-disabled", "true", timeout=0)
+        # # 等待回复完成(复制框出来，时间是无限等待)
+        # await self.page.locator('div[class="_52c986b"]').last.wait_for(timeout=0)
         debug("deepseek回答生成完毕")
         # 点击复制标签（最后1个对话的第一个控件）
-        # await self.page.locator('div[style*="--assistant-last-margin-bottom: 32px;"]').last.locator('div[style="align-items: center; gap: 10px;"]').last.locator('div[role="button"]').first.click()
-        await self.page.locator('div[role="button"]:has(path[d^="M6.14923"])').last.click() # 复制标签的最后一个
+        await self.page.locator('._965abe9').last.locator('.ds-icon-button').first.click()
         # 同步获取捕获到的变量，evaluate 会等待并返回结果
         text_answer = await self.page.evaluate("window.tempCopyBuffer")
         debug(f"最终拿到的文本回答: {text_answer}")
@@ -83,18 +81,16 @@ class HomePage(BasePage):
         """
         获取最后对话中deepseek回复的内容（异步版本）
 
-        :return: text_answer: str 返回文本回答
+        :return: text_answer, None: str, None 返回文本回答和None，因为是文本和图片，但是dp没有图片
         """
-        # 等待复制标签出现
-        # await self.page.locator('div[style*="--assistant-last-margin-bottom: 32px;"]').last.locator('div[style="align-items: center; gap: 10px;"]').last.locator('div[role="button"]').first.wait_for()
-        await self.page.locator('div[role="button"]:has(path[d^="M6.14923"])').last.wait_for()
-        # # 点击复制标签
-        # await self.page.locator('div[style*="--assistant-last-margin-bottom: 32px;"]').last.locator('div[style="align-items: center; gap: 10px;"]').last.locator('div[role="button"]').first.click()
-        await self.page.locator('div[role="button"]:has(path[d^="M6.14923"])').last.click() # 复制标签的最后一个
+        # 等待复制标签出现(即等待发送按钮可以发送)
+        await expect(self.page.locator('._52c986b')).to_have_attribute("aria-disabled", "true")
+        # 点击复制标签
+        await self.page.locator('._965abe9').last.locator('.ds-icon-button').first.click()
         # 同步获取捕获到的变量，evaluate 会等待并返回结果
         text_answer = await self.page.evaluate("window.tempCopyBuffer")
         debug(f"最后对话中deepseek回复的内容: {text_answer}")
-        return text_answer
+        return text_answer, None
 
     async def get_all_conversation_turn (self):
         """

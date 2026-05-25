@@ -140,7 +140,7 @@ class ConfigManager:
     def load_debug_settings_config(self) -> Dict[str, Any] | bool:
         """加载开发的设置配置并进行覆盖"""
         # is not False是防止返回空字典也给他过掉
-        if isinstance((json := self.load_toml(get_root() / "config" / "settings.toml")), dict) and json:
+        if isinstance((json := self.load_toml(get_root() / "debug_data" / "user_settings.toml")), dict) and json:
             # 进行层叠覆盖
             return self.deep_merge(self.config_data, json) # type: ignore
         # 配置存在错误(error_msg已经记录错误信息了)

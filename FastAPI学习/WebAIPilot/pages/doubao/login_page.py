@@ -19,7 +19,7 @@ class LoginPage(BasePage):
         :return: None
         """
         # 去到登陆网址
-        await self.page.goto(self.cm.config_data["AI"]["doubao"]["login_url"])
+        await self.page.goto(self.cm.config_data.ai.doubao.login_url)
         # 等待界面加载完成
         await self.wait_for_load_state("domcontentloaded")
         # self.page.locator('img[src="https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/samantha/logo-icon-white-bg.png"]').wait_for()

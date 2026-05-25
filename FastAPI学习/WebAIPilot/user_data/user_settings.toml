@@ -9,6 +9,31 @@ host = "127.0.0.1"  # "127.0.0.1"：只允许本机访问（最安全），"loca
 # 端口号（2021.03.25是爱丽丝的生日）
 port = 21325
 
+# AI的全局配置
+[ai]
+# 网页启动使用的AI
+startup_type = "deepseek"
+
+[ai.doubao]
+display_name = "豆包"
+login_url = "https://www.doubao.com/chat/"
+chat_url = "https://www.doubao.com/chat/"
+
+[ai.deepseek]
+display_name = "深度求索"
+login_url = "https://chat.deepseek.com/sign_in"
+chat_url = "https://chat.deepseek.com/"
+
+[ai.skywork]
+display_name = "天宫"
+login_url = "https://skywork.ai/"   # 国际版
+chat_url = "https://skywork.ai/"
+
+[ai.gemini]
+display_name = "gemini"
+login_url = "https://accounts.google.com/"
+chat_url = "https://gemini.google.com/app"
+
 # Playwright配置
 [playwright]
 # 可选项：chromium, firefox, webkit
@@ -52,7 +77,7 @@ timeout = 30000
 # 指定浏览器可见的环境变量。默认使用 process.env。
 env = {}
 # 是否以无头模式运行浏览器。# 如果 devtools 选项为 True，则此选项默认为 False，否则默认为 True。
-headless = true
+headless = false
 # 仅限 Chromium：是否为每个标签页自动打开开发者工具面板。# 如果此选项为 True，headless 选项将被设置为 False。# 已弃用：建议使用调试工具代替。
 devtools = false
 ## 网络代理设置(没有的字段直接删)【用不上 直接注释掉】。
@@ -142,24 +167,6 @@ service_workers = "allow"
 record_har_content = "embed"
 # TLS客户端身份验证，允许服务器请求客户端证书并进行验证。要使用的客户端证书数组。当提供至少一个客户端证书时，客户端证书身份验证才处于活动状态。
 client_certificates = []
-
-[ai]
-startup_type = "deepseek"
-
-[ai.doubao]
-display_name = "豆包"
-login_url = "https://www.doubao.com/chat/"
-chat_url = "https://www.doubao.com/chat/"
-
-[ai.deepseek]
-display_name = "深度求索"
-login_url = "https://chat.deepseek.com/sign_in"
-chat_url = "https://chat.deepseek.com/"
-
-[ai.gemini]
-display_name = "gemini"
-login_url = "https://accounts.google.com/"
-chat_url = "https://gemini.google.com/app"
 
 #[spider]
 #user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"

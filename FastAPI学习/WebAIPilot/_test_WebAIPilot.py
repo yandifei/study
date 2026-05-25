@@ -5,9 +5,9 @@
 # 内置库
 import asyncio
 # 自己的模块
-from utils import logger_manager, info, critical    # 导入日志记录器模块
-from utils import ConfigManager # 导入配置管理模块
-from utils.playwright_factory.playwright_factory import PlaywrightFactory
+from logger import logger_manager, info, critical    # 导入日志记录器模块
+from utils.config_manager import ConfigManager # 导入配置管理模块
+from utils.playwright_factory import PlaywrightFactory
 from logic.deepseek_logic.deepseek_flows import DeepseekFlows
 from logic.doubao_logic.doubao_flows import DoubaoFlows
 
@@ -22,37 +22,40 @@ config_manager = ConfigManager(debug=True)
 config_manager.config_override()    # 层叠覆盖原来的配置
 info("日志模块加载完成，全局异常捕获开启")
 
-
 async def main():
     # 创建Playwright工厂实例
-    playwright_factory = PlaywrightFactory(config_manager.config_data["playwright"]["launch_options"],
-                                           config_manager.config_data["playwright"]["context_options"])
+    # 创建Playwright工厂实例
+    playwright_factory = PlaywrightFactory(
+        config_manager.config_data.playwright.launch_options,
+        config_manager.config_data.playwright.context_options
+    )
     # 创建deepseek工作流实例
-    df =  await DeepseekFlows.create(config_manager, playwright_factory)
-    # # 提问
-    text_answer = await df.ask("你好", "data/验证码1.jpg")
-    info(f"答案：{text_answer}")
-    # text_answer = await df.ask("你能干啥？20字")
+    ai_task_flows =  await DeepseekFlows.create(config_manager, playwright_factory)
+    # 提问
+    text_answer = await ai_task_flows.ask("描述一下这里面的内容", "test/test.png")
+    print(text_answer)
+    # info(f"答案：{text_answer}")
+    # text_answer = await ai_task_flows.ask("你能干啥？20字")
     # info(f"答案：{text_answer}")
     # # 获取最后一次的答案
-    # info(await df.home_page.get_last_answer())
+    # info(await ai_task_flows.home_page.get_last_answer())
     # # 获取所有会话
-    # info(await df.home_page.get_all_conversation_turn())
+    # info(await ai_task_flows.home_page.get_all_conversation_turn())
     # # 创建会话
-    # await df.home_page.create_conversation()
+    # await ai_task_flows.home_page.create_conversation()
     # # 切换会话
-    # await df.home_page.switch_conversation("AI助手热情自我介绍")
+    # await ai_task_flows.home_page.switch_conversation("AI助手热情自我介绍")
     # # 获得所有会话数量
-    # info(await df.home_page.get_conversation_count())
+    # info(await ai_task_flows.home_page.get_conversation_count())
     # # 获得所有会话标题
-    # titles = await df.home_page.get_conversation_title_list()
+    # titles = await ai_task_flows.home_page.get_conversation_title_list()
     # info(titles)
     # # 删除会话
-    # await df.home_page.del_conversation(titles[0])
-    # await df.home_page.page.wait_for_timeout(3000000)
-    # await df.deep_thinking_mode()
-    # await df.network_mode()
-    await df.home_page.page.wait_for_timeout(10000)
+    # await ai_task_flows.home_page.del_conversation(titles[0])
+    # await ai_task_flows.home_page.page.wait_for_timeout(3000000)
+    # await ai_task_flows.deep_thinking_mode()
+    # await ai_task_flows.network_mode()
+    # await ai_task_flows.home_page.page.wait_for_timeout(100000)
     # 关闭Playwright工厂实例（手动好看，但也能自动管理的）
     await playwright_factory.close_factory()
     info("Playwright工厂已关闭")

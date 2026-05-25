@@ -21,7 +21,7 @@ class HomePage(BasePage):
         :return: None
         """
         # 访问豆包对话网页
-        await self.page.goto(self.cm.config_data["AI"]["doubao"]["chat_url"])
+        await self.page.goto(self.cm.config_data.ai.doubao.chat_url)
         # 等待界面加载完成
         await self.wait_for_load_state("domcontentloaded")
         # self.page.locator('img[src="https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/samantha/logo-icon-white-bg.png"]').wait_for()

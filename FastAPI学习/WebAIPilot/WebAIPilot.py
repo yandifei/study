@@ -4,6 +4,7 @@
 """
 # 内置库
 import asyncio
+import warnings
 from contextlib import asynccontextmanager
 # 三方库
 import uvicorn
@@ -19,9 +20,9 @@ from logic.doubao_logic.doubao_flows import DoubaoFlows
 from logic.deepseek_logic.deepseek_flows import DeepseekFlows
 from logic.skywork_logic.skywork_flows import SkyworkFlows
 from data_models import AskModel
-# # 忽略 asyncio 关于未关闭传输的 ResourceWarning（工厂会自动回收资源）
-# warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed transport")
-# warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed event loop")
+# 忽略 asyncio 关于未关闭传输的 ResourceWarning（工厂会自动回收资源）
+warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed transport")
+warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed event loop")
 
 """初始化"""
 # 是否为开发模式
@@ -86,6 +87,10 @@ def index():
         "服务": "WebAIPilot API",
         "版本": "1.0.0"
     }
+
+@app.get("/favicon.ico")
+async def favicon():
+    return FileResponse(get_root()/ "config" / "WebAIPilot.ico")
 
 @app.get("/screenshots",  response_class=FileResponse)
 async def screenshots():
