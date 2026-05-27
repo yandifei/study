@@ -1,0 +1,4 @@
+icacls mongo-keyfile /inheritance:r
+icacls mongo-keyfile /grant:r "%USERNAME%:R"
+icacls mongo-keyfile /grant:r "SYSTEM:R"
+icacls mongo-keyfile /grant:r "Administrators:R"
