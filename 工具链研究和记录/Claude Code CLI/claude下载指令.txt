@@ -1,0 +1,6 @@
+前提工具
+要有npm才行，这个是win自带，别说你没有，没有就去官网找了：https://docs.npmjs.com/
+node.js的下载地址:https://nodejs.org/zh-cn/download/
+
+claude的下载地址:
+npm install -g @anthropic-ai/claude-code
