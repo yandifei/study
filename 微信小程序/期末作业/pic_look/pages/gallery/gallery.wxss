@@ -1,0 +1,32 @@
+/* pages/gallery/gallery.wxss */
+page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffeed2;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+/* 这个是关键，也算是个坑货，在之前的是实验中出现过的问题，全局默认200距离 */
+.container {
+  padding: 0rpx;
+  margin: 20rpx;
+  gap: 10rpx;
+}
+.scroll-list {
+  width: 100%;
+}
+
+acg-images {
+  /* 图片宽度撑满 */
+  width: 100%;
+  border-radius: 20rpx;
+}
+
+acg-images-mp {
+  /* 图片宽度撑满 */
+  width: 100%;
+  border-radius: 20rpx;
+}

@@ -1,0 +1,10 @@
+<!--pages/gallery/gallery.wxml-->
+<scroll-view class="scrollarea" scroll-y="true" bindscroll="onScrollView">
+  <view class="container">
+  <!-- 必须分开for和if,微信的 -->
+    <view class="scroll-list" wx:for="{{img_urls}}" wx:key="index">
+      <acg-images-mp wx:if="{{isVerticalType}}" acg_url="{{item}}" />
+      <acg-images wx:else acg_url="{{item}}" />
+    </view>
+  </view>
+</scroll-view>

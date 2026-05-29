@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "components/acg-images/acg-images"
+    "components/acg-images/acg-images",
+    "components/acg-images-mp/acg-images-mp"
   ],
   "window": {
     "navigationBarTextStyle": "white",

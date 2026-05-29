@@ -1,9 +1,9 @@
 {
   "usingComponents": {
-    "navigation-bar": "/components/navigation-bar/navigation-bar",
     "acg-images": "/components/acg-images/acg-images",
     "acg-images-mp": "/components/acg-images-mp/acg-images-mp"
   },
-  "navigationBarTitleText": "自定义组件",
-  "enablePullDownRefresh": true
+  "navigationBarTitleText": "画廊",
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "#ff4757"
 } 

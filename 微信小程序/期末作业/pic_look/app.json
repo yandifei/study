@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/gallery/gallery",
+    "pages/search/search",
+    "pages/settings/settings",
+    "components/acg-images-mp/acg-images-mp"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "default",
+    "navigationBarBackgroundColor": "#faebd7"
+  },
+  "style": "v2",
+  "renderer": "webview",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "selectedColor": "#000",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页",
+        "iconPath": "res/tab_bar_images/home.png",
+        "selectedIconPath": "res/tab_bar_images/home.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "res/tab_bar_images/search.png",
+        "selectedIconPath": "res/tab_bar_images/search.png"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "我的",
+        "iconPath": "res/tab_bar_images/settings.png",
+        "selectedIconPath": "res/tab_bar_images/settings.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+page {
+  background-color: #ffeed2;
+  padding-bottom: 50rpx;
+}
+
+.page-container {
+  padding: 40rpx;
+}
+
+.header {
+  margin-bottom: 50rpx;
+  padding-left: 10rpx;
+}
+.title { font-size: 56rpx; font-weight: 800; color: #5d4a30; display: block; }
+.subtitle { font-size: 28rpx; color: #a89275; margin-top: 10rpx; }
+
+/* 网格布局：自动排版14个按钮 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35rpx;
+}
+
+/* 拟物卡片核心 */
+.card {
+  height: 220rpx;
+  background: #ffeed2;
+  border-radius: 45rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* 关键：双重阴影制造立体凸起 */
+  box-shadow: 12rpx 12rpx 24rpx #ebd6b7, -12rpx -12rpx 24rpx #ffffff;
+  transition: all 0.25s ease;
+}
+
+/* 点击反馈：内阴影制造凹陷感 */
+.card:active {
+  box-shadow: inset 8rpx 8rpx 16rpx #ebd6b7, inset -8rpx -8rpx 16rpx #ffffff;
+  transform: scale(0.97);
+}
+
+.emoji { font-size: 56rpx; margin-bottom: 10rpx; }
+.label { font-size: 26rpx; font-weight: 600; color: #7c6240; }
+
+/* 差异化设计：针对不同分类微调颜色倾向 */
+.card.ai { border-top: 8rpx solid #c8e1ff; } /* 科技感 */
+.card.moe { border-top: 8rpx solid #ffccd5; } /* 萌系 */
+.card.ys { border-top: 8rpx solid #d4f8e8; } /* 原神系 */

@@ -1,0 +1,5 @@
+<!--components/acg-images-mp/acg-images-mp.wxml-->
+<view class="card">
+  <image src="{{acg_url}}" mode="widthFix" />
+  <button class="custom-btn" hover-class="custom-btn-hover" bind:tap="save">收藏</button>
+</view>

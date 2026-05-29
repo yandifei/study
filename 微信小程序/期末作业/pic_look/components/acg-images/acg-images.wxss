@@ -1,0 +1,46 @@
+/* components/acg-images/acg-images.wxss */
+.card {
+  /* 告诉浏览器设置的已经包含了 padding 和边框(这里巨坑，鸿蒙内部是默认border-box的) */
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  background-color: #ffa4a4;
+}
+
+image {
+  width: 100%;
+  border-radius: 20rpx;
+}
+
+/* 按钮基础样式 */
+.custom-btn {
+  margin-bottom: 10rpx;
+  margin-top: 5rpx;
+  
+  /* 颜色：使用高级感渐变色（这里是温暖的橙红渐变，适合“收藏”、“购买”） */
+  background: linear-gradient(135deg, #ff6b81, #ff4757);
+  
+  /* 文字样式 */
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  
+  /* 边框与圆角：大圆角更具现代感 */
+  border-radius: 50rpx;
+  border: none;
+  
+  /* 阴影：柔和的同色系发光阴影，拒绝死黑 */
+  box-shadow: 0 10rpx 20rpx rgba(255, 71, 87, 0.3);
+  
+  /* 动画过渡 */
+  transition: all 0.2s ease;
+}
+
+/* 微信特有的点击态效果（手指按下去的反馈） */
+.custom-btn-hover {
+  transform: scale(0.9); 
+  box-shadow: 0 4rpx 8rpx rgba(255, 71, 87, 0.2);
+  opacity: 0.9;
+}
