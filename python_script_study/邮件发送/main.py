@@ -25,13 +25,12 @@ SMTP_SERVER = "smtp.qq.com"
 # SMTP_SSL 加密连接所使用的端口号（465 端口使用 SSL/TLS 加密传输，保证通信安全）
 SMTP_PORT = 465
 # 发件人的 QQ 邮箱地址，需要替换为真实的 QQ 邮箱（格式：QQ号@qq.com）
-SENDER_EMAIL = "3646917783@qq.com"
+SENDER_EMAIL = ""
 # QQ 邮箱的 SMTP 授权码（非 QQ 密码），需要在 QQ 邮箱网页端 → 设置 → 账户 → POP3/SMTP 服务中开启并生成
-AUTHORIZATION_CODE: str =  os.getenv("SMTP", "")
-
+AUTHORIZATION_CODE: str =  ""
 # ==================== 收件人与验证码配置 ====================
 # 收件人邮箱地址（注意：当前值为整数 1，实际使用时需替换为有效的邮箱字符串，如 "example@163.com"）
-email: str = "2171872836@qq.com"
+email: str = ""
 
 # ==================== 构造邮件内容 ====================
 # 创建一个 MIMEMultipart 多部分邮件容器对象，可以容纳正文、附件等多种内容块

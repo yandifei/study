@@ -58,8 +58,8 @@ def send_verification_email(email: str, verification_num: str):
 
 if __name__ == '__main__':
     # 添加邮箱的环境变量
-    os.environ['SENDER_EMAIL'] = "3646917783@qq.com"
+    os.environ['SENDER_EMAIL'] = "自己的QQ邮箱"
     # 添加授权码的环境变量
     os.environ['SMTP'] = "自己去QQ邮箱里找"
     # 发送邮件
-    send_verification_email("3058439878@qq.com", ''.join(random.choices('0123456789', k=6)))
+    send_verification_email("接收者的邮箱(对面)", ''.join(random.choices('0123456789', k=6)))
