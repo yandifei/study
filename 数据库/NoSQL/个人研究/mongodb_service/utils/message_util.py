@@ -51,7 +51,7 @@ def send_verification_email(email: str, verification_num: str)-> None:
         - Logo 图片路径: config/logo.ico，如果不存在会跳过附加图片
     """
     # 创建一个 MIMEMultipart 多部分邮件容器对象，可以容纳正文、附件等多种内容块
-    msg = MIMEMultipart()
+    msg = MIMEMultipart('related')   # 必须有参数'related' 多部分邮件容器对象
     # 设置邮件头部的「发件人」、「收件人」、「主题」
     msg["From"] = os.getenv("SENDER_EMAIL", "")
     msg["To"] = email
@@ -71,6 +71,8 @@ def send_verification_email(email: str, verification_num: str)-> None:
     with open(Path(get_root(), "config/logo.png"), "rb") as f:
         img = MIMEImage(f.read())
     img.add_header("Content-ID", "<logo>")
+    # img.add_header("Content-Disposition", "inline", filename="logo.png")
+    # img.add_header("Content-Type", "image/png", name="logo.png")
     msg.attach(img)
 
     try:
