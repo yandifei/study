@@ -17,7 +17,7 @@ from datetime import datetime
 
 def send_verification_email(email: str, verification_num: str):
     # 创建一个 MIMEMultipart 多部分邮件容器对象，可以容纳正文、附件等多种内容块
-    msg = MIMEMultipart()
+    msg = MIMEMultipart('related')  # 必须有参数'related' 多部分邮件容器对象
     # 设置邮件头部的「发件人」、「收件人」、「主题」
     msg["From"] = os.getenv("SENDER_EMAIL", "")
     msg["To"] = email

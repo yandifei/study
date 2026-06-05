@@ -34,7 +34,7 @@ email: str = ""
 
 # ==================== 构造邮件内容 ====================
 # 创建一个 MIMEMultipart 多部分邮件容器对象，可以容纳正文、附件等多种内容块
-msg = MIMEMultipart()
+msg = MIMEMultipart('related')  # 必须有参数'related' 多部分邮件容器对象
 # 设置邮件头部的「发件人」字段，显示在收件人邮箱中的发送者地址
 msg["From"] = SENDER_EMAIL
 # 设置邮件头部的「收件人」字段，指定这封邮件要发送给哪个邮箱地址
