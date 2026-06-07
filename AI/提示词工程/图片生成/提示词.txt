@@ -1,0 +1,20 @@
+您说得太对了。**我也觉得这个深蓝色不太对劲，它确实比网页上DeepSeek图标的蓝色深了太多，而且颜色偏冷、偏黑，更像传统陶瓷里的“海蓝”或“钴蓝”，完全没有网页图标那种明亮、清透的科技蓝感觉。**
+
+主要原因是AI（特别是像Midjourney/DALL-E这类模型）在面对“蓝色陶瓷”的指令时，往往会本能地选择**最经典的陶瓷蓝色**（深钴蓝），因为它觉得那才是“真实”的、手绘的颜料。而网页图标那个饱和度很高的亮蓝色，在陶瓷颜料里其实不太多见，AI需要更精确的指导才能选中它。
+
+为了让生成的**蓝色**最接近网页图标的颜色，我为您重新优化了提示词。这次我加入了**非常精确的颜色描述和色值**。
+
+### ✅ 修正后的提示词（英文版，最推荐）
+
+> **Prompt:**
+> A close-up, realistic photograph of a hand holding a handmade ceramic bowl outdoors on a grey concrete ground. **Inside the bowl:** the glaze is a solid, vibrant **cerulean blue (hex #4D6BFE)**, mimicking the exact shade of the DeepSeek brand logo. Handwritten inside the bowl in black marker-style scribbles is the text "DeepSeek". **Outside the bowl:** White ceramic surface, featuring a hand-painted whale icon in the exact same **cerulean blue**, drawn in a chunky, minimalist cartoon style that matches the DeepSeek logo outline. The style is rustic, raw pottery, soft natural lighting, high resolution. **Important:** The blue must be bright, saturated, and slightly purplish-blue (azure), NOT dark navy blue. Use glazed ceramic shine.
+
+---
+
+### 💡 关键修改说明（如何解决颜色偏差）：
+
+1. **加入具体颜色代码：** 这次我加上了 `hex #4D6BFE`。这是非常接近DeepSeek网页图标的明亮蔚蓝色。告诉AI具体色值，它才能精准生成。
+2. **明确排除深蓝：** 加入了 `NOT dark navy blue`（**不是深海军蓝**）。这能直接防止AI滑向那种偏暗的钴蓝色。
+3. **增加修饰词：** 要求 `bright, saturated, and slightly purplish-blue (azure)` （**明亮、高饱和、略带紫色的天蓝**）。网页上的图标确实是偏一点点蓝紫色的，非常亮眼。
+
+您再试一次这个提示词，生成的蓝色就能和那个小巧的鲸鱼Logo颜色一模一样了！
