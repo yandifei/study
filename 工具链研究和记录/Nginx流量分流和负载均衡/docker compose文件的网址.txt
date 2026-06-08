@@ -1,0 +1,1 @@
+https://docs.nginx.com/nginx-instance-manager/deploy/docker/deploy-nginx-instance-manager-docker-compose/#lightweight-mode-no-clickhouse
