@@ -2,7 +2,6 @@
 路径工具函数集合（Pythonic 风格）。
 使用 pathlib 封装常用路径操作。（需要用到啥我就写啥，毕竟方法名我来定义方便记住）
 """
-import sys
 from pathlib import Path
 
 def get_root() -> Path:
