@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Dict, Any, Tuple
 # 第三方库
 import yaml
-from dotenv import load_dotenv
+
 # 自己的模块
 from logger.logging_configurator import LoggingConfigurator
 from utils.path_utils import get_root
@@ -79,8 +79,6 @@ class ConfigManager:
 
         :return:配置有效且层叠成功返回True否则返回False
         """
-        # 覆盖并加载环境变量
-        self.load_environment_var()
         # 框架默认日志配置(日志配置错误就没必要加载后面的了)
         if self.load_default_logging_config() is False:
             return False
@@ -160,16 +158,6 @@ class ConfigManager:
         except Exception as e:
             self.error_msg = (f"配置文件转化模型错误: {e}", e)
             return False
-
-    @staticmethod
-    def load_environment_var():
-        """加载环境变量
-        不会覆盖系统中已存在的同名环境变量
-        """
-        try:
-            load_dotenv(Path(get_root(), "config/.env"))
-        except Exception as e:
-            error("config目录下的.env文件有问题",e)
 
     @staticmethod
     def load_yaml(path: Path) -> Dict[str, Any]:

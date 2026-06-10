@@ -1,0 +1,6 @@
+https://www.mongodb.com/zh-cn/docs/languages/python/pymongo-driver/current/reference/migration/
+
+Motor will be deprecated on May 14th, 2026. We strongly recommend that Motor users migrate to the PyMongo Async API.
+所以如果你是 2026 年新开项目，我的建议已经很明确了直接用 PyMongo Async
+
+Motor已经弃用了，别再用这个做异步的库了，当然Beanie不用不上了，因为集成了
