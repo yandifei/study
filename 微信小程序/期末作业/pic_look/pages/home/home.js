@@ -23,6 +23,10 @@ Page({
   onLoad(args) {
     wx.setTabBarStyle({ selectedColor: '#5d4a30', "backgroundColor": "#ffeed2",})
   },
+  // 页面加载时改变底部导航栏颜色
+  onShow() {
+    wx.setTabBarStyle({ selectedColor: '#5d4a30', "backgroundColor": "#ffeed2",})
+  },
 
   nav(e) {
     const code = e.currentTarget.dataset.url;

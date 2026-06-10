@@ -1,1 +1,200 @@
-/* pages/settings/settings.wxss */
+/* pages/settings/settings.wxss —— 粉萌 ACG 治愈风 */
+
+/* ===== 页面基底 ===== */
+page {
+  background: linear-gradient(180deg, #fff0f5 0%, #ffe4ec 100%);
+  padding-bottom: 60rpx;
+}
+
+.page-container {
+  padding: 30rpx 35rpx;
+}
+
+/* ===== 顶部装饰标题 ===== */
+.header-deco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30rpx;
+  margin-bottom: 6rpx;
+}
+
+.deco-star {
+  font-size: 36rpx;
+  color: #ffb6c1;
+}
+
+.deco-title {
+  font-size: 44rpx;
+  font-weight: 800;
+  color: #ff7eb3;
+  margin: 0 20rpx;
+  letter-spacing: 8rpx;
+}
+
+.deco-sub {
+  display: block;
+  text-align: center;
+  font-size: 22rpx;
+  color: #e0a0b4;
+  margin-bottom: 40rpx;
+  letter-spacing: 2rpx;
+}
+
+/* ===== 用户信息卡片 ===== */
+.user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 40rpx;
+  padding: 50rpx 30rpx 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 8rpx 32rpx rgba(255, 107, 157, 0.12),
+              0 2rpx 8rpx rgba(255, 150, 180, 0.08);
+}
+
+/* 头像粉色光环 */
+.avatar-ring {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffb6c1 0%, #ff7eb3 50%, #fecfef 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24rpx;
+  box-shadow: 0 6rpx 24rpx rgba(255, 107, 157, 0.25);
+}
+
+.avatar-box {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ffe4ec;
+  border: 6rpx solid #ffffff;
+  box-sizing: border-box;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+}
+
+.username {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #5c3d4e;
+  margin-bottom: 8rpx;
+}
+
+.email {
+  font-size: 24rpx;
+  color: #c48b9f;
+}
+
+/* ===== 功能菜单 ===== */
+.menu-section {
+  background: #ffffff;
+  border-radius: 32rpx;
+  overflow: hidden;
+  margin-bottom: 50rpx;
+  box-shadow: 0 6rpx 28rpx rgba(255, 107, 157, 0.10),
+              0 2rpx 6rpx rgba(255, 150, 180, 0.06);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 28rpx;
+  border-bottom: 1rpx solid #fff0f5;
+  transition: background 0.2s ease;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item-hover {
+  background: #fff5f8;
+}
+
+.menu-icon-box {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 18rpx;
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe4ec 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.menu-icon {
+  font-size: 32rpx;
+}
+
+.menu-label {
+  flex: 1;
+  font-size: 30rpx;
+  color: #5c3d4e;
+  font-weight: 500;
+}
+
+.menu-arrow {
+  font-size: 28rpx;
+  color: #e8c4d0;
+}
+
+/* ===== 注销按钮 ===== */
+.logout-area {
+  padding: 0 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.btn-logout {
+  width: 100%;
+  height: 96rpx;
+  background: linear-gradient(135deg, #ff85a2 0%, #ff6b9d 100%);
+  border-radius: 48rpx;
+  border: none;
+  padding: 0;
+  line-height: 96rpx;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 157, 0.28);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-logout-text {
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+}
+
+/* 微信 button 重置 */
+.btn-logout::after {
+  border: none;
+}
+
+.btn-logout-hover {
+  transform: scale(0.96);
+  filter: brightness(0.92);
+  opacity: 0.9;
+}
+
+/* ===== 底部装饰 ===== */
+.footer-deco {
+  text-align: center;
+  padding: 10rpx 0 20rpx;
+}
+
+.footer-text {
+  font-size: 22rpx;
+  color: #e0a0b4;
+  letter-spacing: 4rpx;
+}

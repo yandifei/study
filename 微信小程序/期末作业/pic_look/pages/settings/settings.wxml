@@ -1,2 +1,44 @@
-<!--pages/settings/settings.wxml-->
-<text>pages/settings/settings.wxml</text>
+<view class="page-container">
+  <!-- 顶部装饰标题 -->
+  <view class="header-deco">
+    <text class="deco-star">✧</text>
+    <text class="deco-title">我的小窝</text>
+    <text class="deco-star">✧</text>
+  </view>
+  <text class="deco-sub"> 今天也是美好的一天 ♪</text>
+
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+
+    <view class="avatar-ring">
+      <view class="avatar-box">
+        <image class="avatar" src="{{avatar || '/res/default-avatar.png'}}" mode="aspectFill" />
+      </view>
+    </view>
+    <text class="username">{{username || '用户名'}}</text>
+    <text class="email">{{email || ''}}</text>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="menu-item" wx:for="{{menus}}" wx:key="key" bindtap="{{item.tap}}" hover-class="menu-item-hover">
+      <view class="menu-icon-box">
+        <text class="menu-icon">{{item.icon}}</text>
+      </view>
+      <text class="menu-label">{{item.label}}</text>
+      <text class="menu-arrow">▸</text>
+    </view>
+  </view>
+
+  <!-- 注销按钮 -->
+  <view class="logout-area">
+    <button class="btn-logout" hover-class="btn-logout-hover" bindtap="handleLogout">
+      <text class="btn-logout-text">注销登录</text>
+    </button>
+  </view>
+
+  <!-- 底部装饰 -->
+  <view class="footer-deco">
+    <text class="footer-text">♡ ACG 鉴赏画廊 ♡</text>
+  </view>
+</view>

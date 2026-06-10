@@ -1,1 +1,120 @@
-/* pages/login/login.wxss */
+.container {
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50%;
+}
+
+.title {
+  text-align: center;
+  color: #ffffff;
+  font: bold 8vw sans-serif;
+  letter-spacing: 0.5vw;
+  margin-top: -40%;
+  margin-bottom: 20%;
+}
+
+.card {
+  width: 95%;
+  border-radius: 5%;
+  padding: 5% 5%;
+  box-sizing: border-box;
+  box-shadow: 0 1vw 5vw rgba(0, 0, 0, 0.5);
+}
+
+.label {
+  font-size: 4vw;
+  color: #000000;
+  margin-bottom: 2vw;
+}
+
+.input {
+  width: 100%;
+  height: 11vw;
+  border: 0.5vw solid #00000077;
+  border-radius: 2vw;
+  padding: 0 3vw;
+  font-size: 4.5vw;
+  margin-bottom: 5vw;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.input-placeholder {
+  color: #a6a6a6cb;
+}
+
+.code-box {
+  display: flex;
+  gap: 3vw;
+}
+
+.btn-code {
+  height: 11vw;
+  background: linear-gradient(135deg, #ff2974 0%, #ff4d8c 100%);
+  color: #ffffff;
+  font-size: 3.5vw;
+  line-height: 11vw;
+  padding: 0;
+  border-radius: 2vw;
+  transition: all 0.2s ease; /* 点击有平滑动画 */
+}
+
+.btn-login {
+  width: 100% !important;
+  height: 11vw;
+  background: linear-gradient(135deg, #667eea 0%, #7800f0 100%);
+  color: #ffffff;
+  border-radius: 6.5vw;
+  font-size: 4.5vw;
+  font-weight: bold;
+  line-height: 11vw;
+  padding: 0;
+  transition: all 0.2s ease; /* 点击有平滑动画 */
+}
+
+/* 用户告知用户协议 */
+.auto-reg-tip {
+  display: block;
+  text-align: center;
+  font-size: 2.8vw;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 3vw;
+  margin-bottom: 2vw;
+}
+
+.footer {
+  margin-top: 8%;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  font-size: 3.2vw;
+  color: #e0e0e0;
+}
+
+.link {
+  color: #ffda79;
+  font-weight: bold;
+  padding: 0 1vw;
+  text-decoration: underline;
+}
+/* --- 统一点击态效果 --- */
+/* 作用于登录按钮和获取验证码按钮 */
+.btn-hover {
+  transform: scale(0.96);
+  filter: brightness(0.9);
+  opacity: 0.9;
+}
+
+/* 作用于协议链接 */
+.link-hover {
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+/* 当按钮被禁用时，覆盖微信默认样式 */
+button[disabled] {
+  color: #ffffff !important; /* 强制保持白色文字 */
+  opacity: 0.6; /* 适当降低透明度，表示“不可点击” */
+}

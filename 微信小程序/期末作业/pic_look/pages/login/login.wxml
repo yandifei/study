@@ -1,2 +1,25 @@
-<!--pages/login/login.wxml-->
-<button bind:tap="login" type="primary">登录</button>
+<view class="container">
+  <text class="title">ACG鉴赏画廊</text>
+
+  <view class="card">
+    <text class="label">邮箱地址</text>
+    <input class="input" placeholder-class="input-placeholder" placeholder="请输入邮箱地址" bindinput="onEmailInput" />
+
+    <text class="label">验证码</text>
+    <view class="code-box">
+      <input class="input code-input" placeholder-class="input-placeholder" placeholder="请输入验证码" bindinput="onCodeInput" />
+      <button class="btn-code" hover-class="btn-hover" bindtap="sendCode" disabled="{{countDown > 0}}">{{countDown > 0 ? countDown + 's后重发' : '获取验证码'}}</button>
+    </view>
+
+    <button class="btn-login" hover-class="btn-hover" bindtap="handleLogin">登录</button>
+
+    <text class="auto-reg-tip">未注册用户登录即自动注册</text>
+    
+    <view class="footer">
+      <text>登录即表示同意</text>
+      <navigator url="/pages/protocol/protocol" class="link" hover-class="link-hover">《用户协议》</navigator>
+      <text>和</text>
+      <navigator url="/pages/privacy/privacy" class="link" hover-class="link-hover">《隐私政策》</navigator>
+    </view>
+  </view>
+</view>

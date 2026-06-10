@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/home/home",
     "pages/gallery/gallery",
     "pages/search/search",
     "pages/settings/settings",
+    "pages/login/login",
     "components/acg-images-mp/acg-images-mp"
   ],
   "window": {
