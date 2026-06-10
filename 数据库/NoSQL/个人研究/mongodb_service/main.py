@@ -4,6 +4,7 @@
 """
 # 内置库
 import asyncio
+import os
 import warnings
 from contextlib import asynccontextmanager
 # 三方库
@@ -80,6 +81,11 @@ app.include_router(auth_router)
 #  全局异常处理器 —— 将自定义认证异常映射为 HTTP 响应
 #  企业实践: 异常处理器统一管理错误响应格式，保持 API 一致性
 # ============================================================================
+
+# 图标
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return FileResponse(get_root() / "config" / "logo.ico")
 
 @app.exception_handler(TokenExpiredError)
 async def token_expired_handler(request, exc: TokenExpiredError):

@@ -35,7 +35,7 @@ async def init_db(
     global _client, _db
 
     if not uri:
-        uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
+        uri = os.getenv("MONGODB_URL", "mongodb://localhost:27017/?directConnection=true")
     if not db_name:
         db_name = os.getenv("APP_NAME", "test")
 
