@@ -17,6 +17,8 @@ from logger import logger_manager, info, critical, warning  # 导入日志记录
 from utils.config_manager import ConfigManager # 导入配置管理模块
 from utils.path_utils import get_root
 from services.auth import auth_router  # 认证路由
+from services.browse import browse_router  # 浏览记录路由
+from services.favorite import favorite_router  # 收藏记录路由
 from services.auth.jwt import (        # 自定义异常 + 全局异常处理
     AuthException,
     TokenExpiredError,
@@ -76,6 +78,8 @@ app = FastAPI(lifespan=lifespan)
 #  注册认证路由
 # ============================================================================
 app.include_router(auth_router)
+app.include_router(browse_router)
+app.include_router(favorite_router)
 
 # ============================================================================
 #  全局异常处理器 —— 将自定义认证异常映射为 HTTP 响应

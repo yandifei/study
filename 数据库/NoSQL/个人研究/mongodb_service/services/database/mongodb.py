@@ -51,7 +51,7 @@ async def close_db(client: AsyncMongoClient | None = None):
     global _client
     c = client or _client
     if c:
-        c.close()
+        await c.close()
         info("MongoDB 连接已关闭")
 
 

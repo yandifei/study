@@ -2,41 +2,28 @@
 MongoDB 索引管理模块
 
 提供索引创建、验证和状态查询功能，用于生产环境部署。
-虽然 Beanie 在 init_beanie() 时会自动创建索引，但在以下场景中仍需要此模块：
-  - 生产环境预热：在应用开始接收流量前预先创建索引，避免冷启动时索引构建阻塞查询
-  - CI/CD 验证：确认所有预期索引已正确创建
-  - 性能诊断：查看索引使用统计，识别未被使用的冗余索引
-  - 手动控制：精细控制索引创建时机（例如在低峰期创建大型索引）
 
 索引设计总览
 ============
 
-┌──────────────────┬─────────────────────────────────────────┬──────────────────────────────┐
-│ 集合             │ 索引                                    │ 覆盖的查询模式               │
-├──────────────────┼─────────────────────────────────────────┼──────────────────────────────┤
-│ users            │ _id (PK, 自动)                          │ 按主键精确查找               │
-│                  │ email UNIQUE                            │ 邮箱登录、邮箱唯一性校验     │
-│                  │ username                                │ 按用户名搜索用户             │
-├──────────────────┼─────────────────────────────────────────┼──────────────────────────────┤
-│ images           │ _id (PK, 自动)                          │ 按主键精确查找               │
-│                  │ url UNIQUE                              │ URL 去重、按 URL 查找图片    │
-│                  │ type                                    │ 按图片格式筛选               │
-│                  │ created_at DESC                         │ 最新入库图片列表（瀑布流）   │
-├──────────────────┼─────────────────────────────────────────┼──────────────────────────────┤
-│ browse_records   │ _id (PK, 自动)                          │ 按主键精确查找               │
-│                  │ (user_id, browse_time DESC)             │ 用户的最近浏览历史           │
-│                  │ (image_id, browse_time DESC)            │ 某图片的浏览用户/浏览次数    │
-│                  │ browse_time DESC                        │ 全局最近浏览记录             │
-├──────────────────┼─────────────────────────────────────────┼──────────────────────────────┤
-│ favorite_records │ _id (PK, 自动)                          │ 按主键精确查找               │
-│                  │ (user_id, image_id) UNIQUE              │ 防重复收藏、查询收藏状态     │
-│                  │ (user_id, favorite_time DESC)           │ 我的收藏列表（按时间倒序）   │
-│                  │ (image_id, favorite_time DESC)          │ 某图片的收藏用户/收藏总量    │
-└──────────────────┴─────────────────────────────────────────┴──────────────────────────────┘
+┌─────────┬─────────────────────┬──────────────────────────────┐
+│ 集合    │ 索引                │ 覆盖的查询模式               │
+├─────────┼─────────────────────┼──────────────────────────────┤
+│ users   │ _id (PK, 自动)      │ 按主键精确查找               │
+│         │ email UNIQUE        │ 邮箱登录、邮箱唯一性校验     │
+│         │ username            │ 按用户名搜索用户             │
+├─────────┼─────────────────────┼──────────────────────────────┤
+│ images  │ _id (PK, 自动)      │ 按主键精确查找               │
+│         │ url UNIQUE          │ URL 去重、按 URL 查找图片    │
+│         │ type                │ 按图片格式筛选               │
+│         │ created_at DESC     │ 最新入库图片列表（瀑布流）   │
+└─────────┴─────────────────────┴──────────────────────────────┘
+
+浏览和收藏记录以嵌入式数组存储于 users 集合中，不建独立索引。
 """
 
-from motor.motor_asyncio import AsyncIOMotorDatabase
 from pymongo import IndexModel, ASCENDING, DESCENDING
+from pymongo.asynchronous.database import AsyncDatabase
 from typing import List, Dict
 
 from logger import info, warning
@@ -72,54 +59,10 @@ EXPECTED_INDEXES: Dict[str, List[IndexModel]] = {
             name="idx_created_at_desc"
         ),
     ],
-    "browse_records": [
-        IndexModel(
-            [
-                ("user_id", ASCENDING),
-                ("browse_time", DESCENDING)
-            ],
-            name="idx_user_browse_time"
-        ),
-        IndexModel(
-            [
-                ("image_id", ASCENDING),
-                ("browse_time", DESCENDING)
-            ],
-            name="idx_image_browse_time"
-        ),
-        IndexModel(
-            [("browse_time", DESCENDING)],
-            name="idx_browse_time_desc"
-        ),
-    ],
-    "favorite_records": [
-        IndexModel(
-            [
-                ("user_id", ASCENDING),
-                ("image_id", ASCENDING)
-            ],
-            unique=True,
-            name="idx_user_image_unique"
-        ),
-        IndexModel(
-            [
-                ("user_id", ASCENDING),
-                ("favorite_time", DESCENDING)
-            ],
-            name="idx_user_favorite_time"
-        ),
-        IndexModel(
-            [
-                ("image_id", ASCENDING),
-                ("favorite_time", DESCENDING)
-            ],
-            name="idx_image_favorite_time"
-        ),
-    ],
 }
 
 
-async def create_all_indexes(db: AsyncIOMotorDatabase) -> Dict[str, List[str]]:
+async def create_all_indexes(db: AsyncDatabase) -> Dict[str, List[str]]:
     """为所有集合创建预期索引（幂等操作）
 
     在应用启动时、接收流量之前调用此函数，
@@ -146,7 +89,7 @@ async def create_all_indexes(db: AsyncIOMotorDatabase) -> Dict[str, List[str]]:
     return result
 
 
-async def verify_indexes(db: AsyncIOMotorDatabase) -> Dict[str, Dict]:
+async def verify_indexes(db: AsyncDatabase) -> Dict[str, Dict]:
     """验证所有预期索引是否已存在
 
     用于 CI/CD 流程中的前置检查，确保索引部署正确。
@@ -193,7 +136,7 @@ async def verify_indexes(db: AsyncIOMotorDatabase) -> Dict[str, Dict]:
     return report
 
 
-async def list_indexes(db: AsyncIOMotorDatabase,
+async def list_indexes(db: AsyncDatabase,
                        collection_name: str | None = None) -> Dict[str, List[Dict]]:
     """列出数据库中所有（或指定集合的）索引及其详细信息
 
@@ -215,7 +158,7 @@ async def list_indexes(db: AsyncIOMotorDatabase,
     return result
 
 
-async def drop_extra_indexes(db: AsyncIOMotorDatabase) -> Dict[str, List[str]]:
+async def drop_extra_indexes(db: AsyncDatabase) -> Dict[str, List[str]]:
     """删除未在预期定义中的多余索引
 
     危险操作：仅在确认多余索引确实需要删除时调用。
@@ -247,7 +190,7 @@ async def drop_extra_indexes(db: AsyncIOMotorDatabase) -> Dict[str, List[str]]:
     return result
 
 
-async def warmup_indexes(db: AsyncIOMotorDatabase):
+async def warmup_indexes(db: AsyncDatabase):
     """预热：创建索引并验证，用于应用启动流程
 
     结合 create_all_indexes 和 verify_indexes 的一站式启动函数。

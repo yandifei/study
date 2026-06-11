@@ -91,7 +91,6 @@ async def get_current_user(
     # MongoDB dict → User 对象
     doc["id"] = str(doc.pop("_id"))
     user = User(**doc)
-    info(f"用户认证成功: {user.email}")
     return user
 
 
