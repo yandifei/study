@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+                <script type="text/javascript" src="https://assets.pyecharts.org/assets/v6/echarts.min.js"></script>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/v6/maps/china.js"></script>
+
+    
+</head>
+<body >
+    <div id="ef3786f7c9a94ca896a689abd2f1619c" class="chart-container" style="width:900px; height:500px; "></div>
+    <script>
+        var chart_ef3786f7c9a94ca896a689abd2f1619c = echarts.init(
+            document.getElementById('ef3786f7c9a94ca896a689abd2f1619c'), 'white', {renderer: 'canvas', locale: 'ZH'});
+        var option_ef3786f7c9a94ca896a689abd2f1619c = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "series": [
+        {
+            "type": "map",
+            "name": "gdp(\u5355\u4f4d: \u4ebf)",
+            "label": {
+                "show": true,
+                "margin": 8,
+                "richInheritPlainLabel": true,
+                "valueAnimation": false
+            },
+            "map": "china",
+            "data": [
+                {
+                    "name": "\u6c5f\u82cf\u7701",
+                    "value": 33100
+                },
+                {
+                    "name": "\u5e7f\u4e1c\u7701",
+                    "value": 45600
+                },
+                {
+                    "name": "\u6d59\u6c5f\u7701",
+                    "value": 22350
+                },
+                {
+                    "name": "\u56db\u5ddd\u7701",
+                    "value": 15800
+                },
+                {
+                    "name": "\u5c71\u4e1c\u7701",
+                    "value": 23500
+                }
+            ],
+            "roam": true,
+            "aspectScale": 0.75,
+            "nameProperty": "name",
+            "selectedMode": false,
+            "zoom": 1,
+            "zlevel": 0,
+            "z": 2,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "mapValueCalculation": "sum",
+            "showLegendSymbol": true,
+            "preserveAspect": false,
+            "clip": false,
+            "emphasis": {}
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "gdp(\u5355\u4f4d: \u4ebf)"
+            ],
+            "selected": {},
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10,
+            "triggerEvent": false
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "displayTransition": true,
+        "textStyle": {
+            "fontSize": 14,
+            "richInheritPlainLabel": true
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "title": [
+        {
+            "show": true,
+            "text": "2026Q1\u5b63\u5ea6\u6211\u56fd\u5404\u7701GDP\u6392\u540d\u524d\u4e94",
+            "target": "blank",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ],
+    "visualMap": {
+        "show": true,
+        "type": "continuous",
+        "min": 0,
+        "max": 50000,
+        "inRange": {
+            "color": [
+                "#50a3ba",
+                "#eac763",
+                "#d94e5d"
+            ]
+        },
+        "calculable": true,
+        "inverse": false,
+        "splitNumber": 5,
+        "hoverLink": true,
+        "orient": "vertical",
+        "padding": 5,
+        "showLabel": true,
+        "itemWidth": 20,
+        "itemHeight": 140,
+        "borderWidth": 0
+    }
+};
+        chart_ef3786f7c9a94ca896a689abd2f1619c.setOption(option_ef3786f7c9a94ca896a689abd2f1619c);
+    </script>
+</body>
+</html>
