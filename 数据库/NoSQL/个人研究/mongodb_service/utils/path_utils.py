@@ -2,6 +2,7 @@
 路径工具函数集合（Pythonic 风格）。
 使用 pathlib 封装常用路径操作。（需要用到啥我就写啥，毕竟方法名我来定义方便记住）
 """
+import sys
 from pathlib import Path
 
 def get_root() -> Path:
@@ -9,6 +10,10 @@ def get_root() -> Path:
     通过解析当前文件（`__file__`）的绝对路径，然后获取其父目录的父目录。
     :return: 项目的根目录 Path 对象。
     """
+    # 如果是打包环境，sys 模块会有 _MEIPASS 属性
+    if hasattr(sys, '_MEIPASS'):
+        # 直接返回打包后的程序包的目录
+        return Path(sys._MEIPASS).resolve().parent
     return Path(__file__).resolve().parent.parent
 
 def is_path_exist(path: str | Path) -> bool:

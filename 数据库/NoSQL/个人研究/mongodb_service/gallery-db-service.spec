@@ -1,8 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 a = Analysis(
-    ['点点网自动化.py'],
-    pathex=[],
     binaries=[],
     datas=[],
     hiddenimports=[
