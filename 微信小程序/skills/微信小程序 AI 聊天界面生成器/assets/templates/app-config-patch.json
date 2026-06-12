@@ -1,0 +1,22 @@
+{
+  "_说明": "将以下配置合并到小程序根目录的 app.json 中",
+  "pages": [
+    "pages/chat/chat"
+  ],
+  "usingComponents": {
+    "chat-interface": "/components/chat-interface/index",
+    "markdown-renderer": "/components/markdown-renderer/index"
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "AI 助手",
+    "backgroundColor": "#f5f5f7",
+    "backgroundTextStyle": "light"
+  },
+  "networkTimeout": {
+    "request": 300000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  }
+}

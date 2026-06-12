@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "chat-interface": "/components/chat-interface/index"
+  },
+  "navigationBarTitleText": "AI 助手",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black"
+}

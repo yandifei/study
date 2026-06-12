@@ -1,0 +1,223 @@
+<!-- chat-interface 组件根容器 -->
+<view class="chat-container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-left">
+      <image wx:if="{{showClearBtn}}" class="nav-icon" src="/imgs/clear.svg" mode="aspectFit" bind:tap="handleClearChat" />
+    </view>
+    <text class="nav-title">{{title}}</text>
+    <view class="nav-right">
+      <image wx:if="{{showClearBtn}}" class="nav-icon" src="/imgs/new-chat.svg" mode="aspectFit" bind:tap="handleClearChat" />
+    </view>
+  </view>
+
+  <!-- 聊天消息滚动区 -->
+  <scroll-view
+    class="message-scroll"
+    scroll-y="{{true}}"
+    scroll-into-view="{{scrollTo}}"
+    scroll-top="{{scrollTop}}"
+    bindscroll="onScroll"
+    binddragstart="onDragStart"
+    bindscrolltolower="onScrollToLower"
+    lower-threshold="50"
+    show-scrollbar="{{false}}"
+    enhanced="{{true}}"
+    bounces="{{false}}"
+  >
+    <view class="message-list">
+      <!-- 欢迎消息区域（无聊天记录时展示） -->
+      <view wx:if="{{messages.length === 0}}" class="welcome-area">
+        <view class="welcome-logo">{{welcomeLogo}}</view>
+        <text class="welcome-text">{{welcomeMsg}}</text>
+        <view class="suggestion-list">
+          <view
+            wx:for="{{suggestions}}"
+            wx:key="*this"
+            class="suggestion-item"
+            bind:tap="handleSendSuggestion"
+            data-text="{{item}}"
+          >{{item}}</view>
+        </view>
+      </view>
+
+      <!-- 消息列表 -->
+      <block wx:for="{{messages}}" wx:key="id">
+        <!-- 时间分割线 -->
+        <view wx:if="{{item.showTime}}" class="time-divider">
+          <text>{{item.timeText}}</text>
+        </view>
+
+        <!-- 用户消息 -->
+        <view wx:if="{{item.role === 'user'}}" class="message-row user-row">
+          <view class="message-bubble user-bubble">
+            <text class="bubble-text" user-select="{{true}}">{{item.content}}</text>
+          </view>
+          <!-- 用户头像 -->
+          <image
+            wx:if="{{userAvatar}}"
+            class="avatar user-avatar"
+            src="{{userAvatar}}"
+            mode="aspectFill"
+          />
+          <view wx:else class="avatar user-avatar default-avatar user-default-avatar">
+            <text>我</text>
+          </view>
+        </view>
+
+        <!-- AI 消息 -->
+        <view wx:if="{{item.role === 'assistant'}}" class="message-row ai-row">
+          <!-- AI 头像 -->
+          <image
+            wx:if="{{aiAvatar}}"
+            class="avatar ai-avatar"
+            src="{{aiAvatar}}"
+            mode="aspectFill"
+          />
+          <view wx:else class="avatar ai-avatar default-avatar ai-default-avatar">
+            <text>AI</text>
+          </view>
+          <view class="message-body">
+            <!-- 发送中状态：思考动画 -->
+            <view wx:if="{{item.status === 'sending'}}" class="thinking-indicator">
+              <image class="loading-icon rotating" src="/imgs/loading.svg" mode="aspectFit" />
+              <text>思考中...</text>
+            </view>
+
+            <!-- 流式输出或已完成：Markdown 渲染 -->
+            <view wx:else class="ai-content">
+              <markdown-renderer content="{{item.content}}" showCopyBtn="{{showCopyBtn}}" />
+              <!-- 流式输出光标 -->
+              <text wx:if="{{item.status === 'streaming'}}" class="streaming-cursor">▊</text>
+            </view>
+
+            <!-- 失败状态 -->
+            <view wx:if="{{item.status === 'failed'}}" class="error-info">
+              <image class="error-icon" src="/imgs/error-circle.svg" mode="aspectFit" />
+              <text class="error-text">{{item.errorMsg || '发送失败'}}</text>
+              <text class="retry-btn" bind:tap="handleRetry" data-id="{{item.id}}">重试</text>
+            </view>
+
+            <!-- 操作按钮行（复制、点赞、点踩） -->
+            <view wx:if="{{item.status === 'sent' && showFeedbackBtn}}" class="action-buttons">
+              <image wx:if="{{showCopyBtn}}" class="action-icon" src="/imgs/copy.svg" mode="aspectFit"
+                bind:tap="handleCopyContent" data-content="{{item.content}}" />
+              <image class="action-icon" src="/imgs/thumb-up.svg" mode="aspectFit"
+                bind:tap="handleFeedback" data-id="{{item.id}}" data-type="up" />
+              <image class="action-icon" src="/imgs/thumb-down.svg" mode="aspectFit"
+                bind:tap="handleFeedback" data-id="{{item.id}}" data-type="down" />
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <!-- 滚动锚点 -->
+      <view id="scroll-bottom" style="height: 20px;"></view>
+    </view>
+  </scroll-view>
+
+  <!-- 回到底部浮动按钮 -->
+  <view wx:if="{{showScrollToBottom}}" class="scroll-to-bottom" bind:tap="scrollToBottom">
+    <image src="/imgs/toBottom.svg" mode="aspectFit" class="to-bottom-icon" />
+  </view>
+
+  <!-- 底部输入区域 -->
+  <view class="footer-area">
+    <!-- 功能开关行 -->
+    <view wx:if="{{enableWebSearch}}" class="feature-row">
+      <view class="feature-switch {{useWebSearch ? 'active' : ''}}" bind:tap="handleToggleWebSearch">
+        <image src="{{useWebSearch ? '/imgs/internetUse.svg' : '/imgs/internet.svg'}}" mode="aspectFit" class="feature-icon" />
+        <text>联网搜索</text>
+      </view>
+    </view>
+
+    <!-- 文件预览行 -->
+    <view wx:if="{{showFileList && fileList.length > 0}}" class="file-preview-row">
+      <view wx:for="{{fileList}}" wx:key="id" class="file-preview-item">
+        <image class="file-type-icon" src="/imgs/file.svg" mode="aspectFit" />
+        <text class="file-name">{{item.name}}</text>
+        <image class="file-remove-icon" src="/imgs/close-filled.png" mode="aspectFit"
+          bind:tap="handleRemoveFile" data-id="{{item.id}}" />
+      </view>
+    </view>
+
+    <!-- 输入框行 -->
+    <view class="input-row">
+      <!-- 语音按钮 -->
+      <image wx:if="{{enableVoice}}" class="input-action-icon" src="/imgs/voice.svg" mode="aspectFit"
+        bind:tap="handleToggleVoiceMode" />
+
+      <!-- 文本输入区 -->
+      <view class="textarea-wrapper">
+        <textarea
+          class="message-textarea"
+          value="{{inputValue}}"
+          placeholder="{{placeholder}}"
+          placeholder-style="color: var(--text-secondary)"
+          maxlength="2000"
+          auto-height="{{true}}"
+          show-confirm-bar="{{false}}"
+          confirm-type="send"
+          cursor-spacing="12"
+          adjust-position="{{true}}"
+          bindinput="onInputChange"
+          bindfocus="onInputFocus"
+          bindconfirm="handleSend"
+          bindlinechange="onLineChange"
+        />
+      </view>
+
+      <!-- 扩展按钮（+号） -->
+      <image wx:if="{{enableFileUpload}}" class="input-action-icon" src="/imgs/set.svg" mode="aspectFit"
+        bind:tap="handleToggleTools" />
+
+      <!-- 发送/停止按钮 -->
+      <view wx:if="{{inputValue && !isGenerating}}" class="send-btn" bind:tap="handleSend">
+        <image src="/imgs/send.svg" mode="aspectFit" class="send-icon" />
+      </view>
+      <view wx:elif="{{isGenerating}}" class="stop-btn" bind:tap="handleStop">
+        <image src="/imgs/stop.svg" mode="aspectFit" class="stop-icon" />
+      </view>
+    </view>
+
+    <!-- 工具栏（扩展功能区） -->
+    <view wx:if="{{showTools}}" class="tools-row">
+      <view class="tool-item" bind:tap="handleUploadImage">
+        <image src="/imgs/uploadImg.svg" mode="aspectFit" class="tool-icon" />
+        <text class="tool-label">图片</text>
+      </view>
+      <view class="tool-item" bind:tap="handleUploadFile">
+        <image src="/imgs/file.svg" mode="aspectFit" class="tool-icon" />
+        <text class="tool-label">文件</text>
+      </view>
+      <view wx:if="{{enableVoice}}" class="tool-item" bind:tap="handleClearChat">
+        <image src="/imgs/clear.svg" mode="aspectFit" class="tool-icon" />
+        <text class="tool-label">清空</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 语音输入遮罩层 -->
+  <view wx:if="{{voiceMode}}" class="voice-overlay"
+    bindtouchstart="onVoiceTouchStart"
+    bindtouchmove="onVoiceTouchMove"
+    bindtouchend="onVoiceTouchEnd">
+    <view class="voice-indicator {{voiceStatus === 'canceling' ? 'voice-canceling' : ''}}">
+      <text wx:if="{{!voiceActive}}">按住 说话</text>
+      <text wx:elif="{{voiceStatus === 'recording'}}">松开发送，上滑取消</text>
+      <text wx:else>松开取消</text>
+    </view>
+  </view>
+
+  <!-- 清空确认弹窗 -->
+  <view wx:if="{{showClearConfirm}}" class="modal-overlay" bind:tap="handleCancelClear">
+    <view class="modal-dialog" catchtap="">
+      <text class="modal-title">清空对话</text>
+      <text class="modal-desc">确认清空所有对话记录？此操作不可恢复。</text>
+      <view class="modal-buttons">
+        <text class="modal-btn cancel-btn" bind:tap="handleCancelClear">取消</text>
+        <text class="modal-btn confirm-btn" bind:tap="handleConfirmClear">确认清空</text>
+      </view>
+    </view>
+  </view>
+</view>

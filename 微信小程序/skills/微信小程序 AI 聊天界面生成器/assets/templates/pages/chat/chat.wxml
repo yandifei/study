@@ -1,0 +1,22 @@
+<!-- pages/chat/chat.wxml — AI 聊天页面 -->
+<view class="chat-page">
+  <chat-interface
+    welcomeMsg="{{welcomeMsg}}"
+    placeholder="{{placeholder}}"
+    userAvatar="{{userAvatar}}"
+    aiAvatar="{{aiAvatar}}"
+    title="{{title}}"
+    suggestions="{{suggestions}}"
+    showCopyBtn="{{showCopyBtn}}"
+    showClearBtn="{{showClearBtn}}"
+    showFeedbackBtn="{{showFeedbackBtn}}"
+    enableDarkMode="{{enableDarkMode}}"
+    enableVoice="{{enableVoice}}"
+    enableFileUpload="{{enableFileUpload}}"
+    enableWebSearch="{{enableWebSearch}}"
+    apiMode="{{apiMode}}"
+    apiEndpoint="{{apiEndpoint}}"
+    bind:messageschange="onMessagesChange"
+    bind:send="onSend"
+  />
+</view>

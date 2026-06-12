@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "markdown-renderer": "/components/markdown-renderer/index"
+  }
+}

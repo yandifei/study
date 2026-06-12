@@ -1,0 +1,204 @@
+/* === Markdown 渲染样式 === */
+.md-container {
+  word-wrap: break-word;
+  word-break: normal;
+  text-align: justify;
+  line-height: 1.8;
+}
+
+/* === 标题 === */
+.md-heading {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20rpx;
+}
+
+.md-h1 {
+  font-size: 1.3em;
+  border-bottom: 6rpx double var(--border);
+  padding-bottom: 10rpx;
+  margin-top: 30rpx;
+}
+
+.md-h2 {
+  font-size: 1.2em;
+  border-bottom: 1rpx solid var(--border);
+  padding-bottom: 8rpx;
+  margin-top: 28rpx;
+}
+
+.md-h3 {
+  font-size: 1.1em;
+  margin-top: 24rpx;
+}
+
+.md-h4 {
+  font-size: 1.05em;
+  margin-top: 20rpx;
+}
+
+.md-h5, .md-h6 {
+  font-size: 1em;
+  margin-top: 16rpx;
+}
+
+/* === 段落 === */
+.md-paragraph {
+  margin-bottom: 10rpx;
+  line-height: 1.8;
+  word-break: break-all;
+  color: var(--text-primary);
+}
+
+/* === 行内代码 === */
+.inline-code {
+  background-color: var(--code-bg);
+  color: #e36209;
+  font-family: monospace;
+  font-size: 0.9em;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+/* === 粗体/斜体 === */
+.md-bold {
+  font-weight: 600;
+}
+
+.md-italic {
+  font-style: italic;
+}
+
+/* === 链接 === */
+.md-link {
+  color: var(--brand);
+  border-bottom: 1rpx solid var(--brand);
+}
+
+/* === 代码块 === */
+.md-code-block {
+  margin: 24rpx 0;
+  border-radius: 12rpx;
+  overflow: hidden;
+  background-color: var(--code-block-bg);
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.code-lang {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: monospace;
+}
+
+.code-copy-btn {
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.copy-text {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.code-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.code-content {
+  display: block;
+  padding: 24rpx 32rpx;
+  font-family: 'Courier New', monospace;
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #abb2bf;
+  white-space: pre;
+}
+
+/* === 引用块 === */
+.md-blockquote {
+  margin: 20rpx 0;
+  padding: 20rpx 32rpx;
+  background-color: var(--bg-secondary);
+  border-left: 10rpx solid var(--border);
+  color: var(--text-secondary);
+  font-style: italic;
+  border-radius: 0 8rpx 8rpx 0;
+}
+
+/* === 列表 === */
+.md-list {
+  margin-bottom: 30rpx;
+}
+
+.md-list-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 8rpx;
+}
+
+.md-list-marker {
+  flex-shrink: 0;
+  width: 1.5em;
+  color: var(--text-secondary);
+}
+
+/* === 分割线 === */
+.md-hr {
+  border: none;
+  border-top: 3rpx solid var(--border);
+  margin: 24rpx 0;
+}
+
+/* === 表格 === */
+.md-table-wrapper {
+  margin: 24rpx 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.md-table {
+  min-width: fit-content;
+  border-collapse: collapse;
+}
+
+.md-table-row {
+  display: flex;
+}
+
+.md-table-header {
+  background-color: var(--bg-secondary);
+}
+
+.md-table-cell {
+  flex: 1;
+  min-width: 140rpx;
+  padding: 16rpx 20rpx;
+  border: 1rpx solid var(--border);
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+.md-th {
+  font-weight: 600;
+  background-color: var(--bg-secondary);
+}
+
+.md-td {
+  background-color: var(--bg-primary);
+}
+
+/* === 图片 === */
+.md-container image {
+  max-width: 480rpx;
+  border-radius: 8rpx;
+  margin: 12rpx 0;
+}

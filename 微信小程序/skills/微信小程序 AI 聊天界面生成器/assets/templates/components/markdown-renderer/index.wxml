@@ -1,0 +1,65 @@
+<!-- markdown-renderer 组件模板 -->
+<view class="md-container" style="font-size: {{fontSize}}rpx;">
+  <block wx:for="{{nodes}}" wx:key="*this">
+    <!-- 标题 -->
+    <view wx:if="{{item.type === 'heading'}}" class="md-heading md-h{{item.level}}">
+      <rich-text nodes="{{item.text}}" />
+    </view>
+
+    <!-- 段落 -->
+    <view wx:elif="{{item.type === 'paragraph'}}" class="md-paragraph">
+      <rich-text nodes="{{item.text}}" />
+    </view>
+
+    <!-- 代码块 -->
+    <view wx:elif="{{item.type === 'code-block'}}" class="md-code-block">
+      <view class="code-block-header">
+        <text class="code-lang">{{item.lang}}</text>
+        <view wx:if="{{showCopyBtn}}" class="code-copy-btn" bind:tap="handleCopyCode" data-code="{{item.code}}">
+          <text class="copy-text">复制</text>
+        </view>
+      </view>
+      <scroll-view class="code-scroll" scroll-x="{{true}}" show-scrollbar="{{false}}">
+        <text class="code-content" user-select="{{true}}" space="nbsp">{{item.code}}</text>
+      </scroll-view>
+    </view>
+
+    <!-- 引用块 -->
+    <view wx:elif="{{item.type === 'blockquote'}}" class="md-blockquote">
+      <rich-text nodes="{{item.text}}" />
+    </view>
+
+    <!-- 无序列表 -->
+    <view wx:elif="{{item.type === 'ul'}}" class="md-list md-ul">
+      <view wx:for="{{item.items}}" wx:key="*this" wx:for-item="li" class="md-list-item">
+        <text class="md-list-marker">•</text>
+        <rich-text nodes="{{li}}" />
+      </view>
+    </view>
+
+    <!-- 有序列表 -->
+    <view wx:elif="{{item.type === 'ol'}}" class="md-list md-ol">
+      <view wx:for="{{item.items}}" wx:key="*this" wx:for-item="li" wx:for-index="liIdx" class="md-list-item">
+        <text class="md-list-marker">{{liIdx + 1}}.</text>
+        <rich-text nodes="{{li}}" />
+      </view>
+    </view>
+
+    <!-- 分割线 -->
+    <view wx:elif="{{item.type === 'hr'}}" class="md-hr" />
+
+    <!-- 表格 -->
+    <view wx:elif="{{item.type === 'table'}}" class="md-table-wrapper">
+      <scroll-view scroll-x="{{true}}" show-scrollbar="{{false}}">
+        <view class="md-table">
+          <view class="md-table-row md-table-header">
+            <view wx:for="{{item.headers}}" wx:key="*this" class="md-table-cell md-th">{{item}}</view>
+          </view>
+          <view wx:for="{{item.rows}}" wx:key="*this" wx:for-item="row" class="md-table-row">
+            <view wx:for="{{row}}" wx:key="*this" wx:for-item="cell" class="md-table-cell md-td">{{cell}}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </block>
+</view>

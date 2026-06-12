@@ -1,0 +1,6 @@
+/* pages/chat/chat.wxss — AI 聊天页面样式 */
+.chat-page {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
