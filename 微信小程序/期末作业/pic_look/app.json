@@ -4,6 +4,8 @@
     "pages/gallery/gallery",
     "pages/search/search",
     "pages/settings/settings",
+    "pages/browse/browse",
+    "pages/favorite/favorite",
     "pages/login/login",
     "components/acg-images-mp/acg-images-mp"
   ],
@@ -17,6 +19,11 @@
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
+  "networkTimeout": {
+    "request": 300000,
+    "uploadFile": 120000,
+    "downloadFile": 120000
+  },
   "tabBar": {
     "selectedColor": "#000",
     "list": [
@@ -28,7 +35,7 @@
       },
       {
         "pagePath": "pages/search/search",
-        "text": "搜索",
+        "text": "探索",
         "iconPath": "res/tab_bar_images/search.png",
         "selectedIconPath": "res/tab_bar_images/search.png"
       },

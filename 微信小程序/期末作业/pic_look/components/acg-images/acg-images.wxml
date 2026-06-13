@@ -1,5 +1,5 @@
 <!--components/acg-images/acg-images.wxml-->
 <view class="card">
-  <image src="{{acg_url}}" mode="aspectFill" />
-  <button class="custom-btn" hover-class="custom-btn-hover" bind:tap="save">收藏</button>
+  <image src="{{acg_url}}" mode="aspectFill" bindtap="previewImage" />
+  <button class="custom-btn" hover-class="custom-btn-hover" bind:tap="favorite">收藏</button>
 </view>

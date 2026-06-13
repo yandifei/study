@@ -25,7 +25,7 @@ Page({
     if (isSending) return;
 
     this.setData({ isSending: true });
-
+    console.log(API.SEND_CODE)
     request({
       url: API.SEND_CODE,
       method: 'POST',
@@ -81,6 +81,7 @@ Page({
       .then(res => {
         wx.hideLoading();
         if (res.statusCode === 200) {
+          wx.setStorageSync('qq', email.match(/(\d+)@qq\.com/)?.[1]);
           request.saveTokens(res.data);
           wx.reLaunch({ url: "/pages/home/home" });
         } else if (res.statusCode === 401) {

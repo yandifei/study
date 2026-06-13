@@ -3,8 +3,8 @@
   <view class="container">
   <!-- 必须分开for和if,微信的 -->
     <view class="scroll-list" wx:for="{{img_urls}}" wx:key="index">
-      <acg-images-mp wx:if="{{isVerticalType}}" acg_url="{{item}}" />
-      <acg-images wx:else acg_url="{{item}}" />
+      <acg-images-mp wx:if="{{isVerticalType}}" acg_url="{{item}}" img_urls="{{img_urls}}" />
+      <acg-images wx:else acg_url="{{item}}" img_urls="{{img_urls}}" />
     </view>
   </view>
 </scroll-view>

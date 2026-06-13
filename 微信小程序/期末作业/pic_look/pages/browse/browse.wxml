@@ -1,0 +1,40 @@
+<view class="page-container">
+  <!-- 顶部操作栏 -->
+  <view class="top-bar">
+    <view class="top-left">
+      <text class="top-icon">🕐</text>
+      <text class="top-title">浏览记录</text>
+    </view>
+    <view class="btn-clear" wx:if="{{list.length > 0}}" bindtap="clearAll" hover-class="btn-clear-hover">
+      <text class="btn-clear-text">清空记录</text>
+    </view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-box" wx:if="{{loading}}">
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 图片网格 -->
+  <view class="grid" wx:if="{{list.length > 0}}">
+    <view class="cell" wx:for="{{list}}" wx:key="image_id" bindtap="previewImage" data-url="{{item.image_url}}">
+      <image class="cell-img" src="{{item.image_url}}" mode="aspectFill" lazy-load="true" />
+      <text class="cell-time">{{item.displayTime || ''}}</text>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{loadingMore}}">
+    <text class="load-more-text">加载更多...</text>
+  </view>
+  <view class="load-more" wx:if="{{!hasMore && list.length > 0 && !loading}}">
+    <text class="load-more-text">— 已经到底了 —</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{list.length === 0 && !loading}}">
+    <text class="empty-icon">📭</text>
+    <text class="empty-text">暂无浏览记录</text>
+    <text class="empty-hint">去首页逛逛吧~</text>
+  </view>
+</view>

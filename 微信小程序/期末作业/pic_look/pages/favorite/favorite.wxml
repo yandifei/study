@@ -1,0 +1,48 @@
+<view class="page-container">
+  <!-- 顶部操作栏 -->
+  <view class="top-bar">
+    <view class="top-left">
+      <text class="top-icon">💖</text>
+      <text class="top-title">我的收藏</text>
+    </view>
+    <view class="btn-clear" wx:if="{{list.length > 0}}" bindtap="clearAll" hover-class="btn-clear-hover">
+      <text class="btn-clear-text">清空收藏</text>
+    </view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-box" wx:if="{{loading}}">
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 收藏列表（单列） -->
+  <view class="list" wx:if="{{list.length > 0}}">
+    <view class="card" wx:for="{{list}}" wx:key="image_id">
+      <image class="card-img" src="{{item.image_url}}" mode="aspectFill" lazy-load="true" bindtap="previewImage" data-url="{{item.image_url}}" />
+      <view class="card-body">
+        <text class="card-time">🕐 {{item.displayTime || ''}}</text>
+        <view class="card-actions">
+          <view class="card-save" catchtap="saveImage" data-url="{{item.image_url}}" hover-class="card-save-hover">
+            <text class="card-save-text">💾 保存图片</text>
+          </view>
+          <view class="card-remove" catchtap="removeOne" data-id="{{item.image_id}}" hover-class="card-remove-hover">
+            <text class="card-remove-text">💔 取消收藏</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部状态 -->
+  <view class="bottom-tip" wx:if="{{list.length > 0}}">
+    <text wx:if="{{loadingMore}}">加载中...</text>
+    <text wx:elif="{{!hasMore}}">— 没有更多了 —</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{list.length === 0 && !loading}}">
+    <text class="empty-icon">💔</text>
+    <text class="empty-text">暂无收藏</text>
+    <text class="empty-hint">遇到喜欢的图片就收藏吧~</text>
+  </view>
+</view>

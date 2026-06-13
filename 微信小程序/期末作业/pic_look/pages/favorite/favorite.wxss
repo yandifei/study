@@ -1,0 +1,190 @@
+/* pages/favorite/favorite.wxss —— 温暖珊瑚橘主题 */
+page {
+  background: linear-gradient(180deg, #fff5f0 0%, #fde8df 100%);
+}
+
+.page-container {
+  padding: 20rpx 20rpx 120rpx;
+}
+
+/* ===== 顶部操作栏 ===== */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 20rpx;
+  margin-bottom: 16rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(240, 151, 108, 0.12);
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+}
+
+.top-icon {
+  font-size: 32rpx;
+  margin-right: 8rpx;
+}
+
+.top-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #5c3a2e;
+}
+
+.top-count {
+  font-size: 24rpx;
+  color: #b8907e;
+  margin-left: 4rpx;
+}
+
+.btn-clear {
+  padding: 10rpx 24rpx;
+  background: linear-gradient(135deg, #f0976c 0%, #e07050 100%);
+  border-radius: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(240, 151, 108, 0.25);
+}
+
+.btn-clear-hover {
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+.btn-clear-text {
+  color: #ffffff;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.loading-box {
+  text-align: center;
+  padding: 120rpx 0;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #c8a090;
+}
+
+/* ===== 单列列表 ===== */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(240, 151, 108, 0.10);
+}
+
+.card-img {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+  background: #fde8df;
+}
+
+.card-body {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18rpx;
+}
+
+.card-time {
+  font-size: 26rpx;
+  color: #8b6e5e;
+  font-weight: 500;
+}
+
+/* ===== 操作按钮行 ===== */
+.card-actions {
+  display: flex;
+  gap: 14rpx;
+}
+
+.card-save {
+  flex: 1;
+  padding: 12rpx 0;
+  text-align: center;
+  background: linear-gradient(135deg, #f0976c 0%, #e07050 100%);
+  border-radius: 32rpx;
+  box-shadow: 0 4rpx 10rpx rgba(240, 151, 108, 0.25);
+}
+
+.card-save-hover {
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+.card-save-text {
+  font-size: 22rpx;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ===== 取消收藏按钮 ===== */
+.card-remove {
+  flex: 1;
+  padding: 12rpx 0;
+  text-align: center;
+  border: 2rpx solid #f0c0b0;
+  border-radius: 32rpx;
+}
+
+.card-remove-hover {
+  background: #fff0eb;
+  border-color: #e07050;
+}
+
+.card-remove-text {
+  font-size: 22rpx;
+  color: #d07060;
+  font-weight: 500;
+}
+
+/* ===== 空状态 ===== */
+.bottom-tip {
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.bottom-tip text {
+  font-size: 24rpx;
+  color: #c8a090;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 160rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 30rpx;
+  color: #b8907e;
+  font-weight: 500;
+  margin-bottom: 10rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: #d0b8a8;
+}

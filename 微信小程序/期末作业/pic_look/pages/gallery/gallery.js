@@ -32,11 +32,17 @@ Page({
 
   // 外部图源，不走后端认证
   get_img_urls() {
-    console.log("进行了请求");
+    // console.log("进行了请求");
     wx.request({
       url: `https://t.alcy.cc/json/?${this.data.code}=10`,
       success: (res) => {
         this.setData({ img_urls: [...this.data.img_urls, ...res.data.links]});
+        const images = res.data.links.map((url, index) => ({
+          // 时间戳 + 索引，避免同一毫秒内重复
+          image_id: Date.now() + '_' + index,
+          image_url: url
+        }));
+        this.reportBrowse(images)
       },
       fail: (err) => {
         console.error('请求失败', err);
@@ -46,6 +52,15 @@ Page({
 
   // 浏览记录上报 —— 自动挂 token、遇 401 自动刷新
   reportBrowse(images) {
+    /* 请求格式，我这里拿回来的是[]，得要用时间戳改
+    "images": [
+      {
+        "image_id": "string",
+        "image_url": "string"
+      }
+    ]
+    */
+
     request.post(API.BROWSE_BATCH, { images })
       .then(res => console.log('浏览记录上传成功', res))
       .catch(err => console.error('浏览记录上传失败', err));

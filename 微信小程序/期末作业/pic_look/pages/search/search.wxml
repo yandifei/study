@@ -1,2 +1,250 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<!--
+  pages/search/search.wxml — AI 图片鉴赏助手
+  设计语言：DeepSeek 极简美学 × ACG 温暖氛围
+-->
+<view class="chat-page">
+
+  <!-- ===== 侧边栏遮罩 ===== -->
+  <view wx:if="{{showSidebar}}" class="sidebar-overlay" style="top: {{totalNavHeight}}px;" bindtap="handleToggleSidebar"></view>
+
+  <!-- ===== 历史会话侧边栏 ===== -->
+  <view class="sidebar {{showSidebar ? 'sidebar-open' : ''}}" style="top: {{totalNavHeight}}px;">
+    <view class="sidebar-header">
+      <text class="sidebar-title">对话记录</text>
+      <view class="sidebar-new-btn" bindtap="handleNewChat">
+        <text class="sidebar-new-icon">+</text>
+        <text class="sidebar-new-text">新对话</text>
+      </view>
+    </view>
+
+    <scroll-view class="sidebar-list" scroll-y enhanced show-scrollbar="{{false}}">
+      <view
+        wx:for="{{conversations}}"
+        wx:key="id"
+        class="sidebar-item {{conversationId === item.id ? 'sidebar-item-active' : ''}}"
+        bindtap="handleSelectConversation"
+        data-id="{{item.id}}"
+        data-name="{{item.name}}"
+      >
+        <view class="sidebar-item-content">
+          <image class="sidebar-item-avatar" src="/res/default-avatar.png" mode="aspectFill" />
+          <view class="sidebar-item-info">
+            <text class="sidebar-item-name">{{item.name || '新对话'}}</text>
+            <text class="sidebar-item-time">{{item.updated_at}}</text>
+          </view>
+        </view>
+        <view class="sidebar-item-delete" catchtap="handleDeleteConversation" data-id="{{item.id}}">
+          <text class="sidebar-delete-text">✕</text>
+        </view>
+      </view>
+      <view wx:if="{{conversations.length === 0}}" class="sidebar-empty">
+        <text>暂无历史对话</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- ===== 主聊天区域 ===== -->
+  <view class="chat-main">
+
+    <!-- 自定义导航栏（精确对齐微信胶囊按钮） -->
+    <view class="nav-bar" style="height: {{totalNavHeight}}px; padding-top: {{statusBarHeight}}px;">
+      <view class="nav-bar-content" style="height: {{navBarHeight}}px;">
+        <view class="nav-left" bindtap="handleToggleSidebar">
+          <text class="nav-icon">☰</text>
+        </view>
+        <text class="nav-title">AI 鉴赏助手</text>
+        <view class="nav-right">
+          <text class="nav-icon" bindtap="handleNewChat">✧</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 消息滚动区 -->
+    <scroll-view
+      class="message-scroll"
+      scroll-y="{{true}}"
+      scroll-into-view="{{scrollToView}}"
+      bindscrolltolower="onScrollToLower"
+      lower-threshold="50"
+      show-scrollbar="{{false}}"
+      enhanced="{{true}}"
+      bounces="{{false}}"
+    >
+      <view class="message-list">
+
+        <!-- 欢迎区域（无消息时展示） -->
+        <view wx:if="{{messages.length === 0}}" class="welcome-area">
+          <view class="welcome-logo">
+            <text class="welcome-emoji">🎨</text>
+          </view>
+          <text class="welcome-text">{{welcomeMsg}}</text>
+
+          <!-- 推荐问题 -->
+          <view class="suggestion-list">
+            <view
+              wx:for="{{suggestions}}"
+              wx:key="*this"
+              class="suggestion-item"
+              bindtap="handleSendSuggestion"
+              data-text="{{item}}"
+            >
+              <text class="suggestion-dot">✦</text>
+              <text>{{item}}</text>
+            </view>
+          </view>
+
+          <!-- 快速上传入口 -->
+          <view class="welcome-upload" bindtap="handleChooseImage">
+            <text class="welcome-upload-icon">📷</text>
+            <text class="welcome-upload-text">上传图片开始鉴赏</text>
+          </view>
+        </view>
+
+        <!-- 消息列表 -->
+        <block wx:for="{{messages}}" wx:key="id">
+
+          <!-- 用户消息 -->
+          <view wx:if="{{item.role === 'user'}}" class="message-row user-row">
+            <view class="message-bubble user-bubble">
+              <!-- 图片附件 -->
+              <view wx:if="{{item.files && item.files.length > 0}}" class="msg-images">
+                <image
+                  wx:for="{{item.files}}"
+                  wx:key="id"
+                  wx:for-item="f"
+                  class="msg-image-item"
+                  src="{{f.path || f.url}}"
+                  mode="aspectFill"
+                  bindtap="handlePreviewFile"
+                  data-path="{{f.path || f.url}}"
+                />
+              </view>
+              <text wx:if="{{item.content}}" class="bubble-text" user-select="{{true}}">{{item.content}}</text>
+            </view>
+            <!-- 用户头像 -->
+            <view class="avatar user-avatar default-avatar user-default-avatar">
+              <text>我</text>
+            </view>
+          </view>
+
+          <!-- AI 消息 -->
+          <view wx:if="{{item.role === 'assistant'}}" class="message-row ai-row">
+            <!-- AI 头像 -->
+            <view class="avatar ai-avatar default-avatar ai-default-avatar">
+              <text>AI</text>
+            </view>
+
+            <view class="message-body">
+              <!-- 思考中 -->
+              <view wx:if="{{item.status === 'sending'}}" class="thinking-indicator">
+                <view class="thinking-dots">
+                  <view class="dot"></view>
+                  <view class="dot"></view>
+                  <view class="dot"></view>
+                </view>
+                <text>思考中...</text>
+              </view>
+
+              <!-- 消息内容（已完成或流式输出中） -->
+              <view wx:else class="ai-content">
+                <text class="ai-text" user-select="{{true}}">{{item.content}}</text>
+                <!-- 流式光标 -->
+                <text wx:if="{{item.status === 'streaming'}}" class="streaming-cursor">▊</text>
+              </view>
+
+              <!-- 失败状态 -->
+              <view wx:if="{{item.status === 'failed'}}" class="error-info">
+                <text class="error-icon">⚠</text>
+                <text class="error-text">{{item.errorMsg || '发送失败'}}</text>
+                <text class="retry-btn" bindtap="handleRetry" data-id="{{item.id}}">重试</text>
+              </view>
+
+              <!-- 操作按钮行 -->
+              <view wx:if="{{item.status === 'sent'}}" class="action-buttons">
+                <text wx:if="{{showCopyBtn}}" class="action-btn" bindtap="handleCopyContent" data-content="{{item.content}}">
+                  <text class="action-icon-svg">📋</text>
+                </text>
+                <text class="action-btn {{item.feedback === 'like' ? 'action-btn-active' : ''}}" bindtap="handleFeedback" data-id="{{item.id}}" data-type="like">
+                  <text class="action-icon-svg">👍</text>
+                </text>
+                <text class="action-btn {{item.feedback === 'dislike' ? 'action-btn-active' : ''}}" bindtap="handleFeedback" data-id="{{item.id}}" data-type="dislike">
+                  <text class="action-icon-svg">👎</text>
+                </text>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <!-- 滚动锚点 -->
+        <view id="scroll-bottom" style="height: 24rpx;"></view>
+      </view>
+    </scroll-view>
+
+    <!-- 回到底部浮动按钮 -->
+    <view wx:if="{{showScrollToBottom}}" class="scroll-to-bottom" bindtap="scrollToBottom">
+      <text class="to-bottom-icon">↓</text>
+    </view>
+
+    <!-- ===== 底部输入区域 ===== -->
+    <view class="footer-area">
+
+      <!-- 图片预览行 -->
+      <view wx:if="{{uploadedFiles.length > 0}}" class="file-preview-row">
+        <view wx:for="{{uploadedFiles}}" wx:key="id" class="file-preview-item">
+          <image class="file-preview-img" src="{{item.path}}" mode="aspectFill" bindtap="handlePreviewFile" data-path="{{item.path}}" />
+          <view class="file-remove-btn" catchtap="handleRemoveFile" data-id="{{item.id}}">
+            <text class="file-remove-x">✕</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 输入框行 -->
+      <view class="input-row">
+        <!-- 图片上传按钮 -->
+        <image wx:if="{{enableFileUpload && !isGenerating}}" class="input-btn upload-btn" src="/res/add_files.png" mode="aspectFit" bindtap="handleChooseImage" />
+
+        <!-- 文本输入区 -->
+        <view class="textarea-wrapper">
+          <textarea
+            class="message-textarea"
+            value="{{inputValue}}"
+            placeholder="输入消息，或上传图片..."
+            placeholder-style="color: #bbb"
+            maxlength="2000"
+            show-confirm-bar="{{false}}"
+            confirm-type="send"
+            cursor-spacing="12"
+            adjust-position="{{true}}"
+            bindinput="onInputChange"
+            bindfocus="onInputFocus"
+            bindconfirm="handleSend"
+            bindlinechange="onLineChange"
+            style="height: {{textareaHeight || '72rpx'}}; word-break: break-all; white-space: pre-wrap; overflow-wrap: break-word;"
+          />
+        </view>
+
+        <!-- 发送/停止按钮 -->
+        <view wx:if="{{inputValue && !isGenerating}}" class="send-btn" bindtap="handleSend">
+          <text class="send-icon">↑</text>
+        </view>
+        <view wx:elif="{{isGenerating}}" class="stop-btn" bindtap="handleStop">
+          <text class="stop-icon">■</text>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <!-- ===== 清空确认弹窗 ===== -->
+  <view wx:if="{{showClearConfirm}}" class="modal-overlay" bindtap="handleCancelClear">
+    <view class="modal-dialog" catchtap="">
+      <text class="modal-title">清空对话</text>
+      <text class="modal-desc">确认清空所有对话记录？此操作不可恢复。</text>
+      <view class="modal-buttons">
+        <text class="modal-btn cancel-btn" bindtap="handleCancelClear">取消</text>
+        <text class="modal-btn confirm-btn" bindtap="handleConfirmClear">确认清空</text>
+      </view>
+    </view>
+  </view>
+
+</view>

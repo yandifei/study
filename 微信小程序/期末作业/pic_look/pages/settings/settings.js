@@ -11,9 +11,9 @@ Page({
       { key: 'history',   icon: '🌸', label: '浏览记录', tap: 'goHistory'   }
     ]
   },
-
+  
   onShow() {
-    wx.setTabBarStyle({ selectedColor: '#fff', "backgroundColor": "#ffb6c1",})
+    wx.setTabBarStyle({ color: '#fff', selectedColor: '#fff', "backgroundColor": "#ffb6c1",})
     this.loadUserInfo();
   },
 
@@ -40,11 +40,11 @@ Page({
   },
 
   goFavorites() {
-    wx.showToast({ title: '收藏功能开发中', icon: 'none' });
+    wx.navigateTo({ url: '/pages/favorite/favorite' });
   },
 
   goHistory() {
-    wx.showToast({ title: '浏览记录功能开发中', icon: 'none' });
+    wx.navigateTo({ url: '/pages/browse/browse' });
   },
 
   handleLogout() {
