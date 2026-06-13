@@ -1,0 +1,7 @@
+问题定位清楚了！413 Request Entity Too Large — Nginx 默认 client_max_body_size 只有 1MB，图片文件超过了限制，请求根本没到达 Dify。
+
+踏马的这东西默认显示文件传输大小1MB，我玩个蛋呀
+"Bnginx\nginx.conf"里面加
+server {
+    client_max_body_size 200M;
+}
