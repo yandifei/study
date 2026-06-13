@@ -519,6 +519,38 @@ page {
   50% { opacity: 0; }
 }
 
+/* ===== 思考过程折叠块 ===== */
+.think-toggle {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 16rpx;
+  margin-bottom: 14rpx;
+  background-color: var(--brand-soft);
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  color: var(--brand);
+  transition: background 0.2s ease;
+}
+
+.think-toggle:active {
+  background-color: var(--brand-light);
+}
+
+.think-content {
+  margin-bottom: 14rpx;
+  padding: 16rpx 20rpx;
+  background-color: var(--code-bg);
+  border-radius: 10rpx;
+  border-left: 4rpx solid var(--brand);
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
 /* ===== 错误信息 ===== */
 .error-info {
   display: flex;
@@ -676,7 +708,7 @@ page {
   flex: 1;
   min-height: 10px;
   align-items: center;
-  border: 6rpx solid #27282b;
+  border: 6rpx solid #bbbbbb;
   border-radius: 28rpx;
   background-color: var(--bg-input);
   transition: border-color 0.3s ease;

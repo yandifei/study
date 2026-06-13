@@ -32,7 +32,7 @@ const API = {
   // 浏览模块
   BROWSE_LIST: base_url + '/db/browse/',            // 我的浏览记录 (GET)
   BROWSE_BATCH: base_url + '/db/browse/',           // 批量记录浏览 (POST)
-  BROWSE_CLEAR: base_url + '//dbbrowse/',           // 清空我的浏览记录 (DELETE)
+  BROWSE_CLEAR: base_url + '/db/browse/',           // 清空我的浏览记录 (DELETE)
 
   // 收藏模块
   FAVORITE_LIST: base_url + '/db/favorite/',        // 我的收藏列表 (GET)

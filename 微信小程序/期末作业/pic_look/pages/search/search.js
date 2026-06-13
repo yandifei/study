@@ -195,12 +195,15 @@ Page({
           if (item.answer) {
             messages.push({
               id: item.id,
+              difyMessageId: item.id,
               role: 'assistant',
               content: item.answer,
               status: 'sent',
               timestamp: item.created_at * 1000,
               errorMsg: '',
               feedback: item.feedback || null,
+              thought: '',                // 历史消息暂时不解析 think，如需可后续增强
+              showThought: false,
             });
           }
         });
@@ -301,6 +304,12 @@ Page({
     if (!content && !hasFiles) return;
     if (this.data.isGenerating) return;
 
+    // 确保用户信息已加载
+    if (!this.data.userId) {
+      wx.showToast({ title: '正在加载用户信息，请稍后再试', icon: 'none' });
+      return;
+    }
+
     const query = content || '请帮我鉴赏这张图片';
     const files = [...this.data.uploadedFiles];
 
@@ -329,28 +338,34 @@ Page({
     wx.hideLoading();
 
     const fileRefs = [];
-    let hasError = false;
+    const errors = [];
 
     results.forEach((result, index) => {
       if (result.status === 'fulfilled') {
         fileRefs.push({
+          id: result.value.id,              // WXML wx:key 使用
           type: 'image',
           transfer_method: 'local_file',
           upload_file_id: result.value.id,
-          _path: files[index].path,   // 辅助字段，仅本地用
+          path: files[index].path,          // 与 WXML 中 f.path 一致
+          url: '',                          // 远程 URL（如有）
         });
       } else {
-        hasError = true;
+        const errMsg = result.reason?.message || '未知错误';
+        errors.push(errMsg);
       }
     });
 
     if (fileRefs.length === 0) {
-      wx.showToast({ title: '图片上传失败，请重试', icon: 'none' });
+      const detail = errors.length > 0 ? errors[0] : '未知错误';
+      wx.showToast({ title: `上传失败: ${detail}`, icon: 'none', duration: 3000 });
+      console.error('[upload] 所有文件上传失败:', errors);
       return;
     }
 
-    if (hasError) {
-      wx.showToast({ title: '部分图片上传失败，已跳过', icon: 'none' });
+    if (errors.length > 0) {
+      wx.showToast({ title: `部分图片上传失败: ${errors[0]}`, icon: 'none', duration: 2500 });
+      console.warn('[upload] 部分上传失败:', errors);
     }
 
     this._sendMessage(content, fileRefs);
@@ -371,12 +386,19 @@ Page({
     });
     this._scrollToBottom();
 
-    // 提取纯上传参数（去掉 _path）
+    // 提取纯上传参数（去掉 _path 等本地字段）
     const pureFiles = fileRefs.filter(f => f.upload_file_id).map(f => ({
       type: f.type,
       transfer_method: f.transfer_method,
       upload_file_id: f.upload_file_id,
     }));
+
+    // —— <think> 标签流式剥离状态机 ——
+    var THINK_OPEN = '<think>';
+    var THINK_CLOSE = '</' + 'think>';   // 拼接避免写入时被转义
+    var inThink = false;
+    var tagBuf = '';
+    var thoughtAcc = '';
 
     this._requestTask = DifyAPI.sendChatMessage({
       query,
@@ -392,16 +414,96 @@ Page({
       onTaskId: (taskId) => {
         this.setData({ currentTaskId: taskId });
       },
+      onMessageId: (messageId) => {
+        if (messageId) {
+          this.setData({ [`messages[${aiIndex}].difyMessageId`]: messageId });
+        }
+      },
+      onThought: (thoughtData) => {
+        // SSE agent_thought 事件（Agent 模式）
+        const cur = this.data.messages[aiIndex];
+        if (!cur) return;
+        let add = '';
+        if (thoughtData.thought) add += thoughtData.thought + '\n';
+        if (thoughtData.observation) add += '🔍 ' + thoughtData.observation + '\n';
+        this.setData({
+          [`messages[${aiIndex}].thought`]: (cur.thought || '') + add,
+          [`messages[${aiIndex}].showThought`]: false,
+        });
+      },
       onToken: (token) => {
         const cur = this.data.messages[aiIndex];
         if (!cur) return;
-        this.setData({
-          [`messages[${aiIndex}].content`]: cur.content + token,
-          [`messages[${aiIndex}].status`]: 'streaming',
-        });
+
+        // —— 流式剥离 <think>...</think> 标签 ——
+        const combined = tagBuf + token;
+        tagBuf = '';
+        let display = '';
+        let i = 0;
+
+        while (i < combined.length) {
+          if (!inThink) {
+            // 检查 <think> 开始标签
+            if (combined.substring(i, i + 7) === THINK_OPEN) {
+              inThink = true;
+              i += 7;
+            } else {
+              display += combined[i];
+              i++;
+            }
+          } else {
+            // 检查 </think> 结束标签
+            if (combined.substring(i, i + 8) === THINK_CLOSE) {
+              inThink = false;
+              i += 8;
+            } else {
+              thoughtAcc += combined[i];
+              i++;
+            }
+          }
+        }
+
+        // 防止 <think> / </think> 跨 chunk 被截断
+        if (inThink) {
+          // 在 think 内：保留末尾可能形成 </think 的片段
+          const tail = combined.slice(-7);
+          const endMatch = tail.match(/(<\/t?h?i?n?k?)$/);
+          if (endMatch && endMatch[1].length > 0 && THINK_CLOSE.startsWith(endMatch[1])) {
+            thoughtAcc = thoughtAcc.slice(0, -endMatch[1].length);
+            tagBuf = endMatch[1];
+          }
+        } else {
+          // 在 think 外：保留末尾可能形成 <think> 的片段
+          const tail = combined.slice(-6);
+          const startMatch = tail.match(/(<t?h?i?n?k?>?)$/);
+          if (startMatch && THINK_OPEN.startsWith(startMatch[1]) && startMatch[1].length < 7) {
+            display = display.slice(0, -(startMatch[1].length));
+            tagBuf = startMatch[1];
+          }
+        }
+
+        // 更新显示的文本内容
+        if (display) {
+          this.setData({
+            [`messages[${aiIndex}].content`]: cur.content + display,
+            [`messages[${aiIndex}].status`]: 'streaming',
+          });
+        }
+
+        // 实时更新思考内容（但默认折叠）
+        if (thoughtAcc && !cur.thought) {
+          // 首个 thought chunk 到来时初始化
+          this.setData({
+            [`messages[${aiIndex}].thought`]: thoughtAcc,
+            [`messages[${aiIndex}].showThought`]: false,
+          });
+        } else if (thoughtAcc) {
+          this.setData({
+            [`messages[${aiIndex}].thought`]: thoughtAcc,
+          });
+        }
       },
       onFile: (fileInfo) => {
-        // 可选：支持 Dify 返回图片
         if (fileInfo.type === 'image' && fileInfo.url) {
           const cur = this.data.messages[aiIndex];
           if (!cur) return;
@@ -411,12 +513,27 @@ Page({
         }
       },
       onDone: (convId) => {
-        this.setData({
+        // 流结束：最终处理一次，确保所有思考和内容正确落盘
+        const cur = this.data.messages[aiIndex];
+        const updates = {
           [`messages[${aiIndex}].status`]: 'sent',
+          [`messages[${aiIndex}].showThought`]: false,
           isGenerating: false,
           streamingMsgIndex: -1,
           currentTaskId: '',
-        });
+        };
+
+        // 最终清洗：用正则确保所有 <think> 块都被处理
+        if (cur && cur.content) {
+          const finalThought = (cur.thought || '') + (inThink ? thoughtAcc : '');
+          let finalContent = cur.content;
+          var thinkRegex = new RegExp(THINK_OPEN + '[\\s\\S]*?' + THINK_CLOSE, 'g');
+          finalContent = finalContent.replace(thinkRegex, '');
+          updates[`messages[${aiIndex}].content`] = finalContent.trim();
+          updates[`messages[${aiIndex}].thought`] = finalThought.trim();
+        }
+
+        this.setData(updates);
         if (convId && !this.data.conversationId) {
           this.setData({ conversationId: convId });
           this.loadConversations();
@@ -507,16 +624,20 @@ Page({
     const { id, type } = e.currentTarget.dataset;
     const rating = type === 'like' ? 'like' : 'dislike';
 
-    DifyAPI.sendFeedback(id, rating, this.data.userId)
+    // 使用 Dify 真实 message_id（不存在时回退到本地 id，兼容历史消息）
+    const idx = this.data.messages.findIndex(m => m.id === id);
+    const realMessageId = (idx !== -1 && this.data.messages[idx].difyMessageId) || id;
+
+    DifyAPI.sendFeedback(realMessageId, rating, this.data.userId)
       .then(() => {
         wx.showToast({ title: type === 'like' ? '感谢反馈 👍' : '已记录', icon: 'none' });
-        const idx = this.data.messages.findIndex(m => m.id === id);
         if (idx !== -1) {
           this.setData({ [`messages[${idx}].feedback`]: rating });
         }
       })
-      .catch(() => {
-        wx.showToast({ title: '反馈失败', icon: 'none' });
+      .catch((err) => {
+        console.error('[feedback] 反馈失败:', err);
+        wx.showToast({ title: '反馈失败，请重试', icon: 'none' });
       });
   },
 
@@ -626,6 +747,7 @@ Page({
   _createMessage(role, content, status, files) {
     return {
       id: `msg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+      difyMessageId: '',          // 由 SSE 流回调更新，用于反馈接口
       role,
       content,
       status: status || 'sent',
@@ -633,6 +755,8 @@ Page({
       errorMsg: '',
       files: files || [],
       feedback: null,
+      thought: '',                // 思考过程（由 <think> 标签或 agent_thought 事件填充）
+      showThought: false,         // 默认折叠思考过程
     };
   },
 });

@@ -69,7 +69,7 @@
           </view>
           <view class="welcome-upload" bindtap="handleChooseImage">
             <text class="welcome-upload-icon">📷</text>
-            <text class="welcome-upload-text">上传图片开始鉴赏</text>
+            <text class="welcome-upload-text">上传图片开始解析</text>
           </view>
         </view>
 
@@ -101,7 +101,7 @@
               <view wx:elif="{{item.content || item.status === 'streaming'}}" class="ai-content">
                 <!-- 思考过程折叠块 -->
                 <view wx:if="{{item.thought}}" class="think-toggle" bindtap="handleToggleThought" data-id="{{item.id}}">
-                  <text>{{item.showThought ? '▾' : '▸'}} 已思考（用时{{item.thinkTime || '3'}}秒）</text>
+                  <text>{{item.showThought ? '▾' : '▸'}} 💭 思考过程</text>
                 </view>
                 <view wx:if="{{item.thought && item.showThought}}" class="think-content">
                   <text user-select="{{true}}">{{item.thought}}</text>

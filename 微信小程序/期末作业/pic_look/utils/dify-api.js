@@ -48,18 +48,35 @@ function uploadFile(filePath, userId) {
       formData: { user: userId },
       header: { 'Authorization': `Bearer ${API.DIFY_API_KEY}` },
       success(res) {
-        try {
-          const data = JSON.parse(res.data);
-          if (res.statusCode >= 200 && res.statusCode < 300) {
-            resolve(data);
-          } else {
-            reject(new Error(data.message || data.code || '上传失败'));
+        console.log('[uploadFile] statusCode:', res.statusCode);
+        console.log('[uploadFile] data type:', typeof res.data);
+        console.log('[uploadFile] data preview:', typeof res.data === 'string' ? res.data.substring(0, 300) : JSON.stringify(res.data).substring(0, 300));
+
+        // 微信 SDK 可能已自动解析 JSON（res.data 为 object），也可能为 string
+        let data;
+        if (typeof res.data === 'string') {
+          try {
+            data = JSON.parse(res.data);
+          } catch (e) {
+            console.error('[uploadFile] JSON 解析失败，原始响应:', res.data.substring(0, 500));
+            reject(new Error(`服务器返回非 JSON (status=${res.statusCode})，请检查 Nginx/Dify 是否正常`));
+            return;
           }
-        } catch (e) {
-          reject(new Error('解析上传响应失败'));
+        } else if (typeof res.data === 'object' && res.data !== null) {
+          data = res.data;
+        } else {
+          reject(new Error(`服务器返回异常数据 (status=${res.statusCode})`));
+          return;
+        }
+
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          resolve(data);
+        } else {
+          reject(new Error(data.message || data.code || `上传失败(${res.statusCode})`));
         }
       },
       fail(err) {
+        console.error('[uploadFile] 网络异常:', err);
         reject(new Error(err.errMsg || '网络异常'));
       }
     });
@@ -75,6 +92,8 @@ function uploadFile(filePath, userId) {
  * @param {string} [options.conversationId] - 会话 ID（续接历史对话）
  * @param {Array}  [options.files]        - 文件列表 [{type, transfer_method, upload_file_id}]
  * @param {Function} options.onToken      - token 回调 (token: string)
+ * @param {Function} options.onMessageId  - 消息 ID 回调 (messageId: string)
+ * @param {Function} options.onThought    - 思考过程回调 ({thought, observation, tool, tool_input})
  * @param {Function} options.onConvId     - 会话 ID 回调 (conversationId: string)
  * @param {Function} options.onTaskId     - 任务 ID 回调 (taskId: string)
  * @param {Function} options.onFile       - 文件回调 ({id, type, url})
@@ -85,7 +104,7 @@ function uploadFile(filePath, userId) {
 function sendChatMessage(options) {
   const {
     query, userId, conversationId, files,
-    onToken, onConvId, onTaskId, onFile,
+    onToken, onMessageId, onThought, onConvId, onTaskId, onFile,
     onDone, onError,
   } = options;
 
@@ -147,6 +166,7 @@ function sendChatMessage(options) {
           case 'message':
           case 'agent_message':
             if (json.answer && onToken) onToken(json.answer);
+            if (json.message_id && onMessageId) onMessageId(json.message_id);
             if (json.conversation_id && !convId) {
               convId = json.conversation_id;
               if (onConvId) onConvId(json.conversation_id);
@@ -155,6 +175,15 @@ function sendChatMessage(options) {
               taskId = json.task_id;
               if (onTaskId) onTaskId(json.task_id);
             }
+            break;
+
+          case 'agent_thought':
+            if (onThought) onThought({
+              thought: json.thought || '',
+              observation: json.observation || '',
+              tool: json.tool || '',
+              tool_input: json.tool_input || '',
+            });
             break;
 
           case 'message_file':
