@@ -2,342 +2,101 @@ Dify的源码官网：https://github.com/langgenius/dify
 
 官方中文文档：https://docs.dify.ai/zh/use-dify/getting-started/introduction
 
---- 
+---
 
-**不要研究源码，先部署起来。**
+### 🗄️ 数据保存在哪？
 
-贴出来的这个 `.env`，对于第一次部署来说，**99% 不用改**。
+部署完成后，所有的数据和配置会分类存储在如下位置：
+
+| 数据类别           | 存储内容                 | 宿主机存储路径（相对路径）       |
+| :----------------- | :----------------------- | :------------------------------- |
+| **🧠 核心业务数据** | 用户、应用配置、对话记录 | `./volumes/db/data` (PostgreSQL) |
+| **⚡ 缓存与队列**   | 临时数据、任务队列       | `./volumes/redis/data`           |
+| **📁 文件存储**     | 上传的图片、文档等       | `./volumes/app/storage`          |
+| **📚 向量数据**     | 知识库的向量索引         | `./volumes/weaviate` (默认)      |
+| **🔧 插件数据**     | 第三方插件文件           | `./volumes/plugin_daemon`        |
+| **🛡️ 其他服务**     | 沙箱、Nginx 日志等       | `./volumes/sandbox`、`./nginx`   |
+
+所有持久化数据都在 `dify/docker/volumes/` 目录下，做好它的备份即可保证数据安全。
 
 ---
 
-## 最简单部署
+### 🧭 Dify 全流程部署指南
 
-```bash
-git clone https://github.com/langgenius/dify.git
+#### 📝 1. 准备工作
 
-cd dify/docker
+- **硬件要求**：最低 **2核CPU + 4GB 内存**；生产环境推荐 **4核CPU + 8GB 内存以上**。
+- **软件要求**：`Docker Engine 19.03+`，`Docker Compose 2.24.0+`。
 
-cp .env.example .env
+#### 📦 2. 获取代码与配置
 
-docker compose up -d
-```
+使用终端按顺序执行以下命令。这些步骤直接参考官方文档。
 
-就这么干。
+1.  **克隆仓库**
+    ```bash
+    git clone https://github.com/langgenius/dify.git
+    ```
 
----
+2.  **进入Docker目录**
+    ```bash
+    cd dify/docker
+    ```
 
-## 哪些必须改？
+3.  **复制配置文件**
+    ```bash
+    cp .env.example .env
+    ```
+    这个 `.env` 文件包含了所有核心配置，可按需调整，比如将 `SECRET_KEY` 改成一个复杂的新字符串。
 
-实际上第一次部署只建议改 2 个。
+#### 🚀 3. 启动与验证
 
-### 1. INIT_PASSWORD
+1.  **启动所有服务**
+    ```bash
+    docker compose up -d
+    ```
+    命令会拉取镜像并启动 Dify 的 5 个核心服务（api、worker、web 等）和 6 个依赖组件（数据库、Redis 等）。
 
-找到：
+2.  **检查运行状态**
+    ```bash
+    docker compose ps
+    ```
+    当看到所有服务状态都是 **`Up`** 或 **`healthy`** 时，说明部署成功。
 
-```env
-INIT_PASSWORD=
-```
-
-改成：
-
-```env
-INIT_PASSWORD=你的管理员密码
-```
-
-例如：
-
-```env
-INIT_PASSWORD=Admin@123456
-```
-
-这样第一次登录后台不用邮件注册。
-
----
-
-### 2. DeepSeek/OpenAI Key
-
-这个不用在 `.env` 配。
-
-部署完成后：
-
-```text
-http://服务器IP
-```
-
-登录后台。
-
-然后：
-
-```text
-Settings
-  ↓
-Model Provider
-  ↓
-OpenAI
-DeepSeek
-Claude
-Gemini
-```
-
-在网页里填。
+3.  **初始化**
+    - 打开浏览器访问 `http://localhost`
+    - 如果访问的是远程服务器，将 `localhost` 替换为服务器公网IP。
+    - 跟随页面指引，设置管理员邮箱和密码。
 
 ---
 
-## 哪些不用动？
+### 🛠️ 4. 常见问题与技巧
 
-### 数据库
-
-```env
-DB_USERNAME=postgres
-DB_PASSWORD=difyai123456
-```
-
-不用动。
-
-因为：
-
-```text
-Postgres
-Redis
-Weaviate
-```
-
-都在 Docker 网络内部。
-
-外面访问不到。
+| 场景                    | 原因                 | 解决方法                                                                                     |
+| :---------------------- | :------------------- | :------------------------------------------------------------------------------------------- |
+| **端口冲突**            | 系统80端口已被占用。 | 修改 `docker-compose.yaml` 中的 `ports: - "8080:80"`，然后用 `8080` 端口访问。               |
+| **容器重启后异常**      | 服务启动顺序问题。   | 使用 `docker compose down` 停止，再用 `docker compose up -d` 重启。                          |
+| **启动失败 (错误日志)** | 多是权限或配置问题。 | 检查容器日志：`docker compose logs <service_name>`（如 `docker compose logs db_postgres`）。 |
+| **使用其他向量数据库**  | 默认使用`weaviate`。 | 在 `.env` 文件中设置 `VECTOR_STORE=your_choice`（如 `milvus`, `pgvector`）。                 |
 
 ---
 
-### Redis
+### 🧰 5. 常用管理命令
 
-```env
-REDIS_PASSWORD=difyai123456
-```
-
-不用动。
-
----
-
-### 向量数据库
-
-```env
-VECTOR_STORE=weaviate
-```
-
-不用动。
-
-Dify 自己管理。
+| 操作                 | 命令                                                   |
+| :------------------- | :----------------------------------------------------- |
+| **后台启动所有服务** | `docker compose up -d`                                 |
+| **停止所有服务**     | `docker compose down`                                  |
+| **查看服务状态**     | `docker compose ps`                                    |
+| **查看实时日志**     | `docker compose logs -f`                               |
+| **进入特定服务容器** | `docker compose exec <服务名> /bin/bash`               |
+| **重启所有服务**     | `docker compose restart`                               |
+| **停止并删除数据卷** | `docker compose down -v`（危险操作，会清空所有数据！） |
 
 ---
 
-### Secret Key
-
-```env
-SECRET_KEY=
-```
-
-甚至可以不填。
-
-Dify 第一次启动会自动生成。
-
----
-
-## 哪些是公网部署才改？
-
-例如：
-
-```env
-CONSOLE_API_URL=
-CONSOLE_WEB_URL=
-APP_API_URL=
-APP_WEB_URL=
-```
-
-本地测试：
-
-全部不用管。
-
----
-
-如果未来部署：
-
-```text
-https://ai.xxx.com
-```
-
-才改：
-
-```env
-CONSOLE_WEB_URL=https://ai.xxx.com
-```
-
-之类。
-
----
-
-## 你的流程应该是
-
-### 第一步
-
-启动：
-
-```bash
-docker compose up -d
-```
-
-看容器：
-
-```bash
-docker ps
-```
-
-应该有：
-
-```text
-dify-api
-dify-web
-postgres
-redis
-weaviate
-sandbox
-plugin-daemon
-```
-
----
-
-### 第二步
-
-浏览器：
-
-```text
-http://localhost
-```
-
-或者：
-
-```text
-http://服务器IP
-```
-
-看到 Dify 登录页。
-
----
-
-### 第三步
-
-配置模型
-
-例如 DeepSeek：
-
-```text
-Settings
- ↓
-Model Provider
- ↓
-DeepSeek
-```
-
-填：
-
-```text
-API Key
-```
-
-即可。
-
----
-
-### 第四步
-
-创建应用
-
-```text
-Studio
- ↓
-Create App
- ↓
-Chatflow
-```
-
-创建：
-
-```text
-我的AI助手
-```
-
----
-
-### 第五步
-
-拿 API Key
-
-应用里面：
-
-```text
-API Access
-```
-
-会看到：
-
-```text
-App Key
-```
-
-类似：
-
-```text
-app-xxxxxxxxxxxxxxxx
-```
-
----
-
-### 第六步
-
-前端调用
-
-```javascript
-await fetch(
-  "http://你的服务器/v1/chat-messages",
-  {
-    method: "POST",
-    headers: {
-      Authorization: "Bearer app-xxxx",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      query: "你好",
-      user: "test"
-    })
-  }
-);
-```
-
-就能聊天了。
-
----
-
-我建议你现在先执行：
-
-```bash
-docker compose up -d
-```
-
-如果启动报错，把你的：
-
-```bash
-docker compose ps
-
-docker compose logs api
-```
-
-结果发给我。
-
-我可以直接帮你判断是：
-
-* Docker 问题
-* 内存不足
-* 端口冲突
-* 镜像拉取失败
-* Apple Silicon/M系列芯片问题
-
-还是 Dify 配置问题。这样比研究那几百个环境变量高效得多。
+### ✅ 6. 部署完成后
+
+1.  **设置环境变量**（可选）：如需对接 OpenAI 以外的模型提供商或设置 S3 存储等，需在 `.env` 文件中配置相应变量。高级配置可参考 `dify/docker/envs/` 目录下的 `.example` 文件。
+2.  **配置 HTTPS**：可选操作。设置 `.env` 中的 `NGINX_HTTPS_ENABLED=true`，并将证书放在 `./nginx/ssl` 目录下。
+3.  **定期备份**：备份 `dify/docker/volumes/` 和 `dify/docker/.env` 文件，以防数据丢失。
+4.  **版本升级**：首先备份数据，然后在 `dify/docker` 目录下依次执行 `docker compose down`，`git pull`，最后执行 `docker compose up -d` 完成升级。
