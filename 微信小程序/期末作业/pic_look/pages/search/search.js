@@ -520,6 +520,31 @@ Page({
       });
   },
 
+  /** 折叠/展开思考过程 */
+  handleToggleThought(e) {
+    const { id } = e.currentTarget.dataset;
+    const idx = this.data.messages.findIndex(m => m.id === id);
+    if (idx !== -1) {
+      this.setData({
+        [`messages[${idx}].showThought`]: !this.data.messages[idx].showThought,
+      });
+    }
+  },
+
+  /** 重新生成：找到上一条用户消息重新发送 */
+  handleRegenerate(e) {
+    if (this.data.isGenerating) return;
+    const { id } = e.currentTarget.dataset;
+    const msgs = [...this.data.messages];
+    const idx = msgs.findIndex(m => m.id === id);
+    if (idx === -1) return;
+    const uMsg = msgs.slice(0, idx).reverse().find(m => m.role === 'user');
+    if (!uMsg) return;
+    msgs.splice(idx, 1);
+    this.setData({ messages: msgs });
+    this._sendMessage(uMsg.content, uMsg.files || []);
+  },
+
   // ==================== 清空对话 ====================
 
   handleClearChat() {
