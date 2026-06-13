@@ -41,8 +41,8 @@ const API = {
   FAVORITE_REMOVE: base_url + '/db/favorite/',      // 取消收藏 (DELETE + image_id 路径参数)
 
   // AI模块（Dify 对话型应用 — Nginx /ai/* → Dify 服务 :21326）
-  // ⚠️ Dify API Key 请从 Dify 后台「访问 API」页面获取，不要泄露到客户端仓库
-  DIFY_API_KEY: 'app-xxxxxxxxxxxxxxxx',
+  // Dify API Key 从 Dify 后台「访问 API」页面获取，不泄露到客户端仓库
+  DIFY_API_KEY: 'app-TN99DUigV0YqXyb5QdTGvV9S',
 
   AI_INFO:        base_url + '/ai/v1/info',
   AI_PARAMETERS:  base_url + '/ai/v1/parameters',
