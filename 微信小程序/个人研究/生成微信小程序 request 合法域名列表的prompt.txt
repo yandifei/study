@@ -1,0 +1,24 @@
+# 任务：生成微信小程序 request 合法域名列表（满 300 个）
+
+## 背景要求
+- 微信小程序的 `request` 合法域名必须以 `https://` 开头。
+- 最多可填写 300 个域名，多个域名之间用英文分号 `;` 分割。
+- 每月只有 6 次修改机会，所以希望一次性配满 300 个常用、安全、通用的域名，减少后续修改。
+- 必须包含我自己的域名：`https://yandifei.com`
+- 必须包含 GitHub 相关域名（如 `https://api.github.com`、`https://raw.githubusercontent.com`、`https://github.com` 等）。
+- 其他建议涵盖：主流云服务（阿里云、腾讯云、AWS、Cloudflare）、常用 API 服务（百度地图、高德地图、天气、新闻、翻译、OCR）、开源 CDN（unpkg、jsdelivr、cdnjs）、社交媒体（Twitter、Instagram、Telegram、Discord）、支付/电商（Stripe、PayPal）、区块链节点、公共 DNS over HTTPS 等。
+- 注意不要重复域名（包括带 www 和不带 www 视为不同，但尽量只选一种主流形式）。
+- 所有域名必须是真实可用、通常对外提供 HTTPS 服务的域名（避免明显无效或私有的域名）。
+
+## 输出格式
+- 直接输出一行纯文本，内容为 300 个 `https://` 开头的域名，用英文分号 `;` 连接。
+- 不要额外解释、不要加序号、不要换行（除非分号分隔后整体很长，但微信后台支持直接粘贴）。
+- 示例（仅格式示例，不是真实内容）：
+  `https://yandifei.com;https://api.github.com;https://...`
+
+## 其他提示
+- 如果无法列满 300 个，请尽量接近 300（至少 280 个），并优先保证高价值域名。
+- 可适当包含各大高校、研究机构、常见开源项目的 API 端点，只要不违反公序良俗。
+- 避免使用 `.local`、`.internal` 等私有域名，以及明显为测试保留的域名（如 `example.com`）。
+
+请生成上述列表。
