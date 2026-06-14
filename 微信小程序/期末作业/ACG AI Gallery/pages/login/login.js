@@ -20,7 +20,7 @@ Page({
   onAgreeChange() {
     this.setData({
       // 新的状态是当前状态取反(需要要拿到e去解析具体传参)
-      isAgreed: !this.data.isAgreed
+      isAgree: !this.data.isAgree
     })
   },
 
@@ -74,7 +74,7 @@ Page({
   // 登录（无需认证，但需要保存返回的 token）
   handleLogin() {
     // 检查用户是否读取勾选了“用户协议”和“隐私政策”
-    if (this.data.isAgree) {
+    if (!this.data.isAgree) {
       return wx.showToast({ title: '请阅读并同意协议', icon: 'none' });
     }
 

@@ -7,7 +7,9 @@ const envVersion = accountInfo.miniProgram.envVersion; // 'develop', 'trial', 'r
 
 // 定义不同环境对应的基础URL
 const base_urls = {
-  develop: 'http://10.43.128.231:61000',   // 开发版（开发者工具、真机预览）必须开启Nginx反代才行
+  // 10.43.128.231
+  // 172.20.10.3 
+  develop: 'http://127.0.0.1:61000',   // 开发版（开发者工具、真机预览）必须开启Nginx反代才行,校园和手机
   trial: 'https://scraggly-regress-cape.ngrok-free.dev',    // 体验版（上传后设为体验版）
   release: 'https://scraggly-regress-cape.ngrok-free.dev'    // 正式版（审核上线后）
 };
