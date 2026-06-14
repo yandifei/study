@@ -14,12 +14,16 @@
     <button class="btn-login" hover-class="btn-hover" bindtap="handleLogin">登录</button>
 
     <text class="auto-reg-tip">未注册用户登录即自动注册</text>
-    
+
     <view class="footer">
-      <text>登录即表示同意</text>
-      <navigator url="/pages/protocol/protocol" class="link" hover-class="link-hover">《用户协议》</navigator>
+      <checkbox class="user-checkbox" checked="{{isAgree}}" bind:tap="onAgreeChange" />
+      <text>我已阅读并同意</text>
+      <!-- 我直接掉微信官方wx.openPrivacyContract的接口，我真不想写了-->
+      <!-- <navigator url="/pages/protocol/protocol" class="link" hover-class="link-hover">《用户协议》</navigator> -->
+      <text class="link" bindtap="openUserAgreement">《用户协议》</text>
       <text>和</text>
-      <navigator url="/pages/privacy/privacy" class="link" hover-class="link-hover">《隐私政策》</navigator>
+      <!-- <navigator url="/pages/privacy/privacy" class="link" hover-class="link-hover">《隐私政策》</navigator> -->
+      <text class="link" bindtap="openPrivacyContract">《隐私政策》</text>
     </view>
   </view>
 </view>

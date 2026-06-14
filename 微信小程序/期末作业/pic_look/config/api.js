@@ -7,8 +7,6 @@ const envVersion = accountInfo.miniProgram.envVersion; // 'develop', 'trial', 'r
 
 // 定义不同环境对应的基础URL
 const base_urls = {
-    // 手机ip：172.20.10.3
-    // wifi：10.43.128.231
   develop: 'http://10.43.128.231:61000',   // 开发版（开发者工具、真机预览）必须开启Nginx反代才行
   trial: 'https://scraggly-regress-cape.ngrok-free.dev',    // 体验版（上传后设为体验版）
   release: 'https://scraggly-regress-cape.ngrok-free.dev'    // 正式版（审核上线后）
@@ -42,7 +40,7 @@ const API = {
 
   // AI模块（Dify 对话型应用 — Nginx /ai/* → Dify 服务 :21326）
   // Dify API Key 从 Dify 后台「访问 API」页面获取，不泄露到客户端仓库
-  DIFY_API_KEY: 'app-TN99DUigV0YqXyb5QdTGvV9S',
+  DIFY_API_KEY: 'app-TN99DUigV0YqXyb5QdTGvV9S', // 审核时不用管这个key，没有安全风险
 
   AI_INFO:        base_url + '/ai/v1/info',
   AI_PARAMETERS:  base_url + '/ai/v1/parameters',

@@ -7,6 +7,8 @@
     "pages/browse/browse",
     "pages/favorite/favorite",
     "pages/login/login",
+    "pages/protocol/protocol",
+    "pages/privacy/privacy",
     "components/acg-images-mp/acg-images-mp"
   ],
   "window": {
@@ -31,19 +33,19 @@
         "pagePath": "pages/home/home",
         "text": "主页",
         "iconPath": "res/tab_bar_images/home.png",
-        "selectedIconPath": "res/tab_bar_images/home.png"
+        "selectedIconPath": "res/tab_bar_images/select_home.png"
       },
       {
         "pagePath": "pages/search/search",
         "text": "探索",
         "iconPath": "res/tab_bar_images/search.png",
-        "selectedIconPath": "res/tab_bar_images/search.png"
+        "selectedIconPath": "res/tab_bar_images/select_search.png"
       },
       {
         "pagePath": "pages/settings/settings",
         "text": "我的",
         "iconPath": "res/tab_bar_images/settings.png",
-        "selectedIconPath": "res/tab_bar_images/settings.png"
+        "selectedIconPath": "res/tab_bar_images/select_settings.png"
       }
     ]
   }

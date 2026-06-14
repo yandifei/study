@@ -21,11 +21,11 @@ Page({
 
   // 页面加载时改变底部导航栏颜色
   onLoad(args) {
-    wx.setTabBarStyle({ color: '#5d4a30', selectedColor: '#5d4a30', "backgroundColor": "#ffeed2",})
+    wx.setTabBarStyle({ color: '#828282', selectedColor: '#5d4a30', "backgroundColor": "#ffeed2",})
   },
   // 页面加载时改变底部导航栏颜色
   onShow() {
-    wx.setTabBarStyle({ color: '#5d4a30', selectedColor: '#5d4a30', "backgroundColor": "#ffeed2",})
+    wx.setTabBarStyle({ color: '#828282', selectedColor: '#5d4a30', "backgroundColor": "#ffeed2",})
   },
 
   nav(e) {

@@ -3,10 +3,11 @@ const { API } = require('../../config/api.js');
 
 Page({
   data: {
+    isAgree: false, // 用来记录用户是否同意用户协议和隐私政策
     email: '',
     code: '',
     isSending: false,
-    countDown: 0
+    countDown: 0,
   },
 
   onEmailInput(e) { this.setData({ email: e.detail.value.trim() }); },
@@ -14,6 +15,13 @@ Page({
 
   isEmailValid(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  },
+
+  onAgreeChange() {
+    this.setData({
+      // 新的状态是当前状态取反(需要要拿到e去解析具体传参)
+      isAgreed: !this.data.isAgreed
+    })
   },
 
   // 获取验证码（无需认证）
@@ -65,9 +73,15 @@ Page({
 
   // 登录（无需认证，但需要保存返回的 token）
   handleLogin() {
+    // 检查用户是否读取勾选了“用户协议”和“隐私政策”
+    if (this.data.isAgree) {
+      return wx.showToast({ title: '请阅读并同意协议', icon: 'none' });
+    }
+
+    // 检查右键和验证码上是否都填写了
     const { email, code } = this.data;
     if (!this.isEmailValid(email) || !code) {
-      return wx.showToast({ title: '请填写正确的邮箱和验证码', icon: 'none' });
+      return wx.showToast({ title: '请正确填写邮箱和验证码', icon: 'none' });
     }
 
     wx.showLoading({ title: '登录中...' });
@@ -94,5 +108,21 @@ Page({
         wx.hideLoading();
         wx.showToast({ title: '请求超时，请重试', icon: 'none' });
       });
-  }
+  },
+
+  // 用户协议
+  openUserAgreement() {
+    wx.navigateTo({ url: '/pages/protocol/protocol' })
+  },
+
+  // 隐私政策
+  // 打开微信官方隐私协议页面（推荐用这个）
+  openPrivacyContract() {
+    wx.openPrivacyContract({
+      fail: (err) => {
+        // 打开兜底界面
+        wx.navigateTo({ url: '/pages/privacy/privacy' })
+      }
+    })
+  },
 });

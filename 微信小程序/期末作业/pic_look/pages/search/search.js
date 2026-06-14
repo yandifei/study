@@ -70,8 +70,8 @@ Page({
 
   onShow() {
     wx.setTabBarStyle({
-      color: 'rgba(255,255,255,0.65)',
-      selectedColor: '#ffffff',
+      color: '#abbcff',
+      selectedColor: '#00e1ff',
       backgroundColor: '#4B70FD',
     });
     this.loadUserInfo();

@@ -1,0 +1,224 @@
+<!--pages/protocol/protocol.wxml-->
+<!--
+  用户协议展示页面
+  设计：萌系 ACG 风格 · 粉紫渐变 · 毛玻璃卡片 · 猫耳装饰
+-->
+<view class="page-container">
+
+<!-- ========== 背景装饰层（fixed定位，始终可见） ========== -->
+<!-- 漂浮爱心装饰 -->
+<view class="deco-heart deco-heart-1"></view>
+<view class="deco-heart deco-heart-2"></view>
+<view class="deco-heart deco-heart-3"></view>
+<view class="deco-heart deco-heart-4"></view>
+
+<!-- 闪烁星光装饰 -->
+<view class="deco-star deco-star-1"></view>
+<view class="deco-star deco-star-2"></view>
+<view class="deco-star deco-star-3"></view>
+
+<!-- 柔和光斑 -->
+<view class="deco-glow deco-glow-1"></view>
+<view class="deco-glow deco-glow-2"></view>
+
+<!-- ========== 主内容滚动区域 ========== -->
+<scroll-view
+  class="scroll-area"
+  scroll-y
+  enhanced
+  show-scrollbar="{{false}}"
+  bindscroll="onScroll"
+>
+  <!-- 顶部留白 -->
+  <view class="top-spacer"></view>
+
+  <!-- 卡片外层容器（用于猫耳定位） -->
+  <view class="card-wrapper {{cardAnimated ? 'card-enter-active' : ''}}">
+
+    <!-- 猫耳角标 - 左 -->
+    <view class="cat-ear cat-ear-left">
+      <view class="cat-ear-inner"></view>
+    </view>
+    <!-- 猫耳角标 - 右 -->
+    <view class="cat-ear cat-ear-right">
+      <view class="cat-ear-inner"></view>
+    </view>
+
+    <!-- 协议卡片主体 -->
+    <view class="agreement-card">
+
+      <!-- 卡片顶部小装饰线 -->
+      <view class="card-top-ribbon"></view>
+
+      <!-- 协议标题 -->
+      <view class="card-title">《ACG智能图廊用户协议》</view>
+
+      <!-- 版本日期 -->
+      <view class="version-info">
+        <text class="version-label">版本生效日期：</text>
+        <text class="version-date">2026年06月15日</text>
+      </view>
+
+      <!-- 欢迎语 -->
+      <view class="welcome-text">
+        <text class="highlight-inline">欢迎您使用"ACG智能图廊"微信小程序（以下简称"本服务"）！</text>
+      </view>
+      <view class="para-text">
+        本协议是您（以下简称"用户"或"您"）与本微信小程序开发者/开发团队（以下简称"我们"）之间关于使用本服务所订立的协议。请您仔细阅读并充分理解本协议的全部内容。您点击"同意"或实际使用本服务，即视为您已阅读并同意本协议。
+      </view>
+
+      <!-- 第1条 -->
+      <view class="section-title">1. 总则</view>
+      <view class="para-text">
+        <text class="para-num">1.1</text> 本服务是一个面向 ACG 爱好者与图片收藏者的智能图廊小程序，提供图片浏览、收藏管理、AI 图片鉴赏对话等功能。
+      </view>
+      <view class="para-text">
+        <text class="para-num">1.2</text> 我们有权根据法律法规、业务需要随时修改本协议。修改后的协议将通过小程序弹窗、公告或系统消息通知您。您继续使用本服务，视为同意更新后的协议。
+      </view>
+
+      <!-- 第2条 -->
+      <view class="section-title">2. 账号管理（邮箱登录与跨端标识）</view>
+      <view class="para-text">
+        <text class="para-num">2.1</text>
+        <text class="highlight-inline">账号获取</text>：您需使用<text class="highlight-inline">邮箱地址 + 验证码</text>进行登录。首次登录即视为自动注册，系统将为您分配唯一的用户账号。
+      </view>
+      <view class="para-text">
+        <text class="para-num">2.2</text>
+        <text class="highlight-inline">跨端同步</text>：为了保障您在<text class="highlight-inline">微信小程序、Web 端、App 端等不同平台之间</text>无缝同步您的 AI 对话记录、收藏和个性化设置，<text class="highlight-inline">您的邮箱将作为跨端唯一的身份标识</text>。您需确保邮箱真实有效，因邮箱错误导致数据无法同步或丢失，由您自行承担。
+      </view>
+      <view class="para-text">
+        <text class="para-num">2.3</text>
+        <text class="highlight-inline">账号安全</text>：您应妥善保管账号信息（邮箱及验证码）。通过您账号进行的所有操作，均视为您本人行为。若发现账号异常，请立即联系我们。
+      </view>
+
+      <!-- 第3条 -->
+      <view class="section-title">3. 使用规则与内容规范</view>
+      <view class="para-text">
+        <text class="para-num">3.1</text>
+        <text class="highlight-inline">合法使用</text>：您不得利用本服务从事任何违法违规行为，包括但不限于：
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>上传、传播涉及政治、色情、暴力、恐怖、侵权等违法信息；</text>
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>利用 AI 生成内容进行诈骗、诽谤、骚扰或侵犯他人合法权益；</text>
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>通过技术手段干扰、破坏本服务的正常运行（如爬虫、攻击服务器等）。</text>
+      </view>
+      <view class="para-text">
+        <text class="para-num">3.2</text>
+        <text class="highlight-inline">AI 对话内容</text>：
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>您对自己输入的文本、上传的图片内容承担全部法律责任。</text>
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text class="highlight-inline">AI 输出免责声明</text>：本服务的 AI 回复基于大语言模型（LLM）生成，<text class="highlight-inline">可能存在事实错误、偏见、逻辑偏差或不符合您预期的内容</text>。AI 的回复<text class="highlight-inline">不代表我们的观点、建议或立场</text>。您需自行判断、核实并承担使用 AI 回复的全部风险与后果。我们不保证 AI 输出的准确性、完整性及适用性。
+      </view>
+      <view class="para-text">
+        <text class="para-num">3.3</text>
+        <text class="highlight-inline">图片上传</text>：
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>您上传至 AI 对话中的图片，仅用于 AI 多模态分析及对话，不会被存储至我们的小程序图片库中。</text>
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>您保证拥有上传图片的合法权利（不侵犯他人著作权、肖像权等）。</text>
+      </view>
+
+      <!-- 第4条 -->
+      <view class="section-title">4. 知识产权</view>
+      <view class="para-text">
+        <text class="para-num">4.1</text>
+        <text class="highlight-inline">我们的权益</text>：本服务的界面设计、代码、图标、品牌名称、底层 AI 模型技术等知识产权归我们所有。
+      </view>
+      <view class="para-text">
+        <text class="para-num">4.2</text>
+        <text class="highlight-inline">用户的权益</text>：您通过本服务生成的 AI 对话记录、个人收藏列表、上传的图片（用于 AI 分析）等，其知识产权归您所有。但您授予我们为改善服务质量而进行不可识别化处理的权限。
+      </view>
+
+      <!-- 第5条 -->
+      <view class="section-title">5. 隐私与数据保护</view>
+      <view class="para-text">
+        <text class="para-num">5.1</text> 我们高度重视用户隐私。关于您的个人信息（如邮箱、浏览记录、收藏记录等）如何收集、使用、存储和保护，详见本小程序的<text class="highlight-inline">《隐私政策》</text>。
+      </view>
+      <view class="para-text">
+        <text class="para-num">5.2</text> 您同意我们基于改善服务质量、优化算法模型的目的，对您的交互数据（如对话内容、反馈评价）进行匿名化分析。
+      </view>
+
+      <!-- 第6条 -->
+      <view class="section-title">6. 服务的变更与终止</view>
+      <view class="para-text">
+        <text class="para-num">6.1</text> 我们有权根据业务发展需要，暂停、中止或终止本服务（如因技术升级、政策调整等）。我们会提前通过小程序公告、弹窗等方式通知您。
+      </view>
+      <view class="para-text">
+        <text class="para-num">6.2</text> 若您违反本协议，我们有权立即终止您的账号使用权限，并保留追究法律责任的权利。
+      </view>
+
+      <!-- 第7条 -->
+      <view class="section-title">7. 免责声明</view>
+      <view class="para-text">
+        <text class="para-num">7.1</text>
+        <text class="highlight-inline">AI 输出免责</text>：详见本协议第 3.2 条。您使用本服务的 AI 功能，即视为您完全理解并接受该免责条款。
+      </view>
+      <view class="para-text">
+        <text class="para-num">7.2</text>
+        <text class="highlight-inline">服务中断</text>：因网络、服务器故障、黑客攻击、自然灾害等不可抗力因素导致的服务中断或数据丢失，我们在法律允许范围内不承担经济赔偿等责任。
+      </view>
+      <view class="para-text">
+        <text class="para-num">7.3</text>
+        <text class="highlight-inline">第三方链接</text>：本服务中可能包含第三方平台链接或内容，我们不对其安全性、准确性负责。
+      </view>
+
+      <!-- 第8条 -->
+      <view class="section-title">8. 争议解决</view>
+      <view class="para-text">
+        <text class="para-num">8.1</text> 本协议的订立、履行、解释及争议解决均适用中华人民共和国法律。
+      </view>
+      <view class="para-text">
+        <text class="para-num">8.2</text> 因本协议引起的或与本协议有关的任何争议，双方应友好协商解决；协商不成的，任何一方均有权向<text class="highlight-inline">【开发者所在地或服务器所在地】</text>有管辖权的法院提起诉讼。
+      </view>
+
+      <!-- 第9条 -->
+      <view class="section-title">9. 联系我们</view>
+      <view class="para-text">
+        如有任何疑问、建议或投诉，请通过以下方式联系我们：
+      </view>
+      <view class="contact-info">
+        <text class="contact-label">📮 邮箱：</text>
+        <text class="contact-value">3058439878@qq.com</text>
+      </view>
+
+      <!-- 底部留白 -->
+      <view class="card-bottom-spacer"></view>
+
+      <!-- "已阅读"印章装饰（非必需，仅装饰） -->
+      <view class="stamp-seal">
+        <view class="stamp-outer">
+          <view class="stamp-inner">
+            <text class="stamp-text">已 阅 读</text>
+            <text class="stamp-sub">✦ ACG 智能图廊 ✦</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 卡片底部小花边 -->
+      <view class="card-bottom-lace"></view>
+    </view>
+  </view>
+
+  <!-- 底部安全距离留白 -->
+  <view class="bottom-safe-spacer"></view>
+</scroll-view>
+
+<!-- 底部柔光渐变遮罩（提示还有内容） -->
+<view class="bottom-fade-mask"></view>
+</view>

@@ -1,0 +1,573 @@
+/* pages/protocol/protocol.wxss */
+/*
+  用户协议展示页样式
+  萌系 ACG 风格 · 粉紫渐变 · 毛玻璃模拟 · 猫耳装饰
+*/
+
+/* ========== 页面基础样式 ========== */
+page {
+  background: linear-gradient(165deg, #FDE8F0 0%, #FEF0F5 15%, #FDF2F8 30%, #F9ECFD 50%, #F3E8FB 70%, #EDE5FA 85%, #E8E4F8 100%);
+  background-attachment: fixed;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ========== 页面容器 ========== */
+.page-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* ========== 滚动区域 ========== */
+.scroll-area {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+}
+
+/* ========== 顶部留白 ========== */
+.top-spacer {
+  height: 30rpx;
+}
+
+/* ========== 底部安全距离 ========== */
+.bottom-safe-spacer {
+  height: 60rpx;
+}
+
+/* ========== 卡片外层容器 ========== */
+.card-wrapper {
+  position: relative;
+  width: 680rpx;
+  margin: 0 auto;
+  padding-top: 36rpx; /* 为猫耳留出空间 */
+  opacity: 0;
+  transform: translateY(60rpx);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 入场动画激活状态 */
+.card-wrapper.card-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== 猫耳角标 ========== */
+.cat-ear {
+  position: absolute;
+  top: 8rpx;
+  z-index: 3;
+  width: 0;
+  height: 0;
+  border-left: 24rpx solid transparent;
+  border-right: 24rpx solid transparent;
+  border-bottom: 36rpx solid #F8C4D4;
+  filter: drop-shadow(0 3rpx 6rpx rgba(210, 160, 180, 0.35));
+  transition: transform 0.3s ease;
+}
+
+.cat-ear-left {
+  left: 40rpx;
+  transform: rotate(-18deg);
+}
+
+.cat-ear-right {
+  right: 40rpx;
+  transform: rotate(18deg);
+}
+
+/* 猫耳内耳（更浅的粉色） */
+.cat-ear-inner {
+  position: absolute;
+  top: 10rpx;
+  left: -14rpx;
+  width: 0;
+  height: 0;
+  border-left: 14rpx solid transparent;
+  border-right: 14rpx solid transparent;
+  border-bottom: 22rpx solid #FDE4EC;
+}
+
+/* 猫耳悬停微动 */
+.card-wrapper:hover .cat-ear-left {
+  transform: rotate(-22deg) translateY(-4rpx);
+}
+.card-wrapper:hover .cat-ear-right {
+  transform: rotate(22deg) translateY(-4rpx);
+}
+
+/* ========== 协议卡片主体 ========== */
+.agreement-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.62);
+  border-radius: 36rpx;
+  padding: 44rpx 40rpx 36rpx;
+  box-shadow:
+    0 12rpx 48rpx rgba(185, 155, 195, 0.22),
+    0 4rpx 16rpx rgba(185, 155, 195, 0.14),
+    0 1rpx 4rpx rgba(185, 155, 195, 0.10),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.55),
+    inset 0 -2rpx 0 rgba(255, 255, 255, 0.25);
+  border: 1.5rpx solid rgba(255, 255, 255, 0.5);
+  overflow: visible;
+}
+
+/* 卡片顶部装饰缎带 */
+.card-top-ribbon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120rpx;
+  height: 8rpx;
+  background: linear-gradient(90deg, #FAD1DC, #E8C4F0, #C5D5F8, #E8C4F0, #FAD1DC);
+  border-radius: 0 0 8rpx 8rpx;
+  opacity: 0.75;
+}
+
+/* 卡片底部小花边 */
+.card-bottom-lace {
+  width: 100%;
+  height: 6rpx;
+  margin-top: 20rpx;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 14rpx,
+    rgba(220, 180, 210, 0.4) 14rpx,
+    rgba(220, 180, 210, 0.4) 20rpx
+  );
+  border-radius: 3rpx;
+}
+
+/* ========== 协议标题 ========== */
+.card-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #5C3D5E;
+  text-align: center;
+  letter-spacing: 2rpx;
+  margin-bottom: 16rpx;
+  line-height: 1.4;
+  text-shadow: 0 2rpx 8rpx rgba(180, 150, 180, 0.2);
+}
+
+/* ========== 版本信息 ========== */
+.version-info {
+  text-align: center;
+  margin-bottom: 28rpx;
+  padding-bottom: 22rpx;
+  border-bottom: 1rpx solid rgba(200, 175, 200, 0.3);
+}
+
+.version-label {
+  font-size: 24rpx;
+  color: #9B8A9E;
+}
+
+.version-date {
+  font-size: 24rpx;
+  color: #7B6B7E;
+  font-weight: 500;
+}
+
+/* ========== 欢迎语 ========== */
+.welcome-text {
+  margin-bottom: 18rpx;
+  font-size: 28rpx;
+  color: #5C3D5E;
+  line-height: 1.75;
+}
+
+/* ========== 小节标题 ========== */
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #5C3D5E;
+  margin-top: 28rpx;
+  margin-bottom: 14rpx;
+  padding-left: 12rpx;
+  border-left: 6rpx solid #E8C4F0;
+  line-height: 1.5;
+  letter-spacing: 1rpx;
+}
+
+/* ========== 正文段落 ========== */
+.para-text {
+  font-size: 26rpx;
+  color: #4A3D4E;
+  line-height: 1.85;
+  margin-bottom: 12rpx;
+  text-align: justify;
+  letter-spacing: 0.5rpx;
+}
+
+.para-num {
+  font-weight: 600;
+  color: #7B5B80;
+  margin-right: 4rpx;
+}
+
+/* ========== 列表项 ========== */
+.list-item {
+  display: flex;
+  align-items: flex-start;
+  font-size: 26rpx;
+  color: #4A3D4E;
+  line-height: 1.85;
+  margin-bottom: 8rpx;
+  padding-left: 24rpx;
+  text-align: justify;
+}
+
+.list-bullet {
+  flex-shrink: 0;
+  margin-right: 10rpx;
+  color: #C8A0D0;
+  font-weight: 700;
+  font-size: 28rpx;
+  line-height: 1.85;
+}
+
+/* ========== 高亮/加粗文字 ========== */
+.highlight-inline {
+  font-weight: 600;
+  color: #5C3D5E;
+}
+
+/* ========== 联系方式 ========== */
+.contact-info {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+  margin-bottom: 8rpx;
+  padding: 16rpx 20rpx;
+  background: rgba(245, 225, 240, 0.4);
+  border-radius: 16rpx;
+  border: 1rpx solid rgba(220, 190, 210, 0.35);
+}
+
+.contact-label {
+  font-size: 26rpx;
+  color: #5C3D5E;
+  font-weight: 500;
+  margin-right: 8rpx;
+}
+
+.contact-value {
+  font-size: 26rpx;
+  color: #6B4D70;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+/* ========== 卡片底部留白 ========== */
+.card-bottom-spacer {
+  height: 28rpx;
+}
+
+/* ========== "已阅读"印章装饰 ========== */
+.stamp-seal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16rpx;
+  opacity: 0.5;
+  transform: rotate(-8deg);
+}
+
+.stamp-outer {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  border: 4rpx dashed #D4A8C8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 240, 248, 0.35);
+  box-shadow: 0 4rpx 16rpx rgba(200, 160, 185, 0.2);
+}
+
+.stamp-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stamp-text {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #C490A8;
+  letter-spacing: 6rpx;
+  line-height: 1.4;
+}
+
+.stamp-sub {
+  font-size: 18rpx;
+  color: #D4A8C0;
+  letter-spacing: 2rpx;
+  margin-top: 4rpx;
+}
+
+/* ========== 背景装饰 - 爱心 ========== */
+.deco-heart {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  width: 44rpx;
+  height: 44rpx;
+  background: rgba(245, 185, 200, 0.35);
+  transform: rotate(45deg);
+  border-radius: 0 0 8rpx 0;
+  animation: floatHeart 6s ease-in-out infinite;
+}
+
+.deco-heart::before,
+.deco-heart::after {
+  content: '';
+  position: absolute;
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.deco-heart::before {
+  left: -22rpx;
+  top: 0;
+}
+
+.deco-heart::after {
+  top: -22rpx;
+  left: 0;
+}
+
+/* 爱心1 - 左上 */
+.deco-heart-1 {
+  top: 12%;
+  left: 6%;
+  width: 36rpx;
+  height: 36rpx;
+  animation-delay: 0s;
+  animation-duration: 5.5s;
+  opacity: 0.4;
+}
+.deco-heart-1::before,
+.deco-heart-1::after {
+  width: 36rpx;
+  height: 36rpx;
+}
+.deco-heart-1::before {
+  left: -18rpx;
+}
+.deco-heart-1::after {
+  top: -18rpx;
+}
+
+/* 爱心2 - 右上 */
+.deco-heart-2 {
+  top: 18%;
+  right: 8%;
+  width: 48rpx;
+  height: 48rpx;
+  animation-delay: 1.5s;
+  animation-duration: 6.5s;
+  opacity: 0.3;
+  background: rgba(220, 180, 210, 0.35);
+}
+.deco-heart-2::before,
+.deco-heart-2::after {
+  width: 48rpx;
+  height: 48rpx;
+}
+.deco-heart-2::before {
+  left: -24rpx;
+}
+.deco-heart-2::after {
+  top: -24rpx;
+}
+
+/* 爱心3 - 左下 */
+.deco-heart-3 {
+  top: 55%;
+  left: 4%;
+  width: 30rpx;
+  height: 30rpx;
+  animation-delay: 3s;
+  animation-duration: 7s;
+  opacity: 0.3;
+  background: rgba(255, 200, 210, 0.35);
+}
+.deco-heart-3::before,
+.deco-heart-3::after {
+  width: 30rpx;
+  height: 30rpx;
+}
+.deco-heart-3::before {
+  left: -15rpx;
+}
+.deco-heart-3::after {
+  top: -15rpx;
+}
+
+/* 爱心4 - 右下 */
+.deco-heart-4 {
+  top: 70%;
+  right: 5%;
+  width: 40rpx;
+  height: 40rpx;
+  animation-delay: 4.5s;
+  animation-duration: 5.8s;
+  opacity: 0.28;
+  background: rgba(230, 190, 215, 0.35);
+}
+.deco-heart-4::before,
+.deco-heart-4::after {
+  width: 40rpx;
+  height: 40rpx;
+}
+.deco-heart-4::before {
+  left: -20rpx;
+}
+.deco-heart-4::after {
+  top: -20rpx;
+}
+
+/* 爱心浮动动画 */
+@keyframes floatHeart {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0) scale(1);
+  }
+  25% {
+    transform: rotate(45deg) translateY(-16rpx) scale(1.08);
+  }
+  50% {
+    transform: rotate(45deg) translateY(-6rpx) scale(0.95);
+  }
+  75% {
+    transform: rotate(45deg) translateY(-20rpx) scale(1.05);
+  }
+}
+
+/* ========== 背景装饰 - 星光 ========== */
+.deco-star {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  width: 20rpx;
+  height: 20rpx;
+  background: rgba(255, 215, 180, 0.55);
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%,
+    68% 57%, 79% 91%, 50% 70%,
+    21% 91%, 32% 57%, 2% 35%,
+    39% 35%
+  );
+  animation: twinkle 3.5s ease-in-out infinite;
+}
+
+.deco-star-1 {
+  top: 22%;
+  right: 14%;
+  width: 22rpx;
+  height: 22rpx;
+  animation-delay: 0s;
+  background: rgba(255, 220, 180, 0.5);
+}
+
+.deco-star-2 {
+  top: 45%;
+  left: 7%;
+  width: 16rpx;
+  height: 16rpx;
+  animation-delay: 1.2s;
+  animation-duration: 4s;
+  background: rgba(255, 235, 200, 0.5);
+}
+
+.deco-star-3 {
+  top: 78%;
+  right: 10%;
+  width: 18rpx;
+  height: 18rpx;
+  animation-delay: 2.5s;
+  animation-duration: 3.8s;
+  background: rgba(255, 225, 190, 0.45);
+}
+
+/* 星光闪烁动画 */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.8) rotate(0deg);
+  }
+  30% {
+    opacity: 0.75;
+    transform: scale(1.25) rotate(15deg);
+  }
+  60% {
+    opacity: 0.4;
+    transform: scale(0.9) rotate(-10deg);
+  }
+  85% {
+    opacity: 0.7;
+    transform: scale(1.15) rotate(8deg);
+  }
+}
+
+/* ========== 背景装饰 - 柔和光斑 ========== */
+.deco-glow {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(60rpx);
+  opacity: 0.25;
+}
+
+.deco-glow-1 {
+  top: -8%;
+  right: -10%;
+  width: 320rpx;
+  height: 320rpx;
+  background: radial-gradient(circle, rgba(255, 200, 210, 0.5) 0%, transparent 70%);
+  animation: breatheGlow 8s ease-in-out infinite;
+}
+
+.deco-glow-2 {
+  bottom: -6%;
+  left: -8%;
+  width: 280rpx;
+  height: 280rpx;
+  background: radial-gradient(circle, rgba(210, 190, 235, 0.45) 0%, transparent 70%);
+  animation: breatheGlow 9s ease-in-out 3s infinite;
+}
+
+@keyframes breatheGlow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.15);
+  }
+}
+
+/* ========== 底部柔光遮罩 ========== */
+.bottom-fade-mask {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 80rpx;
+  background: linear-gradient(to top, rgba(248, 235, 245, 0.7), transparent);
+  pointer-events: none;
+}

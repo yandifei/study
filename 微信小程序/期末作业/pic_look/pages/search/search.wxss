@@ -236,7 +236,6 @@ page {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24rpx;
   box-sizing: border-box;
 }
 
@@ -252,9 +251,7 @@ page {
 }
 
 .nav-icon {
-  font-size: 36rpx;
-  color: rgba(255, 255, 255, 0.9);
-  padding: 8rpx;
+  height: 40px;
 }
 
 .nav-title {
@@ -719,11 +716,10 @@ page {
   padding: 14rpx 22rpx;
   font-size: 30rpx;
   color: var(--text-primary);
+  max-height: 208rpx;
   line-height: 1.5;
   box-sizing: border-box;
-  overflow-y: auto;          /* 配合固定高度时内部滚动 */
-  word-break: break-all;      /* 双重保险 */
-  white-space: pre-wrap;
+  overflow-y: auto;
 }
 .send-btn,
 .stop-btn {
@@ -738,7 +734,7 @@ page {
 }
 
 .send-btn {
-  background-color: var(--brand);
+  padding: 5px;
 }
 
 .send-btn:active {

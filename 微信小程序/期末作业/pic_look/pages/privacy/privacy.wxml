@@ -1,0 +1,220 @@
+<!--pages/privacy/privacy.wxml-->
+<!--
+  隐私保护指引展示页面
+  设计：萌系 ACG 风格 · 粉紫渐变 · 毛玻璃卡片 · 猫耳装饰
+-->
+<view class="page-container">
+
+<!-- ========== 背景装饰层（fixed定位） ========== -->
+<!-- 漂浮爱心 -->
+<view class="deco-heart deco-heart-1"></view>
+<view class="deco-heart deco-heart-2"></view>
+<view class="deco-heart deco-heart-3"></view>
+<view class="deco-heart deco-heart-4"></view>
+
+<!-- 闪烁星光 -->
+<view class="deco-star deco-star-1"></view>
+<view class="deco-star deco-star-2"></view>
+<view class="deco-star deco-star-3"></view>
+
+<!-- 柔和光斑 -->
+<view class="deco-glow deco-glow-1"></view>
+<view class="deco-glow deco-glow-2"></view>
+
+<!-- ========== 主内容滚动区 ========== -->
+<scroll-view
+  class="scroll-area"
+  scroll-y
+  enhanced
+  show-scrollbar="{{false}}"
+  bindscroll="onScroll"
+>
+  <view class="top-spacer"></view>
+
+  <!-- 卡片 + 猫耳 -->
+  <view class="card-wrapper {{cardAnimated ? 'card-enter-active' : ''}}">
+    <!-- 左猫耳 -->
+    <view class="cat-ear cat-ear-left">
+      <view class="cat-ear-inner"></view>
+    </view>
+    <!-- 右猫耳 -->
+    <view class="cat-ear cat-ear-right">
+      <view class="cat-ear-inner"></view>
+    </view>
+
+    <!-- 协议卡片 -->
+    <view class="agreement-card">
+      <view class="card-top-ribbon"></view>
+
+      <!-- 标题 -->
+      <view class="card-title">《ACG智能图廊隐私保护指引》</view>
+
+      <!-- 更新 / 生效日期 -->
+      <view class="version-info">
+        <text class="version-label">更新日期：</text>
+        <text class="version-date">2026年06月15日</text>
+        <text class="version-divider"> ｜ </text>
+        <text class="version-label">生效日期：</text>
+        <text class="version-date">2026年06月15日</text>
+      </view>
+
+      <!-- 引言 -->
+      <view class="para-text" style="margin-top: 8rpx;">
+        本指引是<text class="highlight-inline">ACG智能图廊</text>小程序开发者（以下简称"开发者"）为处理你的个人信息而制定。
+      </view>
+
+      <!-- ===== 第一条 ===== -->
+      <view class="section-title">一、开发者处理的信息</view>
+      <view class="para-text">
+        根据法律规定，开发者仅处理实现小程序功能所必要的信息。
+      </view>
+
+      <!-- 1. 邮箱 -->
+      <view class="para-text">
+        <text class="para-num">1.</text>
+        <text class="highlight-inline">开发者收集你的邮箱</text>，用途是：
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>用于登录及身份验证；</text>
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text class="highlight-inline">用于你在 Web 端、App 端等多平台之间同步 AI 对话历史记录、收藏及个性化设置（即跨设备账号绑定与数据互通）。</text>
+      </view>
+
+      <!-- 2. 剪切板 -->
+      <view class="para-text">
+        <text class="para-num">2.</text>
+        <text class="highlight-inline">开发者读取你的剪切板</text>，用途是：
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>方便你将外部文本粘贴至 AI 提问框；</text>
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>以及一键复制 AI 生成的答案到你的剪切板。</text>
+      </view>
+
+      <!-- 3. 相册写入 -->
+      <view class="para-text">
+        <text class="para-num">3.</text>
+        <text class="highlight-inline">开发者将在获取你的明示同意后，使用你的相册（仅写入）权限</text>，用途是：
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>用户手动保存浏览的图片、收藏的图片或 AI 生成的图片到本地相册。</text>
+      </view>
+
+      <!-- 4. 照片或视频信息 -->
+      <view class="para-text">
+        <text class="para-num">4.</text>
+        <text class="highlight-inline">开发者收集你选中的照片或视频信息</text>，用途是：
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text>在 AI 图片鉴赏对话中，作为附件上传给大模型进行多模态分析与回复（你上传的图片不会被存储到小程序的图片库中）。</text>
+      </view>
+
+      <!-- 注 -->
+      <view class="para-text" style="margin-top: 16rpx;">
+        <text class="highlight-inline">注：</text>本小程序不收集你的微信昵称、头像、性别、地区、手机号码、身份证号码等敏感个人信息。
+      </view>
+
+      <!-- ===== 第二条 ===== -->
+      <view class="section-title">二、第三方插件信息 / SDK信息</view>
+      <view class="para-text">
+        为实现特定功能，开发者可能会接入由第三方提供的插件/SDK。第三方插件/SDK的个人信息处理规则，请以其公示的官方说明为准。
+      </view>
+      <view class="para-text" style="margin-top: 12rpx;">
+        <text class="highlight-inline">ACG智能图廊 小程序接入的第三方插件信息/SDK信息如下：</text>
+      </view>
+      <view class="para-text" style="font-weight: 600; color: #5C3D5E;">
+        无（本小程序目前未使用任何第三方插件或SDK，所有数据处理均在开发者自建后端完成）。
+      </view>
+
+      <!-- ===== 第三条 ===== -->
+      <view class="section-title">三、你的权益</view>
+      <view class="para-text">
+        开发者承诺，除法律法规另有规定外，开发者对你的信息的保存期限应当为实现处理目的所必要的最短时间。
+      </view>
+
+      <!-- 相册撤回 -->
+      <view class="para-text" style="margin-top: 12rpx;">
+        关于<text class="highlight-inline">相册（仅写入）</text>，你可以通过以下路径撤回授权：
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">▸</text>
+        <text>手机系统设置 → 隐私 → 照片 → 找到"ACG智能图廊" → 设置为"无"或"读取所有照片"。</text>
+      </view>
+
+      <!-- 剪切板 -->
+      <view class="para-text" style="margin-top: 12rpx;">
+        关于<text class="highlight-inline">剪切板</text>，你无法直接撤回系统级剪切板权限（系统默认允许读取），但你可以通过退出小程序或清空剪切板内容来避免非必要信息被读取。
+      </view>
+
+      <!-- 邮箱及个人信息 -->
+      <view class="para-text" style="margin-top: 12rpx;">
+        关于<text class="highlight-inline">邮箱</text>及<text class="highlight-inline">你的个人信息</text>，你可以通过以下方式与开发者联系，行使查阅、复制、更正、删除等法定权利：
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text class="highlight-inline">邮箱：</text>
+        <text>3058439878@qq.com</text>
+      </view>
+      <view class="list-item">
+        <text class="list-bullet">•</text>
+        <text class="highlight-inline">小程序内反馈入口：</text>
+        <text>"我的" → "意见反馈"</text>
+      </view>
+
+      <!-- ===== 第四条 ===== -->
+      <view class="section-title">四、开发者对信息的存储</view>
+      <view class="para-text">
+        开发者承诺，除法律法规另有规定外，开发者对你的信息的保存期限应当为实现处理目的所必要的最短时间。
+      </view>
+      <view class="para-text">
+        开发者将你的信息存储在<text class="highlight-inline">中国大陆</text>。
+      </view>
+
+      <!-- ===== 第五条 ===== -->
+      <view class="section-title">五、信息的使用规则</view>
+      <view class="para-text">
+        开发者将会在本指引所明示的用途内使用收集的信息。
+      </view>
+      <view class="para-text">
+        如开发者使用你的信息超出本指引目的或合理范围，开发者必须在变更使用目的或范围前，再次以<text class="highlight-inline">弹窗或显著公告</text>方式告知并征得你的明示同意。
+      </view>
+
+      <!-- ===== 第六条 ===== -->
+      <view class="section-title">六、信息对外提供</view>
+      <view class="para-text">
+        开发者承诺，不会主动共享或转让你的信息至任何第三方，如存在确需共享或转让时，开发者应当直接征得或确认第三方征得你的单独同意。
+      </view>
+      <view class="para-text">
+        开发者承诺，不会对外公开披露你的信息，如必须公开披露时，开发者应当向你告知公开披露的目的、披露信息的类型及可能涉及的信息，并征得你的单独同意。
+      </view>
+
+      <!-- ===== 第七条 ===== -->
+      <view class="section-title">七、联系与投诉</view>
+      <view class="para-text">
+        你认为开发者未遵守上述约定，或有其他的投诉建议、或未成年人个人信息保护相关问题，可通过以下方式与开发者联系；或者向微信进行投诉。
+      </view>
+      <view class="contact-info" style="margin-top: 14rpx;">
+        <text class="contact-label">📮 邮箱：</text>
+        <text class="contact-value">3058439878@qq.com</text>
+      </view>
+
+      <view class="card-bottom-spacer"></view>
+      <!-- 底部小花边 -->
+      <view class="card-bottom-lace"></view>
+    </view>
+  </view>
+
+  <view class="bottom-safe-spacer"></view>
+</scroll-view>
+
+<!-- 底部柔光遮罩 -->
+<view class="bottom-fade-mask"></view>
+</view>

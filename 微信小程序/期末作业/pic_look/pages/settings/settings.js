@@ -13,7 +13,7 @@ Page({
   },
   
   onShow() {
-    wx.setTabBarStyle({ color: '#fff', selectedColor: '#fff', "backgroundColor": "#ffb6c1",})
+    wx.setTabBarStyle({ color: '#fff', selectedColor: '#ff6b9d', "backgroundColor": "#ffb6c1",})
     this.loadUserInfo();
   },
 
