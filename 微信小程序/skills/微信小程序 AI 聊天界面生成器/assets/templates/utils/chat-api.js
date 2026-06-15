@@ -1,12 +1,13 @@
 /**
  * chat-api.js — AI 对话 API 封装
  *
- * 提供两种模式：
+ * 提供三种模式：
  *   1. MockAPI — 本地模拟，无需后端，适合原型开发和演示
  *   2. streamChat — SSE 流式对接真实后端（DeepSeek/OpenAI 兼容格式）
+ *   3. DifyAPI — Dify 对话型应用完整 API（SSE 流式、文件上传、反馈、会话管理）
  *
  * 使用方式：
- *   const { MockAPI, streamChat } = require('../../utils/chat-api');
+ *   const { MockAPI, streamChat, DifyAPI } = require('../../utils/chat-api');
  */
 
 // ==================== 配置 ====================
@@ -231,11 +232,297 @@ function _arrayBufferToString(buffer) {
   return String(buffer);
 }
 
+// ==================== Dify 对话型应用 API ====================
+
+/**
+ * Dify 对话型应用 API 封装
+ *
+ * 鉴权: Authorization: Bearer {apiKey}
+ * 用户标识: user 参数（来自业务系统的用户 ID）
+ * Nginx 路由: /ai/* → Dify 服务（端口 21326）
+ *
+ * SSE 流式事件:
+ *   message       — LLM 文本块 (answer, message_id, conversation_id, task_id)
+ *   agent_message — Agent 模式文本块
+ *   agent_thought — Agent 思考步骤 (thought, observation, tool, tool_input)
+ *   message_file  — 文件事件 (id, type, url)
+ *   message_end   — 流结束标记
+ *   error         — 错误事件
+ *   ping          — 心跳 (每 10s)
+ */
+const DifyAPI = {
+  /** Dify API Key（从 Dify 后台「访问 API」页面获取） */
+  API_KEY: '',
+
+  /** API 基础路径（含 Nginx /ai/ 前缀） */
+  BASE_URL: '',
+
+  /**
+   * 初始化配置
+   * @param {string} apiKey  - Dify API Key
+   * @param {string} baseUrl - 基础 URL（如 http://10.43.128.231:61000/ai/v1）
+   */
+  init(apiKey, baseUrl) {
+    this.API_KEY = apiKey;
+    this.BASE_URL = baseUrl;
+  },
+
+  // ==================== 文件上传 ====================
+
+  /**
+   * 上传文件（图片等）到 Dify
+   *
+   * 【关键踩坑】wx.uploadFile 在新版微信 SDK 中可能已自动解析 JSON，
+   * res.data 可能是 object 而非 string，必须同时处理两种类型。
+   *
+   * 【关键踩坑】Nginx 默认 client_max_body_size=1MB，图片必然超限返回 413。
+   * 需在 nginx.conf 中设置 client_max_body_size 500m;
+   *
+   * @param {string} filePath - 微信临时文件路径 (wx.chooseMedia 返回的 tempFilePath)
+   * @param {string} userId   - 终端用户标识
+   * @returns {Promise<{id, name, size, extension, mime_type}>}
+   */
+  uploadFile(filePath, userId) {
+    return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: `${this.BASE_URL}/files/upload`,
+        filePath,
+        name: 'file',
+        formData: { user: userId },
+        header: { 'Authorization': `Bearer ${this.API_KEY}` },
+        success(res) {
+          let data;
+          if (typeof res.data === 'string') {
+            try { data = JSON.parse(res.data); } catch (e) {
+              reject(new Error(`服务器返回非 JSON (status=${res.statusCode})，请检查 Nginx/Dify 是否正常`));
+              return;
+            }
+          } else if (typeof res.data === 'object' && res.data !== null) {
+            data = res.data;  // SDK 已自动解析
+          } else {
+            reject(new Error(`服务器返回异常数据 (status=${res.statusCode})`));
+            return;
+          }
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            resolve(data);
+          } else {
+            reject(new Error(data.message || data.code || `上传失败(${res.statusCode})`));
+          }
+        },
+        fail(err) { reject(new Error(err.errMsg || '网络异常')); }
+      });
+    });
+  },
+
+  // ==================== 发送对话消息（SSE 流式） ====================
+
+  /**
+   * 发送对话消息（SSE 流式）
+   * @param {Object} opts
+   * @param {string} opts.query          - 用户输入
+   * @param {string} opts.userId         - 用户标识
+   * @param {string} [opts.conversationId] - 会话 ID
+   * @param {Array}  [opts.files]        - [{type, transfer_method, upload_file_id}]
+   * @param {Function} opts.onToken      - (token: string)
+   * @param {Function} opts.onMessageId  - (messageId: string) Dify 真实 message_id
+   * @param {Function} opts.onThought    - ({thought, observation, tool, tool_input})
+   * @param {Function} opts.onConvId     - (conversationId: string)
+   * @param {Function} opts.onTaskId     - (taskId: string)
+   * @param {Function} opts.onFile       - ({id, type, url})
+   * @param {Function} opts.onDone       - (conversationId: string)
+   * @param {Function} opts.onError      - (error: Error)
+   * @returns {wx.RequestTask} 可调用 .abort() 停止
+   */
+  sendChatMessage(opts) {
+    const {
+      query, userId, conversationId, files,
+      onToken, onMessageId, onThought, onConvId, onTaskId, onFile,
+      onDone, onError,
+    } = opts;
+
+    let convId = conversationId || '';
+    let taskId = '';
+
+    const requestTask = wx.request({
+      url: `${this.BASE_URL}/chat-messages`,
+      method: 'POST',
+      enableChunked: true,
+      header: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.API_KEY}`
+      },
+      data: {
+        inputs: {},
+        query,
+        response_mode: 'streaming',
+        user: userId,
+        conversation_id: convId,
+        files: files || [],
+        auto_generate_name: true,
+      },
+      success(res) {
+        if (res.statusCode !== 200 && onError) {
+          try { const e = JSON.parse(res.data); onError(new Error(e.message || e.code)); }
+          catch (_) { onError(new Error(`请求失败(${res.statusCode})`)); }
+        }
+      },
+      fail(err) { if (onError) onError(new Error(err.errMsg || '网络异常')); }
+    });
+
+    let buffer = '';
+    requestTask.onChunkReceived(res => {
+      try {
+        const chunk = this._buf2str(res.data);
+        buffer += chunk;
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed || !trimmed.startsWith('data: ')) continue;
+          let json;
+          try { json = JSON.parse(trimmed.slice(6)); } catch (_) { continue; }
+
+          switch (json.event) {
+            case 'message':
+            case 'agent_message':
+              if (json.answer && onToken) onToken(json.answer);
+              if (json.message_id && onMessageId) onMessageId(json.message_id);
+              if (json.conversation_id && !convId) { convId = json.conversation_id; if (onConvId) onConvId(convId); }
+              if (json.task_id && !taskId) { taskId = json.task_id; if (onTaskId) onTaskId(taskId); }
+              break;
+            case 'agent_thought':
+              if (onThought) onThought({
+                thought: json.thought || '',
+                observation: json.observation || '',
+                tool: json.tool || '',
+                tool_input: json.tool_input || '',
+              });
+              break;
+            case 'message_file':
+              if (onFile) onFile({ id: json.id, type: json.type, url: json.url });
+              break;
+            case 'message_end':
+              if (onDone) onDone(json.conversation_id || convId);
+              return;
+            case 'error':
+              if (onError) onError(new Error(json.message || '服务异常'));
+              return;
+            case 'ping': break;
+          }
+        }
+      } catch (_) { /* 解析异常忽略，buffer 残留数据下个 chunk 重试 */ }
+    });
+
+    return requestTask;
+  },
+
+  /** ArrayBuffer → UTF-8 字符串 */
+  _buf2str(buffer) {
+    if (typeof buffer === 'string') return buffer;
+    if (buffer instanceof ArrayBuffer) {
+      const bytes = new Uint8Array(buffer);
+      let str = '';
+      for (let i = 0; i < bytes.length; i++) str += '%' + ('00' + bytes[i].toString(16)).slice(-2);
+      try { return decodeURIComponent(str); } catch (_) { return str; }
+    }
+    return String(buffer || '');
+  },
+
+  // ==================== 反馈 ====================
+
+  /**
+   * 发送消息反馈（点赞/点踩）
+   * 【关键踩坑】必须使用 Dify 真实 message_id（UUID），不能用本地生成的 msg_xxx ID
+   * @param {string} messageId - Dify 真实 message_id
+   * @param {string} rating    - "like" | "dislike" | null
+   * @param {string} userId    - 用户标识
+   */
+  sendFeedback(messageId, rating, userId) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: `${this.BASE_URL}/messages/${messageId}/feedbacks`,
+        method: 'POST',
+        header: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.API_KEY}`
+        },
+        data: { rating, user: userId, content: '' },
+        success(res) {
+          if (res.statusCode === 200) resolve(res.data);
+          else reject(new Error('反馈失败'));
+        },
+        fail(err) { reject(err); }
+      });
+    });
+  },
+
+  // ==================== 会话管理 ====================
+
+  /** 获取会话列表 */
+  getConversations(userId, lastId, limit = 20) {
+    return new Promise((resolve, reject) => {
+      let url = `${this.BASE_URL}/conversations?user=${encodeURIComponent(userId)}&limit=${limit}`;
+      if (lastId) url += `&last_id=${lastId}`;
+      wx.request({
+        url, method: 'GET',
+        header: { 'Authorization': `Bearer ${this.API_KEY}` },
+        success(res) { res.statusCode === 200 ? resolve(res.data) : reject(new Error('获取失败')); },
+        fail(err) { reject(err); }
+      });
+    });
+  },
+
+  /** 获取会话历史消息 */
+  getMessages(conversationId, userId, firstId, limit = 20) {
+    return new Promise((resolve, reject) => {
+      let url = `${this.BASE_URL}/messages?user=${encodeURIComponent(userId)}&conversation_id=${conversationId}&limit=${limit}`;
+      if (firstId) url += `&first_id=${firstId}`;
+      wx.request({
+        url, method: 'GET',
+        header: { 'Authorization': `Bearer ${this.API_KEY}` },
+        success(res) { res.statusCode === 200 ? resolve(res.data) : reject(new Error('获取失败')); },
+        fail(err) { reject(err); }
+      });
+    });
+  },
+
+  /** 删除会话 */
+  deleteConversation(conversationId, userId) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: `${this.BASE_URL}/conversations/${conversationId}`,
+        method: 'DELETE',
+        header: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.API_KEY}`
+        },
+        data: { user: userId },
+        success(res) { (res.statusCode === 204 || res.statusCode === 200) ? resolve() : reject(new Error('删除失败')); },
+        fail(err) { reject(err); }
+      });
+    });
+  },
+
+  /** 获取应用参数（开场白、推荐问题等） */
+  getAppParameters() {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: `${this.BASE_URL}/parameters`,
+        method: 'GET',
+        header: { 'Authorization': `Bearer ${this.API_KEY}` },
+        success(res) { res.statusCode === 200 ? resolve(res.data) : reject(new Error('获取失败')); },
+        fail(err) { reject(err); }
+      });
+    });
+  },
+};
+
 // ==================== 导出 ====================
 
 module.exports = {
   MockAPI,
   streamChat,
+  DifyAPI,
   setApiKey,
   getApiKey,
   DEFAULT_API_ENDPOINT,

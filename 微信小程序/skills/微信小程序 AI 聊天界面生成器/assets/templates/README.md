@@ -61,10 +61,12 @@ pages/chat/                   → miniprogram/pages/chat/
 ```js
 data: {
   welcomeMsg: '你好！我是 AI 助手，有什么可以帮你的？',
-  apiMode: 'mock',    // 'mock' = 本地模拟，'real' = 真实 API
+  apiMode: 'mock',    // 'mock' = 本地模拟 | 'real' = OpenAI/DeepSeek | 'dify' = Dify 对话型应用
   // 启用真实 API：
   // apiMode: 'real',
   // apiEndpoint: 'https://your-api.com/v1/chat/completions',
+  // 启用 Dify：
+  // apiMode: 'dify',
 }
 ```
 
@@ -95,6 +97,47 @@ Page({
     // wx.request({ url: 'https://your-backend.com/get-token', ... })
   },
 });
+```
+
+### Dify 对话型应用
+
+```js
+// pages/chat/chat.js
+const { DifyAPI } = require('../../utils/chat-api');
+
+Page({
+  data: {
+    apiMode: 'dify',
+  },
+  onLoad() {
+    // 初始化 Dify API
+    DifyAPI.init(
+      'app-YOUR_DIFY_API_KEY',                         // Dify API Key（从 Dify 后台获取）
+      'http://10.43.128.231:61000/ai/v1'               // 基础 URL（含 Nginx /ai/ 前缀）
+    );
+  },
+});
+```
+
+#### Dify 所需后端环境
+
+- Nginx 反向代理：将 `/ai/*` 路由到 Dify 服务端口（如 21326），自动剥离 `/ai/` 前缀
+- **Nginx `client_max_body_size` 必须 ≥ 50m**（默认 1MB 会导致图片上传 413）
+- Dify 服务需暴露端口并通过 `host.docker.internal` 或 IP 可达
+- 用户标识通过业务系统的 `GET /db/auth/me` 获取
+
+#### Dify API Key 安全
+
+API Key **不要硬编码在前端**，建议存储在 `config/api.js` 中并加入 `.gitignore`：
+
+```js
+// config/api.js（不提交到仓库）
+const API = {
+  DIFY_API_KEY: 'app-xxxxxxxxxxxxx',
+  AI_CHAT: base_url + '/ai/v1/chat-messages',
+  AI_FILE_UPLOAD: base_url + '/ai/v1/files/upload',
+  // ...
+};
 ```
 
 ### 自定义后端

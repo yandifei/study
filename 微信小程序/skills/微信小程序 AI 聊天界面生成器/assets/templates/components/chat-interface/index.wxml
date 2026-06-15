@@ -51,7 +51,13 @@
         <!-- 用户消息 -->
         <view wx:if="{{item.role === 'user'}}" class="message-row user-row">
           <view class="message-bubble user-bubble">
-            <text class="bubble-text" user-select="{{true}}">{{item.content}}</text>
+            <!-- 图片附件缩略图（在文字上方） -->
+            <view wx:if="{{item.files && item.files.length > 0}}" class="msg-images">
+              <image wx:for="{{item.files}}" wx:key="id" wx:for-item="f"
+                class="msg-image-item" src="{{f.path || f.url}}" mode="aspectFill"
+                bindtap="handlePreviewFile" data-path="{{f.path || f.url}}" />
+            </view>
+            <text wx:if="{{item.content}}" class="bubble-text" user-select="{{true}}">{{item.content}}</text>
           </view>
           <!-- 用户头像 -->
           <image
@@ -84,10 +90,15 @@
               <text>思考中...</text>
             </view>
 
-            <!-- 流式输出或已完成：Markdown 渲染 -->
-            <view wx:else class="ai-content">
+            <!-- 思考过程折叠块（有内容时显示，默认折叠） -->
+            <view wx:elif="{{item.content || item.status === 'streaming'}}" class="ai-content">
+              <view wx:if="{{item.thought}}" class="think-toggle" bindtap="handleToggleThought" data-id="{{item.id}}">
+                <text>{{item.showThought ? '▾' : '▸'}} 💭 思考过程</text>
+              </view>
+              <view wx:if="{{item.thought && item.showThought}}" class="think-content">
+                <text user-select="{{true}}">{{item.thought}}</text>
+              </view>
               <markdown-renderer content="{{item.content}}" showCopyBtn="{{showCopyBtn}}" />
-              <!-- 流式输出光标 -->
               <text wx:if="{{item.status === 'streaming'}}" class="streaming-cursor">▊</text>
             </view>
 
@@ -98,14 +109,18 @@
               <text class="retry-btn" bind:tap="handleRetry" data-id="{{item.id}}">重试</text>
             </view>
 
-            <!-- 操作按钮行（复制、点赞、点踩） -->
-            <view wx:if="{{item.status === 'sent' && showFeedbackBtn}}" class="action-buttons">
+            <!-- 操作按钮行（复制、点赞、点踩、重新生成） -->
+            <view wx:if="{{item.status === 'sent'}}" class="action-buttons">
               <image wx:if="{{showCopyBtn}}" class="action-icon" src="/imgs/copy.svg" mode="aspectFit"
                 bind:tap="handleCopyContent" data-content="{{item.content}}" />
-              <image class="action-icon" src="/imgs/thumb-up.svg" mode="aspectFit"
-                bind:tap="handleFeedback" data-id="{{item.id}}" data-type="up" />
-              <image class="action-icon" src="/imgs/thumb-down.svg" mode="aspectFit"
-                bind:tap="handleFeedback" data-id="{{item.id}}" data-type="down" />
+              <image wx:if="{{showFeedbackBtn}}" class="action-icon {{item.feedback === 'like' ? 'action-icon-active' : ''}}"
+                src="/imgs/thumb-up.svg" mode="aspectFit"
+                bind:tap="handleFeedback" data-id="{{item.id}}" data-type="like" />
+              <image wx:if="{{showFeedbackBtn}}" class="action-icon {{item.feedback === 'dislike' ? 'action-icon-active' : ''}}"
+                src="/imgs/thumb-down.svg" mode="aspectFit"
+                bind:tap="handleFeedback" data-id="{{item.id}}" data-type="dislike" />
+              <image class="action-icon" src="/imgs/refresh.svg" mode="aspectFit"
+                bind:tap="handleRegenerate" data-id="{{item.id}}" />
             </view>
           </view>
         </view>

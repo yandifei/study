@@ -45,11 +45,15 @@ Page({
     enableWebSearch: false,
 
     // ===== API 配置 =====
-    /** API 模式："mock"（本地模拟）或 "real"（真实后端） */
+    /** API 模式："mock"（本地模拟）| "real"（OpenAI/DeepSeek）| "dify"（Dify 对话型应用） */
     apiMode: 'mock',
 
     /** 真实 API 地址（apiMode 为 "real" 时必填） */
     apiEndpoint: 'https://api.deepseek.com/v1/chat/completions',
+
+    /** Dify API 配置（apiMode 为 "dify" 时使用） */
+    difyApiKey: 'app-YOUR_DIFY_API_KEY',
+    difyBaseUrl: 'http://10.43.128.231:61000/ai/v1',  // 含 Nginx /ai/ 路由前缀
   },
 
   /**

@@ -23,7 +23,7 @@
  *   send            {detail: {content}}    用户发送消息（apiMode=real 时）
  */
 
-const { MockAPI, streamChat } = require('../../utils/chat-api');
+const { MockAPI, streamChat, DifyAPI } = require('../../utils/chat-api');
 
 Component({
   properties: {
@@ -40,7 +40,7 @@ Component({
     enableVoice:   { type: Boolean, value: false },
     enableFileUpload: { type: Boolean, value: false },
     enableWebSearch:  { type: Boolean, value: false },
-    apiMode:       { type: String,  value: 'mock' },
+    apiMode:       { type: String,  value: 'mock' },  // 'mock' | 'real' | 'dify'
     apiEndpoint:   { type: String,  value: '' },
   },
 
@@ -94,15 +94,20 @@ Component({
       this.triggerEvent('messageschange', { messages: this.data.messages });
     },
 
-    /** 创建消息对象 */
-    _createMessage(role, content, status) {
+    /** 创建消息对象（完整数据结构） */
+    _createMessage(role, content, status, extra = {}) {
       return {
         id: `msg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+        difyMessageId: extra.difyMessageId || '',  // Dify 真实 message_id（用于反馈 API）
         role,
         content,
         status: status || 'sent',
         timestamp: Date.now(),
-        errorMsg: '',
+        errorMsg: extra.errorMsg || '',
+        files: extra.files || [],      // [{id, path, url, type, upload_file_id}]
+        feedback: extra.feedback || null,  // "like" | "dislike" | null
+        thought: extra.thought || '',      // 思考过程（<think> 标签或 agent_thought 提取）
+        showThought: false,                // 默认折叠思考过程
       };
     },
 
@@ -482,13 +487,37 @@ Component({
       });
     },
 
-    /** 反馈（点赞/点踩） */
+    /** 切换思考过程折叠/展开 */
+    handleToggleThought(e) {
+      const { id } = e.currentTarget.dataset;
+      const idx = this.data.messages.findIndex(m => m.id === id);
+      if (idx !== -1) {
+        this.setData({
+          [`messages[${idx}].showThought`]: !this.data.messages[idx].showThought,
+        });
+      }
+    },
+
+    /** 反馈（点赞/点踩） — Dify 模式使用真实 message_id */
     handleFeedback(e) {
       const { id, type } = e.currentTarget.dataset;
-      wx.showToast({
-        title: type === 'up' ? '感谢反馈' : '已记录',
-        icon: 'success',
-      });
+      const rating = type === 'like' ? 'like' : 'dislike';
+      const idx = this.data.messages.findIndex(m => m.id === id);
+      // 优先使用 Dify 真实 message_id（UUID），回退到本地 id
+      const realId = (idx >= 0 && this.data.messages[idx].difyMessageId) || id;
+
+      if (this.properties.apiMode === 'dify' && realId) {
+        DifyAPI.sendFeedback(realId, rating, this.data._userId)
+          .then(() => {
+            wx.showToast({ title: rating === 'like' ? '感谢反馈 👍' : '已记录', icon: 'none' });
+            if (idx >= 0) {
+              this.setData({ [`messages[${idx}].feedback`]: rating });
+            }
+          })
+          .catch(() => wx.showToast({ title: '反馈失败', icon: 'none' }));
+      } else {
+        wx.showToast({ title: type === 'like' ? '感谢反馈 👍' : '已记录', icon: 'success' });
+      }
     },
 
     // ==================== 清空对话 ====================
@@ -501,6 +530,29 @@ Component({
     /** 取消清空 */
     handleCancelClear() {
       this.setData({ showClearConfirm: false });
+    },
+
+    /** 预览文件/图片（大图模式） */
+    handlePreviewFile(e) {
+      const { path } = e.currentTarget.dataset;
+      if (path) {
+        wx.previewImage({ urls: [path], current: path });
+      }
+    },
+
+    /** 重新生成：找到上一条用户消息重新发送 */
+    handleRegenerate(e) {
+      if (this.data.isGenerating) return;
+      const { id } = e.currentTarget.dataset;
+      const msgs = [...this.data.messages];
+      const idx = msgs.findIndex(m => m.id === id);
+      if (idx === -1) return;
+      const uMsg = msgs.slice(0, idx).reverse().find(m => m.role === 'user');
+      if (!uMsg) return;
+      msgs.splice(idx, 1);
+      this.setData({ messages: msgs, isGenerating: true });
+      // 重新发送...
+      this.triggerEvent('send', { content: uMsg.content, files: uMsg.files });
     },
 
     /** 确认清空 */

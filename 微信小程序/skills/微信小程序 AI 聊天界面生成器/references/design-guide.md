@@ -113,3 +113,223 @@
 - 输入框最小高度 54px（一行），最大高度 160px（约 5 行）
 - 发送按钮：有内容时显示蓝色圆形按钮（58rpx），无内容时隐藏
 - 发送中：发送按钮替换为停止按钮（红色圆形）
+
+## 图片附件展示规范
+
+### 已选待发送图片（输入区上方）
+
+- 横向滚动行，位于输入框上方
+- 图片缩略图 95rpx × 95rpx，圆角 14rpx
+- 右上角圆形删除按钮（40rpx，半透明黑底 + 白色 ×）
+- 间距 14rpx
+- 最多 3 张（Dify 默认限制）
+
+### 用户消息中的图片附件
+
+- 显示在消息文本上方（消息气泡内）
+- 图片缩略图 160rpx × 160rpx，圆角 12rpx
+- 点击调用 `wx.previewImage` 进入大图模式
+- 使用 `f.path || f.url` 同时支持本地路径和远程 URL
+- 图片容器使用 flex-wrap 布局，gap 10rpx
+
+### 关键字段对齐
+
+```
+JS fileRefs: { id, path, url, type, upload_file_id }
+WXML:       f.path || f.url  (wx:key="id")
+```
+**常见 bug**：JS 中存 `_path`，WXML 中取 `f.path` → 字段名不一致导致图片不显示。
+
+## 思考过程（<think>）折叠规范
+
+### 折叠按钮（think-toggle）
+
+- 浅蓝底 (`var(--brand-soft)`) 胶囊型，padding 12rpx 16rpx
+- 圆角 10rpx，位于 AI 消息正文上方
+- 文案：`▸ 💭 思考过程`（折叠态）/ `▾ 💭 思考过程`（展开态）
+- 字号 24rpx，颜色 `var(--brand)`
+- 点击切换 `showThought` 状态
+
+### 思考内容区（think-content）
+
+- 灰色代码风格背景 (`var(--code-bg)`)
+- padding 16rpx 20rpx，圆角 10rpx
+- 左侧品牌色竖线 (`border-left: 4rpx solid var(--brand)`)
+- 字号 24rpx，辅助文字色 (`var(--text-secondary)`)
+- 行高 1.6，white-space: pre-wrap
+- **max-height: 400rpx，overflow-y: auto**（移动端关键约束）
+- 默认不渲染（`wx:if="{{item.thought && item.showThought}}"`）
+
+### 状态管理
+
+- 消息对象需初始化 `thought: ''` 和 `showThought: false`
+- SSE 流接收到 `<think>` 块时实时剥离，存入 `thought` 字段
+- `showThought` 默认 `false`（折叠），用户手动点击展开
+
+---
+
+## DeepSeek 纯白极简风格（v2 配色方案）
+
+纯白背景 + 无头像 + 悬浮胶囊输入框，完全复刻 DeepSeek App 的清爽视觉。
+
+### 亮色模式
+
+| 用途 | 色值 | CSS 变量 |
+|------|------|----------|
+| 主背景 | `#FFFFFF` | `--bg-primary` |
+| 次级背景 | `#F7F7F8` | `--bg-secondary` |
+| 输入区背景 | `#F5F5F6` | `--bg-input` |
+| 主文字 | `#1a1a1a` | `--text-primary` |
+| 辅助文字 | `#8F959E` | `--text-secondary` |
+| 用户气泡 | `#F3F0FF`（淡蓝紫） | `--bubble-user` |
+| 品牌色 | `#4B70FD` | `--brand` |
+| 品牌浅色 | `#EEF2FF` | `--brand-light` |
+| 边框色 | `#EEEEEE` | `--border` |
+| 微阴影 | `rgba(0,0,0,0.04)` | `--shadow` |
+| 思考过程背景 | `#F8F8F9` | `--think-bg` |
+
+### v1 → v2 关键差异
+
+| 元素 | v1 初版 | v2 纯白版 |
+|------|---------|-----------|
+| 页面背景 | `#EAF1FF` 浅蓝 | `#FFFFFF` 纯白 |
+| 导航栏 | `#4B70FD` 蓝底白字 | `#FFFFFF` 白底黑字 |
+| 用户气泡 | 白色 `#FFFFFF` | `#F3F0FF` 淡蓝紫 |
+| AI 气泡 | 白底 + 蓝左边框 + 阴影 | 纯白无边框无阴影 |
+| 用户/AI 头像 | 显示 | **完全隐藏** |
+| 输入框 | 灰底贴边 | 白底悬浮胶囊 + 明显底部间距 |
+| 思考过程 | 无 | 灰色折叠块 |
+| 操作按钮 | 复制 · 点赞 · 点踩 | 复制 · 点赞 · 点踩 · **重新生成** |
+
+### 无头像设计
+
+v2 隐藏所有消息头像，对话区域更干净：
+
+```html
+<!-- 用户消息 — 无头像 -->
+<view class="message-row user-row">
+  <view class="message-bubble user-bubble">...</view>
+</view>
+
+<!-- AI 消息 — 无头像 -->
+<view class="message-row ai-row">
+  <view class="message-body">...</view>
+</view>
+```
+
+### 悬浮胶囊输入框
+
+输入框脱离导航栏和底部，用间距和微妙阴影制造悬浮感：
+
+```css
+.footer-area {
+  background-color: var(--bg-primary);
+  padding: 16rpx 20rpx;
+  padding-bottom: calc(32rpx + env(safe-area-inset-bottom));
+  /* 不加 border-top，不加 box-shadow——让它"飘"在白色背景上 */
+}
+```
+
+---
+
+## 底部输入区 flex 布局铁律
+
+### 问题
+
+添加图片预览后 `footer-area` 长高，若不设 `min-height: 0`，`message-scroll` 拒绝收缩导致底部被挤出屏幕。
+
+### 规则
+
+```
+┌─ .chat-main (flex容器, min-height:0) ─┐
+│  .nav-bar        flex-shrink:0  固定    │
+│  .message-scroll  flex:1 1 0  自适应    │  ← 唯一可伸缩区域
+│  .footer-area    flex-shrink:0  固定    │  ← 长高时向上"借"空间，底部不动
+└────────────────────────────────────────┘
+```
+
+```css
+.chat-main { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.nav-bar, .footer-area { flex-shrink: 0; }
+.message-scroll { flex: 1 1 0; min-height: 0; }  /* ← 可缩至零 */
+```
+
+### 底部间距
+
+空 div 占位不可靠，直接用 `padding-bottom`：
+
+```css
+.footer-area { padding-bottom: calc(40rpx + env(safe-area-inset-bottom)); }
+```
+
+---
+
+## 自定义导航栏对齐公式
+
+`"navigationStyle": "custom"` 后需要手动对齐标题与微信胶囊按钮：
+
+```js
+initNavBar() {
+  const info = wx.getSystemInfoSync();
+  const menu = wx.getMenuButtonBoundingClientRect();
+  const gap = menu.top - info.statusBarHeight;
+  // gap = 胶囊顶部到状态栏底部的距离
+  this.setData({
+    statusBarHeight: info.statusBarHeight,
+    navBarHeight: gap * 2 + menu.height,  // 内容区：上下等距 + 胶囊高
+    totalNavHeight: info.statusBarHeight + gap * 2 + menu.height,
+  });
+}
+```
+
+WXML 双层 + flexbox 居中：
+
+```html
+<view class="nav-bar" style="height: {{totalNavHeight}}px; padding-top: {{statusBarHeight}}px;">
+  <view class="nav-bar-content" style="height: {{navBarHeight}}px; display:flex; align-items:center;">
+    <text class="nav-title">标题</text>
+  </view>
+</view>
+```
+
+---
+
+## 输入框多行增长策略
+
+`auto-height="{{true}}"` + CSS `max-height`，1→4 行自然增长，超出内部滚动。
+
+```html
+<textarea auto-height="{{true}}" ... />
+```
+
+```css
+.message-textarea {
+  font-size: 30rpx;
+  line-height: 1.5;
+  max-height: 208rpx; /* 30×1.5×4 + padding ≈ 208rpx */
+}
+```
+
+**不要**用 `onLineChange` 手动计算高度设 inline style——计算结果常与实际渲染不一致，且会与 CSS 冲突。
+
+---
+
+## 重新生成按钮
+
+操作行追加 🔄，点击后找上一条用户消息重新发送：
+
+```html
+<text class="action-btn" bindtap="handleRegenerate" data-id="{{item.id}}">🔄</text>
+```
+
+```js
+handleRegenerate(e) {
+  const msgs = [...this.data.messages];
+  const idx = msgs.findIndex(m => m.id === e.currentTarget.dataset.id);
+  const uMsg = msgs.slice(0, idx).reverse().find(m => m.role === 'user');
+  if (!uMsg) return;
+  msgs.splice(idx, 1);
+  this.setData({ messages: msgs });
+  this._sendMessage(uMsg.content, uMsg.files || []);
+}
+```
