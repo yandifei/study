@@ -1,0 +1,13 @@
+<view class="page-container">
+  <view class="header">
+    <text class="title">精美图集</text>
+    <text class="subtitle">14种风格，治愈你的每一天</text>
+  </view>
+
+  <view class="grid">
+    <view class="card {{item.type}}" wx:for="{{list}}" wx:key="code" bindtap="nav" data-url="{{item.code}}">
+      <text class="emoji">{{item.icon}}</text>
+      <text class="label">{{item.name}}</text>
+    </view>
+  </view>
+</view>

@@ -1,6 +1,6 @@
 <!--
-  pages/search/search.wxml
-  和我这个开发者进行聊天，实现一人人脑识别，没有人工智能的内容
+  pages/search/search.wxml — DeepSeek 极简风格
+  纯白 · 无头像 · 悬浮胶囊输入框 · 思考过程折叠
   auto-height="{{true}}" 让输入框随内容长高，max-height: 208rpx 在 4 行处封顶，超出的内容触发 overflow-y: auto 内部滚动。缺了任何一个都不行——之前 WXML 有 auto-height 但 CSS 丢了 max-height，所以无限长高、永不滚动。
 -->
 <view class="chat-page">
@@ -45,7 +45,7 @@
         <view class="nav-left" bindtap="handleToggleSidebar">
           <image class="nav-icon" src="/res/search/nav_icon.png" mode="aspectFill"/>
         </view>
-        <text class="nav-title">鉴赏者(开发者)</text>
+        <text class="nav-title">AI 鉴赏助手</text>
         <view class="nav-right">
           <text class="nav-icon" bindtap="handleNewChat">✧</text>
         </view>
@@ -89,6 +89,7 @@
             </view>
           </view>
 
+          <!-- AI 消息（无头像） -->
           <view wx:if="{{item.role === 'assistant'}}" class="message-row ai-row">
             <view class="message-body">
               <!-- 思考中 -->

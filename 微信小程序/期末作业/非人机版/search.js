@@ -1,8 +1,9 @@
 /**
- * pages/search/search.js
- * 人脑智能，和我这个开发者对话
+ * pages/search/search.js — AI 图片鉴赏助手（完整融合版）
+ *
  * 包含：
  * - 用户 & 会话管理
+ * - 图片上传 + AI 多模态流式对话
  * - 输入框行数自动增长（最多 4 行）
  * - 完整的功能开关与错误处理
  */
@@ -37,7 +38,7 @@ Page({
     manualScroll: false,
 
     // ===== 欢迎页 =====
-    welcomeMsg: '你好！我是鉴赏者（开发者本人） 🎨\n上传一张图片，让我帮你鉴赏分析～',
+    welcomeMsg: '你好！我是 AI 鉴赏助手 🎨\n上传一张图片，让我帮你鉴赏分析～',
     suggestions: [
       '这幅画的艺术风格是什么？',
       '帮我分析这张图片的构图',
@@ -539,18 +540,17 @@ Page({
         }
       },
       onError: (err) => {
-        // const curMsg = this.data.messages[aiIndex];
-        // this.setData({
-        //   [`messages[${aiIndex}].status`]: curMsg && curMsg.content ? 'sent' : 'failed',
-        //   [`messages[${aiIndex}].errorMsg`]: err.message || '请求失败',
-        //   isGenerating: false,
-        //   streamingMsgIndex: -1,
-        //   currentTaskId: '',
-        // });
-        // if (!curMsg || !curMsg.content) {
-        //   wx.showToast({ title: err.message || '请求失败，请重试', icon: 'none' });
-        // }
-        wx.showToast({ title: "作者去吃饭了", icon: 'none' });
+        const curMsg = this.data.messages[aiIndex];
+        this.setData({
+          [`messages[${aiIndex}].status`]: curMsg && curMsg.content ? 'sent' : 'failed',
+          [`messages[${aiIndex}].errorMsg`]: err.message || '请求失败',
+          isGenerating: false,
+          streamingMsgIndex: -1,
+          currentTaskId: '',
+        });
+        if (!curMsg || !curMsg.content) {
+          wx.showToast({ title: err.message || '请求失败，请重试', icon: 'none' });
+        }
       },
     });
   },

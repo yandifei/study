@@ -3,8 +3,8 @@ Page({
   data: {
     list: [
       {code: 'pc', name: 'PC壁纸', icon: '💻', type: ''},
-      {code: 'ai', name: 'AI生成', icon: '🤖', type: 'ai'},
-      {code: 'aimp', name: 'AI竖屏', icon: '📱', type: 'ai'},
+      {code: 'ai', name: '二次创作', icon: '🤖', type: 'ai'},
+      {code: 'aimp', name: '创作竖屏', icon: '📱', type: 'ai'},
       {code: 'bd', name: '白底极简', icon: '⚪', type: ''},
       {code: 'fj', name: '风景', icon: '🏔️', type: ''},
       {code: 'fjmp', name: '风景竖屏', icon: '🏞️', type: ''},
