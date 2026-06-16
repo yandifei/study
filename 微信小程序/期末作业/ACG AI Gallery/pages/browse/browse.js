@@ -37,6 +37,7 @@ Page({
     request.get(API.BROWSE_LIST + `?limit=${PAGE_SIZE}&skip=0`)
       .then(res => {
         if (res.statusCode === 200) {
+          // console.log('浏览列表原始返回:', JSON.stringify(res.data));
           const data = fmtList(res.data.data.records);
           this.setData({
             list: data,
@@ -48,7 +49,12 @@ Page({
           this.setData({ loading: false });
         }
       })
-      .catch(() => {
+      .catch(err => {
+        // // 不要 JSON.stringify，直接输出整个对象
+        // console.error('=== 浏览记录请求失败 ===');
+        // console.error('err 对象:', err);
+        // // 重点看这个字段，格式类似 "request:fail url not in domain list"
+        // console.error('errMsg:', err.errMsg);
         this.setData({ loading: false });
         wx.showToast({ title: '加载失败', icon: 'none' });
       });

@@ -30,15 +30,15 @@ const API = {
   USER_DELETE: base_url + '/db/auth/logout',        // 注销登陆
 
   // 浏览模块
-  BROWSE_LIST: base_url + '/db/browse/',            // 我的浏览记录 (GET)
-  BROWSE_BATCH: base_url + '/db/browse/',           // 批量记录浏览 (POST)
-  BROWSE_CLEAR: base_url + '/db/browse/',           // 清空我的浏览记录 (DELETE)
+  BROWSE_LIST:  base_url + '/db/browse/',            // 本地测试得加上尾部 
+  BROWSE_BATCH: base_url + '/db/browse/',
+  BROWSE_CLEAR: base_url + '/db/browse/',
 
   // 收藏模块
-  FAVORITE_LIST: base_url + '/db/favorite/',        // 我的收藏列表 (GET)
-  FAVORITE_ADD: base_url + '/db/favorite/',         // 添加收藏 (POST)
-  FAVORITE_CLEAR: base_url + '/db/favorite/',       // 清空我的收藏 (DELETE)
-  FAVORITE_REMOVE: base_url + '/db/favorite/',      // 取消收藏 (DELETE + image_id 路径参数)
+  FAVORITE_LIST:  base_url + '/db/favorite/',
+  FAVORITE_ADD:   base_url + '/db/favorite/',
+  FAVORITE_CLEAR: base_url + '/db/favorite/',
+  FAVORITE_REMOVE: base_url + '/db/favorite/',
 
   // AI模块（Dify 对话型应用 — Nginx /ai/* → Dify 服务 :21326）
   // Dify API Key 从 Dify 后台「访问 API」页面获取，不泄露到客户端仓库

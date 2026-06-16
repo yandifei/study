@@ -95,6 +95,7 @@ function request(options = {}) {
     const accessToken = wx.getStorageSync('access_token');
     if (accessToken) {
       rest.header = {
+        'ngrok-skip-browser-warning': 'true',  // 干掉 ngrok 确认页
         'Authorization': `Bearer ${accessToken}`,
         ...rest.header
       };
@@ -163,7 +164,10 @@ function retryQueue() {
     wx.request({
       ...retryOptions,
       success: (res) => resolve(res),
-      fail: (err) => reject(err)
+      fail: (err) => {
+        reject(err)
+        // console.log(err);
+      }
     });
   });
 }
