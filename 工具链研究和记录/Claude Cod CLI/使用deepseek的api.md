@@ -30,3 +30,6 @@ win+R 输入 `%USERPROFILE%\.claude\settings.json`
   }
 }
 ```
+
+
+设置完毕后关闭`settings.json`并关闭cmd窗口，重新打开cmd窗口（刷新变量），输入`claude`启动claude
