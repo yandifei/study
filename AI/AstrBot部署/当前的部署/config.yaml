@@ -1,84 +1,81 @@
 # Bay Production Config - Docker Compose (container_network mode)
+# Bay 生产环境配置 - Docker Compose（容器网络模式）
 #
-# Bay 运行在 Docker 容器中，并通过共享 Docker 网络与 Ship/Gull 容器通信。
-# 这种模式下，sandbox 容器不需要向宿主机暴露端口。
+# Bay 运行在 Docker 容器中，并通过共享 Docker 网络连接到 Ship/Gull 容器，
+# 通过共享的 Docker 网络使用容器 IP 进行通信（不映射主机端口）。
 #
-# 部署前至少需要修改：
-#   1. security.api_key  —— 设置强随机密钥
+# ┌─────────────────────────────────────────────────────────┐
+# │  部署前必须修改的项 (搜索 CHANGE-ME)：                   │
+# │    1. security.api_key  — 设置强随机密钥                 │
+# └─────────────────────────────────────────────────────────┘
 
-server:
-  # Bay API 监听地址
-  host: "0.0.0.0"
-  # Bay API 监听端口
-  port: 8114
+server:                                  # 服务器配置
+  host: "0.0.0.0"                        # 监听地址，0.0.0.0 表示接受所有网络接口的连接
+  port: 8114                             # 监听端口号
 
-database:
-  # 单机部署默认使用 SQLite。
-  # 如果要做多实例 / 高可用，可改用 PostgreSQL，例如：
+database:                                # 数据库配置
+  # 单机(单实例)部署默认使用 SQLite。
+  # 若需高可用 / 多实例部署，请切换为 PostgreSQL：
   # url: "postgresql+asyncpg://user:pass@db-host:5432/bay"
-  url: "sqlite+aiosqlite:///./data/bay.db"
-  echo: false
+  url: "sqlite+aiosqlite:///./data/bay.db"  # 数据库连接地址，此处使用本地 SQLite 文件
+  echo: false                            # 是否打印 SQL 日志，false 为关闭
 
-driver:
-  # 当前默认使用 Docker 驱动
-  type: docker
+driver:                                  # 驱动配置（负责创建和管理沙箱容器）
+  type: docker                           # 驱动类型，使用 Docker
 
-  # 创建新 sandbox 时是否拉取镜像。
-  # 生产环境通常建议 always，以便拿到最新镜像。
-  image_pull_policy: always
+  # 创建新 sandbox(沙箱) 时是否拉取最新的镜像。
+  # 生产环境建议设为 "always"，确保每次都使用最新镜像。
+  image_pull_policy: always              # 镜像拉取策略：always 表示每次都尝试拉取最新镜像
 
-  docker:
-    # Docker Socket 地址
-    socket: "unix:///var/run/docker.sock"
+  docker:                                # Docker 具体配置
+    socket: "unix:///var/run/docker.sock" # Docker 守护进程的 socket 路径
 
-    # Bay 在容器内运行，Ship/Gull 也在容器内运行时，推荐使用 container_network 通过容器网络直接通信。
-    connect_mode: container_network
+    # Bay 和 Ship/Gull 都在容器内运行 —— 使用容器网络直接连接
+    connect_mode: container_network      # 连接模式：容器网络模式
 
-    # 共享网络名，必须与 docker-compose.yaml 中的网络一致(默认"bay-network"，但是为了统一我改为了"astrbot_network")
-    network: "astrbot_network"
+    # Shared network name (must match docker-compose.yaml network)
+    # 共享的 Docker 网络名称（必须与 docker-compose.yaml 中的网络名称一致，默认"bay-network"，但是为了统一我改为了"astrbot_network"）
+    network: "astrbot_network"               # 使用的 Docker 网络名
 
-    # 是否将 sandbox 容器端口暴露到宿主机。
+    # 禁用主机端口映射 —— 沙箱容器不需要从 Docker 网络外部访问，
     # 生产环境建议关闭，以减少攻击面。
-    publish_ports: false
-    host_port: null
+    publish_ports: false                 # 是否将容器端口发布到主机，false 为不发布
+    host_port: null                      # 主机端口，null 表示不使用
 
-cargo:
-  # 自己加的，强制使用新的路径
-  # force_relative_path: true
-  # Bay 容器内部用来存放数据的根路径，对应上面docker-compose.astrbot_napcat_shipyard-neo.yaml里的挂载点
-  # Cargo 在 Bay 侧的存储根路径
-  root_path: "bay-cargos" # /var/lib/bay/cargos
-  # (对应docker-compose.astrbot_napcat_shipyard-neo.yaml里Bay容器看到的路径)
-  # root_path: "/workspace"
-  # 默认工作区大小限制（MB）
-  default_size_limit_mb: 1024
-  # Cargo 挂载到 sandbox 内的路径。AstrBot/Neo 的工作区根目录就是这里。
-  mount_path: "/workspace" # /workspace
+cargo:                                   # 文件暂存区（Cargo）配置
+  root_path: "/var/lib/bay/cargos"       # 数据存储的根目录
+  default_size_limit_mb: 1024            # 默认的 cargo 大小限制，单位 MB
+  mount_path: "/workspace"               # 挂载到沙箱内部的路径
 
+security:                                # 安全配置
+  # CHANGE-ME: 设置一个强随机密钥 (e.g. `openssl rand -hex 32`)
+  # 必须修改：请设置一个强随机字符串作为 API 密钥（例如用 `openssl rand -hex 32` 生成）
+  api_key: "CHANGE-ME"                   # API 密钥，用于认证
+  allow_anonymous: false                 # 是否允许匿名访问，false 表示必须提供 api_key
 
-security:
-  # 必改项：设置一个强随机密钥，例如 openssl rand -hex 32
-  api_key: "" # "CHANGE-ME" # 
-  # 是否允许匿名访问。生产环境建议 false。
-  allow_anonymous: false
+# ── Shared Browser Service ───────────────────────────────
+# ── 共享浏览器服务 ─────────────────────────────────────
+# 一个 Chromium 进程通过 gull-service 为所有 browser-python 沙箱提供服务。
+# 设为 false 将回退到每个沙箱独立启动 Gull 容器的模式。
+browser_service:                         # 浏览器服务配置
+  enabled: true                          # 是否启用共享浏览器服务
+  endpoint: "http://gull-service:8115"   # 共享浏览器服务的访问地址
 
-# 容器代理环境变量注入。
-# 启用后，Bay 会把 HTTP(S)_PROXY 和 NO_PROXY 注入到 sandbox 容器。
-proxy:
-  enabled: true
-  # http_proxy: "http://proxy.example.com:7890"
-  # https_proxy: "http://proxy.example.com:7890"
+# 为沙箱容器注入代理环境变量。
+# 启用后，Bay 会自动向沙箱容器注入 HTTP_PROXY、HTTPS_PROXY 和 NO_PROXY 环境变量。
+proxy:                                   # 代理配置
+  enabled: true                          # 是否启用代理注入，false 为不启用
+  # http_proxy: "http://proxy.example.com:7890"  # HTTP 代理地址
+  # https_proxy: "http://proxy.example.com:7890" # HTTPS 代理地址
+  http_proxy: "http://127.0.0.1:7890"
+  https_proxy: "http://127.0.0.1:7890"
+  # Optional extra entries to append to default NO_PROXY list
+  # （可选）追加到默认 NO_PROXY 列表中的额外条目
   # no_proxy: "my-internal.service"
-  http_proxy: "http://host.docker.internal:7897"
-  https_proxy: "http://host.docker.internal:7897"
-  # no_proxy: "localhost,127.0.0.1,*.local,*.internal,astrbot_network"
-  no_proxy: "localhost,127.0.0.1,*.local,*.internal,host.docker.internal,astrbot_network,bay,astrbot,napcat1,napcat2"
-  # http_proxy: "http://127.0.0.1:7890"
-  # https_proxy: "http://127.0.0.1:7890"
-  # no_proxy: "my-internal.service"
+  no_proxy: "localhost,127.0.0.1,*.local,astrbot_network,bay,astrbot,napcat1,napcat2"
 
-# Warm Pool：预热一批待命 sandbox，减少冷启动延迟。
-# 当用户创建 sandbox 时，Bay 会优先尝试领取一个已预热实例。
+# 预热池 —— 预先启动的备用沙箱实例，用于减少冷启动延迟。
+# 当用户创建沙箱时，Bay 会优先尝试取用一个已就绪的预热实例，从而实现近乎即时的启动，无需等待容器启动过程。
 warm_pool:
   # 我要关闭预热池
   enabled: false
@@ -95,98 +92,87 @@ warm_pool:
   # Bay 启动时是否立即运行预热逻辑
   run_on_startup: true
 
-profiles:
-  # ── 标准 Python 沙箱 ────────────────────────
-  - id: python-default
-    description: "Standard Python sandbox with filesystem and shell access"
-    image: "ghcr.io/astrbotdevs/shipyard-neo-ship:latest"
-    runtime_type: ship
-    runtime_port: 8123
-    resources:
-      cpus: 1.0
-      memory: "1g"
-    capabilities:
-      - filesystem  # 包含 upload/download
-      - shell
-      - python
-    # 沙箱存活时间
-    idle_timeout: 300
-    # 保持 0 个预热实例
-    warm_pool_size: 0
-    env: {}
-    # 可选：profile 级代理覆盖
+profiles:                                # 沙箱配置文件列表
+  # ── 标准 Python 沙箱 ─────────────────────────────
+  - id: python-default                   # 配置的唯一标识
+    description: "Standard Python sandbox with filesystem and shell access"  # 描述：标准 Python 沙箱，带文件系统和 Shell 访问
+    image: "ghcr.io/astrbotdevs/shipyard-neo-ship:latest" # 使用的容器镜像
+    runtime_type: ship                   # 运行时类型，ship 表示 ship 服务
+    runtime_port: 8123                   # 运行时服务端口
+    resources:                           # 资源限制
+      cpus: 1.0                          # CPU 核数
+      memory: "1g"                       # 内存大小
+    capabilities:                        # 能力列表
+      - filesystem  # 文件系统能力（包含上传/下载）
+      - shell       # Shell 能力
+      - python      # Python 能力
+    idle_timeout: 1800                   # 空闲超时时间（秒），1800 秒即 30 分钟
+    warm_pool_size: 1                    # 预热池中保持的实例数量
+    # Environment variables injected into the runtime container (available in Python and Shell)
+    # 注入到运行时容器的环境变量（可在 Python 和 Shell 中获取）
+    # Example: env: { TZ: "Asia/Shanghai", LANG: "en_US.UTF-8", CUSTOM_VAR: "value" }
+    # 例如：env: { TZ: "Asia/Shanghai", LANG: "en_US.UTF-8", CUSTOM_VAR: "value" }
+    env: {}                              # 环境变量键值对，当前为空
+    # Optional profile-level proxy override
+    # （可选）针对此配置的代理覆盖设置
     # proxy:
     #   enabled: false
 
-  # ── 数据科学沙箱（更多资源） ──────────
-  - id: python-data
-    description: "Data science sandbox with extra CPU and memory"
-    image: "ghcr.io/astrbotdevs/shipyard-neo-ship:latest"
-    runtime_type: ship
-    runtime_port: 8123
-    resources:
-      cpus: 2.0
-      memory: "4g"
-    capabilities:
-      - filesystem  # 包含 upload/download
-      - shell
-      - python
-    # 沙箱存活时间
-    idle_timeout: 300
-    warm_pool_size: 0
-    env: {}
+  # ── 数据科学沙箱（更多资源） ──────────────────────
+  - id: python-data                      # 配置标识
+    description: "Data science sandbox with extra CPU and memory"  # 描述：数据科学沙箱，提供额外的 CPU 和内存
+    image: "ghcr.io/astrbotdevs/shipyard-neo-ship:latest" # 镜像
+    runtime_type: ship                   # 运行时类型
+    runtime_port: 8123                   # 运行时端口
+    resources:                           # 资源限制
+      cpus: 2.0                          # 2 核 CPU
+      memory: "4g"                       # 4 GB 内存
+    capabilities:                        # 能力列表
+      - filesystem  # 文件系统
+      - shell       # Shell
+      - python      # Python
+    idle_timeout: 1800                   # 空闲超时
+    warm_pool_size: 1                    # 预热池大小
+    env: {}                              # 环境变量
 
-  # ── 浏览器 + Python 多容器沙箱 ───────
-  - id: browser-python
-    description: "Browser automation with Python backend"
-    containers:
-      - name: ship
-        image: "ghcr.io/astrbotdevs/shipyard-neo-ship:latest"
-        runtime_type: ship
-        runtime_port: 8123
-        resources:
-          cpus: 1.0
-          memory: "1g"
-        capabilities:
+  # ── 浏览器 + Python（共享浏览器池） ───────────────
+  - id: browser-python                   # 配置标识
+    description: "Browser automation with Python backend (shared Chromium)"  # 描述：带 Python 后端的浏览器自动化（共享 Chromium）
+    browser: shared                      # 浏览器模式：shared 表示通过共享浏览器服务路由，而非每个沙箱一个 Gull
+    containers:                          # 容器列表（此配置中只包含一个 ship 容器）
+      - name: ship                       # 容器名称
+        image: "ghcr.io/astrbotdevs/shipyard-neo-ship:latest" # 镜像
+        runtime_type: ship               # 运行时类型
+        runtime_port: 8123               # 运行时端口
+        resources:                       # 资源限制
+          cpus: 1.0                      # CPU
+          memory: "1g"                   # 内存
+        capabilities:                    # 能力列表
           - python
           - shell
-          - filesystem  # 包含 upload/download
-        # 这些能力优先由 ship 容器提供
-        primary_for:
           - filesystem
-          - python
-          - shell
-        env: {}
-      - name: browser
-        image: "ghcr.io/astrbotdevs/shipyard-neo-gull:latest"
-        runtime_type: gull
-        runtime_port: 8115
-        resources:
-          cpus: 1.0
-          memory: "2g"
-        capabilities:
-          - browser
-        env: {}
-    # 沙箱存活时间
-    idle_timeout: 300
-    warm_pool_size: 1
+          - browser    # 浏览器能力
+        env: {}                          # 环境变量
+    idle_timeout: 1800                   # 空闲超时
+    warm_pool_size: 1                    # 预热池大小
 
-gc:
-  # 生产环境建议启用自动 GC
-  enabled: true
-  run_on_startup: true
-  # GC 扫描周期（秒）
-  interval_seconds: 60
+gc:                                      # 垃圾回收（GC）配置
+  # 生产环境建议启用自动垃圾回收
+  enabled: true                          # 是否启用 GC
+  run_on_startup: true                   # 启动时是否立即执行一次 GC
+  interval_seconds: 300                  # 定期执行 GC 的间隔（秒），300 秒即 5 分钟
 
-  # 多实例部署时必须保证唯一
-  instance_id: "bay-prod"
+  # Instance identifier — MUST be unique in multi-instance deployments
+  # 实例标识符 —— 在多实例部署中必须唯一
+  instance_id: "bay-prod"                # 实例 ID，用于区分不同 Bay 实例
 
-  idle_session:
-    enabled: true
-  expired_sandbox:
-    enabled: true
-  orphan_cargo:
-    enabled: true
-  orphan_container:
-    # 建议在生产环境开启，用于清理遗留容器
-    enabled: true
+  idle_session:                          # 空闲会话回收
+    enabled: true                        # 启用
+  expired_sandbox:                       # 过期沙箱回收
+    enabled: true                        # 启用
+  orphan_cargo:                          # 孤立 cargo 回收
+    enabled: true                        # 启用
+  orphan_container:                      # 孤立容器回收
+    # 在生产环境中启用以清理泄漏的容器。
+    # 只要每个 Bay 实例的 instance_id 唯一，此操作就是安全的。
+    enabled: true                        # 启用

@@ -1,6 +1,6 @@
 # AstrBot + Napcat + Shipyard Neo + gsuid_core + natapp 一体化部署
-# 注：仅仅适用于Linux系统
-# 部署方式: 全量模式,使用预构建镜像，无需本地源码
+# 部署方式: 全量模式
+# 使用预构建镜像，无需本地源码
 
 services:
   # AstrBot: 机器人框架
@@ -24,21 +24,19 @@ services:
     container_name: astrbot             # AstrBot 容器名
     restart: unless-stopped             # 重启策略：除非停止，否则重启
     environment:
-      - TZ=Asia/Shanghai                # 时区设置(自己加的)
+      # - TZ=Asia/Shanghai                # 时区设置(自己加的)
       - BAY_DATA_DIR=/bay-data          # 让 AstrBot 自动读取 Bay 的 credentials.json(容器中的/bay-data)
       # 额外添加的，为的是代理
       # - NO_PR0XY=localhost,127.0.0.1
     ports:
       - "6185:6185"    # AstrBot WebUI（必选），默认值6185，可以通过设置ASTRBOT_PORT环境变量来部署
-      - "4141:4141"    # API聚合端口
-      # - "7833:7833"  # 自主学习插件端口
-      #- "6195:6195"   # WeCom webhook 回调服务器default端口
-      #- "6199:6199"   # OneBot(aiocqhttp) 反向 WebSocket 服务器default端口
-      #- "6196:6196"   # QQ官方API（Webhook）HTTP回调服务器default端口
-      #- "11451:11451" # Gewechat回调HTTP服务器default端口
+      - "4141:4141"                     # API聚合端口
+      - "5000:5000"                     # 表情包管理插件
+      # - "7833:7833"                   # 自主学习插件端口
+      #- "6195:6195"                    # 可选，其他端口
+      #- "6199:6199"                    # QQ WebSocket
     volumes:
-      - /etc/localtime:/etc/localtime:ro  # 时间同步
-      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro  # 时间同步（自己加的）
       - ./astrbot-data:/AstrBot/data    # AstrBot 持久化数据到相对路径下
       # - ${PWD}/astrbot-data:/AstrBot/data    # AstrBot 持久化数据到绝对路径下
       - ./bay-data:/bay-data:ro         # 只读挂载 Bay 数据卷，用于自动发现 API Key
@@ -91,38 +89,24 @@ services:
       - astrbot_network
     #mac_address: "02:42:ac:11:00:02"  # 可选，取消注释可固定MAC地址
 
-  # 自包含部署：Bay API 网关 + 共享 Docker 网络。
-  # Bay 通过 Docker 套接字动态创建 Ship/Gull 沙箱容器。
+  # Bay: Shipyard Neo 控制面 API
+  # Bay 生产部署 - Docker Compose
   #
-  # 用法：
+  # 自包含部署：Bay API 网关 + 共享 Docker 网络。
+  # Bay 通过 Docker 套接字动态创建 Ship/Gull 沙盒容器。
+  #
+  # 使用方法：
   #   1. 编辑 config.yaml（搜索 CHANGE-ME 修改必须项）
   #   2. docker compose up -d
   #   3. curl http://localhost:8114/health
   #
   # 完整文档请参阅 README.md。
   #
-  # API 密钥自动预配：
-  #   首次启动时，Bay 会自动生成一个 API 密钥（sk-bay-...）并写入
-  #   {BAY_DATA_DIR}/credentials.json。伴随服务（例如 AstrBot）可以
-  #   以只读方式挂载 bay-data 卷，以自动发现该密钥。
-  #   若要注入特定密钥，请在环境变量部分设置 BAY_API_KEY。
-
-  # Gull 服务（共享浏览器池）
-  # 为所有 browser-python 沙箱提供共享 Chromium。单个 Chromium
-  # 进程为所有沙箱提供服务，而非为每个沙箱单独启动 Gull 容器。
-  gull-service:                       # 服务名称
-    image: ghcr.io/astrbotdevs/shipyard-neo-gull:latest   # 使用的 Docker 镜像（来自 GitHub Container Registry）
-    container_name: bay-gull          # 容器实例名称，便于识别和管理
-    restart: unless-stopped           # 重启策略：除非手动停止，否则始终自动重启（保证服务高可用）
-    environment:                      # 环境变量配置
-      - GULL_MODE=shared              # 运行模式：shared 表示共享浏览器池（单个 Chromium 进程服务所有沙箱）
-      - GULL_CDP_PORT=9222            # Chrome DevTools Protocol 监听端口，用于外部调试和控制浏览器
-      - AGENT_BROWSER_IDLE_TIMEOUT_MS=600000  # 空闲浏览器会话的垃圾回收超时时间（10 分钟），超时后自动清理闲置会话
-    volumes:                          # 挂载卷
-      - ./bay-cargos:/cargos:ro       # 将宿主机的 ./bay-cargos 目录挂载到容器内的 /cargos，只读（ro），用于提供共享资源或脚本
-    networks:                         # 网络配置
-      - astrbot_network               # 加入名为 bay-network 的自定义网络（这里我不用默认的，用的是astrbot_network），便于与其他服务（如沙箱）通信
-  
+  # API 密钥自动生成：
+  #   首次启动时，Bay 自动生成 API 密钥（格式 sk-bay-...）并写入
+  #   {BAY_DATA_DIR}/credentials.json。配套服务（例如 AstrBot）可以通过
+  #   以只读方式挂载 bay-data 卷来自动发现该密钥。
+  #   如需注入指定密钥，请在环境变量部分设置 BAY_API_KEY。
   bay:
     image: ghcr.io/astrbotdevs/shipyard-neo-bay:latest
     container_name: bay
@@ -135,14 +119,13 @@ services:
     ports:
       - "8114:8114"                     # Bay API 端口（可选，供宿主机外部访问）
     volumes:
-      # Docker 套接字 — Bay 动态创建沙箱容器
-      - /var/run/docker.sock:/var/run/docker.sock
-      # 配置文件
-      - ./config.yaml:/app/config.yaml:ro
-      # SQLite 数据库持久化存储
-      - bay-data:/app/data
-      # Cargo 存储持久化（绑定挂载 — 与 gull-service 共享）
-      - ./bay-cargos:/var/lib/bay/cargos             # Cargo 工作区持久化
+      - /var/run/docker.sock:/var/run/docker.sock     # 用于动态创建沙箱容器
+      - ./config.yaml:/app/config.yaml:ro             # 挂载配置文件
+      - ./bay-data:/app/data                          # SQLite 数据库持久化
+      - bay-cargos:/var/lib/bay/cargos              # Cargo 工作区持久化（放到wsl2中）
+      # - ./bay-cargos:/workspace                       # Cargo 工作区持久化（之前的）
+      # - ${PWD}/bay-data:/app/data                          # SQLite 数据库持久化
+      # - ${PWD}/bay-cargos:/var/lib/bay/cargos              # Cargo 工作区持久化
     networks:
       - astrbot_network
     healthcheck:
@@ -207,13 +190,12 @@ services:
       - astrbot_network
   
   natapp:
-    # 使用 natapp 隧道，将本地 8765 端口映射到公网
     image: natapp/natapp:latest
     container_name: natapp
     restart: unless-stopped
     network_mode: "host"
     environment:
-      - authtoken=密钥
+      - authtoken=42e83df5833b1123
       # 如果需要更详细的日志，可以取消下一行的注释
       # - loglevel=DEBUG
     logging:
@@ -231,5 +213,7 @@ networks:
 volumes:
   bay-data:
     name: bay-data
+  bay-cargos:
+    name: bay-cargos
   # 必须存在，这个是早柚核心的python虚拟环境，得挂载到docker卷中
   venv-data:

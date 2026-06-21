@@ -1,5 +1,7 @@
 使用指令：
-docker-compose docker-compose.yaml up -d
+docker-compose -f docker-compose.astrbot_napcat_shipyard-neo.yaml up -d
+
+
 
 # 可选：手动删除可能存在的错误网络（没有开启的容器的网络会被删除）
 docker network prune -f
