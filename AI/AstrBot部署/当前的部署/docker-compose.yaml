@@ -172,9 +172,10 @@ services:
       - venv-data:/venv
     # 容器重启策略：除非停止，否则重启
     restart: unless-stopped
-    extra_hosts:
-      # 在容器的 /etc/hosts 文件里添加一条记录，让容器内能通过 host.docker.internal 这个特殊域名，直接访问你的 Windows 宿主机 IP
-      - "host.docker.internal:host-gateway"
+    # extra_hosts:
+    #   # 在容器的 /etc/hosts 文件里添加一条记录，让容器内能通过 host.docker.internal 这个特殊域名，直接访问你的 Windows 宿主机 IP
+    #   - "host.docker.internal:host-gateway"
+    # AstrBot设置里面直接填gsuid_core就行了
     environment:
       - PYTHONUNBUFFERED=1
       # ===========================
@@ -207,13 +208,12 @@ services:
       - astrbot_network
   
   natapp:
-    # 使用 natapp 隧道，将本地 8765 端口映射到公网
     image: natapp/natapp:latest
     container_name: natapp
     restart: unless-stopped
     network_mode: "host"
     environment:
-      - authtoken=密钥
+      - authtoken=改自己的
       # 如果需要更详细的日志，可以取消下一行的注释
       # - loglevel=DEBUG
     logging:

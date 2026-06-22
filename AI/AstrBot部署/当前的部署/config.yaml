@@ -48,10 +48,9 @@ cargo:                                   # 文件暂存区（Cargo）配置
   mount_path: "/workspace"               # 挂载到沙箱内部的路径
 
 security:                                # 安全配置
-  # CHANGE-ME: 设置一个强随机密钥 (e.g. `openssl rand -hex 32`)
-  # 必须修改：请设置一个强随机字符串作为 API 密钥（例如用 `openssl rand -hex 32` 生成）
-  api_key: "CHANGE-ME"                   # API 密钥，用于认证
-  allow_anonymous: false                 # 是否允许匿名访问，false 表示必须提供 api_key
+  # api_key 必须修改：请设置一个强随机字符串作为 API 密钥（例如用 `openssl rand -hex 32` 生成）
+  api_key: "改自己的"
+  allow_anonymous: true                 # 是否允许匿名访问，false 表示必须提供 api_key
 
 # ── Shared Browser Service ───────────────────────────────
 # ── 共享浏览器服务 ─────────────────────────────────────
@@ -101,7 +100,7 @@ profiles:                                # 沙箱配置文件列表
     runtime_port: 8123                   # 运行时服务端口
     resources:                           # 资源限制
       cpus: 1.0                          # CPU 核数
-      memory: "1g"                       # 内存大小
+      memory: "2g"                       # 内存大小
     capabilities:                        # 能力列表
       - filesystem  # 文件系统能力（包含上传/下载）
       - shell       # Shell 能力
@@ -146,7 +145,7 @@ profiles:                                # 沙箱配置文件列表
         runtime_port: 8123               # 运行时端口
         resources:                       # 资源限制
           cpus: 1.0                      # CPU
-          memory: "1g"                   # 内存
+          memory: "10g"                   # 内存
         capabilities:                    # 能力列表
           - python
           - shell
