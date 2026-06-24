@@ -1,0 +1,12 @@
+[project]
+name = "product-code-migration"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "keyboard>=0.13.5",
+    "pandas>=3.0.3",
+    "pillow>=12.2.0",
+    "pyperclip>=1.11.0",
+]
