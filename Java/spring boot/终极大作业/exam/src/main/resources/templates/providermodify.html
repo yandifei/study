@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>供应商修改</title>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"  />
+  <link type="text/css" rel="stylesheet" th:href="@{/css/public.css}" />
+</head>
+<body>
+
+<div th:replace="~{head :: html}"></div>
+<div class="right">
+  <div class="location">
+    <strong>你现在所在的位置是:</strong>
+    <span>供应商管理页面 >> 供应商修改页面</span>
+  </div>
+  <div class="providerAdd">
+    <form id="providerForm" name="providerForm" method="post" action="/providermodifysave">
+      <input type="hidden" name="id" th:value="${provider.id}"/>
+      <div>
+        <label for="proCode">供应商编码：</label>
+        <input type="text" name="proCode" id="proCode" th:value="${provider.proCode}">
+        <font color="red"></font>
+      </div>
+      <div>
+        <label for="proContact">供应商联系人：</label>
+        <input type="text" name="proContact" id="proContact" th:value="${provider.proContact}">
+        <font color="red"></font>
+      </div>
+      <div>
+        <label for="proDesc">供应商简介：</label>
+        <input type="text" name="proDesc" id="proDesc" th:value="${provider.proDesc}">
+      </div>
+      <div>
+        <label for="proName">供应商名称：</label>
+        <input type="text" name="proName" id="proName" th:value="${provider.proName}">
+      </div>
+      <div>
+        <label for="proPhone">手机号码：</label>
+        <input type="text" name="proPhone" id="proPhone" th:value="${provider.proPhone}">
+        <font color="red"></font>
+      </div>
+      <div>
+        <label for="proAddress">供应商地址：</label>
+        <input type="text" name="proAddress" id="proAddress" th:value="${provider.proAddress}">
+        <font color="red"></font>
+      </div>
+      <div>
+        <label for="proFax">供应商传真：</label>
+        <input type="text" name="proFax" id="proFax" th:value="${provider.proFax}">
+      </div>
+      <div class="providerAddBtn">
+        <input type="submit" name="save" id="save" value="保存" />
+        <input type="button" id="back" name="back" value="返回" style="padding: 1px 10px"/>
+      </div>
+    </form>
+  </div>
+</div>
+</section>
+
+<div th:replace="~{foot :: html}"></div>
+<script type="text/javascript" th:src="@{/js/providermodify.js}"></script>
+</body>
+</html>

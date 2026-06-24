@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>超市订单管理系统</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"  />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/public.css}" />
+</head>
+<body>
+<div th:replace="~{head :: html}"></div>
+<div class="right">
+    <img class="wColck" th:src="@{/images/clock.jpg}" alt=""/>
+    <div class="wFont">
+        <h2 th:text="${session.user.userName}">用户名</h2>
+        <p>欢迎来到超市订单管理系统!</p>
+    </div>
+</div>
+</section>
+<div th:replace="~{foot :: html}"></div>
+<script type="text/javascript" th:src="@{/js/time.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-1.8.3.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/calendar/WdatePicker.js}"></script>
+</body>
+</html>

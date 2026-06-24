@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yandifei.exam.dao.ProviderMapper">
+
+    <select id="show_Provider" parameterType="String" resultType="SmbmsProvider">
+        select * from smbms_provider
+        <where>
+            <if test="proContact != null and proContact != ''">
+                and proContact like CONCAT ('%',#{proContact},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="add" parameterType="SmbmsProvider">
+        insert into smbms_provider
+        <trim prefix="(" suffix=")">
+            proCode,proName
+            <if test="proDesc!= null and proDesc!=''">,proDesc</if>
+            <if test="proContact != null and proContact != ''">,proContact</if>
+            <if test="proPhone != null and proPhone != ''">,proPhone</if>
+            <if test="proAddress != null and proAddress !=''">,proAddress</if>
+            <if test="proFax != null and proFax != ''">,proFax</if>
+            <if test="createdBy != null and createdBy !=0">,createdBy</if>
+            <if test="creationDate != null">,creationDate</if>
+            <if test="modifyDate != null">,modifyDate</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")">
+            #{proCode},#{proName}
+            <if test="proDesc!= null and proDesc!=''">,#{proDesc}</if>
+            <if test="proContact != null and proContact != ''">,#{proContact}</if>
+            <if test="proPhone != null and proPhone != ''">,#{proPhone}</if>
+            <if test="proAddress != null and proAddress !=''">,#{proAddress}</if>
+            <if test="proFax != null and proFax != ''">,#{proFax}</if>
+            <if test="createdBy != null and createdBy !=0">,#{createdBy}</if>
+            <if test="creationDate != null">,#{creationDate}</if>
+            <if test="modifyDate != null">,#{modifyDate}</if>
+        </trim>
+    </insert>
+
+    <select id="getProviderById" parameterType="int" resultType="SmbmsProvider">
+        SELECT * FROM smbms_provider WHERE id=#{id}
+    </select>
+
+    <update id="modify" parameterType="SmbmsProvider">
+        update smbms_provider
+        <set>
+            <if test="proCode != null">proCode=#{proCode},</if>
+            <if test="proName != null">proName=#{proName},</if>
+            <if test="proDesc != null">proDesc=#{proDesc},</if>
+            <if test="proContact != null">proContact=#{proContact},</if>
+            <if test="proPhone != null">proPhone=#{proPhone},</if>
+            <if test="proAddress != null">proAddress=#{proAddress},</if>
+            <if test="proFax != null">proFax=#{proFax},</if>
+            <if test="createdBy != null">createdBy=#{createdBy},</if>
+            <if test="creationDate != null">creationDate=#{creationDate},</if>
+            <if test="modifyDate != null">modifyDate=#{modifyDate}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteProviderById" parameterType="int">
+        delete from smbms_provider where id=#{id}
+    </delete>
+
+</mapper>

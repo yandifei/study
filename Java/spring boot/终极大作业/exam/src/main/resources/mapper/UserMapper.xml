@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yandifei.exam.dao.UserMapper">
+
+    <!-- 根据 userCode 查询用户（用于登录验证） -->
+    <select id="getUserByUserCode" resultType="Users" parameterType="String">
+        select * from smbms_user where userCode=#{userCode}
+    </select>
+
+    <!-- 分页查询用户列表（多表联查 + 条件搜索） -->
+    <select id="getUserListByPage" resultMap="UserWithRoleName">
+        select u.*,r.* from smbms_user u join smbms_role r on u.userRole = r.id
+        <where>
+            <if test="userName != null and userName != ''">
+                and u.userName like CONCAT ('%',#{userName},'%')
+            </if>
+            <if test="userRole != null and userRole != 0">
+                and u.userRole = #{userRole}
+            </if>
+        </where>
+        order by u.id
+    </select>
+
+    <!-- 结果映射：关联角色信息 -->
+    <resultMap id="UserWithRoleName" type="Users">
+        <id property="id" column="id" />
+        <association property="role" javaType="SmbmsRole">
+            <id property="id" column="id" />
+        </association>
+    </resultMap>
+
+    <!-- 添加用户（动态插入） -->
+    <insert id="add" parameterType="Users">
+        insert into smbms_user (userCode,userName
+        <if test="userPassword!= null and userPassword!=''">,userPassword</if>
+        <if test="gender!= null and gender!=0">,gender</if>
+        <if test="birthday!= null">,birthday</if>
+        <if test="phone!= null and phone!=''">,phone</if>
+        <if test="address!= null and address!=''">,address</if>
+        <if test="userRole!= null and userRole!=0">,userRole</if>
+        <if test="createdBy!= null and createdBy!=0">,createdBy</if>
+        <if test="creationDate!= null">,creationDate</if>
+        )
+        values (#{userCode},#{userName}
+        <if test="userPassword!= null and userPassword!=''">,#{userPassword}</if>
+        <if test="gender!= null and gender!=0">,#{gender}</if>
+        <if test="birthday!= null">,#{birthday}</if>
+        <if test="phone!= null and phone!=''">,#{phone}</if>
+        <if test="address!= null and address!=''">,#{address}</if>
+        <if test="userRole!= null and userRole!=0">,#{userRole}</if>
+        <if test="createdBy!= null and createdBy!=0">,#{createdBy}</if>
+        <if test="creationDate!= null">,#{creationDate}</if>
+        )
+    </insert>
+
+    <!-- 根据 ID 查询用户（带角色关联） -->
+    <select id="getUserById" resultMap="UserWithRoleName" parameterType="int">
+        select u.*,r.* from smbms_user u join smbms_role r on u.UserRole=r.id where u.id=#{id}
+    </select>
+
+    <!-- 修改用户（动态更新） -->
+    <update id="modify" parameterType="Users">
+        update smbms_user
+        <set>
+            <if test="userCode != null">userCode=#{userCode},</if>
+            <if test="userName != null">userName=#{userName},</if>
+            <if test="userPassword != null">userPassword=#{userPassword},</if>
+            <if test="gender != null">gender=#{gender},</if>
+            <if test="birthday != null">birthday=#{birthday},</if>
+            <if test="phone != null">phone=#{phone},</if>
+            <if test="address != null">address=#{address},</if>
+            <if test="userRole != null">userRole=#{userRole},</if>
+            <if test="modifyBy != null">modifyBy=#{modifyBy},</if>
+            <if test="modifyDate != null">modifyDate=#{modifyDate}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="deleteUserById" parameterType="int">
+        delete from smbms_user where id=#{id}
+    </delete>
+
+</mapper>

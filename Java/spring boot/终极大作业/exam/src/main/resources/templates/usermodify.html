@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>用户修改</title>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"  />
+  <link type="text/css" rel="stylesheet" th:href="@{/css/public.css}" />
+</head>
+<body>
+
+<div th:replace="~{head :: html}"></div>
+<div class="right">
+  <div class="location">
+    <strong>你现在所在的位置是:</strong>
+    <span>用户管理页面 >> 用户修改页面</span>
+  </div>
+  <div class="providerAdd">
+    <form id="userForm" name="userForm" method="post" action="/usermodifysave">
+      <input type="hidden" name="id" th:value="${user.id}"/>
+      <div>
+        <label for="userCode">用户编码：</label>
+        <input type="text" name="userCode" id="userCode" th:value="${user.userCode}">
+        <font color="red"></font>
+      </div>
+      <div>
+        <label for="userName">用户名称：</label>
+        <input type="text" name="userName" id="userName" th:value="${user.userName}">
+        <font color="red"></font>
+      </div>
+      <div>
+        <label>用户性别：</label>
+        <select name="gender" id="gender">
+          <option value="1" th:selected="${user.gender==1}">男</option>
+          <option value="2" th:selected="${user.gender==2}">女</option>
+        </select>
+      </div>
+      <div>
+        <label for="birthday">出生日期：</label>
+        <input type="text" Class="Wdate" id="birthday" name="birthday"
+               th:value="${#dates.format(user.birthday,'yyyy-MM-dd')}"
+               onclick="WdatePicker();" />
+        <font color="red"></font>
+      </div>
+      <div>
+        <label for="phone">用户电话：</label>
+        <input type="text" name="phone" id="phone" th:value="${user.phone}">
+        <font color="red"></font>
+      </div>
+      <div>
+        <label for="address">用户地址：</label>
+        <input type="text" name="address" id="address" th:value="${user.address}">
+      </div>
+      <div>
+        <label>用户角色：</label>
+        <select name="userRole" id="userRole">
+          <option value="1" th:selected="${user.userRole==1}">系统管理员</option>
+          <option value="2" th:selected="${user.userRole==2}">经理</option>
+          <option value="3" th:selected="${user.userRole==3}">普通用户</option>
+        </select>
+        <font color="red"></font>
+      </div>
+      <div class="providerAddBtn">
+        <input type="button" name="add" id="add" value="保存">
+        <input type="button" id="back" name="back" value="返回" style="padding: 1px 10px">
+      </div>
+    </form>
+  </div>
+</div>
+</section>
+
+<div th:replace="~{foot :: html}"></div>
+<script type="text/javascript" th:src="@{/js/usermodify.js}"></script>
+</body>
+</html>

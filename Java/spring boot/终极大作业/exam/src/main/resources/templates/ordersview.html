@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>订单查看</title>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"  />
+  <link type="text/css" rel="stylesheet" th:href="@{/css/public.css}" />
+</head>
+<body>
+
+<div th:replace="~{head :: html}"></div>
+<div class="right">
+  <div class="location">
+    <strong>你现在所在的位置是:</strong>
+    <span>订单管理页面 >> 订单查看页面</span>
+  </div>
+  <div class="providerView">
+    <p><strong>订单号：</strong><span th:text="${bill.billCode}"></span></p>
+    <p><strong>产品名称：</strong><span th:text="${bill.productName}"></span></p>
+    <p><strong>产品类型：</strong><span th:text="${bill.productDesc}"></span></p>
+    <p><strong>产品单位：</strong><span th:text="${bill.productUnit}"></span></p>
+    <p><strong>产品数量：</strong><span th:text="${bill.productCount}"></span></p>
+    <p><strong>总价：</strong><span th:text="${bill.totalPrice}"></span></p>
+    <p><strong>是否支付：</strong>
+      <span th:if="${bill.isPayment==1}">未支付</span>
+      <span th:if="${bill.isPayment==2}">已支付</span>
+    </p>
+    <p><strong>供应商名称：</strong><span th:text="${bill.provider.proContact}"></span></p>
+    <p><strong>供应商电话：</strong><span th:text="${bill.provider.proPhone}"></span></p>
+    <p><strong>供应商地址：</strong><span th:text="${bill.provider.proAddress}"></span></p>
+    <div class="providerAddBtn">
+      <input type="button" id="back" name="back" value="返回">
+    </div>
+  </div>
+</div>
+</section>
+
+<div th:replace="~{foot :: html}"></div>
+<script type="text/javascript" th:src="@{/js/billview.js}"></script>
+</body>
+</html>

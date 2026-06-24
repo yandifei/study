@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>供应商查看</title>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"  />
+  <link type="text/css" rel="stylesheet" th:href="@{/css/public.css}" />
+</head>
+<body>
+
+<div th:replace="~{head :: html}"></div>
+<div class="right">
+  <div class="location">
+    <strong>你现在所在的位置是:</strong>
+    <span>供应商管理页面 >> 供应商查看页面</span>
+  </div>
+  <div class="providerView">
+    <p><strong>供应商编码：</strong><span th:text="${provider.proCode}"></span></p>
+    <p><strong>供应商联系人：</strong><span th:text="${provider.proContact}"></span></p>
+    <p><strong>注册日期：</strong><span th:text="${#dates.format(provider.creationDate,'yyyy-MM-dd')}"></span></p>
+    <p><strong>供应商名称：</strong><span th:text="${provider.proName}"></span></p>
+    <p><strong>供应商简介：</strong><span th:text="${provider.proDesc}"></span></p>
+    <p><strong>手机号码：</strong><span th:text="${provider.proPhone}"></span></p>
+    <p><strong>供应商地址：</strong><span th:text="${provider.proAddress}"></span></p>
+    <div class="providerAddBtn">
+      <input type="button" id="back" name="back" value="返回">
+    </div>
+  </div>
+</div>
+</section>
+
+<div th:replace="~{foot :: html}"></div>
+<script type="text/javascript" th:src="@{/js/providerview.js}"></script>
+</body>
+</html>

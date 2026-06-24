@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>订单管理</title>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"  />
+  <link type="text/css" rel="stylesheet" th:href="@{/css/public.css}" />
+</head>
+<body>
+<div th:replace="~{head :: html}"></div>
+<div class="right">
+  <div class="location">
+    <strong>你现在所在的位置是:</strong>
+    <span>订单管理页面</span>
+  </div>
+  <div class="search">
+    <form method="post" th:action="@{/orderslist}">
+      <span>产品名称：</span>
+      <input name="productName" class="input-text" type="text" th:value="${productName}">
+      <span>供应商：</span>
+      <select name="proContact" th:if="${distinctList!= null}">
+        <option value="">--请选择--</option>
+        <option th:each="item:${distinctList}"
+                th:text="${item.provider.proContact}"
+                th:value="${item.provider.proContact}"
+                th:selected="${item.provider.proContact} eq ${proContact}"></option>
+      </select>
+      <input type="hidden" name="pageNum" value="1"/>
+      <input value="查 询" type="submit" id="searchbutton">
+      <a href="/ordersadd">添加订单</a>
+    </form>
+  </div>
+  <table class="providerTable" cellpadding="0" cellspacing="0">
+    <tr class="firstTr">
+      <th width="10%">订单号</th>
+      <th width="20%">产品名称</th>
+      <th width="10%">产品类型</th>
+      <th width="10%">产品数量</th>
+      <th width="10%">总价</th>
+      <th width="10%">供应商名称</th>
+      <th width="10%">供应商地址</th>
+      <th width="30%">操作</th>
+    </tr>
+    <tr th:each="bill:${pageInfo.list}">
+      <td><span th:text="${bill.billCode}"/></td>
+      <td><span th:text="${bill.productName}"/></td>
+      <td><span th:text="${bill.productDesc}"/></td>
+      <td><span th:text="${bill.productCount}" /></td>
+      <td><span th:text="${bill.totalPrice}"/></td>
+      <td><span th:text="${bill.provider.proContact}" /></td>
+      <td><span th:text="${bill.provider.proAddress}" /></td>
+      <td>
+        <span><a class="viewBill" href="javascript:;" th:billid="${bill.id}" th:billname="${bill.productName}"><img th:src="@{/images/read.png}" alt="查看" title="查看"/></a></span>
+        <span><a class="modifyBill" href="javascript:;" th:billid="${bill.id}" th:billname="${bill.productName}"><img th:src="@{/images/xiugai.png}" alt="修改" title="修改"/></a></span>
+        <span><a class="deleteBill" href="javascript:;" th:billid="${bill.id}" th:billname="${bill.productName}"><img th:src="@{/images/schu.png}" alt="删除" title="删除"/></a></span>
+      </td>
+    </tr>
+  </table>
+  <!-- 分页导航 -->
+  <div class="page-bar">
+    <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页 , 总 <span th:text="${pageInfo.pages}"></span> 页 , 共 <span id="totalPageCount" th:text="${pageInfo.total}"></span> 条记录</p>
+    <a th:href="@{/orderslist}">首页</a>
+    <a th:href="@{/orderslist(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+    <a th:href="@{/orderslist(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+    <a th:href="@{/orderslist(pageNum=${pageInfo.pages})}">尾页</a>
+    <span class="page-go-form"><label>跳转至</label>
+        <input type="text" name="inputPage" id="inputPage" class="page-key" />页
+        <button type="button" class="page-btn" onClick='jump_to(document.forms[0],document.getElementById("inputPage").value)'>GO</button>
+    </span>
+  </div>
+</div>
+</section>
+
+<!-- 删除确认弹窗 -->
+<div class="zhezhao"></div>
+<div class="remove" id="removeBi">
+  <div class="removerChid">
+    <h2>提示</h2>
+    <div class="removeMain">
+      <p>你确定要删除该订单吗？</p>
+      <a href="#" id="yes">确定</a>
+      <a href="#" id="no">取消</a>
+    </div>
+  </div>
+</div>
+
+<div th:replace="~{foot :: html}"></div>
+<script type="text/javascript" th:src="@{/js/billlist.js}"></script>
+<script type="text/javascript" th:src="@{/js/rollpage.js}"></script>
+</body>
+</html>

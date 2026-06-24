@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>用户查看</title>
+  <link type="text/css" rel="stylesheet" th:href="@{/css/style.css}"  />
+  <link type="text/css" rel="stylesheet" th:href="@{/css/public.css}" />
+</head>
+<body>
+
+<div th:replace="~{head :: html}"></div>
+<div class="right">
+  <div class="location">
+    <strong>你现在所在的位置是:</strong>
+    <span>用户管理页面 >> 用户查看页面</span>
+  </div>
+  <div class="providerView">
+    <p><strong>用户编码：</strong><span th:text="${user.userCode}"></span></p>
+    <p><strong>用户名称：</strong><span th:text="${user.userName}"></span></p>
+    <p><strong>性别：</strong>
+      <span th:if="${user.gender==1}">男</span>
+      <span th:if="${user.gender==2}">女</span>
+    </p>
+    <p><strong>出生日期：</strong><span th:text="${#dates.format(user.birthday,'yyyy-MM-dd')}"></span></p>
+    <p><strong>电话：</strong><span th:text="${user.phone}"></span></p>
+    <p><strong>地址：</strong><span th:text="${user.address}"></span></p>
+    <p><strong>用户角色：</strong><span th:text="${user.role.roleName}"></span></p>
+    <div class="providerAddBtn">
+      <input type="button" id="back" name="back" value="返回">
+    </div>
+  </div>
+</div>
+</section>
+
+<div th:replace="~{foot :: html}"></div>
+<script type="text/javascript" th:src="@{/js/userview.js}"></script>
+</body>
+</html>
