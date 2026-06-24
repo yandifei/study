@@ -1,0 +1,12 @@
+2026-06-24 19:14:22.164	rmbuds8lite-l-10-R	Rmepjbuds8lite-l-100-R	成功
+2026-06-24 19:14:24.668	rmbuds8lite-l-09-R	Rmepjbuds8lite-l-95-R	成功
+2026-06-24 19:14:26.209	rmbuds8lite-l-08-R	Rmepjbuds8lite-l-90-R	成功
+2026-06-24 19:14:29.017	rmbuds8lite-l-10-C	Rmepjbuds8lite-l-100-C	成功
+2026-06-24 19:14:30.971	rmbuds8lite-l-09-C	Rmepjbuds8lite-l-95-C	成功
+2026-06-24 19:14:32.481	rmbuds8lite-l-08-C	Rmepjbuds8lite-l-90-C	成功
+2026-06-24 19:17:41.828	Rmepjbuds8lite-l-90-C	没有找到该数据，请更新“Excel文件”或手动查找	失败
+2026-06-24 19:17:44.278	Rmepjbuds8lite-l-95-C	没有找到该数据，请更新“Excel文件”或手动查找	失败
+2026-06-24 19:17:46.108	Rmepjbuds8lite-l-100-C	没有找到该数据，请更新“Excel文件”或手动查找	失败
+2026-06-24 19:18:08.651	rmbuds8lite-w-10-C	Rmepjbuds8lite-w-100-C	成功
+2026-06-24 19:22:34.725	Rmepjbuds8lite-w-90-R	没有找到该数据，请更新“Excel文件”或手动查找	失败
+2026-06-24 19:26:42.217	Miyjenjoy-b-100-X	没有找到该数据，请更新“Excel文件”或手动查找	失败
