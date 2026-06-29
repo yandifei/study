@@ -1,0 +1,12 @@
+路径位置
+今日老婆/老公默认立绘：
+/gsuid_core/data/XutheringWavesUID/resource/role_pile/role_pile_1504.png
+
+XWUID 自定义老婆图：
+/gsuid_core/data/XutheringWavesUID/custom_role_pile/1504/xxx.png
+
+TodayWaifu 上传的自定义老婆图：
+/gsuid_core/data/TodayWaifu/custom_role_pile/1504/xxx.png
+
+今日萝莉本地图：
+/gsuid_core/data/TodayWaifu/loli_images/xxx.png

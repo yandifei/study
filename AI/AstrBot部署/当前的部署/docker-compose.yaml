@@ -140,7 +140,7 @@ services:
       # 配置文件
       - ./config.yaml:/app/config.yaml:ro
       # SQLite 数据库持久化存储
-      - bay-data:/app/data
+      - ./bay-data:/app/data
       # Cargo 存储持久化（绑定挂载 — 与 gull-service 共享）
       - ./bay-cargos:/var/lib/bay/cargos             # Cargo 工作区持久化
     networks:
@@ -175,7 +175,6 @@ services:
     # extra_hosts:
     #   # 在容器的 /etc/hosts 文件里添加一条记录，让容器内能通过 host.docker.internal 这个特殊域名，直接访问你的 Windows 宿主机 IP
     #   - "host.docker.internal:host-gateway"
-    # AstrBot设置里面直接填gsuid_core就行了
     environment:
       - PYTHONUNBUFFERED=1
       # ===========================
@@ -213,7 +212,7 @@ services:
     restart: unless-stopped
     network_mode: "host"
     environment:
-      - authtoken=改自己的
+      - authtoken=自己填写
       # 如果需要更详细的日志，可以取消下一行的注释
       # - loglevel=DEBUG
     logging:
@@ -231,5 +230,7 @@ networks:
 volumes:
   bay-data:
     name: bay-data
+  bay-cargos:
+    name: bay-cargos
   # 必须存在，这个是早柚核心的python虚拟环境，得挂载到docker卷中
   venv-data:
