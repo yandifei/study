@@ -1,0 +1,1 @@
+playwright codegen --load-storage=user_data/cookies.json https://mms.pinduoduo.com/goods/goods_list?msfrom=mms_sidenav
