@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录提醒 - {app_name}</title>
+</head>
+<body style="margin:0; padding:0; font-family: Arial, Helvetica, sans-serif;">
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td align="center" style="padding:30px 10px;">
+
+                <!-- 主容器 -->
+                <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; background:#2c1e5e; border-radius:20px; overflow:hidden;">
+
+                    <!-- 头部 - 警示色 -->
+                    <tr>
+                        <td bgcolor="#d44" align="center" style="padding:45px 30px 35px; background: linear-gradient(135deg, #e85d5d, #c0392b);">
+                            <h1 style="color:#ffffff; font-size:28px; font-weight:bold; margin:0; letter-spacing:2px;">⚠ {app_name} - 安全提醒</h1>
+                        </td>
+                    </tr>
+
+                    <!-- 内容区 -->
+                    <tr>
+                        <td style="padding:45px 35px; text-align:center; background:#2c1e5e;">
+                            <img src="cid:logo" width="80px" style="margin:0 0 8px 0;">
+
+                            <p style="color:#d0c4ff; font-size:16px; line-height:1.6; margin:0 0 10px 0;">
+                                您好，<strong style="color:#ffffff;">{user_name}</strong>
+                            </p>
+                            <p style="color:#ffb3b3; font-size:16px; line-height:1.6; margin:0 0 30px 0;">
+                                我们检测到您的账户有新的登录活动：
+                            </p>
+
+                            <!-- 登录详情卡片 -->
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#3a2a7a; border:2px solid #e85d5d; border-radius:16px; margin-bottom:30px;">
+                                <tr>
+                                    <td style="padding:25px 30px; text-align:left;">
+                                        <p style="color:#c8b8ff; font-size:14px; margin:0 0 12px 0;">
+                                            🔍 <strong style="color:#ffffff;">登录详情</strong>
+                                        </p>
+                                        <p style="color:#a89cff; font-size:13px; margin:0 0 5px 0;">• 登录时间：<strong style="color:#ffffff;">{login_time}</strong></p>
+                                        <p style="color:#a89cff; font-size:13px; margin:0 0 5px 0;">• 登录地点：<strong style="color:#ffb3b3;">{location}</strong></p>
+                                        <p style="color:#a89cff; font-size:13px; margin:0 0 5px 0;">• IP 地址：<strong style="color:#ffffff;">{ip}</strong></p>
+                                        <p style="color:#a89cff; font-size:13px; margin:0;">• 设备信息：<strong style="color:#ffffff;">{device}</strong></p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- 操作按钮 -->
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:30px;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{review_link}" style="display:inline-block; background:#e85d5d; color:#ffffff; font-size:16px; font-weight:bold; text-decoration:none; padding:14px 40px; border-radius:10px; border:2px solid #ff7676;">查看登录记录</a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="color:#a89cff; font-size:15px; margin:35px 0 0 0; line-height:1.5;">
+                                如果这不是您本人的操作，<strong style="color:#ffb3b3;">请立即修改密码</strong>并联系客服。
+                            </p>
+
+                        </td>
+                    </tr>
+
+                    <!-- 页脚 -->
+                    <tr>
+                        <td style="padding:30px; text-align:center; background:#25194f; border-top:1px solid #3f2e75;">
+                            <p style="color:#9b8fd1; font-size:13px; margin:0 0 5px 0;">
+                                © {time} {app_name}
+                            </p>
+                            <p style="color:#7a6eb8; font-size:12px; margin:0;">
+                                此邮件由系统自动发送，请勿回复
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

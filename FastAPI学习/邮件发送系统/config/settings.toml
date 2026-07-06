@@ -1,0 +1,26 @@
+# 用不的上直接注释掉
+
+# 服务器信息
+[server]
+# 请求协议（http或https）
+protocol = "http"
+# 监听的主机地址，"0.0.0.0"：允许所有网络接口访问（外网可访问，有风险）
+host = "127.0.0.1"  # "127.0.0.1"：只允许本机访问（最安全），"localhost"：同 127.0.0.1
+# 端口号
+port = 41124
+
+#[spider]
+#user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+#timeout = 30
+#retry_count = 3
+#request_interval = 1  # 每次请求间隔1秒
+#enable_proxy = false
+#proxy = "http://your.proxy.server:port"
+
+#[database]
+#database_type = "mysql"
+#host = "localhost"
+#port = 3306
+#user = "root"
+#password = "password"
+#database_name = "spider_db"

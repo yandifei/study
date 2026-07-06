@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula Mail — 邮件批量调度中心</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root, html[data-theme="dark"] {
+            --bg-deep: #0d0a1a; --bg-primary: #1a1535; --bg-card: #231d42;
+            --bg-card-hover: #2a2352; --bg-input: #16112e; --border-subtle: #2e2858;
+            --border-glow: #5b4dba; --accent-primary: #7b6cd1; --accent-glow: #9b8fff;
+            --accent-cyan: #00e5ff; --accent-green: #00e676; --accent-amber: #ffab00;
+            --accent-red: #ff5252; --text-primary: #e8e4f0; --text-secondary: #a89cc4;
+            --text-muted: #6e6488; --text-white: #ffffff;
+            --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px;
+            --shadow-glow: 0 0 30px rgba(123, 108, 209, 0.15);
+            --shadow-card: 0 4px 32px rgba(0, 0, 0, 0.3);
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: 'Orbitron', sans-serif; --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        html[data-theme="light"] {
+            --bg-deep: #f0edf7; --bg-primary: #f8f6ff; --bg-card: #ffffff;
+            --bg-card-hover: #f5f2ff; --bg-input: #f9f7ff; --border-subtle: #d8d0ee;
+            --border-glow: #7b6cd1; --accent-primary: #6c5ce7; --accent-glow: #5b4dba;
+            --accent-cyan: #0077b6; --accent-green: #00a86b; --accent-amber: #c77800;
+            --accent-red: #d63031; --text-primary: #1e1838; --text-secondary: #4a3f6b;
+            --text-muted: #8a7fb5; --text-white: #ffffff;
+            --shadow-glow: 0 0 30px rgba(108, 92, 231, 0.08);
+            --shadow-card: 0 4px 32px rgba(0, 0, 0, 0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg-deep); color: var(--text-primary); min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; transition: background 0.4s ease, color 0.4s ease; }
+        body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 20%, rgba(123,108,209,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 60%, rgba(0,229,255,0.04) 0%, transparent 50%), radial-gradient(ellipse at 50% 100%, rgba(123,108,209,0.08) 0%, transparent 40%); pointer-events: none; z-index: 0; transition: opacity 0.4s ease; }
+        html[data-theme="light"] body::before { opacity: 0.35; }
+        body::after { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(123,108,209,0.06) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; z-index: 0; mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%); }
+
+        .app-container { position: relative; z-index: 1; max-width: 1500px; margin: 0 auto; padding: 24px 32px 48px; }
+        .app-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 0 32px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 24px; transition: border-color 0.4s ease; }
+        .app-logo { display: flex; align-items: center; gap: 16px; }
+        .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent-primary), #5a3fd1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 0 24px rgba(123,108,209,0.4); color: #fff; }
+        .logo-text h1 { font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: color 0.4s ease; }
+        html[data-theme="dark"] .logo-text h1 { color: #fff; }
+        .logo-text span { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+        .header-actions { display: flex; gap: 10px; align-items: center; }
+
+        .theme-toggle { width: 44px; height: 44px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: var(--bg-card); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: all var(--transition-fast); color: var(--text-primary); }
+        .theme-toggle:hover { border-color: var(--accent-primary); box-shadow: 0 0 12px rgba(123,108,209,0.2); }
+
+        .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border: none; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 13px; font-weight: 500; cursor: pointer; transition: all var(--transition-fast); text-decoration: none; white-space: nowrap; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent-primary), #5a3fd1); color: white; box-shadow: 0 4px 16px rgba(123,108,209,0.3); }
+        .btn-primary:hover { box-shadow: 0 6px 24px rgba(123,108,209,0.5); transform: translateY(-1px); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .btn-outline { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-subtle); }
+        .btn-outline:hover { border-color: var(--accent-primary); color: var(--text-primary); }
+        .btn-ghost { background: transparent; color: var(--accent-cyan); padding: 5px 10px; font-size: 12px; }
+        .btn-ghost:hover { background: rgba(0,229,255,0.08); border-radius: var(--radius-sm); }
+        .btn-danger { background: transparent; color: var(--accent-red); border: 1px solid transparent; }
+        .btn-danger:hover { background: rgba(255,82,82,0.1); border-color: rgba(255,82,82,0.3); border-radius: var(--radius-sm); }
+        .btn-warn { background: transparent; color: var(--accent-amber); border: 1px solid transparent; }
+        .btn-warn:hover { background: rgba(255,171,0,0.1); border-color: rgba(255,171,0,0.3); border-radius: var(--radius-sm); }
+        .btn-success { background: transparent; color: var(--accent-green); border: 1px solid transparent; }
+        .btn-success:hover { background: rgba(0,230,118,0.1); border-color: rgba(0,230,118,0.3); border-radius: var(--radius-sm); }
+        .btn-sm { padding: 5px 12px; font-size: 12px; }
+        .btn-xs { padding: 3px 8px; font-size: 11px; }
+        .btn-file { background: transparent; color: var(--text-secondary); border: 1px dashed var(--border-subtle); font-family: var(--font-mono); font-size: 12px; }
+        .btn-file:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 18px 22px; display: flex; align-items: center; gap: 14px; transition: all var(--transition-smooth); position: relative; overflow: hidden; cursor: pointer; }
+        .stat-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: 2px; opacity: 0; transition: opacity var(--transition-smooth); }
+        .stat-card:hover { border-color: var(--border-glow); transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+        .stat-card:hover::after { opacity: 1; }
+        .stat-card.total::after { background: var(--accent-primary); }
+        .stat-card.pending::after { background: var(--accent-amber); }
+        .stat-card.sent::after { background: var(--accent-green); }
+        .stat-card.failed::after { background: var(--accent-red); }
+        .stat-card.active { border-color: var(--border-glow); box-shadow: var(--shadow-glow); }
+        .stat-icon { width: 42px; height: 42px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
+        .stat-card.total .stat-icon { background: rgba(123,108,209,0.15); }
+        .stat-card.pending .stat-icon { background: rgba(255,171,0,0.15); }
+        .stat-card.sent .stat-icon { background: rgba(0,230,118,0.15); }
+        .stat-card.failed .stat-icon { background: rgba(255,82,82,0.15); }
+        .stat-info .stat-number { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: 1px; line-height: 1; }
+        .stat-info .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .main-grid { display: grid; grid-template-columns: 520px 1fr; gap: 20px; align-items: start; }
+        .panel { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; transition: background 0.4s ease, border-color 0.4s ease; }
+        .panel-header { padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; transition: border-color 0.4s ease; }
+        .panel-header h2 { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 2px; color: var(--text-secondary); text-transform: uppercase; }
+        .panel-body { padding: 20px; }
+
+        .form-group { margin-bottom: 14px; }
+        .form-label { display: block; font-size: 11px; font-weight: 600; color: var(--text-secondary); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-label .required { color: var(--accent-red); margin-left: 2px; }
+        .form-input, .form-select, .form-textarea { width: 100%; padding: 9px 12px; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-primary); font-family: var(--font-body); font-size: 13px; transition: all var(--transition-fast); outline: none; }
+        .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--border-glow); box-shadow: 0 0 0 3px rgba(123,108,209,0.1); }
+        .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); font-size: 12px; }
+        .form-textarea { resize: vertical; min-height: 170px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8; }
+        .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%238a7fb5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 32px; }
+        .form-select option { background: var(--bg-card); color: var(--text-primary); }
+        .form-hint { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+        .recipients-toolbar { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
+        .recipients-toolbar .btn-file { flex-shrink: 0; }
+
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; }
+        .toggle-label { font-size: 13px; color: var(--text-secondary); }
+        .toggle-switch { position: relative; width: 46px; height: 24px; flex-shrink: 0; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; cursor: pointer; inset: 0; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: 24px; transition: all var(--transition-fast); }
+        .toggle-slider::before { content: ''; position: absolute; height: 16px; width: 16px; left: 3px; bottom: 3px; background: var(--text-muted); border-radius: 50%; transition: all var(--transition-fast); }
+        .toggle-switch input:checked + .toggle-slider { background: var(--accent-primary); border-color: var(--accent-primary); }
+        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(22px); background: white; }
+
+        .dynamic-fields { background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px; max-height: 380px; overflow-y: auto; transition: background 0.4s ease; }
+        .dynamic-fields::-webkit-scrollbar { width: 4px; }
+        .dynamic-fields::-webkit-scrollbar-track { background: transparent; }
+        .dynamic-fields::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; }
+        .dynamic-fields .form-group:last-child { margin-bottom: 0; }
+
+        .validation-panel { display: none; margin-top: 8px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden; max-height: 180px; overflow-y: auto; }
+        .validation-panel::-webkit-scrollbar { width: 4px; }
+        .validation-panel::-webkit-scrollbar-track { background: transparent; }
+        .validation-panel::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; }
+        .validation-panel.visible { display: block; }
+        .validation-item { display: flex; align-items: center; gap: 8px; padding: 6px 12px; font-family: var(--font-mono); font-size: 11px; border-bottom: 1px solid rgba(128,128,128,0.08); }
+        .validation-item:last-child { border-bottom: none; }
+        .validation-item.valid { background: rgba(0,230,118,0.06); color: var(--accent-green); }
+        .validation-item.invalid { background: rgba(255,82,82,0.06); color: var(--accent-red); }
+        .validation-item .line-num { width: 24px; font-weight: 600; flex-shrink: 0; }
+        .validation-item .email-text { flex: 1; }
+        .validation-item .status-icon { width: 16px; text-align: center; flex-shrink: 0; }
+        .validation-summary { padding: 8px 12px; font-size: 11px; font-weight: 600; border-bottom: 1px solid var(--border-subtle); }
+        .validation-summary.all-ok { background: rgba(0,230,118,0.08); color: var(--accent-green); }
+        .validation-summary.has-errors { background: rgba(255,82,82,0.08); color: var(--accent-red); }
+
+        .empty-state { text-align: center; padding: 40px 16px; color: var(--text-muted); }
+        .empty-state .empty-icon { font-size: 48px; margin-bottom: 10px; opacity: 0.6; }
+        .empty-state p { font-size: 14px; }
+
+        /* Quick Action Bar */
+        .quick-actions { display: flex; gap: 8px; padding: 12px 20px; border-bottom: 1px solid var(--border-subtle); flex-wrap: wrap; align-items: center; background: var(--bg-input); transition: background 0.4s ease; }
+        .quick-actions .sep { width: 1px; height: 20px; background: var(--border-subtle); margin: 0 4px; }
+        .quick-actions .selected-count { font-size: 12px; color: var(--accent-cyan); margin-left: auto; display: none; }
+
+        /* Table */
+        .table-wrapper { overflow-x: auto; max-height: 560px; overflow-y: auto; }
+        .table-wrapper::-webkit-scrollbar { width: 4px; height: 4px; }
+        .table-wrapper::-webkit-scrollbar-track { background: transparent; }
+        .table-wrapper::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        thead { position: sticky; top: 0; z-index: 3; }
+        thead th { background: var(--bg-primary); padding: 10px 12px; text-align: left; font-family: var(--font-display); font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase; border-bottom: 1px solid var(--border-subtle); white-space: nowrap; }
+        thead th.cb { width: 36px; text-align: center; }
+        tbody td { padding: 10px 12px; border-bottom: 1px solid rgba(128,128,128,0.06); vertical-align: middle; }
+        tbody td.cb { text-align: center; }
+        tbody tr { transition: background var(--transition-fast); cursor: pointer; }
+        tbody tr:hover { background: rgba(123,108,209,0.04); }
+        tbody tr.selected { background: rgba(123,108,209,0.1); }
+        tbody tr.expanded { background: rgba(123,108,209,0.06); }
+        tbody tr.detail-row { background: var(--bg-input); cursor: default; }
+        tbody tr.detail-row td { padding: 0 12px 14px 48px; white-space: normal; }
+        .detail-content { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); line-height: 1.7; background: rgba(0,0,0,0.15); padding: 12px 16px; border-radius: var(--radius-sm); max-height: 200px; overflow-y: auto; }
+        .detail-content .detail-label { color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .detail-content .detail-value { color: var(--text-primary); margin-bottom: 8px; }
+        .detail-content .detail-error { color: var(--accent-red); background: rgba(255,82,82,0.1); padding: 8px 12px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-red); margin-top: 4px; }
+
+        tbody tr.detail-row { display: none; }
+        tbody tr.detail-row.open { display: table-row; }
+
+        .email-cell { font-family: var(--font-mono); font-size: 12px; color: var(--accent-cyan); }
+        .template-badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; background: rgba(123,108,209,0.15); color: var(--accent-glow); }
+        .status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 0.3px; }
+        .status-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; }
+        .status-badge.pending { background: rgba(255,171,0,0.12); color: var(--accent-amber); }
+        .status-badge.pending::before { background: var(--accent-amber); }
+        .status-badge.sent { background: rgba(0,230,118,0.12); color: var(--accent-green); }
+        .status-badge.sent::before { background: var(--accent-green); }
+        .status-badge.failed { background: rgba(255,82,82,0.12); color: var(--accent-red); cursor: pointer; }
+        .status-badge.failed::before { background: var(--accent-red); }
+        .status-badge.failed:hover { background: rgba(255,82,82,0.25); }
+        .time-cell { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+        .actions-cell { display: flex; gap: 3px; flex-wrap: wrap; }
+
+        /* Checkbox style */
+        .cb-input { width: 15px; height: 15px; accent-color: var(--accent-primary); cursor: pointer; }
+
+        /* Modal */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; align-items: center; justify-content: center; }
+        .modal-overlay.open { display: flex; }
+        .modal { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px; max-width: 520px; width: 90%; box-shadow: var(--shadow-card); animation: modalIn 0.2s ease; }
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .modal h3 { font-family: var(--font-display); font-size: 16px; margin-bottom: 16px; color: var(--text-primary); }
+        .modal .modal-body { font-size: 14px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px; }
+        .modal .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+        /* Toast */
+        .toast-container { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 6px; }
+        .toast { padding: 12px 18px; border-radius: var(--radius-md); font-size: 13px; font-weight: 500; animation: toastIn 0.3s ease; max-width: 440px; box-shadow: var(--shadow-card); word-break: break-all; }
+        .toast.success { background: #1b3a2d; border: 1px solid var(--accent-green); color: var(--accent-green); }
+        .toast.error { background: #3a1b1b; border: 1px solid var(--accent-red); color: var(--accent-red); }
+        .toast.info { background: #1b2a3a; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); }
+        @keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .loading { animation: pulse 1.5s infinite; }
+
+        /* Progress bar */
+        .progress-bar { display: none; height: 4px; background: var(--border-subtle); border-radius: 2px; margin-top: 2px; overflow: hidden; }
+        .progress-bar.active { display: block; }
+        .progress-bar .fill { height: 100%; background: var(--accent-primary); border-radius: 2px; transition: width 0.3s ease; width: 0%; }
+
+        /* Filter tabs */
+        .filter-tabs { display: flex; gap: 4px; }
+        .filter-tab { padding: 4px 12px; border-radius: 20px; font-size: 11px; cursor: pointer; border: 1px solid transparent; background: transparent; color: var(--text-muted); transition: all var(--transition-fast); font-family: var(--font-body); }
+        .filter-tab:hover { color: var(--text-primary); }
+        .filter-tab.active { background: rgba(123,108,209,0.15); color: var(--accent-glow); border-color: rgba(123,108,209,0.3); }
+
+        @media (max-width: 1200px) { .main-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .app-container { padding: 12px; } .stats-grid { grid-template-columns: 1fr 1fr; } .app-header { flex-direction: column; gap: 12px; align-items: flex-start; } .quick-actions { flex-direction: column; align-items: stretch; } .quick-actions .sep { display: none; } }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <header class="app-header">
+        <div class="app-logo"><div class="logo-icon">📧</div><div class="logo-text"><h1>Nebula Mail</h1><span>Batch Dispatch Center</span></div></div>
+        <div class="header-actions">
+            <span style="font-size:11px;color:var(--text-muted);" id="clockDisplay">--</span>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换白天/夜间模式">🌙</button>
+            <button class="btn btn-outline btn-sm" onclick="refreshAll()">⟳ 刷新</button>
+        </div>
+    </header>
+
+    <div class="stats-grid" id="statsGrid">
+        <div class="stat-card total" onclick="setStatusFilter('')"><div class="stat-icon">📊</div><div class="stat-info"><div class="stat-number loading" id="statTotal">—</div><div class="stat-label">总任务数</div></div></div>
+        <div class="stat-card pending" onclick="setStatusFilter('pending')"><div class="stat-icon">⏳</div><div class="stat-info"><div class="stat-number loading" id="statPending">—</div><div class="stat-label">待发送</div></div></div>
+        <div class="stat-card sent" onclick="setStatusFilter('sent')"><div class="stat-icon">✅</div><div class="stat-info"><div class="stat-number loading" id="statSent">—</div><div class="stat-label">已发送</div></div></div>
+        <div class="stat-card failed" onclick="setStatusFilter('failed')"><div class="stat-icon">❌</div><div class="stat-info"><div class="stat-number loading" id="statFailed">—</div><div class="stat-label">发送失败</div></div></div>
+    </div>
+
+    <div class="main-grid">
+        <!-- Left Panel -->
+        <div class="panel" id="createPanel">
+            <div class="panel-header"><h2>✦ 创建邮件任务</h2></div>
+            <div class="panel-body">
+                <form id="taskForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label">邮件模板 <span class="required">*</span></label>
+                        <select class="form-select" id="templateSelect" onchange="onTemplateChange()" required>
+                            <option value="">— 请选择邮件模板 —</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="templateDesc" style="display:none;">
+                        <div style="padding:8px 12px; background:rgba(0,229,255,0.06); border-radius:var(--radius-sm); border-left:3px solid var(--accent-cyan);">
+                            <span style="font-size:12px;color:var(--accent-cyan);" id="templateDescText"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">收件人邮箱 <span class="required">*</span></label>
+                        <div class="recipients-toolbar">
+                            <button type="button" class="btn btn-file btn-sm" onclick="document.getElementById('txtFileInput').click()">📂 TXT导入</button>
+                            <input type="file" id="txtFileInput" accept=".txt" style="display:none;" onchange="handleTxtImport(event)">
+                            <button type="button" class="btn btn-ghost btn-sm" onclick="validateEmails()">🔍 校验</button>
+                            <span style="font-size:11px;color:var(--text-muted);margin-left:auto;" id="emailCount">0 个邮箱</span>
+                        </div>
+                        <textarea class="form-textarea" id="emailsInput" placeholder="一行一个邮箱&#10;user1@qq.com&#10;user2@163.com" required oninput="onEmailsChange()"></textarea>
+                        <div class="validation-panel" id="validationPanel"><div class="validation-summary" id="validationSummary"></div><div id="validationList"></div></div>
+                    </div>
+                    <div class="toggle-row"><span class="toggle-label">⏰ 定时发送</span><label class="toggle-switch"><input type="checkbox" id="scheduleToggle" onchange="onScheduleToggle()"><span class="toggle-slider"></span></label></div>
+                    <div class="form-group" id="scheduleTimeGroup" style="display:none;"><label class="form-label">发送时间</label><input type="datetime-local" class="form-input" id="scheduleTime"><div class="form-hint">未来任意时间，到期自动发送</div></div>
+                    <div class="form-group"><label class="form-label">模板变量</label><div class="dynamic-fields" id="dynamicFields"><div class="empty-state"><div class="empty-icon">📋</div><p>请先选择邮件模板</p></div></div></div>
+                    <div class="progress-bar" id="submitProgress"><div class="fill" id="submitProgressFill"></div></div>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;padding:11px;font-size:14px;margin-top:8px;">🚀 创建任务 <small style="opacity:0.6;">Ctrl+Enter</small></button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="panel" id="taskListPanel">
+            <div class="panel-header">
+                <h2>📋 任务列表</h2>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="filter-tabs" id="filterTabs">
+                        <button class="filter-tab active" data-filter="" onclick="setStatusFilter('')">全部</button>
+                        <button class="filter-tab" data-filter="pending" onclick="setStatusFilter('pending')">待发送</button>
+                        <button class="filter-tab" data-filter="sent" onclick="setStatusFilter('sent')">已发送</button>
+                        <button class="filter-tab" data-filter="failed" onclick="setStatusFilter('failed')">失败</button>
+                    </div>
+                    <span style="font-size:11px;color:var(--text-muted);" id="taskCount">—</span>
+                </div>
+            </div>
+            <!-- Quick Action Bar -->
+            <div class="quick-actions" id="quickActions">
+                <button class="btn btn-primary btn-xs" onclick="sendAllPending()" title="一键发送全部待发送任务">⚡ 一键发送全部</button>
+                <button class="btn btn-warn btn-xs" onclick="retryAllFailed()" title="重试所有失败的任务">🔄 重试全部失败</button>
+                <span class="sep"></span>
+                <button class="btn btn-danger btn-xs" onclick="batchDeleteSelected()" id="btnBatchDelete" disabled>🗑 批量删除</button>
+                <button class="btn btn-ghost btn-xs" onclick="cleanCompleted()">🧹 清空已完成</button>
+                <span class="selected-count" id="selectedCount">已选 0 项</span>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="cb"><input type="checkbox" class="cb-input" id="selectAll" onchange="toggleSelectAll()" title="全选/取消"></th>
+                            <th>ID</th><th>收件人</th><th>模板</th><th>计划发送</th><th>状态</th><th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody">
+                        <tr><td colspan="7"><div class="empty-state"><div class="empty-icon">📭</div><p>暂无邮件任务</p></div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Error Detail Modal -->
+<div class="modal-overlay" id="errorModal">
+    <div class="modal">
+        <h3 id="errorModalTitle">📋 任务详情</h3>
+        <div class="modal-body" id="errorModalBody"></div>
+        <div class="modal-actions">
+            <button class="btn btn-outline btn-sm" onclick="closeModal()">关闭</button>
+            <button class="btn btn-warn btn-sm" id="errorModalRetryBtn" onclick="retryFromModal()">🔄 重试发送</button>
+        </div>
+    </div>
+</div>
+
+<!-- Confirm Modal -->
+<div class="modal-overlay" id="confirmModal">
+    <div class="modal">
+        <h3 id="confirmModalTitle">确认操作</h3>
+        <div class="modal-body" id="confirmModalBody"></div>
+        <div class="modal-actions">
+            <button class="btn btn-outline btn-sm" onclick="closeConfirm()">取消</button>
+            <button class="btn btn-primary btn-sm" id="confirmModalOk" onclick="confirmAction()">确认</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// ============ State ============
+let templates = {}, currentTemplateCode = '', tasks = [], allTasks = [];
+let validationResults = null, selectedIds = new Set(), currentStatusFilter = '';
+let expandedRowId = null, currentModalTaskId = null;
+let confirmCallback = null;
+
+// ============ Clock ============
+setInterval(() => { document.getElementById('clockDisplay').textContent = new Date().toLocaleString('zh-CN'); }, 1000);
+
+// ============ Theme ============
+function toggleTheme() {
+    const h = document.documentElement, b = document.getElementById('themeToggle');
+    const next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    h.setAttribute('data-theme', next); b.textContent = next === 'dark' ? '🌙' : '☀️';
+    localStorage.setItem('nebula-theme', next);
+}
+(function(){ const s = localStorage.getItem('nebula-theme')||'dark'; document.documentElement.setAttribute('data-theme',s); document.getElementById('themeToggle').textContent = s==='dark'?'🌙':'☀️'; })();
+
+// ============ API ============
+const API = {
+    async get(u){ const r=await fetch(u); return r.json(); },
+    async post(u,b){ const r=await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}); return r.json(); },
+    async del(u){ const r=await fetch(u,{method:'DELETE'}); return r.json(); },
+    async delBody(u,b){ const r=await fetch(u,{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}); return r.json(); }
+};
+
+// ============ Toast ============
+function showToast(m,t='info'){ const c=document.getElementById('toastContainer'), e=document.createElement('div'); e.className=`toast ${t}`; e.textContent=m; c.appendChild(e); setTimeout(()=>{ e.style.opacity='0'; e.style.transform='translateX(40px)'; e.style.transition='all 0.3s ease'; setTimeout(()=>e.remove(),300); },4000); }
+
+// ============ Modal ============
+function openModal(title,body,taskId){ document.getElementById('errorModalTitle').textContent=title; document.getElementById('errorModalBody').innerHTML=body; document.getElementById('errorModalRetryBtn').style.display=taskId?'inline-flex':'none'; currentModalTaskId=taskId||null; document.getElementById('errorModal').classList.add('open'); }
+function closeModal(){ document.getElementById('errorModal').classList.remove('open'); currentModalTaskId=null; }
+function retryFromModal(){ if(currentModalTaskId){ closeModal(); retryTask(currentModalTaskId); } }
+document.getElementById('errorModal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
+
+function showConfirm(title,body,cb){ document.getElementById('confirmModalTitle').textContent=title; document.getElementById('confirmModalBody').textContent=body; confirmCallback=cb; document.getElementById('confirmModal').classList.add('open'); }
+function closeConfirm(){ document.getElementById('confirmModal').classList.remove('open'); confirmCallback=null; }
+function confirmAction(){ if(confirmCallback){ confirmCallback(); confirmCallback=null; } closeConfirm(); }
+document.getElementById('confirmModal').addEventListener('click',function(e){ if(e.target===this) closeConfirm(); });
+
+// ============ Templates ============
+async function loadTemplates(){
+    try{ const r=await API.get('/api/email-tasks/templates'); if(r.code===200){ templates=r.data; const s=document.getElementById('templateSelect'); s.innerHTML='<option value="">— 请选择邮件模板 —</option>'; Object.entries(templates).forEach(([c,d])=>{ const o=document.createElement('option'); o.value=c; o.textContent=`${d.name} (${c})`; s.appendChild(o); }); } }
+    catch(e){ showToast('加载模板失败: '+e.message,'error'); }
+}
+function onTemplateChange(){
+    const code=document.getElementById('templateSelect').value; currentTemplateCode=code;
+    const dd=document.getElementById('templateDesc'), dt=document.getElementById('templateDescText'), fd=document.getElementById('dynamicFields');
+    if(!code||!templates[code]){ dd.style.display='none'; fd.innerHTML='<div class="empty-state"><div class="empty-icon">📋</div><p>请先选择邮件模板</p></div>'; return; }
+    const def=templates[code]; dd.style.display='block'; dt.textContent=def.description;
+    let h=''; def.fields.forEach(f=>{ const req=f.required?'<span class="required">*</span>':''; const isJ=f.type==='json'||['items','goods','articles','onboarding_steps'].includes(f.key);
+        if(isJ) h+=`<div class="form-group"><label class="form-label">${f.label} ${req}</label><textarea class="form-textarea" id="var_${f.key}" placeholder="${f.placeholder||''}" style="min-height:55px;font-family:var(--font-mono);font-size:11px;" ${f.required?'required':''}></textarea></div>`;
+        else h+=`<div class="form-group"><label class="form-label">${f.label} ${req}</label><input type="${f.type==='url'?'url':f.type==='email'?'email':'text'}" class="form-input" id="var_${f.key}" placeholder="${f.placeholder||''}" ${f.required?'required':''}></div>`;
+    }); fd.innerHTML=h;
+}
+
+// ============ Schedule ============
+function onScheduleToggle(){ const c=document.getElementById('scheduleToggle').checked; document.getElementById('scheduleTimeGroup').style.display=c?'block':'none'; if(c&&!document.getElementById('scheduleTime').value){ const f=new Date(Date.now()+3600000); document.getElementById('scheduleTime').value=f.toISOString().slice(0,16); } }
+
+// ============ Emails ============
+function onEmailsChange(){ const e=getEmailsList(); document.getElementById('emailCount').textContent=`${e.length} 个邮箱`; if(validationResults){ validationResults=null; document.getElementById('validationPanel').classList.remove('visible'); } }
+function getEmailsList(){ return document.getElementById('emailsInput').value.split('\n').map(s=>s.trim()).filter(s=>s); }
+function handleTxtImport(event){
+    const f=event.target.files[0]; if(!f) return;
+    if(!f.name.endsWith('.txt')){ showToast('请选择 .txt 文件','error'); event.target.value=''; return; }
+    const r=new FileReader(); r.onload=function(e){ const lines=e.target.result.split(/\r?\n/).map(s=>s.trim()).filter(s=>s); const ta=document.getElementById('emailsInput'); const ex=ta.value.trim(); ta.value=ex?ex+'\n'+lines.join('\n'):lines.join('\n'); onEmailsChange(); showToast(`导入了 ${lines.length} 个邮箱`,'info'); }; r.readAsText(f,'UTF-8'); event.target.value='';
+}
+async function validateEmails(){
+    const emails=getEmailsList(); if(!emails.length){ showToast('请先输入邮箱','error'); return; }
+    const p=document.getElementById('validationPanel'),s=document.getElementById('validationSummary'),l=document.getElementById('validationList');
+    p.classList.add('visible'); s.className='validation-summary'; s.textContent='⏳ 校验中...'; l.innerHTML='';
+    try{ const r=await API.post('/api/email-tasks/validate-emails',{emails}); if(r.code!==200){ showToast('校验失败','error'); return; }
+        const d=r.data; validationResults=d.results;
+        s.className=d.invalid_count===0?'validation-summary all-ok':'validation-summary has-errors';
+        s.textContent=d.invalid_count===0?`✅ 全部 ${d.total} 个邮箱合法`:`❌ ${d.invalid_count} 个不合法 / ${d.valid_count} 个通过`;
+        l.innerHTML=d.results.map(r=>`<div class="validation-item ${r.valid?'valid':'invalid'}"><span class="line-num">#${r.line}</span><span class="status-icon">${r.valid?'✓':'✗'}</span><span class="email-text">${he(r.email)}</span>${r.error?`<span class="error-msg">${r.error}</span>`:''}</div>`).join('');
+        showToast(d.invalid_count>0?`${d.invalid_count} 个邮箱不合法`:`全部通过`,'success'); }
+    catch(e){ showToast('校验异常: '+e.message,'error'); }
+}
+function he(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+// ============ Submit ============
+async function handleSubmit(e){
+    e.preventDefault();
+    const tc=document.getElementById('templateSelect').value; if(!tc){ showToast('请选择模板','error'); return; }
+    const emails=getEmailsList(); if(!emails.length){ showToast('请填写邮箱','error'); return; }
+    const vr=await API.post('/api/email-tasks/validate-emails',{emails});
+    if(vr.code!==200||vr.data.invalid_count>0){
+        if(vr.data.invalid_count>0){ validationResults=vr.data.results; showValidationPanel(vr.data); showToast(`${vr.data.invalid_count} 个邮箱不合法`,'error'); } return; }
+    const def=templates[tc]; const tv={}; let heErr=false;
+    def.fields.forEach(f=>{ const el=document.getElementById(`var_${f.key}`); const v=el?el.value.trim():''; if(f.required&&!v){ showToast(`请填写: ${f.label}`,'error'); heErr=true; return; } if(v){ const isJ=f.type==='json'||['items','goods','articles','onboarding_steps'].includes(f.key); if(isJ){ try{tv[f.key]=JSON.parse(v);}catch{ showToast(`"${f.label}" JSON格式错误`,'error'); heErr=true; return; } } else tv[f.key]=v; } }); if(heErr) return;
+    let st=null; if(document.getElementById('scheduleToggle').checked){ st=document.getElementById('scheduleTime').value; if(!st){ showToast('请选择时间','error'); return; } st=new Date(st).toISOString(); }
+    const btn=document.getElementById('submitBtn'); btn.disabled=true; btn.innerHTML='⏳ 创建中...';
+    try{ const body={template_code:tc,template_vars:tv,emails}; if(st) body.send_time=st;
+        const r=await API.post('/api/email-tasks',body);
+        if(r.code===200){ showToast(r.msg,'success'); resetForm(); await loadTasks(); await loadStats(); }
+        else showToast(r.msg||'创建失败','error'); }
+    catch(err){ showToast('网络错误: '+err.message,'error'); }
+    finally{ btn.disabled=false; btn.innerHTML='🚀 创建任务 <small style="opacity:0.6;">Ctrl+Enter</small>'; }
+}
+function showValidationPanel(d){ const p=document.getElementById('validationPanel'),s=document.getElementById('validationSummary'),l=document.getElementById('validationList'); p.classList.add('visible'); s.className='validation-summary has-errors'; s.textContent=`❌ ${d.invalid_count} 个不合法 / ${d.valid_count} 个通过`; l.innerHTML=d.results.map(r=>`<div class="validation-item ${r.valid?'valid':'invalid'}"><span class="line-num">#${r.line}</span><span class="status-icon">${r.valid?'✓':'✗'}</span><span class="email-text">${he(r.email)}</span>${r.error?`<span class="error-msg">${r.error}</span>`:''}</div>`).join(''); }
+function resetForm(){ document.getElementById('taskForm').reset(); document.getElementById('templateSelect').value=''; document.getElementById('dynamicFields').innerHTML='<div class="empty-state"><div class="empty-icon">📋</div><p>请先选择邮件模板</p></div>'; document.getElementById('templateDesc').style.display='none'; document.getElementById('scheduleTimeGroup').style.display='none'; document.getElementById('scheduleToggle').checked=false; document.getElementById('emailCount').textContent='0 个邮箱'; document.getElementById('validationPanel').classList.remove('visible'); validationResults=null; currentTemplateCode=''; }
+
+// ============ Keyboard shortcut ============
+document.addEventListener('keydown',function(e){ if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){ e.preventDefault(); document.getElementById('taskForm').dispatchEvent(new Event('submit')); } });
+
+// ============ Tasks ============
+function setStatusFilter(s){ currentStatusFilter=s; document.querySelectorAll('#filterTabs .filter-tab').forEach(t=>t.classList.toggle('active',t.dataset.filter===s)); document.querySelectorAll('.stat-card').forEach(c=>c.classList.remove('active')); if(s==='') document.querySelector('.stat-card.total').classList.add('active'); else if(s==='pending') document.querySelector('.stat-card.pending').classList.add('active'); else if(s==='sent') document.querySelector('.stat-card.sent').classList.add('active'); else if(s==='failed') document.querySelector('.stat-card.failed').classList.add('active'); selectedIds.clear(); updateSelectUI(); renderTaskTable(); }
+async function loadTasks(){ try{ const r=await API.get('/api/email-tasks'); if(r.code===200){ allTasks=r.data.tasks||[]; renderTaskTable(); } } catch(e){ showToast('加载失败','error'); } }
+function getFilteredTasks(){ if(!currentStatusFilter) return allTasks; return allTasks.filter(t=>t.status===currentStatusFilter); }
+function renderTaskTable(){
+    const tbody=document.getElementById('taskTableBody'); tasks=getFilteredTasks();
+    document.getElementById('taskCount').textContent=`${tasks.length} / ${allTasks.length}`;
+    if(!tasks.length){ tbody.innerHTML=`<tr><td colspan="7"><div class="empty-state"><div class="empty-icon">📭</div><p>${currentStatusFilter?'没有 '+statusLabel(currentStatusFilter)+' 的任务':'暂无邮件任务'}</p></div></td></tr>`; return; }
+    tbody.innerHTML=tasks.map(t=>{
+        const tn=(templates[t.template_code]&&templates[t.template_code].name)||t.template_code;
+        const isP=t.status==='pending',isF=t.status==='failed',sel=selectedIds.has(t.id);
+        const vars=typeof t.template_vars==='string'?JSON.parse(t.template_vars||'{}'):(t.template_vars||{});
+        const varsStr=JSON.stringify(vars,null,2);
+        const errMsg=t.error_msg||'';
+        return `
+        <tr class="${sel?'selected':''}" id="row_${t.id}" onclick="toggleRow(${t.id}, event)">
+            <td class="cb" onclick="event.stopPropagation()"><input type="checkbox" class="cb-input row-cb" data-id="${t.id}" ${sel?'checked':''} onchange="onCheckChange(${t.id},this.checked)"></td>
+            <td style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">#${t.id}</td>
+            <td><span class="email-cell" title="${t.user_email}">${t.user_email}</span></td>
+            <td><span class="template-badge">${tn}</span></td>
+            <td><span class="time-cell">${fmt(t.send_time)}</span></td>
+            <td onclick="event.stopPropagation()"><span class="status-badge ${t.status}" ${isF?`onclick="showErrorDetail(${t.id})" title="点击查看错误详情"`:''}>${sl(t.status)}</span></td>
+            <td class="actions-cell" onclick="event.stopPropagation()">
+                ${isP?`<button class="btn btn-success btn-xs" onclick="sendNow(${t.id})">▶</button>`:''}
+                ${isF?`<button class="btn btn-warn btn-xs" onclick="retryTask(${t.id})" title="重试">🔄</button>`:''}
+                <button class="btn btn-danger btn-xs" onclick="deleteTask(${t.id})">✕</button>
+            </td>
+        </tr>
+        <tr class="detail-row ${expandedRowId===t.id?'open':''}" id="detail_${t.id}" onclick="event.stopPropagation()">
+            <td colspan="7">
+                <div class="detail-content">
+                    <div class="detail-label">📧 收件人</div><div class="detail-value">${t.user_email}</div>
+                    <div class="detail-label">🕐 创建时间</div><div class="detail-value">${fmt(t.created_at)}</div>
+                    <div class="detail-label">📦 模板变量</div><div class="detail-value"><pre style="white-space:pre-wrap;margin:0;">${he(varsStr)}</pre></div>
+                    ${t.sent_at?`<div class="detail-label">📤 发送时间</div><div class="detail-value">${fmt(t.sent_at)}</div>`:''}
+                    ${errMsg?`<div class="detail-error"><strong>❌ 错误详情</strong><br>${he(errMsg)}</div>`:''}
+                </div>
+            </td>
+        </tr>`;
+    }).join('');
+    updateSelectUI();
+}
+function fmt(iso){ if(!iso) return '—'; const d=new Date(iso); const p=n=>String(n).padStart(2,'0'); return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`; }
+function sl(s){ const m={pending:'待发送',sent:'已发送',failed:'失败'}; return m[s]||s; }
+function toggleRow(id,event){ if(event.target.type==='checkbox') return; expandedRowId=expandedRowId===id?null:id; renderTaskTable(); }
+function showErrorDetail(id){ const t=allTasks.find(t=>t.id===id); if(!t) return; const vars=typeof t.template_vars==='string'?JSON.parse(t.template_vars||'{}'):(t.template_vars||{}); const body=`<div class="detail-label">收件人</div><div class="detail-value">${t.user_email}</div><div class="detail-label">模板</div><div class="detail-value">${(templates[t.template_code]&&templates[t.template_code].name)||t.template_code}</div><div class="detail-label">创建时间</div><div class="detail-value">${fmt(t.created_at)}</div><div class="detail-error"><strong>错误详情</strong><br>${he(t.error_msg||'(无详细错误信息)')}</div>`; openModal(`任务 #${id} — 失败详情`,body,id); }
+
+// ============ Selection ============
+function toggleSelectAll(){ const cb=document.getElementById('selectAll'); tasks.forEach(t=>{ if(cb.checked) selectedIds.add(t.id); else selectedIds.delete(t.id); }); renderTaskTable(); }
+function onCheckChange(id,checked){ if(checked) selectedIds.add(id); else selectedIds.delete(id); updateSelectUI(); const row=document.getElementById('row_'+id); if(row) row.classList.toggle('selected',checked); }
+function updateSelectUI(){ document.getElementById('selectAll').checked=tasks.length>0&&tasks.every(t=>selectedIds.has(t.id)); const c=selectedIds.size; const el=document.getElementById('selectedCount'); el.style.display=c>0?'inline':'none'; el.textContent=`已选 ${c} 项`; document.getElementById('btnBatchDelete').disabled=c===0; }
+
+// ============ Actions ============
+async function sendNow(id){ try{ const r=await API.post(`/api/email-tasks/${id}/send`); showToast(r.code===200?`#${id} 发送成功！`:r.msg||'发送失败',r.code===200?'success':'error'); await loadTasks(); await loadStats(); } catch(e){ showToast('网络错误','error'); } }
+async function retryTask(id){ try{ const r=await API.post(`/api/email-tasks/${id}/retry`); showToast(r.code===200?`#${id} 重试成功！`:r.msg||'重试失败',r.code===200?'success':'error'); await loadTasks(); await loadStats(); } catch(e){ showToast('网络错误','error'); } }
+async function deleteTask(id){ showConfirm('删除任务',`确定要删除任务 #${id} 吗？此操作不可撤销。`,async()=>{ try{ const r=await API.del(`/api/email-tasks/${id}`); showToast(r.code===200?`#${id} 已删除`:r.msg||'删除失败'); selectedIds.delete(id); await loadTasks(); await loadStats(); } catch(e){ showToast('网络错误','error'); } }); }
+async function sendAllPending(){ const tasks=getFilteredTasks().filter(t=>t.status==='pending'); if(!tasks.length){ showToast('没有待发送任务','info'); return; } showConfirm('一键发送',`确定要立即发送全部 ${tasks.length} 个待发送任务吗？`,async()=>{ try{ const r=await API.post('/api/email-tasks/send-all-pending'); showToast(r.msg,'success'); await loadTasks(); await loadStats(); } catch(e){ showToast('网络错误','error'); } }); }
+async function retryAllFailed(){ showConfirm('重试全部失败',`确定要重试所有失败任务吗？`,async()=>{ try{ const r=await API.post('/api/email-tasks/resend-failed'); showToast(r.msg,r.code===200?'success':'error'); await loadTasks(); await loadStats(); } catch(e){ showToast('网络错误','error'); } }); }
+async function batchDeleteSelected(){ if(!selectedIds.size) return; showConfirm('批量删除',`确定要删除选中的 ${selectedIds.size} 个任务吗？此操作不可撤销。`,async()=>{ try{ const r=await API.delBody('/api/email-tasks/batch',{ids:[...selectedIds]}); showToast(r.msg,'info'); selectedIds.clear(); await loadTasks(); await loadStats(); } catch(e){ showToast('网络错误','error'); } }); }
+async function cleanCompleted(){ showConfirm('清空已完成',`确定要删除所有已发送的任务记录吗？`,async()=>{ try{ const r=await API.del('/api/email-tasks/clean/completed'); showToast(r.msg,'info'); await loadTasks(); await loadStats(); } catch(e){ showToast('网络错误','error'); } }); }
+async function sendAllDue(){ try{ const r=await API.post('/api/email-tasks/send-due'); showToast(r.msg,r.code===200?'success':'error'); await loadTasks(); await loadStats(); } catch(e){ showToast('网络错误','error'); } }
+
+// ============ Stats ============
+async function loadStats(){ try{ const r=await API.get('/api/email-tasks/stats'); if(r.code===200){ const d=r.data; document.getElementById('statTotal').textContent=d.total; document.getElementById('statPending').textContent=d.pending; document.getElementById('statSent').textContent=d.sent; document.getElementById('statFailed').textContent=d.failed; document.querySelectorAll('.stat-number').forEach(e=>e.classList.remove('loading')); } } catch(e){} }
+async function refreshAll(){ await Promise.all([loadTemplates(),loadTasks(),loadStats()]); showToast('已刷新','info'); }
+
+// ============ Init ============
+async function init(){ await loadTemplates(); await loadTasks(); await loadStats(); setInterval(loadStats,30000); setInterval(loadTasks,30000); }
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎注册 - {app_name}</title>
+</head>
+<body style="margin:0; padding:0; font-family: Arial, Helvetica, sans-serif;">
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td align="center" style="padding:30px 10px;">
+
+                <!-- 主容器 -->
+                <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; background:#2c1e5e; border-radius:20px; overflow:hidden;">
+
+                    <!-- 头部 -->
+                    <tr>
+                        <td bgcolor="#4a3a8f" align="center" style="padding:45px 30px 35px; background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <h1 style="color:#ffffff; font-size:28px; font-weight:bold; margin:0; letter-spacing:2px;">👋 欢迎加入 {app_name}</h1>
+                        </td>
+                    </tr>
+
+                    <!-- 内容区 -->
+                    <tr>
+                        <td style="padding:45px 35px; text-align:center; background:#2c1e5e;">
+                            <img src="cid:logo" width="80px" style="margin:0 0 8px 0;">
+
+                            <p style="color:#d0c4ff; font-size:16px; line-height:1.6; margin:0 0 10px 0;">
+                                您好，<strong style="color:#ffffff;">{user_name}</strong>
+                            </p>
+                            <p style="color:#d0c4ff; font-size:16px; line-height:1.6; margin:0 0 30px 0;">
+                                感谢您注册 {app_name}！我们非常高兴您能加入。
+                            </p>
+
+                            <!-- 入门步骤卡片 -->
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#3a2a7a; border:2px solid #7b6cd1; border-radius:16px; margin-bottom:30px;">
+                                <tr>
+                                    <td style="padding:25px 30px; text-align:left;">
+                                        <p style="color:#c8b8ff; font-size:14px; margin:0 0 15px 0;">
+                                            🚀 <strong style="color:#ffffff;">快速入门</strong>
+                                        </p>
+                                        {onboarding_steps_html}
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- 验证按钮（可选） -->
+                            {verify_button_html}
+
+                            <p style="color:#a89cff; font-size:15px; margin:35px 0 0 0; line-height:1.5;">
+                                如有任何问题，欢迎随时联系我们的客服团队。
+                            </p>
+
+                        </td>
+                    </tr>
+
+                    <!-- 页脚 -->
+                    <tr>
+                        <td style="padding:30px; text-align:center; background:#25194f; border-top:1px solid #3f2e75;">
+                            <p style="color:#9b8fd1; font-size:13px; margin:0 0 5px 0;">
+                                © {time} {app_name}
+                            </p>
+                            <p style="color:#7a6eb8; font-size:12px; margin:0;">
+                                此邮件由系统自动发送，请勿回复
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{subject} - {app_name}</title>
+</head>
+<body style="margin:0; padding:0; font-family: Arial, Helvetica, sans-serif;">
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td align="center" style="padding:30px 10px;">
+
+                <!-- 主容器 -->
+                <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; background:#2c1e5e; border-radius:20px; overflow:hidden;">
+
+                    <!-- 头部 -->
+                    <tr>
+                        <td bgcolor="#4a3a8f" align="center" style="padding:45px 30px 35px; background: linear-gradient(135deg, #1abc9c, #16a085);">
+                            <h1 style="color:#ffffff; font-size:24px; font-weight:bold; margin:0 0 8px 0; letter-spacing:2px;">📰 {subject}</h1>
+                            <p style="color:#d0f0e8; font-size:14px; margin:0;">{app_name} 周刊</p>
+                        </td>
+                    </tr>
+
+                    <!-- 内容区 -->
+                    <tr>
+                        <td style="padding:45px 35px; text-align:center; background:#2c1e5e;">
+                            <img src="cid:logo" width="80px" style="margin:0 0 8px 0;">
+
+                            <p style="color:#d0c4ff; font-size:16px; line-height:1.6; margin:0 0 30px 0;">
+                                您好，<strong style="color:#ffffff;">{user_name}</strong><br>
+                                以下是本周为您精选的内容：
+                            </p>
+
+                            <!-- 文章列表 -->
+                            {articles_html}
+
+                            <p style="color:#a89cff; font-size:13px; margin:35px 0 0 0; line-height:1.5;">
+                                如果您不希望再收到此类邮件，可以<a href="{unsubscribe_url}" style="color:#9b8fd1;">点击此处退订</a>。
+                            </p>
+
+                        </td>
+                    </tr>
+
+                    <!-- 页脚 -->
+                    <tr>
+                        <td style="padding:30px; text-align:center; background:#25194f; border-top:1px solid #3f2e75;">
+                            <p style="color:#9b8fd1; font-size:13px; margin:0 0 5px 0;">
+                                © {time} {app_name}
+                            </p>
+                            <p style="color:#7a6eb8; font-size:12px; margin:0;">
+                                此邮件由系统自动发送，请勿回复
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
