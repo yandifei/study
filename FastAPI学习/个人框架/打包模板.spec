@@ -1,8 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 a = Analysis(
-    ['点点网自动化.py'],
-    pathex=[],
+    ['gallery-db-service.py'],
     binaries=[],
     datas=[],
     hiddenimports=[
@@ -52,7 +51,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='打包例子',
+    name='ACG画廊数据库服务',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -73,5 +72,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='打包例子',
+    name='ACG画廊数据库服务',
 )

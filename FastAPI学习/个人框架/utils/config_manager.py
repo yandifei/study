@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Dict, Any, Tuple
 # 第三方库
 import yaml
+
 # 自己的模块
 from logger.logging_configurator import LoggingConfigurator
 from utils.path_utils import get_root
@@ -78,7 +79,6 @@ class ConfigManager:
 
         :return:配置有效且层叠成功返回True否则返回False
         """
-
         # 框架默认日志配置(日志配置错误就没必要加载后面的了)
         if self.load_default_logging_config() is False:
             return False
@@ -158,7 +158,6 @@ class ConfigManager:
         except Exception as e:
             self.error_msg = (f"配置文件转化模型错误: {e}", e)
             return False
-
 
     @staticmethod
     def load_yaml(path: Path) -> Dict[str, Any]:

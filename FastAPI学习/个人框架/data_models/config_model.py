@@ -4,6 +4,9 @@
 # 第三方库
 from pydantic import BaseModel
 
+from data_models.server_config import ServerConfig
+
+
 class ConfigModel(BaseModel):
     """用户配置模型"""
     # 服务器模型
