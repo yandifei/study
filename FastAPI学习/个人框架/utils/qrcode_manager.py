@@ -15,11 +15,23 @@ from qrcode.image.styles.moduledrawers.pil import RoundedModuleDrawer, GappedSqu
 from qrcode.image.styles.colormasks import RadialGradiantColorMask, SquareGradiantColorMask
 
 def get_local_ip():
+    """
+    获取本机当前可用的出口 IPv4 地址。
+
+    原理：创建一个 UDP 套接字，连接到一个外部地址（谷歌DNS 8.8.8.8:53），
+    内核根据路由表自动选择源 IP，再通过 getsockname() 取出该 IP。
+
+    Returns:
+        str: 本机 IPv4 地址；若连接失败则返回 '127.0.0.1'。
+
+    Note:
+        若开启了代理的 TUN 模式、VPN 或存在多网卡，返回的 IP 可能
+        不是物理网卡 IP，而是路由表优先级最高的接口 IP。
+    """
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
-        # 尝试连接局域网内可能存在的地址，强制走物理网卡
-        # 即使地址不存在，只要路由表正确，getsockname 也能拿到物理 IP
-        s.connect(("192.168.1.255", 9))
+        # 谷歌的DNS
+        s.connect(("8.8.8.8", 53))
         ip = s.getsockname()[0]
     except Exception:
         ip = "127.0.0.1"
