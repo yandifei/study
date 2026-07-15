@@ -1,0 +1,5 @@
+学习视频地址：【iPerf3 全参数保姆级教程：25 个测速用例，搞定 NAS / 内网 / 企业网全场景测速】https://www.bilibili.com/video/BV1y4QhBdExT?vd_source=298465310cd98e6ceddf1afe7d72e7ec
+软件官网下载地址：https://iperf.fr/iperf-download.php
+
+
+iperf3 -c 目标电脑IP地址 -P 12 -t 3600
