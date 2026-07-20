@@ -244,6 +244,9 @@ class PlaywrightFactory:
                    if launch_options is not None
                    else self.__launch_options.model_dump())
 
+            # 移除 Playwright 已弃用/不支持的参数
+            opts.pop("devtools", None)
+
             # 判断需要创建的浏览器类型（使用异步方法）
             if browser_type == "chromium":
                 browser = await self._playwright.chromium.launch(**opts)

@@ -133,6 +133,9 @@ class LoggerManager:
                     'handlers': ['console', 'file', 'error_file']  # 根 logger 绑定的 handler
                 }
             }
+            # 确保日志输出目录存在（避免因目录不存在导致 FileHandler 写失败）
+            mkdir(get_root() / "outputs" / "logs")
+
             # 创建日志记录器(全局处理后跟着文件和控制台输出的处理器)
             logging.config.dictConfig(self.default_config)
             # 拿到日志记录器
