@@ -35,3 +35,15 @@ target/
 # AI产物
 # ================
 .claude
+
+# ================
+# 大文件 / 模型文件（禁止提交）
+# ================
+**/models_files/
+*.ckpt
+*.pth
+*.onnx
+*.bin
+*.safetensors
+*.gguf
+large-v3*.pt
