@@ -1,3 +1,4 @@
+import os
 import warnings
 # from ollama import chat   # 不再使用 Ollama
 import numpy
@@ -10,7 +11,7 @@ import whisper
 from openai import OpenAI
 
 # ========== 1. 配置 DeepSeek API ==========
-DEEPSEEK_API_KEY = ""  # 请替换为你自己的 API Key
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")  # 请替换为你自己的 API Key
 DEEPSEEK_MODEL = "deepseek-chat"  # 使用的模型名称
 
 # ========== 2. 读取人设 ==========

@@ -52,8 +52,8 @@ warnings.filterwarnings("ignore", message="Performing inference on CPU when CUDA
 # 忽略CPU无法使用半浮点精度推理的警告
 warnings.filterwarnings("ignore", message="FP16 is not supported on CPU; using FP32 instead")
 # 加载模型("cpu"默认是cpu，"cuda"是GPU)
-model = whisper.load_model("turbo", "cuda")
-
+# model = whisper.load_model("turbo", "cuda")
+model = whisper.load_model("turbo", "cuda", download_root="models_files")
 # """TTS语音初始化"""
 # engine = pyttsx3.init()
 # engine.startLoop(False) # 非阻塞启动循环
