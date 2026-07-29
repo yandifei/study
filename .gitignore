@@ -47,3 +47,11 @@ target/
 *.safetensors
 *.gguf
 large-v3*.pt
+
+# ================
+# 二进制 / 安装包（禁止提交）
+# ================
+*.exe
+*.rar
+*.7z
+*.msi
