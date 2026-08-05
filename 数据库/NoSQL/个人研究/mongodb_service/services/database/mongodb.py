@@ -1,6 +1,7 @@
 """
 MongoDB 数据库初始化模块
 
+
 使用 pymongo 原生异步（AsyncMongoClient）管理连接。
 不依赖 ODM，直接操作 collections，通过 pydantic BaseModel 做数据校验。
 """
