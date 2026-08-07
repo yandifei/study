@@ -1,6 +1,6 @@
 {
-  "libVersion": "3.15.0",
-  "projectname": "test",
+  "libVersion": "3.17.1",
+  "projectname": "3_24(%E5%8A%A0%E7%82%B9%E8%B5%9E)",
   "setting": {
     "urlCheck": true,
     "coverView": true,
@@ -9,6 +9,13 @@
     "preloadBackgroundData": false,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
-    "compileHotReLoad": true
+    "compileHotReLoad": true,
+    "useApiHook": true,
+    "useStaticServer": false,
+    "useLanDebug": false,
+    "showES6CompileOption": false,
+    "checkInvalidKey": true,
+    "ignoreDevUnusedFiles": true,
+    "bigPackageSizeSupport": false
   }
 }

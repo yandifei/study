@@ -1,0 +1,21 @@
+# 微信小程序
+project.private.config.json
+
+# 依赖
+node_modules/
+
+# 环境变量 / 敏感信息
+.env
+# 注意：config/api.js 含 Dify API Key，建议在仓库创建后立即处理
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+
+# 日志
+*.log
