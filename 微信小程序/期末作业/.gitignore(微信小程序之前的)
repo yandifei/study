@@ -1,5 +1,5 @@
 # 微信小程序
-project.private.config.json
+**/project.private.config.json
 
 # 依赖
 node_modules/

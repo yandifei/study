@@ -55,3 +55,6 @@ large-v3*.pt
 *.rar
 *.7z
 *.msi
+
+# 忽略的文件
+.vscode

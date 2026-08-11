@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Service — 后台管理面板</title>
+    <link rel="icon" href="/favicon.ico">
+    <!-- Fonts: Fira Code (mono for logs) + Fira Sans (UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/admin/css/style.css">
+</head>
+<body>
+    <!-- ========== 顶部导航栏 ========== -->
+    <header class="navbar">
+        <div class="navbar-brand">
+            <svg class="brand-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+            <h1 class="brand-title">MongoDB Service</h1>
+            <span class="brand-badge">Admin Panel</span>
+        </div>
+        <div class="navbar-actions">
+            <div class="server-status" id="serverStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">运行中</span>
+            </div>
+            <span class="navbar-clock" id="clock">--</span>
+        </div>
+    </header>
+
+    <!-- ========== 主内容区 ========== -->
+    <main class="dashboard">
+        <!-- 左侧：快捷操作面板 -->
+        <section class="panel panel-actions">
+            <h2 class="panel-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                快捷操作
+            </h2>
+            <div class="action-grid">
+                <!-- 错误日志 -->
+                <button class="action-btn action-btn--danger" id="btnErrorLog" onclick="openLogViewer('error')">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <span class="action-label">错误日志</span>
+                    <span class="action-desc">error.log</span>
+                </button>
+
+                <!-- 运行日志 -->
+                <button class="action-btn action-btn--info" id="btnRunLog" onclick="openLogViewer('running')">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <span class="action-label">运行日志</span>
+                    <span class="action-desc">日志记录.log</span>
+                </button>
+
+                <!-- 停止程序 -->
+                <button class="action-btn action-btn--stop" id="btnStop" onclick="showStopDialog()">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="6" y="6" width="12" height="12" rx="2"/>
+                    </svg>
+                    <span class="action-label">停止程序</span>
+                    <span class="action-desc">关闭服务</span>
+                </button>
+
+                <!-- FastAPI 文档 -->
+                <button class="action-btn action-btn--accent" onclick="window.open('/docs', '_blank')">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                    <span class="action-label">FastAPI 文档</span>
+                    <span class="action-desc">Swagger UI</span>
+                </button>
+
+                <!-- FastAPI JSON 文档 -->
+                <button class="action-btn action-btn--accent" onclick="window.open('/openapi.json', '_blank')">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                    <span class="action-label">API JSON</span>
+                    <span class="action-desc">OpenAPI Schema</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 右侧：服务器信息 + 日志预览 -->
+        <section class="panel panel-info">
+            <h2 class="panel-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                服务器信息
+            </h2>
+            <div class="info-cards">
+                <div class="info-card">
+                    <span class="info-card-label">主机地址</span>
+                    <span class="info-card-value" id="infoHost">--</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-label">服务端口</span>
+                    <span class="info-card-value" id="infoPort">--</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-label">运行时间</span>
+                    <span class="info-card-value" id="infoUptime">--</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-card-label">API 版本</span>
+                    <span class="info-card-value">FastAPI</span>
+                </div>
+            </div>
+
+            <!-- 日志快速预览 -->
+            <div class="log-preview">
+                <div class="log-preview-header">
+                    <h3>最近日志</h3>
+                    <div class="log-preview-tabs">
+                        <button class="log-tab active" data-tab="error" onclick="switchPreviewTab('error')">ERROR</button>
+                        <button class="log-tab" data-tab="running" onclick="switchPreviewTab('running')">运行</button>
+                    </div>
+                </div>
+                <pre class="log-preview-content" id="logPreview"><span class="log-placeholder">点击上方「错误日志」或「运行日志」查看完整日志</span></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== 底部状态栏 ========== -->
+    <footer class="statusbar">
+        <span class="statusbar-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span id="statusUptime">启动中...</span>
+        </span>
+        <span class="statusbar-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span>MongoDB + Redis</span>
+        </span>
+        <span class="statusbar-spacer"></span>
+        <span class="statusbar-item">v2.0</span>
+    </footer>
+
+    <!-- ========== 日志查看器弹窗 ========== -->
+    <div class="modal-overlay" id="logModal">
+        <div class="modal-container modal--wide">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="logModalIcon">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    </svg>
+                    <h2 id="logModalTitle">日志查看器</h2>
+                    <span class="modal-file-size" id="logModalSize"></span>
+                </div>
+                <div class="modal-header-right">
+                    <button class="modal-btn-icon" onclick="refreshLog()" title="刷新日志">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"/>
+                            <polyline points="1 20 1 14 7 14"/>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                        </svg>
+                    </button>
+                    <button class="modal-btn-icon" onclick="toggleAutoRefresh()" id="btnAutoRefresh" title="自动刷新">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </button>
+                    <button class="modal-btn-icon" onclick="downloadLog()" title="下载日志">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                    </button>
+                    <button class="modal-btn-icon" onclick="closeLogViewer()" title="关闭">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="log-toolbar">
+                    <span class="log-toolbar-info" id="logLineCount">0 行</span>
+                    <label class="log-autoscroll">
+                        <input type="checkbox" id="autoScroll" checked>
+                        自动滚动
+                    </label>
+                </div>
+                <pre class="log-content" id="logContent"><span class="log-placeholder">加载中...</span></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 停止程序确认弹窗 ========== -->
+    <div class="modal-overlay" id="stopModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <h2>确认停止程序</h2>
+                </div>
+                <button class="modal-btn-icon" onclick="closeStopDialog()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="stop-warning">此操作将关闭整个 FastAPI 服务进程。请确认后再执行。</p>
+                <div class="form-group">
+                    <label for="stopPassword">请输入停止密码：</label>
+                    <input type="password" id="stopPassword" class="form-input" placeholder="输入停止密码..." autocomplete="off">
+                    <span class="form-error" id="stopError"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--ghost" onclick="closeStopDialog()">取消</button>
+                <button class="btn btn--danger" id="btnConfirmStop" onclick="stopServer()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+                    确认停止
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 通知 -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/admin/js/app.js"></script>
+</body>
+</html>

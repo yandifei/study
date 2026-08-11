@@ -1,0 +1,188 @@
+# logging_config.yaml
+# 用户级别的日志配置文件（覆盖全局配置的配置）
+# 不会改请用户不要动
+
+version: 1  # dictConfig 标准版本号，必须为 1
+disable_existing_loggers: False  # 是否禁用已经存在的日志器；False 表示保留第三方库日志器
+
+formatters:  # 定义日志格式器（决定日志输出格式）
+
+  verbose:  # 崩溃文件日志
+    format: "%(asctime)s %(levelname)s %(name)s:%(lineno)d %(threadName)s - %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+  simple:  # 控制台/主日志
+    format: "%(asctime)s %(levelname)s %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+  # 新增的彩色 formatter（控制台使用）
+  colored:
+    (): colorlog.ColoredFormatter  # 使用 colorlog 的格式化器
+    format: "%(log_color)s%(asctime)s %(levelname)s:%(reset)s %(message_log_color)s%(message)s"
+    datefmt: "%H:%M:%S"
+    reset: true  # 颜色重置
+    log_colors:
+      DEBUG: cyan
+      INFO: green
+      WARNING: yellow
+      ERROR: bold_light_red
+      CRITICAL: bold_light_red
+    secondary_log_colors:
+      message:
+        DEBUG: cyan
+        INFO: light_green
+        WARNING: light_yellow
+        ERROR: red
+        CRITICAL: red
+    style: "%"
+# 未来有需要再扩展实现
+#  json:  # JSON 格式日志，用于 ELK / Loki 之类系统解析
+#    format: |  # JSON 多行格式模板
+#      {
+#        "timestamp": "%(asctime)s",
+#        "level": "%(levelname)s",
+#        "logger": "%(name)s",
+#        "module": "%(module)s",
+#        "function": "%(funcName)s",
+#        "line": %(lineno)d,
+#        "thread": "%(threadName)s",
+#        "correlation_id": "%(correlation_id)s",
+#        "user_id": "%(user_id)s",
+#        "message": "%(message)s",
+#        "extra_data": %(extra_data)s
+#      }
+#    datefmt: "%Y-%m-%dT%H:%M:%S%z"  # ISO8601 带时区时间格式
+#    # 未来实现，现在用不上
+#    class: utils.jsonlogger.JsonFormatter  # 使用 jsonlogger 提供的 JSON 格式器
+
+# 未来有需要再扩展实现
+#  audit:  # 审计日志格式器
+#    format: "AUDIT | %(asctime)s | %(user_id)s | %(action)s | %(resource)s | %(status)s | %(ip)s"  # 审计专用字段
+#    datefmt: "%Y-%m-%d %H:%M:%S"  # 时间格式
+
+handlers:  # 日志处理器（决定日志输出到哪里）
+  console:  # 控制台输出处理器
+    class: colorlog.StreamHandler  # 标准流输出处理器(这里用的是colorlog库)
+    level: INFO  # 控制台允许最低级别为 INFO，我不想看这么多东西
+    formatter: colored  # 使用 彩色输出 格式(colorlog库)
+    stream: ext://sys.stdout  # 输出到标准输出
+
+  file:  # 主业务日志文件处理器
+    class: logging.handlers.TimedRotatingFileHandler  # 按时间滚动的文件处理器（这个是日志库的类）
+    level: INFO  # 最低记录 INFO 日志
+    formatter: simple  # 使用简单格式
+    filename: ./outputs/logs/日志记录.log  # 主日志文件路径
+    when: midnight  # 每天 0 点轮转
+    interval: 1  # 每 1 天轮转一次
+    backupCount: 2  # 保留2天历史日志
+    encoding: utf-8  # 文件编码
+    delay: true  # 延迟打开文件，首次写入时才创建文件
+
+  error_file:  # 错误日志独立文件
+    class: logging.handlers.TimedRotatingFileHandler  # 时间轮转文件处理器
+    level: ERROR  # 只记录 ERROR 以上级别
+    formatter: verbose  # 详细格式记录错误信息
+    filename: ./outputs/logs/error.log  # 错误日志路径
+    when: midnight  # 每日轮转
+    interval: 1  # 间隔 1 天
+    backupCount: 31  # 错误日志保留31天（一个月应该够多了，最会记得或1个月都没更新啊！！！）
+    encoding: utf-8  # 文件编码
+    delay: true  # 延迟打开文件
+# 未来有需要再扩展实现
+#  audit_file:  # 审计日志文件处理器
+#    class: logging.handlers.TimedRotatingFileHandler  # 时间轮转
+#    level: INFO  # 审计日志的默认记录级别
+#    formatter: audit  # 使用审计格式
+#    filename: /outputs/logs/audit.log  # 审计日志路径
+#    when: midnight  # 每天轮转
+#    interval: 1  # 1 天
+#    backupCount: 365  # 保留一年日志
+#    encoding: utf-8  # UTF-8 编码
+# 未来有需要再扩展实现
+#  loki:  # Loki 日志推送处理器
+#    class: myapp.logging.handlers.LokiHandler  # 自定义 Loki 推送处理器（需自行实现）
+#    level: INFO  # 推送 INFO 及以上日志
+#    formatter: json  # 使用 JSON 格式发送
+#    url: http://loki.mycompany.com:3100/loki/api/v1/push  # Loki 推送 API
+#    labels:  # Loki 标签，用于在 Loki 查询日志
+#      app: myapp  # 应用名称标签
+#      env: ${ENV:production}  # 环境标签（需你加载 YAML 时处理变量）
+#      region: ${REGION:us-east-1}  # 区域标签
+#    batch_size: 1000  # 批量发送日志的数量
+#    timeout: 5  # 推送超时时间（秒）
+# 未来有需要再扩展实现
+#  sentry:  # Sentry 错误上报处理器
+#    class: sentry_sdk.integrations.logging.EventHandler  # Sentry 的日志处理器
+#    level: ERROR  # 只上报 ERROR 及以上级别
+#    # 不需要 formatter，Sentry 会自动处理格式化
+# 未来有需要再扩展实现
+#  async_file:  # 异步文件处理器（高吞吐日志场景）
+#    class: myapp.logging.handlers.AsyncRotatingFileHandler  # 自定义异步轮转处理器
+#    level: INFO  # 记录 INFO 及以上
+#    formatter: simple  # 使用简单格式，提高性能
+#    filename: /outputs/logs//async.log  # 异步日志文件
+#    max_bytes: 104857600  # 100 MB 单文件大小上限
+#    backup_count: 10  # 最大保留 10 个文件
+#    queue_size: 10000  # 异步队列大小
+#    drop_when_full: false  # 队列满时是否丢弃日志（false 表示阻塞或自定义逻辑）
+# 未来有需要再扩展实现
+#filters:  # 日志过滤器（用于脱敏、过滤无意义日志、采样）
+#  health_check_filter:  # 健康检查过滤器
+#    (): myapp.logging.filters.HealthCheckFilter  # 自定义过滤器，用于忽略健康检查日志
+#
+#  pii_filter:  # PII 脱敏过滤器
+#    (): myapp.logging.filters.PIIFilter  # 用于脱敏手机号等敏感字段
+#
+#  sampling_filter:  # 日志采样过滤器
+#    (): myapp.logging.filters.SamplingFilter  # 自定义采样逻辑
+#    rate: 0.1  # 采样率：仅记录 10% 日志
+# 未来有需要再扩展实现
+#loggers:  # 针对不同模块设置独立日志策略
+#  "sqlalchemy.engine":  # SQLAlchemy SQL 输出
+#    level: WARNING  # 降低 SQL 输出噪音
+#    handlers: [file]  # 写入主日志
+#    propagate: false  # 不向 root 传播
+#
+#  "urllib3":  # requests 底层 HTTP 库
+#    level: WARNING  # 抑制连接池日志
+#    handlers: [file]  # 写入主日志
+#    propagate: false  # 不向 root 传播
+#
+#  "requests":  # requests 库日志
+#    level: WARNING  # 避免过多 HTTP 细节
+#    propagate: false  # 完全禁用传播
+#
+#  "asyncio":  # asyncio 框架日志
+#    level: WARNING  # 防止事件循环输出过多内容
+#    handlers: [file]  # 写入主日志
+#    propagate: false  # 不向 root 传播
+#
+#  "myapp.api":  # API 层日志
+#    level: ${API_LOG_LEVEL:INFO}  # 支持环境变量覆盖
+#    handlers: [file, console, loki]  # 输出到文件、控制台和 Loki
+#    filters: [pii_filter, sampling_filter]  # 脱敏 + 采样
+#    propagate: false  # 不向 root 传播
+#
+#  "myapp.database":  # 数据访问层日志
+#    level: ${DB_LOG_LEVEL:INFO}  # 数据库日志级别
+#    handlers: [file, error_file]  # 业务日志写 file，数据库错误写 error
+#    propagate: false  # 不向 root 传播
+#
+#  "myapp.worker":  # 后端 Worker/任务模块
+#    level: ${WORKER_LOG_LEVEL:INFO}  # Worker 日志级别
+#    handlers: [async_file, loki]  # 异步文件 + Loki
+#    propagate: false  # 不向 root 传播
+#
+#  "myapp.audit":  # 审计日志 Logger
+#    level: INFO  # 审计固定 INFO
+#    handlers: [audit_file, loki]  # 写入审计日志文件 + Loki
+#    propagate: false  # 不向 root 传播
+#
+#  "myapp.metrics":  # 指标、监控日志器
+#    level: INFO  # 监控通常级别固定
+#    handlers: [loki]  # 仅发送到 Loki
+#    propagate: false  # 不向 root 传播
+
+root:  # 根日志器（所有未指定 logger 的默认策略）
+  level: DEBUG  # DEBUG 分配处理器的日志等级，我这里开发权限
+  handlers: [file, error_file, console]   # 控制台 + 主日志文件
