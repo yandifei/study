@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">录入信息</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %} {{ form.as_p }}  <hr>
+                    <button type="submit" class="btn btn-success w-100">提交保存</button>
+                </form>
+                <a href="{% url 'student_list' %}" class="btn btn-link w-100 mt-2">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

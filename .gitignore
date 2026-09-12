@@ -58,3 +58,54 @@ large-v3*.pt
 
 # 忽略的文件
 .vscode
+
+# 知识库迁移：依赖、缓存及本地运行状态（任意层级均生效）
+.venv/
+env/
+site-packages/
+oh_modules/
+.hvigor/
+.preview/
+*.egg-info/
+**/python课堂复习/10.18/环境/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.smarttomcat/
+__pypackages__/
+*.pyc
+*.pyo
+*.class
+*.tsbuildinfo
+out/
+collect_static/
+runs/
+checkpoints/
+weights/
+*.pt
+*.h5
+*.hdf5
+*.tflite
+
+# 本地凭据；保留可复用的环境变量模板
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.pem
+*.key
+id_rsa
+id_ed25519
+project.private.config.json
+
+# 第三方源码镜像只保留来源登记，本机副本不删除
+ragflow-main/
+**/老师舍弃的黑马/redis/
+**/第二次官网自学(偏向研究)/ultralytics/
+
+# 已发现的超限安装包，迁移后仍匹配；大小由提交检查器强制校验
+mongodb-windows-x86_64-7.0.30.zip
+
+# 仓库工具的临时输出
+.migration-local/
