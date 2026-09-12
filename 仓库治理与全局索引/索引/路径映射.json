@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "86a358aa",
+  "mappings": [
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/ComfyUI基础生图原理_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/概念与原理/ComfyUI基础生图原理_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.5652cd12ef5555d8912b373d4f843825"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/ComfyUI基础视频生成流程_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/视频工作流/ComfyUI基础视频生成流程_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.291af60f9eaf5332b6b89c62fc45833a"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/ComfyUI学习.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/安装、整合与复盘/ComfyUI学习.md",
+      "isDirectory": false,
+      "id": "migration.608eef2f92455b41a553ab6fb2c32f30"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/ComfyUI文生图工作流搭建_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/图像工作流/ComfyUI文生图工作流搭建_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.3bd35d8b11ca5873843da815d3f7a959"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/ComfyUI界面常用按钮和功能_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/概念与原理/ComfyUI界面常用按钮和功能_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.88fd14ac78ca50ff9ea22a4b1ed9ddeb"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/ComfyUI自研整合包介绍_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/安装、整合与复盘/ComfyUI自研整合包介绍_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.5857cc462cb557edb4b5f12aa3700b4f"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/JoyCaption提示词反推洗图工作流_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/图像工作流/JoyCaption提示词反推洗图工作流_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.2919779a4e705a70b66e5ecea492467e"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/Qwen-Edit图生图工作流搭建_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/图像工作流/Qwen-Edit图生图工作流搭建_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.d206d7aeca0052cbb92f30539de76ebe"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/SeedVR2图像高清放大工作流_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/图像工作流/SeedVR2图像高清放大工作流_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.db413feed6115e90aaa5609b472851e6"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/Wan2.2文生视频工作流_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/视频工作流/Wan2.2文生视频工作流_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.d543ec236c985d00aecdf9769ae91fd5"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/Z-Image-Turbo文生图工作流搭建_视频解析.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/图像工作流/Z-Image-Turbo文生图工作流搭建_视频解析.md",
+      "isDirectory": false,
+      "id": "migration.a4918276a7b0568fad927cf157535900"
+    },
+    {
+      "batch": "comfyui",
+      "oldPath": "工具链研究和记录/ComfyUI/蒸馏我和学长的对话.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/安装、整合与复盘/蒸馏我和学长的对话.md",
+      "isDirectory": false,
+      "id": "migration.c498816181c65600b6be943e83c707b6"
+    }
+  ]
+}
