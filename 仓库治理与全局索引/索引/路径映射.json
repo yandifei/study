@@ -659,6 +659,195 @@
       "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/练习(用户注册)",
       "isDirectory": true,
       "id": "migration.b14c93b0ede35cc3a507af6a25bfdd37"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/Antigravity",
+      "targetPath": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/Antigravity",
+      "isDirectory": true,
+      "id": "migration.00b65ae6b95a56eea83d59d2c99f3d8f"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/Claude Cod CLI",
+      "targetPath": "系统平台与自动化/开发工具链与环境管理/Claude与上下文工程/Claude Cod CLI",
+      "isDirectory": true,
+      "id": "migration.0a94803ca29d5e8ca59d6454c0c66a2e"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/codex",
+      "targetPath": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/codex",
+      "isDirectory": true,
+      "id": "migration.5a8ab784ef855e71a89c978f51851d1a"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/C盘深度清理提示词.md",
+      "targetPath": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/C盘深度清理提示词.md",
+      "isDirectory": false,
+      "id": "migration.3681c129a36d5210bb89af58a1937e42"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/Dify",
+      "targetPath": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify",
+      "isDirectory": true,
+      "id": "migration.0292ced3c1305f3ebec6d1bfae48b70b"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/docker部署Portainer CE",
+      "targetPath": "系统平台与自动化/容器、部署与服务器运维/Docker与Compose/docker部署Portainer CE",
+      "isDirectory": true,
+      "id": "migration.4dbe81265da457d9b647ab47bea3aa18"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/git",
+      "targetPath": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git",
+      "isDirectory": true,
+      "id": "migration.b433c44da39957dfb92c17d83f130270"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/hashcat(md5码爆破)",
+      "targetPath": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/hashcat(md5码爆破)",
+      "isDirectory": true,
+      "id": "migration.902cc5c20a40519196342eb6b740e362"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/linux安装clash verge图标问题以及开启后外部无法访问问题.md",
+      "targetPath": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/linux安装clash verge图标问题以及开启后外部无法访问问题.md",
+      "isDirectory": false,
+      "id": "migration.8edd8582256458dbb39fb0cfcb55a87e"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/Linux远程连接工具",
+      "targetPath": "系统平台与自动化/容器、部署与服务器运维/服务器部署/Linux远程连接工具",
+      "isDirectory": true,
+      "id": "migration.16ff7450797c5cdfb10e5e3a9fadf2f0"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/NAS选购和部署",
+      "targetPath": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/NAS选购和部署",
+      "isDirectory": true,
+      "id": "migration.98d37445aeea5ae299dcc5afa12ad9b5"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/Nginx流量分流和负载均衡",
+      "targetPath": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/Nginx流量分流和负载均衡",
+      "isDirectory": true,
+      "id": "migration.75c79dd57bbd59e083de31bdbbcd3233"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/python工具链",
+      "targetPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/python工具链",
+      "isDirectory": true,
+      "id": "migration.6a0c94badd38505382a4942566525115"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/QT在pycharm必要的配置",
+      "targetPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/QT在pycharm必要的配置",
+      "isDirectory": true,
+      "id": "migration.7bedfc4f35fa5b1ba3411016f61632c4"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/uv管理器",
+      "targetPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/uv管理器",
+      "isDirectory": true,
+      "id": "migration.4849f06ae227595385f9e8080e27320a"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/VSCode-Claude-Codex-编辑器标题栏按钮排序.md",
+      "targetPath": "软件开发与应用工程/工程规范与开发工具/IDE与调试/VSCode-Claude-Codex-编辑器标题栏按钮排序.md",
+      "isDirectory": false,
+      "id": "migration.bc763ca30ddd5348bef60c67bbc903c5"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/win11实现内网文件夹共享(包括问题记录报告).md",
+      "targetPath": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/win11实现内网文件夹共享(包括问题记录报告).md",
+      "isDirectory": false,
+      "id": "migration.db3e8c641dbd5448892aec6d5c33ec19"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/wsl 和 发行版系统",
+      "targetPath": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/wsl 和 发行版系统",
+      "isDirectory": true,
+      "id": "migration.2dd8aeed78d859c3b7d0f02cb8f4bf03"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/休眠、睡眠、关机区别.md",
+      "targetPath": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/休眠、睡眠、关机区别.md",
+      "isDirectory": false,
+      "id": "migration.859b2f1b9bd0510bb6031376138d6ac3"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/信用卡及海外服务购买",
+      "targetPath": "学习路径、研究与现实实践/生活实践与长期观察/工具与服务购买记录/信用卡及海外服务购买",
+      "isDirectory": true,
+      "id": "migration.674ae554232a548b8d6f21b8f345acb9"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/内网穿透 网络代理",
+      "targetPath": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理",
+      "isDirectory": true,
+      "id": "migration.9ee16ba1373d50769d50c82d84cd278e"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/开源无商业图标限制网址.txt",
+      "targetPath": "参考资源与历史归档/网页归档、截图与原始材料/界面设计参考/开源无商业图标限制网址.txt",
+      "isDirectory": false,
+      "id": "migration.841bf3089ec851ce9aff706a21c13ad4"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/我的主机的研究",
+      "targetPath": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/我的主机的研究",
+      "isDirectory": true,
+      "id": "migration.e6f01110b8a859afb0159c8ed2d7f3b9"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/服务器和域名全链路运维手册",
+      "targetPath": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册",
+      "isDirectory": true,
+      "id": "migration.6425554794ec58acb2004b1e5cadc77f"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/爱好.md",
+      "targetPath": "学习路径、研究与现实实践/个人学习日志/日常学习记录/爱好.md",
+      "isDirectory": false,
+      "id": "migration.b95349ac7a0159ec9a48dfbbab89809d"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/虚拟机研究",
+      "targetPath": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究",
+      "isDirectory": true,
+      "id": "migration.5f99015f7ee75512b9d0c1a56043c826"
+    },
+    {
+      "batch": "platforms",
+      "oldPath": "工具链研究和记录/路由故障率监测工具",
+      "targetPath": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具",
+      "isDirectory": true,
+      "id": "migration.e7c99515a655584d9732251be9f7b0aa"
     }
   ]
 }

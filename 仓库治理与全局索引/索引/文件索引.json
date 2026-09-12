@@ -35809,42 +35809,42 @@
     {
       "id": "content.7f660600b3a45427b5518c7d7190016f",
       "oldPath": "工具链研究和记录/Antigravity/下载地址.txt",
-      "path": "工具链研究和记录/Antigravity/下载地址.txt",
+      "path": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/Antigravity/下载地址.txt",
       "sha256": "97e16e07fc487c58e22e1f0d9f3930b90b3b9a8be4ef1a79e5b115a808eb35f9",
       "size": 38
     },
     {
       "id": "content.e48c808e22975bd8bc8f642b7fa92a69",
       "oldPath": "工具链研究和记录/Antigravity/汉化映射表.md",
-      "path": "工具链研究和记录/Antigravity/汉化映射表.md",
+      "path": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/Antigravity/汉化映射表.md",
       "sha256": "f16871dfc8f49eac068cb34aeac436cca338dc80c329f6243a3282f92036cf3c",
       "size": 42575
     },
     {
       "id": "content.c5167364e3e550f1ac06e35afbeaa02d",
       "oldPath": "工具链研究和记录/Antigravity/注入的完整代码.js",
-      "path": "工具链研究和记录/Antigravity/注入的完整代码.js",
+      "path": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/Antigravity/注入的完整代码.js",
       "sha256": "a17b78c6389645473a23d56ccbc43687c99ea9025071324d99a8dfdaf2b24468",
       "size": 46043
     },
     {
       "id": "content.3e44e1a078545c0d9b502504e4ad42b8",
       "oldPath": "工具链研究和记录/Antigravity/注入的框架代码.md",
-      "path": "工具链研究和记录/Antigravity/注入的框架代码.md",
+      "path": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/Antigravity/注入的框架代码.md",
       "sha256": "9fb28e7bbb91da658ef1fa330d928681ebe64e7d46d5734cdd3f4762fdbeab95",
       "size": 951
     },
     {
       "id": "content.5d997501d67d5832bde2dacf1601c3af",
       "oldPath": "工具链研究和记录/Claude Cod CLI/claude下载指令.txt",
-      "path": "工具链研究和记录/Claude Cod CLI/claude下载指令.txt",
+      "path": "系统平台与自动化/开发工具链与环境管理/Claude与上下文工程/Claude Cod CLI/claude下载指令.txt",
       "sha256": "d4578f64d2f8a60530a8a16ac3fe06447dff140081a8ea483ee1fd00b3079830",
       "size": 250
     },
     {
       "id": "content.a616ec46f2815009817e5de69c208bc4",
       "oldPath": "工具链研究和记录/Claude Cod CLI/使用deepseek的api.md",
-      "path": "工具链研究和记录/Claude Cod CLI/使用deepseek的api.md",
+      "path": "系统平台与自动化/开发工具链与环境管理/Claude与上下文工程/Claude Cod CLI/使用deepseek的api.md",
       "sha256": "484455f1bc73e8e9afd9022dabba3519ec4f9a53975cb5cf6b90798efdf12db6",
       "size": 1420
     },
@@ -35935,784 +35935,784 @@
     {
       "id": "content.3069a94ab8c354b78880e9bc904bf39b",
       "oldPath": "工具链研究和记录/C盘深度清理提示词.md",
-      "path": "工具链研究和记录/C盘深度清理提示词.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/C盘深度清理提示词.md",
       "sha256": "8ddbf707a0e11686c624c6408e8292701a69cbc8a3b3f1dfdb4c05413891464e",
       "size": 9890
     },
     {
       "id": "content.918a6145da355966a4adbe541b90827a",
       "oldPath": "工具链研究和记录/Dify/.env.example",
-      "path": "工具链研究和记录/Dify/.env.example",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify/.env.example",
       "sha256": "9afa821aa34b13a94026c4a330b20a847ddca99bcd2219b4a07c31e84b29220e",
       "size": 5550
     },
     {
       "id": "content.c54d0467130755c4b15ee80f33d888cc",
       "oldPath": "工具链研究和记录/Dify/使用docker部署Dify.md",
-      "path": "工具链研究和记录/Dify/使用docker部署Dify.md",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify/使用docker部署Dify.md",
       "sha256": "1a032171eea53b20c3fcfea108426d77ae8e3814501edfcc17b4472eb8d90e17",
       "size": 5194
     },
     {
       "id": "content.7baed7205a975014ae3798a0a2f33366",
       "oldPath": "工具链研究和记录/Linux远程连接工具/下载地址.txt",
-      "path": "工具链研究和记录/Linux远程连接工具/下载地址.txt",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/Linux远程连接工具/下载地址.txt",
       "sha256": "a2da8a45c0486a4fbf3cf04a92a5f15c1aef1ca42d601d231dffad4162972814",
       "size": 49
     },
     {
       "id": "content.a11ef3dfddb85209956687d3e41e2402",
       "oldPath": "工具链研究和记录/NAS选购和部署/NAS从入门到精通.md",
-      "path": "工具链研究和记录/NAS选购和部署/NAS从入门到精通.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/NAS选购和部署/NAS从入门到精通.md",
       "sha256": "8aa108419f40feb56d4bf7b4c67d32abaab0897bf76c463b3362952fb71bad87",
       "size": 28755
     },
     {
       "id": "content.11abbace8cea5e4087c518cdd5e4eb31",
       "oldPath": "工具链研究和记录/NAS选购和部署/绿联和群晖对比.md",
-      "path": "工具链研究和记录/NAS选购和部署/绿联和群晖对比.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/NAS选购和部署/绿联和群晖对比.md",
       "sha256": "8fd65e6d0e66df0f4c6f5058853d5cd1bcd4f619974feb9bc4a0012884915c15",
       "size": 21841
     },
     {
       "id": "content.1a23653f560556eab2bb1039a6d68615",
       "oldPath": "工具链研究和记录/NAS选购和部署/绿联和群晖的NAS对比.md",
-      "path": "工具链研究和记录/NAS选购和部署/绿联和群晖的NAS对比.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/NAS选购和部署/绿联和群晖的NAS对比.md",
       "sha256": "13c46e86ac4a0de0e05795936ea65478c8513d71e497709a6466c6d429714d50",
       "size": 7489
     },
     {
       "id": "content.9972eebbc53d5dff922e6c93aa8d1743",
       "oldPath": "工具链研究和记录/NAS选购和部署/绿联和群晖的NAS对比.png",
-      "path": "工具链研究和记录/NAS选购和部署/绿联和群晖的NAS对比.png",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/NAS选购和部署/绿联和群晖的NAS对比.png",
       "sha256": "edfcbdd209e965bcc6c462da83ded33e2ea9810bf7839780b0fc6fca2723f5a9",
       "size": 402322
     },
     {
       "id": "content.b0fef2679a095c38a675c4c8b1c803ef",
       "oldPath": "工具链研究和记录/NAS选购和部署/需求链接和学习链接.md",
-      "path": "工具链研究和记录/NAS选购和部署/需求链接和学习链接.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/NAS选购和部署/需求链接和学习链接.md",
       "sha256": "84d078ce4f0b713e8918cc9e62bd2beefd4be3a89536063b4cdea5c1613204bc",
       "size": 1499
     },
     {
       "id": "content.b2f6625c21b15360b304ea6f952d98de",
       "oldPath": "工具链研究和记录/Nginx流量分流和负载均衡/docker compose文件的网址.txt",
-      "path": "工具链研究和记录/Nginx流量分流和负载均衡/docker compose文件的网址.txt",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/Nginx流量分流和负载均衡/docker compose文件的网址.txt",
       "sha256": "aae828ea972763947ee26d9cdbb7f68c350b6de54b2c20c68b3e67d351cd0cb2",
       "size": 136
     },
     {
       "id": "content.cabd2dc14f9f5652b78f7a4f60b8be53",
       "oldPath": "工具链研究和记录/Nginx流量分流和负载均衡/docker-compose.yml",
-      "path": "工具链研究和记录/Nginx流量分流和负载均衡/docker-compose.yml",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/Nginx流量分流和负载均衡/docker-compose.yml",
       "sha256": "ee60c022e669fd6f8168db254357299fb66232ff86654cc854d12d0ebbb641f2",
       "size": 313
     },
     {
       "id": "content.bd9e914c56a554e1bf6031ade259372a",
       "oldPath": "工具链研究和记录/Nginx流量分流和负载均衡/nginx/conf.d/default.conf",
-      "path": "工具链研究和记录/Nginx流量分流和负载均衡/nginx/conf.d/default.conf",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/Nginx流量分流和负载均衡/nginx/conf.d/default.conf",
       "sha256": "cd96f7d7b6c9534c6ea3255bfa1da8ee2e928e7c8588ef64f7597a201be8d23c",
       "size": 1290
     },
     {
       "id": "content.9735e338eb215b2d8f3acd4bfaf9b9d1",
       "oldPath": "工具链研究和记录/Nginx流量分流和负载均衡/nginx/nginx.conf",
-      "path": "工具链研究和记录/Nginx流量分流和负载均衡/nginx/nginx.conf",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/Nginx流量分流和负载均衡/nginx/nginx.conf",
       "sha256": "05fa6b66bab17d8568e01e6aa80549141d71fb0c68c150ad2cebc96bf595755c",
       "size": 627
     },
     {
       "id": "content.32e43c9137d95e6a857d16443f8beacb",
       "oldPath": "工具链研究和记录/Nginx流量分流和负载均衡/文件上传问题.txt",
-      "path": "工具链研究和记录/Nginx流量分流和负载均衡/文件上传问题.txt",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/Nginx流量分流和负载均衡/文件上传问题.txt",
       "sha256": "cab2939c31f9746d4aee34dbf4387bf579f8d874a3d22b3466a93e1bffd7f3f8",
       "size": 311
     },
     {
       "id": "content.d59422de57735d378ec56bff0f38a1db",
       "oldPath": "工具链研究和记录/Nginx流量分流和负载均衡/网址记录了.md",
-      "path": "工具链研究和记录/Nginx流量分流和负载均衡/网址记录了.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/Nginx流量分流和负载均衡/网址记录了.md",
       "sha256": "15d8a28b2c741ac70aaf50be8f70c3ca26c3e2cd5ad2e9bb285975d512d3aec8",
       "size": 1508
     },
     {
       "id": "content.85f97881e30254eca34b050bebc53775",
       "oldPath": "工具链研究和记录/QT在pycharm必要的配置/style.qss",
-      "path": "工具链研究和记录/QT在pycharm必要的配置/style.qss",
+      "path": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/QT在pycharm必要的配置/style.qss",
       "sha256": "816d171cad94c637ed5bd73dd0f45e2efd8b3ae7f27f3cd64ab8921ddd93e0aa",
       "size": 103
     },
     {
       "id": "content.d4625ec0a528507aa80d316e79244972",
       "oldPath": "工具链研究和记录/QT在pycharm必要的配置/外部工具.txt",
-      "path": "工具链研究和记录/QT在pycharm必要的配置/外部工具.txt",
+      "path": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/QT在pycharm必要的配置/外部工具.txt",
       "sha256": "fd8cb9e52a28ea27642086f07a12401d0ef7e247aa041cc2a154353c35c5aa65",
       "size": 408
     },
     {
       "id": "content.ff47d7ffb2775e42af318a40d05337d7",
       "oldPath": "工具链研究和记录/VSCode-Claude-Codex-编辑器标题栏按钮排序.md",
-      "path": "工具链研究和记录/VSCode-Claude-Codex-编辑器标题栏按钮排序.md",
+      "path": "软件开发与应用工程/工程规范与开发工具/IDE与调试/VSCode-Claude-Codex-编辑器标题栏按钮排序.md",
       "sha256": "08a64b3cc78f76f8c15981a9bc9042a320fd9c2c2224cc7be1f219a5b7ed9300",
       "size": 3620
     },
     {
       "id": "content.512249b5f4905d28a4a74bc7d814360a",
       "oldPath": "工具链研究和记录/codex/codex使用指南.md",
-      "path": "工具链研究和记录/codex/codex使用指南.md",
+      "path": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/codex/codex使用指南.md",
       "sha256": "86b477a012a2b3751d71db4ca37805f9d909a0ce3b102b843295c187a267ec39",
       "size": 215
     },
     {
       "id": "content.5711974ca1af5039aa0e6d5efad09804",
       "oldPath": "工具链研究和记录/docker部署Portainer CE/Portainer 介绍与入门指南.md",
-      "path": "工具链研究和记录/docker部署Portainer CE/Portainer 介绍与入门指南.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Docker与Compose/docker部署Portainer CE/Portainer 介绍与入门指南.md",
       "sha256": "855e0b4a58a835f040b6683943c0796fae81126f61bdeb62dc5eb41485fdb605",
       "size": 10090
     },
     {
       "id": "content.d2eb2ddde1395a4d84087784c7e88d28",
       "oldPath": "工具链研究和记录/docker部署Portainer CE/Portainer 使用注意事项与公网部署安全清单.md",
-      "path": "工具链研究和记录/docker部署Portainer CE/Portainer 使用注意事项与公网部署安全清单.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Docker与Compose/docker部署Portainer CE/Portainer 使用注意事项与公网部署安全清单.md",
       "sha256": "ebf026dd4ff7b6884e5111a644586aa00767b93d19ff8d47f684c5f1aa739e75",
       "size": 12426
     },
     {
       "id": "content.dafd380f40f05f64990664c5938ecf1e",
       "oldPath": "工具链研究和记录/docker部署Portainer CE/docker-compose.yaml",
-      "path": "工具链研究和记录/docker部署Portainer CE/docker-compose.yaml",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Docker与Compose/docker部署Portainer CE/docker-compose.yaml",
       "sha256": "2bc0f13ace67423c37fd676e81f354301de6360db14321160e6aa0c86695ae51",
       "size": 378
     },
     {
       "id": "content.ba558881b36155efbec29b0cd22e316c",
       "oldPath": "工具链研究和记录/git/Git学习.docx",
-      "path": "工具链研究和记录/git/Git学习.docx",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/Git学习.docx",
       "sha256": "8c668d28a8077577725c9b88949e8767ef8a273a142b700f6a7b4b1724855d5e",
       "size": 3429389
     },
     {
       "id": "content.f11fe5274892512da69b9c8ed50bb125",
       "oldPath": "工具链研究和记录/git/Git讲义.pdf",
-      "path": "工具链研究和记录/git/Git讲义.pdf",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/Git讲义.pdf",
       "sha256": "02b4ea7512f8689fa4d900cd5ee3fd156a912ab42e040eb207fbb41f81ac0567",
       "size": 2904435
     },
     {
       "id": "content.b18ba213dcb95579a3f0f777e6868775",
       "oldPath": "工具链研究和记录/git/SSH连接失败办法.png",
-      "path": "工具链研究和记录/git/SSH连接失败办法.png",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/SSH连接失败办法.png",
       "sha256": "54639cdba186b93195cc0580e39048df6d0338f10d0c419cbabe0c5b007c621e",
       "size": 50823
     },
     {
       "id": "content.fc24202a95625e45a49ca3933fc8da2a",
       "oldPath": "工具链研究和记录/git/git指令.txt",
-      "path": "工具链研究和记录/git/git指令.txt",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/git指令.txt",
       "sha256": "cff4dd216614a4cbd0ab96d651a79922f591c949d9565686bdb8f67228706246",
       "size": 239
     },
     {
       "id": "content.5f9c75d23c41504da34e064b50dae3d7",
       "oldPath": "工具链研究和记录/git/发现是新手入门也不是非常需要git，直接去官网上传代码也可以.txt",
-      "path": "工具链研究和记录/git/发现是新手入门也不是非常需要git，直接去官网上传代码也可以.txt",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/发现是新手入门也不是非常需要git，直接去官网上传代码也可以.txt",
       "sha256": "843daa6f6115fd3ec7a90976c824146e6ac495c3f7d9c7a824a6d144cecaca2c",
       "size": 150
     },
     {
       "id": "content.8902a08cce165aeb8774e4b82c0e3a55",
       "oldPath": "工具链研究和记录/git/老师的资料/cheat-sheet.pdf",
-      "path": "工具链研究和记录/git/老师的资料/cheat-sheet.pdf",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/老师的资料/cheat-sheet.pdf",
       "sha256": "6907beeea0cb8c11d7b833f16686a26ab33fac51d2588db2a50384a48be1f170",
       "size": 112000
     },
     {
       "id": "content.ae306a0694115df98f7790ee157a4748",
       "oldPath": "工具链研究和记录/git/老师的资料/git-cheat-sheet-education.pdf",
-      "path": "工具链研究和记录/git/老师的资料/git-cheat-sheet-education.pdf",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/老师的资料/git-cheat-sheet-education.pdf",
       "sha256": "469157b16528a7282a0bd38e039b71b8c9696d46740d9c0165aa50706fbc460a",
       "size": 100194
     },
     {
       "id": "content.0fe456e1fa1e59289c6dfa6eadfb179c",
       "oldPath": "工具链研究和记录/git/老师的资料/git-cheat-sheet.pdf",
-      "path": "工具链研究和记录/git/老师的资料/git-cheat-sheet.pdf",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/老师的资料/git-cheat-sheet.pdf",
       "sha256": "9098437b46717ae13a55a78e81d71f658c8c04bf307a96c100feaf7d4383721e",
       "size": 79730
     },
     {
       "id": "content.48417c29555f582388a49528e00a32e9",
       "oldPath": "工具链研究和记录/git/老师的资料/progit.pdf",
-      "path": "工具链研究和记录/git/老师的资料/progit.pdf",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/老师的资料/progit.pdf",
       "sha256": "14a7ca742aeb3327a11eb7b19e3f62c321f091b71fe119ee562bce7197588eaa",
       "size": 20131418
     },
     {
       "id": "content.1b2266feb2835e7c928f27c2d970bef6",
       "oldPath": "工具链研究和记录/hashcat(md5码爆破)/软件地址.txt",
-      "path": "工具链研究和记录/hashcat(md5码爆破)/软件地址.txt",
+      "path": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/hashcat(md5码爆破)/软件地址.txt",
       "sha256": "f3350367074503eba025384db4359eac67109f2a2a0ab79f5fd10d2fe9ac1052",
       "size": 34
     },
     {
       "id": "content.be2b11b7e2ae5b6e8a237165da3fc2a9",
       "oldPath": "工具链研究和记录/linux安装clash verge图标问题以及开启后外部无法访问问题.md",
-      "path": "工具链研究和记录/linux安装clash verge图标问题以及开启后外部无法访问问题.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/linux安装clash verge图标问题以及开启后外部无法访问问题.md",
       "sha256": "719fc144d6b5c3d6d7795b3e6c147b993d1a49b290d50f98d06071cf8e9ff843",
       "size": 13557
     },
     {
       "id": "content.700994198b6056eb8e5d28f02da4a5d7",
       "oldPath": "工具链研究和记录/python工具链/conda 炸盘/C盘臃肿.md",
-      "path": "工具链研究和记录/python工具链/conda 炸盘/C盘臃肿.md",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/python工具链/conda 炸盘/C盘臃肿.md",
       "sha256": "beb6362751a6aed6d3ff600730a989bfdcf694e51d80d8f01674273c9a8d2bf5",
       "size": 777
     },
     {
       "id": "content.bbaba36805265906b22e2a0edc98a393",
       "oldPath": "工具链研究和记录/python工具链/conda 炸盘/清理指南.md",
-      "path": "工具链研究和记录/python工具链/conda 炸盘/清理指南.md",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/python工具链/conda 炸盘/清理指南.md",
       "sha256": "fb9eaf3d2ff21fff5be86327a8c4b48b3831f5b61f3fe33b192f3535819e6754",
       "size": 4393
     },
     {
       "id": "content.3e045f2f149350a189701ab20482d785",
       "oldPath": "工具链研究和记录/python工具链/pip炸盘/原因.txt",
-      "path": "工具链研究和记录/python工具链/pip炸盘/原因.txt",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/python工具链/pip炸盘/原因.txt",
       "sha256": "5d545e932d8b7298de3d0217f4591470f3827da75e6322e6f2fe16b5a0e7ebd5",
       "size": 105
     },
     {
       "id": "content.0cc0a7d948d25f4abbcd5922f243a9a2",
       "oldPath": "工具链研究和记录/python工具链/pycharm 配置qt/style.qss",
-      "path": "工具链研究和记录/python工具链/pycharm 配置qt/style.qss",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/python工具链/pycharm 配置qt/style.qss",
       "sha256": "816d171cad94c637ed5bd73dd0f45e2efd8b3ae7f27f3cd64ab8921ddd93e0aa",
       "size": 103
     },
     {
       "id": "content.0cedd6170da25000afa7c3e64a651df0",
       "oldPath": "工具链研究和记录/python工具链/pycharm 配置qt/外部工具.txt",
-      "path": "工具链研究和记录/python工具链/pycharm 配置qt/外部工具.txt",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/python工具链/pycharm 配置qt/外部工具.txt",
       "sha256": "fd8cb9e52a28ea27642086f07a12401d0ef7e247aa041cc2a154353c35c5aa65",
       "size": 408
     },
     {
       "id": "content.594b6fdda8d4567aab51088ba9e501b9",
       "oldPath": "工具链研究和记录/uv管理器/uv文件相关的环境变量.md",
-      "path": "工具链研究和记录/uv管理器/uv文件相关的环境变量.md",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/uv管理器/uv文件相关的环境变量.md",
       "sha256": "7732b18fd8b9b8eb7def6abc4a6733f390e582deee46b10778d2139f41fd0351",
       "size": 4390
     },
     {
       "id": "content.f578802e72225a5ea2c92d455005d5b4",
       "oldPath": "工具链研究和记录/uv管理器/uv默认安装目录和资源放置位置.md",
-      "path": "工具链研究和记录/uv管理器/uv默认安装目录和资源放置位置.md",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/uv管理器/uv默认安装目录和资源放置位置.md",
       "sha256": "07278509fdd2689f8e4eef696fe063695b21c980da6646af9de33ca87c9e3068",
       "size": 35
     },
     {
       "id": "content.568af395fb735ea38d1ed2e836f3d6a4",
       "oldPath": "工具链研究和记录/uv管理器/系统环境变量.png",
-      "path": "工具链研究和记录/uv管理器/系统环境变量.png",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/uv管理器/系统环境变量.png",
       "sha256": "1b8e018b708747791eadd9550d62202e44b0798376b55d52169cb43451f56a1e",
       "size": 12315
     },
     {
       "id": "content.cdb63d99c23b52a5a50a137d153e39d7",
       "oldPath": "工具链研究和记录/win11实现内网文件夹共享(包括问题记录报告).md",
-      "path": "工具链研究和记录/win11实现内网文件夹共享(包括问题记录报告).md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/win11实现内网文件夹共享(包括问题记录报告).md",
       "sha256": "fffd5063022bdacc3b06a24e43fccf100669b0a519ad8684293c2702b5c70aec",
       "size": 4492
     },
     {
       "id": "content.c311e4ae0f43577b962ddd21fa40d75a",
       "oldPath": "工具链研究和记录/wsl 和 发行版系统/文件结构体系.txt",
-      "path": "工具链研究和记录/wsl 和 发行版系统/文件结构体系.txt",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/wsl 和 发行版系统/文件结构体系.txt",
       "sha256": "a514c1f0cd133281de11fb091d554dfbbfb049a437de6fa5f01ed5b692c344f9",
       "size": 317
     },
     {
       "id": "content.5707bccd8b6d52338366d9c7f1ad90c0",
       "oldPath": "工具链研究和记录/休眠、睡眠、关机区别.md",
-      "path": "工具链研究和记录/休眠、睡眠、关机区别.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/休眠、睡眠、关机区别.md",
       "sha256": "b3295708b7f6354d0dd4caa2131c6e8c86972e2cb451ab8d4e7522b54a977da3",
       "size": 4474
     },
     {
       "id": "content.99351f381fde559f9254e1cabefd5f31",
       "oldPath": "工具链研究和记录/信用卡及海外服务购买/银行卡的分类.md",
-      "path": "工具链研究和记录/信用卡及海外服务购买/银行卡的分类.md",
+      "path": "学习路径、研究与现实实践/生活实践与长期观察/工具与服务购买记录/信用卡及海外服务购买/银行卡的分类.md",
       "sha256": "1dba86718748d6d0579a113b0201812ba9074163f69d88905513036c568b3ba0",
       "size": 367
     },
     {
       "id": "content.dc859269f73059888e011cce795e7932",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/frp/frp实现内网穿透.md",
-      "path": "工具链研究和记录/内网穿透 网络代理/frp/frp实现内网穿透.md",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/frp/frp实现内网穿透.md",
       "sha256": "3ed0ff22cfb6398d4828c22ce3f1c3439e70d09bbe60ed1deb1bd9537068f683",
       "size": 1526
     },
     {
       "id": "content.e2466d25ef8d5805949977e34cf09a38",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/frp/frp工具传输到服务器.png",
-      "path": "工具链研究和记录/内网穿透 网络代理/frp/frp工具传输到服务器.png",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/frp/frp工具传输到服务器.png",
       "sha256": "db5a95c849e0c586df2716ce56a7e301603f3775801b3338192db49b56dfefcd",
       "size": 134960
     },
     {
       "id": "content.b09e2f529b1f50298a7ae9e088ccded7",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/frp/查看硬件架构并下载这个frp工具.png",
-      "path": "工具链研究和记录/内网穿透 网络代理/frp/查看硬件架构并下载这个frp工具.png",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/frp/查看硬件架构并下载这个frp工具.png",
       "sha256": "0c83fa44923d1ee8c303deabfb5f7c3d0cf219a595a7ce15d62cf454bdace3aa",
       "size": 135205
     },
     {
       "id": "content.2510b53794e75d01aeb82c5a4648cc66",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/frp/编辑配置_进入编辑界面.png",
-      "path": "工具链研究和记录/内网穿透 网络代理/frp/编辑配置_进入编辑界面.png",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/frp/编辑配置_进入编辑界面.png",
       "sha256": "9912024e02767eaa80fe4e1becbfb63e56113524817d2f0e2fea538d26c4c1ef",
       "size": 129884
     },
     {
       "id": "content.bf2fb77ef7015b0880d9b85a897eda82",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/frp/设置开启启动.png",
-      "path": "工具链研究和记录/内网穿透 网络代理/frp/设置开启启动.png",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/frp/设置开启启动.png",
       "sha256": "21562f563221481db9cfbd6e66e97cf187c125126d74109bf952149eca1e26cf",
       "size": 152465
     },
     {
       "id": "content.f12202d2d4df53e092a4757e40d8d049",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/natapp/docker-compose.yml",
-      "path": "工具链研究和记录/内网穿透 网络代理/natapp/docker-compose.yml",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/natapp/docker-compose.yml",
       "sha256": "9f5787328b353d2d19ee20d53de7551b498bd21e9f64e79a9fadcce77ee52d63",
       "size": 394
     },
     {
       "id": "content.8e70361078715306af5f7a159937d991",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/natapp/笔记.md",
-      "path": "工具链研究和记录/内网穿透 网络代理/natapp/笔记.md",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/natapp/笔记.md",
       "sha256": "57779c58970320562c69529048d47934c06b42a70ba0de1a3a132f6846f44e0d",
       "size": 2786
     },
     {
       "id": "content.9c0ce90402ab58e989706ec11f121c17",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/ngrok/docker-compose.yaml",
-      "path": "工具链研究和记录/内网穿透 网络代理/ngrok/docker-compose.yaml",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/ngrok/docker-compose.yaml",
       "sha256": "7753e3db9ce6b6336f6c0b0f68778664405fabafdc93aed37ed4495e44b8d357",
       "size": 2013
     },
     {
       "id": "content.4fc9b8303d525237a860ebd3e06a3abd",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/ngrok/ngrok 免费版核心限制清单.md",
-      "path": "工具链研究和记录/内网穿透 网络代理/ngrok/ngrok 免费版核心限制清单.md",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/ngrok/ngrok 免费版核心限制清单.md",
       "sha256": "81fc6a0f0c8c73fe8e0894dfbf12455e4f41b92eb08c05381f6c8287e6d0133a",
       "size": 2651
     },
     {
       "id": "content.2aec255878d15f37aba307ddd908ce1a",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/ngrok/操作指引.md",
-      "path": "工具链研究和记录/内网穿透 网络代理/ngrok/操作指引.md",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/ngrok/操作指引.md",
       "sha256": "8e4d3d262665789e07026b29e51b552300f7daf98cc87d11fd017e3982cf387e",
       "size": 824
     },
     {
       "id": "content.995c08faea8a5ec2b8516fe0101f5cc9",
       "oldPath": "工具链研究和记录/内网穿透 网络代理/概念及其原理学习.md",
-      "path": "工具链研究和记录/内网穿透 网络代理/概念及其原理学习.md",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/概念及其原理学习.md",
       "sha256": "6ba8562745a908fafdde11670629eb8e2b3bdcd5665492ad9e754a808f6470b6",
       "size": 7644
     },
     {
       "id": "content.9419a616fd605ed1a745ef4f50a90abf",
       "oldPath": "工具链研究和记录/开源无商业图标限制网址.txt",
-      "path": "工具链研究和记录/开源无商业图标限制网址.txt",
+      "path": "参考资源与历史归档/网页归档、截图与原始材料/界面设计参考/开源无商业图标限制网址.txt",
       "sha256": "6c5665a8174d70d36ddf12ccf5be530303aa5d69004bc5ea305b29bef1d59b5a",
       "size": 62
     },
     {
       "id": "content.e9a27d1cdbc256d9b89a94053c01f7c7",
       "oldPath": "工具链研究和记录/我的主机的研究/BIOS电池更换和选购.md",
-      "path": "工具链研究和记录/我的主机的研究/BIOS电池更换和选购.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/我的主机的研究/BIOS电池更换和选购.md",
       "sha256": "25d52d650fa6af55568eb5debff6a36066bc428a173f0d6c1169b68f5f5cb069",
       "size": 2656
     },
     {
       "id": "content.e75a5b23e122565092739e0c28ee395a",
       "oldPath": "工具链研究和记录/我的主机的研究/本机电脑进程占用研究/process-guide.md",
-      "path": "工具链研究和记录/我的主机的研究/本机电脑进程占用研究/process-guide.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/我的主机的研究/本机电脑进程占用研究/process-guide.md",
       "sha256": "4c65b37f0b92a702e4e14185d4459b8ddac86c9f6c32ce144babc0a09710cbce",
       "size": 12470
     },
     {
       "id": "content.b5d7546adf415a568fc5142ae586cc6d",
       "oldPath": "工具链研究和记录/我的主机的研究/本机电脑进程占用研究/system-services-manager.ps1",
-      "path": "工具链研究和记录/我的主机的研究/本机电脑进程占用研究/system-services-manager.ps1",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/我的主机的研究/本机电脑进程占用研究/system-services-manager.ps1",
       "sha256": "ecd4ed2643676b210623211b2dce9b413e409e1c9e90be2484c7404d74788660",
       "size": 13038
     },
     {
       "id": "content.81ba988730675d47ae3b8c914174b1cf",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/1Panel服务器运维工具.md",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/1Panel服务器运维工具.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/1Panel服务器运维工具.md",
       "sha256": "88ba0adf42bf218c72d0a6e02ff5463ceb95672d3f8933813e8603bcfacd5daa",
       "size": 17308
     },
     {
       "id": "content.ec9a7e3592c656c98701e172b83b3dda",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/image-1.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/image-1.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/image-1.png",
       "sha256": "32acc8bf618338483aa21600a8be2dea482020c1adf7a51bde37361e6b393c23",
       "size": 242579
     },
     {
       "id": "content.f096969110215ed0812bb51e05a0ac3f",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/image-2.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/image-2.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/image-2.png",
       "sha256": "faef2a59784b9f137d444f310fb5be8f7a523946b862999524986da9d1a055bc",
       "size": 406844
     },
     {
       "id": "content.b114c002a93c50fda7393abf1b6588c2",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/image.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/image.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/image.png",
       "sha256": "1537d4439ccbfe1451c6991dfd2f6c680c0c601002669d3d2d8ded148eb5e006",
       "size": 281406
     },
     {
       "id": "content.733b082172f756809bcc1e307b24397b",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买与持有完全避坑指南文章封面.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买与持有完全避坑指南文章封面.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买与持有完全避坑指南文章封面.png",
       "sha256": "8a75ecd786f09d8ac850a3988c1a291327384f46c0f8a60e150654515d3b3bf5",
       "size": 1863730
     },
     {
       "id": "content.25fb06699a1b57adae05ba8d1ba2f010",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买与持有完全避坑指南：从认知到高级风险防范.md",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买与持有完全避坑指南：从认知到高级风险防范.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买与持有完全避坑指南：从认知到高级风险防范.md",
       "sha256": "a3458627bdda50a8f233457b36c20150795b6fcbe2be8cbf6d15430a24dc2974",
       "size": 43396
     },
     {
       "id": "content.15801dd246de59d1800dd2fce8c41cbe",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/01-Porkbun十年域名购物车.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/01-Porkbun十年域名购物车.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/01-Porkbun十年域名购物车.png",
       "sha256": "64a4fcc3c9972aa6ace61e894a9f57d372be9955f5b3e7a7b40246b864aae545",
       "size": 218522
     },
     {
       "id": "content.c4463e9eb7ce5d5081387562d654c9df",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/02-Porkbun联系信息真实提醒.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/02-Porkbun联系信息真实提醒.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/02-Porkbun联系信息真实提醒.png",
       "sha256": "1bd881aa5982ec29caa24e86d9d704b5eaabf5c1e607b5b0a2e649a4107ae62b",
       "size": 22184
     },
     {
       "id": "content.2698822a76255098bd2f17b3dcb6596b",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/03-Porkbun身份验证页面.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/03-Porkbun身份验证页面.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/03-Porkbun身份验证页面.png",
       "sha256": "0e9235d6fbeb3aac320426e781ba7f524c772f4f6dcb1a80a8cf42dfb594ad7a",
       "size": 304009
     },
     {
       "id": "content.a873ae92eab45ef4b246304686320d2d",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/04-Veriff身份验证起始页.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/04-Veriff身份验证起始页.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/04-Veriff身份验证起始页.png",
       "sha256": "725f833f673bf8dcc9c0e5ec89f907a766a4ae783fa5e65b8958ff7942af7d69",
       "size": 98422
     },
     {
       "id": "content.f1e267c4fe7956609a12c03d6381af03",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/05-Porkbun身份验证被拒绝.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/05-Porkbun身份验证被拒绝.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/05-Porkbun身份验证被拒绝.png",
       "sha256": "0b686b0d15c30962a5de9b09b60fc50f2980046c6eae4e1d1b652a736b2235c0",
       "size": 343813
     },
     {
       "id": "content.e0f10c3097145822951e941d5f10b75e",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/06-客服指出屏幕照片问题.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/06-客服指出屏幕照片问题.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/06-客服指出屏幕照片问题.png",
       "sha256": "c27e2c04dc6a0e7c9270b9bad281bb42127519c5f849fe042b173ecaf8905205",
       "size": 270634
     },
     {
       "id": "content.f4ecbeff92a25d2d9d5c5ef96ede3b5d",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/07-客服提供72小时验证链接.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/07-客服提供72小时验证链接.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/07-客服提供72小时验证链接.png",
       "sha256": "a06e3732cc8aea270a3301847aeb3e97cf4c3134f9f59c38264fd7bdfbceb49f",
       "size": 148131
     },
     {
       "id": "content.e6a48b2673e95ed7a56c7ff34c32ae11",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/08-重建账号后仍需验证.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/08-重建账号后仍需验证.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/08-重建账号后仍需验证.png",
       "sha256": "b919607b2ee359c3576a966c50200bb109c12ccd410fd355aee015feb2fb8eba",
       "size": 302051
     },
     {
       "id": "content.375711cc0da751ab952ebf147f6a87ba",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/09-第二次验证失败.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/09-第二次验证失败.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/09-第二次验证失败.png",
       "sha256": "af40786d5a32f9208cd9bfe430e83388017ae55830e52d1eb2e077a1c5df0b1e",
       "size": 502017
     },
     {
       "id": "content.c06223025a265d3ca78b043252903ca8",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/10-Veriff不支持证件提示.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/10-Veriff不支持证件提示.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/10-Veriff不支持证件提示.png",
       "sha256": "f4649080fb8c6198ac4343505b484e054dfd12991504513b2e6ec1d7721edb7d",
       "size": 1711871
     },
     {
       "id": "content.ec9f05ec0599543ba2b065721b800a20",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/11-账号再次删除.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/11-账号再次删除.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/11-账号再次删除.png",
       "sha256": "25463bcfdf6564a64ab80b82e4b76db1ba211616e32071f56a496747e23c143d",
       "size": 559347
     },
     {
       "id": "content.02916c99978d575292090022e6142a06",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/12-客服确认人工审核拼音中文均可.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/12-客服确认人工审核拼音中文均可.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/12-客服确认人工审核拼音中文均可.png",
       "sha256": "7f8d85f52e9c46e05e717a83608f05992be94421f3df655601b9356e4a11acca",
       "size": 511622
     },
     {
       "id": "content.31e37d40dca258e4a763f228935408b4",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/13-人工审核通过后账号恢复正常.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/13-人工审核通过后账号恢复正常.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/13-人工审核通过后账号恢复正常.png",
       "sha256": "baf605774b9019ad0a3d54785185b3c6fecc0de5f8623199684213e89b214b2a",
       "size": 262418
     },
     {
       "id": "content.bc5a9cb1bee1580184e8638a511aa375",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/14-Cloudflare域名支付错误.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/14-Cloudflare域名支付错误.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/14-Cloudflare域名支付错误.png",
       "sha256": "c3b87e2f6139754b69f940dbf288d1c0ca36babb7ac120856e127d7b79d78831",
       "size": 75342
     },
     {
       "id": "content.14e6d4ab59b15a64b49a59a578716fa4",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/15-Cloudflare三张未付款发票.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/15-Cloudflare三张未付款发票.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/15-Cloudflare三张未付款发票.png",
       "sha256": "39dcc3db4c169ed8a89342015022a13dd413490de7d0f846789253e5c762faae",
       "size": 87830
     },
     {
       "id": "content.9d438563ec295931806abd7d23971ffb",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/16-Cloudflare逾期欠款提示.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/16-Cloudflare逾期欠款提示.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/16-Cloudflare逾期欠款提示.png",
       "sha256": "00f046d58c6e1d18a9b44d266eeddb59063b0d47f2bbb37c4dca5a4cbf63c7e9",
       "size": 49930
     },
     {
       "id": "content.c5a7b06009815bae8605107b9d8ffc3d",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/17-Cloudflare支持门户.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/17-Cloudflare支持门户.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/17-Cloudflare支持门户.png",
       "sha256": "4047cab99f36c6981fe5883c301c9a9dae5b1806e2b817eaf25483b4b2dd58a3",
       "size": 609080
     },
     {
       "id": "content.06c6b12241d55ecfb83335ab5e8c8b12",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/18-Cloudflare账单问题分类.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/18-Cloudflare账单问题分类.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/18-Cloudflare账单问题分类.png",
       "sha256": "795ef32c9dec305bc6e4743bfd6162d8b7928a477a5ced7e090ffcc1a9cbe628",
       "size": 91583
     },
     {
       "id": "content.fd228496112055ff9bb0abcb8c6a93b8",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/19-Cloudflare域名已激活.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/19-Cloudflare域名已激活.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/19-Cloudflare域名已激活.png",
       "sha256": "e46dbec3fb0b696428bc566eef0aef60768cf400ee886cb0d77590a7d6dc0cfb",
       "size": 102730
     },
     {
       "id": "content.f812f959a8755b0a81a52cf6717c17b5",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/20-银行卡资金冻结提示.png",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/images/20-银行卡资金冻结提示.png",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/images/20-银行卡资金冻结提示.png",
       "sha256": "ad2285b83c51d384553c018aaa66f85a4da20084e47ddd00392d228f8ef91a83",
       "size": 432013
     },
     {
       "id": "content.b30bd6573f8f537da6956179fc381c3a",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/porkbun平台购买域名和遇到的坑.md",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/域名购买和配置/porkbun平台购买域名和遇到的坑.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/域名购买和配置/porkbun平台购买域名和遇到的坑.md",
       "sha256": "4b5fffb83c4320618e774b98163f81f369f6526982f682ea39bf934bd01b9b53",
       "size": 35185
     },
     {
       "id": "content.3a84c1a059505e1a95bad5decb9cba5a",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/服务器资源挂载和权限问题(安全担忧).md",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/服务器资源挂载和权限问题(安全担忧).md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/服务器资源挂载和权限问题(安全担忧).md",
       "sha256": "36b12dd7dbd92662be455c90e1bd3e2f2c8c8a594b43306fd729edb60ed214ba",
       "size": 2282
     },
     {
       "id": "content.efb304360ecb56189d8188c8424b8467",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/服务器远程开发.md",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/服务器远程开发.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/服务器远程开发.md",
       "sha256": "8bbf819b4e0d8071fa8724238ddf708bc049954c3310cfe4de01b84684b0b216",
       "size": 274
     },
     {
       "id": "content.3c23ab87948a51f589ff18038e65ec9c",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/服务器选购对比与香港海外VPS选购决策档案.md",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/服务器选购对比与香港海外VPS选购决策档案.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/服务器选购对比与香港海外VPS选购决策档案.md",
       "sha256": "443f66da9705c6af88e2ed5cc576722a0bbbc16800634b4bbe8caf2f5a037ff4",
       "size": 33601
     },
     {
       "id": "content.15922a6f6a3658d3a4bdef852f7ce249",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/赔钱云服务器(网络有大坑)/Debian图形界面安装.md",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/赔钱云服务器(网络有大坑)/Debian图形界面安装.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/赔钱云服务器(网络有大坑)/Debian图形界面安装.md",
       "sha256": "ddb8dd4a638d1d7003e57e5aa698beb3ac1ef95b0dbed48cfd66600dbd8c8d5a",
       "size": 3812
     },
     {
       "id": "content.fc35491fdf315d5e80153e2d0f9b4b8a",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/赔钱云服务器(网络有大坑)/Debian汉化.md",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/赔钱云服务器(网络有大坑)/Debian汉化.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/赔钱云服务器(网络有大坑)/Debian汉化.md",
       "sha256": "bdae6619b3d8b0b5c5c984e36f571a76f5475faa0c228c09461ce05ac153d962",
       "size": 2771
     },
     {
       "id": "content.4c27a803f6515a1b88908dd91ee55b68",
       "oldPath": "工具链研究和记录/服务器和域名全链路运维手册/赔钱云服务器(网络有大坑)/赔钱云.md",
-      "path": "工具链研究和记录/服务器和域名全链路运维手册/赔钱云服务器(网络有大坑)/赔钱云.md",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/赔钱云服务器(网络有大坑)/赔钱云.md",
       "sha256": "f2f4df91c1584298b2b9d70a55d52f1db6ef2f04aabf990e1f56e8aafa8d0d4f",
       "size": 16347
     },
     {
       "id": "content.0013e88587dd58a6b4e26ba543e89880",
       "oldPath": "工具链研究和记录/爱好.md",
-      "path": "工具链研究和记录/爱好.md",
+      "path": "学习路径、研究与现实实践/个人学习日志/日常学习记录/爱好.md",
       "sha256": "bb45c33282f45e04ebe5f41a90657b086559c99009a2eded724ee4609c17a69a",
       "size": 6479
     },
     {
       "id": "content.00a9e02f16f8543ba883e3bedd44ebec",
       "oldPath": "工具链研究和记录/虚拟机研究/Hyper-V虚拟机研究.md",
-      "path": "工具链研究和记录/虚拟机研究/Hyper-V虚拟机研究.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/Hyper-V虚拟机研究.md",
       "sha256": "60ea8b60326e22796f55a07c9df73cad71b4105ac6b68849faf1a3aecf080e3e",
       "size": 2806
     },
     {
       "id": "content.9d04abed80b451e7baba1f9383178d17",
       "oldPath": "工具链研究和记录/虚拟机研究/VMware 25汉化问题/VMware 25汉化问题.md",
-      "path": "工具链研究和记录/虚拟机研究/VMware 25汉化问题/VMware 25汉化问题.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/VMware 25汉化问题/VMware 25汉化问题.md",
       "sha256": "ad0a7d9a2b44e053698e64da2524beb9ce86558ed1a88ee3939a426660ae6cd6",
       "size": 2304
     },
     {
       "id": "content.de411a6627cb54a38fdb520691bb52d3",
       "oldPath": "工具链研究和记录/虚拟机研究/VMware 25汉化问题/zh_CN/vmappsdk-zh_CN.dll",
-      "path": "工具链研究和记录/虚拟机研究/VMware 25汉化问题/zh_CN/vmappsdk-zh_CN.dll",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/VMware 25汉化问题/zh_CN/vmappsdk-zh_CN.dll",
       "sha256": "83232c18886d750591ddafb49ee94f65625c6a56c4d4e6a9f1ff29fdbed20441",
       "size": 14334568
     },
     {
       "id": "content.05aa229db567537b847f973f2fe30180",
       "oldPath": "工具链研究和记录/虚拟机研究/VMware 25汉化问题/zh_CN/vmui-zh_CN.dll",
-      "path": "工具链研究和记录/虚拟机研究/VMware 25汉化问题/zh_CN/vmui-zh_CN.dll",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/VMware 25汉化问题/zh_CN/vmui-zh_CN.dll",
       "sha256": "bd4a13c7b5c8d9b285805a1236666958c9499048cf942e2922d3ef892c86fe7a",
       "size": 175208
     },
     {
       "id": "content.36307477ab975177b79a31deabbeb5e5",
       "oldPath": "工具链研究和记录/虚拟机研究/VMware 25汉化问题/zh_CN/vmware.vmsg",
-      "path": "工具链研究和记录/虚拟机研究/VMware 25汉化问题/zh_CN/vmware.vmsg",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/VMware 25汉化问题/zh_CN/vmware.vmsg",
       "sha256": "6c41b30bc86eb74dcea393fd186d0df4ec9365d797a987e0281400ada412fa24",
       "size": 606591
     },
     {
       "id": "content.450f04516eba52cfba6101704d20ab94",
       "oldPath": "工具链研究和记录/虚拟机研究/VM补充.txt",
-      "path": "工具链研究和记录/虚拟机研究/VM补充.txt",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/VM补充.txt",
       "sha256": "1b690cb5cbd1f6b960207767b6b5dfe582d1a7e9575e78666055f202c098135f",
       "size": 1084
     },
     {
       "id": "content.808f353f9e605f40a0d95a3fcd43bd15",
       "oldPath": "工具链研究和记录/虚拟机研究/macOS操作系统虚拟机安装.md",
-      "path": "工具链研究和记录/虚拟机研究/macOS操作系统虚拟机安装.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/macOS操作系统虚拟机安装.md",
       "sha256": "638a4d58d6ef79f3d877b007140af76a2368d77364ff0e8b27e2719f249f72d2",
       "size": 10533
     },
     {
       "id": "content.bf12fd24337159d49588a5f4fe8f4e1d",
       "oldPath": "工具链研究和记录/虚拟机研究/windows远程桌面连接问题.md",
-      "path": "工具链研究和记录/虚拟机研究/windows远程桌面连接问题.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/windows远程桌面连接问题.md",
       "sha256": "d3a68946adcd36cbe3622ef07df52ca484963e5e93d8a8909c3bcedc3580a1c2",
       "size": 1545
     },
     {
       "id": "content.b86c06366ac5512494f454a60ca0a548",
       "oldPath": "工具链研究和记录/虚拟机研究/操作系统下载.txt",
-      "path": "工具链研究和记录/虚拟机研究/操作系统下载.txt",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/操作系统下载.txt",
       "sha256": "acd5f23ad85441ba72ba60a0eced26afdc128096af314de9caea2f5b0534330d",
       "size": 1083
     },
     {
       "id": "content.48f6977c7b695bef9ebf35ecc3efef40",
       "oldPath": "工具链研究和记录/虚拟机研究/虚拟机下载.md",
-      "path": "工具链研究和记录/虚拟机研究/虚拟机下载.md",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/虚拟机下载.md",
       "sha256": "70a6aa9785c510128dacd5a6d1750ab0145f9315de4ca509f2d3344d6fb2bcea",
       "size": 5448
     },
     {
       "id": "content.2a1944de1715562f85615a8e0f1fc691",
       "oldPath": "工具链研究和记录/路由故障率监测工具/iperf-3.21-win64/cygwin1.dll",
-      "path": "工具链研究和记录/路由故障率监测工具/iperf-3.21-win64/cygwin1.dll",
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/iperf-3.21-win64/cygwin1.dll",
       "sha256": "0ab76b4724499df54b75b7fa701788f1e77425ce65c8bca0a9f2120598bb8a70",
       "size": 3161653
     },
     {
       "id": "content.85abf438dbb75037b10ec58324c93bb4",
       "oldPath": "工具链研究和记录/路由故障率监测工具/iperf-3.21-win64/使用方法.txt",
-      "path": "工具链研究和记录/路由故障率监测工具/iperf-3.21-win64/使用方法.txt",
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/iperf-3.21-win64/使用方法.txt",
       "sha256": "6e7da6fe805f8627ac7194678b36d5e3ee1a941fd5b337687ae6be9848fc9630",
       "size": 328
     },
     {
       "id": "content.c5fda52c62f1571b858e3d0d5f93ada3",
       "oldPath": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/PingInfoView.cfg",
-      "path": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/PingInfoView.cfg",
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/pinginfoview-x64/PingInfoView.cfg",
       "sha256": "3310790c82fb5fccad75a045b981afac29e6d104ba064aa520924d7f927af5e5",
       "size": 2123
     },
     {
       "id": "content.111277e3ab1055d5826614d96109739a",
       "oldPath": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/PingInfoView.chm",
-      "path": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/PingInfoView.chm",
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/pinginfoview-x64/PingInfoView.chm",
       "sha256": "f91237af3e96fe20416d800276faa6810f14843cdee731745b7817bb95651951",
       "size": 27423
     },
     {
       "id": "content.fec1055171ab5fdfac6b5f9a1c8d5a51",
       "oldPath": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/PingInfoView_hosts.txt",
-      "path": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/PingInfoView_hosts.txt",
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/pinginfoview-x64/PingInfoView_hosts.txt",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.8dcfb54596a555e7a6e390b8acbe1da2",
       "oldPath": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/pinginfoview_lng.ini",
-      "path": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/pinginfoview_lng.ini",
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/pinginfoview-x64/pinginfoview_lng.ini",
       "sha256": "ecbce144aafa0978301e20e7e034c2514c735ae62522f5000977b39e4604c5b7",
       "size": 4542
     },
     {
       "id": "content.9a99e43812ea558b905ab804a957f600",
       "oldPath": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/readme.txt",
-      "path": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/readme.txt",
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/pinginfoview-x64/readme.txt",
       "sha256": "9327c46335ec9e32247cd3a9c75cb998aa0fad410d16c7c9c0ac44fd66efef81",
       "size": 22906
     },
     {
       "id": "content.c1740ee4df74585790cbc0804d0a685d",
       "oldPath": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/使用方法.txt",
-      "path": "工具链研究和记录/路由故障率监测工具/pinginfoview-x64/使用方法.txt",
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/pinginfoview-x64/使用方法.txt",
       "sha256": "10b2e45bada1575b06cb353515337d319316afc278eaa4c44fbb74c6728690b2",
       "size": 45
     },
