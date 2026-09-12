@@ -1,0 +1,8 @@
+{
+  "batch": "languages-data",
+  "moves": 68,
+  "trackedFilesMoved": 1241,
+  "localFilesPreserved": 20496,
+  "linksUpdated": 0,
+  "verification": "All local file paths and sizes preserved; all baseline content SHA256 hashes match except recorded link destination edits."
+}

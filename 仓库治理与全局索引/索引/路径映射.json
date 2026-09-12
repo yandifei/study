@@ -848,6 +848,482 @@
       "targetPath": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具",
       "isDirectory": true,
       "id": "migration.e7c99515a655584d9732251be9f7b0aa"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/excel学习",
+      "targetPath": "数据系统与信息检索/数据处理与可视化/Pandas与数据清洗/excel学习",
+      "isDirectory": true,
+      "id": "migration.c021e2d2419554e684a5e66796f274b9"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/main.py",
+      "targetPath": "软件开发与应用工程/Python与运行时/标准库与脚本/main.py",
+      "isDirectory": false,
+      "id": "migration.3d6b4f80d5985ec3826660161c2c38a5"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/my_utils",
+      "targetPath": "软件开发与应用工程/Python与运行时/标准库与脚本/my_utils",
+      "isDirectory": true,
+      "id": "migration.99c9868f8f545f87a2b57f767effc170"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/python logging study",
+      "targetPath": "软件开发与应用工程/Python与运行时/标准库与脚本/python logging study",
+      "isDirectory": true,
+      "id": "migration.841965666ddb5b2cbb56658adb1cf0e0"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/python数据分析课程",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python数据分析/python数据分析课程",
+      "isDirectory": true,
+      "id": "migration.00a8054be722529084e9587264345549"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/python课堂复习",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python编程/python课堂复习",
+      "isDirectory": true,
+      "id": "migration.c2075d0ebc685a929fd1d8dd45f5335f"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/python链接sql学习",
+      "targetPath": "数据系统与信息检索/关系型数据库与SQL/MySQL基础/python链接sql学习",
+      "isDirectory": true,
+      "id": "migration.fe56a6b1531659bd926140ea5f585322"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/py和sql数据图形可视化案例",
+      "targetPath": "数据系统与信息检索/数据处理与可视化/数据分析案例/py和sql数据图形可视化案例",
+      "isDirectory": true,
+      "id": "migration.4dbeb6ee60b35593a0ce4195089133b0"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/spark学习",
+      "targetPath": "数据系统与信息检索/数据处理与可视化/分布式数据处理/spark学习",
+      "isDirectory": true,
+      "id": "migration.d6b82a069869543cacfcd3404b09092e"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/study.py",
+      "targetPath": "软件开发与应用工程/Python与运行时/标准库与脚本/study.py",
+      "isDirectory": false,
+      "id": "migration.4e6f3facf5df533b9ca5589422d29182"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/windows系统默认存在python解释器问题.md",
+      "targetPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/windows系统默认存在python解释器问题.md",
+      "isDirectory": false,
+      "id": "migration.aab7d1adfe855619aeaa2d5662e3ea28"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/图形可视化学习",
+      "targetPath": "数据系统与信息检索/数据处理与可视化/图表与可视化/图形可视化学习",
+      "isDirectory": true,
+      "id": "migration.0a3f3941bd7458c49abeb391daaf342b"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/多线程学习",
+      "targetPath": "软件开发与应用工程/Python与运行时/异步并发/多线程学习",
+      "isDirectory": true,
+      "id": "migration.2e890aa5d90c50eaa8b7c553e818c4f8"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/对象相关学习",
+      "targetPath": "软件开发与应用工程/Python与运行时/语法基础/对象相关学习",
+      "isDirectory": true,
+      "id": "migration.3e1d6ed95e4c5fcdbe373b622bf0e541"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/打包学习",
+      "targetPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/打包学习",
+      "isDirectory": true,
+      "id": "migration.2330ebb456705dada2d4878dab1c6bfe"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/数据库数据写出作业",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python数据分析/数据库数据写出作业",
+      "isDirectory": true,
+      "id": "migration.f4acc5dde2925088bf703849f8658334"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/数据库数据提出.txt",
+      "targetPath": "软件开发与应用工程/Python与运行时/标准库与脚本/数据库数据提出.txt",
+      "isDirectory": false,
+      "id": "migration.f0c80238b5f4570db14d8fe4c60ee074"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/练习案例用到的数据（黑马）",
+      "targetPath": "参考资源与历史归档/数据集、模型与大文件登记/数据集登记/练习案例用到的数据（黑马）",
+      "isDirectory": true,
+      "id": "migration.67dbc50358ad5d96bb495d9bd344d3da"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/自定义包和导包学习",
+      "targetPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/自定义包和导包学习",
+      "isDirectory": true,
+      "id": "migration.68214773faad5ba396a56216b2ba5073"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/路径问题研究",
+      "targetPath": "软件开发与应用工程/Python与运行时/标准库与脚本/路径问题研究",
+      "isDirectory": true,
+      "id": "migration.8d551c5c7fb95d19ad81578428560f23"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/进度条展示.py",
+      "targetPath": "软件开发与应用工程/Python与运行时/标准库与脚本/进度条展示.py",
+      "isDirectory": false,
+      "id": "migration.9ee61dbe67c156089c83aeffae50d2f9"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/进程通讯Socket",
+      "targetPath": "基础理论与计算思维/计算机网络与密码学/网络协议基础/进程通讯Socket",
+      "isDirectory": true,
+      "id": "migration.9ff06a9476c7526fbeb639f76554f342"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Python_basic_study/递归找文件",
+      "targetPath": "软件开发与应用工程/Python与运行时/标准库与脚本/递归找文件",
+      "isDirectory": true,
+      "id": "migration.d733dbab600f5ad9b3d5c06867bf0d3e"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "数据库/charme",
+      "targetPath": "参考资源与历史归档/电子书、课件与参考资料/课程课件登记/MySQL/charme",
+      "isDirectory": true,
+      "id": "migration.4df4c553b2315027886aa1383c1c9325"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "数据库/E-R图概念区分.md",
+      "targetPath": "数据系统与信息检索/数据建模与存储设计/实体关系建模/E-R图概念区分.md",
+      "isDirectory": false,
+      "id": "migration.699187afbc145b8c926c4b6a720b2280"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "数据库/mysql",
+      "targetPath": "数据系统与信息检索/关系型数据库与SQL/MySQL基础/mysql",
+      "isDirectory": true,
+      "id": "migration.87afb8427fbb5aab815915f53b966ae3"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "数据库/NoSQL",
+      "targetPath": "数据系统与信息检索/NoSQL与缓存/MongoDB/NoSQL",
+      "isDirectory": true,
+      "id": "migration.2d551d935a525f2db7facf6f74a5465e"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "数据库/redis",
+      "targetPath": "数据系统与信息检索/NoSQL与缓存/Redis/redis",
+      "isDirectory": true,
+      "id": "migration.fa3f8ff562aa52b2a0d4ef30d7a1ed1b"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/.idea",
+      "targetPath": "参考资源与历史归档/旧目录历史快照/迁移保留的本地文件/Java/.idea",
+      "isDirectory": true,
+      "id": "migration.52f13b1ec54856419ecb8cde98806c86"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/java的规则和规范.md",
+      "targetPath": "软件开发与应用工程/Java与JVM生态/Java基础/java的规则和规范.md",
+      "isDirectory": false,
+      "id": "migration.6829b42c59dd5e11af2c86c4a5ae4945"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/JSP编程学习",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Java-Web开发/JSP编程学习",
+      "isDirectory": true,
+      "id": "migration.6d9ebc3f27e2557a9db1273237d87b62"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/spring boot",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot",
+      "isDirectory": true,
+      "id": "migration.f2e208de99fd59f791841b791deaabda"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/switch细节讨论.md",
+      "targetPath": "软件开发与应用工程/Java与JVM生态/Java基础/switch细节讨论.md",
+      "isDirectory": false,
+      "id": "migration.2800f8951d975d69a6148c5db4512498"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/test.py",
+      "targetPath": "软件开发与应用工程/Java与JVM生态/Java基础/test.py",
+      "isDirectory": false,
+      "id": "migration.e45840b2afc8589dac6afcd467099059"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/二十五(OOP零钱通)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/二十五(OOP零钱通)",
+      "isDirectory": true,
+      "id": "migration.97df7f5d11225dfb9713735e824a7cb0"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/二十六(本章作业)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/二十六(本章作业)",
+      "isDirectory": true,
+      "id": "migration.cc67d6f06ac952fd924cdccb470fdb08"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/包和访问修饰符.md",
+      "targetPath": "软件开发与应用工程/Java与JVM生态/Java基础/包和访问修饰符.md",
+      "isDirectory": false,
+      "id": "migration.e4d5723e04b15768a1a47db36fa62551"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/数组.md",
+      "targetPath": "软件开发与应用工程/Java与JVM生态/Java基础/数组.md",
+      "isDirectory": false,
+      "id": "migration.068224a301205262a4f479c4d0ac6002"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/方法重载.md",
+      "targetPath": "软件开发与应用工程/Java与JVM生态/Java基础/方法重载.md",
+      "isDirectory": false,
+      "id": "migration.866713d194b55315a49ff0015326e892"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第30天(8.12之前py写了一个软件)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第30天(8.12之前py写了一个软件)",
+      "isDirectory": true,
+      "id": "migration.c0db4cdad2ad523bb81318dfc023cba9"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第一天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第一天",
+      "isDirectory": true,
+      "id": "migration.6012d4b2e2b85bbdb829260ec25f99e4"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第七天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第七天",
+      "isDirectory": true,
+      "id": "migration.ab4253ad9a96574fa12b6036b59ef8a0"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第三天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第三天",
+      "isDirectory": true,
+      "id": "migration.8d8c90711f225c70b25ed13fe0d9be38"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第九天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第九天",
+      "isDirectory": true,
+      "id": "migration.fb91ba6c0bdc5160b0dd1d2e24d793cf"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第二十七天(本章作业)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十七天(本章作业)",
+      "isDirectory": true,
+      "id": "migration.58a4f1c34b085c62bc3a3e6c18f5fc99"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第二十三天(OOP细节)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十三天(OOP细节)",
+      "isDirectory": true,
+      "id": "migration.8009ae74f91554d4b001000aa26e74bc"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第二十九天(本章作业)6.28(之前去写py项目了)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十九天(本章作业)6.28(之前去写py项目了)",
+      "isDirectory": true,
+      "id": "migration.4f70f1af1cb654d4b6afb53b2bdd7bf8"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第二十二天(OOP细节)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十二天(OOP细节)",
+      "isDirectory": true,
+      "id": "migration.ebf2d031564a54aa8e12c0a218dc0327"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第二十八天(本章作业)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十八天(本章作业)",
+      "isDirectory": true,
+      "id": "migration.397ff7c751d05f3383d0cb58370b9f58"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第二十四天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十四天",
+      "isDirectory": true,
+      "id": "migration.4ddd8cc68def5f3499d29ca0181bc019"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第二十天(IDEA进阶使用)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十天(IDEA进阶使用)",
+      "isDirectory": true,
+      "id": "migration.1e9e89f850665f7d9c18cdef104281a6"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第二十天一(OOP)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十天一(OOP)",
+      "isDirectory": true,
+      "id": "migration.4867ac4d156b5bb28fe5402107aa8a8c"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第二天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二天",
+      "isDirectory": true,
+      "id": "migration.86af0ce5820b5f6b972dc69eb72ada6f"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第五天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第五天",
+      "isDirectory": true,
+      "id": "migration.5bae6351dbff5848b6c601a280d56375"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第八天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第八天",
+      "isDirectory": true,
+      "id": "migration.8e32437332c15036b346eec91c67de7e"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第六天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第六天",
+      "isDirectory": true,
+      "id": "migration.0fb947e238615159b18e05e8a20b5c44"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十一天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十一天",
+      "isDirectory": true,
+      "id": "migration.4ea8f6bce9b7581bbaf98aa7582b6375"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十七天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十七天",
+      "isDirectory": true,
+      "id": "migration.c180ecdab41955dc8308e0725670f369"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十三天(数组扩容)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十三天(数组扩容)",
+      "isDirectory": true,
+      "id": "migration.bb29db452b2651608f73ae530fa4b73e"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十九天(IDEA)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十九天(IDEA)",
+      "isDirectory": true,
+      "id": "migration.701842ff2e7e5c95a9933f01794ed748"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十二天(数组)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十二天(数组)",
+      "isDirectory": true,
+      "id": "migration.f587c68ee3c65af68a797143005bffd3"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十五天(对象)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十五天(对象)",
+      "isDirectory": true,
+      "id": "migration.81bf700709d758c7aa36dba4796d4e97"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十八天(重载)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十八天(重载)",
+      "isDirectory": true,
+      "id": "migration.76f6b399ed245507ae859eb3d3ef05b6"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十六天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十六天",
+      "isDirectory": true,
+      "id": "migration.df5ef21ed5a050ba9d585ec955aa8680"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十四天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十四天",
+      "isDirectory": true,
+      "id": "migration.2504be8b1f3c5f6ca57239bb78c5f1a3"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第十天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十天",
+      "isDirectory": true,
+      "id": "migration.eb54adf348f45f45b8b5138a4dfb3ea6"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/第四天",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第四天",
+      "isDirectory": true,
+      "id": "migration.746762ced9b056728118c4d921e89226"
+    },
+    {
+      "batch": "languages-data",
+      "oldPath": "Java/重点查看.txt",
+      "targetPath": "软件开发与应用工程/Java与JVM生态/Java基础/重点查看.txt",
+      "isDirectory": false,
+      "id": "migration.c9ea797d54ee5a669bb2167b416a27c1"
     }
   ]
 }
