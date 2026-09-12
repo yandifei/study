@@ -512,6 +512,153 @@
       "targetPath": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录/远程训练",
       "isDirectory": true,
       "id": "migration.d99a69a388ac573fae9eb742fb4a457b"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/ERP监控界面展示图.png",
+      "targetPath": "参考资源与历史归档/网页归档、截图与原始材料/界面设计参考/ERP监控界面展示图.png",
+      "isDirectory": false,
+      "id": "migration.a72d4fe0e6fe52b58246107e4c24f17c"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/RESTful 的六大约束.md",
+      "targetPath": "软件开发与应用工程/Web后端与API/REST与接口设计/RESTful 的六大约束.md",
+      "isDirectory": false,
+      "id": "migration.0ec547f75f785da5b49c557ee0947658"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/WebAIPilot",
+      "targetPath": "项目工坊/AI应用与智能体项目/浏览器Agent项目/WebAIPilot",
+      "isDirectory": true,
+      "id": "migration.9bc35d8b426d516a84842173d629a502"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/个人框架",
+      "targetPath": "项目工坊/Web与后端项目/FastAPI项目/个人框架",
+      "isDirectory": true,
+      "id": "migration.c3efaced22645c9ab19c771ee0718a8c"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/企业中fastapi项目结构.md",
+      "targetPath": "软件开发与应用工程/Web后端与API/FastAPI/企业中fastapi项目结构.md",
+      "isDirectory": false,
+      "id": "migration.56d07b7daeda55ebbde390c23ac581d9"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/手机图像播放",
+      "targetPath": "项目工坊/Web与后端项目/FastAPI项目/手机图像播放",
+      "isDirectory": true,
+      "id": "migration.ccadff7a004153a3883909107da6c46a"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/搜索引擎参考界面和prompt",
+      "targetPath": "参考资源与历史归档/网页归档、截图与原始材料/界面设计参考/搜索引擎参考界面和prompt",
+      "isDirectory": true,
+      "id": "migration.1fbea01322995132902d1e2ae33e6bb0"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/文档自学入门",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/FastAPI/文档自学入门",
+      "isDirectory": true,
+      "id": "migration.b289654406b057e4b454a8740c8c541c"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/暗黑霓虹科技数据可视化风格.md",
+      "targetPath": "软件开发与应用工程/Web前端与桌面客户端/界面设计/暗黑霓虹科技数据可视化风格.md",
+      "isDirectory": false,
+      "id": "migration.e114486167765e31a7713e142e47b0b8"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/邮件发送系统",
+      "targetPath": "项目工坊/Web与后端项目/FastAPI项目/邮件发送系统",
+      "isDirectory": true,
+      "id": "migration.08957d10db805e268cd962d3e5ebbf00"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "FastAPI学习/项目实践完成.txt",
+      "targetPath": "软件开发与应用工程/Web后端与API/FastAPI/项目实践完成.txt",
+      "isDirectory": false,
+      "id": "migration.7f150664be69521f836e1e5953c467bf"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/CSS学习",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/CSS学习",
+      "isDirectory": true,
+      "id": "migration.ab38d1885222528f9579f03bec88ead4"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/Djangon课堂学习",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Djangon课堂学习",
+      "isDirectory": true,
+      "id": "migration.8cc1f97238ee5b41a3b51f6db9d33bc4"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/Django创建项目",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Django创建项目",
+      "isDirectory": true,
+      "id": "migration.8a3497809d1d5eebb1750591cc4a6f13"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/pythonweb框架开发期末/智慧校园考试系统综合实训",
+      "targetPath": "项目工坊/课程项目成果/Django课程项目/智慧校园考试系统综合实训",
+      "isDirectory": true,
+      "id": "migration.b7dbf72b15a952df9c63409cada1334f"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/pythonweb框架开发期末/老师舍弃的黑马",
+      "targetPath": "项目工坊/课程项目成果/Django课程项目/老师舍弃的黑马",
+      "isDirectory": true,
+      "id": "migration.4f4c4e0626ba5296a35c5fa9da66a2d5"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/历程.txt",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/历程.txt",
+      "isDirectory": false,
+      "id": "migration.dd2f4adcdca452809dc6f686c4b0fe02"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/启动Django",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/启动Django",
+      "isDirectory": true,
+      "id": "migration.151055d49e35576a89fa38867c7c27b7"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/基础知识(html)",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/基础知识(html)",
+      "isDirectory": true,
+      "id": "migration.2f4406fd71d25df783412821681a98e2"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/官网自学",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Django/官网自学",
+      "isDirectory": true,
+      "id": "migration.25f1a9adf85b5b8e98d31cbd3020a0c6"
+    },
+    {
+      "batch": "backend",
+      "oldPath": "Django框架学习/练习(用户注册)",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/练习(用户注册)",
+      "isDirectory": true,
+      "id": "migration.b14c93b0ede35cc3a507af6a25bfdd37"
     }
   ]
 }
