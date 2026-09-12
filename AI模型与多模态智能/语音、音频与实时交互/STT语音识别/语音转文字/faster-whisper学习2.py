@@ -1,5 +1,5 @@
 """官方代码
-segments, _ = model.transcribe("../voice/output.wav", word_timestamps=True)
+segments, _ = model.transcribe("../../实时语音Agent/语音实验/voice/output.wav", word_timestamps=True)
 for segment in segments:
     for word in segment.words:
         print("[%.2fs -> %.2fs] %s" % (word.start, word.end, word.word))
@@ -18,7 +18,7 @@ model = WhisperModel(model_size, device="cuda", compute_type="float16")
 # model = WhisperModel(model_size, device="cpu", compute_type="int8")
 
 # 除了提供分段转录结果，你还可以轻松获取每个单词的精确开始和结束时间戳，这对于字幕制作或需要精细时间对齐的应用非常关键
-segments, info = model.transcribe("../voice/output.wav", word_timestamps=True)
+segments, info = model.transcribe("../../实时语音Agent/语音实验/voice/output.wav", word_timestamps=True)
 for segment in segments:
     for word in segment.words:
         print("[%.2fs -> %.2fs] %s" % (word.start, word.end, word.word))

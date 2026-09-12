@@ -18,7 +18,7 @@ model = WhisperModel(model_size, device="cuda", compute_type="float16")
 # model = WhisperModel(model_size, device="cpu", compute_type="int8")
 
 # 转录音频文件
-segments, info = model.transcribe("../voice/output.wav", beam_size=5)
+segments, info = model.transcribe("../../实时语音Agent/语音实验/voice/output.wav", beam_size=5)
 
 # 打印检测到的语言和概率
 print(f"检测到{info.language}语言的概率为{info.language_probability}")

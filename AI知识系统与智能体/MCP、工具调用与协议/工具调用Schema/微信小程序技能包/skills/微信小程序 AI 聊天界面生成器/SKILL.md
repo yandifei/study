@@ -611,6 +611,6 @@ handleRegenerate(e) {
 
 - `assets/templates/` — 各组件完整模板代码，生成时直接读取
 - `references/design-guide.md` — 详细设计规范和 UI 参考
-- `B:\study\微信小程序\期末作业\文档\Dify的API接口文档.md` — Dify 完整 API 参考
-- `B:\study\微信小程序\期末作业\文档\微信小程序后端系统架构设计文档.md` — Nginx 路由架构
+- `B:\study\项目工坊\课程项目成果\微信小程序课程项目\期末作业\文档\Dify的API接口文档.md` — Dify 完整 API 参考
+- `B:\study\项目工坊\课程项目成果\微信小程序课程项目\期末作业\文档\微信小程序后端系统架构设计文档.md` — Nginx 路由架构
 - 生成过程中如遇不确定的细节，参考 `assets/templates/` 下的完整实现

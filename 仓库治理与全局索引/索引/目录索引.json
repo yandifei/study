@@ -1,0 +1,3650 @@
+{
+  "schemaVersion": 1,
+  "nodes": [
+    {
+      "id": "domain.ai-model",
+      "kind": "domain",
+      "title": "AI模型与多模态智能",
+      "path": "AI模型与多模态智能",
+      "entryPath": "AI模型与多模态智能/README.md",
+      "domain": "ai-model",
+      "parentId": null
+    },
+    {
+      "id": "domain.ai-agent",
+      "kind": "domain",
+      "title": "AI知识系统与智能体",
+      "path": "AI知识系统与智能体",
+      "entryPath": "AI知识系统与智能体/README.md",
+      "domain": "ai-agent",
+      "parentId": null
+    },
+    {
+      "id": "repository.governance",
+      "kind": "domain",
+      "title": "仓库治理与全局索引",
+      "path": "仓库治理与全局索引",
+      "entryPath": "仓库治理与全局索引/_index.md",
+      "domain": "governance",
+      "parentId": null
+    },
+    {
+      "id": "domain.resources",
+      "kind": "domain",
+      "title": "参考资源与历史归档",
+      "path": "参考资源与历史归档",
+      "entryPath": "参考资源与历史归档/README.md",
+      "domain": "resources",
+      "parentId": null
+    },
+    {
+      "id": "domain.foundation",
+      "kind": "domain",
+      "title": "基础理论与计算思维",
+      "path": "基础理论与计算思维",
+      "entryPath": "基础理论与计算思维/README.md",
+      "domain": "foundation",
+      "parentId": null
+    },
+    {
+      "id": "domain.learning",
+      "kind": "domain",
+      "title": "学习路径、研究与现实实践",
+      "path": "学习路径、研究与现实实践",
+      "entryPath": "学习路径、研究与现实实践/README.md",
+      "domain": "learning",
+      "parentId": null
+    },
+    {
+      "id": "domain.data",
+      "kind": "domain",
+      "title": "数据系统与信息检索",
+      "path": "数据系统与信息检索",
+      "entryPath": "数据系统与信息检索/README.md",
+      "domain": "data",
+      "parentId": null
+    },
+    {
+      "id": "domain.platform",
+      "kind": "domain",
+      "title": "系统平台与自动化",
+      "path": "系统平台与自动化",
+      "entryPath": "系统平台与自动化/README.md",
+      "domain": "platform",
+      "parentId": null
+    },
+    {
+      "id": "domain.software",
+      "kind": "domain",
+      "title": "软件开发与应用工程",
+      "path": "软件开发与应用工程",
+      "entryPath": "软件开发与应用工程/README.md",
+      "domain": "software",
+      "parentId": null
+    },
+    {
+      "id": "domain.projects",
+      "kind": "domain",
+      "title": "项目工坊",
+      "path": "项目工坊",
+      "entryPath": "项目工坊/README.md",
+      "domain": "projects",
+      "parentId": null
+    },
+    {
+      "id": "node.b9c65c31592c501199cc632004931c56",
+      "kind": "topic",
+      "title": "图像、视频与3D生成",
+      "path": "AI模型与多模态智能/图像、视频与3D生成",
+      "entryPath": "AI模型与多模态智能/图像、视频与3D生成/README.md",
+      "domain": "ai-model",
+      "parentId": "domain.ai-model"
+    },
+    {
+      "id": "node.a6f34f147fbd5322ae2e7cae16d1542a",
+      "kind": "topic",
+      "title": "大语言模型与提示工程",
+      "path": "AI模型与多模态智能/大语言模型与提示工程",
+      "entryPath": "AI模型与多模态智能/大语言模型与提示工程/README.md",
+      "domain": "ai-model",
+      "parentId": "domain.ai-model"
+    },
+    {
+      "id": "node.1b4dd59cb23f50aca4d8afb4832b6d5a",
+      "kind": "topic",
+      "title": "机器学习基础与训练",
+      "path": "AI模型与多模态智能/机器学习基础与训练",
+      "entryPath": "AI模型与多模态智能/机器学习基础与训练/README.md",
+      "domain": "ai-model",
+      "parentId": "domain.ai-model"
+    },
+    {
+      "id": "node.d8ec5e98b49e5a9bb27b4f94cf922c4d",
+      "kind": "topic",
+      "title": "模型推理、部署与本地运行",
+      "path": "AI模型与多模态智能/模型推理、部署与本地运行",
+      "entryPath": "AI模型与多模态智能/模型推理、部署与本地运行/README.md",
+      "domain": "ai-model",
+      "parentId": "domain.ai-model"
+    },
+    {
+      "id": "node.92174866639252d4ad4b09330e93f26c",
+      "kind": "topic",
+      "title": "计算机视觉与YOLO",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO",
+      "entryPath": "AI模型与多模态智能/计算机视觉与YOLO/README.md",
+      "domain": "ai-model",
+      "parentId": "domain.ai-model"
+    },
+    {
+      "id": "node.28384a59038f5f7c97577a338ed3057d",
+      "kind": "topic",
+      "title": "语音、音频与实时交互",
+      "path": "AI模型与多模态智能/语音、音频与实时交互",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/README.md",
+      "domain": "ai-model",
+      "parentId": "domain.ai-model"
+    },
+    {
+      "id": "node.8eac0a7ca95f5b78a527e02c6cf44eb7",
+      "kind": "topic",
+      "title": "Agent、工作流与规划",
+      "path": "AI知识系统与智能体/Agent、工作流与规划",
+      "entryPath": "AI知识系统与智能体/Agent、工作流与规划/README.md",
+      "domain": "ai-agent",
+      "parentId": "domain.ai-agent"
+    },
+    {
+      "id": "node.29830344ae91559ba04b2f5e44f0de29",
+      "kind": "topic",
+      "title": "MCP、工具调用与协议",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/README.md",
+      "domain": "ai-agent",
+      "parentId": "domain.ai-agent"
+    },
+    {
+      "id": "node.ba6da984cd2b5c3892f761980aabd7f5",
+      "kind": "topic",
+      "title": "记忆、上下文与个性化",
+      "path": "AI知识系统与智能体/记忆、上下文与个性化",
+      "entryPath": "AI知识系统与智能体/记忆、上下文与个性化/README.md",
+      "domain": "ai-agent",
+      "parentId": "domain.ai-agent"
+    },
+    {
+      "id": "node.12386ca9d7985a0a8a538e0bc1f22b16",
+      "kind": "topic",
+      "title": "评测、可观测性、安全与治理",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理",
+      "entryPath": "AI知识系统与智能体/评测、可观测性、安全与治理/README.md",
+      "domain": "ai-agent",
+      "parentId": "domain.ai-agent"
+    },
+    {
+      "id": "node.053a7ea002fd5eefb79d3393768f2464",
+      "kind": "topic",
+      "title": "数据集、模型与大文件登记",
+      "path": "参考资源与历史归档/数据集、模型与大文件登记",
+      "entryPath": "参考资源与历史归档/数据集、模型与大文件登记/README.md",
+      "domain": "resources",
+      "parentId": "domain.resources"
+    },
+    {
+      "id": "node.e033b1b582d758e4acfe1f4922079441",
+      "kind": "topic",
+      "title": "旧目录历史快照",
+      "path": "参考资源与历史归档/旧目录历史快照",
+      "entryPath": "参考资源与历史归档/旧目录历史快照/README.md",
+      "domain": "resources",
+      "parentId": "domain.resources"
+    },
+    {
+      "id": "node.b8ec070555e95cbbad59291ed7603af4",
+      "kind": "topic",
+      "title": "电子书、课件与参考资料",
+      "path": "参考资源与历史归档/电子书、课件与参考资料",
+      "entryPath": "参考资源与历史归档/电子书、课件与参考资料/README.md",
+      "domain": "resources",
+      "parentId": "domain.resources"
+    },
+    {
+      "id": "node.a4c2fc99e98f5ffe9c958880605e6976",
+      "kind": "topic",
+      "title": "第三方源码与镜像登记",
+      "path": "参考资源与历史归档/第三方源码与镜像登记",
+      "entryPath": "参考资源与历史归档/第三方源码与镜像登记/README.md",
+      "domain": "resources",
+      "parentId": "domain.resources"
+    },
+    {
+      "id": "node.eb2dfefbf80e54088d0afce5c8980cf6",
+      "kind": "topic",
+      "title": "网页归档、截图与原始材料",
+      "path": "参考资源与历史归档/网页归档、截图与原始材料",
+      "entryPath": "参考资源与历史归档/网页归档、截图与原始材料/README.md",
+      "domain": "resources",
+      "parentId": "domain.resources"
+    },
+    {
+      "id": "node.41860eb20b0857a6a1b838f052129733",
+      "kind": "topic",
+      "title": "数学与数据分析",
+      "path": "基础理论与计算思维/数学与数据分析",
+      "entryPath": "基础理论与计算思维/数学与数据分析/README.md",
+      "domain": "foundation",
+      "parentId": "domain.foundation"
+    },
+    {
+      "id": "node.c718e59529585bc69f8d3bb13ff1b1dc",
+      "kind": "topic",
+      "title": "算法与数据结构",
+      "path": "基础理论与计算思维/算法与数据结构",
+      "entryPath": "基础理论与计算思维/算法与数据结构/README.md",
+      "domain": "foundation",
+      "parentId": "domain.foundation"
+    },
+    {
+      "id": "node.21310d225cab5c8cb456804fd2816bb0",
+      "kind": "topic",
+      "title": "计算机组成与操作系统",
+      "path": "基础理论与计算思维/计算机组成与操作系统",
+      "entryPath": "基础理论与计算思维/计算机组成与操作系统/README.md",
+      "domain": "foundation",
+      "parentId": "domain.foundation"
+    },
+    {
+      "id": "node.246ae45f72d852e0ac3e10839d780f57",
+      "kind": "topic",
+      "title": "计算机网络与密码学",
+      "path": "基础理论与计算思维/计算机网络与密码学",
+      "entryPath": "基础理论与计算思维/计算机网络与密码学/README.md",
+      "domain": "foundation",
+      "parentId": "domain.foundation"
+    },
+    {
+      "id": "node.905c43a6ce3554418947095aa6042791",
+      "kind": "topic",
+      "title": "软件工程基础",
+      "path": "基础理论与计算思维/软件工程基础",
+      "entryPath": "基础理论与计算思维/软件工程基础/README.md",
+      "domain": "foundation",
+      "parentId": "domain.foundation"
+    },
+    {
+      "id": "node.f725784c108456738a6579b32eb78985",
+      "kind": "topic",
+      "title": "个人学习日志",
+      "path": "学习路径、研究与现实实践/个人学习日志",
+      "entryPath": "学习路径、研究与现实实践/个人学习日志/README.md",
+      "domain": "learning",
+      "parentId": "domain.learning"
+    },
+    {
+      "id": "node.30bbe6a0c84d553784fc7d72082307fc",
+      "kind": "topic",
+      "title": "交流会与知识蒸馏",
+      "path": "学习路径、研究与现实实践/交流会与知识蒸馏",
+      "entryPath": "学习路径、研究与现实实践/交流会与知识蒸馏/README.md",
+      "domain": "learning",
+      "parentId": "domain.learning"
+    },
+    {
+      "id": "node.24d969cc10c956bf8a2ea64af0cef0e3",
+      "kind": "topic",
+      "title": "创作、表达与跨领域材料",
+      "path": "学习路径、研究与现实实践/创作、表达与跨领域材料",
+      "entryPath": "学习路径、研究与现实实践/创作、表达与跨领域材料/README.md",
+      "domain": "learning",
+      "parentId": "domain.learning"
+    },
+    {
+      "id": "node.789518c84b685a5bbeb4d98940dde6df",
+      "kind": "topic",
+      "title": "大学课程与课堂记录",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/README.md",
+      "domain": "learning",
+      "parentId": "domain.learning"
+    },
+    {
+      "id": "node.c233a5f7bf9e514cb06edd3ff0f569ca",
+      "kind": "topic",
+      "title": "教程与视频学习",
+      "path": "学习路径、研究与现实实践/教程与视频学习",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/README.md",
+      "domain": "learning",
+      "parentId": "domain.learning"
+    },
+    {
+      "id": "node.a84289f068c55c8bb0c3d58562652787",
+      "kind": "topic",
+      "title": "生活实践与长期观察",
+      "path": "学习路径、研究与现实实践/生活实践与长期观察",
+      "entryPath": "学习路径、研究与现实实践/生活实践与长期观察/README.md",
+      "domain": "learning",
+      "parentId": "domain.learning"
+    },
+    {
+      "id": "node.557f556328da56fe8c57f17541e108d7",
+      "kind": "topic",
+      "title": "竞赛、考试与证书",
+      "path": "学习路径、研究与现实实践/竞赛、考试与证书",
+      "entryPath": "学习路径、研究与现实实践/竞赛、考试与证书/README.md",
+      "domain": "learning",
+      "parentId": "domain.learning"
+    },
+    {
+      "id": "node.d90bbd39132553c2976c7775fef9322e",
+      "kind": "topic",
+      "title": "NoSQL与缓存",
+      "path": "数据系统与信息检索/NoSQL与缓存",
+      "entryPath": "数据系统与信息检索/NoSQL与缓存/README.md",
+      "domain": "data",
+      "parentId": "domain.data"
+    },
+    {
+      "id": "node.62e563397c25555b893019fbce214cb9",
+      "kind": "topic",
+      "title": "关系型数据库与SQL",
+      "path": "数据系统与信息检索/关系型数据库与SQL",
+      "entryPath": "数据系统与信息检索/关系型数据库与SQL/README.md",
+      "domain": "data",
+      "parentId": "domain.data"
+    },
+    {
+      "id": "node.a4397cdcbef45b099581dd64976d9359",
+      "kind": "topic",
+      "title": "数据处理与可视化",
+      "path": "数据系统与信息检索/数据处理与可视化",
+      "entryPath": "数据系统与信息检索/数据处理与可视化/README.md",
+      "domain": "data",
+      "parentId": "domain.data"
+    },
+    {
+      "id": "node.1dd2bb2bac60563d8ec821252d9aab30",
+      "kind": "topic",
+      "title": "数据建模与存储设计",
+      "path": "数据系统与信息检索/数据建模与存储设计",
+      "entryPath": "数据系统与信息检索/数据建模与存储设计/README.md",
+      "domain": "data",
+      "parentId": "domain.data"
+    },
+    {
+      "id": "node.2244fbc7103b5af2bff86481ec9b6c9c",
+      "kind": "topic",
+      "title": "Linux、Windows与虚拟化",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化",
+      "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/README.md",
+      "domain": "platform",
+      "parentId": "domain.platform"
+    },
+    {
+      "id": "node.9c27bddfe98b55a1ac18bd93868a612a",
+      "kind": "topic",
+      "title": "Web自动化、爬虫与RPA",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA",
+      "entryPath": "系统平台与自动化/Web自动化、爬虫与RPA/README.md",
+      "domain": "platform",
+      "parentId": "domain.platform"
+    },
+    {
+      "id": "node.321322f05c6e534caf4351f0b05d173b",
+      "kind": "topic",
+      "title": "安全研究与防护实践",
+      "path": "系统平台与自动化/安全研究与防护实践",
+      "entryPath": "系统平台与自动化/安全研究与防护实践/README.md",
+      "domain": "platform",
+      "parentId": "domain.platform"
+    },
+    {
+      "id": "node.27c8a448d57f53ff917981a03fe3208b",
+      "kind": "topic",
+      "title": "容器、部署与服务器运维",
+      "path": "系统平台与自动化/容器、部署与服务器运维",
+      "entryPath": "系统平台与自动化/容器、部署与服务器运维/README.md",
+      "domain": "platform",
+      "parentId": "domain.platform"
+    },
+    {
+      "id": "node.3513c12f9e875ed9a039da4ad0e25ccb",
+      "kind": "topic",
+      "title": "开发工具链与环境管理",
+      "path": "系统平台与自动化/开发工具链与环境管理",
+      "entryPath": "系统平台与自动化/开发工具链与环境管理/README.md",
+      "domain": "platform",
+      "parentId": "domain.platform"
+    },
+    {
+      "id": "node.5acd425046625a5d94f17a26ad26a0fc",
+      "kind": "topic",
+      "title": "桌面、硬件与系统脚本",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本",
+      "entryPath": "系统平台与自动化/桌面、硬件与系统脚本/README.md",
+      "domain": "platform",
+      "parentId": "domain.platform"
+    },
+    {
+      "id": "node.8dcb823016f157178b72f00a86a4bf50",
+      "kind": "topic",
+      "title": "网络、域名与内网穿透",
+      "path": "系统平台与自动化/网络、域名与内网穿透",
+      "entryPath": "系统平台与自动化/网络、域名与内网穿透/README.md",
+      "domain": "platform",
+      "parentId": "domain.platform"
+    },
+    {
+      "id": "node.17c36cb441705b33961e86d23a9e1513",
+      "kind": "topic",
+      "title": "Java与JVM生态",
+      "path": "软件开发与应用工程/Java与JVM生态",
+      "entryPath": "软件开发与应用工程/Java与JVM生态/README.md",
+      "domain": "software",
+      "parentId": "domain.software"
+    },
+    {
+      "id": "node.74dfdf372d6253edbd187f3afd458aa4",
+      "kind": "topic",
+      "title": "Python与运行时",
+      "path": "软件开发与应用工程/Python与运行时",
+      "entryPath": "软件开发与应用工程/Python与运行时/README.md",
+      "domain": "software",
+      "parentId": "domain.software"
+    },
+    {
+      "id": "node.b84f93a2b7ee5de5af728d602a58a4ec",
+      "kind": "topic",
+      "title": "Web前端与桌面客户端",
+      "path": "软件开发与应用工程/Web前端与桌面客户端",
+      "entryPath": "软件开发与应用工程/Web前端与桌面客户端/README.md",
+      "domain": "software",
+      "parentId": "domain.software"
+    },
+    {
+      "id": "node.7d7680619f7f504d90a05be57cf76146",
+      "kind": "topic",
+      "title": "Web后端与API",
+      "path": "软件开发与应用工程/Web后端与API",
+      "entryPath": "软件开发与应用工程/Web后端与API/README.md",
+      "domain": "software",
+      "parentId": "domain.software"
+    },
+    {
+      "id": "node.26e2b1fa65835fa38ba5cd69c88dc8ef",
+      "kind": "topic",
+      "title": "工程规范与开发工具",
+      "path": "软件开发与应用工程/工程规范与开发工具",
+      "entryPath": "软件开发与应用工程/工程规范与开发工具/README.md",
+      "domain": "software",
+      "parentId": "domain.software"
+    },
+    {
+      "id": "node.8f4cd06f6dc153568a9bc09eb79c40f3",
+      "kind": "topic",
+      "title": "移动端与小程序",
+      "path": "软件开发与应用工程/移动端与小程序",
+      "entryPath": "软件开发与应用工程/移动端与小程序/README.md",
+      "domain": "software",
+      "parentId": "domain.software"
+    },
+    {
+      "id": "node.4e4bdd661319510eb7c19b41fdb769d2",
+      "kind": "topic",
+      "title": "AI应用与智能体项目",
+      "path": "项目工坊/AI应用与智能体项目",
+      "entryPath": "项目工坊/AI应用与智能体项目/README.md",
+      "domain": "projects",
+      "parentId": "domain.projects"
+    },
+    {
+      "id": "node.52febc0c334354bdb64b82ed99497d71",
+      "kind": "topic",
+      "title": "Web与后端项目",
+      "path": "项目工坊/Web与后端项目",
+      "entryPath": "项目工坊/Web与后端项目/README.md",
+      "domain": "projects",
+      "parentId": "domain.projects"
+    },
+    {
+      "id": "node.de2a5c636c1b5ee78ad74d7215c572e0",
+      "kind": "topic",
+      "title": "客户端与小程序项目",
+      "path": "项目工坊/客户端与小程序项目",
+      "entryPath": "项目工坊/客户端与小程序项目/README.md",
+      "domain": "projects",
+      "parentId": "domain.projects"
+    },
+    {
+      "id": "node.84bd20e81e5f5a32bb9cde826badabfd",
+      "kind": "topic",
+      "title": "自动化与工具项目",
+      "path": "项目工坊/自动化与工具项目",
+      "entryPath": "项目工坊/自动化与工具项目/README.md",
+      "domain": "projects",
+      "parentId": "domain.projects"
+    },
+    {
+      "id": "node.0d2e0819d99556b0a7cadb055d14f5b0",
+      "kind": "topic",
+      "title": "课程项目成果",
+      "path": "项目工坊/课程项目成果",
+      "entryPath": "项目工坊/课程项目成果/README.md",
+      "domain": "projects",
+      "parentId": "domain.projects"
+    },
+    {
+      "id": "node.aa5102684119589f92f9bacac519141c",
+      "kind": "topic",
+      "title": "3D生成与空间内容",
+      "path": "AI模型与多模态智能/图像、视频与3D生成/3D生成与空间内容",
+      "entryPath": "AI模型与多模态智能/图像、视频与3D生成/3D生成与空间内容/README.md",
+      "domain": "ai-model",
+      "parentId": "node.b9c65c31592c501199cc632004931c56"
+    },
+    {
+      "id": "ai.multimodal.comfyui",
+      "kind": "topic",
+      "title": "ComfyUI工作流与节点系统",
+      "path": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统",
+      "entryPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/README.md",
+      "domain": "ai-model",
+      "parentId": "node.b9c65c31592c501199cc632004931c56"
+    },
+    {
+      "id": "node.d0a31aad98e0581aa59353d2563ae403",
+      "kind": "topic",
+      "title": "Prompt设计",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计",
+      "entryPath": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/README.md",
+      "domain": "ai-model",
+      "parentId": "node.a6f34f147fbd5322ae2e7cae16d1542a"
+    },
+    {
+      "id": "node.3e5a79cec45f5903bd79cf70e3eaff30",
+      "kind": "topic",
+      "title": "模型API实践",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/模型API实践",
+      "entryPath": "AI模型与多模态智能/大语言模型与提示工程/模型API实践/README.md",
+      "domain": "ai-model",
+      "parentId": "node.a6f34f147fbd5322ae2e7cae16d1542a"
+    },
+    {
+      "id": "node.d827faac42c05ada86929b9017c78c1a",
+      "kind": "topic",
+      "title": "训练流程与实验记录",
+      "path": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录",
+      "entryPath": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录/README.md",
+      "domain": "ai-model",
+      "parentId": "node.1b4dd59cb23f50aca4d8afb4832b6d5a"
+    },
+    {
+      "id": "node.c04d2e39dfe05fccab6dba08d0291a5d",
+      "kind": "topic",
+      "title": "本地模型运行",
+      "path": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行",
+      "entryPath": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/README.md",
+      "domain": "ai-model",
+      "parentId": "node.d8ec5e98b49e5a9bb27b4f94cf922c4d"
+    },
+    {
+      "id": "node.aad13e5c5aac5c9b9ed4acf153c9ce33",
+      "kind": "topic",
+      "title": "YOLO训练与推理",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理",
+      "entryPath": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/README.md",
+      "domain": "ai-model",
+      "parentId": "node.92174866639252d4ad4b09330e93f26c"
+    },
+    {
+      "id": "node.fcd5e4106e0c57ae8eb1e8ae47ae5416",
+      "kind": "topic",
+      "title": "数据集与标注",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注",
+      "entryPath": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/README.md",
+      "domain": "ai-model",
+      "parentId": "node.92174866639252d4ad4b09330e93f26c"
+    },
+    {
+      "id": "node.ffe102618c3657d9bed6957bdcaef54d",
+      "kind": "topic",
+      "title": "STT语音识别",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/README.md",
+      "domain": "ai-model",
+      "parentId": "node.28384a59038f5f7c97577a338ed3057d"
+    },
+    {
+      "id": "node.ab5185871d1556e8b47bca34e0336e92",
+      "kind": "topic",
+      "title": "TTS语音合成",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/README.md",
+      "domain": "ai-model",
+      "parentId": "node.28384a59038f5f7c97577a338ed3057d"
+    },
+    {
+      "id": "node.c916ecf6e3705fa5b5a926472bcf5027",
+      "kind": "topic",
+      "title": "实时语音Agent",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/README.md",
+      "domain": "ai-model",
+      "parentId": "node.28384a59038f5f7c97577a338ed3057d"
+    },
+    {
+      "id": "node.a08cb24980e157ae95f23c1ebe81f845",
+      "kind": "topic",
+      "title": "Dify工作流",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流",
+      "entryPath": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.8eac0a7ca95f5b78a527e02c6cf44eb7"
+    },
+    {
+      "id": "node.4524acbcedc65a85b6b8bb2657075f2d",
+      "kind": "topic",
+      "title": "LangChain与LangGraph",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph",
+      "entryPath": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.8eac0a7ca95f5b78a527e02c6cf44eb7"
+    },
+    {
+      "id": "node.afaaf831cf9d547c84acbe743027619b",
+      "kind": "topic",
+      "title": "MCP协议",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/MCP协议",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/MCP协议/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.29830344ae91559ba04b2f5e44f0de29"
+    },
+    {
+      "id": "node.629206198f8358feb1102b2f1b8c87d6",
+      "kind": "topic",
+      "title": "外部系统连接器",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.29830344ae91559ba04b2f5e44f0de29"
+    },
+    {
+      "id": "node.3db26f8ecd2a501582b284b0d1c8e848",
+      "kind": "topic",
+      "title": "工具调用Schema",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/工具调用Schema",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/工具调用Schema/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.29830344ae91559ba04b2f5e44f0de29"
+    },
+    {
+      "id": "node.68d7c51202635c438ebd1502c7c5959b",
+      "kind": "topic",
+      "title": "长期记忆",
+      "path": "AI知识系统与智能体/记忆、上下文与个性化/长期记忆",
+      "entryPath": "AI知识系统与智能体/记忆、上下文与个性化/长期记忆/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.ba6da984cd2b5c3892f761980aabd7f5"
+    },
+    {
+      "id": "node.616d7b303ca35ce7ac14563f12c12360",
+      "kind": "topic",
+      "title": "模型评测",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测",
+      "entryPath": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.12386ca9d7985a0a8a538e0bc1f22b16"
+    },
+    {
+      "id": "node.e9c7eac984d2587887c45b5aad8f4eb8",
+      "kind": "topic",
+      "title": "数据集登记",
+      "path": "参考资源与历史归档/数据集、模型与大文件登记/数据集登记",
+      "entryPath": "参考资源与历史归档/数据集、模型与大文件登记/数据集登记/README.md",
+      "domain": "resources",
+      "parentId": "node.053a7ea002fd5eefb79d3393768f2464"
+    },
+    {
+      "id": "node.2a2413471b51511daa2ac02e1639d88a",
+      "kind": "resource",
+      "title": "模型权重登记",
+      "path": "参考资源与历史归档/数据集、模型与大文件登记/模型权重登记",
+      "entryPath": "参考资源与历史归档/数据集、模型与大文件登记/模型权重登记/README.md",
+      "domain": "resources",
+      "parentId": "node.053a7ea002fd5eefb79d3393768f2464"
+    },
+    {
+      "id": "node.8001d46b23345ec4b5eba1a57dca4c8f",
+      "kind": "topic",
+      "title": "早期学习记录",
+      "path": "参考资源与历史归档/旧目录历史快照/早期学习记录",
+      "entryPath": "参考资源与历史归档/旧目录历史快照/早期学习记录/_index.md",
+      "domain": "resources",
+      "parentId": "node.e033b1b582d758e4acfe1f4922079441"
+    },
+    {
+      "id": "node.49401bdae70e500aa4c966690fd43906",
+      "kind": "topic",
+      "title": "电子书登记",
+      "path": "参考资源与历史归档/电子书、课件与参考资料/电子书登记",
+      "entryPath": "参考资源与历史归档/电子书、课件与参考资料/电子书登记/README.md",
+      "domain": "resources",
+      "parentId": "node.b8ec070555e95cbbad59291ed7603af4"
+    },
+    {
+      "id": "node.c431f0a6a70050a6b237da81b7a3303f",
+      "kind": "topic",
+      "title": "课程课件登记",
+      "path": "参考资源与历史归档/电子书、课件与参考资料/课程课件登记",
+      "entryPath": "参考资源与历史归档/电子书、课件与参考资料/课程课件登记/README.md",
+      "domain": "resources",
+      "parentId": "node.b8ec070555e95cbbad59291ed7603af4"
+    },
+    {
+      "id": "node.93ef3c9bbacf50a0aea127c3b0a123b6",
+      "kind": "external-source",
+      "title": "RAGFlow源码登记",
+      "path": "参考资源与历史归档/第三方源码与镜像登记/RAGFlow源码登记",
+      "entryPath": "参考资源与历史归档/第三方源码与镜像登记/RAGFlow源码登记/README.md",
+      "domain": "resources",
+      "parentId": "node.a4c2fc99e98f5ffe9c958880605e6976"
+    },
+    {
+      "id": "node.47cecb25a08b51b7afd8771fcdd87d9a",
+      "kind": "external-source",
+      "title": "Redis源码登记",
+      "path": "参考资源与历史归档/第三方源码与镜像登记/Redis源码登记",
+      "entryPath": "参考资源与历史归档/第三方源码与镜像登记/Redis源码登记/README.md",
+      "domain": "resources",
+      "parentId": "node.a4c2fc99e98f5ffe9c958880605e6976"
+    },
+    {
+      "id": "node.a20da1060d5f5c6289fad98b38e97a1b",
+      "kind": "external-source",
+      "title": "Ultralytics源码登记",
+      "path": "参考资源与历史归档/第三方源码与镜像登记/Ultralytics源码登记",
+      "entryPath": "参考资源与历史归档/第三方源码与镜像登记/Ultralytics源码登记/README.md",
+      "domain": "resources",
+      "parentId": "node.a4c2fc99e98f5ffe9c958880605e6976"
+    },
+    {
+      "id": "node.25d48b6280d35242a51b048d6649d024",
+      "kind": "topic",
+      "title": "界面设计参考",
+      "path": "参考资源与历史归档/网页归档、截图与原始材料/界面设计参考",
+      "entryPath": "参考资源与历史归档/网页归档、截图与原始材料/界面设计参考/README.md",
+      "domain": "resources",
+      "parentId": "node.eb2dfefbf80e54088d0afce5c8980cf6"
+    },
+    {
+      "id": "node.06958d05fd9a5f4288620d554c28a24c",
+      "kind": "topic",
+      "title": "线性代数与矩阵",
+      "path": "基础理论与计算思维/数学与数据分析/线性代数与矩阵",
+      "entryPath": "基础理论与计算思维/数学与数据分析/线性代数与矩阵/README.md",
+      "domain": "foundation",
+      "parentId": "node.41860eb20b0857a6a1b838f052129733"
+    },
+    {
+      "id": "node.d07390c730905fbf9e8201f973427458",
+      "kind": "topic",
+      "title": "蓝桥杯与竞赛题解",
+      "path": "基础理论与计算思维/算法与数据结构/蓝桥杯与竞赛题解",
+      "entryPath": "基础理论与计算思维/算法与数据结构/蓝桥杯与竞赛题解/README.md",
+      "domain": "foundation",
+      "parentId": "node.c718e59529585bc69f8d3bb13ff1b1dc"
+    },
+    {
+      "id": "node.2388cf59e7855b75955c63970b5fd242",
+      "kind": "topic",
+      "title": "计算机组成",
+      "path": "基础理论与计算思维/计算机组成与操作系统/计算机组成",
+      "entryPath": "基础理论与计算思维/计算机组成与操作系统/计算机组成/README.md",
+      "domain": "foundation",
+      "parentId": "node.21310d225cab5c8cb456804fd2816bb0"
+    },
+    {
+      "id": "node.c3bbdab348db532fa094f61b42715195",
+      "kind": "topic",
+      "title": "密码学与加密实践",
+      "path": "基础理论与计算思维/计算机网络与密码学/密码学与加密实践",
+      "entryPath": "基础理论与计算思维/计算机网络与密码学/密码学与加密实践/README.md",
+      "domain": "foundation",
+      "parentId": "node.246ae45f72d852e0ac3e10839d780f57"
+    },
+    {
+      "id": "node.0aae341f4a6856feb2d3a5bc6832aa33",
+      "kind": "topic",
+      "title": "网络协议基础",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络协议基础",
+      "entryPath": "基础理论与计算思维/计算机网络与密码学/网络协议基础/README.md",
+      "domain": "foundation",
+      "parentId": "node.246ae45f72d852e0ac3e10839d780f57"
+    },
+    {
+      "id": "node.7e847cb89764520498d12a98e160a629",
+      "kind": "topic",
+      "title": "网络安全基础",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络安全基础",
+      "entryPath": "基础理论与计算思维/计算机网络与密码学/网络安全基础/README.md",
+      "domain": "foundation",
+      "parentId": "node.246ae45f72d852e0ac3e10839d780f57"
+    },
+    {
+      "id": "node.40458074ab3d5fcf8a113c17a24a696e",
+      "kind": "topic",
+      "title": "测试与质量",
+      "path": "基础理论与计算思维/软件工程基础/测试与质量",
+      "entryPath": "基础理论与计算思维/软件工程基础/测试与质量/README.md",
+      "domain": "foundation",
+      "parentId": "node.905c43a6ce3554418947095aa6042791"
+    },
+    {
+      "id": "node.b1690909a3ac5118a7657a8e6706f51f",
+      "kind": "topic",
+      "title": "日常学习记录",
+      "path": "学习路径、研究与现实实践/个人学习日志/日常学习记录",
+      "entryPath": "学习路径、研究与现实实践/个人学习日志/日常学习记录/README.md",
+      "domain": "learning",
+      "parentId": "node.f725784c108456738a6579b32eb78985"
+    },
+    {
+      "id": "node.631c66ee3f5d54fba2e8673f46e1c6da",
+      "kind": "topic",
+      "title": "交流会记录",
+      "path": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录",
+      "entryPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/README.md",
+      "domain": "learning",
+      "parentId": "node.30bbe6a0c84d553784fc7d72082307fc"
+    },
+    {
+      "id": "node.7848b848d05e5f65b2b7112ce610d737",
+      "kind": "topic",
+      "title": "写作素材",
+      "path": "学习路径、研究与现实实践/创作、表达与跨领域材料/写作素材",
+      "entryPath": "学习路径、研究与现实实践/创作、表达与跨领域材料/写作素材/README.md",
+      "domain": "learning",
+      "parentId": "node.24d969cc10c956bf8a2ea64af0cef0e3"
+    },
+    {
+      "id": "node.dd753312abf45cd08e6124d010b93f15",
+      "kind": "topic",
+      "title": "HarmonyOS",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/README.md",
+      "domain": "learning",
+      "parentId": "node.789518c84b685a5bbeb4d98940dde6df"
+    },
+    {
+      "id": "node.4201469c8a995b1785dfc07774294a82",
+      "kind": "topic",
+      "title": "Java-Web开发",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Java-Web开发",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Java-Web开发/README.md",
+      "domain": "learning",
+      "parentId": "node.789518c84b685a5bbeb4d98940dde6df"
+    },
+    {
+      "id": "node.b24e9b24799d5066a36e46cf6c9dd9ac",
+      "kind": "topic",
+      "title": "Python-Web开发",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/README.md",
+      "domain": "learning",
+      "parentId": "node.789518c84b685a5bbeb4d98940dde6df"
+    },
+    {
+      "id": "node.a4416a6adeea5151b577448954107589",
+      "kind": "topic",
+      "title": "Python数据分析",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python数据分析",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python数据分析/README.md",
+      "domain": "learning",
+      "parentId": "node.789518c84b685a5bbeb4d98940dde6df"
+    },
+    {
+      "id": "node.5128b7240a1b5559b5530335b6657869",
+      "kind": "topic",
+      "title": "Python编程",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python编程",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python编程/README.md",
+      "domain": "learning",
+      "parentId": "node.789518c84b685a5bbeb4d98940dde6df"
+    },
+    {
+      "id": "node.de838e31cf2e5690845a981367b18a37",
+      "kind": "topic",
+      "title": "SpringBoot与MyBatis",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/README.md",
+      "domain": "learning",
+      "parentId": "node.789518c84b685a5bbeb4d98940dde6df"
+    },
+    {
+      "id": "node.25a7181e7eef547cb45c594fe60714bd",
+      "kind": "topic",
+      "title": "Web前端开发",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Web前端开发",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Web前端开发/README.md",
+      "domain": "learning",
+      "parentId": "node.789518c84b685a5bbeb4d98940dde6df"
+    },
+    {
+      "id": "node.2a46e858eb3254f1a4de0d77d6eef787",
+      "kind": "topic",
+      "title": "微信小程序",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/README.md",
+      "domain": "learning",
+      "parentId": "node.789518c84b685a5bbeb4d98940dde6df"
+    },
+    {
+      "id": "node.f64541ea21205606a5f724de38e4421a",
+      "kind": "topic",
+      "title": "官方文档学习",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/README.md",
+      "domain": "learning",
+      "parentId": "node.c233a5f7bf9e514cb06edd3ff0f569ca"
+    },
+    {
+      "id": "node.f8577a19015252218ce6a5e46dc661fb",
+      "kind": "topic",
+      "title": "视频课程跟练",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/README.md",
+      "domain": "learning",
+      "parentId": "node.c233a5f7bf9e514cb06edd3ff0f569ca"
+    },
+    {
+      "id": "node.0a394557d36450e5954d016264683754",
+      "kind": "topic",
+      "title": "课程路线整理",
+      "path": "学习路径、研究与现实实践/教程与视频学习/课程路线整理",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/课程路线整理/README.md",
+      "domain": "learning",
+      "parentId": "node.c233a5f7bf9e514cb06edd3ff0f569ca"
+    },
+    {
+      "id": "life.xiaoqi",
+      "kind": "log",
+      "title": "小七笔记",
+      "path": "学习路径、研究与现实实践/生活实践与长期观察/小七笔记",
+      "entryPath": "学习路径、研究与现实实践/生活实践与长期观察/小七笔记/README.md",
+      "domain": "learning",
+      "parentId": "node.a84289f068c55c8bb0c3d58562652787"
+    },
+    {
+      "id": "node.f1d10830fa4c5843b820e4766efc47d0",
+      "kind": "topic",
+      "title": "工具与服务购买记录",
+      "path": "学习路径、研究与现实实践/生活实践与长期观察/工具与服务购买记录",
+      "entryPath": "学习路径、研究与现实实践/生活实践与长期观察/工具与服务购买记录/README.md",
+      "domain": "learning",
+      "parentId": "node.a84289f068c55c8bb0c3d58562652787"
+    },
+    {
+      "id": "node.6727535a34825d6aa95f55ecd12ff96c",
+      "kind": "topic",
+      "title": "生活知识记录",
+      "path": "学习路径、研究与现实实践/生活实践与长期观察/生活知识记录",
+      "entryPath": "学习路径、研究与现实实践/生活实践与长期观察/生活知识记录/README.md",
+      "domain": "learning",
+      "parentId": "node.a84289f068c55c8bb0c3d58562652787"
+    },
+    {
+      "id": "node.d73a1ae247f851a2a095ab1a5a408289",
+      "kind": "topic",
+      "title": "期末复习",
+      "path": "学习路径、研究与现实实践/竞赛、考试与证书/期末复习",
+      "entryPath": "学习路径、研究与现实实践/竞赛、考试与证书/期末复习/README.md",
+      "domain": "learning",
+      "parentId": "node.557f556328da56fe8c57f17541e108d7"
+    },
+    {
+      "id": "node.32604b69208051e1b15089dbb0f9a16f",
+      "kind": "topic",
+      "title": "比赛记录",
+      "path": "学习路径、研究与现实实践/竞赛、考试与证书/比赛记录",
+      "entryPath": "学习路径、研究与现实实践/竞赛、考试与证书/比赛记录/README.md",
+      "domain": "learning",
+      "parentId": "node.557f556328da56fe8c57f17541e108d7"
+    },
+    {
+      "id": "node.7f542389888e5bf9bc4c9c91c018119b",
+      "kind": "topic",
+      "title": "证书备考",
+      "path": "学习路径、研究与现实实践/竞赛、考试与证书/证书备考",
+      "entryPath": "学习路径、研究与现实实践/竞赛、考试与证书/证书备考/README.md",
+      "domain": "learning",
+      "parentId": "node.557f556328da56fe8c57f17541e108d7"
+    },
+    {
+      "id": "node.172c8c344cd6517f8e090099802156df",
+      "kind": "topic",
+      "title": "MongoDB",
+      "path": "数据系统与信息检索/NoSQL与缓存/MongoDB",
+      "entryPath": "数据系统与信息检索/NoSQL与缓存/MongoDB/README.md",
+      "domain": "data",
+      "parentId": "node.d90bbd39132553c2976c7775fef9322e"
+    },
+    {
+      "id": "node.d4330546ade05cbfbbe1ea43e82a6e71",
+      "kind": "topic",
+      "title": "Redis",
+      "path": "数据系统与信息检索/NoSQL与缓存/Redis",
+      "entryPath": "数据系统与信息检索/NoSQL与缓存/Redis/README.md",
+      "domain": "data",
+      "parentId": "node.d90bbd39132553c2976c7775fef9322e"
+    },
+    {
+      "id": "node.90db46f118a456668c04f601c53f35a2",
+      "kind": "topic",
+      "title": "MySQL基础",
+      "path": "数据系统与信息检索/关系型数据库与SQL/MySQL基础",
+      "entryPath": "数据系统与信息检索/关系型数据库与SQL/MySQL基础/README.md",
+      "domain": "data",
+      "parentId": "node.62e563397c25555b893019fbce214cb9"
+    },
+    {
+      "id": "node.3427175f665d5310a1e69a25fd5e7fcc",
+      "kind": "topic",
+      "title": "Pandas与数据清洗",
+      "path": "数据系统与信息检索/数据处理与可视化/Pandas与数据清洗",
+      "entryPath": "数据系统与信息检索/数据处理与可视化/Pandas与数据清洗/README.md",
+      "domain": "data",
+      "parentId": "node.a4397cdcbef45b099581dd64976d9359"
+    },
+    {
+      "id": "node.924386ccae725b78a73711f56d50a856",
+      "kind": "topic",
+      "title": "分布式数据处理",
+      "path": "数据系统与信息检索/数据处理与可视化/分布式数据处理",
+      "entryPath": "数据系统与信息检索/数据处理与可视化/分布式数据处理/README.md",
+      "domain": "data",
+      "parentId": "node.a4397cdcbef45b099581dd64976d9359"
+    },
+    {
+      "id": "node.554c6396fc4d5450a7c1ed151419d22c",
+      "kind": "topic",
+      "title": "图表与可视化",
+      "path": "数据系统与信息检索/数据处理与可视化/图表与可视化",
+      "entryPath": "数据系统与信息检索/数据处理与可视化/图表与可视化/README.md",
+      "domain": "data",
+      "parentId": "node.a4397cdcbef45b099581dd64976d9359"
+    },
+    {
+      "id": "node.ba2f0c2044c5591ea2666b005e7dea05",
+      "kind": "topic",
+      "title": "数据分析案例",
+      "path": "数据系统与信息检索/数据处理与可视化/数据分析案例",
+      "entryPath": "数据系统与信息检索/数据处理与可视化/数据分析案例/README.md",
+      "domain": "data",
+      "parentId": "node.a4397cdcbef45b099581dd64976d9359"
+    },
+    {
+      "id": "node.c926582f52ca51f9b9e733ff1ca42454",
+      "kind": "topic",
+      "title": "实体关系建模",
+      "path": "数据系统与信息检索/数据建模与存储设计/实体关系建模",
+      "entryPath": "数据系统与信息检索/数据建模与存储设计/实体关系建模/README.md",
+      "domain": "data",
+      "parentId": "node.1dd2bb2bac60563d8ec821252d9aab30"
+    },
+    {
+      "id": "node.4cb6c32b81ee5f41a3662d332c0ed346",
+      "kind": "topic",
+      "title": "Linux与WSL",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL",
+      "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/README.md",
+      "domain": "platform",
+      "parentId": "node.2244fbc7103b5af2bff86481ec9b6c9c"
+    },
+    {
+      "id": "node.31f2451205ca5486b5fee52c584499a5",
+      "kind": "topic",
+      "title": "Windows环境",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境",
+      "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/README.md",
+      "domain": "platform",
+      "parentId": "node.2244fbc7103b5af2bff86481ec9b6c9c"
+    },
+    {
+      "id": "node.5f50b6b2ec395c369d29600c2b399ea4",
+      "kind": "topic",
+      "title": "虚拟机与NAS",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS",
+      "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/README.md",
+      "domain": "platform",
+      "parentId": "node.2244fbc7103b5af2bff86481ec9b6c9c"
+    },
+    {
+      "id": "node.e387466ff68855ef87c3a3a8c0b65a91",
+      "kind": "topic",
+      "title": "Playwright",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright",
+      "entryPath": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/README.md",
+      "domain": "platform",
+      "parentId": "node.9c27bddfe98b55a1ac18bd93868a612a"
+    },
+    {
+      "id": "node.4e2cc61c20a852ff9953338983c40bfc",
+      "kind": "topic",
+      "title": "Requests与解析",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析",
+      "entryPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/README.md",
+      "domain": "platform",
+      "parentId": "node.9c27bddfe98b55a1ac18bd93868a612a"
+    },
+    {
+      "id": "node.cb793f8241a356058e723871e652f532",
+      "kind": "topic",
+      "title": "Selenium",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium",
+      "entryPath": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/README.md",
+      "domain": "platform",
+      "parentId": "node.9c27bddfe98b55a1ac18bd93868a612a"
+    },
+    {
+      "id": "node.e8b3cdb181b05495813d156699b1933e",
+      "kind": "topic",
+      "title": "靶场与合规实验",
+      "path": "系统平台与自动化/安全研究与防护实践/靶场与合规实验",
+      "entryPath": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/README.md",
+      "domain": "platform",
+      "parentId": "node.321322f05c6e534caf4351f0b05d173b"
+    },
+    {
+      "id": "node.b756701eeaf05a63b0e5e2d99720ff4f",
+      "kind": "topic",
+      "title": "Docker与Compose",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Docker与Compose",
+      "entryPath": "系统平台与自动化/容器、部署与服务器运维/Docker与Compose/README.md",
+      "domain": "platform",
+      "parentId": "node.27c8a448d57f53ff917981a03fe3208b"
+    },
+    {
+      "id": "node.9df9ce611a0153a385753858503e5e05",
+      "kind": "topic",
+      "title": "Nginx与反向代理",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理",
+      "entryPath": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/README.md",
+      "domain": "platform",
+      "parentId": "node.27c8a448d57f53ff917981a03fe3208b"
+    },
+    {
+      "id": "node.3e0d84e5dac65debad69ae3014be0700",
+      "kind": "topic",
+      "title": "服务器部署",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署",
+      "entryPath": "系统平台与自动化/容器、部署与服务器运维/服务器部署/README.md",
+      "domain": "platform",
+      "parentId": "node.27c8a448d57f53ff917981a03fe3208b"
+    },
+    {
+      "id": "node.b9d27edac5115de3adbe70fbb12e749d",
+      "kind": "topic",
+      "title": "Claude与上下文工程",
+      "path": "系统平台与自动化/开发工具链与环境管理/Claude与上下文工程",
+      "entryPath": "系统平台与自动化/开发工具链与环境管理/Claude与上下文工程/README.md",
+      "domain": "platform",
+      "parentId": "node.3513c12f9e875ed9a039da4ad0e25ccb"
+    },
+    {
+      "id": "node.fa5f3ec4b1195b41884390c63b2de6d2",
+      "kind": "topic",
+      "title": "Codex与AI编程工具",
+      "path": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具",
+      "entryPath": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/README.md",
+      "domain": "platform",
+      "parentId": "node.3513c12f9e875ed9a039da4ad0e25ccb"
+    },
+    {
+      "id": "node.4a3b16aa300358cca1fdae76cbcbd936",
+      "kind": "topic",
+      "title": "硬件与外设",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设",
+      "entryPath": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/README.md",
+      "domain": "platform",
+      "parentId": "node.5acd425046625a5d94f17a26ad26a0fc"
+    },
+    {
+      "id": "node.4f19d28618da50c0a0f81a37b4ef515f",
+      "kind": "topic",
+      "title": "系统维护脚本",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本",
+      "entryPath": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/README.md",
+      "domain": "platform",
+      "parentId": "node.5acd425046625a5d94f17a26ad26a0fc"
+    },
+    {
+      "id": "node.36bcb08e21255a2bb52938b9510b0aef",
+      "kind": "topic",
+      "title": "内网穿透",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透",
+      "entryPath": "系统平台与自动化/网络、域名与内网穿透/内网穿透/README.md",
+      "domain": "platform",
+      "parentId": "node.8dcb823016f157178b72f00a86a4bf50"
+    },
+    {
+      "id": "node.282ebad40ea251d58ce241faa5e38766",
+      "kind": "topic",
+      "title": "域名与DNS",
+      "path": "系统平台与自动化/网络、域名与内网穿透/域名与DNS",
+      "entryPath": "系统平台与自动化/网络、域名与内网穿透/域名与DNS/README.md",
+      "domain": "platform",
+      "parentId": "node.8dcb823016f157178b72f00a86a4bf50"
+    },
+    {
+      "id": "node.beb5d629717259d786313148ded54b44",
+      "kind": "topic",
+      "title": "网络代理",
+      "path": "系统平台与自动化/网络、域名与内网穿透/网络代理",
+      "entryPath": "系统平台与自动化/网络、域名与内网穿透/网络代理/README.md",
+      "domain": "platform",
+      "parentId": "node.8dcb823016f157178b72f00a86a4bf50"
+    },
+    {
+      "id": "node.b347bb6a1ab5579090806fedde0143fa",
+      "kind": "topic",
+      "title": "Java基础",
+      "path": "软件开发与应用工程/Java与JVM生态/Java基础",
+      "entryPath": "软件开发与应用工程/Java与JVM生态/Java基础/README.md",
+      "domain": "software",
+      "parentId": "node.17c36cb441705b33961e86d23a9e1513"
+    },
+    {
+      "id": "node.50031aaf181b592b81f5f0dbdb6b64eb",
+      "kind": "topic",
+      "title": "代码片段与最小示例",
+      "path": "软件开发与应用工程/Python与运行时/代码片段与最小示例",
+      "entryPath": "软件开发与应用工程/Python与运行时/代码片段与最小示例/README.md",
+      "domain": "software",
+      "parentId": "node.74dfdf372d6253edbd187f3afd458aa4"
+    },
+    {
+      "id": "node.bf7c25bec7175f4e9cd7e2c59676cd32",
+      "kind": "topic",
+      "title": "包管理与虚拟环境",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境",
+      "entryPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/README.md",
+      "domain": "software",
+      "parentId": "node.74dfdf372d6253edbd187f3afd458aa4"
+    },
+    {
+      "id": "node.a358c61547ce5f848ce9531cb2ad9686",
+      "kind": "topic",
+      "title": "异步并发",
+      "path": "软件开发与应用工程/Python与运行时/异步并发",
+      "entryPath": "软件开发与应用工程/Python与运行时/异步并发/README.md",
+      "domain": "software",
+      "parentId": "node.74dfdf372d6253edbd187f3afd458aa4"
+    },
+    {
+      "id": "node.69eff6a06ae15f72a912ac14d426a9c8",
+      "kind": "topic",
+      "title": "标准库与脚本",
+      "path": "软件开发与应用工程/Python与运行时/标准库与脚本",
+      "entryPath": "软件开发与应用工程/Python与运行时/标准库与脚本/README.md",
+      "domain": "software",
+      "parentId": "node.74dfdf372d6253edbd187f3afd458aa4"
+    },
+    {
+      "id": "node.2bd4b743a82d5af0a381cac54b45f1bc",
+      "kind": "topic",
+      "title": "语法基础",
+      "path": "软件开发与应用工程/Python与运行时/语法基础",
+      "entryPath": "软件开发与应用工程/Python与运行时/语法基础/README.md",
+      "domain": "software",
+      "parentId": "node.74dfdf372d6253edbd187f3afd458aa4"
+    },
+    {
+      "id": "node.95b8ce1c4a4d5322b7d7af953c61644e",
+      "kind": "topic",
+      "title": "Electron桌面应用",
+      "path": "软件开发与应用工程/Web前端与桌面客户端/Electron桌面应用",
+      "entryPath": "软件开发与应用工程/Web前端与桌面客户端/Electron桌面应用/README.md",
+      "domain": "software",
+      "parentId": "node.b84f93a2b7ee5de5af728d602a58a4ec"
+    },
+    {
+      "id": "node.eb9bb4dcbd83504c8e96ff7c6f851c7d",
+      "kind": "topic",
+      "title": "PyQt桌面应用",
+      "path": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用",
+      "entryPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/README.md",
+      "domain": "software",
+      "parentId": "node.b84f93a2b7ee5de5af728d602a58a4ec"
+    },
+    {
+      "id": "node.f0331d2ddf8c51d6a5ec97a81c167c6e",
+      "kind": "topic",
+      "title": "界面设计",
+      "path": "软件开发与应用工程/Web前端与桌面客户端/界面设计",
+      "entryPath": "软件开发与应用工程/Web前端与桌面客户端/界面设计/README.md",
+      "domain": "software",
+      "parentId": "node.b84f93a2b7ee5de5af728d602a58a4ec"
+    },
+    {
+      "id": "node.0767da0445645010920eadf8391e470c",
+      "kind": "topic",
+      "title": "FastAPI",
+      "path": "软件开发与应用工程/Web后端与API/FastAPI",
+      "entryPath": "软件开发与应用工程/Web后端与API/FastAPI/README.md",
+      "domain": "software",
+      "parentId": "node.7d7680619f7f504d90a05be57cf76146"
+    },
+    {
+      "id": "node.53d9c40213bb57659734c08373978fac",
+      "kind": "topic",
+      "title": "REST与接口设计",
+      "path": "软件开发与应用工程/Web后端与API/REST与接口设计",
+      "entryPath": "软件开发与应用工程/Web后端与API/REST与接口设计/README.md",
+      "domain": "software",
+      "parentId": "node.7d7680619f7f504d90a05be57cf76146"
+    },
+    {
+      "id": "node.d1ca2105bfed56f88e42d5a229b2c26e",
+      "kind": "topic",
+      "title": "Git与版本管理",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理",
+      "entryPath": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/README.md",
+      "domain": "software",
+      "parentId": "node.26e2b1fa65835fa38ba5cd69c88dc8ef"
+    },
+    {
+      "id": "node.f4fd6ba49c8053fd8cccfdb295b5dd06",
+      "kind": "topic",
+      "title": "IDE与调试",
+      "path": "软件开发与应用工程/工程规范与开发工具/IDE与调试",
+      "entryPath": "软件开发与应用工程/工程规范与开发工具/IDE与调试/README.md",
+      "domain": "software",
+      "parentId": "node.26e2b1fa65835fa38ba5cd69c88dc8ef"
+    },
+    {
+      "id": "node.8a3c7378f0ac5e879c1d0b8772a52a78",
+      "kind": "topic",
+      "title": "配置文件与工程模板",
+      "path": "软件开发与应用工程/工程规范与开发工具/配置文件与工程模板",
+      "entryPath": "软件开发与应用工程/工程规范与开发工具/配置文件与工程模板/README.md",
+      "domain": "software",
+      "parentId": "node.26e2b1fa65835fa38ba5cd69c88dc8ef"
+    },
+    {
+      "id": "node.bb870831a0bd5852a3eddd19f204314d",
+      "kind": "topic",
+      "title": "HarmonyOS",
+      "path": "软件开发与应用工程/移动端与小程序/HarmonyOS",
+      "entryPath": "软件开发与应用工程/移动端与小程序/HarmonyOS/README.md",
+      "domain": "software",
+      "parentId": "node.8f4cd06f6dc153568a9bc09eb79c40f3"
+    },
+    {
+      "id": "node.b5b33633b28b53efbc9f32c59ee166e9",
+      "kind": "topic",
+      "title": "微信小程序",
+      "path": "软件开发与应用工程/移动端与小程序/微信小程序",
+      "entryPath": "软件开发与应用工程/移动端与小程序/微信小程序/README.md",
+      "domain": "software",
+      "parentId": "node.8f4cd06f6dc153568a9bc09eb79c40f3"
+    },
+    {
+      "id": "node.a61ff0aed1b0589b8676263030cb5de1",
+      "kind": "topic",
+      "title": "多模态生成工作流项目",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目",
+      "entryPath": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/README.md",
+      "domain": "projects",
+      "parentId": "node.4e4bdd661319510eb7c19b41fdb769d2"
+    },
+    {
+      "id": "node.78fc9dad5e3e5f40ac881452f7fbd283",
+      "kind": "topic",
+      "title": "机器人部署",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署",
+      "entryPath": "项目工坊/AI应用与智能体项目/机器人部署/README.md",
+      "domain": "projects",
+      "parentId": "node.4e4bdd661319510eb7c19b41fdb769d2"
+    },
+    {
+      "id": "node.8ab883253fc853158056b8e158f0562a",
+      "kind": "topic",
+      "title": "浏览器Agent项目",
+      "path": "项目工坊/AI应用与智能体项目/浏览器Agent项目",
+      "entryPath": "项目工坊/AI应用与智能体项目/浏览器Agent项目/README.md",
+      "domain": "projects",
+      "parentId": "node.4e4bdd661319510eb7c19b41fdb769d2"
+    },
+    {
+      "id": "node.e0d6edf75cbd582f8fbde2f74a5b709e",
+      "kind": "topic",
+      "title": "计算机视觉项目",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目",
+      "entryPath": "项目工坊/AI应用与智能体项目/计算机视觉项目/README.md",
+      "domain": "projects",
+      "parentId": "node.4e4bdd661319510eb7c19b41fdb769d2"
+    },
+    {
+      "id": "node.012699cb9f865556837f6b350d1a2f7c",
+      "kind": "topic",
+      "title": "语音交互Agent项目",
+      "path": "项目工坊/AI应用与智能体项目/语音交互Agent项目",
+      "entryPath": "项目工坊/AI应用与智能体项目/语音交互Agent项目/README.md",
+      "domain": "projects",
+      "parentId": "node.4e4bdd661319510eb7c19b41fdb769d2"
+    },
+    {
+      "id": "node.781a1f444bcd5f88892cd06972f3356f",
+      "kind": "topic",
+      "title": "FastAPI项目",
+      "path": "项目工坊/Web与后端项目/FastAPI项目",
+      "entryPath": "项目工坊/Web与后端项目/FastAPI项目/README.md",
+      "domain": "projects",
+      "parentId": "node.52febc0c334354bdb64b82ed99497d71"
+    },
+    {
+      "id": "node.75b8bc238a4055998d033c699934f035",
+      "kind": "topic",
+      "title": "Harmony项目",
+      "path": "项目工坊/客户端与小程序项目/Harmony项目",
+      "entryPath": "项目工坊/客户端与小程序项目/Harmony项目/README.md",
+      "domain": "projects",
+      "parentId": "node.de2a5c636c1b5ee78ad74d7215c572e0"
+    },
+    {
+      "id": "node.951b8aef38ca57e4b73a7ed7f7c1e6d6",
+      "kind": "topic",
+      "title": "PyQt项目",
+      "path": "项目工坊/客户端与小程序项目/PyQt项目",
+      "entryPath": "项目工坊/客户端与小程序项目/PyQt项目/README.md",
+      "domain": "projects",
+      "parentId": "node.de2a5c636c1b5ee78ad74d7215c572e0"
+    },
+    {
+      "id": "node.3e5e77fe0125530584cac3d51a63abed",
+      "kind": "topic",
+      "title": "微信小程序项目",
+      "path": "项目工坊/客户端与小程序项目/微信小程序项目",
+      "entryPath": "项目工坊/客户端与小程序项目/微信小程序项目/README.md",
+      "domain": "projects",
+      "parentId": "node.de2a5c636c1b5ee78ad74d7215c572e0"
+    },
+    {
+      "id": "node.82161ae4049054efa76cbcae22113139",
+      "kind": "topic",
+      "title": "RPA项目",
+      "path": "项目工坊/自动化与工具项目/RPA项目",
+      "entryPath": "项目工坊/自动化与工具项目/RPA项目/README.md",
+      "domain": "projects",
+      "parentId": "node.84bd20e81e5f5a32bb9cde826badabfd"
+    },
+    {
+      "id": "node.b620c859e25b5895a92bf3fb44a250f0",
+      "kind": "topic",
+      "title": "游戏与桌面自动化",
+      "path": "项目工坊/自动化与工具项目/游戏与桌面自动化",
+      "entryPath": "项目工坊/自动化与工具项目/游戏与桌面自动化/README.md",
+      "domain": "projects",
+      "parentId": "node.84bd20e81e5f5a32bb9cde826badabfd"
+    },
+    {
+      "id": "node.460312907dcc5a9e94d2287a448824f8",
+      "kind": "topic",
+      "title": "爬虫项目",
+      "path": "项目工坊/自动化与工具项目/爬虫项目",
+      "entryPath": "项目工坊/自动化与工具项目/爬虫项目/README.md",
+      "domain": "projects",
+      "parentId": "node.84bd20e81e5f5a32bb9cde826badabfd"
+    },
+    {
+      "id": "node.3a1d67f96a1759029a0225689c8432e3",
+      "kind": "topic",
+      "title": "网络监测工具",
+      "path": "项目工坊/自动化与工具项目/网络监测工具",
+      "entryPath": "项目工坊/自动化与工具项目/网络监测工具/README.md",
+      "domain": "projects",
+      "parentId": "node.84bd20e81e5f5a32bb9cde826badabfd"
+    },
+    {
+      "id": "node.af7875c074425aafbf6a65c97ef3ec86",
+      "kind": "topic",
+      "title": "脚本工具",
+      "path": "项目工坊/自动化与工具项目/脚本工具",
+      "entryPath": "项目工坊/自动化与工具项目/脚本工具/README.md",
+      "domain": "projects",
+      "parentId": "node.84bd20e81e5f5a32bb9cde826badabfd"
+    },
+    {
+      "id": "node.b7bf9768b4e3588ca8e20f211b81eeba",
+      "kind": "topic",
+      "title": "Django课程项目",
+      "path": "项目工坊/课程项目成果/Django课程项目",
+      "entryPath": "项目工坊/课程项目成果/Django课程项目/README.md",
+      "domain": "projects",
+      "parentId": "node.0d2e0819d99556b0a7cadb055d14f5b0"
+    },
+    {
+      "id": "node.742d528a0a8e555f9e2adae068402b70",
+      "kind": "topic",
+      "title": "Harmony课程项目",
+      "path": "项目工坊/课程项目成果/Harmony课程项目",
+      "entryPath": "项目工坊/课程项目成果/Harmony课程项目/README.md",
+      "domain": "projects",
+      "parentId": "node.0d2e0819d99556b0a7cadb055d14f5b0"
+    },
+    {
+      "id": "node.5f89788d266c56beb48ccc38a0e3db9e",
+      "kind": "topic",
+      "title": "Web前端课程项目",
+      "path": "项目工坊/课程项目成果/Web前端课程项目",
+      "entryPath": "项目工坊/课程项目成果/Web前端课程项目/README.md",
+      "domain": "projects",
+      "parentId": "node.0d2e0819d99556b0a7cadb055d14f5b0"
+    },
+    {
+      "id": "node.7bd4b9390a3c5dfa8b2c1602f2d142f0",
+      "kind": "topic",
+      "title": "微信小程序课程项目",
+      "path": "项目工坊/课程项目成果/微信小程序课程项目",
+      "entryPath": "项目工坊/课程项目成果/微信小程序课程项目/README.md",
+      "domain": "projects",
+      "parentId": "node.0d2e0819d99556b0a7cadb055d14f5b0"
+    },
+    {
+      "id": "node.48c3ba336a075f4b90bde74117fe87d0",
+      "kind": "topic",
+      "title": "图像工作流",
+      "path": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/图像工作流",
+      "entryPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/图像工作流/README.md",
+      "domain": "ai-model",
+      "parentId": "ai.multimodal.comfyui"
+    },
+    {
+      "id": "node.9cab52b8a32b504cb7c24ac49fc545d7",
+      "kind": "topic",
+      "title": "安装、整合与复盘",
+      "path": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/安装、整合与复盘",
+      "entryPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/安装、整合与复盘/README.md",
+      "domain": "ai-model",
+      "parentId": "ai.multimodal.comfyui"
+    },
+    {
+      "id": "node.f879a1642022502197ff733cd6d1ce14",
+      "kind": "topic",
+      "title": "概念与原理",
+      "path": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/概念与原理",
+      "entryPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/概念与原理/README.md",
+      "domain": "ai-model",
+      "parentId": "ai.multimodal.comfyui"
+    },
+    {
+      "id": "node.dee4ef230f7f511d99fdafcc40d39c6a",
+      "kind": "topic",
+      "title": "视频工作流",
+      "path": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/视频工作流",
+      "entryPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/视频工作流/README.md",
+      "domain": "ai-model",
+      "parentId": "ai.multimodal.comfyui"
+    },
+    {
+      "id": "node.ddde3849e24e5c73b4c4fde2dd541f37",
+      "kind": "topic",
+      "title": "提示词工程",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程",
+      "entryPath": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程/README.md",
+      "domain": "ai-model",
+      "parentId": "node.d0a31aad98e0581aa59353d2563ae403"
+    },
+    {
+      "id": "node.34307b459a6e52058413ad09966f5e85",
+      "kind": "topic",
+      "title": "Gemin API 学习",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/模型API实践/Gemin API 学习",
+      "entryPath": "AI模型与多模态智能/大语言模型与提示工程/模型API实践/Gemin API 学习/README.md",
+      "domain": "ai-model",
+      "parentId": "node.3e5a79cec45f5903bd79cf70e3eaff30"
+    },
+    {
+      "id": "node.e4be7472067a585b87b58f69e0f9625e",
+      "kind": "topic",
+      "title": "远程训练",
+      "path": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录/远程训练",
+      "entryPath": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录/远程训练/README.md",
+      "domain": "ai-model",
+      "parentId": "node.d827faac42c05ada86929b9017c78c1a"
+    },
+    {
+      "id": "node.fc423db5683658d09fa4551730a4aaa8",
+      "kind": "topic",
+      "title": "Ollama",
+      "path": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/Ollama",
+      "entryPath": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/Ollama/README.md",
+      "domain": "ai-model",
+      "parentId": "node.c04d2e39dfe05fccab6dba08d0291a5d"
+    },
+    {
+      "id": "node.39abe4c540ce500b9877328559fc3903",
+      "kind": "topic",
+      "title": "open-webui",
+      "path": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/open-webui",
+      "entryPath": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/open-webui/README.md",
+      "domain": "ai-model",
+      "parentId": "node.c04d2e39dfe05fccab6dba08d0291a5d"
+    },
+    {
+      "id": "node.f20510071b7d5cd28bb1faaf8a6fc96f",
+      "kind": "topic",
+      "title": "实际训练中要要用到的东西",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/实际训练中要要用到的东西",
+      "entryPath": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/实际训练中要要用到的东西/README.md",
+      "domain": "ai-model",
+      "parentId": "node.fcd5e4106e0c57ae8eb1e8ae47ae5416"
+    },
+    {
+      "id": "node.a7c9fc0a4cb95fc8b55503b967bd7aa5",
+      "kind": "topic",
+      "title": "数据集标注工具",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具",
+      "entryPath": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/README.md",
+      "domain": "ai-model",
+      "parentId": "node.fcd5e4106e0c57ae8eb1e8ae47ae5416"
+    },
+    {
+      "id": "node.76f0e29e447450778345e892ae5520fb",
+      "kind": "topic",
+      "title": "语音活动检测",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测/README.md",
+      "domain": "ai-model",
+      "parentId": "node.ffe102618c3657d9bed6957bdcaef54d"
+    },
+    {
+      "id": "node.2465aeee417b5692b20132ba5b77887d",
+      "kind": "topic",
+      "title": "语音转文字",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字/README.md",
+      "domain": "ai-model",
+      "parentId": "node.ffe102618c3657d9bed6957bdcaef54d"
+    },
+    {
+      "id": "node.f46c302ddbfb5097958a64c2d6203ff4",
+      "kind": "topic",
+      "title": "GPT-SoVITS-File",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/GPT-SoVITS-File",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/GPT-SoVITS-File/README.md",
+      "domain": "ai-model",
+      "parentId": "node.ab5185871d1556e8b47bca34e0336e92"
+    },
+    {
+      "id": "node.27962539f9c4545b9de991a2d5b3d064",
+      "kind": "topic",
+      "title": "调用与播放示例",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/调用与播放示例",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/调用与播放示例/README.md",
+      "domain": "ai-model",
+      "parentId": "node.ab5185871d1556e8b47bca34e0336e92"
+    },
+    {
+      "id": "node.e4ee6ce99bef5268a0a7d08e95ae972a",
+      "kind": "topic",
+      "title": "Pipecat",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/Pipecat",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/Pipecat/README.md",
+      "domain": "ai-model",
+      "parentId": "node.c916ecf6e3705fa5b5a926472bcf5027"
+    },
+    {
+      "id": "node.1fbfe75ad8735cbb9d434fb7087256b8",
+      "kind": "topic",
+      "title": "语音实验",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/README.md",
+      "domain": "ai-model",
+      "parentId": "node.c916ecf6e3705fa5b5a926472bcf5027"
+    },
+    {
+      "id": "node.d6111c1115d25f2898cba1aa55f90aee",
+      "kind": "topic",
+      "title": "Dify",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify",
+      "entryPath": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.a08cb24980e157ae95f23c1ebe81f845"
+    },
+    {
+      "id": "node.1feb28731a765cb8b589398800532d6b",
+      "kind": "topic",
+      "title": "Dify API文档",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档",
+      "entryPath": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.a08cb24980e157ae95f23c1ebe81f845"
+    },
+    {
+      "id": "node.cba001a0729b5b589e06aca1372ed9be",
+      "kind": "topic",
+      "title": "LangChain",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain",
+      "entryPath": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.4524acbcedc65a85b6b8bb2657075f2d"
+    },
+    {
+      "id": "ai.agent.mcp",
+      "kind": "topic",
+      "title": "MCP学习研究",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/MCP协议/MCP学习研究",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/MCP协议/MCP学习研究/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.afaaf831cf9d547c84acbe743027619b"
+    },
+    {
+      "id": "node.bcc16bcd3f52513eaeb857e3032274de",
+      "kind": "topic",
+      "title": "飞书",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.629206198f8358feb1102b2f1b8c87d6"
+    },
+    {
+      "id": "node.734ecf8882a8538d85145f210fd6fcd1",
+      "kind": "topic",
+      "title": "微信小程序技能包",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/工具调用Schema/微信小程序技能包",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/工具调用Schema/微信小程序技能包/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.3db26f8ecd2a501582b284b0d1c8e848"
+    },
+    {
+      "id": "node.40467d337da6545c8521e5f1fab349ec",
+      "kind": "topic",
+      "title": "过检测AIGC测试",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试",
+      "entryPath": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.616d7b303ca35ce7ac14563f12c12360"
+    },
+    {
+      "id": "node.39e4e48469715e76aef8b47424aff410",
+      "kind": "topic",
+      "title": "练习案例用到的数据（黑马）",
+      "path": "参考资源与历史归档/数据集、模型与大文件登记/数据集登记/练习案例用到的数据（黑马）",
+      "entryPath": "参考资源与历史归档/数据集、模型与大文件登记/数据集登记/练习案例用到的数据（黑马）/README.md",
+      "domain": "resources",
+      "parentId": "node.e9c7eac984d2587887c45b5aad8f4eb8"
+    },
+    {
+      "id": "node.79170b5743295c528d22e1c6a2a547a1",
+      "kind": "topic",
+      "title": "微信小程序",
+      "path": "参考资源与历史归档/电子书、课件与参考资料/课程课件登记/微信小程序",
+      "entryPath": "参考资源与历史归档/电子书、课件与参考资料/课程课件登记/微信小程序/README.md",
+      "domain": "resources",
+      "parentId": "node.c431f0a6a70050a6b237da81b7a3303f"
+    },
+    {
+      "id": "node.8060ab14a36f5d67bf6e434f34dfc22d",
+      "kind": "topic",
+      "title": "搜索引擎参考界面和prompt",
+      "path": "参考资源与历史归档/网页归档、截图与原始材料/界面设计参考/搜索引擎参考界面和prompt",
+      "entryPath": "参考资源与历史归档/网页归档、截图与原始材料/界面设计参考/搜索引擎参考界面和prompt/README.md",
+      "domain": "resources",
+      "parentId": "node.25d48b6280d35242a51b048d6649d024"
+    },
+    {
+      "id": "node.676ccf4aaf0b582882a68cd35a7f1d29",
+      "kind": "topic",
+      "title": "线性代数",
+      "path": "基础理论与计算思维/数学与数据分析/线性代数与矩阵/线性代数",
+      "entryPath": "基础理论与计算思维/数学与数据分析/线性代数与矩阵/线性代数/README.md",
+      "domain": "foundation",
+      "parentId": "node.06958d05fd9a5f4288620d554c28a24c"
+    },
+    {
+      "id": "node.3ddb24c8287f5d269762bb7986f7a087",
+      "kind": "topic",
+      "title": "蓝桥杯",
+      "path": "基础理论与计算思维/算法与数据结构/蓝桥杯与竞赛题解/蓝桥杯",
+      "entryPath": "基础理论与计算思维/算法与数据结构/蓝桥杯与竞赛题解/蓝桥杯/README.md",
+      "domain": "foundation",
+      "parentId": "node.d07390c730905fbf9e8201f973427458"
+    },
+    {
+      "id": "node.c2ee3d47c71858da8b224febb661af35",
+      "kind": "topic",
+      "title": "计算机网络",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络",
+      "entryPath": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络/README.md",
+      "domain": "foundation",
+      "parentId": "node.0aae341f4a6856feb2d3a5bc6832aa33"
+    },
+    {
+      "id": "node.df7a21168fde55e9bb950dff4d2dd7ed",
+      "kind": "topic",
+      "title": "进程通讯Socket",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络协议基础/进程通讯Socket",
+      "entryPath": "基础理论与计算思维/计算机网络与密码学/网络协议基础/进程通讯Socket/README.md",
+      "domain": "foundation",
+      "parentId": "node.0aae341f4a6856feb2d3a5bc6832aa33"
+    },
+    {
+      "id": "node.e122abc684d65d288fcc6e857b628ccf",
+      "kind": "topic",
+      "title": "软件测试",
+      "path": "基础理论与计算思维/软件工程基础/测试与质量/软件测试",
+      "entryPath": "基础理论与计算思维/软件工程基础/测试与质量/软件测试/README.md",
+      "domain": "foundation",
+      "parentId": "node.40458074ab3d5fcf8a113c17a24a696e"
+    },
+    {
+      "id": "node.ce81f6aedf145703813f98e135c8170c",
+      "kind": "log",
+      "title": "AIx Origin",
+      "path": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/AIx Origin",
+      "entryPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/AIx Origin/README.md",
+      "domain": "learning",
+      "parentId": "node.631c66ee3f5d54fba2e8673f46e1c6da"
+    },
+    {
+      "id": "node.f3e6d44b5aa05428b41c6156cbc50bb7",
+      "kind": "log",
+      "title": "FDE交流会",
+      "path": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/FDE交流会",
+      "entryPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/FDE交流会/README.md",
+      "domain": "learning",
+      "parentId": "node.631c66ee3f5d54fba2e8673f46e1c6da"
+    },
+    {
+      "id": "node.69d3f555948857d88bfbd4e60c1d889e",
+      "kind": "log",
+      "title": "微信开发者创新工坊",
+      "path": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/微信开发者创新工坊",
+      "entryPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/微信开发者创新工坊/README.md",
+      "domain": "learning",
+      "parentId": "node.631c66ee3f5d54fba2e8673f46e1c6da"
+    },
+    {
+      "id": "node.3440e0ccb2375faa8f10b9e489a8d5a1",
+      "kind": "course",
+      "title": "homework3",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/homework3",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/homework3/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.477a4448140d5ccbbc01c132af0de565",
+      "kind": "course",
+      "title": "homework_9_22",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/homework_9_22",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/homework_9_22/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.b0041bae87e65749a071f7bf6eb8da7b",
+      "kind": "course",
+      "title": "school_10_20",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_10_20",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_10_20/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.4cbc429e7e6350a195d3d514587508ad",
+      "kind": "course",
+      "title": "school_10_30",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_10_30",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_10_30/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.5eb2dc3bf2a95f509d1bae5715acdf40",
+      "kind": "course",
+      "title": "school_11_10",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_10",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_10/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.571effe9a3535adeafa0f75ea189fd26",
+      "kind": "course",
+      "title": "school_11_13",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_13",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_13/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.c923419942ec5f30bd91f6eeca687c07",
+      "kind": "course",
+      "title": "school_11_17",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_17",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_17/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.c78f5ba8b84457bd96e8d33e4db3373b",
+      "kind": "course",
+      "title": "school_11_17_2",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_17_2",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_17_2/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.2482b6018a5950dda706397b1fa7bc10",
+      "kind": "course",
+      "title": "school_11_20",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_20",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_20/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.3f689de7aba95baa88e2a8bb7379d598",
+      "kind": "course",
+      "title": "school_11_24",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_24",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_24/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.3d90defca0f35c9f80d17b9fea7965d8",
+      "kind": "course",
+      "title": "school_11_27",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_27",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_27/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.7c2cc3ce0f6154cdb4ad3b20c98d502b",
+      "kind": "course",
+      "title": "school_11_6",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_6",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_6/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.92a2abf4d11f5ef3b1630941f8f6bfb5",
+      "kind": "course",
+      "title": "school_12_1",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_1",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_1/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.7019dd9baf2b544097735a5d1b3c74d3",
+      "kind": "course",
+      "title": "school_12_11",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_11",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_11/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.d22c8f225bf25e4fb990387796864486",
+      "kind": "course",
+      "title": "school_12_18",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_18",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_18/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.7fccb97fcb4a562698f4d1abad190802",
+      "kind": "course",
+      "title": "school_12_4",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_4",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_4/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.4bdcd4614c59511f9a4071f48885b14f",
+      "kind": "course",
+      "title": "school_thello",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_thello",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_thello/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.7e66132e7b3251bcbb2c255893d37cfb",
+      "kind": "course",
+      "title": "shool_11_3",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/shool_11_3",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/shool_11_3/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.e05c043bc7a75972aa87e93d946321f1",
+      "kind": "course",
+      "title": "shool_homework_10_12",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/shool_homework_10_12",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/shool_homework_10_12/README.md",
+      "domain": "learning",
+      "parentId": "node.dd753312abf45cd08e6124d010b93f15"
+    },
+    {
+      "id": "node.d8053bafd09c5769bbee2f5bf96aa9da",
+      "kind": "course",
+      "title": "JSP编程学习",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Java-Web开发/JSP编程学习",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Java-Web开发/JSP编程学习/README.md",
+      "domain": "learning",
+      "parentId": "node.4201469c8a995b1785dfc07774294a82"
+    },
+    {
+      "id": "node.7f073ef4146e568f9529ecd0d314ab18",
+      "kind": "course",
+      "title": "CSS学习",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/CSS学习",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/CSS学习/README.md",
+      "domain": "learning",
+      "parentId": "node.b24e9b24799d5066a36e46cf6c9dd9ac"
+    },
+    {
+      "id": "node.01ea7eb92cb25540ae627ec9597108f1",
+      "kind": "course",
+      "title": "Djangon课堂学习",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Djangon课堂学习",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Djangon课堂学习/README.md",
+      "domain": "learning",
+      "parentId": "node.b24e9b24799d5066a36e46cf6c9dd9ac"
+    },
+    {
+      "id": "node.c9311446c5b75e77bae2be51b7c6ce95",
+      "kind": "course",
+      "title": "Django创建项目",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Django创建项目",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Django创建项目/README.md",
+      "domain": "learning",
+      "parentId": "node.b24e9b24799d5066a36e46cf6c9dd9ac"
+    },
+    {
+      "id": "node.c7b35aa9c7ce5908a0bb0b8d1e159ea1",
+      "kind": "course",
+      "title": "启动Django",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/启动Django",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/启动Django/README.md",
+      "domain": "learning",
+      "parentId": "node.b24e9b24799d5066a36e46cf6c9dd9ac"
+    },
+    {
+      "id": "node.e1339a438f8c51019ba2895cd9169ca4",
+      "kind": "course",
+      "title": "基础知识(html)",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/基础知识(html)",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/基础知识(html)/README.md",
+      "domain": "learning",
+      "parentId": "node.b24e9b24799d5066a36e46cf6c9dd9ac"
+    },
+    {
+      "id": "node.c9db73fd8c0f5fd49876d77a43dec50f",
+      "kind": "course",
+      "title": "练习(用户注册)",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/练习(用户注册)",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/练习(用户注册)/README.md",
+      "domain": "learning",
+      "parentId": "node.b24e9b24799d5066a36e46cf6c9dd9ac"
+    },
+    {
+      "id": "node.2a089476665d585994bdcd64719b2ca9",
+      "kind": "course",
+      "title": "python数据分析课程",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python数据分析/python数据分析课程",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python数据分析/python数据分析课程/README.md",
+      "domain": "learning",
+      "parentId": "node.a4416a6adeea5151b577448954107589"
+    },
+    {
+      "id": "node.cbdc7b5c44a054e9bb85c48c4a03d825",
+      "kind": "course",
+      "title": "数据库数据写出作业",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python数据分析/数据库数据写出作业",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python数据分析/数据库数据写出作业/README.md",
+      "domain": "learning",
+      "parentId": "node.a4416a6adeea5151b577448954107589"
+    },
+    {
+      "id": "node.0db97bdcda8759fab7a425b543c4bc35",
+      "kind": "course",
+      "title": "python课堂复习",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python编程/python课堂复习",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Python编程/python课堂复习/README.md",
+      "domain": "learning",
+      "parentId": "node.5128b7240a1b5559b5530335b6657869"
+    },
+    {
+      "id": "node.2e19ad2301355168b0c268a688b8dee7",
+      "kind": "course",
+      "title": "spring boot",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/README.md",
+      "domain": "learning",
+      "parentId": "node.de838e31cf2e5690845a981367b18a37"
+    },
+    {
+      "id": "node.88171dfee4645cd790cf569b7308335c",
+      "kind": "course",
+      "title": "web前端课堂学习",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Web前端开发/web前端课堂学习",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Web前端开发/web前端课堂学习/README.md",
+      "domain": "learning",
+      "parentId": "node.25a7181e7eef547cb45c594fe60714bd"
+    },
+    {
+      "id": "node.9882e382b00f5f23b9dee5b198810aeb",
+      "kind": "course",
+      "title": "课堂练习",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Web前端开发/课堂练习",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/Web前端开发/课堂练习/README.md",
+      "domain": "learning",
+      "parentId": "node.25a7181e7eef547cb45c594fe60714bd"
+    },
+    {
+      "id": "node.47d585a3a83b56faa74f89d4c6e6319d",
+      "kind": "course",
+      "title": "3_10",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_10",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_10/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.537ad291ecf854499991eb584a5a4d29",
+      "kind": "course",
+      "title": "3_17",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_17",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_17/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.da38a4b9d29d527aaa5810e18974ed2b",
+      "kind": "course",
+      "title": "3_24",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_24",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_24/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.12ab6f84fece576eb6f5c28425928385",
+      "kind": "course",
+      "title": "3_24(加点赞)",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_24(加点赞)",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_24(加点赞)/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.592a8a47f03c5a0bbe53c220794e512d",
+      "kind": "course",
+      "title": "3_31",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_31",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_31/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.a5951c86657354c29bb15ae16d8cba47",
+      "kind": "course",
+      "title": "4_14",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_14",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_14/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.7748c97b2f845d48a2b7fa99d9d19a42",
+      "kind": "course",
+      "title": "4_21",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_21",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_21/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.94d7f6e576d55ec5b86dee4de1dc1d65",
+      "kind": "course",
+      "title": "4_21_homework",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_21_homework",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_21_homework/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.0279985ad86d5b37b3f322e3bccea06c",
+      "kind": "course",
+      "title": "4_28",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_28",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_28/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.c5059f3284cb5bd1bedba7de3271b71f",
+      "kind": "course",
+      "title": "4_28 老师的",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_28 老师的",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_28 老师的/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.31f52b88664e54428c2df1b2a6995cd2",
+      "kind": "course",
+      "title": "5_12",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_12",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_12/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.7b35afd6035f519aa7c26adcd5e178d5",
+      "kind": "course",
+      "title": "5_12_homework",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_12_homework",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_12_homework/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.1c8a195c80685f6bb67325e41698012a",
+      "kind": "course",
+      "title": "5_19",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_19",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_19/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.1f6419191061529399705afb40702d61",
+      "kind": "course",
+      "title": "5_19_homework",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_19_homework",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_19_homework/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.2dd9fde33e5a539289fba9c4d0ef7d37",
+      "kind": "course",
+      "title": "5_26 云服务",
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_26 云服务",
+      "entryPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_26 云服务/README.md",
+      "domain": "learning",
+      "parentId": "node.2a46e858eb3254f1a4de0d77d6eef787"
+    },
+    {
+      "id": "node.8d5ffea14e125d40b90b8689d344c54f",
+      "kind": "topic",
+      "title": "Django",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Django",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Django/README.md",
+      "domain": "learning",
+      "parentId": "node.f64541ea21205606a5f724de38e4421a"
+    },
+    {
+      "id": "node.82043ea8552a5402973446880031a4ab",
+      "kind": "topic",
+      "title": "FastAPI",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/FastAPI",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/FastAPI/README.md",
+      "domain": "learning",
+      "parentId": "node.f64541ea21205606a5f724de38e4421a"
+    },
+    {
+      "id": "node.feee5cc0ed6f583d8c7bc9bf9a8ba28d",
+      "kind": "topic",
+      "title": "Pipecat",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/README.md",
+      "domain": "learning",
+      "parentId": "node.f64541ea21205606a5f724de38e4421a"
+    },
+    {
+      "id": "node.f7eb0285a4985ebc817dd6dbb18b008f",
+      "kind": "topic",
+      "title": "YOLO",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/README.md",
+      "domain": "learning",
+      "parentId": "node.f64541ea21205606a5f724de38e4421a"
+    },
+    {
+      "id": "node.cee3cb35ca0a555b830c0a9331248e7a",
+      "kind": "topic",
+      "title": "HarmonyOS",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/README.md",
+      "domain": "learning",
+      "parentId": "node.f8577a19015252218ce6a5e46dc661fb"
+    },
+    {
+      "id": "node.d24e00f841db5aa68fd79436762e455b",
+      "kind": "topic",
+      "title": "PyQt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/PyQt",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/PyQt/README.md",
+      "domain": "learning",
+      "parentId": "node.f8577a19015252218ce6a5e46dc661fb"
+    },
+    {
+      "id": "node.86717d0c58475da78cf96a9b5ef0635e",
+      "kind": "topic",
+      "title": "Vue",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/Vue",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/Vue/README.md",
+      "domain": "learning",
+      "parentId": "node.f8577a19015252218ce6a5e46dc661fb"
+    },
+    {
+      "id": "node.e27015a8624b5722919da1efc6faf8e9",
+      "kind": "topic",
+      "title": "爬虫",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/README.md",
+      "domain": "learning",
+      "parentId": "node.f8577a19015252218ce6a5e46dc661fb"
+    },
+    {
+      "id": "node.c6c4cb3206715f2f9faadeb18fb4362a",
+      "kind": "topic",
+      "title": "韩顺平Java",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/README.md",
+      "domain": "learning",
+      "parentId": "node.f8577a19015252218ce6a5e46dc661fb"
+    },
+    {
+      "id": "node.8c1d1c83afe95af69179be0caf6f9148",
+      "kind": "log",
+      "title": "信用卡及海外服务购买",
+      "path": "学习路径、研究与现实实践/生活实践与长期观察/工具与服务购买记录/信用卡及海外服务购买",
+      "entryPath": "学习路径、研究与现实实践/生活实践与长期观察/工具与服务购买记录/信用卡及海外服务购买/README.md",
+      "domain": "learning",
+      "parentId": "node.f1d10830fa4c5843b820e4766efc47d0"
+    },
+    {
+      "id": "node.a83824bc7fde5922af9d38a86492a832",
+      "kind": "log",
+      "title": "药膏知识",
+      "path": "学习路径、研究与现实实践/生活实践与长期观察/生活知识记录/药膏知识",
+      "entryPath": "学习路径、研究与现实实践/生活实践与长期观察/生活知识记录/药膏知识/README.md",
+      "domain": "learning",
+      "parentId": "node.6727535a34825d6aa95f55ecd12ff96c"
+    },
+    {
+      "id": "node.5e8f87ff27d9570b8c477c9c618bed27",
+      "kind": "log",
+      "title": "与 AI 共生 · 2026 微信小程序开发大赛",
+      "path": "学习路径、研究与现实实践/竞赛、考试与证书/比赛记录/与 AI 共生 · 2026 微信小程序开发大赛",
+      "entryPath": "学习路径、研究与现实实践/竞赛、考试与证书/比赛记录/与 AI 共生 · 2026 微信小程序开发大赛/README.md",
+      "domain": "learning",
+      "parentId": "node.32604b69208051e1b15089dbb0f9a16f"
+    },
+    {
+      "id": "node.28c3d92e0a355f409af0556f58d1f7ea",
+      "kind": "log",
+      "title": "全国数学建模大赛",
+      "path": "学习路径、研究与现实实践/竞赛、考试与证书/比赛记录/全国数学建模大赛",
+      "entryPath": "学习路径、研究与现实实践/竞赛、考试与证书/比赛记录/全国数学建模大赛/README.md",
+      "domain": "learning",
+      "parentId": "node.32604b69208051e1b15089dbb0f9a16f"
+    },
+    {
+      "id": "node.391785327f6b5dea81d83db8a124d424",
+      "kind": "log",
+      "title": "三级数据库技术考试",
+      "path": "学习路径、研究与现实实践/竞赛、考试与证书/证书备考/三级数据库技术考试",
+      "entryPath": "学习路径、研究与现实实践/竞赛、考试与证书/证书备考/三级数据库技术考试/README.md",
+      "domain": "learning",
+      "parentId": "node.7f542389888e5bf9bc4c9c91c018119b"
+    },
+    {
+      "id": "node.c8cd4783f493547aa71bc605614b5a96",
+      "kind": "log",
+      "title": "软件中级架构师考试",
+      "path": "学习路径、研究与现实实践/竞赛、考试与证书/证书备考/软件中级架构师考试",
+      "entryPath": "学习路径、研究与现实实践/竞赛、考试与证书/证书备考/软件中级架构师考试/README.md",
+      "domain": "learning",
+      "parentId": "node.7f542389888e5bf9bc4c9c91c018119b"
+    },
+    {
+      "id": "node.0f41d17a5c70555a95492e52dd4b18e3",
+      "kind": "topic",
+      "title": "NoSQL",
+      "path": "数据系统与信息检索/NoSQL与缓存/MongoDB/NoSQL",
+      "entryPath": "数据系统与信息检索/NoSQL与缓存/MongoDB/NoSQL/README.md",
+      "domain": "data",
+      "parentId": "node.172c8c344cd6517f8e090099802156df"
+    },
+    {
+      "id": "node.6d4c74ffa4fa5bd8b90cfdc4e7c6a58e",
+      "kind": "topic",
+      "title": "redis",
+      "path": "数据系统与信息检索/NoSQL与缓存/Redis/redis",
+      "entryPath": "数据系统与信息检索/NoSQL与缓存/Redis/redis/README.md",
+      "domain": "data",
+      "parentId": "node.d4330546ade05cbfbbe1ea43e82a6e71"
+    },
+    {
+      "id": "node.3ba27a742cc952228366e80913c1aefa",
+      "kind": "topic",
+      "title": "mysql",
+      "path": "数据系统与信息检索/关系型数据库与SQL/MySQL基础/mysql",
+      "entryPath": "数据系统与信息检索/关系型数据库与SQL/MySQL基础/mysql/README.md",
+      "domain": "data",
+      "parentId": "node.90db46f118a456668c04f601c53f35a2"
+    },
+    {
+      "id": "node.90db28555f665cb798ddb0dc25830b7f",
+      "kind": "topic",
+      "title": "python链接sql学习",
+      "path": "数据系统与信息检索/关系型数据库与SQL/MySQL基础/python链接sql学习",
+      "entryPath": "数据系统与信息检索/关系型数据库与SQL/MySQL基础/python链接sql学习/README.md",
+      "domain": "data",
+      "parentId": "node.90db46f118a456668c04f601c53f35a2"
+    },
+    {
+      "id": "node.d23e8574144452b9ac5ad865aaa7b6e0",
+      "kind": "topic",
+      "title": "excel学习",
+      "path": "数据系统与信息检索/数据处理与可视化/Pandas与数据清洗/excel学习",
+      "entryPath": "数据系统与信息检索/数据处理与可视化/Pandas与数据清洗/excel学习/README.md",
+      "domain": "data",
+      "parentId": "node.3427175f665d5310a1e69a25fd5e7fcc"
+    },
+    {
+      "id": "node.e7be6093d23c55e8bf7a631e545ebd45",
+      "kind": "topic",
+      "title": "spark学习",
+      "path": "数据系统与信息检索/数据处理与可视化/分布式数据处理/spark学习",
+      "entryPath": "数据系统与信息检索/数据处理与可视化/分布式数据处理/spark学习/README.md",
+      "domain": "data",
+      "parentId": "node.924386ccae725b78a73711f56d50a856"
+    },
+    {
+      "id": "node.bffd6c8ea9c551b5b4938db42abca647",
+      "kind": "topic",
+      "title": "图形可视化学习",
+      "path": "数据系统与信息检索/数据处理与可视化/图表与可视化/图形可视化学习",
+      "entryPath": "数据系统与信息检索/数据处理与可视化/图表与可视化/图形可视化学习/README.md",
+      "domain": "data",
+      "parentId": "node.554c6396fc4d5450a7c1ed151419d22c"
+    },
+    {
+      "id": "node.db07189b49215aa2b95b7c1dcc316804",
+      "kind": "topic",
+      "title": "py和sql数据图形可视化案例",
+      "path": "数据系统与信息检索/数据处理与可视化/数据分析案例/py和sql数据图形可视化案例",
+      "entryPath": "数据系统与信息检索/数据处理与可视化/数据分析案例/py和sql数据图形可视化案例/README.md",
+      "domain": "data",
+      "parentId": "node.ba2f0c2044c5591ea2666b005e7dea05"
+    },
+    {
+      "id": "node.8f12a14f7ac253bdbaa16f7655204838",
+      "kind": "topic",
+      "title": "assets",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/assets",
+      "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/assets/README.md",
+      "domain": "platform",
+      "parentId": "node.4cb6c32b81ee5f41a3662d332c0ed346"
+    },
+    {
+      "id": "node.09fd2bb3b1d55c88b5ee9e56e7730bf8",
+      "kind": "topic",
+      "title": "wsl 和 发行版系统",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/wsl 和 发行版系统",
+      "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/wsl 和 发行版系统/README.md",
+      "domain": "platform",
+      "parentId": "node.4cb6c32b81ee5f41a3662d332c0ed346"
+    },
+    {
+      "id": "node.561d3837f2cb56a0bc7f4c1114358fd0",
+      "kind": "topic",
+      "title": "我的主机的研究",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/我的主机的研究",
+      "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/Windows环境/我的主机的研究/README.md",
+      "domain": "platform",
+      "parentId": "node.31f2451205ca5486b5fee52c584499a5"
+    },
+    {
+      "id": "node.7fa262bc36f15a5cb7e272bf279c986b",
+      "kind": "topic",
+      "title": "NAS选购和部署",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/NAS选购和部署",
+      "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/NAS选购和部署/README.md",
+      "domain": "platform",
+      "parentId": "node.5f50b6b2ec395c369d29600c2b399ea4"
+    },
+    {
+      "id": "node.7ccddc1aa80456caa1f394c859a8fcf7",
+      "kind": "topic",
+      "title": "虚拟机研究",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究",
+      "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/虚拟机与NAS/虚拟机研究/README.md",
+      "domain": "platform",
+      "parentId": "node.5f50b6b2ec395c369d29600c2b399ea4"
+    },
+    {
+      "id": "node.53ec46e854ad58b0949f3cf40d1ae8b5",
+      "kind": "topic",
+      "title": "Playwright学习",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习",
+      "entryPath": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/README.md",
+      "domain": "platform",
+      "parentId": "node.e387466ff68855ef87c3a3a8c0b65a91"
+    },
+    {
+      "id": "node.a859d5d01cfa5f8ca7419e21df2e5e61",
+      "kind": "topic",
+      "title": "BeautifulSoup自我学习",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/BeautifulSoup自我学习",
+      "entryPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/BeautifulSoup自我学习/README.md",
+      "domain": "platform",
+      "parentId": "node.4e2cc61c20a852ff9953338983c40bfc"
+    },
+    {
+      "id": "node.552626eec1ca5894b866169bf13c376d",
+      "kind": "topic",
+      "title": "request库深入学习",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/request库深入学习",
+      "entryPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/request库深入学习/README.md",
+      "domain": "platform",
+      "parentId": "node.4e2cc61c20a852ff9953338983c40bfc"
+    },
+    {
+      "id": "node.07e5b9b0751554b7a15e2b40d1b2136f",
+      "kind": "topic",
+      "title": "Selenium学习",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习",
+      "entryPath": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/README.md",
+      "domain": "platform",
+      "parentId": "node.cb793f8241a356058e723871e652f532"
+    },
+    {
+      "id": "node.7dfbb0a97ee2501e8747a58361684a90",
+      "kind": "topic",
+      "title": "hashcat(md5码爆破)",
+      "path": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/hashcat(md5码爆破)",
+      "entryPath": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/hashcat(md5码爆破)/README.md",
+      "domain": "platform",
+      "parentId": "node.e8b3cdb181b05495813d156699b1933e"
+    },
+    {
+      "id": "node.fd031558adbd512eaa264d197dbfbef2",
+      "kind": "topic",
+      "title": "测试没改密码的校园网账号",
+      "path": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/测试没改密码的校园网账号",
+      "entryPath": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/测试没改密码的校园网账号/README.md",
+      "domain": "platform",
+      "parentId": "node.e8b3cdb181b05495813d156699b1933e"
+    },
+    {
+      "id": "node.f5606346c8dc594f9924374dd05275d9",
+      "kind": "topic",
+      "title": "docker部署Portainer CE",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Docker与Compose/docker部署Portainer CE",
+      "entryPath": "系统平台与自动化/容器、部署与服务器运维/Docker与Compose/docker部署Portainer CE/README.md",
+      "domain": "platform",
+      "parentId": "node.b756701eeaf05a63b0e5e2d99720ff4f"
+    },
+    {
+      "id": "node.c005a8c9297b5286a1edff6a99c55a1a",
+      "kind": "topic",
+      "title": "Nginx流量分流和负载均衡",
+      "path": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/Nginx流量分流和负载均衡",
+      "entryPath": "系统平台与自动化/容器、部署与服务器运维/Nginx与反向代理/Nginx流量分流和负载均衡/README.md",
+      "domain": "platform",
+      "parentId": "node.9df9ce611a0153a385753858503e5e05"
+    },
+    {
+      "id": "node.231905c2237f51a28270ee813f9a576c",
+      "kind": "topic",
+      "title": "Linux远程连接工具",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/Linux远程连接工具",
+      "entryPath": "系统平台与自动化/容器、部署与服务器运维/服务器部署/Linux远程连接工具/README.md",
+      "domain": "platform",
+      "parentId": "node.3e0d84e5dac65debad69ae3014be0700"
+    },
+    {
+      "id": "node.57d6e8bf417258f8925bc4b9a2201203",
+      "kind": "topic",
+      "title": "服务器和域名全链路运维手册",
+      "path": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册",
+      "entryPath": "系统平台与自动化/容器、部署与服务器运维/服务器部署/服务器和域名全链路运维手册/README.md",
+      "domain": "platform",
+      "parentId": "node.3e0d84e5dac65debad69ae3014be0700"
+    },
+    {
+      "id": "node.cdce382d616a50faa3f276e14548817b",
+      "kind": "topic",
+      "title": "Claude Cod CLI",
+      "path": "系统平台与自动化/开发工具链与环境管理/Claude与上下文工程/Claude Cod CLI",
+      "entryPath": "系统平台与自动化/开发工具链与环境管理/Claude与上下文工程/Claude Cod CLI/README.md",
+      "domain": "platform",
+      "parentId": "node.b9d27edac5115de3adbe70fbb12e749d"
+    },
+    {
+      "id": "node.4281a4ce8a71523da623c516592dfc2b",
+      "kind": "topic",
+      "title": "Antigravity",
+      "path": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/Antigravity",
+      "entryPath": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/Antigravity/README.md",
+      "domain": "platform",
+      "parentId": "node.fa5f3ec4b1195b41884390c63b2de6d2"
+    },
+    {
+      "id": "node.1339e5012262503eb14dfec5f7c5ee4d",
+      "kind": "topic",
+      "title": "codex",
+      "path": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/codex",
+      "entryPath": "系统平台与自动化/开发工具链与环境管理/Codex与AI编程工具/codex/README.md",
+      "domain": "platform",
+      "parentId": "node.fa5f3ec4b1195b41884390c63b2de6d2"
+    },
+    {
+      "id": "node.c726dc0c07555642b5a2239e240e27b0",
+      "kind": "topic",
+      "title": "ARGB学习",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习",
+      "entryPath": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/README.md",
+      "domain": "platform",
+      "parentId": "node.4a3b16aa300358cca1fdae76cbcbd936"
+    },
+    {
+      "id": "node.c12e9bcfe9375ed3991680de44640d19",
+      "kind": "topic",
+      "title": "电脑硬件参数管理和进程管理(psutil库)",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/电脑硬件参数管理和进程管理(psutil库)",
+      "entryPath": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/电脑硬件参数管理和进程管理(psutil库)/README.md",
+      "domain": "platform",
+      "parentId": "node.4a3b16aa300358cca1fdae76cbcbd936"
+    },
+    {
+      "id": "node.9838b702af75530b9ce0ec2d1dc3bdd5",
+      "kind": "topic",
+      "title": "排除并查找真实的音频设备",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/排除并查找真实的音频设备",
+      "entryPath": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/排除并查找真实的音频设备/README.md",
+      "domain": "platform",
+      "parentId": "node.4f19d28618da50c0a0f81a37b4ef515f"
+    },
+    {
+      "id": "node.f9d30742fb2a56e59f3525efe7925aa5",
+      "kind": "topic",
+      "title": "蓝屏研究",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究",
+      "entryPath": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究/README.md",
+      "domain": "platform",
+      "parentId": "node.4f19d28618da50c0a0f81a37b4ef515f"
+    },
+    {
+      "id": "node.476ca28d3d62539bb79ac14abfa10a7d",
+      "kind": "topic",
+      "title": "内网穿透 网络代理",
+      "path": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理",
+      "entryPath": "系统平台与自动化/网络、域名与内网穿透/内网穿透/内网穿透 网络代理/README.md",
+      "domain": "platform",
+      "parentId": "node.36bcb08e21255a2bb52938b9510b0aef"
+    },
+    {
+      "id": "node.a99a5ef812765666a3408c7f83236113",
+      "kind": "topic",
+      "title": "Github去除DNS污染",
+      "path": "系统平台与自动化/网络、域名与内网穿透/域名与DNS/Github去除DNS污染",
+      "entryPath": "系统平台与自动化/网络、域名与内网穿透/域名与DNS/Github去除DNS污染/README.md",
+      "domain": "platform",
+      "parentId": "node.282ebad40ea251d58ce241faa5e38766"
+    },
+    {
+      "id": "node.69579ff791d55ccd8a6570308a2327d1",
+      "kind": "topic",
+      "title": "python工具链",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/python工具链",
+      "entryPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/python工具链/README.md",
+      "domain": "software",
+      "parentId": "node.bf7c25bec7175f4e9cd7e2c59676cd32"
+    },
+    {
+      "id": "node.3444713d401750fda2a855386178fa03",
+      "kind": "topic",
+      "title": "uv管理器",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/uv管理器",
+      "entryPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/uv管理器/README.md",
+      "domain": "software",
+      "parentId": "node.bf7c25bec7175f4e9cd7e2c59676cd32"
+    },
+    {
+      "id": "node.61b4cce1e2c55f2ba4275ad53cff6cb4",
+      "kind": "topic",
+      "title": "打包学习",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/打包学习",
+      "entryPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/打包学习/README.md",
+      "domain": "software",
+      "parentId": "node.bf7c25bec7175f4e9cd7e2c59676cd32"
+    },
+    {
+      "id": "node.e149462b48305769b7db56c42ab52c32",
+      "kind": "topic",
+      "title": "自定义包和导包学习",
+      "path": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/自定义包和导包学习",
+      "entryPath": "软件开发与应用工程/Python与运行时/包管理与虚拟环境/自定义包和导包学习/README.md",
+      "domain": "software",
+      "parentId": "node.bf7c25bec7175f4e9cd7e2c59676cd32"
+    },
+    {
+      "id": "node.4fb5542bbd4b5e6498602b426ee9fd67",
+      "kind": "topic",
+      "title": "多线程学习",
+      "path": "软件开发与应用工程/Python与运行时/异步并发/多线程学习",
+      "entryPath": "软件开发与应用工程/Python与运行时/异步并发/多线程学习/README.md",
+      "domain": "software",
+      "parentId": "node.a358c61547ce5f848ce9531cb2ad9686"
+    },
+    {
+      "id": "node.a314255a97895a8db114cb73796c444a",
+      "kind": "topic",
+      "title": "my_utils",
+      "path": "软件开发与应用工程/Python与运行时/标准库与脚本/my_utils",
+      "entryPath": "软件开发与应用工程/Python与运行时/标准库与脚本/my_utils/README.md",
+      "domain": "software",
+      "parentId": "node.69eff6a06ae15f72a912ac14d426a9c8"
+    },
+    {
+      "id": "node.64b8896b54c0552e9e111c2cb69ecea3",
+      "kind": "topic",
+      "title": "python logging study",
+      "path": "软件开发与应用工程/Python与运行时/标准库与脚本/python logging study",
+      "entryPath": "软件开发与应用工程/Python与运行时/标准库与脚本/python logging study/README.md",
+      "domain": "software",
+      "parentId": "node.69eff6a06ae15f72a912ac14d426a9c8"
+    },
+    {
+      "id": "node.37571c7056e3538aa29decc5273cb7c7",
+      "kind": "topic",
+      "title": "路径问题研究",
+      "path": "软件开发与应用工程/Python与运行时/标准库与脚本/路径问题研究",
+      "entryPath": "软件开发与应用工程/Python与运行时/标准库与脚本/路径问题研究/README.md",
+      "domain": "software",
+      "parentId": "node.69eff6a06ae15f72a912ac14d426a9c8"
+    },
+    {
+      "id": "node.9da6db29e14a521fb0b8574c9cf50520",
+      "kind": "topic",
+      "title": "递归找文件",
+      "path": "软件开发与应用工程/Python与运行时/标准库与脚本/递归找文件",
+      "entryPath": "软件开发与应用工程/Python与运行时/标准库与脚本/递归找文件/README.md",
+      "domain": "software",
+      "parentId": "node.69eff6a06ae15f72a912ac14d426a9c8"
+    },
+    {
+      "id": "node.5a0d62ed81f959aab018f18baaea033c",
+      "kind": "topic",
+      "title": "对象相关学习",
+      "path": "软件开发与应用工程/Python与运行时/语法基础/对象相关学习",
+      "entryPath": "软件开发与应用工程/Python与运行时/语法基础/对象相关学习/README.md",
+      "domain": "software",
+      "parentId": "node.2bd4b743a82d5af0a381cac54b45f1bc"
+    },
+    {
+      "id": "node.54d0e3a5223c55d09a5988fed49d19cb",
+      "kind": "topic",
+      "title": "Electron框架学习",
+      "path": "软件开发与应用工程/Web前端与桌面客户端/Electron桌面应用/Electron框架学习",
+      "entryPath": "软件开发与应用工程/Web前端与桌面客户端/Electron桌面应用/Electron框架学习/README.md",
+      "domain": "software",
+      "parentId": "node.95b8ce1c4a4d5322b7d7af953c61644e"
+    },
+    {
+      "id": "node.dd1dc17341985ec19000f9e2515d0d01",
+      "kind": "topic",
+      "title": "QT在pycharm必要的配置",
+      "path": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/QT在pycharm必要的配置",
+      "entryPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/QT在pycharm必要的配置/README.md",
+      "domain": "software",
+      "parentId": "node.eb9bb4dcbd83504c8e96ff7c6f851c7d"
+    },
+    {
+      "id": "node.21dddf7ecfd158c789c3f2db0a07354e",
+      "kind": "topic",
+      "title": "assets",
+      "path": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/assets",
+      "entryPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/assets/README.md",
+      "domain": "software",
+      "parentId": "node.eb9bb4dcbd83504c8e96ff7c6f851c7d"
+    },
+    {
+      "id": "node.1b198d39076b5afeba1a04a7503135e6",
+      "kind": "topic",
+      "title": "git",
+      "path": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git",
+      "entryPath": "软件开发与应用工程/工程规范与开发工具/Git与版本管理/git/README.md",
+      "domain": "software",
+      "parentId": "node.d1ca2105bfed56f88e42d5a229b2c26e"
+    },
+    {
+      "id": "node.7475dcf9a75252ecb1071e64083d7ce4",
+      "kind": "project",
+      "title": "AI 漫画汉化",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/AI 漫画汉化",
+      "entryPath": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/AI 漫画汉化/README.md",
+      "domain": "projects",
+      "parentId": "node.a61ff0aed1b0589b8676263030cb5de1"
+    },
+    {
+      "id": "node.9f9dd594831b5e85943bb9670398548a",
+      "kind": "project",
+      "title": "学习卡片生成",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/学习卡片生成",
+      "entryPath": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/学习卡片生成/README.md",
+      "domain": "projects",
+      "parentId": "node.a61ff0aed1b0589b8676263030cb5de1"
+    },
+    {
+      "id": "node.6cafe0fbe01d52859fe0302ad6f7dab6",
+      "kind": "project",
+      "title": "手机壁纸学习提示卡片制作",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作",
+      "entryPath": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/README.md",
+      "domain": "projects",
+      "parentId": "node.a61ff0aed1b0589b8676263030cb5de1"
+    },
+    {
+      "id": "node.4c86df32566c5137a6cc5715e54fa0d0",
+      "kind": "project",
+      "title": "生成3D模型",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/生成3D模型",
+      "entryPath": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/生成3D模型/README.md",
+      "domain": "projects",
+      "parentId": "node.a61ff0aed1b0589b8676263030cb5de1"
+    },
+    {
+      "id": "node.dde31b999f6d5ce0a72926edbe3a3908",
+      "kind": "project",
+      "title": "AstrBot部署",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署",
+      "entryPath": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/README.md",
+      "domain": "projects",
+      "parentId": "node.78fc9dad5e3e5f40ac881452f7fbd283"
+    },
+    {
+      "id": "node.0238dcf819505ece91ba6374bb666dc3",
+      "kind": "project",
+      "title": "多功能游戏查询Bot",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot",
+      "entryPath": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/README.md",
+      "domain": "projects",
+      "parentId": "node.78fc9dad5e3e5f40ac881452f7fbd283"
+    },
+    {
+      "id": "project.webaipilot",
+      "kind": "project",
+      "title": "WebAIPilot",
+      "path": "项目工坊/AI应用与智能体项目/浏览器Agent项目/WebAIPilot",
+      "entryPath": "项目工坊/AI应用与智能体项目/浏览器Agent项目/WebAIPilot/_index.md",
+      "domain": "projects",
+      "parentId": "node.8ab883253fc853158056b8e158f0562a"
+    },
+    {
+      "id": "node.dfe6f5c747fe55d1bfd1578edfbc53a8",
+      "kind": "project",
+      "title": "PUBG人物检测",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/PUBG人物检测",
+      "entryPath": "项目工坊/AI应用与智能体项目/计算机视觉项目/PUBG人物检测/README.md",
+      "domain": "projects",
+      "parentId": "node.e0d6edf75cbd582f8fbde2f74a5b709e"
+    },
+    {
+      "id": "node.95f25b02c08f56e8a3f5c6ca7723c38b",
+      "kind": "project",
+      "title": "yolo模型屏幕画框",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框",
+      "entryPath": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框/README.md",
+      "domain": "projects",
+      "parentId": "node.e0d6edf75cbd582f8fbde2f74a5b709e"
+    },
+    {
+      "id": "node.d7613270bccc5fda83bd05d21ca73858",
+      "kind": "project",
+      "title": "第二次官网自学(偏向研究)",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/第二次官网自学(偏向研究)",
+      "entryPath": "项目工坊/AI应用与智能体项目/计算机视觉项目/第二次官网自学(偏向研究)/README.md",
+      "domain": "projects",
+      "parentId": "node.e0d6edf75cbd582f8fbde2f74a5b709e"
+    },
+    {
+      "id": "node.775c70e3ed265279934925961adf3412",
+      "kind": "project",
+      "title": "研究成果",
+      "path": "项目工坊/AI应用与智能体项目/语音交互Agent项目/研究成果",
+      "entryPath": "项目工坊/AI应用与智能体项目/语音交互Agent项目/研究成果/README.md",
+      "domain": "projects",
+      "parentId": "node.012699cb9f865556837f6b350d1a2f7c"
+    },
+    {
+      "id": "node.ea410f1f2ba15f4a966ed51cdf17fdc3",
+      "kind": "project",
+      "title": "JM服务端项目",
+      "path": "项目工坊/Web与后端项目/FastAPI项目/JM服务端项目",
+      "entryPath": "项目工坊/Web与后端项目/FastAPI项目/JM服务端项目/_index.md",
+      "domain": "projects",
+      "parentId": "node.781a1f444bcd5f88892cd06972f3356f"
+    },
+    {
+      "id": "node.5cfa2a0fd1a058e3922143502b0e63f8",
+      "kind": "project",
+      "title": "个人框架",
+      "path": "项目工坊/Web与后端项目/FastAPI项目/个人框架",
+      "entryPath": "项目工坊/Web与后端项目/FastAPI项目/个人框架/_index.md",
+      "domain": "projects",
+      "parentId": "node.781a1f444bcd5f88892cd06972f3356f"
+    },
+    {
+      "id": "node.1c8b158397d85c1895e5e8c4f24b5000",
+      "kind": "project",
+      "title": "手机图像播放",
+      "path": "项目工坊/Web与后端项目/FastAPI项目/手机图像播放",
+      "entryPath": "项目工坊/Web与后端项目/FastAPI项目/手机图像播放/README.md",
+      "domain": "projects",
+      "parentId": "node.781a1f444bcd5f88892cd06972f3356f"
+    },
+    {
+      "id": "node.a8bff9065cd357469f22a819e1fc130a",
+      "kind": "project",
+      "title": "邮件发送系统",
+      "path": "项目工坊/Web与后端项目/FastAPI项目/邮件发送系统",
+      "entryPath": "项目工坊/Web与后端项目/FastAPI项目/邮件发送系统/_index.md",
+      "domain": "projects",
+      "parentId": "node.781a1f444bcd5f88892cd06972f3356f"
+    },
+    {
+      "id": "node.0314f83658bf599b88d4a0d007863a27",
+      "kind": "project",
+      "title": "deepseek_api",
+      "path": "项目工坊/客户端与小程序项目/Harmony项目/deepseek_api",
+      "entryPath": "项目工坊/客户端与小程序项目/Harmony项目/deepseek_api/_index.md",
+      "domain": "projects",
+      "parentId": "node.75b8bc238a4055998d033c699934f035"
+    },
+    {
+      "id": "node.ed530a53bc7c585fafd1ff78a4407ed8",
+      "kind": "project",
+      "title": "personal_research",
+      "path": "项目工坊/客户端与小程序项目/Harmony项目/personal_research",
+      "entryPath": "项目工坊/客户端与小程序项目/Harmony项目/personal_research/README.md",
+      "domain": "projects",
+      "parentId": "node.75b8bc238a4055998d033c699934f035"
+    },
+    {
+      "id": "node.b7bec577ae3b5296a473f66f76c5b00f",
+      "kind": "project",
+      "title": "新版无边框窗口实现",
+      "path": "项目工坊/客户端与小程序项目/PyQt项目/新版无边框窗口实现",
+      "entryPath": "项目工坊/客户端与小程序项目/PyQt项目/新版无边框窗口实现/README.md",
+      "domain": "projects",
+      "parentId": "node.951b8aef38ca57e4b73a7ed7f7c1e6d6"
+    },
+    {
+      "id": "node.0a8aac0aae1e5b829b3e2e49b2123db1",
+      "kind": "project",
+      "title": "JM在线观看",
+      "path": "项目工坊/客户端与小程序项目/微信小程序项目/JM在线观看",
+      "entryPath": "项目工坊/客户端与小程序项目/微信小程序项目/JM在线观看/README.md",
+      "domain": "projects",
+      "parentId": "node.3e5e77fe0125530584cac3d51a63abed"
+    },
+    {
+      "id": "node.3825696519b65d6a8ba7690f8b299bfa",
+      "kind": "project",
+      "title": "WebAIPilots微信实现界面",
+      "path": "项目工坊/客户端与小程序项目/微信小程序项目/WebAIPilots微信实现界面",
+      "entryPath": "项目工坊/客户端与小程序项目/微信小程序项目/WebAIPilots微信实现界面/_index.md",
+      "domain": "projects",
+      "parentId": "node.3e5e77fe0125530584cac3d51a63abed"
+    },
+    {
+      "id": "node.6a9ef7385da75d2ab1fa3e1c5d97560b",
+      "kind": "project",
+      "title": "拼多多商家后台RPA",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA",
+      "entryPath": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/_index.md",
+      "domain": "projects",
+      "parentId": "node.82161ae4049054efa76cbcae22113139"
+    },
+    {
+      "id": "node.46685d28b903526397f4e387888d5dc2",
+      "kind": "topic",
+      "title": "早期脚本副本",
+      "path": "项目工坊/自动化与工具项目/游戏与桌面自动化/早期脚本副本",
+      "entryPath": "项目工坊/自动化与工具项目/游戏与桌面自动化/早期脚本副本/README.md",
+      "domain": "projects",
+      "parentId": "node.b620c859e25b5895a92bf3fb44a250f0"
+    },
+    {
+      "id": "node.828bd2a49e915c358d80d91f0cecb4a1",
+      "kind": "project",
+      "title": "鸣潮脚本",
+      "path": "项目工坊/自动化与工具项目/游戏与桌面自动化/鸣潮脚本",
+      "entryPath": "项目工坊/自动化与工具项目/游戏与桌面自动化/鸣潮脚本/README.md",
+      "domain": "projects",
+      "parentId": "node.b620c859e25b5895a92bf3fb44a250f0"
+    },
+    {
+      "id": "node.2780ada3a92d54869f8859e479d12328",
+      "kind": "project",
+      "title": "Playwright个人研究成果",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果",
+      "entryPath": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/_index.md",
+      "domain": "projects",
+      "parentId": "node.460312907dcc5a9e94d2287a448824f8"
+    },
+    {
+      "id": "node.18511413da505286b4528734a06700d3",
+      "kind": "project",
+      "title": "request个人研究成果",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果",
+      "entryPath": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/README.md",
+      "domain": "projects",
+      "parentId": "node.460312907dcc5a9e94d2287a448824f8"
+    },
+    {
+      "id": "node.b1f53a2064cc5ed292adf481fdf00178",
+      "kind": "project",
+      "title": "鸿蒙web自动化",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化",
+      "entryPath": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/README.md",
+      "domain": "projects",
+      "parentId": "node.460312907dcc5a9e94d2287a448824f8"
+    },
+    {
+      "id": "node.d1430101155b565a9da83451397a5fc9",
+      "kind": "project",
+      "title": "路由故障率监测工具",
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具",
+      "entryPath": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/README.md",
+      "domain": "projects",
+      "parentId": "node.3a1d67f96a1759029a0225689c8432e3"
+    },
+    {
+      "id": "node.c0c11677ecb95463901709bd934edabd",
+      "kind": "project",
+      "title": "原商品编码替换为商品编码（仓库填）",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）",
+      "entryPath": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/_index.md",
+      "domain": "projects",
+      "parentId": "node.af7875c074425aafbf6a65c97ef3ec86"
+    },
+    {
+      "id": "node.e2d8153ee64559cba3ac71bd530989b2",
+      "kind": "project",
+      "title": "手机号归属地查询",
+      "path": "项目工坊/自动化与工具项目/脚本工具/手机号归属地查询",
+      "entryPath": "项目工坊/自动化与工具项目/脚本工具/手机号归属地查询/README.md",
+      "domain": "projects",
+      "parentId": "node.af7875c074425aafbf6a65c97ef3ec86"
+    },
+    {
+      "id": "node.07428385b53b5eb38bf0b0be640a0769",
+      "kind": "project",
+      "title": "邮件发送",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送",
+      "entryPath": "项目工坊/自动化与工具项目/脚本工具/邮件发送/_index.md",
+      "domain": "projects",
+      "parentId": "node.af7875c074425aafbf6a65c97ef3ec86"
+    },
+    {
+      "id": "node.ffa2077a625458c4b7ef37c0e81e27b5",
+      "kind": "project",
+      "title": "智慧校园考试系统综合实训",
+      "path": "项目工坊/课程项目成果/Django课程项目/智慧校园考试系统综合实训",
+      "entryPath": "项目工坊/课程项目成果/Django课程项目/智慧校园考试系统综合实训/README.md",
+      "domain": "projects",
+      "parentId": "node.b7bf9768b4e3588ca8e20f211b81eeba"
+    },
+    {
+      "id": "node.7a0dba978d50595ca500a0220239fbba",
+      "kind": "project",
+      "title": "老师舍弃的黑马",
+      "path": "项目工坊/课程项目成果/Django课程项目/老师舍弃的黑马",
+      "entryPath": "项目工坊/课程项目成果/Django课程项目/老师舍弃的黑马/README.md",
+      "domain": "projects",
+      "parentId": "node.b7bf9768b4e3588ca8e20f211b81eeba"
+    },
+    {
+      "id": "node.6d831a9172de53f1b035a48b48186c2d",
+      "kind": "project",
+      "title": "last",
+      "path": "项目工坊/课程项目成果/Harmony课程项目/last",
+      "entryPath": "项目工坊/课程项目成果/Harmony课程项目/last/README.md",
+      "domain": "projects",
+      "parentId": "node.742d528a0a8e555f9e2adae068402b70"
+    },
+    {
+      "id": "node.041373867bea501092e58c6015f3015f",
+      "kind": "project",
+      "title": "last2",
+      "path": "项目工坊/课程项目成果/Harmony课程项目/last2",
+      "entryPath": "项目工坊/课程项目成果/Harmony课程项目/last2/README.md",
+      "domain": "projects",
+      "parentId": "node.742d528a0a8e555f9e2adae068402b70"
+    },
+    {
+      "id": "node.25f48899614257c997bc22cd53989c1e",
+      "kind": "project",
+      "title": "web实训",
+      "path": "项目工坊/课程项目成果/Web前端课程项目/web实训",
+      "entryPath": "项目工坊/课程项目成果/Web前端课程项目/web实训/README.md",
+      "domain": "projects",
+      "parentId": "node.5f89788d266c56beb48ccc38a0e3db9e"
+    },
+    {
+      "id": "node.a782e08e6d455691b698ce9dd8523d99",
+      "kind": "project",
+      "title": "期中考试",
+      "path": "项目工坊/课程项目成果/微信小程序课程项目/期中考试",
+      "entryPath": "项目工坊/课程项目成果/微信小程序课程项目/期中考试/README.md",
+      "domain": "projects",
+      "parentId": "node.7bd4b9390a3c5dfa8b2c1602f2d142f0"
+    },
+    {
+      "id": "node.bc0bdb3aa95d5eca84770da5d1521bc6",
+      "kind": "project",
+      "title": "期末作业",
+      "path": "项目工坊/课程项目成果/微信小程序课程项目/期末作业",
+      "entryPath": "项目工坊/课程项目成果/微信小程序课程项目/期末作业/README.md",
+      "domain": "projects",
+      "parentId": "node.7bd4b9390a3c5dfa8b2c1602f2d142f0"
+    },
+    {
+      "id": "node.bca7abac7bcb59fd9a71dc9cefc4942d",
+      "kind": "topic",
+      "title": "voice",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice",
+      "entryPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice/README.md",
+      "domain": "ai-model",
+      "parentId": "node.1fbfe75ad8735cbb9d434fb7087256b8"
+    },
+    {
+      "id": "node.46c84d5cda4c50e9bd9e0c849b4c292c",
+      "kind": "topic",
+      "title": "对接飞书",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/对接飞书",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/对接飞书/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.bcc16bcd3f52513eaeb857e3032274de"
+    },
+    {
+      "id": "node.f7c12e68b4135f2190bb5bb4e4dc8879",
+      "kind": "topic",
+      "title": "飞书多维表格学习",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/飞书多维表格学习",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/飞书多维表格学习/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.bcc16bcd3f52513eaeb857e3032274de"
+    },
+    {
+      "id": "node.2a9b6e83beb6591fbed72aba76171577",
+      "kind": "topic",
+      "title": "skills",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/工具调用Schema/微信小程序技能包/skills",
+      "entryPath": "AI知识系统与智能体/MCP、工具调用与协议/工具调用Schema/微信小程序技能包/skills/README.md",
+      "domain": "ai-agent",
+      "parentId": "node.734ecf8882a8538d85145f210fd6fcd1"
+    },
+    {
+      "id": "node.b367ca64daf151c8a76aee4f13f95fed",
+      "kind": "course",
+      "title": "官网自学",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Django/官网自学",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Django/官网自学/README.md",
+      "domain": "learning",
+      "parentId": "node.8d5ffea14e125d40b90b8689d344c54f"
+    },
+    {
+      "id": "node.b72ae36a4f65524baae47a2d1025ce84",
+      "kind": "course",
+      "title": "文档自学入门",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/FastAPI/文档自学入门",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/FastAPI/文档自学入门/README.md",
+      "domain": "learning",
+      "parentId": "node.82043ea8552a5402973446880031a4ab"
+    },
+    {
+      "id": "node.d513b51a981b577fa38a6796e06e1f2d",
+      "kind": "course",
+      "title": "pipecat-quickstart",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart/_index.md",
+      "domain": "learning",
+      "parentId": "node.feee5cc0ed6f583d8c7bc9bf9a8ba28d"
+    },
+    {
+      "id": "node.c41cfeda8b325eb2872be09721e4d485",
+      "kind": "course",
+      "title": "快速入门",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门/_index.md",
+      "domain": "learning",
+      "parentId": "node.feee5cc0ed6f583d8c7bc9bf9a8ba28d"
+    },
+    {
+      "id": "node.e02d8dbc000351f7990cadd3022db98d",
+      "kind": "course",
+      "title": "第一次官网自学",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/README.md",
+      "domain": "learning",
+      "parentId": "node.f7eb0285a4985ebc817dd6dbb18b008f"
+    },
+    {
+      "id": "node.d8e231c926935bef846a85a984d760ea",
+      "kind": "course",
+      "title": "AskTS_programming_syntax_study",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/AskTS_programming_syntax_study",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/AskTS_programming_syntax_study/README.md",
+      "domain": "learning",
+      "parentId": "node.cee3cb35ca0a555b830c0a9331248e7a"
+    },
+    {
+      "id": "node.479525cbfa265fec82dee03863567e32",
+      "kind": "course",
+      "title": "code_9_1",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_1",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_1/README.md",
+      "domain": "learning",
+      "parentId": "node.cee3cb35ca0a555b830c0a9331248e7a"
+    },
+    {
+      "id": "node.eb46bd365f4b5fe2b1f7001d69633475",
+      "kind": "course",
+      "title": "code_9_25",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_25",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_25/README.md",
+      "domain": "learning",
+      "parentId": "node.cee3cb35ca0a555b830c0a9331248e7a"
+    },
+    {
+      "id": "node.8be87eb57c665a6d8dc6035c36453620",
+      "kind": "course",
+      "title": "code_9_29",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_29",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_29/README.md",
+      "domain": "learning",
+      "parentId": "node.cee3cb35ca0a555b830c0a9331248e7a"
+    },
+    {
+      "id": "node.ad28772f38fd55828bb64c9052538be1",
+      "kind": "course",
+      "title": "code_9_4",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_4",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_4/README.md",
+      "domain": "learning",
+      "parentId": "node.cee3cb35ca0a555b830c0a9331248e7a"
+    },
+    {
+      "id": "node.08924393de155dfb844d5805e324f100",
+      "kind": "course",
+      "title": "heima_68_74",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/heima_68_74",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/heima_68_74/README.md",
+      "domain": "learning",
+      "parentId": "node.cee3cb35ca0a555b830c0a9331248e7a"
+    },
+    {
+      "id": "node.c1ea2035619c5b2280f49fb864d7abe3",
+      "kind": "course",
+      "title": "jindong_login",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/jindong_login",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/jindong_login/_index.md",
+      "domain": "learning",
+      "parentId": "node.cee3cb35ca0a555b830c0a9331248e7a"
+    },
+    {
+      "id": "node.eb7ec347040c54b98374a6e95cce9d45",
+      "kind": "course",
+      "title": "study",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/study",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/study/README.md",
+      "domain": "learning",
+      "parentId": "node.cee3cb35ca0a555b830c0a9331248e7a"
+    },
+    {
+      "id": "node.0131013cc9665b7b954abd68126bdfbb",
+      "kind": "course",
+      "title": "web组件",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/web组件",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/web组件/README.md",
+      "domain": "learning",
+      "parentId": "node.cee3cb35ca0a555b830c0a9331248e7a"
+    },
+    {
+      "id": "node.141a635ff7ef5ca7adeba87a43928acb",
+      "kind": "course",
+      "title": "GUI_study",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/PyQt/GUI_study",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/PyQt/GUI_study/README.md",
+      "domain": "learning",
+      "parentId": "node.d24e00f841db5aa68fd79436762e455b"
+    },
+    {
+      "id": "node.111d868d16865454aa621d158c95d0a9",
+      "kind": "course",
+      "title": "vue3框架学习",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/Vue/vue3框架学习",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/Vue/vue3框架学习/README.md",
+      "domain": "learning",
+      "parentId": "node.86717d0c58475da78cf96a9b5ef0635e"
+    },
+    {
+      "id": "node.98f29d92f7495119b4ca6c44d949f165",
+      "kind": "course",
+      "title": "B站request入门",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/README.md",
+      "domain": "learning",
+      "parentId": "node.e27015a8624b5722919da1efc6faf8e9"
+    },
+    {
+      "id": "node.8d7c5c6207bf5aedb86343716830f57c",
+      "kind": "course",
+      "title": "B站爬虫进修(没学到啥，仅仅是html和soup有一点用)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/README.md",
+      "domain": "learning",
+      "parentId": "node.e27015a8624b5722919da1efc6faf8e9"
+    },
+    {
+      "id": "node.e3021af5ee3b5c85a9ab382c523243bc",
+      "kind": "course",
+      "title": "只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/README.md",
+      "domain": "learning",
+      "parentId": "node.e27015a8624b5722919da1efc6faf8e9"
+    },
+    {
+      "id": "node.29debfede0d15c319124b1d92e3b341b",
+      "kind": "course",
+      "title": "二十五(OOP零钱通)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/二十五(OOP零钱通)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/二十五(OOP零钱通)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.e53b21df83595f61a41470e9c5090b98",
+      "kind": "course",
+      "title": "二十六(本章作业)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/二十六(本章作业)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/二十六(本章作业)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.dfd015713ebc5e6abe494b0f3dbcc903",
+      "kind": "course",
+      "title": "第30天(8.12之前py写了一个软件)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第30天(8.12之前py写了一个软件)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第30天(8.12之前py写了一个软件)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.2b1041485cdd54fa9b7e894e35810a28",
+      "kind": "course",
+      "title": "第一天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第一天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第一天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.007dd4f1f80d546bb294636f4323d6d0",
+      "kind": "course",
+      "title": "第七天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第七天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第七天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.b0da82aac6825e5b8729871d38dc3425",
+      "kind": "course",
+      "title": "第三天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第三天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第三天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.8532363d953b5f7a97c8c0422a2fa343",
+      "kind": "course",
+      "title": "第九天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第九天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第九天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.f9008d54d33b55a4ad5f14c1bd98c2d3",
+      "kind": "course",
+      "title": "第二十七天(本章作业)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十七天(本章作业)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十七天(本章作业)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.b818b2e586b057589b83dbc40c9bd56e",
+      "kind": "course",
+      "title": "第二十三天(OOP细节)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十三天(OOP细节)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十三天(OOP细节)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.efc4f5f2c9c55171a5124b9670b35dc6",
+      "kind": "course",
+      "title": "第二十九天(本章作业)6.28(之前去写py项目了)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十九天(本章作业)6.28(之前去写py项目了)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十九天(本章作业)6.28(之前去写py项目了)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.8e25cce35f875519bdbedf21bdf4dbd4",
+      "kind": "course",
+      "title": "第二十二天(OOP细节)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十二天(OOP细节)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十二天(OOP细节)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.33b2b7f5e92a500a95ba36c33e18d98b",
+      "kind": "course",
+      "title": "第二十八天(本章作业)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十八天(本章作业)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十八天(本章作业)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.1faf583d7bce583a916566700802d7a7",
+      "kind": "course",
+      "title": "第二十四天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十四天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十四天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.f2cb61db79dd516bb5674cca78be05d9",
+      "kind": "course",
+      "title": "第二十天一(OOP)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十天一(OOP)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二十天一(OOP)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.f91f31e6739e52a1814318967536b7dc",
+      "kind": "course",
+      "title": "第二天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第二天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.f59590e30b9256e49d16f4b8f5eabbfe",
+      "kind": "course",
+      "title": "第五天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第五天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第五天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.f698c9c5c3125dd891e8785571a63b36",
+      "kind": "course",
+      "title": "第八天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第八天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第八天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.bcbed38b35b9582195effd37c1dc4031",
+      "kind": "course",
+      "title": "第六天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第六天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第六天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.37f99509844d5bcf9af0fba25b9f593b",
+      "kind": "course",
+      "title": "第十一天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十一天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十一天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.7fa7a1bd217f5f06b3fa8a0bd53d4fdd",
+      "kind": "course",
+      "title": "第十七天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十七天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十七天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.a8e66820d5e85268bd457840458488c3",
+      "kind": "course",
+      "title": "第十三天(数组扩容)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十三天(数组扩容)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十三天(数组扩容)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.b900656dca9957a489cec40ba7c443dd",
+      "kind": "course",
+      "title": "第十九天(IDEA)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十九天(IDEA)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十九天(IDEA)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.da7eb75ab9a85d0a9f0a3dfd2bf09482",
+      "kind": "course",
+      "title": "第十二天(数组)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十二天(数组)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十二天(数组)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.c4b43dd7a0bd5df1b4f4187a0b553a79",
+      "kind": "course",
+      "title": "第十五天(对象)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十五天(对象)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十五天(对象)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.8715da3157e3578e9947defb424091c1",
+      "kind": "course",
+      "title": "第十八天(重载)",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十八天(重载)",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十八天(重载)/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.87ac30d3db3a5862ac4a19090cde959c",
+      "kind": "course",
+      "title": "第十六天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十六天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十六天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.bdfdb1d1cc3a5ab9b0b9f6317444ad22",
+      "kind": "course",
+      "title": "第十四天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十四天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十四天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.db82c3d8221c52cebd8c2b7327c41ea6",
+      "kind": "course",
+      "title": "第十天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第十天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.cd0e42f2db2858b5b0e0cf4e01474a42",
+      "kind": "course",
+      "title": "第四天",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第四天",
+      "entryPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/韩顺平Java/第四天/README.md",
+      "domain": "learning",
+      "parentId": "node.c6c4cb3206715f2f9faadeb18fb4362a"
+    },
+    {
+      "id": "node.45665e1bd56e52fc86528cee3a3f0c4c",
+      "kind": "topic",
+      "title": "UI窗口控件图标",
+      "path": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/assets/UI窗口控件图标",
+      "entryPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/assets/UI窗口控件图标/README.md",
+      "domain": "software",
+      "parentId": "node.21dddf7ecfd158c789c3f2db0a07354e"
+    }
+  ]
+}

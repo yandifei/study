@@ -9,7 +9,7 @@ from silero_vad import load_silero_vad, read_audio, get_speech_timestamps
 # 加载 VAD 模型
 model = load_silero_vad()
 # 从指定的路径读取一个音频文件
-wav = read_audio("../voice/output.wav")
+wav = read_audio("../../实时语音Agent/语音实验/voice/output.wav")
 # 用 VAD 模型来分析音频
 speech_timestamps = get_speech_timestamps(
   wav,      # 你读取的音频数据。

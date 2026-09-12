@@ -8,7 +8,7 @@ model, utils = torch.hub.load(repo_or_dir='snakers4/silero-vad', model='silero_v
 
 (get_speech_timestamps, _, read_audio, _, _) = utils
 
-wav = read_audio('../voice/output.wav')
+wav = read_audio('../../实时语音Agent/语音实验/voice/output.wav')
 speech_timestamps = get_speech_timestamps(
   wav,
   model,

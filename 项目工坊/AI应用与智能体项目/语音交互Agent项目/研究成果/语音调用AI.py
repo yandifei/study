@@ -141,7 +141,7 @@ def call_tts_api(text):
     payload = {
         "text": text, # 合成的文本内容
         "text_lang": "zh",                  # 合成文本的语言
-        "ref_audio_path": r"B:\study\AI\STT语音学习\GPT-SoVITS-File\参考文本.ogg",    # 参考音频文件路径
+        "ref_audio_path": r"B:\study\AI模型与多模态智能\语音、音频与实时交互\TTS语音合成\GPT-SoVITS-File\参考文本.ogg",    # 参考音频文件路径
         "aux_ref_audio_paths": [],  # 辅助参考音频路径列表。用于多说话人音色融合。提供多个参考音频路径，模型会尝试将它们的声音特征融合后生成新音频。
         "prompt_text": "邦邦卡邦~！老师购买了道具！附赠的微笑，也请您收下吧~！", # 参考音频对应文本
         "prompt_lang": "zh",    # 参考音频的语言
@@ -186,8 +186,8 @@ def call_tts_api(text):
 # 切换模型
 # set_sovits_weights("../GPT-SoVITS-File/爱丽丝中文_e16_s1200_l32.pth")
 # set_gpt_weights("../GPT-SoVITS-File/爱丽丝中文-e50.ckpt")
-set_sovits_weights(r"B:\study\AI\STT语音学习\GPT-SoVITS-File\爱丽丝中文_e16_s1200_l32.pth")
-set_gpt_weights(r"B:\study\AI\STT语音学习\GPT-SoVITS-File\爱丽丝中文-e50.ckpt")
+set_sovits_weights(r"B:\study\AI模型与多模态智能\语音、音频与实时交互\TTS语音合成\GPT-SoVITS-File\爱丽丝中文_e16_s1200_l32.pth")
+set_gpt_weights(r"B:\study\AI模型与多模态智能\语音、音频与实时交互\TTS语音合成\GPT-SoVITS-File\爱丽丝中文-e50.ckpt")
 
 while True:
     # 读取音频数据

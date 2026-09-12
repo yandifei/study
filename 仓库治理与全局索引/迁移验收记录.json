@@ -1,0 +1,24 @@
+{
+  "baselineCommit": "86a358aa",
+  "contentBatches": [
+    "comfyui",
+    "ai",
+    "backend",
+    "platforms",
+    "languages-data",
+    "clients",
+    "automation",
+    "practice"
+  ],
+  "migratedFiles": 6387,
+  "fileAndDirectoryMappings": 329,
+  "localFileEntriesPreservedAcrossMoves": 128132,
+  "untrackedLocalEntriesVerified": 11103,
+  "localDependencyJunctionsRetargeted": 82,
+  "markdownLinkDestinationsUpdated": 137,
+  "maxCommittedFileBytes": 100000000,
+  "historyRewritten": false,
+  "remotePushed": false,
+  "remainingLocalState": "Old empty source directories retained: removal was rejected by tool policy. Ignored dependencies and large files retained beside their moved projects.",
+  "runtimeValidation": "File integrity, Git identity, navigation and path references verified; historical applications were not individually launched."
+}

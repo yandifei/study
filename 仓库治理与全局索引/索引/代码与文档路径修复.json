@@ -1,0 +1,139 @@
+[
+  {
+    "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/调用与播放示例/GPT-SoVITS调用.py",
+    "beforeSha256": "ac704a246207aaff3c7310295545f4a8ad3a50b35e8ae436119a000bc7fa4962",
+    "changes": [
+      {
+        "before": "B:\\study\\AI\\STT语音学习\\GPT-SoVITS-File",
+        "after": "B:\\study\\AI模型与多模态智能\\语音、音频与实时交互\\TTS语音合成\\GPT-SoVITS-File",
+        "count": 3
+      },
+      {
+        "before": "B:\\study\\AI\\STT语音学习\\研究成果",
+        "after": "B:\\study\\项目工坊\\AI应用与智能体项目\\语音交互Agent项目\\研究成果",
+        "count": 1
+      }
+    ],
+    "afterSha256": "8c328e07ee9cec180420ca82c8a3edd6b1e26ce3f1d996ca501ebd8c1974feee"
+  },
+  {
+    "path": "项目工坊/AI应用与智能体项目/语音交互Agent项目/研究成果/语音调用AI.py",
+    "beforeSha256": "ccbe252fd1f77768c134bd67751ac8630bf0d3e52218e3f6833aefc52948a228",
+    "changes": [
+      {
+        "before": "B:\\study\\AI\\STT语音学习\\GPT-SoVITS-File",
+        "after": "B:\\study\\AI模型与多模态智能\\语音、音频与实时交互\\TTS语音合成\\GPT-SoVITS-File",
+        "count": 3
+      }
+    ],
+    "afterSha256": "bd5ef7807e6e9462331e0f80a11b9b296352d64fe5e774a141890dbddd16d36a"
+  },
+  {
+    "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测/silero-vad官方示例1.py",
+    "beforeSha256": "393cf71fb9ba5c7a659fcefe8d777b7e595d1b2e0b691f5f97721bbe99d5236b",
+    "changes": [
+      {
+        "before": "../voice/output.wav",
+        "after": "../../实时语音Agent/语音实验/voice/output.wav",
+        "target": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice/output.wav"
+      }
+    ],
+    "afterSha256": "211816d521d6111ae08d9568cff47a7bca197e7f29e599d5f952d4ff509a418b"
+  },
+  {
+    "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测/silero-vad官方示例2.py",
+    "beforeSha256": "e8f633c77f583cd4c07e482fd4521b3fd82cf615fdd516aca3bedc5fc1c121b1",
+    "changes": [
+      {
+        "before": "../voice/output.wav",
+        "after": "../../实时语音Agent/语音实验/voice/output.wav",
+        "target": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice/output.wav"
+      }
+    ],
+    "afterSha256": "549cd849cdd12c20749587d20cb85f26b8bbcbfa22e8873f88958628bfcd3fe6"
+  },
+  {
+    "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字/faster-whisper学习.py",
+    "beforeSha256": "dfc8f0becd14538925d6f562d5cccd9b322fcc855ef9b1f5973fdf390eccebb7",
+    "changes": [
+      {
+        "before": "../voice/output.wav",
+        "after": "../../实时语音Agent/语音实验/voice/output.wav",
+        "target": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice/output.wav"
+      }
+    ],
+    "afterSha256": "d6b98d1ea486605c480312871639275843847fa23a90ecf77ae1a4121f7107b8"
+  },
+  {
+    "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字/faster-whisper学习2.py",
+    "beforeSha256": "2102b125030ae28fe67f35a5db2f45d2359df688b15ad4fc01eab1f04af044ea",
+    "changes": [
+      {
+        "before": "../voice/output.wav",
+        "after": "../../实时语音Agent/语音实验/voice/output.wav",
+        "target": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice/output.wav"
+      }
+    ],
+    "afterSha256": "1a9a112a08803c7ec3cbab68383f2b83c07ff77aa32c6d537349261be924dfc4"
+  },
+  {
+    "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字/whisper(官网示例1).py",
+    "beforeSha256": "d272420191a94e2c6ce72eac8c3c062430289784bb280fc052cbf49b4e95c13c",
+    "changes": [
+      {
+        "before": "../voice/output.wav",
+        "after": "../../实时语音Agent/语音实验/voice/output.wav",
+        "target": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice/output.wav"
+      }
+    ],
+    "afterSha256": "a9e4b0d299db00567e3b68fd4c16939c6332a16910ed62162de77c2c4dd7846b"
+  },
+  {
+    "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Django创建项目/笔记.md",
+    "beforeSha256": "37f4320d0f69cc1041fa8cdd6d98c2c9449564c862ac551d84f1f10efaf512ac",
+    "changes": [
+      {
+        "before": "B:\\study\\Django框架学习\\Django创建项目",
+        "after": "B:\\study\\学习路径、研究与现实实践\\大学课程与课堂记录\\Python-Web开发\\Django创建项目",
+        "count": 1
+      }
+    ],
+    "afterSha256": "0ecdebe63d8bdca49047204059ec5aac61e723535cee0d91fc830d199134e24b"
+  },
+  {
+    "path": "项目工坊/客户端与小程序项目/Harmony项目/personal_research/开发文档/README.md",
+    "beforeSha256": "9ae2472cb3695296517b49bf7137aaa6f219ca2d3bc2267edd5123e9d8a0194b",
+    "changes": [
+      {
+        "before": "B:\\study\\Harmony\\personal_research",
+        "after": "B:\\study\\项目工坊\\客户端与小程序项目\\Harmony项目\\personal_research",
+        "count": 2
+      }
+    ],
+    "afterSha256": "e09afee4ab379bcae262e21773519a88d5efed368a7f09cb6e7eeb0a2d885b3d"
+  },
+  {
+    "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/终极大作业/exam/项目实践指南.md",
+    "beforeSha256": "a4768b924086b6151f8fd4eaa53bc692119ba808a243b3224cd2983ad410de1c",
+    "changes": [
+      {
+        "before": "B:\\study\\Java\\spring boot",
+        "after": "B:\\study\\学习路径、研究与现实实践\\大学课程与课堂记录\\SpringBoot与MyBatis\\spring boot",
+        "count": 1
+      }
+    ],
+    "afterSha256": "5db851a4b175eead82023aa43c1382d991cb5c0caf4e883caba6582b65870860"
+  },
+  {
+    "path": "AI知识系统与智能体/MCP、工具调用与协议/工具调用Schema/微信小程序技能包/skills/微信小程序 AI 聊天界面生成器/SKILL.md",
+    "beforeSha256": "9f362f06f5b91865c99974940394eb2cf7c7f76e765a1293211f8248e7399e5e",
+    "changes": [
+      {
+        "before": "B:\\study\\微信小程序\\期末作业",
+        "after": "B:\\study\\项目工坊\\课程项目成果\\微信小程序课程项目\\期末作业",
+        "count": 2
+      }
+    ],
+    "afterSha256": "e271d9c291ded5afa0806302f9551e5a83c6d8c4581752a373684b6989dfd797"
+  }
+]

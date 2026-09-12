@@ -1,0 +1,46 @@
+schemaVersion: 1
+source:
+  root: repository-root
+  discovery: git-ls-files-null-delimited
+  truth: git-commit-and-blob
+  encoding: UTF-8
+indexes:
+  files: 仓库治理与全局索引/索引/文件索引.json
+  nodes: 仓库治理与全局索引/索引/目录索引.json
+  aliases: 仓库治理与全局索引/索引/路径映射.json
+identity:
+  migratedFiles: preserve-file-index-id
+  directories: preserve-directory-index-id
+  newContent: explicit-front-matter-id-preferred
+  fallback: persist-generated-id-on-first-import
+  rename: update-path-and-alias-without-changing-id
+hierarchy:
+  parentId: directory-parent-id
+  relation: contains
+  attachments: resolve-relative-to-owning-document
+  aggregationAliases: return-multiple-targets
+content:
+  kinds: [domain, topic, project, course, log, resource, code, asset, external-source]
+  relations: [contains, depends_on, applied_in, implemented_by, learned_in, evidence_for, related_to, supersedes, workflow_for, uses_model, extends]
+  entryPriority: [_index.md, README.md]
+  internalDirectories: inventory-only-unless-explicitly-curated
+  governanceFiles: inventory-only-by-default
+  assetDirectories: attachment-only-by-default
+limits:
+  maxFileBytes: 100000000
+  includeLFSPayloadSize: true
+  neverReadIgnoredFiles: true
+  neverReadLocalEnvironmentFiles: true
+  allowEnvironmentTemplates: [.env.example, .env.sample, .env.template]
+sync:
+  version: commit-sha
+  changeDetection: git-blob-id
+  localMigrationEvidence: sha256-and-size
+  lifecycle: delete-or-tombstone-on-git-removal
+  links: stable-id-not-source-path
+  followDirectoryJunctions: false
+  executeRepositoryCode: false
+adapter:
+  export: python -X utf8 仓库治理与全局索引/工具/catalog.py --export
+  verify: python -X utf8 仓库治理与全局索引/工具/catalog.py --verify
+  note: Reference inventory adapter; document parsers, search, graph persistence and HTTP routes belong to the website backend.

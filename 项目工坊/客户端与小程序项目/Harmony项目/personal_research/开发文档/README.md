@@ -62,8 +62,8 @@ https://www.pixiv.net/ajax/illust/138846638?lang=zh
 
 # 开发随笔
 改兔图标和名称
-B:\study\Harmony\personal_research\entry\src\main\module.json5（这个文件才有效）
-B:\study\Harmony\personal_research\AppScope\app.json5（这个文件改无效）
+B:\study\项目工坊\客户端与小程序项目\Harmony项目\personal_research\entry\src\main\module.json5（这个文件才有效）
+B:\study\项目工坊\客户端与小程序项目\Harmony项目\personal_research\AppScope\app.json5（这个文件改无效）
 反正都改了就行，鬼记触发条件
 
 构建数据模型->反序列化和序列化,数据模型仅构建需要用到的就行，用不到的放一边
