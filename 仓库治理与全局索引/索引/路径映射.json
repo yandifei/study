@@ -1324,6 +1324,531 @@
       "targetPath": "软件开发与应用工程/Java与JVM生态/Java基础/重点查看.txt",
       "isDirectory": false,
       "id": "migration.c9ea797d54ee5a669bb2167b416a27c1"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/AskTS_programming_syntax_study",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/AskTS_programming_syntax_study",
+      "isDirectory": true,
+      "id": "migration.387f74e8c8085950a56cf46ecde73cf8"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/code_9_1",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_1",
+      "isDirectory": true,
+      "id": "migration.2a66ba274fca56f88df828b3bf9e2467"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/code_9_20",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_20",
+      "isDirectory": true,
+      "id": "migration.428e2f9c47bb5d6088f94f1461c0d1ae"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/code_9_25",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_25",
+      "isDirectory": true,
+      "id": "migration.257948339b08536c9e3b8111783ebc34"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/code_9_29",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_29",
+      "isDirectory": true,
+      "id": "migration.3780a7133f435bc1bc7db140eb927710"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/code_9_4",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/code_9_4",
+      "isDirectory": true,
+      "id": "migration.b6073355be49595ca8abe67a97141231"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/deepseek_api",
+      "targetPath": "项目工坊/客户端与小程序项目/Harmony项目/deepseek_api",
+      "isDirectory": true,
+      "id": "migration.a175e443eb2a5cf2990a5bc44b501fd5"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/heima_68_74",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/heima_68_74",
+      "isDirectory": true,
+      "id": "migration.55015110f2065a1180634cf6fa5eb2ae"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/homework3",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/homework3",
+      "isDirectory": true,
+      "id": "migration.7c469acae9295148b15eea4da9e0a4d8"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/homework_9_22",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/homework_9_22",
+      "isDirectory": true,
+      "id": "migration.d1fc6e7f1c335d40a918f7c6f3aa2eab"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/jindong_login",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/jindong_login",
+      "isDirectory": true,
+      "id": "migration.3173358af5f5582891fa00bfde5f25f6"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/last",
+      "targetPath": "项目工坊/课程项目成果/Harmony课程项目/last",
+      "isDirectory": true,
+      "id": "migration.cf6a713a7e5751a9a156a01cabc24d40"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/last2",
+      "targetPath": "项目工坊/课程项目成果/Harmony课程项目/last2",
+      "isDirectory": true,
+      "id": "migration.b8d9b2b7f4dd59e697d153a8c0d23f95"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/personal_research",
+      "targetPath": "项目工坊/客户端与小程序项目/Harmony项目/personal_research",
+      "isDirectory": true,
+      "id": "migration.c94e2c0016f65acd9ec1e789bd0998f7"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_10_20",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_10_20",
+      "isDirectory": true,
+      "id": "migration.a7046b8504485d968f48c70ac3ab2f80"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_10_30",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_10_30",
+      "isDirectory": true,
+      "id": "migration.fa0d3924d2cf579288b628fb91d6b2f6"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_11_10",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_10",
+      "isDirectory": true,
+      "id": "migration.c5564091a76657beb2e89494e660b354"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_11_13",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_13",
+      "isDirectory": true,
+      "id": "migration.c2fd6fee60745828ac4a9e72699fc22b"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_11_17",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_17",
+      "isDirectory": true,
+      "id": "migration.0dc290183ee95ac6b0285e03680afe0d"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_11_17_2",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_17_2",
+      "isDirectory": true,
+      "id": "migration.3e80f988a34c508694b38376d8499855"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_11_20",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_20",
+      "isDirectory": true,
+      "id": "migration.69b56870f9df5dd9aeccee24a1a1ac44"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_11_24",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_24",
+      "isDirectory": true,
+      "id": "migration.1a88fb4653885fa5ae1b5182dbefcc34"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_11_27",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_27",
+      "isDirectory": true,
+      "id": "migration.4f52a14c71eb5a24a650a62882feb0fb"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_11_6",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_6",
+      "isDirectory": true,
+      "id": "migration.cdac4a7c10e95bfcb5b532465d362ab8"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_12_1",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_1",
+      "isDirectory": true,
+      "id": "migration.6ddce5c575965d378f587aeab0451ea4"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_12_11",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_11",
+      "isDirectory": true,
+      "id": "migration.4276f712321f5594acc8afa60c9e2388"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_12_18",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_18",
+      "isDirectory": true,
+      "id": "migration.3a14a1b4971658f8a783b7e93d5edeed"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_12_4",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_12_4",
+      "isDirectory": true,
+      "id": "migration.d73aacd53d625960b99b7ca560e1aee6"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/school_thello",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_thello",
+      "isDirectory": true,
+      "id": "migration.f207f7df4fd25fea8e3ff68f323c2a6b"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/shool_11_3",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/shool_11_3",
+      "isDirectory": true,
+      "id": "migration.f712601d6a9b52cea0f80b01ada87a10"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/shool_homework_10_12",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/shool_homework_10_12",
+      "isDirectory": true,
+      "id": "migration.8649e4d3de5e544f9bd34a5e4da60459"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/study",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/study",
+      "isDirectory": true,
+      "id": "migration.2825a0d409ac53bb8f37b3cb6cc4ee88"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/web组件",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/HarmonyOS/web组件",
+      "isDirectory": true,
+      "id": "migration.fea51746550050a6a126244f4c255add"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/学习过程.txt",
+      "targetPath": "软件开发与应用工程/移动端与小程序/HarmonyOS/学习过程.txt",
+      "isDirectory": false,
+      "id": "migration.81fca7ea46635131a3d2bcf504cb40cd"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "Harmony/老师给的布局思想.pdf",
+      "targetPath": "软件开发与应用工程/移动端与小程序/HarmonyOS/老师给的布局思想.pdf",
+      "isDirectory": false,
+      "id": "migration.c27217f0afe2582f8b95d5c30180ddbb"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/3_10",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_10",
+      "isDirectory": true,
+      "id": "migration.f3339c5dab3454639466f8d3b6976732"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/3_17",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_17",
+      "isDirectory": true,
+      "id": "migration.d04cb909f69854abbe572e9207ea23b3"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/3_24",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_24",
+      "isDirectory": true,
+      "id": "migration.68a55221769153b793be9eb9de0ded30"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/3_24(加点赞)",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_24(加点赞)",
+      "isDirectory": true,
+      "id": "migration.61bb280b837a521ba3146149603ffb55"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/3_31",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/3_31",
+      "isDirectory": true,
+      "id": "migration.ed18ba0464c65866bf172cf9772fff76"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/4_14",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_14",
+      "isDirectory": true,
+      "id": "migration.7018931a14e2576481bc58b6c96aa6e5"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/4_21",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_21",
+      "isDirectory": true,
+      "id": "migration.967c85ffadd05cc58c9f2aee70be031b"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/4_21_homework",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_21_homework",
+      "isDirectory": true,
+      "id": "migration.3dbc2f12f44559eca86165e972983a2c"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/4_28",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_28",
+      "isDirectory": true,
+      "id": "migration.b0562cb896fe5eda9bc18cabe9a25cfd"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/4_28 老师的",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/4_28 老师的",
+      "isDirectory": true,
+      "id": "migration.03c3693294055afb87a7aadd6cccec73"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/5_12",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_12",
+      "isDirectory": true,
+      "id": "migration.4237e2f25448501986132a9bf9a72f9e"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/5_12_homework",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_12_homework",
+      "isDirectory": true,
+      "id": "migration.f1e66906c96550e5bb631ae108b6f369"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/5_19",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_19",
+      "isDirectory": true,
+      "id": "migration.76ceb5ee1087541ea643151b82526e7b"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/5_19_homework",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_19_homework",
+      "isDirectory": true,
+      "id": "migration.1e2e77ff143855b49f94e6524fe9b0dd"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/5_26 云服务",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/微信小程序/5_26 云服务",
+      "isDirectory": true,
+      "id": "migration.796b4958bee254b4810de0b52b01780e"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/skills",
+      "targetPath": "AI知识系统与智能体/MCP、工具调用与协议/工具调用Schema/微信小程序技能包/skills",
+      "isDirectory": true,
+      "id": "migration.882c886e6d2a5b9eb67c869cdcc3aebd"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/《微信小程序开发》PDF课件.pdf",
+      "targetPath": "参考资源与历史归档/电子书、课件与参考资料/课程课件登记/微信小程序/《微信小程序开发》PDF课件.pdf",
+      "isDirectory": false,
+      "id": "migration.a51b86cd0dab57e69e437704aa5fe312"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/个人研究/JM在线观看",
+      "targetPath": "项目工坊/客户端与小程序项目/微信小程序项目/JM在线观看",
+      "isDirectory": true,
+      "id": "migration.4bc961f2dce95fa499644cb5fea1a8fd"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/个人研究/JM服务端项目",
+      "targetPath": "项目工坊/Web与后端项目/FastAPI项目/JM服务端项目",
+      "isDirectory": true,
+      "id": "migration.132423ba83f95bea8cd74b49f428ef93"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/个人研究/WebAIPilots微信实现界面",
+      "targetPath": "项目工坊/客户端与小程序项目/微信小程序项目/WebAIPilots微信实现界面",
+      "isDirectory": true,
+      "id": "migration.5f729de951635cddbccca31ec20f97f8"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/个人研究/备案和微信认证记录.md",
+      "targetPath": "软件开发与应用工程/移动端与小程序/微信小程序/备案和微信认证记录.md",
+      "isDirectory": false,
+      "id": "migration.c7a0a59226185c24b5ca84049912e0fe"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/个人研究/生成微信小程序 request 合法域名列表的prompt.txt",
+      "targetPath": "软件开发与应用工程/移动端与小程序/微信小程序/生成微信小程序 request 合法域名列表的prompt.txt",
+      "isDirectory": false,
+      "id": "migration.a68958e5999e51e39c1323c08391c395"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/期中考试",
+      "targetPath": "项目工坊/课程项目成果/微信小程序课程项目/期中考试",
+      "isDirectory": true,
+      "id": "migration.6237f77381cb5b2686252ea086ff25f3"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/期末作业",
+      "targetPath": "项目工坊/课程项目成果/微信小程序课程项目/期末作业",
+      "isDirectory": true,
+      "id": "migration.a189e34d9c8a5257ad2088c5cbe3b350"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/进阶随机图(5_19_homework).docx",
+      "targetPath": "参考资源与历史归档/电子书、课件与参考资料/课程课件登记/微信小程序/进阶随机图(5_19_homework).docx",
+      "isDirectory": false,
+      "id": "migration.fd44d69ba0305b678b0c74be14e1616a"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "微信小程序/随机图片网络请求(5_12_homework).docx",
+      "targetPath": "参考资源与历史归档/电子书、课件与参考资料/课程课件登记/微信小程序/随机图片网络请求(5_12_homework).docx",
+      "isDirectory": false,
+      "id": "migration.170b6845b9a554e18baf6e3a179549b9"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "web前端开发学习(html_css_js)/Electron框架学习",
+      "targetPath": "软件开发与应用工程/Web前端与桌面客户端/Electron桌面应用/Electron框架学习",
+      "isDirectory": true,
+      "id": "migration.08dc2aa43b9d53659877211d33df47ed"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "web前端开发学习(html_css_js)/vue3框架学习",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/Vue/vue3框架学习",
+      "isDirectory": true,
+      "id": "migration.3db4564bffbf5419925aa843df59cd5d"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "web前端开发学习(html_css_js)/web前端课堂学习",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Web前端开发/web前端课堂学习",
+      "isDirectory": true,
+      "id": "migration.943f3d726fc45c26bc8127b3532e1501"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "web前端开发学习(html_css_js)/web实训",
+      "targetPath": "项目工坊/课程项目成果/Web前端课程项目/web实训",
+      "isDirectory": true,
+      "id": "migration.e5ead3ea71f351499a503d4b7a20b96b"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "web前端开发学习(html_css_js)/课堂练习",
+      "targetPath": "学习路径、研究与现实实践/大学课程与课堂记录/Web前端开发/课堂练习",
+      "isDirectory": true,
+      "id": "migration.3712012b7423533d9b605ad08e4aac72"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "PyQt6无边框研究(爱丽丝仓库以前UI的研究()/GUI_study",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/PyQt/GUI_study",
+      "isDirectory": true,
+      "id": "migration.928f7300fb065e8da9e5d27763b23983"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "PyQt6无边框研究(爱丽丝仓库以前UI的研究()/Qss 手册.pdf",
+      "targetPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/Qss 手册.pdf",
+      "isDirectory": false,
+      "id": "migration.4b186bb39e1757928fd17af9a9599916"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "PyQt6无边框研究(爱丽丝仓库以前UI的研究()/UI图片.7z",
+      "targetPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/UI图片.7z",
+      "isDirectory": false,
+      "id": "migration.111110d36d845829bcffb315cb2fd099"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "PyQt6无边框研究(爱丽丝仓库以前UI的研究()/UI窗口控件图标",
+      "targetPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/assets/UI窗口控件图标",
+      "isDirectory": true,
+      "id": "migration.47e253d01e705b19ba047acbed3f8d10"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "PyQt6无边框研究(爱丽丝仓库以前UI的研究()/以前的README.md",
+      "targetPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/以前的README.md",
+      "isDirectory": false,
+      "id": "migration.bae313589f6455969b08245cf4d754a3"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "PyQt6无边框研究(爱丽丝仓库以前UI的研究()/新版无边框窗口实现",
+      "targetPath": "项目工坊/客户端与小程序项目/PyQt项目/新版无边框窗口实现",
+      "isDirectory": true,
+      "id": "migration.300d28bc05ea5d71b095e0ede79139ac"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "PyQt6无边框研究(爱丽丝仓库以前UI的研究()/旧版本无边框窗口实现",
+      "targetPath": "项目工坊/客户端与小程序项目/PyQt项目/旧版本无边框窗口实现",
+      "isDirectory": true,
+      "id": "migration.3648183f87b25335b34bc1f5bbc45286"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "PyQt6无边框研究(爱丽丝仓库以前UI的研究()/样式表采集.txt",
+      "targetPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/样式表采集.txt",
+      "isDirectory": false,
+      "id": "migration.d8f634574cb559cd9897f7a48a36e7d7"
+    },
+    {
+      "batch": "clients",
+      "oldPath": "PyQt6无边框研究(爱丽丝仓库以前UI的研究()/键鼠穿透悬浮监控窗口研究",
+      "targetPath": "项目工坊/客户端与小程序项目/PyQt项目/键鼠穿透悬浮监控窗口研究",
+      "isDirectory": true,
+      "id": "migration.4119966157b751b8a47ce50891270e3b"
     }
   ]
 }
