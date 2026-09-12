@@ -1849,6 +1849,223 @@
       "targetPath": "项目工坊/客户端与小程序项目/PyQt项目/键鼠穿透悬浮监控窗口研究",
       "isDirectory": true,
       "id": "migration.4119966157b751b8a47ce50891270e3b"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/BeautifulSoup自我学习",
+      "targetPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/BeautifulSoup自我学习",
+      "isDirectory": true,
+      "id": "migration.d2bc1c89924d5f899554407bf3ef0fe2"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/B站request入门",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门",
+      "isDirectory": true,
+      "id": "migration.354c39f65d8c5de3bb9108ed461e68cd"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)",
+      "isDirectory": true,
+      "id": "migration.4fb7dcb005ff531f8fa7f4659336d365"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/html结构.png",
+      "targetPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/html结构.png",
+      "isDirectory": false,
+      "id": "migration.ba703c492b6c57e88be60a25d5bfaf57"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/Playwright个人研究成果",
+      "targetPath": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果",
+      "isDirectory": true,
+      "id": "migration.b69bbf61b4c25eb4a746670b4f0cde98"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/Playwright学习",
+      "targetPath": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习",
+      "isDirectory": true,
+      "id": "migration.94672d1fd42a50d2ac69e7c857bbc688"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/request个人研究成果",
+      "targetPath": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果",
+      "isDirectory": true,
+      "id": "migration.f712e0701435565c9d2d178d957e965c"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/request库深入学习",
+      "targetPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/request库深入学习",
+      "isDirectory": true,
+      "id": "migration.363abb27f42d5d9b87ce429b68344461"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/selenium坐牢中.txt",
+      "targetPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/selenium坐牢中.txt",
+      "isDirectory": false,
+      "id": "migration.2cb2cc3f182259059b38c97bdc3409f5"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/Selenium学习",
+      "targetPath": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习",
+      "isDirectory": true,
+      "id": "migration.961d9c5fb913522086e3b3e0ec2fc981"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/selenium结合requets爬虫实现慕测分数查询",
+      "targetPath": "项目工坊/自动化与工具项目/爬虫项目/selenium结合requets爬虫实现慕测分数查询",
+      "isDirectory": true,
+      "id": "migration.4a42907650f5556e9cfb32a98742f676"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/元素定位.png",
+      "targetPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/元素定位.png",
+      "isDirectory": false,
+      "id": "migration.a63ab26a99e55687ad515ce0571236c2"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！",
+      "isDirectory": true,
+      "id": "migration.8a11d392ccd75ae999e4125940580bc6"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/服务器响应状态码.png",
+      "targetPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/服务器响应状态码.png",
+      "isDirectory": false,
+      "id": "migration.b57ead89f0ce5ed8818d53bfbf10f9b4"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/测试没改密码的校园网账号",
+      "targetPath": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/测试没改密码的校园网账号",
+      "isDirectory": true,
+      "id": "migration.c50357f5219e52169a7866487321ce77"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/计算机网络",
+      "targetPath": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络",
+      "isDirectory": true,
+      "id": "migration.02e3fed0805657aa81a604cff60e5b72"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/超星",
+      "targetPath": "项目工坊/自动化与工具项目/爬虫项目/超星",
+      "isDirectory": true,
+      "id": "migration.a65d3a14f29d5ac7909a46ef58393fcb"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/鸿蒙web自动化",
+      "targetPath": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化",
+      "isDirectory": true,
+      "id": "migration.66dab5a63b67537ba30d43b760e367f5"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "爬虫学习/黑马python基础学的爬虫基础.py",
+      "targetPath": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/黑马python基础学的爬虫基础.py",
+      "isDirectory": false,
+      "id": "migration.edde2bfa9db95554ab4cd91aab233a89"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/AI永久记忆.py",
+      "targetPath": "AI知识系统与智能体/记忆、上下文与个性化/长期记忆/AI永久记忆.py",
+      "isDirectory": false,
+      "id": "migration.8565043018e7577ebe9810896bfbfe42"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/ARGB学习",
+      "targetPath": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习",
+      "isDirectory": true,
+      "id": "migration.25e7679ba8305b779be36047d6665664"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/Github去除DNS污染",
+      "targetPath": "系统平台与自动化/网络、域名与内网穿透/域名与DNS/Github去除DNS污染",
+      "isDirectory": true,
+      "id": "migration.63d1aecf21fb5de98e74df956d6bf1fa"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/yolo模型屏幕画框",
+      "targetPath": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框",
+      "isDirectory": true,
+      "id": "migration.17b1faf7d5f358d4882d922f5edc61d7"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/手机号归属地查询",
+      "targetPath": "项目工坊/自动化与工具项目/脚本工具/手机号归属地查询",
+      "isDirectory": true,
+      "id": "migration.231820f58a965438849bf689458cd5d7"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/排除并查找真实的音频设备",
+      "targetPath": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/排除并查找真实的音频设备",
+      "isDirectory": true,
+      "id": "migration.0471d595084456de80c785fcaf8f43bc"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/烫烫烫.py",
+      "targetPath": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/烫烫烫.py",
+      "isDirectory": false,
+      "id": "migration.d075c604f71d5a4493eee9e068d9f192"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/电脑硬件参数管理和进程管理(psutil库)",
+      "targetPath": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/电脑硬件参数管理和进程管理(psutil库)",
+      "isDirectory": true,
+      "id": "migration.2735ecb2e8525d3195c46a0f51eda222"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/蓝屏研究",
+      "targetPath": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究",
+      "isDirectory": true,
+      "id": "migration.33327a54c84c5f7ba84c4abb3acdfe63"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/邮件发送",
+      "targetPath": "项目工坊/自动化与工具项目/脚本工具/邮件发送",
+      "isDirectory": true,
+      "id": "migration.a4d8992d8c0f53608abe80f83075c029"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "python_script_study/驱动级键鼠控制研究.md",
+      "targetPath": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/驱动级键鼠控制研究.md",
+      "isDirectory": false,
+      "id": "migration.eeb211a9c235505f8a5240baf26694d6"
+    },
+    {
+      "batch": "automation",
+      "oldPath": "鸣潮脚本",
+      "targetPath": "项目工坊/自动化与工具项目/游戏与桌面自动化/鸣潮脚本",
+      "isDirectory": true,
+      "id": "migration.e728b5d096d551548f5bde0f8b7f0008"
     }
   ]
 }

@@ -30398,399 +30398,399 @@
     {
       "id": "content.2b411044ed195d53a364218a0aba07bf",
       "oldPath": "python_script_study/AI永久记忆.py",
-      "path": "python_script_study/AI永久记忆.py",
+      "path": "AI知识系统与智能体/记忆、上下文与个性化/长期记忆/AI永久记忆.py",
       "sha256": "b7fa1bbf1753111f278397bd5605e45367e1ea90525bf401ef790d781526ae4d",
       "size": 4147
     },
     {
       "id": "content.c9905808f135538fa6501603f80384a5",
       "oldPath": "python_script_study/ARGB学习/ARGBC.md",
-      "path": "python_script_study/ARGB学习/ARGBC.md",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/ARGBC.md",
       "sha256": "a17b8c446b7cd089b23599091b112ae3d19cef5cf49d3438ae86028f1f28f81d",
       "size": 723
     },
     {
       "id": "content.f5d0f8d26d8d52808aaaf8eb52e0eb26",
       "oldPath": "python_script_study/ARGB学习/ARGBC.py",
-      "path": "python_script_study/ARGB学习/ARGBC.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/ARGBC.py",
       "sha256": "97069ed5d57f1b79131cf6ea1bd350cffa208f6ae5edce4bfc2477306efab9e7",
       "size": 3300
     },
     {
       "id": "content.bbaa6074df115000a0beab32fe9a3241",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/Qt5Core.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/Qt5Core.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/Qt5Core.dll",
       "sha256": "45861a45902474fc1fea389c0d7375c57831e781e8fd346e1f968abe0b9f8cb5",
       "size": 5998712
     },
     {
       "id": "content.56073b579c0b5deda28d96a1d5e8905b",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/Qt5Gui.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/Qt5Gui.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/Qt5Gui.dll",
       "sha256": "fc9955aeedef3a439f536f243bf5258b6c28a7c92d0506312b003568a5667765",
       "size": 7085176
     },
     {
       "id": "content.ea1c734faec350668bddab25d7a59098",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/Qt5Widgets.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/Qt5Widgets.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/Qt5Widgets.dll",
       "sha256": "cf4da208c6648e32472f58939c31913c4178208c9b1133a856be735eb87ace25",
       "size": 5516920
     },
     {
       "id": "content.b432f583e487547f8c72c9f322b0a9a0",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/WinRing0x64.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/WinRing0x64.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/WinRing0x64.dll",
       "sha256": "a746fd5728e7485f741cc330a279674bc8590b1b8007d8614046c49f58698485",
       "size": 62976
     },
     {
       "id": "content.d7317d9999485fc3bac4f63e1a3506ad",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/WinRing0x64.sys",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/WinRing0x64.sys",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/WinRing0x64.sys",
       "sha256": "11bd2c9f9e2397c9a16e0990e4ed2cf0679498fe0fd418a3dfdac60b5c160ee5",
       "size": 14544
     },
     {
       "id": "content.4b90312884e851c29fc858acc8c4bc35",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/hidapi.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/hidapi.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/hidapi.dll",
       "sha256": "ebeb835e2b4530ed68843f19d6a2604c51772e3c26e7f542fde194075f82d9b4",
       "size": 162304
     },
     {
       "id": "content.54f845c20d6c511f96ebcff0bd555d18",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/imageformats/qgif.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/imageformats/qgif.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/imageformats/qgif.dll",
       "sha256": "e1f6186d39cfa95c6639ae3a035066c87cc1b3a76d7909e18b76661422a3d98a",
       "size": 38008
     },
     {
       "id": "content.d373619b8d1257f49af990d02abb8af0",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/imageformats/qico.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/imageformats/qico.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/imageformats/qico.dll",
       "sha256": "2b51c4f038cc95a109286e208c058bbb4ee1a11676ceea0a49cfa222749bcd90",
       "size": 36984
     },
     {
       "id": "content.9c593f8003225f49b6d9d75fef2ca0dc",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/imageformats/qjpeg.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/imageformats/qjpeg.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/imageformats/qjpeg.dll",
       "sha256": "cff769bf14a53c4ac6c2ae3d64f21e04f2fd907d097a54a1784af483b596ddef",
       "size": 418936
     },
     {
       "id": "content.28f0ca8c03aa57f99715e83bd0deecc6",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/libusb-1.0.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/libusb-1.0.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/libusb-1.0.dll",
       "sha256": "a8c91f0ff68fb7802a9f4416728f0eeb4d99af4ceaa4ef7dfe9374e76e375018",
       "size": 157696
     },
     {
       "id": "content.0ff765c2f64655508226349a818c1253",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/platforms/qwindows.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/platforms/qwindows.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/platforms/qwindows.dll",
       "sha256": "ba0278ed9851dff2ae29b9b21bbf8cfbc0500973fbd0214e8a6a97c95f8a53f9",
       "size": 1493624
     },
     {
       "id": "content.8a909ff56fc555ee8691e9c32148a1fd",
       "oldPath": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/styles/qwindowsvistastyle.dll",
-      "path": "python_script_study/ARGB学习/OpenRGB Windows 64-bit/styles/qwindowsvistastyle.dll",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/styles/qwindowsvistastyle.dll",
       "sha256": "a347fcd340ab6df13fff7294585696af5cbbb71104944204507f0c3b9ead6afd",
       "size": 143480
     },
     {
       "id": "content.e42a20b020f15b549afbd102075602bf",
       "oldPath": "python_script_study/ARGB学习/test.py",
-      "path": "python_script_study/ARGB学习/test.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/test.py",
       "sha256": "2824d63334314556332458913484e5b4d446815930f0853340349cbe1880831f",
       "size": 2002
     },
     {
       "id": "content.c064ade17113550aa84cc7f831293cc8",
       "oldPath": "python_script_study/ARGB学习/关灯.py",
-      "path": "python_script_study/ARGB学习/关灯.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/关灯.py",
       "sha256": "056a750578ea676a9820fdf31c14bfd4ca7b1fb5c5373218cf963f9ae264943a",
       "size": 1144
     },
     {
       "id": "content.03abed545a965a72bc4eca967e92f264",
       "oldPath": "python_script_study/ARGB学习/学习.py",
-      "path": "python_script_study/ARGB学习/学习.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/学习.py",
       "sha256": "bde1b3cbd2385323fabedea74df9e048d94c40e0e5c7d49c6cce660d4d7d282b",
       "size": 5412
     },
     {
       "id": "content.71871325e587593a8907f6345261feab",
       "oldPath": "python_script_study/ARGB学习/开灯.py",
-      "path": "python_script_study/ARGB学习/开灯.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/开灯.py",
       "sha256": "3c09e809d6594149fdbffa9428d3f7b0ab74253f4ab38409ace96768d9b2235b",
       "size": 1584
     },
     {
       "id": "content.e94870d7ba1c556885daff659aaadc93",
       "oldPath": "python_script_study/Github去除DNS污染/GitHub稳定访问研究.py",
-      "path": "python_script_study/Github去除DNS污染/GitHub稳定访问研究.py",
+      "path": "系统平台与自动化/网络、域名与内网穿透/域名与DNS/Github去除DNS污染/GitHub稳定访问研究.py",
       "sha256": "8b0d9faca38d2bbf7e32b5946c16c42d68c2e5bba9f741d60dcec9ef0f264398",
       "size": 76
     },
     {
       "id": "content.e67588883c6f51cd8d532d5c62360fdc",
       "oldPath": "python_script_study/yolo模型屏幕画框/img.png",
-      "path": "python_script_study/yolo模型屏幕画框/img.png",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框/img.png",
       "sha256": "2c4a555255795f3319a693e8405beb18b887bff5b955afd810dcc0e414509da3",
       "size": 6417750
     },
     {
       "id": "content.c2689fa79e7952eb908a4d898c284af0",
       "oldPath": "python_script_study/yolo模型屏幕画框/win32屏幕绘制.py",
-      "path": "python_script_study/yolo模型屏幕画框/win32屏幕绘制.py",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框/win32屏幕绘制.py",
       "sha256": "c2fb9bff7d677339f7d28dba690feb4202557897ea0f71216ec16f2a82c32aeb",
       "size": 850
     },
     {
       "id": "content.25db62d04a845637a9b02ee472954e48",
       "oldPath": "python_script_study/yolo模型屏幕画框/实验.py",
-      "path": "python_script_study/yolo模型屏幕画框/实验.py",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框/实验.py",
       "sha256": "672f4ac205a13dbdc639853ed6e8542c6b341f63944ff3c69e3fb8557255326a",
       "size": 926
     },
     {
       "id": "content.ec199a92222159c8a828f2561340431a",
       "oldPath": "python_script_study/yolo模型屏幕画框/对当前屏幕高速截图.py",
-      "path": "python_script_study/yolo模型屏幕画框/对当前屏幕高速截图.py",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框/对当前屏幕高速截图.py",
       "sha256": "7aea1fe203daf3a4ba979b187de48afffdb99c6bf0e23e39de4d82d8b56fe3ea",
       "size": 870
     },
     {
       "id": "content.cdd0a0f2ece2574d947f2ab1c56dfd31",
       "oldPath": "python_script_study/yolo模型屏幕画框/成品整合.py",
-      "path": "python_script_study/yolo模型屏幕画框/成品整合.py",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框/成品整合.py",
       "sha256": "37f0eac915d0cfa17d78a9bb5daca6ddcacdc4a0323cd280f433860fe971e36d",
       "size": 5845
     },
     {
       "id": "content.0424384b248d5af5b2a0f9499dbed3aa",
       "oldPath": "python_script_study/yolo模型屏幕画框/查看模型训练情况.py",
-      "path": "python_script_study/yolo模型屏幕画框/查看模型训练情况.py",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框/查看模型训练情况.py",
       "sha256": "6fb4e70c972ea0f9487a096af81c3eb9fe71ef1c430809eff6a3268e3d60a53d",
       "size": 442
     },
     {
       "id": "content.cd80f312b1e7583e9265ad38e3b0a468",
       "oldPath": "python_script_study/yolo模型屏幕画框/模型推理和结果解析.py",
-      "path": "python_script_study/yolo模型屏幕画框/模型推理和结果解析.py",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框/模型推理和结果解析.py",
       "sha256": "2193a23b9fc6ece0042e6beb7660ecb8acdc75a836c8ac3da4a7b327be8b7190",
       "size": 1603
     },
     {
       "id": "content.11afb733b6995571af7ee9f330c06c86",
       "oldPath": "python_script_study/yolo模型屏幕画框/透明可穿透窗口制作.py",
-      "path": "python_script_study/yolo模型屏幕画框/透明可穿透窗口制作.py",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/yolo模型屏幕画框/透明可穿透窗口制作.py",
       "sha256": "afd523c140b8e54b45bef5f561cb9e982635d16f16823d9929d6ed4488bed5d5",
       "size": 4013
     },
     {
       "id": "content.1a948afe38e254f5ad2f4280311818a5",
       "oldPath": "python_script_study/手机号归属地查询/main.py",
-      "path": "python_script_study/手机号归属地查询/main.py",
+      "path": "项目工坊/自动化与工具项目/脚本工具/手机号归属地查询/main.py",
       "sha256": "12ef3b716ad53ff8eab2803368df2589a5442e884b58ba490c698df42584c9ad",
       "size": 149
     },
     {
       "id": "content.6ab64d0b0be651bdab47b67f2255fe1a",
       "oldPath": "python_script_study/排除并查找真实的音频设备/pyaudio最终方案.md",
-      "path": "python_script_study/排除并查找真实的音频设备/pyaudio最终方案.md",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/排除并查找真实的音频设备/pyaudio最终方案.md",
       "sha256": "2cef21e1a3f72909877a2d8c9bef645fc6b450910181fc3c63ac18ba1b895d7d",
       "size": 4959
     },
     {
       "id": "content.a563177c2782526abb6f8ca3e0e804bd",
       "oldPath": "python_script_study/排除并查找真实的音频设备/pyaudio最终方案.py",
-      "path": "python_script_study/排除并查找真实的音频设备/pyaudio最终方案.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/排除并查找真实的音频设备/pyaudio最终方案.py",
       "sha256": "b3718f83e4a67804ef709d41d224407e1f65d76a793b76000ec934f1fce57bd2",
       "size": 965
     },
     {
       "id": "content.919d0d78ff0f5dc79eb11084409e934e",
       "oldPath": "python_script_study/排除并查找真实的音频设备/基于硬件ID的精准匹配.py",
-      "path": "python_script_study/排除并查找真实的音频设备/基于硬件ID的精准匹配.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/排除并查找真实的音频设备/基于硬件ID的精准匹配.py",
       "sha256": "178ff97954e5937926ebc6b91c727c7089efcc7636be37be06149dc1da383c0c",
       "size": 1845
     },
     {
       "id": "content.24eb586b4a775ad792da2523d1451d9f",
       "oldPath": "python_script_study/排除并查找真实的音频设备/筛选出真实的物理硬件.md",
-      "path": "python_script_study/排除并查找真实的音频设备/筛选出真实的物理硬件.md",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/排除并查找真实的音频设备/筛选出真实的物理硬件.md",
       "sha256": "000d3b7f2d3cb5442322f06dfae84b48f93f6e79809263646ac81797090af9f6",
       "size": 6927
     },
     {
       "id": "content.017b25fbf97b5ed992810ae2cd06f7bb",
       "oldPath": "python_script_study/排除并查找真实的音频设备/设备名称过滤.py",
-      "path": "python_script_study/排除并查找真实的音频设备/设备名称过滤.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/排除并查找真实的音频设备/设备名称过滤.py",
       "sha256": "bf2949f1da6f6c2017619d5e79994be30e8eaeb3cdf3c006eef73981295c2a73",
       "size": 476
     },
     {
       "id": "content.b698c9ab8e715e88b3c53d7fd17a65ce",
       "oldPath": "python_script_study/烫烫烫.py",
-      "path": "python_script_study/烫烫烫.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/烫烫烫.py",
       "sha256": "358cc8d64017a97ee085609e3330d21b004ee7bca5382ef1cf64d74c4ba8d834",
       "size": 310
     },
     {
       "id": "content.255eae90ac3e5a67a867bb83814f9302",
       "oldPath": "python_script_study/电脑硬件参数管理和进程管理(psutil库)/CPU利用率问题.md",
-      "path": "python_script_study/电脑硬件参数管理和进程管理(psutil库)/CPU利用率问题.md",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/电脑硬件参数管理和进程管理(psutil库)/CPU利用率问题.md",
       "sha256": "f4a23de16213d3aca59c22762e55bbab9b7bbce84c5558e1a1a683161f9d38c7",
       "size": 10928
     },
     {
       "id": "content.b6ce9e67e2a05d13b9a4be103b338db1",
       "oldPath": "python_script_study/电脑硬件参数管理和进程管理(psutil库)/psutil库的学习.py",
-      "path": "python_script_study/电脑硬件参数管理和进程管理(psutil库)/psutil库的学习.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/电脑硬件参数管理和进程管理(psutil库)/psutil库的学习.py",
       "sha256": "329fb94c1ba3247ee18af7b1b179d4571528bb48c1fb126e8f337616636b984b",
       "size": 33300
     },
     {
       "id": "content.1f37c9b8f88d535da90ef22a266fc6be",
       "oldPath": "python_script_study/电脑硬件参数管理和进程管理(psutil库)/test.py",
-      "path": "python_script_study/电脑硬件参数管理和进程管理(psutil库)/test.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/电脑硬件参数管理和进程管理(psutil库)/test.py",
       "sha256": "2b1dcb3fb4ea2484cfe1d11e2190d5aa9e5110b57809ec62ecc12667620b8e4c",
       "size": 1513
     },
     {
       "id": "content.3ae11b6fbf3c55b2bc44572952411427",
       "oldPath": "python_script_study/电脑硬件参数管理和进程管理(psutil库)/test2.py",
-      "path": "python_script_study/电脑硬件参数管理和进程管理(psutil库)/test2.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/电脑硬件参数管理和进程管理(psutil库)/test2.py",
       "sha256": "f32482e4cf7e828ee508ea114e6146f11919964b2b12fc3da0e811a62c2ea2e8",
       "size": 23
     },
     {
       "id": "content.aa375941c35d5afeabd60bf0bfe232b6",
       "oldPath": "python_script_study/蓝屏研究/NotMyFault/已经删除了软件，为了遵守法律这里请去官网下载.txt",
-      "path": "python_script_study/蓝屏研究/NotMyFault/已经删除了软件，为了遵守法律这里请去官网下载.txt",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究/NotMyFault/已经删除了软件，为了遵守法律这里请去官网下载.txt",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.766821c070c65dfba04da1bc41f02037",
       "oldPath": "python_script_study/蓝屏研究/cmd繁殖.bat",
-      "path": "python_script_study/蓝屏研究/cmd繁殖.bat",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究/cmd繁殖.bat",
       "sha256": "22e90ba471b275fe05d5272c33e8a5a1187443bf079061986e551c34b655384d",
       "size": 13
     },
     {
       "id": "content.e240640e62265ccf9091990be90b4338",
       "oldPath": "python_script_study/蓝屏研究/windbg.appinstaller",
-      "path": "python_script_study/蓝屏研究/windbg.appinstaller",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究/windbg.appinstaller",
       "sha256": "80375b88107ef63a902b07c255f3b153ecdde1e881bdf2e3b301b7e6e1dee7c2",
       "size": 688
     },
     {
       "id": "content.7bdd776dd77e5aa2b3c79839c88d1e7b",
       "oldPath": "python_script_study/蓝屏研究/图片展示.png",
-      "path": "python_script_study/蓝屏研究/图片展示.png",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究/图片展示.png",
       "sha256": "b13d961bb777cb64d712a25dbc43fa030964eaac3534988d50002080dc365b68",
       "size": 64420
     },
     {
       "id": "content.d110e8d58700505ead9017cfc0c391ad",
       "oldPath": "python_script_study/蓝屏研究/微信.ico",
-      "path": "python_script_study/蓝屏研究/微信.ico",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究/微信.ico",
       "sha256": "43d9159b75618955ef4d32f2473057744e738ea1352559d6965f60a541864d98",
       "size": 10437
     },
     {
       "id": "content.edb41925b4ae518bbc99efa9cfe90fb4",
       "oldPath": "python_script_study/蓝屏研究/蓝屏研究.py",
-      "path": "python_script_study/蓝屏研究/蓝屏研究.py",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究/蓝屏研究.py",
       "sha256": "3e026a3119f68c1ab1dff373f9b4f199c3e2dedfe12e6a2dc0691f49044caa01",
       "size": 581
     },
     {
       "id": "content.1a84e4ee95dc5777ba7e7971d2ecc290",
       "oldPath": "python_script_study/蓝屏研究/蓝屏程序.spec",
-      "path": "python_script_study/蓝屏研究/蓝屏程序.spec",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究/蓝屏程序.spec",
       "sha256": "0e9bfcc0f9688e17700078734d632da40061619ff74a7ffff8448bef498b3ee1",
       "size": 737
     },
     {
       "id": "content.1b451e2e52f451a3b0eeb1ad8a613132",
       "oldPath": "python_script_study/蓝屏研究/蓝屏调试.md",
-      "path": "python_script_study/蓝屏研究/蓝屏调试.md",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/蓝屏研究/蓝屏调试.md",
       "sha256": "f7457a25b75503d680b59817e3a5f04864c40e498a6785deb3b1d50a1f164ecc",
       "size": 7512
     },
     {
       "id": "content.b485c7e66138535ab25a593822d15630",
       "oldPath": "python_script_study/邮件发送/.python-version",
-      "path": "python_script_study/邮件发送/.python-version",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送/.python-version",
       "sha256": "a876e0b10411037a012498b9fe18d9bc1df32ed8b722a13564dc944ddcfd9135",
       "size": 5
     },
     {
       "id": "content.2e5c8398488656c49bb4986c2c57792d",
       "oldPath": "python_script_study/邮件发送/README.md",
-      "path": "python_script_study/邮件发送/README.md",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送/README.md",
       "sha256": "b4498818fd74880f739b9584ba52469293058fb56cadc8a522572bfbcf69a675",
       "size": 1986
     },
     {
       "id": "content.a3cb09a375fd5e70a068a1e1d0dac220",
       "oldPath": "python_script_study/邮件发送/email_template.html",
-      "path": "python_script_study/邮件发送/email_template.html",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送/email_template.html",
       "sha256": "7040f42eaf6fab5c1f9be74e411e90f23103840f7c87bc6848376148510ab38c",
       "size": 3895
     },
     {
       "id": "content.d7cf8e73c8b051db904b90a83699bc76",
       "oldPath": "python_script_study/邮件发送/logo.png",
-      "path": "python_script_study/邮件发送/logo.png",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送/logo.png",
       "sha256": "3466400b3c0f92a4425ff226cbaf2308a667e536aaca65cc4d55e39358f78de5",
       "size": 442162
     },
     {
       "id": "content.61ff31a4702352b4bb31aa6f9203d956",
       "oldPath": "python_script_study/邮件发送/main.py",
-      "path": "python_script_study/邮件发送/main.py",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送/main.py",
       "sha256": "e0a1d7955b527b21116ffb954ce60a9cd13438f2aaa79e7009539529d3786f06",
       "size": 4418
     },
     {
       "id": "content.538f328fc1175a86958f35526bb07818",
       "oldPath": "python_script_study/邮件发送/pyproject.toml",
-      "path": "python_script_study/邮件发送/pyproject.toml",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送/pyproject.toml",
       "sha256": "ded731ba018d86ea168fd4b2911305f21222c9d72d95f5ee592bd09a44d4d88e",
       "size": 194
     },
     {
       "id": "content.a02445134d2b56f49e4ee613cb51272f",
       "oldPath": "python_script_study/邮件发送/uv.lock",
-      "path": "python_script_study/邮件发送/uv.lock",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送/uv.lock",
       "sha256": "c9056d1e40f8751e5f62df3a04c24433a25d834d2cafd2d6ef691371c238871b",
       "size": 100678
     },
     {
       "id": "content.bf5e7b9bd4e55894b882fe425770bd2a",
       "oldPath": "python_script_study/邮件发送/技术文档资料.md",
-      "path": "python_script_study/邮件发送/技术文档资料.md",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送/技术文档资料.md",
       "sha256": "ed3fdb3b28d9cff1018d922b277f895977df81f3c40dd99834936b424d88e193",
       "size": 11483
     },
     {
       "id": "content.a00f2fb7558e55618f848484b38ca5e9",
       "oldPath": "python_script_study/邮件发送/方法封装.py",
-      "path": "python_script_study/邮件发送/方法封装.py",
+      "path": "项目工坊/自动化与工具项目/脚本工具/邮件发送/方法封装.py",
       "sha256": "b8018957059b50be5a168b10740ba652aa965b8e7455a5fe02434df55b59c076",
       "size": 3238
     },
     {
       "id": "content.16970d4af40b5956a69d779298a14ceb",
       "oldPath": "python_script_study/驱动级键鼠控制研究.md",
-      "path": "python_script_study/驱动级键鼠控制研究.md",
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/系统维护脚本/驱动级键鼠控制研究.md",
       "sha256": "2b967fd3b4b940f3e3615c6ef782d6526e004f143488aeafb769015eb183e8ed",
       "size": 20547
     },
@@ -43565,1043 +43565,1043 @@
     {
       "id": "content.267bdf32efa4552385a8f26f63126f53",
       "oldPath": "爬虫学习/BeautifulSoup自我学习/main.py",
-      "path": "爬虫学习/BeautifulSoup自我学习/main.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/BeautifulSoup自我学习/main.py",
       "sha256": "02d2f7a70d7b82cf8fbfeb65c1f819f930a0609ea8f0666b1400a927dcac6a72",
       "size": 2225
     },
     {
       "id": "content.d00f9a6010af5f62b71d3f2d88e3593e",
       "oldPath": "爬虫学习/B站request入门/GitHub登录模拟.py",
-      "path": "爬虫学习/B站request入门/GitHub登录模拟.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/GitHub登录模拟.py",
       "sha256": "083b118e103b683b90bbf7eb2cd7a6365d09d082be84223ca2d982969139205f",
       "size": 4359
     },
     {
       "id": "content.b813544b0f5c5f0a8f883954b3968892",
       "oldPath": "爬虫学习/B站request入门/IP代理学习(7).py",
-      "path": "爬虫学习/B站request入门/IP代理学习(7).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/IP代理学习(7).py",
       "sha256": "719a8c2462c8c478aa3b2946b608a6fe7cf74896dd714ffdc2e41b182a4b8d02",
       "size": 1950
     },
     {
       "id": "content.00054ae5303756e6ac43d9e6a0611106",
       "oldPath": "爬虫学习/B站request入门/cookieJar和cookies字典互转(5).py",
-      "path": "爬虫学习/B站request入门/cookieJar和cookies字典互转(5).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/cookieJar和cookies字典互转(5).py",
       "sha256": "c561f7c838e71ee72eb7a75b3d909d0904760c74d921ad30fc08885109563f19",
       "size": 510
     },
     {
       "id": "content.d1aa0ab7fcc85601a82d6d4758457670",
       "oldPath": "爬虫学习/B站request入门/cookies参数的使用(4).py",
-      "path": "爬虫学习/B站request入门/cookies参数的使用(4).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/cookies参数的使用(4).py",
       "sha256": "9921a9607d042a767d4ab6ad12fef86d17eb59e9a440b9b4ae30688ab4169270",
       "size": 2266
     },
     {
       "id": "content.12415a62ac6055628b7fdc03910f41e4",
       "oldPath": "爬虫学习/B站request入门/post请求(9).py",
-      "path": "爬虫学习/B站request入门/post请求(9).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/post请求(9).py",
       "sha256": "bedc8c4e4955bc1d935a1359468eed6dda477cc838dff807654c34a5759b680d",
       "size": 2602
     },
     {
       "id": "content.84fb41c71fe75c0791a7c1c6fb12ef80",
       "oldPath": "爬虫学习/B站request入门/session保持对话(10).py",
-      "path": "爬虫学习/B站request入门/session保持对话(10).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/session保持对话(10).py",
       "sha256": "5a32de532f1d037712ea9e3c533cf82868c1e47b2fdb3fc37480027d750dc1a1",
       "size": 790
     },
     {
       "id": "content.8dddd4aaa1535dea87f1597b1fd3ae3a",
       "oldPath": "爬虫学习/B站request入门/verify证书(8).py",
-      "path": "爬虫学习/B站request入门/verify证书(8).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/verify证书(8).py",
       "sha256": "602fcde833fa4ad6185cadb6d0329ac479ef3c4eadcd47d22b8fb6f93873b80c",
       "size": 951
     },
     {
       "id": "content.8e3c2d099fe855c9a12244fbc3e98ed2",
       "oldPath": "爬虫学习/B站request入门/基础.py",
-      "path": "爬虫学习/B站request入门/基础.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/基础.py",
       "sha256": "7d0537c30cd8d9cd230a9c0eca8c5054a51d8a7cc1d97d51ffc06eb79e29126c",
       "size": 1861
     },
     {
       "id": "content.aa2ca9cbc45251e6a3f13863c32b9605",
       "oldPath": "爬虫学习/B站request入门/请求参数(1).py",
-      "path": "爬虫学习/B站request入门/请求参数(1).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/请求参数(1).py",
       "sha256": "7f57f04cfb400de187f24cde84529cfc23098ecb19cb0fa4a50ee20a76830317",
       "size": 1802
     },
     {
       "id": "content.094ca632ab4250beb9860b31c9f6ddf6",
       "oldPath": "爬虫学习/B站request入门/请求头携带Cookie(3).py",
-      "path": "爬虫学习/B站request入门/请求头携带Cookie(3).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/请求头携带Cookie(3).py",
       "sha256": "c5275de3ab2ed551cf99ff38997f6f3605707057bcd4dc6d80b2e98256cc0dc3",
       "size": 2925
     },
     {
       "id": "content.ead67d2dce6659b88c9a35ba59533241",
       "oldPath": "爬虫学习/B站request入门/请求头构建(2).py",
-      "path": "爬虫学习/B站request入门/请求头构建(2).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/请求头构建(2).py",
       "sha256": "fba82a03144c8af3267c7909b818340274fc40da9bbc9d1fa49cfe83d3e8fb3c",
       "size": 1318
     },
     {
       "id": "content.95f46a66acd65c1a925b79ed9d6ccec9",
       "oldPath": "爬虫学习/B站request入门/请求超时处理(6).py",
-      "path": "爬虫学习/B站request入门/请求超时处理(6).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站request入门/请求超时处理(6).py",
       "sha256": "924c5a9c31bb280d2af24097d32c2025dc4e8b238a7b7669c78bbc648a283520",
       "size": 290
     },
     {
       "id": "content.baaa6e1b1f525e22935fe52f32ef2580",
       "oldPath": "爬虫学习/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/bs4学习.py",
-      "path": "爬虫学习/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/bs4学习.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/bs4学习.py",
       "sha256": "3c0db53381dc26987678aa0994112df5d919a788e81b513e25dc6bbd7de8d471",
       "size": 643
     },
     {
       "id": "content.129cf3300db15427a560580edace2f7e",
       "oldPath": "爬虫学习/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/html学习.html",
-      "path": "爬虫学习/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/html学习.html",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/html学习.html",
       "sha256": "3f2841728700758f72a0ff1428a300e28c22faaebffc86187a3faec97dfa9f3f",
       "size": 1712
     },
     {
       "id": "content.e3b378c149ad50be82525adf9ec8406c",
       "oldPath": "爬虫学习/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/笔记.md",
-      "path": "爬虫学习/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/笔记.md",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/笔记.md",
       "sha256": "437076c8ed88d7f44c0df4a752ca91b91be048ff85b306a6a0e582ed77e6f77b",
       "size": 500
     },
     {
       "id": "content.7df97f053e3e50c7bfffdd698eb174a4",
       "oldPath": "爬虫学习/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/豆瓣爬虫(1).py",
-      "path": "爬虫学习/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/豆瓣爬虫(1).py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/B站爬虫进修(没学到啥，仅仅是html和soup有一点用)/豆瓣爬虫(1).py",
       "sha256": "edc2f776ef26ddcdd16493bd6a1340cc81f30b688692c11a95d218dbd982c91e",
       "size": 1071
     },
     {
       "id": "content.7220b6622afd526babbdefec70bba637",
       "oldPath": "爬虫学习/Playwright个人研究成果/.gitignore",
-      "path": "爬虫学习/Playwright个人研究成果/.gitignore",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/.gitignore",
       "sha256": "b4b3181b927e4a178f5c50264f86c691bbc4714e67ae45df87ae0df5ecb4e23d",
       "size": 940
     },
     {
       "id": "content.1123ee7821e25ccfb9ae70e6e0b10935",
       "oldPath": "爬虫学习/Playwright个人研究成果/LICENSES",
-      "path": "爬虫学习/Playwright个人研究成果/LICENSES",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/LICENSES",
       "sha256": "a8ae2ca5a6d9a25436678bc277ce5bd51feaf9d228c049fe9d82d701170b1341",
       "size": 11568
     },
     {
       "id": "content.e32bb6e9b4dd5f43beba630784030034",
       "oldPath": "爬虫学习/Playwright个人研究成果/README.md",
-      "path": "爬虫学习/Playwright个人研究成果/README.md",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/README.md",
       "sha256": "bca42535a4044c0da2ee402dab492ec6e028d5e3780c8286605496f6559b266c",
       "size": 28955
     },
     {
       "id": "content.2f535b596fae5317b071bff80c16f41e",
       "oldPath": "爬虫学习/Playwright个人研究成果/WebAIPilot.py",
-      "path": "爬虫学习/Playwright个人研究成果/WebAIPilot.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/WebAIPilot.py",
       "sha256": "8050a18052fef5d207dadf1da5531e2626ff3e58c199a96466c4500fe6e04f1c",
       "size": 2961
     },
     {
       "id": "content.772586c4858d5bd8a4b1b6a7c3230440",
       "oldPath": "爬虫学习/Playwright个人研究成果/_test_WebAIPilot.py",
-      "path": "爬虫学习/Playwright个人研究成果/_test_WebAIPilot.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/_test_WebAIPilot.py",
       "sha256": "cf1671c6afadfc99411f5f8646d4e9df23010aaba90a094b326ace0b7eadfaa0",
       "size": 2116
     },
     {
       "id": "content.435188245e7459e688228a5b01bb31a9",
       "oldPath": "爬虫学习/Playwright个人研究成果/config/.env.example",
-      "path": "爬虫学习/Playwright个人研究成果/config/.env.example",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/config/.env.example",
       "sha256": "b83e5c0153d338d077886d6afc89bdc255d7fd92b35cd319219335de1266be98",
       "size": 60
     },
     {
       "id": "content.652d95696bc858cfbfd73bb32e0f508d",
       "oldPath": "爬虫学习/Playwright个人研究成果/config/logging_config.yaml",
-      "path": "爬虫学习/Playwright个人研究成果/config/logging_config.yaml",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/config/logging_config.yaml",
       "sha256": "45ab6a9caec8625ccbe75a9c26408d81732c7865623872eeb7f80ad265dd4092",
       "size": 7985
     },
     {
       "id": "content.182f2eea675b57ac940268b16e6316aa",
       "oldPath": "爬虫学习/Playwright个人研究成果/config/settings.toml",
-      "path": "爬虫学习/Playwright个人研究成果/config/settings.toml",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/config/settings.toml",
       "sha256": "ca56298d12aa5620747d280a3004ef47379c16e994ed659963552df5e28ee89a",
       "size": 10436
     },
     {
       "id": "content.6e22e4a1430d5a30bc9bff2e4f8d1467",
       "oldPath": "爬虫学习/Playwright个人研究成果/logic/doubao_logic/doubao_flows.py",
-      "path": "爬虫学习/Playwright个人研究成果/logic/doubao_logic/doubao_flows.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/logic/doubao_logic/doubao_flows.py",
       "sha256": "ce550a37b2f8180975923b479f255d23d5f8559c08c19b2fc5cf241963d31bb2",
       "size": 2506
     },
     {
       "id": "content.5168e235fc0252e4924d9501a38a2272",
       "oldPath": "爬虫学习/Playwright个人研究成果/logic/flows_api.py",
-      "path": "爬虫学习/Playwright个人研究成果/logic/flows_api.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/logic/flows_api.py",
       "sha256": "4a37acea8686eafb7b8547fce9da1491f66383ee6122c4feb13c7db4052e619c",
       "size": 339
     },
     {
       "id": "content.0eb90e7112815050b5c97bd856b13442",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/__init__.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/__init__.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.1c373e8c07b750b3913d5cddff065d92",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/base_page.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/base_page.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/base_page.py",
       "sha256": "10a475b24bcd41b7a71fbc894344200084ee88cae2de225cc4e599329db76351",
       "size": 28047
     },
     {
       "id": "content.f1bb23c0ec9652a19628e83002614a5a",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/deepseek/__init__.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/deepseek/__init__.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/deepseek/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.039b12a8446059d88c573c00f0ef5756",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/deepseek/home_page.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/deepseek/home_page.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/deepseek/home_page.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.12f8f34fc8b6591dbb7cdc455da64c90",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/deepseek/login_page.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/deepseek/login_page.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/deepseek/login_page.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.35d809e541905be698f237c3dfc515a0",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/doubao/__init__.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/doubao/__init__.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/doubao/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.533c4759fdd6501e824d50138544172b",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/doubao/home_page.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/doubao/home_page.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/doubao/home_page.py",
       "sha256": "11b3a1ce4df1e7e9184c0d8217e7b770988f233aaeec270c31db66701a707a5f",
       "size": 14332
     },
     {
       "id": "content.b5d012b6f3565b208bbfde785a832b04",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/doubao/login_page.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/doubao/login_page.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/doubao/login_page.py",
       "sha256": "0f454fe67e8d7884cb52cbc2ec9d2a654212ab4798f6dcaa3a787bc5a365e148",
       "size": 2499
     },
     {
       "id": "content.33828f4e2dff5d76ba4a8668dd1bbba6",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/gemini/__init__.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/gemini/__init__.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/gemini/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.0de2344ded12554dae84acac5eb809ae",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/gemini/home_page.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/gemini/home_page.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/gemini/home_page.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.7c62890562e959c78419407b4e63ef3a",
       "oldPath": "爬虫学习/Playwright个人研究成果/pages/gemini/login_page.py",
-      "path": "爬虫学习/Playwright个人研究成果/pages/gemini/login_page.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/pages/gemini/login_page.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.3bf89e0efb8f5ace90a343f10e3a2651",
       "oldPath": "爬虫学习/Playwright个人研究成果/requirements.txt",
-      "path": "爬虫学习/Playwright个人研究成果/requirements.txt",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/requirements.txt",
       "sha256": "7e0f632544c41a74952d081dcce26eec0c9265b125e90bb8331fb7e62cbdbb0b",
       "size": 53
     },
     {
       "id": "content.600f00d5b7775c8eb714c4cc1242dbc6",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/__init__.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/__init__.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/__init__.py",
       "sha256": "f6619f3e7d7589753dd6e813abc2e05a5e8d6203d2ce9ad8e7c7ea646361a5a4",
       "size": 405
     },
     {
       "id": "content.a3a7e4c16663508096fc69ddbc35f24b",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/config_manager.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/config_manager.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/config_manager.py",
       "sha256": "05f4cd8019c2eca8fa14490c661b357c3f0a871f4d0f58e21b54d6f70baa9871",
       "size": 10249
     },
     {
       "id": "content.9cdb233361a35c2991e36d4a6745ffd0",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/logger.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/logger.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/logger.py",
       "sha256": "31edbe8c39ee515fb8f8da6ef6037e4046ef51bb9d62b6b120ee1da247198511",
       "size": 13753
     },
     {
       "id": "content.1297c99e713d5e52ad03475ee28fba34",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/logging_configurator.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/logging_configurator.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/logging_configurator.py",
       "sha256": "b50bc2e8aa1c8c8c63930118a1fecc2871809ff4ff067379d34ee7b0e05e9932",
       "size": 6073
     },
     {
       "id": "content.f376ca2c3a295777aeefb0a24d3f8a95",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/path_utils.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/path_utils.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/path_utils.py",
       "sha256": "bcc4998e0c93716179a77412d599c3e7e7a5546b132dc13c0ca54760aa676972",
       "size": 2987
     },
     {
       "id": "content.1b9a3d9d91f558df91178dda296f53a4",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/playwright_factory/__init__.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/playwright_factory/__init__.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/playwright_factory/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.9068ac70b7f25e18b8135dec113a6fbb",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/playwright_factory/context_options.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/playwright_factory/context_options.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/playwright_factory/context_options.py",
       "sha256": "4124298e9bca64bda9896d29a3297a8e91ca8f7df99f014b8fe6278fd6ed884a",
       "size": 13886
     },
     {
       "id": "content.7b3240cfdbca5a3984dfdf63fd8c0ef5",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/playwright_factory/launch_options.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/playwright_factory/launch_options.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/playwright_factory/launch_options.py",
       "sha256": "67c20a25818a09258b4a225b5c396175c86894209405354ec67c179d109c8129",
       "size": 6965
     },
     {
       "id": "content.27d393f411d751a4a4200cca5785be62",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/playwright_factory/playwright_factory.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/playwright_factory/playwright_factory.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/playwright_factory/playwright_factory.py",
       "sha256": "2af233948808ea63f3848699c760083b113d8353b78490b00a91c51cbc3ccac3",
       "size": 18982
     },
     {
       "id": "content.7497176bc6ad53e582de3a591c26878e",
       "oldPath": "爬虫学习/Playwright个人研究成果/utils/state_save.py",
-      "path": "爬虫学习/Playwright个人研究成果/utils/state_save.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/utils/state_save.py",
       "sha256": "6fbe4eaafcc0be334c166d702e8aa4312677ab8a70b181a21d10fc9d096541e4",
       "size": 2020
     },
     {
       "id": "content.7f2ca7b4f200542a8fb8981833dee3b8",
       "oldPath": "爬虫学习/Playwright个人研究成果/开发随笔/image.png",
-      "path": "爬虫学习/Playwright个人研究成果/开发随笔/image.png",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/开发随笔/image.png",
       "sha256": "1f90c1d3dfbe0e48edacfbc69bdaddc752eefade77f928209eb33b46bbc91292",
       "size": 31442
     },
     {
       "id": "content.1954712910175223a2436500cc34e379",
       "oldPath": "爬虫学习/Playwright个人研究成果/开发随笔/image2.png",
-      "path": "爬虫学习/Playwright个人研究成果/开发随笔/image2.png",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/开发随笔/image2.png",
       "sha256": "8253742e36b277870dbface8d9ffa54490e42ea87a7b1449b337b7a83031076c",
       "size": 222040
     },
     {
       "id": "content.6bf47b1a58ae5c3ab6cfdff1d7e582d8",
       "oldPath": "爬虫学习/Playwright个人研究成果/开发随笔/image3.png",
-      "path": "爬虫学习/Playwright个人研究成果/开发随笔/image3.png",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/开发随笔/image3.png",
       "sha256": "2e4a6d73bb7fc3cda6a5eab76a263fb613a767643bed3e8039d1c412f211c225",
       "size": 288370
     },
     {
       "id": "content.dfe4847b366350af89e71b3103894c4e",
       "oldPath": "爬虫学习/Playwright个人研究成果/开发随笔/image4.png",
-      "path": "爬虫学习/Playwright个人研究成果/开发随笔/image4.png",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/开发随笔/image4.png",
       "sha256": "84b22b837900115d43545e6392aa63b97778af0d9405aada2b30589bddf0b3b5",
       "size": 368795
     },
     {
       "id": "content.e50305eda0735c1bb10503ce97d0cdfd",
       "oldPath": "爬虫学习/Playwright个人研究成果/开发随笔/test.md",
-      "path": "爬虫学习/Playwright个人研究成果/开发随笔/test.md",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/开发随笔/test.md",
       "sha256": "0dc581ffcbb3e267cf5883ae6452f136164d3d51ed68e436d20b1eac6c364126",
       "size": 2616
     },
     {
       "id": "content.81f43aba57505845add8cf9b9c1ac953",
       "oldPath": "爬虫学习/Playwright个人研究成果/开发随笔/test.png",
-      "path": "爬虫学习/Playwright个人研究成果/开发随笔/test.png",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/Playwright个人研究成果/开发随笔/test.png",
       "sha256": "1586050ab9c48326538168b8101c01f1fc3d15123583fead211047876f520bc6",
       "size": 390870
     },
     {
       "id": "content.c58b67ef5c3c5bab802c30351fc65976",
       "oldPath": "爬虫学习/Playwright学习/example.png",
-      "path": "爬虫学习/Playwright学习/example.png",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/example.png",
       "sha256": "d0a9b2fd89fe5ffef1e2fc5c3d6794e3474f44a099aa0075e8b06f6f34188d84",
       "size": 78802
     },
     {
       "id": "content.75fe60d78c7b50c093298994bd89d3fa",
       "oldPath": "爬虫学习/Playwright学习/test_example.py",
-      "path": "爬虫学习/Playwright学习/test_example.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/test_example.py",
       "sha256": "eb18a0d7f8e4af293f76fe0d7c56d22a706065e5c340349c6fc9040d89f28792",
       "size": 568
     },
     {
       "id": "content.b9d7b713e12c52d9b9d08cb2cc4ff5ec",
       "oldPath": "爬虫学习/Playwright学习/交互模式（REPL）.py",
-      "path": "爬虫学习/Playwright学习/交互模式（REPL）.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/交互模式（REPL）.py",
       "sha256": "28d09b2b20cf7931c3f94935a1abe8833aa70b100bb22c8dd313f0aa6b07067a",
       "size": 836
     },
     {
       "id": "content.5ad53c14c4795b2e9dc277f221b7012b",
       "oldPath": "爬虫学习/Playwright学习/使用 Playwright 和Pyinstaller来创建独立的可执行文件.py",
-      "path": "爬虫学习/Playwright学习/使用 Playwright 和Pyinstaller来创建独立的可执行文件.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/使用 Playwright 和Pyinstaller来创建独立的可执行文件.py",
       "sha256": "008d0330823e5a2a1f88f9deba88a2b5aceb790b9f7866bc8045a0f68b5c5538",
       "size": 706
     },
     {
       "id": "content.de76b43dde3f54c3ae6637fdabeaa7fe",
       "oldPath": "爬虫学习/Playwright学习/入门.md",
-      "path": "爬虫学习/Playwright学习/入门.md",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/入门.md",
       "sha256": "4273d703c29d24f51fe6d040ecbcb562da619a494a4d30db2ce0a357e8d930b9",
       "size": 28835
     },
     {
       "id": "content.3f5ce87f6ffb5bf8a0f6f4808ad0113c",
       "oldPath": "爬虫学习/Playwright学习/启动浏览器.py",
-      "path": "爬虫学习/Playwright学习/启动浏览器.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/启动浏览器.py",
       "sha256": "62bdde57e8b56ffda041442b7ecb8d5f05d33882b4a25fabbe283c61ff4944e8",
       "size": 615
     },
     {
       "id": "content.adb76e98ef09500cac66d69f10098e76",
       "oldPath": "爬虫学习/Playwright学习/图书指南-图书馆.md",
-      "path": "爬虫学习/Playwright学习/图书指南-图书馆.md",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/图书指南-图书馆.md",
       "sha256": "7dbff247a99e3dbef2c5ae5d204008178aa0619a66090fbc5f3a53448a54fafc",
       "size": 4889
     },
     {
       "id": "content.37ca26787cc85e79872b92ee7a62c50e",
       "oldPath": "爬虫学习/Playwright学习/正则复习.md",
-      "path": "爬虫学习/Playwright学习/正则复习.md",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/正则复习.md",
       "sha256": "e8715503e7f28bbff8ff659cca715b81c463fc9a36051bb765af8dfadcc3f54e",
       "size": 3728
     },
     {
       "id": "content.a79b9ad5cecd5477abe626d24f54a841",
       "oldPath": "爬虫学习/Playwright学习/第一个脚本.py",
-      "path": "爬虫学习/Playwright学习/第一个脚本.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Playwright/Playwright学习/第一个脚本.py",
       "sha256": "721f3b3e633650950aa8e7e9cc9bacb043dfaf7a14250ab9084ea903ff8510f4",
       "size": 356
     },
     {
       "id": "content.a515029a3d7e59e6bc56e71da51afc38",
       "oldPath": "爬虫学习/Selenium学习/官网学习/入门指南/使用selenium.py",
-      "path": "爬虫学习/Selenium学习/官网学习/入门指南/使用selenium.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/官网学习/入门指南/使用selenium.py",
       "sha256": "4385f86544c53dd055506eb2e6fdf4ce8a910674a138e67bbd976bea1dd5b318",
       "size": 1202
     },
     {
       "id": "content.56069c9266cc5db287dd2a11bee287af",
       "oldPath": "爬虫学习/Selenium学习/官网学习/入门指南/第一个脚本.py",
-      "path": "爬虫学习/Selenium学习/官网学习/入门指南/第一个脚本.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/官网学习/入门指南/第一个脚本.py",
       "sha256": "3e1fbe7ed68c482a4e2c84f8e4fe38173b1fe62c411c5144e4eed8897eb70737",
       "size": 1370
     },
     {
       "id": "content.3afb9221a2595562ad6e41b5975919c7",
       "oldPath": "爬虫学习/Selenium学习/官网学习/过检测学习/AI资料1.md",
-      "path": "爬虫学习/Selenium学习/官网学习/过检测学习/AI资料1.md",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/官网学习/过检测学习/AI资料1.md",
       "sha256": "1bfe5d765e233392dbb7de57d7d194dd21cf29a6d9a8d7f9355e0388a13c48f6",
       "size": 6842
     },
     {
       "id": "content.bdabed7bab6e50de83460d94f4180e67",
       "oldPath": "爬虫学习/Selenium学习/官网学习/过检测学习/网址.txt",
-      "path": "爬虫学习/Selenium学习/官网学习/过检测学习/网址.txt",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/官网学习/过检测学习/网址.txt",
       "sha256": "b985dd115559b03f500773223b533ed9fb68fb2115ec5701cdcec0b496d034a4",
       "size": 413
     },
     {
       "id": "content.751190e90b505d64aec75b0ab523f0ed",
       "oldPath": "爬虫学习/Selenium学习/官网学习/驱动/浏览器设置选项和selenium浏览器选项的关系.md",
-      "path": "爬虫学习/Selenium学习/官网学习/驱动/浏览器设置选项和selenium浏览器选项的关系.md",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/官网学习/驱动/浏览器设置选项和selenium浏览器选项的关系.md",
       "sha256": "a42b31ec524c79f930a3e48626b8e0a330a706085b446b8c39e968a8831f3dc1",
       "size": 3658
     },
     {
       "id": "content.397c61601bb55ecf98ae3a5a62031547",
       "oldPath": "爬虫学习/Selenium学习/官网学习/驱动/浏览器选项.md",
-      "path": "爬虫学习/Selenium学习/官网学习/驱动/浏览器选项.md",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/官网学习/驱动/浏览器选项.md",
       "sha256": "d4d9bbb95925e91bfc959f630ef96bdc110b787d8d2b63445c87f73cfc9f8c87",
       "size": 4561
     },
     {
       "id": "content.10125867727057abacfe9feb786b68db",
       "oldPath": "爬虫学习/Selenium学习/官网学习/驱动/浏览器选项.py",
-      "path": "爬虫学习/Selenium学习/官网学习/驱动/浏览器选项.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/官网学习/驱动/浏览器选项.py",
       "sha256": "e5b4bb8d1f9a70f70178ab10d052ab3e03c194442bc5198c9eb994b2d99e095c",
       "size": 7531
     },
     {
       "id": "content.9bc2849aef2a5cf285ccf1716727d36e",
       "oldPath": "爬虫学习/Selenium学习/官网学习/驱动/浏览器选项用途.md",
-      "path": "爬虫学习/Selenium学习/官网学习/驱动/浏览器选项用途.md",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/官网学习/驱动/浏览器选项用途.md",
       "sha256": "3a396c87b8a2d679a1c72c3996347c25633b73e1e61d3ea69add3dc9b5fc852f",
       "size": 4887
     },
     {
       "id": "content.b6ced3e95b7e5795ab84282cdf088dd1",
       "oldPath": "爬虫学习/Selenium学习/记录.txt",
-      "path": "爬虫学习/Selenium学习/记录.txt",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/记录.txt",
       "sha256": "7f20467e477c59b38ab01a6349027cd97f0d30fa3395182684b14435e53d9df7",
       "size": 190
     },
     {
       "id": "content.3d97182a275f51598c42c7d09c2eeae8",
       "oldPath": "爬虫学习/Selenium学习/课堂学习/main.py",
-      "path": "爬虫学习/Selenium学习/课堂学习/main.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/课堂学习/main.py",
       "sha256": "9e6b72e89c35b9d7d0ed09469b318b8a2849ee1191f909292b21cedc2a6727b4",
       "size": 1185
     },
     {
       "id": "content.37d8ba212b9350f9860848ae156cfae4",
       "oldPath": "爬虫学习/Selenium学习/课堂学习/老师.py",
-      "path": "爬虫学习/Selenium学习/课堂学习/老师.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Selenium/Selenium学习/课堂学习/老师.py",
       "sha256": "d8ed5e7435e6c2423101813c55e1e231df6fdab1b14126846fc244c7dcada8c0",
       "size": 741
     },
     {
       "id": "content.d99b7389c3a45e7db7391ded8eb4e99b",
       "oldPath": "爬虫学习/html结构.png",
-      "path": "爬虫学习/html结构.png",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/html结构.png",
       "sha256": "a1c8fec7d2b8dae2a4d4cc736645d96ab9831b3f96ad0e9e6b25a4de8de3c655",
       "size": 247069
     },
     {
       "id": "content.b8533372dbba513fb1a6c3d71b3ad59c",
       "oldPath": "爬虫学习/request个人研究成果/GitHub查看是否关注了项目/main.py",
-      "path": "爬虫学习/request个人研究成果/GitHub查看是否关注了项目/main.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/GitHub查看是否关注了项目/main.py",
       "sha256": "8b3828ef862ad4b22df0a5aa97d11cfee401cc01f8d73f40a815227260b80243",
       "size": 587
     },
     {
       "id": "content.71c980874dc85a40b83a3af6eb428eaf",
       "oldPath": "爬虫学习/request个人研究成果/GitHub查看是否关注了项目/test.py",
-      "path": "爬虫学习/request个人研究成果/GitHub查看是否关注了项目/test.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/GitHub查看是否关注了项目/test.py",
       "sha256": "c65d795ba20d0045af32ec8d45627f052a2fe1f2241be99741b0921ee06375c6",
       "size": 1877
     },
     {
       "id": "content.693a9d422f2d5e23979d4f8124c34bef",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/.gitignore",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/.gitignore",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/.gitignore",
       "sha256": "a451b6e6885be45d01bee03b18e58399cf26f09801ff10ff90c86a353803cccc",
       "size": 5
     },
     {
       "id": "content.3dec32ae0f275346ac51aedd3bfd408e",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/test.py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/test.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/test.py",
       "sha256": "e62698ece7843b1f3cddd718cb15b75a8cd9917c84c0aaac82841774436bf439",
       "size": 1656
     },
     {
       "id": "content.0cdfffad2742590f87803766a9527d4d",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/test2.py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/test2.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/test2.py",
       "sha256": "976885cfe5e4f7552536813490f00832759b3fb2911696b298adda9be3dcde84",
       "size": 898
     },
     {
       "id": "content.d403db5513d050b794cb3fd476b9d6c3",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/关键笔记.md",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/关键笔记.md",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/关键笔记.md",
       "sha256": "3f20559b08d417b2dd16a2b53924e2be93796e4b04563b231343faf29d385aa2",
       "size": 4443
     },
     {
       "id": "content.b86d0e02ee4a581c8258410594bb0a66",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/拿到排行榜的数据.py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/拿到排行榜的数据.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/拿到排行榜的数据.py",
       "sha256": "ba6950960ed2b365f006a8fcc48db481da98f35aef07a11d3f46d6ce2b127dec",
       "size": 2798
     },
     {
       "id": "content.cbbb24f769815d62b63ae6ef766da0f5",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/爬取排行榜前50_可选R18.py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/爬取排行榜前50_可选R18.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/爬取排行榜前50_可选R18.py",
       "sha256": "c25fc8d890b595befe1f56740b143dfe14e4f841bfd2b05ae36fb42e33db49e3",
       "size": 2690
     },
     {
       "id": "content.7c35b4002dbb5c27a114177529c39ee0",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/真正实现.py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/真正实现.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/真正实现.py",
       "sha256": "ad76399220ab07bc1142ee67e22a5d4ca055ebbd8a33b638c98f147df5e0d5e2",
       "size": 2232
     },
     {
       "id": "content.5528bcde0c675b86b658df51e41c9882",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/请求头(完整版)，绕过cloudflare验证.py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/请求头(完整版)，绕过cloudflare验证.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/请求头(完整版)，绕过cloudflare验证.py",
       "sha256": "645a1f8cd22237f779ff50d2df25eb3f527a1d1b6b749e4d00d465e4a07e06b2",
       "size": 1761
     },
     {
       "id": "content.10c56b0913385b0e8bdc6af082a2f290",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/逆天.md",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/逆天.md",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/逆天.md",
       "sha256": "774821afe6e60ab49d4310c936b240937c5fe4b730df71735b9aeb77883acf95",
       "size": 4015
     },
     {
       "id": "content.d4053a155f9b5a5380021c540a67cd10",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/单排行查询(不完美).py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/单排行查询(不完美).py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/单排行查询(不完美).py",
       "sha256": "39f2bfb22f0453ee5c9f616dd035d68eb1e1d922f6f77e09c2d6993999902957",
       "size": 1972
     },
     {
       "id": "content.ce872bd5187a583491055575cd8dd4ac",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/单排行查询.py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/单排行查询.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/单排行查询.py",
       "sha256": "f9f3e9f043cde64ef13ffd340933b219ad11ebf54545a11cbbdb7f80b1db0a79",
       "size": 3074
     },
     {
       "id": "content.90a51c4688d456b68857cea734d1da43",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/真正实现(排名来计数，指哪打哪).py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/真正实现(排名来计数，指哪打哪).py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/真正实现(排名来计数，指哪打哪).py",
       "sha256": "c1fcdf63e08ed1d93a802c7c2aee61edded168411489a4f87402c9f81cc0310e",
       "size": 2557
     },
     {
       "id": "content.c14f69aaf6ee5ea0999a54f7590c4cd2",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/连续查询(重复且有bug).py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/连续查询(重复且有bug).py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/连续查询(重复且有bug).py",
       "sha256": "8120526d09596cf0d76f5235386f975feffd4b4266800ab24d313424c10d6e13",
       "size": 8033
     },
     {
       "id": "content.3b99224890c45ac9b7c153d9bdd46c69",
       "oldPath": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/连续查询.py",
-      "path": "爬虫学习/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/连续查询.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/P站爬虫/插画/排行今日前十/高级实现/连续查询.py",
       "sha256": "4b532034021f1a82b3e1a05ee402d7bfa99762edb435d9f5d78095a94eee8caf",
       "size": 3530
     },
     {
       "id": "content.9665505d4c2f5de4a72b85251b324aba",
       "oldPath": "爬虫学习/request个人研究成果/基于某站关键词图片爬虫/image_crawler.py",
-      "path": "爬虫学习/request个人研究成果/基于某站关键词图片爬虫/image_crawler.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/基于某站关键词图片爬虫/image_crawler.py",
       "sha256": "95ffb406c47b4a074f44457c8008441ed1111af4f059fc150e436f96d89ba59c",
       "size": 6399
     },
     {
       "id": "content.47af91ef8f7e52819e23b15bd22eaf0f",
       "oldPath": "爬虫学习/request个人研究成果/基于某站关键词图片爬虫/图标.ico",
-      "path": "爬虫学习/request个人研究成果/基于某站关键词图片爬虫/图标.ico",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/基于某站关键词图片爬虫/图标.ico",
       "sha256": "b404148064413a32cba8862bfee1228a7daede1dc0e9cca09953050ac92ad3f2",
       "size": 390676
     },
     {
       "id": "content.b268e7b28fde50f596219886f459776b",
       "oldPath": "爬虫学习/request个人研究成果/基于某站关键词图片爬虫/基于某站关键词图片爬虫.zip",
-      "path": "爬虫学习/request个人研究成果/基于某站关键词图片爬虫/基于某站关键词图片爬虫.zip",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/基于某站关键词图片爬虫/基于某站关键词图片爬虫.zip",
       "sha256": "1c64076053676ea9a40eaba4c84818fddae9bda7016960aca676cc6a5679d342",
       "size": 26201302
     },
     {
       "id": "content.16df246bc7a955c9ae8076060a8d1c5e",
       "oldPath": "爬虫学习/request个人研究成果/涩图生成器/图标.ico",
-      "path": "爬虫学习/request个人研究成果/涩图生成器/图标.ico",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/涩图生成器/图标.ico",
       "sha256": "2304d153722f01edfb9379763264787b4631237398abcd85bb048ab9b8346db9",
       "size": 432254
     },
     {
       "id": "content.d6e39ca19b0a58cd88641d18edbbb012",
       "oldPath": "爬虫学习/request个人研究成果/涩图生成器/涩图生成器.py",
-      "path": "爬虫学习/request个人研究成果/涩图生成器/涩图生成器.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/涩图生成器/涩图生成器.py",
       "sha256": "4eddb8a1453afd0a84c81638da3c6591d108f5e16c15c9f5e1bb4dc3057fd8a1",
       "size": 1274
     },
     {
       "id": "content.eb78cc57fbf85c9493a937c1290edbde",
       "oldPath": "爬虫学习/request个人研究成果/涩图生成器/通用的图片网络爬虫.py",
-      "path": "爬虫学习/request个人研究成果/涩图生成器/通用的图片网络爬虫.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/request个人研究成果/涩图生成器/通用的图片网络爬虫.py",
       "sha256": "11392fb09be4911baecfc0458cb8662a6219c5c96e65e53d1b87b4cf8a8ace0a",
       "size": 2193
     },
     {
       "id": "content.07c8cd54d90553108bba4036e719eb4d",
       "oldPath": "爬虫学习/request库深入学习/官方文档学习.py",
-      "path": "爬虫学习/request库深入学习/官方文档学习.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/request库深入学习/官方文档学习.py",
       "sha256": "a2bda3f7a925980f41757239e19be8123b5e20b3a37f09939b0f1a4bc42b43d2",
       "size": 645
     },
     {
       "id": "content.706bfc6c4622566f839fcf26d67f373b",
       "oldPath": "爬虫学习/selenium坐牢中.txt",
-      "path": "爬虫学习/selenium坐牢中.txt",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/selenium坐牢中.txt",
       "sha256": "c27a494f990531ffd642f4a83044839c6851d297c4d13efd46ffdf24f68c2aab",
       "size": 61
     },
     {
       "id": "content.8cb0af2d420e5c9990c28770c9c86f10",
       "oldPath": "爬虫学习/元素定位.png",
-      "path": "爬虫学习/元素定位.png",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/元素定位.png",
       "sha256": "a92a92256c8ed95fd2cfe96cd61998157c524b801e648efb968396f34424b220",
       "size": 216458
     },
     {
       "id": "content.d344f225760655b4b765fad06d7f190a",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/lxml学习.py",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/lxml学习.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/lxml学习.py",
       "sha256": "5e4104a242b57b3974eb26aee98c6525a5a4394444de990ed40f1804f5497cc0",
       "size": 308
     },
     {
       "id": "content.8b3af2a36cff50829f068d3c61a68a33",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/代理测试.py",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/代理测试.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/代理测试.py",
       "sha256": "72840def83d461e5c487836deddcc521304a4cb9321cbe8fa232e139a8615228",
       "size": 334
     },
     {
       "id": "content.caeddef9229154eea59f0e20c5e2e821",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/心得.md",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/心得.md",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/心得.md",
       "sha256": "b6005b8d099a41f2070b0aec3a1d5f00df7c1a9a5d9023669f78a553999be4c3",
       "size": 685
     },
     {
       "id": "content.ecf912e156335076aa54b8c8c64f7f8a",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧图片下载.py",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧图片下载.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧图片下载.py",
       "sha256": "63a87c06d10f0ea7e54d29fa7c5c0bdf55a98d4f4773470295da35b76c9eb392",
       "size": 4950
     },
     {
       "id": "content.e7d735ca03b1519e9349be150132b3ae",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/三傻大闹宝莱坞.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/三傻大闹宝莱坞.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/三傻大闹宝莱坞.webp",
       "sha256": "1cd40177f42657e03277ceede2cc6bbca90bfeac6d491bb9c1b49bc149bd80c5",
       "size": 31844
     },
     {
       "id": "content.283e1acea9695fc4b6ca3a189956b459",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/千与千寻.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/千与千寻.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/千与千寻.webp",
       "sha256": "2613cc38643248efdb34200326142394934b57e686e4bc0a84d8185fd3f9ad59",
       "size": 18419
     },
     {
       "id": "content.e2df549860ec5bad914e4776694b4377",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/大话西游之大圣娶亲.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/大话西游之大圣娶亲.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/大话西游之大圣娶亲.webp",
       "sha256": "504bef23c0d5222a4e5b0a882d3095c3dbfb607840229e922a1c14209dffdfc3",
       "size": 22308
     },
     {
       "id": "content.7b5742f2ad5658078205852739c38d4c",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/寻梦环游记.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/寻梦环游记.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/寻梦环游记.webp",
       "sha256": "458c982eb3b512b6e904ccc231e3bd0e69e71787909aea7c2f9e67b00ad29e1c",
       "size": 37718
     },
     {
       "id": "content.16a491d7011e556ebb5775ba9c234bb9",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/当幸福来敲门.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/当幸福来敲门.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/当幸福来敲门.webp",
       "sha256": "b73e460c17bd04c3f60590617d373efb9e58bfaecc0ec87b88a26c5f1f1097e7",
       "size": 20838
     },
     {
       "id": "content.4b735ad2416f5f7594f13270af291acb",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/忠犬八公的故事.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/忠犬八公的故事.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/忠犬八公的故事.webp",
       "sha256": "71b7643c62937a18cf554c83c75557fef4180411569206f71f81243bd09e38d4",
       "size": 29501
     },
     {
       "id": "content.7a5371d51b88582a9e4bae632296edb3",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/控方证人.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/控方证人.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/控方证人.webp",
       "sha256": "ce6076a8510d8c8e957a342c6db7ac0c039d2efc69fdd94742803a0af2aa28f7",
       "size": 33948
     },
     {
       "id": "content.511842403fff56709d85cb7cad3ff96f",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/放牛班的春天.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/放牛班的春天.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/放牛班的春天.webp",
       "sha256": "07dd982e8eab93a99290c28ecf49ec1de9dac70a4ed9f4bac61951100e910c8e",
       "size": 22670
     },
     {
       "id": "content.51cb8d6e69de580db6975188ea313827",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/教父.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/教父.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/教父.webp",
       "sha256": "049ce39095e3f275cb4846c83868d69b436ee2dff3a058163fd134ca18add539",
       "size": 17593
     },
     {
       "id": "content.6bd9d055da8c5802a801328457a5e96d",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/无间道.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/无间道.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/无间道.webp",
       "sha256": "23696215f52357a67114cdae18e3960f681de935cf9b46131d5cbaa4bd8423c2",
       "size": 19781
     },
     {
       "id": "content.4917bef63a195bf69eec6b6df19da1c3",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/星际穿越.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/星际穿越.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/星际穿越.webp",
       "sha256": "3b0619fc0aad298ec04ad363d5c9146d6053be784f88f5e72398e9174aabaec2",
       "size": 23715
     },
     {
       "id": "content.49f3f614dd355cc5841829257802aec2",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/机器人总动员.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/机器人总动员.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/机器人总动员.webp",
       "sha256": "ffdcb927077ab4018a40f9521b2952717b7b46836d211198ef6eaff46b2a9f40",
       "size": 24429
     },
     {
       "id": "content.ff1977b0ae5953dca50e07ca00c9adf5",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/楚门的世界.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/楚门的世界.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/楚门的世界.webp",
       "sha256": "b3e5fa290aca1d9bac9fae5266aba65a378b28919f5f6b6838780613679fda06",
       "size": 46118
     },
     {
       "id": "content.32533e03f66659d3a4201fc2baca208c",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/泰坦尼克号.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/泰坦尼克号.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/泰坦尼克号.webp",
       "sha256": "d9a303ad247d5dc8a713632ca255c842f7cd0d9d7a2aa866d2b87f6db05c2766",
       "size": 27770
     },
     {
       "id": "content.39898f19107b5301b02f3872614372b0",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/海上钢琴师.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/海上钢琴师.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/海上钢琴师.webp",
       "sha256": "49c04f8daed6a95db72193cf1e9734fdb4f53d71d9afdc96dc00ed1dc4ba9474",
       "size": 13376
     },
     {
       "id": "content.d9eaf67fc23b5765ad38d07ea2432ed3",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/熔炉.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/熔炉.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/熔炉.webp",
       "sha256": "54e210720a540d24e1b85490a2112b88dc7d926adf4dc79bc98c7dd32015ccdb",
       "size": 23590
     },
     {
       "id": "content.a66ad4e8c83355cba213148991ed81a8",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/疯狂动物城.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/疯狂动物城.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/疯狂动物城.webp",
       "sha256": "6d8fee808278db7cf464c166f07770e94ce1d1a5d49d7bbbee6dbc159798d78a",
       "size": 34757
     },
     {
       "id": "content.ee726f237b41525294f9f582cecb8f79",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/盗梦空间.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/盗梦空间.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/盗梦空间.webp",
       "sha256": "5efdb45cda1c7e0dfc60f6e9f7c0076146ece3ef740e0d01ed929c0cf4b8ec4d",
       "size": 33064
     },
     {
       "id": "content.509b3fee218d5394855462adc7fc8493",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/美丽人生.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/美丽人生.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/美丽人生.webp",
       "sha256": "0a265c0ba206d7637a96e40069328d4de4700e82af22c8e94c4d75e80fef9e10",
       "size": 33479
     },
     {
       "id": "content.6d201e16cea55fe1aa48a7ff9f18b695",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/肖申克的救赎.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/肖申克的救赎.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/肖申克的救赎.webp",
       "sha256": "5669f88616a31f76079ed456861255ab2017515e25bc3c95542da1fb5832a29d",
       "size": 25945
     },
     {
       "id": "content.9d69f4b321365eec95ab53bbe8573b66",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/触不可及.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/触不可及.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/触不可及.webp",
       "sha256": "79da6d41a393a59efd1333d4e255f71f797333818e3f4002865292e2886a6e2c",
       "size": 27269
     },
     {
       "id": "content.5bd6b3373ff75a50a5a151a196d0d0e6",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/辛德勒的名单.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/辛德勒的名单.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/辛德勒的名单.webp",
       "sha256": "f2a700dbbc49ea819e8f95449f419708034d79d3ab2ce6d2ea74875f64a6c7a3",
       "size": 26586
     },
     {
       "id": "content.fab33e857d88553093f7e8577a555995",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/这个杀手不太冷.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/这个杀手不太冷.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/这个杀手不太冷.webp",
       "sha256": "753b8784180f2f5fe05cd1210ec174a3ffe29a037d371f923f58c5bf928b8a4a",
       "size": 29823
     },
     {
       "id": "content.5b498860e84c5495a00ca533c5a405ac",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/阿甘正传.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/阿甘正传.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/阿甘正传.webp",
       "sha256": "800699eb45868e50ecbae8fe0fbc5bfb8761aaab70a84c6e10dcab4d700a0ab3",
       "size": 14878
     },
     {
       "id": "content.b4745b8c72495d5aae0f917d2f74422f",
       "oldPath": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/霸王别姬.webp",
-      "path": "爬虫学习/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/霸王别姬.webp",
+      "path": "学习路径、研究与现实实践/教程与视频学习/视频课程跟练/爬虫/只要你敢学我就敢发！ 500集Python爬虫教程，从入门到入狱！全程干货无废话，学不会我退出IT界！/百度贴吧爬虫图片/霸王别姬.webp",
       "sha256": "e9c0af8de4dd648ae76dbfa3b07eb927917f6a3edb3a2fb33018c4b6c86fd3cb",
       "size": 20327
     },
     {
       "id": "content.0fd234a29d24518195c067789897b740",
       "oldPath": "爬虫学习/服务器响应状态码.png",
-      "path": "爬虫学习/服务器响应状态码.png",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/服务器响应状态码.png",
       "sha256": "a7ffdd47cf29ef7f9e09684eae62979604afb364ced9098f53b99f7ea65cd047",
       "size": 278814
     },
     {
       "id": "content.212328de4c6e5b3abe128d70833b5a56",
       "oldPath": "爬虫学习/测试没改密码的校园网账号/main.py",
-      "path": "爬虫学习/测试没改密码的校园网账号/main.py",
+      "path": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/测试没改密码的校园网账号/main.py",
       "sha256": "3d4d8aa0f0c7698665e902c455b535b5399cffe020aff52a9c8c9c67e7917b19",
       "size": 2077
     },
     {
       "id": "content.02f2030912605e93b92d89db2b7db944",
       "oldPath": "爬虫学习/计算机网络/第1章概论.pptx",
-      "path": "爬虫学习/计算机网络/第1章概论.pptx",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络/第1章概论.pptx",
       "sha256": "65715f2246f6299e91de4ea2b02bc298a60c8cc2dbfe46331a85e703ead77ad8",
       "size": 2350761
     },
     {
       "id": "content.93eb73b597195cddb59373bf3766bbed",
       "oldPath": "爬虫学习/计算机网络/第2章物理层.pptx",
-      "path": "爬虫学习/计算机网络/第2章物理层.pptx",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络/第2章物理层.pptx",
       "sha256": "d72ea5486e7e94d029271692ba020c8498e5f7eb6c74fac648be5be285a0370b",
       "size": 969782
     },
     {
       "id": "content.25bfebe0680e5926b6a50ddd277b2138",
       "oldPath": "爬虫学习/计算机网络/第3章 数据链路层.pptx",
-      "path": "爬虫学习/计算机网络/第3章 数据链路层.pptx",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络/第3章 数据链路层.pptx",
       "sha256": "648842bfe132c58b12c08094bcead9f15bc422f5cc0607a94b9ba2ecf7346c54",
       "size": 2173496
     },
     {
       "id": "content.224d87fe2bdf5e9f86d5480e2f3eaf01",
       "oldPath": "爬虫学习/计算机网络/第4章网络层.pptx",
-      "path": "爬虫学习/计算机网络/第4章网络层.pptx",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络/第4章网络层.pptx",
       "sha256": "50ddb5ebd8c22ac0ca78b9342b2dd111291034987009c345c016951aef1224e5",
       "size": 2097778
     },
     {
       "id": "content.607e87d94a2851b79e9838cd497dc26f",
       "oldPath": "爬虫学习/计算机网络/第7章网络安全.pptx",
-      "path": "爬虫学习/计算机网络/第7章网络安全.pptx",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络/第7章网络安全.pptx",
       "sha256": "bd97b90ad6608f9dc143c6c806fcfbf7bff071265af918bddf222c8c4bc8a6b5",
       "size": 529426
     },
     {
       "id": "content.61760cb85d2e56f0ad33151e60722d4b",
       "oldPath": "爬虫学习/计算机网络/计算机网络复习大纲.docx",
-      "path": "爬虫学习/计算机网络/计算机网络复习大纲.docx",
+      "path": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络/计算机网络复习大纲.docx",
       "sha256": "403b3860a37cb75820a552a61e41fbb8809f75590ae683030f3dbb6b25b7a186",
       "size": 14456
     },
     {
       "id": "content.74a3c7d72b965ee5ad726f83b76d222c",
       "oldPath": "爬虫学习/鸿蒙web自动化/Google Chrome Headless/自己下载.txt",
-      "path": "爬虫学习/鸿蒙web自动化/Google Chrome Headless/自己下载.txt",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/Google Chrome Headless/自己下载.txt",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.ccaef6415910525682a3a36080ecbd09",
       "oldPath": "爬虫学习/鸿蒙web自动化/Google Chrome/自己下载.txt",
-      "path": "爬虫学习/鸿蒙web自动化/Google Chrome/自己下载.txt",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/Google Chrome/自己下载.txt",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.3fca5c4e27925a6bb242577f8e3496b1",
       "oldPath": "爬虫学习/鸿蒙web自动化/core/__init__.py",
-      "path": "爬虫学习/鸿蒙web自动化/core/__init__.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/core/__init__.py",
       "sha256": "dba5166ad9db9ba648c1032ebbd34dcd0d085b50023b839ef5c68ca1db93a563",
       "size": 4
     },
     {
       "id": "content.ab8e7d9bcf5b59bd806b31321f2383ae",
       "oldPath": "爬虫学习/鸿蒙web自动化/core/cookie_manager.py",
-      "path": "爬虫学习/鸿蒙web自动化/core/cookie_manager.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/core/cookie_manager.py",
       "sha256": "d51aed00e6120660da16bd626c156b2c44baea5fff37348b925a01db3cd76f85",
       "size": 2614
     },
     {
       "id": "content.cfe80677b75250b092c52060dbb999b6",
       "oldPath": "爬虫学习/鸿蒙web自动化/core/driver_factory.py",
-      "path": "爬虫学习/鸿蒙web自动化/core/driver_factory.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/core/driver_factory.py",
       "sha256": "f8738bb817d2efe1c56a8a669b00c6d533adcf5ee28604210faa6bb071bb8a7b",
       "size": 7348
     },
     {
       "id": "content.071917f3b5f353c698c323832f67bc1f",
       "oldPath": "爬虫学习/鸿蒙web自动化/pages/__init__.py",
-      "path": "爬虫学习/鸿蒙web自动化/pages/__init__.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/pages/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.46c74a29bf075e19af00e3c6cffa59e9",
       "oldPath": "爬虫学习/鸿蒙web自动化/pages/base_page.py",
-      "path": "爬虫学习/鸿蒙web自动化/pages/base_page.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/pages/base_page.py",
       "sha256": "5accadfd4b0923acf230b1e7e141585e78c3a885d53919ea413f72334545c13c",
       "size": 30109
     },
     {
       "id": "content.cc6cf8b9f15e5f1b8ba0f23f527cb730",
       "oldPath": "爬虫学习/鸿蒙web自动化/pages/腾科题库.py",
-      "path": "爬虫学习/鸿蒙web自动化/pages/腾科题库.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/pages/腾科题库.py",
       "sha256": "0fda334ac503146ada462a4c10a3b174da165f4354e4f180536e725066e383ad",
       "size": 1137
     },
     {
       "id": "content.f954bd2311b55d8fb6f139e59d071049",
       "oldPath": "爬虫学习/鸿蒙web自动化/test.py",
-      "path": "爬虫学习/鸿蒙web自动化/test.py",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/test.py",
       "sha256": "1995e37aae7bce4b5b82c70808b3984cd49fccea7e7fd0a11588ebcea631265a",
       "size": 669
     },
     {
       "id": "content.64acfff6b5ab5a66bcae2d53a820a671",
       "oldPath": "爬虫学习/鸿蒙web自动化/自己下载  chromedriver.exe    .txt",
-      "path": "爬虫学习/鸿蒙web自动化/自己下载  chromedriver.exe    .txt",
+      "path": "项目工坊/自动化与工具项目/爬虫项目/鸿蒙web自动化/自己下载  chromedriver.exe    .txt",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.c099a43be0e35810a0b834355ae01b49",
       "oldPath": "爬虫学习/黑马python基础学的爬虫基础.py",
-      "path": "爬虫学习/黑马python基础学的爬虫基础.py",
+      "path": "系统平台与自动化/Web自动化、爬虫与RPA/Requests与解析/黑马python基础学的爬虫基础.py",
       "sha256": "f3c70325ac9cb1e20043fe09dbb4895db75ba7c12daf26e8fb3c022cbe626f05",
       "size": 1286
     },
@@ -44706,7 +44706,7 @@
     {
       "id": "content.01c230d619b850a2b6091d4be2feb5fe",
       "oldPath": "鸣潮脚本/散华辅助脚本(无动态UI).Q",
-      "path": "鸣潮脚本/散华辅助脚本(无动态UI).Q",
+      "path": "项目工坊/自动化与工具项目/游戏与桌面自动化/鸣潮脚本/散华辅助脚本(无动态UI).Q",
       "sha256": "196b0323c1fd84a0e1d2218de23560e0b76e2b09fe943adf70bfd9f4ae0fec48",
       "size": 1653890
     }
