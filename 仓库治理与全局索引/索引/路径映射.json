@@ -85,6 +85,433 @@
       "targetPath": "AI模型与多模态智能/图像、视频与3D生成/ComfyUI工作流与节点系统/安装、整合与复盘/蒸馏我和学长的对话.md",
       "isDirectory": false,
       "id": "migration.c498816181c65600b6be943e83c707b6"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/3D实体手办.md",
+      "targetPath": "AI模型与多模态智能/图像、视频与3D生成/3D生成与空间内容/3D实体手办.md",
+      "isDirectory": false,
+      "id": "migration.26b96bedf49e5908af1eae627626837e"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/AI 漫画汉化",
+      "targetPath": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/AI 漫画汉化",
+      "isDirectory": true,
+      "id": "migration.ee600cf4dc405760a7cc7c2a6884a9d1"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/AI学习路线图.html",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/课程路线整理/AI学习路线图.html",
+      "isDirectory": false,
+      "id": "migration.f2ab52b2278d5b969e2cb3cfbea291a4"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/AstrBot部署",
+      "targetPath": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署",
+      "isDirectory": true,
+      "id": "migration.58d4e6f215cb5581bc7ce7550121845d"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/clash verge订阅链接是网友的爱心发电的(仅用于学习).txt",
+      "targetPath": "系统平台与自动化/网络、域名与内网穿透/网络代理/clash verge订阅链接是网友的爱心发电的(仅用于学习).txt",
+      "isDirectory": false,
+      "id": "migration.75dd70c8a46e546194ab6508e5a3b06a"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/Dify API文档",
+      "targetPath": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档",
+      "isDirectory": true,
+      "id": "migration.9e481eb425f5525a8f7c377f8c50fff5"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/Gemin API 学习",
+      "targetPath": "AI模型与多模态智能/大语言模型与提示工程/模型API实践/Gemin API 学习",
+      "isDirectory": true,
+      "id": "migration.a4a5840468015ac1b36fe8096eb38f3f"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/LangChain",
+      "targetPath": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain",
+      "isDirectory": true,
+      "id": "migration.5acc0334436554caabd968cc910793e3"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/MCP学习研究",
+      "targetPath": "AI知识系统与智能体/MCP、工具调用与协议/MCP协议/MCP学习研究",
+      "isDirectory": true,
+      "id": "migration.a01525d424515db98fc8753ed4992102"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/ollama改变默认下载路径位置.txt",
+      "targetPath": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/Ollama/ollama改变默认下载路径位置.txt",
+      "isDirectory": false,
+      "id": "migration.08afd10abfde5837b81976ca97a7b893"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/open-webui",
+      "targetPath": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/open-webui",
+      "isDirectory": true,
+      "id": "migration.d7d29b1ffbdd57279cde36d4b3dfb624"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/RAGFlow",
+      "targetPath": "参考资源与历史归档/第三方源码与镜像登记/RAGFlow源码登记/RAGFlow",
+      "isDirectory": true,
+      "id": "migration.121840ec38e45f1b8fb0f8fca07334a1"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/WSL和windows文件挂载问题.png",
+      "targetPath": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/assets/WSL和windows文件挂载问题.png",
+      "isDirectory": false,
+      "id": "migration.5dedcf4d60c05a1a8b8c7878626d8649"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/任务日志分析提示词.md",
+      "targetPath": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/任务日志分析提示词.md",
+      "isDirectory": false,
+      "id": "migration.d45efc092abd5f5f813bc9b0fbd6cb19"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/去品牌水印提示词.md",
+      "targetPath": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/去品牌水印提示词.md",
+      "isDirectory": false,
+      "id": "migration.7803847120d55b7e9919b499f7b169fc"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/多功能游戏查询Bot",
+      "targetPath": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot",
+      "isDirectory": true,
+      "id": "migration.cf8153df36225e438fdaebb3c3bb9bea"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/手机壁纸学习提示卡片制作",
+      "targetPath": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作",
+      "isDirectory": true,
+      "id": "migration.2f6fa338d80458a19ab61e2b46b79422"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/控制台日志面板提示词.md",
+      "targetPath": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/控制台日志面板提示词.md",
+      "isDirectory": false,
+      "id": "migration.b0d7f7cad15154e4a2521bd7eb1f50b8"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/提示词工程",
+      "targetPath": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程",
+      "isDirectory": true,
+      "id": "migration.39addb44f1ff5abf84647f5473d3cc2e"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/期刊论文做牢中.txt",
+      "targetPath": "学习路径、研究与现实实践/个人学习日志/日常学习记录/期刊论文做牢中.txt",
+      "isDirectory": false,
+      "id": "migration.762939b0e96e5065800b0a3043dc88ab"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/过检测AIGC测试",
+      "targetPath": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试",
+      "isDirectory": true,
+      "id": "migration.d3129406af725b5ab4b72fc1f90a7f81"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/飞书/ERP从概念到精通.md",
+      "targetPath": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/ERP从概念到精通.md",
+      "isDirectory": false,
+      "id": "migration.b5c5e0145f4854bdaa5f5ea92fff495d"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）",
+      "targetPath": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）",
+      "isDirectory": true,
+      "id": "migration.3bd335ef5c0853bb88f9670219a6a753"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/飞书/对接飞书",
+      "targetPath": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/对接飞书",
+      "isDirectory": true,
+      "id": "migration.295a2aeb64345cf499e3c6f2e063f2d3"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/飞书/拼多多商家后台RPA",
+      "targetPath": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA",
+      "isDirectory": true,
+      "id": "migration.ed8bf992517b534ab9a117da30ba3436"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/飞书/老师的指导.md",
+      "targetPath": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/老师的指导.md",
+      "isDirectory": false,
+      "id": "migration.44808439c18852a98f58eeea9637b35a"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/飞书/飞书多维表格学习",
+      "targetPath": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/飞书多维表格学习",
+      "isDirectory": true,
+      "id": "migration.d6158e13c7cb546d973b7b59bbe856ec"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/飞书/飞书工作流学习.md",
+      "targetPath": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/飞书工作流学习.md",
+      "isDirectory": false,
+      "id": "migration.9306782e19075053993f3c5ebe70a2eb"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/.idea",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/.idea",
+      "isDirectory": true,
+      "id": "migration.9c20a9a79f9d5fba9e4e61473874484f"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/GPT-SoVITS-File",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/GPT-SoVITS-File",
+      "isDirectory": true,
+      "id": "migration.adf0343b78b653dd8d69803f5d581aac"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/models_files",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/models_files",
+      "isDirectory": true,
+      "id": "migration.7e9faea966d551b0944d1593c7fe8c98"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/pyttsx3(BUG处理).py",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/pyttsx3(BUG处理).py",
+      "isDirectory": false,
+      "id": "migration.9bfed6e739d0573baf5f41a144f26857"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/recording.wav",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/recording.wav",
+      "isDirectory": false,
+      "id": "migration.4a21fa99a1bd54488515d7a3a45c09b9"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/SpeechRecongnition学习.py",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/SpeechRecongnition学习.py",
+      "isDirectory": false,
+      "id": "migration.49302e334a405dc083866d29a46f4ad3"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/TTS语音合成",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/调用与播放示例",
+      "isDirectory": true,
+      "id": "migration.794a1ff6ec8350458e1adfae4c373e2c"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/voice",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice",
+      "isDirectory": true,
+      "id": "migration.f61b04d977325d1fa2c2c820c3da7c5d"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/复读机.py",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/复读机.py",
+      "isDirectory": false,
+      "id": "migration.fe3d916da43353b481e557b474e3240e"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/爱丽丝人格.md",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/爱丽丝人格.md",
+      "isDirectory": false,
+      "id": "migration.59c06b1c9c685f4198f3259d22d6ee77"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/研究.py",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/研究.py",
+      "isDirectory": false,
+      "id": "migration.258d19d893cc59e5ac08f50f87abfc5b"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/研究成果",
+      "targetPath": "项目工坊/AI应用与智能体项目/语音交互Agent项目/研究成果",
+      "isDirectory": true,
+      "id": "migration.cf3ffc8c955b5ae8be49710d5ad38212"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/获取音频设备.py",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/获取音频设备.py",
+      "isDirectory": false,
+      "id": "migration.1fc97ad0706655d0a75e50f98d4bc6d0"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/语音实时转录.py",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/语音实时转录.py",
+      "isDirectory": false,
+      "id": "migration.e2cf29f8c550512c9e355aaf8306280c"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/语音录制.py",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/语音录制.py",
+      "isDirectory": false,
+      "id": "migration.64045cd1baa6509391e75ae943400e25"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/语音活动检测",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测",
+      "isDirectory": true,
+      "id": "migration.c9741d056b51528fb8962bf8778b819a"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/语音调用AI.py",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/语音调用AI.py",
+      "isDirectory": false,
+      "id": "migration.b527c61520355be8ba6acca3f40f57f0"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "AI/STT语音学习/语音转文字",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字",
+      "isDirectory": true,
+      "id": "migration.9c5fcd9a1a9c5af297d565535eaf2968"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "Pipecat框架学习/pipecat-quickstart",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart",
+      "isDirectory": true,
+      "id": "migration.7c9badc443f558e2aa655b0390868977"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "Pipecat框架学习/快速入门",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门",
+      "isDirectory": true,
+      "id": "migration.97240102f2295a20b25cba0f19124105"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "Pipecat框架学习/框架资料.md",
+      "targetPath": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/Pipecat/框架资料.md",
+      "isDirectory": false,
+      "id": "migration.eee206cd68c25722bc8fd46699c6517b"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/PUBG人物检测",
+      "targetPath": "项目工坊/AI应用与智能体项目/计算机视觉项目/PUBG人物检测",
+      "isDirectory": true,
+      "id": "migration.841fd9bdd757556ebdd90780aac7a03e"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/web自动化做牢中.txt",
+      "targetPath": "学习路径、研究与现实实践/个人学习日志/日常学习记录/web自动化做牢中.txt",
+      "isDirectory": false,
+      "id": "migration.deddd196527156e585176323663ee88d"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/yolo26模型下载和性能指标.md",
+      "targetPath": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/yolo26模型下载和性能指标.md",
+      "isDirectory": false,
+      "id": "migration.91969f95ccfd5e6ab59f3c03fbdb91e4"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/基准测试.md",
+      "targetPath": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/基准测试.md",
+      "isDirectory": false,
+      "id": "migration.7a86c3fb11d551068f7f46b64bb52662"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/实际训练中要要用到的东西",
+      "targetPath": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/实际训练中要要用到的东西",
+      "isDirectory": true,
+      "id": "migration.420fd076cdab525ebc7e8a4ca78d2897"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/数据集标注工具",
+      "targetPath": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具",
+      "isDirectory": true,
+      "id": "migration.9fa58f87fcef5ef7a5e5b882113b780f"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/模型相关参数.md",
+      "targetPath": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/模型相关参数.md",
+      "isDirectory": false,
+      "id": "migration.7d34861598315a328fc010a217cee669"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/第一次官网自学",
+      "targetPath": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学",
+      "isDirectory": true,
+      "id": "migration.f6241a9585915304a8316c6e7d56142a"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/第二次官网自学(偏向研究)",
+      "targetPath": "项目工坊/AI应用与智能体项目/计算机视觉项目/第二次官网自学(偏向研究)",
+      "isDirectory": true,
+      "id": "migration.d94d62fd0e895a52998dc007dd638726"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/自动标注.md",
+      "targetPath": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/自动标注.md",
+      "isDirectory": false,
+      "id": "migration.00e20c08f50056ae9a22436c4ffcd221"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/软件环境配置.md",
+      "targetPath": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/软件环境配置.md",
+      "isDirectory": false,
+      "id": "migration.3d99cfa5641357c9b74dca3c01e1d271"
+    },
+    {
+      "batch": "ai",
+      "oldPath": "YOLO学习/远程训练",
+      "targetPath": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录/远程训练",
+      "isDirectory": true,
+      "id": "migration.d99a69a388ac573fae9eb742fb4a457b"
     }
   ]
 }

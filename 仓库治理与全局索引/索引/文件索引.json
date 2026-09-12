@@ -11,2079 +11,2079 @@
     {
       "id": "content.23e793861cfb56ec829a6443060bdefc",
       "oldPath": "AI/3D实体手办.md",
-      "path": "AI/3D实体手办.md",
+      "path": "AI模型与多模态智能/图像、视频与3D生成/3D生成与空间内容/3D实体手办.md",
       "sha256": "0ebd06840ce751c22707290e054f1eaf43448910442cff73453353f826ea4d37",
       "size": 2744
     },
     {
       "id": "content.21dcb14e485f54a4a7e80f5ae4aa9185",
       "oldPath": "AI/AI 漫画汉化/多张图片合1代码.py",
-      "path": "AI/AI 漫画汉化/多张图片合1代码.py",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/AI 漫画汉化/多张图片合1代码.py",
       "sha256": "91781a598468417cb605c7d117a9c06d0ae3e15ccfa5585d705b31a794439b1e",
       "size": 1240
     },
     {
       "id": "content.d1e6fdab38845c9485eb5def6ea7b571",
       "oldPath": "AI/AI 漫画汉化/汉化提示词.md",
-      "path": "AI/AI 漫画汉化/汉化提示词.md",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/AI 漫画汉化/汉化提示词.md",
       "sha256": "554713ede6692a6afa2f7499de2852d6e4bfe65e97f3789631dc700885bb5a0e",
       "size": 2572
     },
     {
       "id": "content.61e0bed3e2a153d9ad0ef62c1c26484e",
       "oldPath": "AI/AI学习路线图.html",
-      "path": "AI/AI学习路线图.html",
+      "path": "学习路径、研究与现实实践/教程与视频学习/课程路线整理/AI学习路线图.html",
       "sha256": "49b01cdcf04ca3615a1f5aa67c950ba904a3f86dc3d8ad9a3a6db3248c15dc72",
       "size": 11618
     },
     {
       "id": "content.680385cf2134593f8266df4bc23f0ea1",
       "oldPath": "AI/AstrBot部署/人格注意事项.md",
-      "path": "AI/AstrBot部署/人格注意事项.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/人格注意事项.md",
       "sha256": "94693d4d059c27cbbca52d21c1fae49148d742b27a102923d2e6e3da18755ee4",
       "size": 14036
     },
     {
       "id": "content.668a244e1b5e5ae38620af3110f89ee9",
       "oldPath": "AI/AstrBot部署/当前的部署/config.yaml",
-      "path": "AI/AstrBot部署/当前的部署/config.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/当前的部署/config.yaml",
       "sha256": "e004e8d344f8c378100e313394518ecfc403b1549af39b1a2bdbc807080d391e",
       "size": 11261
     },
     {
       "id": "content.5719dc434b62544f9c9e6bd6a7ebed27",
       "oldPath": "AI/AstrBot部署/当前的部署/docker-compose.yaml",
-      "path": "AI/AstrBot部署/当前的部署/docker-compose.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/当前的部署/docker-compose.yaml",
       "sha256": "b75951e1dd1a53bc7b0fe5a64615d4b675d1c26011ec5c379b1d8c799eac03c1",
       "size": 10466
     },
     {
       "id": "content.b9a0ccbcb3955893bd24987bced25b7e",
       "oldPath": "AI/AstrBot部署/当前的部署/win/AstrBot + Napcat + Shipyard Neo + gsuid_core + natapp 一体化部署指南.md",
-      "path": "AI/AstrBot部署/当前的部署/win/AstrBot + Napcat + Shipyard Neo + gsuid_core + natapp 一体化部署指南.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/当前的部署/win/AstrBot + Napcat + Shipyard Neo + gsuid_core + natapp 一体化部署指南.md",
       "sha256": "352b5bfad8c4a176a83233687efd486ea19de1f1c703821b8662774962cb329f",
       "size": 10642
     },
     {
       "id": "content.09b7fd6eb73a5e21b611d1d998a12dfe",
       "oldPath": "AI/AstrBot部署/当前的部署/win/config.yaml",
-      "path": "AI/AstrBot部署/当前的部署/win/config.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/当前的部署/win/config.yaml",
       "sha256": "a4669fc4e520cf5f1d678fd610996c76d3fa0d4c6bc1ce81b3e11c5cc1752163",
       "size": 6325
     },
     {
       "id": "content.36e88c7257ea5223acb0642b09b03f38",
       "oldPath": "AI/AstrBot部署/当前的部署/win/docker-compose.yaml",
-      "path": "AI/AstrBot部署/当前的部署/win/docker-compose.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/当前的部署/win/docker-compose.yaml",
       "sha256": "a0e7872e617f60d4c9b30792006ae8ad878969c9c58c8f2ddbdaa2f280849391",
       "size": 9121
     },
     {
       "id": "content.dc6900b0908753a6a5a951ea4f7eb56f",
       "oldPath": "AI/AstrBot部署/当前的部署/win/部署指令.txt",
-      "path": "AI/AstrBot部署/当前的部署/win/部署指令.txt",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/当前的部署/win/部署指令.txt",
       "sha256": "0ccfb6f65279be1f9e2d20ea2d16068042db4a2f53c45eb44da737e551766abb",
       "size": 984
     },
     {
       "id": "content.81b710eabbc65c0d971ff9cbc8f05048",
       "oldPath": "AI/AstrBot部署/当前的部署/早柚核心Docs中TodayWaifu插件.txt",
-      "path": "AI/AstrBot部署/当前的部署/早柚核心Docs中TodayWaifu插件.txt",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/当前的部署/早柚核心Docs中TodayWaifu插件.txt",
       "sha256": "d23ae7cf735fb7fd42c4f7e0d519d1147532f794b353deeb9396a7d889950bc8",
       "size": 400
     },
     {
       "id": "content.55e97b1112a75ec79e5769dd7b785d84",
       "oldPath": "AI/AstrBot部署/当前的部署/部署指令.txt",
-      "path": "AI/AstrBot部署/当前的部署/部署指令.txt",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/当前的部署/部署指令.txt",
       "sha256": "09c4f8c9cf092090a9a168e2e582a271b1abd18050eecd04b880c2b9427945d6",
       "size": 949
     },
     {
       "id": "content.6c5ca2c485aa55f8a4581b365d1809b9",
       "oldPath": "AI/AstrBot部署/新版沙箱部署/config.yaml",
-      "path": "AI/AstrBot部署/新版沙箱部署/config.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/新版沙箱部署/config.yaml",
       "sha256": "593f574ed8e3f8fb170efe1cc3f2ef8e2938b98499982f50bb4834b2f56db22d",
       "size": 6157
     },
     {
       "id": "content.0cda6178fe2556cb89e4429bd0c9f6cb",
       "oldPath": "AI/AstrBot部署/新版沙箱部署/docker-compose.astrbot_napcat_shipyard-neo.yaml",
-      "path": "AI/AstrBot部署/新版沙箱部署/docker-compose.astrbot_napcat_shipyard-neo.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/新版沙箱部署/docker-compose.astrbot_napcat_shipyard-neo.yaml",
       "sha256": "acccf85b220d53e8a9779ab05f1f5c2a58613ab8132a3ce787a1312aa0c30a38",
       "size": 6149
     },
     {
       "id": "content.59b5ab22015754e4bce80928c717e236",
       "oldPath": "AI/AstrBot部署/新版沙箱部署/遇到问题.txt",
-      "path": "AI/AstrBot部署/新版沙箱部署/遇到问题.txt",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/新版沙箱部署/遇到问题.txt",
       "sha256": "d3aa6bf2780d5ba20063a46ee7d5f3e74870fb7b73fa8020def54e822000eae5",
       "size": 411
     },
     {
       "id": "content.b71e752fb0235ca798bf6a1c276a8d60",
       "oldPath": "AI/AstrBot部署/新版沙箱部署/部署指令.txt",
-      "path": "AI/AstrBot部署/新版沙箱部署/部署指令.txt",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/新版沙箱部署/部署指令.txt",
       "sha256": "45ca00224f5c0697eca95f17de5d57ca6f15435f0810d1a99bf4b182ac0ffac2",
       "size": 975
     },
     {
       "id": "content.4c116b86366a5e94adb02d720a1adfcb",
       "oldPath": "AI/AstrBot部署/新版沙箱部署/部署流程.md",
-      "path": "AI/AstrBot部署/新版沙箱部署/部署流程.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/新版沙箱部署/部署流程.md",
       "sha256": "53bd702c0b3c410ef853dd534113f0d0b3ac214219463c4504acec6514ca30b6",
       "size": 2262
     },
     {
       "id": "content.2eaf39f9ac8d599596039d6742ee4023",
       "oldPath": "AI/AstrBot部署/旧版沙箱部署/astrbot_napcat_shipyard(2个q号).yml",
-      "path": "AI/AstrBot部署/旧版沙箱部署/astrbot_napcat_shipyard(2个q号).yml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/旧版沙箱部署/astrbot_napcat_shipyard(2个q号).yml",
       "sha256": "2083bb71a28c602f7c7307a552298132212d6ab9022f93df64def62090ba0c26",
       "size": 3745
     },
     {
       "id": "content.8ae19185d13f5fc086a9a3dca1f33cca",
       "oldPath": "AI/AstrBot部署/旧版沙箱部署/astrbot_napcat_shipyard(单人加沙箱).yml",
-      "path": "AI/AstrBot部署/旧版沙箱部署/astrbot_napcat_shipyard(单人加沙箱).yml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/旧版沙箱部署/astrbot_napcat_shipyard(单人加沙箱).yml",
       "sha256": "4941bac1f6f363830a8e6fc035856313aea1ca567a321b0d59da134867042dc1",
       "size": 2059
     },
     {
       "id": "content.74dfe71ceaaf5abe8bba247180a84bb1",
       "oldPath": "AI/AstrBot部署/旧版沙箱部署/原版单独部署Shipyard.yml",
-      "path": "AI/AstrBot部署/旧版沙箱部署/原版单独部署Shipyard.yml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/旧版沙箱部署/原版单独部署Shipyard.yml",
       "sha256": "22d63a1ef4af157c33c0128ada48a7ed29a80c0a6191bba6a3a9bcc39fd7c20a",
       "size": 875
     },
     {
       "id": "content.13d011e8f52c53ffa35434421a1b2016",
       "oldPath": "AI/AstrBot部署/旧版沙箱部署/原版文件.yml",
-      "path": "AI/AstrBot部署/旧版沙箱部署/原版文件.yml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/旧版沙箱部署/原版文件.yml",
       "sha256": "ece817a524529eeec3c8c5efeda0376ba5ee38b4bf3b1e1b190f6afedb62a1d2",
       "size": 890
     },
     {
       "id": "content.571fb653843d5cabb64c17fb9590e742",
       "oldPath": "AI/AstrBot部署/旧版沙箱部署/原版附带沙箱Shipyard.yml",
-      "path": "AI/AstrBot部署/旧版沙箱部署/原版附带沙箱Shipyard.yml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/旧版沙箱部署/原版附带沙箱Shipyard.yml",
       "sha256": "924a06d01c7a1440fe1b1d34eeefc44a7e2a24c5e2613cb144ed5ba68b95dc5d",
       "size": 1626
     },
     {
       "id": "content.b3d23679ddb65e87873adda233af9533",
       "oldPath": "AI/AstrBot部署/旧版沙箱部署/部署指令.txt",
-      "path": "AI/AstrBot部署/旧版沙箱部署/部署指令.txt",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/旧版沙箱部署/部署指令.txt",
       "sha256": "2978014d052558a13266ced0e26c6e07699fa76768ce966bde5832eb5d0ed900",
       "size": 907
     },
     {
       "id": "content.0aeab49249865763b9653d4434125aaa",
       "oldPath": "AI/AstrBot部署/爱丽丝(复杂化).md",
-      "path": "AI/AstrBot部署/爱丽丝(复杂化).md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/爱丽丝(复杂化).md",
       "sha256": "a59ef891c569b5fefa941640dcc0534a2e85640131345a19aaadde99a8ff9c32",
       "size": 4406
     },
     {
       "id": "content.0b4645e9fbee5f3b93a661dba2671a05",
       "oldPath": "AI/AstrBot部署/真实NSFfW指导.json",
-      "path": "AI/AstrBot部署/真实NSFfW指导.json",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/AstrBot部署/真实NSFfW指导.json",
       "sha256": "1a73d1178c9e8fabb0e7045c8ce53243eb6d0ccc10697167eed5eba0acd5b4c6",
       "size": 4348
     },
     {
       "id": "content.8726c62d8d785997b95295cc08dd4de0",
       "oldPath": "AI/Dify API文档/Dify的API接口文档.md",
-      "path": "AI/Dify API文档/Dify的API接口文档.md",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/Dify的API接口文档.md",
       "sha256": "498caf70a8217eb85741ff57e3a290f97a16d5337c09f3a4c3b959a9dc47f844",
       "size": 34185
     },
     {
       "id": "content.94f8d735190f59dcb3233d8e26f08ebb",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify.html",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify.html",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify.html",
       "sha256": "5fe711c8afe581f9f55a86833781751ac29bf501033fef66d926ca9af58777db",
       "size": 614383
     },
     {
       "id": "content.640567943e275aaa83a22f9bcf092e3d",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0-s.nk1s.x7p2.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0-s.nk1s.x7p2.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0-s.nk1s.x7p2.js.下载",
       "sha256": "0dd35d389e6ba49279e453d8862607c14952da3ae879aed6b83dde5a71b9742f",
       "size": 1506
     },
     {
       "id": "content.a45ee807f55f5f71bb246ee50da7fdf9",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.aq8xlkq9a81.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.aq8xlkq9a81.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.aq8xlkq9a81.js.下载",
       "sha256": "cc61b84f3a4999a7bd46fdf868956e61c3c9df74d805de0c973faa5409c247ce",
       "size": 71121
     },
     {
       "id": "content.d8246f57d63353d1a968e2eb55148ed9",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.bze1fpyx-kv.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.bze1fpyx-kv.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.bze1fpyx-kv.js.下载",
       "sha256": "cf01b0d30a2cf215eda26065fa517a823d0dc89c4a3387ac77d81d80e37e7177",
       "size": 5154
     },
     {
       "id": "content.ea09eb93df925d0192f3ec09a281b0b8",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.kl9uan7sk~e.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.kl9uan7sk~e.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.kl9uan7sk~e.js.下载",
       "sha256": "71d14962b7b8d9ea8b074cc2d89e2438766cb31b61d9d467d941c4405e4f4a9d",
       "size": 23151
     },
     {
       "id": "content.cab3f1e23ad15dff83a8d3ea25483d06",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.m0bdxs7m54-.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.m0bdxs7m54-.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0.m0bdxs7m54-.js.下载",
       "sha256": "44ac9dd029c69467d19e83780586e6d577343796563902c2a876b69e3e903ec0",
       "size": 43136
     },
     {
       "id": "content.0875914767675f44b504354be8f17941",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/00.c9lpj7-5p3.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/00.c9lpj7-5p3.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/00.c9lpj7-5p3.js.下载",
       "sha256": "199557bc5a623a39a640c40a893aa94e30369c615ce04925cf0809433b5c62d1",
       "size": 91005
     },
     {
       "id": "content.1df680e8f5785783adedaad607c6907f",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0072h3h6_gkcf.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0072h3h6_gkcf.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0072h3h6_gkcf.js.下载",
       "sha256": "3affb24951b511533cfcada421ea4f836382c084916b4f82fbb430da0268dc8c",
       "size": 74680
     },
     {
       "id": "content.3ea9499317ed545aa746965a067b45ee",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/017jw3y893a_v.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/017jw3y893a_v.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/017jw3y893a_v.js.下载",
       "sha256": "3a8f50dadde77567c12e460039e081848b6dbcece031e49b41a0ca755532b36d",
       "size": 203392
     },
     {
       "id": "content.fadd3afae3095b94af2e710bc0fbaef5",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/01fog_prbigk-.css",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/01fog_prbigk-.css",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/01fog_prbigk-.css",
       "sha256": "7e780d10d4d0b49cd0197e937f233152f69a903cb183d06b27e7079542ba9706",
       "size": 23369
     },
     {
       "id": "content.788aa79261ce53cca3938c9f8e0ec7c8",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/01n1xgxd4nr._.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/01n1xgxd4nr._.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/01n1xgxd4nr._.js.下载",
       "sha256": "8171a3c1d2b6a95b937699741dd2de996c3e088fa99d254b4b3b63274cac0bc3",
       "size": 996
     },
     {
       "id": "content.3291cb0672285b888e24c884b9868a02",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/01qpzbbm_0um0.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/01qpzbbm_0um0.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/01qpzbbm_0um0.js.下载",
       "sha256": "16cb7fe920ef913ac165c37949c4c7180f0103193cdca2f5ed1941f7b97f2df8",
       "size": 40346
     },
     {
       "id": "content.d5a14e22bcdf5546b0bd5035addcc20d",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/02_i6ewuafsrr.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/02_i6ewuafsrr.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/02_i6ewuafsrr.js.下载",
       "sha256": "6d9588b6fe2cf2b0b7133179d909dc83a6b8dec33cf3f0f3c8d542ccf37c7dfc",
       "size": 990
     },
     {
       "id": "content.9019a03a78975d4cb7968b25ee9bcefc",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/02hql~r0m3xrd.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/02hql~r0m3xrd.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/02hql~r0m3xrd.js.下载",
       "sha256": "da617c69066275c9d7d0bbefe8dae484975628d5d4cd19ece495cf08ecb3e7f7",
       "size": 25482
     },
     {
       "id": "content.aeb7a55da1fa5e37bd12d8158f77ffaf",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/02xirqnus9p6q.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/02xirqnus9p6q.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/02xirqnus9p6q.js.下载",
       "sha256": "65d78df19c3ae1ab38263a90ab6f262920eb56ff5986f565af546c1e1740c2fb",
       "size": 71678
     },
     {
       "id": "content.0638f222d13b5d78b0ca096a7196c085",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/03hi3-uxfh7gg.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/03hi3-uxfh7gg.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/03hi3-uxfh7gg.js.下载",
       "sha256": "57bdf5f9cb0cc4e4abbff1d0feba85b507d0c65f3decc89918723a57a52b8f07",
       "size": 416015
     },
     {
       "id": "content.c314cbbc2f07582aaf2bd41b5149699a",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/03~yq9q893hmn.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/03~yq9q893hmn.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/03~yq9q893hmn.js.下载",
       "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
       "size": 112594
     },
     {
       "id": "content.1921c9eb577e5ecfb779e583a520d806",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04g1ll438swq..js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04g1ll438swq..js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04g1ll438swq..js.下载",
       "sha256": "59bf803ee9af25b1d35c666c47c0f9aa99c986a4f96a9dc91d4794f10b7530d1",
       "size": 4517
     },
     {
       "id": "content.650b17dd79ae55648c50829fc7b6ad97",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04g7z3n.v8403.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04g7z3n.v8403.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04g7z3n.v8403.js.下载",
       "sha256": "560edb463a5d93b188223b15aa3353f7894652d819ae59b9314fac724191daa0",
       "size": 6880
     },
     {
       "id": "content.90e6d4ae56945371a69bd78e1fa32e17",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04hx_y165a.iv.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04hx_y165a.iv.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04hx_y165a.iv.js.下载",
       "sha256": "fd39325eae70fce39ccca81094e2c8272fc8f934a302a178e3c2f201ddffe4c9",
       "size": 229
     },
     {
       "id": "content.561e4acfe623596694d57e37b4ddc196",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04o7ucf6-t-1_.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04o7ucf6-t-1_.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04o7ucf6-t-1_.js.下载",
       "sha256": "436032179c302461b8f5be84f9067c5c4e0eae059fb539021929767d32d21da7",
       "size": 16494
     },
     {
       "id": "content.ca955033990d59158a40856cca615a44",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04u-e18.2h4cz.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04u-e18.2h4cz.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04u-e18.2h4cz.js.下载",
       "sha256": "8c0e49098722d0ef4cc3e31b4490665a2aaeecf169cfadf23f214325387f1ff3",
       "size": 39892
     },
     {
       "id": "content.90b3699b9dff55cdb6b996e8018351e3",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04zpwt-flsxie.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04zpwt-flsxie.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/04zpwt-flsxie.js.下载",
       "sha256": "754f238be311be1e32928b54b969d8a591b563480301fb8a79de6c45b28318cf",
       "size": 30933
     },
     {
       "id": "content.3369b65d91835886bfd7e9d5f2aadf30",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/06n~x.lvm0ngi.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/06n~x.lvm0ngi.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/06n~x.lvm0ngi.js.下载",
       "sha256": "055987692ccb4317cb33dbe9f4ad6548cf496bdf4272bde3d114b88566241fc6",
       "size": 42384
     },
     {
       "id": "content.396679e1f4cd59089a98c51135ffdea7",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/06ooxq5jy6w8i.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/06ooxq5jy6w8i.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/06ooxq5jy6w8i.js.下载",
       "sha256": "eee70a0a8b15a75d5c2cfaff9ef730b33459ca44c7194402a38f4b9be4e8e9cb",
       "size": 99693
     },
     {
       "id": "content.25aa08ae27615fcd81696e3dd0321f5b",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/07_h2k781c4z~.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/07_h2k781c4z~.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/07_h2k781c4z~.js.下载",
       "sha256": "ad675b386a78fe6b6d0d917d1409d096b54d0a8a066d8ef8e41ce897c96b6b86",
       "size": 220972
     },
     {
       "id": "content.6d3816a878db53e8a0706bdc9c20e40d",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/07du68iespv_t.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/07du68iespv_t.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/07du68iespv_t.js.下载",
       "sha256": "c1cc92d381fc1046aef7ee54a675819e5d1e2147975e94e0cdbb65fe63f9788b",
       "size": 24142
     },
     {
       "id": "content.281879c04c225edf9c3efcca1fc2348a",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/08mdsnpzru6pz.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/08mdsnpzru6pz.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/08mdsnpzru6pz.js.下载",
       "sha256": "ac874cc9161a6f02de904c149251be0e61f1b3c6df5c2cbf59bc5cb255426a3e",
       "size": 7724
     },
     {
       "id": "content.1c5abc051ec856e4b7c3160ef6449304",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/09lpiz_m8raql.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/09lpiz_m8raql.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/09lpiz_m8raql.js.下载",
       "sha256": "d44c1936092964e491c3033aae3a55752a214738644427f573dd9972348114b7",
       "size": 34859
     },
     {
       "id": "content.d6c6067ee55c540288afd90e3931fe75",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/09thhx33xx9j9.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/09thhx33xx9j9.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/09thhx33xx9j9.js.下载",
       "sha256": "fc459e04dfb68a62a03f3a2c1247b8401d17bc95b1234fe7d43eafad06aa4c1f",
       "size": 64828
     },
     {
       "id": "content.0bcfb5811f375b9ea1b0cd7e8934d0da",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0_chp7xz09cfi.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0_chp7xz09cfi.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0_chp7xz09cfi.js.下载",
       "sha256": "aa031ad88ff19db618cca8019d831171396100a01323e31c83e5fdc886bce68a",
       "size": 23226
     },
     {
       "id": "content.8b269fcc81a859e6a2f204323ae28d54",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0_wyhpn4.lr8f.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0_wyhpn4.lr8f.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0_wyhpn4.lr8f.js.下载",
       "sha256": "ba0eb4020fe10cc129f73b763c30252bc3175e06ad78a99dc7a4df4786495516",
       "size": 9505
     },
     {
       "id": "content.a7cbb39031ab5e33ae6f879181bc1587",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ar602eewej8x.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ar602eewej8x.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ar602eewej8x.js.下载",
       "sha256": "f816fe7b7913a9f655840c50db40e6a00f46108c3edb9a6b5dc99b9c26e726b2",
       "size": 32424
     },
     {
       "id": "content.7fea7f54e74b5361bc34e09a4f2efffb",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0a~gsvdrae~f4.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0a~gsvdrae~f4.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0a~gsvdrae~f4.js.下载",
       "sha256": "3ffee7cdfca90f78ae71cd41c6bf3ea99e6d9ba9c6160828aa1a3b1eb0fbf6e6",
       "size": 27637
     },
     {
       "id": "content.272f1ba3a02a57779dbc786c514e8da0",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0bgt9w__i63u..js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0bgt9w__i63u..js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0bgt9w__i63u..js.下载",
       "sha256": "2f2e1026224e582d37b2c3be62406c63c403aa40dd67c0734d9e979d03425ba4",
       "size": 5381
     },
     {
       "id": "content.61dcfd739fc552e6bd152152aa7906c4",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0cl_63n74vgq3.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0cl_63n74vgq3.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0cl_63n74vgq3.js.下载",
       "sha256": "ed5751cc3643322462e81f377f31a3a2bee6fe3c1a5cb21ee487f26deed16146",
       "size": 24885
     },
     {
       "id": "content.cc37b594f1d2507983d38f1fe447bbb8",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0cobn57tnkzo..js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0cobn57tnkzo..js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0cobn57tnkzo..js.下载",
       "sha256": "9d85763e1098bcdfa8d8a6661d5b679fbba248122ef29a84cf2e350b36403d66",
       "size": 34155
     },
     {
       "id": "content.96397c2340c75ec0a9a6b13fc824e107",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0d0r9ibq2~2hw.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0d0r9ibq2~2hw.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0d0r9ibq2~2hw.js.下载",
       "sha256": "f5d3195535e90e52f5f957cd58e5fba5d0524cb239892250438c319350714869",
       "size": 3736
     },
     {
       "id": "content.77e0ba15ea0e533d9832b5d38d7badb4",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0d9p3qm08_xbq.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0d9p3qm08_xbq.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0d9p3qm08_xbq.js.下载",
       "sha256": "cf64ac4265471b4064b3456be971ba9d59b99de8f26cc7d3fc624e3cd630209d",
       "size": 31286
     },
     {
       "id": "content.b1c310dcb9fd5d2b9b294a1dee434b32",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0dyafq.ifdhfa.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0dyafq.ifdhfa.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0dyafq.ifdhfa.js.下载",
       "sha256": "7cfbe14a04b95dffb246c44332a2cb0838b6dcc1d6dfaff02928f62a53ef6222",
       "size": 36837
     },
     {
       "id": "content.e459df6ff1ee541a9c4a3b95d5d069c4",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0e_c3-ronxvrk.css",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0e_c3-ronxvrk.css",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0e_c3-ronxvrk.css",
       "sha256": "993ab044e39887e5676589db042831fe3b287c46ec4446fd3195e5c04a2a1077",
       "size": 626484
     },
     {
       "id": "content.b8ad9d09d3d2562e915668414c4cfd82",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ee_qnn00swie.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ee_qnn00swie.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ee_qnn00swie.js.下载",
       "sha256": "e627f7856ce55ad6cfcbba9ef335cef5e4dcd035825be2eaf8bf162356eca3e8",
       "size": 33304
     },
     {
       "id": "content.4edab2a735565277b1226873e1952575",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0frbrxopmilw9.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0frbrxopmilw9.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0frbrxopmilw9.js.下载",
       "sha256": "8dee876739db136bb94e3391cba392734f6f25cc0ff4768c738ed7b3dd9dc533",
       "size": 141262
     },
     {
       "id": "content.356dfe2c0def590dafd2117076a886ae",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g05x-xtf570p.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g05x-xtf570p.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g05x-xtf570p.js.下载",
       "sha256": "805d5446b5aec20d7515e7d95031cda52717f5f9f0b2ed6b01e1d03ecf9d43ab",
       "size": 19754
     },
     {
       "id": "content.9e2da38e62ce50a388b43069720a7366",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g2h9hssaq_kw.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g2h9hssaq_kw.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g2h9hssaq_kw.js.下载",
       "sha256": "d3b6105a19b208e74a937091b2902082c8c66981a91ec90c2297e9e4a71d0cb2",
       "size": 55946
     },
     {
       "id": "content.5ac51816183e5a47a4c40289cab08b46",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g6mrt02iew6k.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g6mrt02iew6k.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g6mrt02iew6k.js.下载",
       "sha256": "a509a015d74271465aecbaa16f228ac9e945f4d27a4b567abfd548bd6a358db0",
       "size": 3446
     },
     {
       "id": "content.988c4c7cb50458c4918c6acc2c95caa8",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g9wlg3k9lzsi.css",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g9wlg3k9lzsi.css",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g9wlg3k9lzsi.css",
       "sha256": "fa3df7d9f1b3cb67b03c7a3947062dbed60d8c40053901840c7bebdd4c1dd36c",
       "size": 1126
     },
     {
       "id": "content.272747edc5045bf2a859e3c259be4922",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g_4lpk1ga.zy.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g_4lpk1ga.zy.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0g_4lpk1ga.zy.js.下载",
       "sha256": "45e2f0836dac4be5a68590fde6376fd134f6194861bb5c2671c0918ec2cc0390",
       "size": 7594
     },
     {
       "id": "content.b8145c4c50f0567a94ad4da1dd035eb9",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0gml-nlecv~-6.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0gml-nlecv~-6.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0gml-nlecv~-6.js.下载",
       "sha256": "e3d71e8813a1cd28e35450b8034e5b6a3388c2881ebf42dce513bcf9dee3045f",
       "size": 55147
     },
     {
       "id": "content.4f86b0ef87db5b33927b6fe430330eb2",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0goi2qmgx8p.~.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0goi2qmgx8p.~.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0goi2qmgx8p.~.js.下载",
       "sha256": "5e1f4d30d4f9bd1caf101100119732646a39f4e1c6fb1c74275b74bad45e0637",
       "size": 14703
     },
     {
       "id": "content.a1b4f5151f0f5568add3fdc0054c3abc",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0gzv-wh0-2pif.css",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0gzv-wh0-2pif.css",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0gzv-wh0-2pif.css",
       "sha256": "3ae1efebb339cdb23cb59dea28a9fff52ad495f89dee9dacd863ebdc43ba1b18",
       "size": 362
     },
     {
       "id": "content.ee984032fb965b2593fcc7ba6e5e7a63",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h--g628a9uuo.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h--g628a9uuo.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h--g628a9uuo.js.下载",
       "sha256": "792d0d3df124693da9c0e088ef3257d989298fb0be7a7398112c588c0bc4daf7",
       "size": 43743
     },
     {
       "id": "content.cf962ecc77d05375b087eabcf94fb54b",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h-xdsi~qnf7i.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h-xdsi~qnf7i.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h-xdsi~qnf7i.js.下载",
       "sha256": "6976899050763ede44e5651a50021b694c2f124a87c3b294a46f162df4ff2c4f",
       "size": 94964
     },
     {
       "id": "content.050928b8228752d3b365d6882629e8f7",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h4aoy.d80lqc.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h4aoy.d80lqc.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h4aoy.d80lqc.js.下载",
       "sha256": "773537e74a5e7bb0e04df2abc6e4dc620dea9386481c07b5264ab757080cdd03",
       "size": 122903
     },
     {
       "id": "content.391ea4b74b4d5881ae3ff0b98f55c33d",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h7p16_iwv6sp.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h7p16_iwv6sp.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0h7p16_iwv6sp.js.下载",
       "sha256": "d0f953660a2f78f7eb5ce321c76f43c582e4ad5e79060b9fdc0269764d3d640a",
       "size": 27561
     },
     {
       "id": "content.1fb756fa06e05d32bb46dce35cd30290",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0hd9rl~jop6e7.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0hd9rl~jop6e7.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0hd9rl~jop6e7.js.下载",
       "sha256": "725b3f7dd1a45596d91cd3852c0a17d8d77c53845f59f7443416200c8004b716",
       "size": 5695
     },
     {
       "id": "content.916e197208ad520e97a7a0f8d7827c11",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ij3rab6l052-.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ij3rab6l052-.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ij3rab6l052-.js.下载",
       "sha256": "5eaadb26419f4fd91008e37e09f3943f04633b3620b42a3fbb93da5269508b9f",
       "size": 2959
     },
     {
       "id": "content.9bf4f67f8262574a9634033e240c0de6",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0iu520i.qo7eb.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0iu520i.qo7eb.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0iu520i.qo7eb.js.下载",
       "sha256": "e87529c43dfb2c37c30625bd2456732e207a895bf79edef76984bf7f252e5aa4",
       "size": 31938
     },
     {
       "id": "content.c84a8183c20c5344a913ef1b1e4d686b",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0jd15q6r~we1e.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0jd15q6r~we1e.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0jd15q6r~we1e.js.下载",
       "sha256": "4aa82dbb380b78b06a5dd818d31bef16b4d614e105a2dd5d6ff89c0978658d1b",
       "size": 25824
     },
     {
       "id": "content.50a930cb8b985da8b3d79b54d64a4ccb",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0jy1blrx5dbae.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0jy1blrx5dbae.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0jy1blrx5dbae.js.下载",
       "sha256": "3001a960e55b524f07c719d671e6de2c0b51464ff228bb4dab6d9e9efe0fa165",
       "size": 13004
     },
     {
       "id": "content.cdedb58b62cf54e5a010a44d995a1981",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0kcijcoq4gclz.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0kcijcoq4gclz.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0kcijcoq4gclz.js.下载",
       "sha256": "75e1a0dc37e71303b8f97a24b1a1632a9122a993a3c1516224886a7f69986c6f",
       "size": 12410
     },
     {
       "id": "content.07aad53b0f125184ad69466cf064acce",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0kmw1k6yy6fl4.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0kmw1k6yy6fl4.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0kmw1k6yy6fl4.js.下载",
       "sha256": "dd9f80e31dcaa94b79d051e46b04e1a9bfd0bae5f5f2bef5970726874e8aef80",
       "size": 634
     },
     {
       "id": "content.e146f9512d51588b9895eca622f134f9",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0kximz13q4hjp.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0kximz13q4hjp.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0kximz13q4hjp.js.下载",
       "sha256": "1e308b0245efb58b12b5fa7f7eb5dd982bff2d0e1297b3b032120a2f33a71ce5",
       "size": 19012
     },
     {
       "id": "content.7d5211c4cc4b5da2950b6c341bdd1962",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0l82r-ikcn2j7.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0l82r-ikcn2j7.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0l82r-ikcn2j7.js.下载",
       "sha256": "76a8908b1263b82605dccbcf1847489c45bb3d5b35305a2bceb325aa88e32cd5",
       "size": 1736
     },
     {
       "id": "content.ec6eb7644c475b2db0b1f27363793ef9",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0lf72.ickn1cj.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0lf72.ickn1cj.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0lf72.ickn1cj.js.下载",
       "sha256": "9bba0feeb83dc09f43684328ccc1146ee2b4eca29be5dce2d3a3bd85587635a9",
       "size": 39862
     },
     {
       "id": "content.8b4a644e5317516e882f46c2880153d2",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0lzfgti-8s.re.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0lzfgti-8s.re.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0lzfgti-8s.re.js.下载",
       "sha256": "6dd3c6521867a713909ef268cf69be2020ec0bdc51f431362dc6d3f016d2728a",
       "size": 5822
     },
     {
       "id": "content.2d49e10bfcfe5ee4b044421e999286c4",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0m7w7rn-648mr.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0m7w7rn-648mr.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0m7w7rn-648mr.js.下载",
       "sha256": "f9be672a958ba5e74108fb060c93ff7ba77f40b9c2a76f7dad7d126a8825063c",
       "size": 74304
     },
     {
       "id": "content.4ce47af5fcce52b49acab3e5e0cd18f8",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0mprr.nm1a1fq.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0mprr.nm1a1fq.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0mprr.nm1a1fq.js.下载",
       "sha256": "0cd26b3469902b41db6b76ca00107fe0f548d6e555f52fb1e66e5c3702160020",
       "size": 73790
     },
     {
       "id": "content.82d0fac296145deb8bf091fde16c8a8d",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0mwjpja4.5aic.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0mwjpja4.5aic.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0mwjpja4.5aic.js.下载",
       "sha256": "dd6fafae6b91b35d296cb3123b98412506b0cf35428ab18876b48a625e8e603d",
       "size": 37784
     },
     {
       "id": "content.cd6c9e9e1b0351428b0f038775be9bf0",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0nmwzpckkh13a.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0nmwzpckkh13a.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0nmwzpckkh13a.js.下载",
       "sha256": "8834b308a8a602cb35fa9ead153476582bd1f66be54e376385403b306f5ae6df",
       "size": 803
     },
     {
       "id": "content.33bec1b27da3597589e0c265c4ff7063",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0o40.i1bd2s7c.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0o40.i1bd2s7c.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0o40.i1bd2s7c.js.下载",
       "sha256": "c5f3f586c372c6495e8350c1abb4982391cbf0cd8a77b59f5aeb314a7ad65843",
       "size": 45151
     },
     {
       "id": "content.0eec8eeb97f45f7d8f5e167ce8a7a977",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0o9wlo7cu._y1.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0o9wlo7cu._y1.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0o9wlo7cu._y1.js.下载",
       "sha256": "63381220ce194aa9b2a08fff86f57de6ef7e05440eb1aac093cfc7e9979f0aa4",
       "size": 25677
     },
     {
       "id": "content.77af917fdbdd5f37876b6e58c66730bb",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0oam4u~~f47jx.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0oam4u~~f47jx.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0oam4u~~f47jx.js.下载",
       "sha256": "1ff483afe4c06f897a5ff1d12af917a63a01196cd95e12118af881252bf69800",
       "size": 22402
     },
     {
       "id": "content.fbf5816e7df15ecfaee6841b4901bf87",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0od7714ukv667.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0od7714ukv667.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0od7714ukv667.js.下载",
       "sha256": "a98164384696f98e9951ed8d76836238920b4ab34060757c361f68e2068a549e",
       "size": 137969
     },
     {
       "id": "content.5de2380fb4db560d86086a1526f0c4df",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ok-_bzg.y626.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ok-_bzg.y626.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ok-_bzg.y626.js.下载",
       "sha256": "5210793a23028f6d2d660ce7377faa73a2c54ddfd2cdad1a745952c2b7cd73b0",
       "size": 1291
     },
     {
       "id": "content.fc255cd9de455a698997138a0bf80a42",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ophitfvdct-4.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ophitfvdct-4.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ophitfvdct-4.js.下载",
       "sha256": "f8c647afbcf6214e295e387d83ac7432632cc44cdabd977d14d1c613ee7f712f",
       "size": 1190778
     },
     {
       "id": "content.8b3821a150585fdf9654a28ab41d167a",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0pa9nbz-xix7i.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0pa9nbz-xix7i.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0pa9nbz-xix7i.js.下载",
       "sha256": "f1b9216bee5681aaa6337ab2347fdc3d5260418e80c9f63d9e25ac0498238016",
       "size": 33264
     },
     {
       "id": "content.43f251a4eb62560193fc42c852c9480c",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0pr36myi3~ly1.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0pr36myi3~ly1.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0pr36myi3~ly1.js.下载",
       "sha256": "2f1175979eca12d56e22af5e9d1d7076964a5c96fe30cf97154e058a574fba5f",
       "size": 1655
     },
     {
       "id": "content.b5c3e816527b57b8a4dfb47005f36955",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0pu8495pqb9yd.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0pu8495pqb9yd.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0pu8495pqb9yd.js.下载",
       "sha256": "88304c0ba7bbdeab1dda71cb65327512ff21225a488dfa0325a54f71666516c6",
       "size": 34325
     },
     {
       "id": "content.5e9c2f2f43ea563ba6c708bb46a4ae91",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0qfi08x9awa56.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0qfi08x9awa56.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0qfi08x9awa56.js.下载",
       "sha256": "a0ad50a86d9fd4403610bab1cbe49b7513cb70beba015c097a64fcdff4f7d026",
       "size": 37236
     },
     {
       "id": "content.f26d831ac6185b799898175901af72fc",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0s.mdz.9s_6f1.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0s.mdz.9s_6f1.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0s.mdz.9s_6f1.js.下载",
       "sha256": "dbdc32087763efc76108733a5a82de5d0f8fc1099f4d026ad4f893ae8ec26e3e",
       "size": 32561
     },
     {
       "id": "content.4dafd7c040cc5c30bf2b9fa8f9c48a46",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0s6irmb~k7e73.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0s6irmb~k7e73.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0s6irmb~k7e73.js.下载",
       "sha256": "1d6d78928fe7b914dea8ee7ccc9bf916d968250fca1b9dba5f5aee49aae436ee",
       "size": 25549
     },
     {
       "id": "content.0ee475421d5750db8210af23522efe3a",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0srdbxltwlvy_.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0srdbxltwlvy_.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0srdbxltwlvy_.js.下载",
       "sha256": "4551fc596f576d2c05a1bb1c7609b1936769399dca8ca1111838d6d199ce6838",
       "size": 15171
     },
     {
       "id": "content.85895f2b163553228390df76e2da73c2",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0t9bf~dw-zwhp.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0t9bf~dw-zwhp.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0t9bf~dw-zwhp.js.下载",
       "sha256": "86b18d8b07c2c935d4e9cd7f15923e20b887f4b7023f2fd622610a08ca609764",
       "size": 23575
     },
     {
       "id": "content.e932ac354a2751fd9edc015a4a5328af",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0tf7um4tu26t0.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0tf7um4tu26t0.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0tf7um4tu26t0.js.下载",
       "sha256": "918fa9312cb8618b1f99bc014e3ff8c26a9256d2214bb4abe39a61c4f29444fc",
       "size": 49998
     },
     {
       "id": "content.a73d28f766a85aa9ba322adf6f5eac45",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0tu~vne_.6c7d.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0tu~vne_.6c7d.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0tu~vne_.6c7d.js.下载",
       "sha256": "fc3914175e91d6e30eea7e009c45ae98d27eac3636395bba8123ea0033bdcc8d",
       "size": 10858
     },
     {
       "id": "content.9e7d4e8bf2bc5a62852f6b2525fd7af7",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0u9-ik171z-t6.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0u9-ik171z-t6.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0u9-ik171z-t6.js.下载",
       "sha256": "722a60dbff5330276e99f84852d967cea539cd43f8d764f8c40bd0f1baff9be6",
       "size": 42976
     },
     {
       "id": "content.24aae51dfa8d5f26b27e18fad7e9f578",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0uc9qcw5air3g.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0uc9qcw5air3g.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0uc9qcw5air3g.js.下载",
       "sha256": "c2e9b173ea0ef1fa7cfa3e93055e2eba26af232f7b7fbb8567a41c85defbe642",
       "size": 48452
     },
     {
       "id": "content.acc011f730f75c04bdd195199304f204",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ugaf5.uz3_.5.css",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ugaf5.uz3_.5.css",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0ugaf5.uz3_.5.css",
       "sha256": "3433a97fae2e5b6acc5b96c988b0500604bbf693bf1f2fb748188855d69167ce",
       "size": 66552
     },
     {
       "id": "content.e8af52a8c8e75a49ac482ecf7c86a213",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0v6-drmw8f717.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0v6-drmw8f717.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0v6-drmw8f717.js.下载",
       "sha256": "8f44a1f10f9255975f22ca1c1fc042bbcd5bdbd8eef3669560e61db005a07546",
       "size": 73431
     },
     {
       "id": "content.012737d393e456569e00a6091f257598",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0v6kgu9edbpa2.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0v6kgu9edbpa2.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0v6kgu9edbpa2.js.下载",
       "sha256": "f3fe3dfa7790f4e6dfa6fb5ddde5552e824eddf2a422bea327208561f03c04a1",
       "size": 145
     },
     {
       "id": "content.ac0de77c855659c793e7a6dc866aa0e6",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0vh98om0b~~b2.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0vh98om0b~~b2.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0vh98om0b~~b2.js.下载",
       "sha256": "244c16c56b48bf852f204a1dc4e4bc50bdc5144ceb1b2bf370d08bf72a86f2ba",
       "size": 3706
     },
     {
       "id": "content.9f58426f321259be850d29d67d5e0a75",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0vs8dl_96ovvx.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0vs8dl_96ovvx.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0vs8dl_96ovvx.js.下载",
       "sha256": "9686a70a90effbd2b7364da4a6861b27496076142ab4a7c59bdce1f2d8cbb153",
       "size": 44161
     },
     {
       "id": "content.83f3c613643758698d40687bf3687287",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0wpg4m6wo1xol.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0wpg4m6wo1xol.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0wpg4m6wo1xol.js.下载",
       "sha256": "89083cf4b6bf35b16e99b7e094d6137f1401c1363a17fdba130f4f76754986ea",
       "size": 21009
     },
     {
       "id": "content.5270159a038950bf97e739da7129f962",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0wub75dgc_a75.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0wub75dgc_a75.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0wub75dgc_a75.js.下载",
       "sha256": "804c4ace490072e20c6cb082362dae7bd8411db77349b16ff727ea526e14d7ca",
       "size": 11988
     },
     {
       "id": "content.92951af91c7f52baba14af23da2597fd",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0x2qc9sv27igf.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0x2qc9sv27igf.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0x2qc9sv27igf.js.下载",
       "sha256": "6e1a83e0acb984f176af9954384c2ed6d5a6de628dbb831ba4f93062dc8e1d77",
       "size": 27446
     },
     {
       "id": "content.ccaeed627cf55eb38f0d17e361a1a460",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0z20~-p2qu7v_.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0z20~-p2qu7v_.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0z20~-p2qu7v_.js.下载",
       "sha256": "e72f26df8e724bfc7ab44036454d3e58f260d8f93f693fe509c3adbf28172f30",
       "size": 160449
     },
     {
       "id": "content.3d7f148fcdbe56cb9adb2a1f41914371",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0z4mtv0tb-8gc.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0z4mtv0tb-8gc.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0z4mtv0tb-8gc.js.下载",
       "sha256": "239ce2a24989a1928be60426572db07a848d3307e3ab5a7898ccd3e48b1cc3d4",
       "size": 1827
     },
     {
       "id": "content.00009e0981c1558c92a77dd11dbc50eb",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0~-9hflaqj_px.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0~-9hflaqj_px.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/0~-9hflaqj_px.js.下载",
       "sha256": "605379c9bbae4d804f6f36f5c0ef09b85afacce4af891cc71eacceeb612bbec1",
       "size": 512322
     },
     {
       "id": "content.bcb246d0d97c56028d580d87179b6170",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/1020bpkx3p5eb.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/1020bpkx3p5eb.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/1020bpkx3p5eb.js.下载",
       "sha256": "1790a56c269c8b481164b537674c6e719ea58a972eff56d83ba4ae364e8bdd31",
       "size": 17966
     },
     {
       "id": "content.077ce884043759ce8bd7c7571de0f836",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/105inoe23hx3l.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/105inoe23hx3l.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/105inoe23hx3l.js.下载",
       "sha256": "c346a75b4eae174d4719591ab0721d893c162d91eac0b1272817b9cdf082b66a",
       "size": 59305
     },
     {
       "id": "content.5a75ca4efdee51c0acd625e4b85b34e6",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/108~8vw61_5kx.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/108~8vw61_5kx.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/108~8vw61_5kx.js.下载",
       "sha256": "8d535a422486c3451917aee00d1c441961b2eb104d29342f5a8caed2f54304cb",
       "size": 100466
     },
     {
       "id": "content.c6dd10c15b9c5d51a1e7bbc567e9eb7f",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/12ik8668e0_6r.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/12ik8668e0_6r.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/12ik8668e0_6r.js.下载",
       "sha256": "df5873f7015bccf6498c68e2e56879bbfa33a2baea37670fcdb3908a74bcd09b",
       "size": 44211
     },
     {
       "id": "content.de4ecc13fa545c8c93f9a17b0528611e",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/13_n3-v4n-va2.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/13_n3-v4n-va2.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/13_n3-v4n-va2.js.下载",
       "sha256": "b043de983f1ec09fd56c94543f0a933773e1576c9f085c1b37d36836b07eedaf",
       "size": 723
     },
     {
       "id": "content.9cc8e9c388ac5930b8fe51fd29cfba92",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/154z9tm1gma-..js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/154z9tm1gma-..js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/154z9tm1gma-..js.下载",
       "sha256": "4214cbfe892d94bcf189ccb89fc07bbfa28c1d122a99b3eba4e9f5702d77788e",
       "size": 32901
     },
     {
       "id": "content.4dc3f5d9db585b3083f5c443a041f585",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/15hb28.o0zi9e.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/15hb28.o0zi9e.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/15hb28.o0zi9e.js.下载",
       "sha256": "b90d1022e2279154b554dad62883ddf47b9bcfa87f3eb4b123c3f4b8e43d983f",
       "size": 217930
     },
     {
       "id": "content.3509f07e91005a9fa4ac8cefcf8f4064",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/15qu_txlx88s1.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/15qu_txlx88s1.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/15qu_txlx88s1.js.下载",
       "sha256": "03cb16544713aaa7cdadff6be949ec68f1db2a4c90b2b2bf2c7decafa8ba946a",
       "size": 34939
     },
     {
       "id": "content.e64105feb15f5e0791329f664436a12e",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/15zibkgpbd6i_.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/15zibkgpbd6i_.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/15zibkgpbd6i_.js.下载",
       "sha256": "c6c035a48c812fb3296f82b4f0aeed1302caed21a68875447e5e659fab94f412",
       "size": 33852
     },
     {
       "id": "content.7c70c2792aba5216824954d27b2593c6",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/16vslf-cufte6.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/16vslf-cufte6.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/16vslf-cufte6.js.下载",
       "sha256": "be792251f9fb94144b1e790f5622694a66ed25bc7fb376bb591f629ded6d19d3",
       "size": 38107
     },
     {
       "id": "content.a0fa0802620759bf90d4851d091dbbfa",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/16z.z~xlr8p4b.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/16z.z~xlr8p4b.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/16z.z~xlr8p4b.js.下载",
       "sha256": "8c791a9b269b293837a1db01fa49b23003259fe1e0802053ce8c628c3cd01423",
       "size": 426336
     },
     {
       "id": "content.2e911903165355d69ae78bf9ac8b1ce9",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/179fzjzxyvmf4.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/179fzjzxyvmf4.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/179fzjzxyvmf4.js.下载",
       "sha256": "8464516697b85566000c2b11b5a0c61a6922609d745422649ada08204ec8b775",
       "size": 912
     },
     {
       "id": "content.506286eeb4a45457a1cfaf3d870c199a",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/1854yxxo.0y~q.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/1854yxxo.0y~q.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/1854yxxo.0y~q.js.下载",
       "sha256": "310d084f4742d29a03332b27c8aedb087f00167082ca1ec1fed713105ed002bd",
       "size": 67425
     },
     {
       "id": "content.0c7ce2e5b55b5a68b53f9b440c0fe044",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/logo.svg",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/logo.svg",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/logo.svg",
       "sha256": "aae2ea0fa921287fa53cb080aca6c6e64ba6704d9056bf8524db6cdee22b631b",
       "size": 1221
     },
     {
       "id": "content.9ff59fcbea18520d8e76ebadd15c1adc",
       "oldPath": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/turbopack-0rlo2okznrggu.js.下载",
-      "path": "AI/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/turbopack-0rlo2okznrggu.js.下载",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/Dify工作流/Dify API文档/微信小程序-ACG画廊鉴赏 - Dify_files/turbopack-0rlo2okznrggu.js.下载",
       "sha256": "92439cb934b37cea749df186e8a08158fdc30e0164085ea9674ab708ff8ac366",
       "size": 10823
     },
     {
       "id": "content.d1f43deb1dfe53f5a8f9f4e48923c02d",
       "oldPath": "AI/Gemin API 学习/main.py",
-      "path": "AI/Gemin API 学习/main.py",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/模型API实践/Gemin API 学习/main.py",
       "sha256": "c6e2ceaaa22b87bd2a10d63e07bd456edabe3e940574e5bb964e70d7a4fdd71c",
       "size": 463
     },
     {
       "id": "content.d3416b4dd5e052ecaf69022c68c3c6eb",
       "oldPath": "AI/LangChain/上下文对话/main.py",
-      "path": "AI/LangChain/上下文对话/main.py",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain/上下文对话/main.py",
       "sha256": "1731367254e2a0e039df9c25f38a34cce172a5ff0ff7d2641a391a20b0e1787b",
       "size": 305
     },
     {
       "id": "content.f924f4b4424e5a938799b98c23decd30",
       "oldPath": "AI/LangChain/学习文档.md",
-      "path": "AI/LangChain/学习文档.md",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain/学习文档.md",
       "sha256": "35fd732646da469297cc6fd9e929701688aa9ee5bdbca4bcf5c981ca648afded",
       "size": 434
     },
     {
       "id": "content.e0980f12155559188b581597d6df5386",
       "oldPath": "AI/LangChain/官方文档学习/TEXT.py",
-      "path": "AI/LangChain/官方文档学习/TEXT.py",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain/官方文档学习/TEXT.py",
       "sha256": "f2fdba36835d1819177ee25fd5b883832d03e4ad5a7494f4e097bb1a87c1c27e",
       "size": 93
     },
     {
       "id": "content.8bf5c015e6f4544182dda6ace60fc2be",
       "oldPath": "AI/LangChain/官方文档学习/快速入门/构建一个基本代理.py",
-      "path": "AI/LangChain/官方文档学习/快速入门/构建一个基本代理.py",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain/官方文档学习/快速入门/构建一个基本代理.py",
       "sha256": "9594889fe150619684d4ac1c2e7dd156e71fddc141f939210afeef2fb7d3f80c",
       "size": 571
     },
     {
       "id": "content.546019a1035d5c54b717c3026fe35120",
       "oldPath": "AI/LangChain/官方文档学习/快速入门/构建一个现实世界的代理.py",
-      "path": "AI/LangChain/官方文档学习/快速入门/构建一个现实世界的代理.py",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain/官方文档学习/快速入门/构建一个现实世界的代理.py",
       "sha256": "552e680d7cc246fbd2c70665f0267f1bd7bdf4a96a64fc1046dc24f2d1484b66",
       "size": 7357
     },
     {
       "id": "content.591e09e1511152b6a4ce40289b56bcaa",
       "oldPath": "AI/LangChain/官方文档学习/概述/流式.py",
-      "path": "AI/LangChain/官方文档学习/概述/流式.py",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain/官方文档学习/概述/流式.py",
       "sha256": "db890b7ace7cab3ef9cbe8deb34b2e8a21bfc9f29dbf6db9eed867435baeb3fe",
       "size": 519
     },
     {
       "id": "content.fa58f34200765ea1ae01f88c8e2565a5",
       "oldPath": "AI/LangChain/官方文档学习/概述/简化包装.py",
-      "path": "AI/LangChain/官方文档学习/概述/简化包装.py",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain/官方文档学习/概述/简化包装.py",
       "sha256": "ea8d2b8ac9002639101244b73c19698bc18979d45627c6a0209d3b44f3796e16",
       "size": 982
     },
     {
       "id": "content.add25219478f51e28959374da6476a46",
       "oldPath": "AI/LangChain/官方文档学习/概述/长记忆对话.py",
-      "path": "AI/LangChain/官方文档学习/概述/长记忆对话.py",
+      "path": "AI知识系统与智能体/Agent、工作流与规划/LangChain与LangGraph/LangChain/官方文档学习/概述/长记忆对话.py",
       "sha256": "ff98e4ce7455efd2f1ddc511dd14d98b22b4f3234813fdd06cdefd5edb8eada9",
       "size": 646
     },
     {
       "id": "content.e5ca6d23768d581b9d63cf926b8d96f4",
       "oldPath": "AI/MCP学习研究/MCP终极指南-基础篇.md",
-      "path": "AI/MCP学习研究/MCP终极指南-基础篇.md",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/MCP协议/MCP学习研究/MCP终极指南-基础篇.md",
       "sha256": "b6254346b7fb1c74d8353c1751608374b5c8fcda36d0cf71a6b7d5fb01a920e4",
       "size": 16344
     },
     {
       "id": "content.d06b5fb4c67e5dcf95a248333165a800",
       "oldPath": "AI/MCP学习研究/大佬给的总结.md",
-      "path": "AI/MCP学习研究/大佬给的总结.md",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/MCP协议/MCP学习研究/大佬给的总结.md",
       "sha256": "a12f80481c6fe4ad122e9f55d33c809b6d4ea7f2ad3385ff64beea7648c95d72",
       "size": 2549
     },
     {
       "id": "content.f402f2e7a10b5f76a91e55a7a0825489",
       "oldPath": "AI/STT语音学习/GPT-SoVITS-File/参考文本.ogg",
-      "path": "AI/STT语音学习/GPT-SoVITS-File/参考文本.ogg",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/GPT-SoVITS-File/参考文本.ogg",
       "sha256": "fc8e95d956914b7dfca7563b4442fbbbcd9d7929f28927710528a1053f710e7a",
       "size": 53371
     },
     {
       "id": "content.089e7a493d625f608fa0a14452761486",
       "oldPath": "AI/STT语音学习/SpeechRecongnition学习.py",
-      "path": "AI/STT语音学习/SpeechRecongnition学习.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/SpeechRecongnition学习.py",
       "sha256": "57574593ca6d59e0ce197757cd47fc4c79cade5978fbc2ec6f8b946259c52870",
       "size": 1328
     },
     {
       "id": "content.6b2c76281d1b5f45844581f05b579d2a",
       "oldPath": "AI/STT语音学习/TTS语音合成/GPT-SoVITS调用.py",
-      "path": "AI/STT语音学习/TTS语音合成/GPT-SoVITS调用.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/调用与播放示例/GPT-SoVITS调用.py",
       "sha256": "ac704a246207aaff3c7310295545f4a8ad3a50b35e8ae436119a000bc7fa4962",
       "size": 6751
     },
     {
       "id": "content.15826ee3eb735957b40e0db0bb53befc",
       "oldPath": "AI/STT语音学习/TTS语音合成/pyttsx3(BUG处理).py",
-      "path": "AI/STT语音学习/TTS语音合成/pyttsx3(BUG处理).py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/调用与播放示例/pyttsx3(BUG处理).py",
       "sha256": "f811f13768786b80f945a040fc09d96ff96567c7ff04baaf5484d594b238a5a7",
       "size": 441
     },
     {
       "id": "content.7355e132e823595d9b9a2dd2585fef08",
       "oldPath": "AI/STT语音学习/TTS语音合成/pyttsx3语音生成.py",
-      "path": "AI/STT语音学习/TTS语音合成/pyttsx3语音生成.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/调用与播放示例/pyttsx3语音生成.py",
       "sha256": "26705bc44039165facc45aee371c9bacc3945c1942c2fa112df5ba7a3d933d95",
       "size": 2092
     },
     {
       "id": "content.6d1b20ed7c7d566ab31ea4802c7e064b",
       "oldPath": "AI/STT语音学习/TTS语音合成/wav文件播放.py",
-      "path": "AI/STT语音学习/TTS语音合成/wav文件播放.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/调用与播放示例/wav文件播放.py",
       "sha256": "cbe14a15a87db52d90b9af229827dfd06e6d57dfa186b8a07ebab08c8a6097d9",
       "size": 3106
     },
     {
       "id": "content.79f9746343ef55c498358dc8458d0b46",
       "oldPath": "AI/STT语音学习/TTS语音合成/音频文件启动.py",
-      "path": "AI/STT语音学习/TTS语音合成/音频文件启动.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/TTS语音合成/调用与播放示例/音频文件启动.py",
       "sha256": "0fe4cc11132d314562e168f5d6dcc10ae6a3dd76e65d999fd0cc4f9459b7173c",
       "size": 4402
     },
     {
       "id": "content.3f8f0fbca23c5a82ac424f8ac86ce7f2",
       "oldPath": "AI/STT语音学习/pyttsx3(BUG处理).py",
-      "path": "AI/STT语音学习/pyttsx3(BUG处理).py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/pyttsx3(BUG处理).py",
       "sha256": "f811f13768786b80f945a040fc09d96ff96567c7ff04baaf5484d594b238a5a7",
       "size": 441
     },
     {
       "id": "content.6fce082e98115bcdb721ab4ff10c1cee",
       "oldPath": "AI/STT语音学习/recording.wav",
-      "path": "AI/STT语音学习/recording.wav",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/recording.wav",
       "sha256": "e58e3d5a01192566b6bdf3a1c691ba321ed4e70744327e509a139dfb5b5f66a8",
       "size": 30442
     },
     {
       "id": "content.f22cdd1edc975f6d907023666e27c2bb",
       "oldPath": "AI/STT语音学习/voice/1.ogg",
-      "path": "AI/STT语音学习/voice/1.ogg",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice/1.ogg",
       "sha256": "fc8e95d956914b7dfca7563b4442fbbbcd9d7929f28927710528a1053f710e7a",
       "size": 53371
     },
     {
       "id": "content.3989913cf2c755809fa3c6439e26e821",
       "oldPath": "AI/STT语音学习/voice/output.wav",
-      "path": "AI/STT语音学习/voice/output.wav",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/voice/output.wav",
       "sha256": "0cb0a48d7438b61842954ef5d1b4a1a1cba03f3f71c8ce6bce22d498161986f3",
       "size": 159788
     },
     {
       "id": "content.3a18aa0a632e540689a6de7e822b531b",
       "oldPath": "AI/STT语音学习/复读机.py",
-      "path": "AI/STT语音学习/复读机.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/复读机.py",
       "sha256": "09e225adf39af01c234c4089dac0828bc941c474cb2207519b96c8da181e7b89",
       "size": 2569
     },
     {
       "id": "content.d8c312c82db05b8a870012c7fd6d9b3c",
       "oldPath": "AI/STT语音学习/爱丽丝人格.md",
-      "path": "AI/STT语音学习/爱丽丝人格.md",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/爱丽丝人格.md",
       "sha256": "33b66d1225ee27cd566ebd265a2869dc6f1b8b5d87a8bfec27eb221c3563e56b",
       "size": 2987
     },
     {
       "id": "content.057d5373d8b85b1d83cd8996ac416aa5",
       "oldPath": "AI/STT语音学习/研究.py",
-      "path": "AI/STT语音学习/研究.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/研究.py",
       "sha256": "56bd77a8eac0fccc836cf51d1c4cf8a08c0d4d68843ac372d7634897bbaab548",
       "size": 3902
     },
     {
       "id": "content.619cb5c2ad2e56c6a4556a4bbff4866e",
       "oldPath": "AI/STT语音学习/研究成果/TTS语音合成/合成音频.wav",
-      "path": "AI/STT语音学习/研究成果/TTS语音合成/合成音频.wav",
+      "path": "项目工坊/AI应用与智能体项目/语音交互Agent项目/研究成果/TTS语音合成/合成音频.wav",
       "sha256": "f2efafbc1d396f08280ca5328bf2614680eee135e3ad2eb2dbafdd69a39a7be5",
       "size": 280364
     },
     {
       "id": "content.0933ddb0b76f5e57ad5271ed2fc0f8eb",
       "oldPath": "AI/STT语音学习/研究成果/VAD语音检测.py",
-      "path": "AI/STT语音学习/研究成果/VAD语音检测.py",
+      "path": "项目工坊/AI应用与智能体项目/语音交互Agent项目/研究成果/VAD语音检测.py",
       "sha256": "9d7e904b13a20efaa512531d87bf751b552b0a0c022fbf2a2d79b3571caec161",
       "size": 1201
     },
     {
       "id": "content.0b94e360d79250f5a5c2cd2b363f5026",
       "oldPath": "AI/STT语音学习/研究成果/python调用ollama.py",
-      "path": "AI/STT语音学习/研究成果/python调用ollama.py",
+      "path": "项目工坊/AI应用与智能体项目/语音交互Agent项目/研究成果/python调用ollama.py",
       "sha256": "18c8e0c5639376d94ede458ad62d2cac9558ee5e02d58d98082e78c30a3970a1",
       "size": 2426
     },
     {
       "id": "content.0cbfb1c9ce515590ae93a1f766be1d85",
       "oldPath": "AI/STT语音学习/研究成果/语音调用AI.py",
-      "path": "AI/STT语音学习/研究成果/语音调用AI.py",
+      "path": "项目工坊/AI应用与智能体项目/语音交互Agent项目/研究成果/语音调用AI.py",
       "sha256": "ccbe252fd1f77768c134bd67751ac8630bf0d3e52218e3f6833aefc52948a228",
       "size": 13163
     },
     {
       "id": "content.1686fb5d44b95ff79425f9b095152759",
       "oldPath": "AI/STT语音学习/获取音频设备.py",
-      "path": "AI/STT语音学习/获取音频设备.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/获取音频设备.py",
       "sha256": "0f136cbee99dc999d713783e7ca2812e0c8d380b21aab73d620dbabf62e1f68d",
       "size": 656
     },
     {
       "id": "content.3bae2246d42c5ed491c0b6ae9d73f7ab",
       "oldPath": "AI/STT语音学习/语音实时转录.py",
-      "path": "AI/STT语音学习/语音实时转录.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/语音实时转录.py",
       "sha256": "63ef133fc4483ba28115e421b5e9a1eae282d5a0c0ae36ecc9fceb80ec196b18",
       "size": 3161
     },
     {
       "id": "content.a7ce186143cc5f7c88d711ed6c9849ff",
       "oldPath": "AI/STT语音学习/语音录制.py",
-      "path": "AI/STT语音学习/语音录制.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/语音录制.py",
       "sha256": "09a07862a3610f4ea7cf79f1acc97bae81ec4d37cebc608a8eaa1d6ee51068bf",
       "size": 1946
     },
     {
       "id": "content.ec073f3a747c59df93231324411778ce",
       "oldPath": "AI/STT语音学习/语音活动检测/silero-vad官方示例1.py",
-      "path": "AI/STT语音学习/语音活动检测/silero-vad官方示例1.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测/silero-vad官方示例1.py",
       "sha256": "393cf71fb9ba5c7a659fcefe8d777b7e595d1b2e0b691f5f97721bbe99d5236b",
       "size": 900
     },
     {
       "id": "content.4c19c09fb1615664ad192def2da0d7c1",
       "oldPath": "AI/STT语音学习/语音活动检测/silero-vad官方示例2.py",
-      "path": "AI/STT语音学习/语音活动检测/silero-vad官方示例2.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测/silero-vad官方示例2.py",
       "sha256": "e8f633c77f583cd4c07e482fd4521b3fd82cf615fdd516aca3bedc5fc1c121b1",
       "size": 647
     },
     {
       "id": "content.765e7ffb660c5c66b09703a439390ecf",
       "oldPath": "AI/STT语音学习/语音活动检测/国外视频里面学的.py",
-      "path": "AI/STT语音学习/语音活动检测/国外视频里面学的.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测/国外视频里面学的.py",
       "sha256": "1d7d81eebf8d7121bc2fb6c35b1eb42244a0368c8f584f55fc98446c9f6eba85",
       "size": 1417
     },
     {
       "id": "content.42b3cebba94354f98d4adb5a8a3de982",
       "oldPath": "AI/STT语音学习/语音活动检测/改造国外的.py",
-      "path": "AI/STT语音学习/语音活动检测/改造国外的.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测/改造国外的.py",
       "sha256": "d19ed97a1bb740ef0398ffe0686e64ecb48eeab2eb77153481846f97cf276af0",
       "size": 1487
     },
     {
       "id": "content.816caa16847359d58f931d2d171307fc",
       "oldPath": "AI/STT语音学习/语音活动检测/语音活动检测.py",
-      "path": "AI/STT语音学习/语音活动检测/语音活动检测.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音活动检测/语音活动检测.py",
       "sha256": "a775c18252b4ff2a7a1094c3ac7ae782e4bcfeae05b30c3bf941ea4cd43fea04",
       "size": 4129
     },
     {
       "id": "content.eb5168d853f851b0bce489552799fdfe",
       "oldPath": "AI/STT语音学习/语音调用AI.py",
-      "path": "AI/STT语音学习/语音调用AI.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/语音实验/语音调用AI.py",
       "sha256": "f81aca983b93814e49cdc6b9b6421bb2b9fa2a757982e9a5cca0a55253943ae6",
       "size": 8157
     },
     {
       "id": "content.44b248eb2b495514a3206bad057e55dd",
       "oldPath": "AI/STT语音学习/语音转文字/faster-whisper学习.py",
-      "path": "AI/STT语音学习/语音转文字/faster-whisper学习.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字/faster-whisper学习.py",
       "sha256": "dfc8f0becd14538925d6f562d5cccd9b322fcc855ef9b1f5973fdf390eccebb7",
       "size": 1306
     },
     {
       "id": "content.8bff1904ea3e5f17bd915a10750b051d",
       "oldPath": "AI/STT语音学习/语音转文字/faster-whisper学习2.py",
-      "path": "AI/STT语音学习/语音转文字/faster-whisper学习2.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字/faster-whisper学习2.py",
       "sha256": "2102b125030ae28fe67f35a5db2f45d2359df688b15ad4fc01eab1f04af044ea",
       "size": 1180
     },
     {
       "id": "content.dad177bdff3e50c4806b92697c3858b2",
       "oldPath": "AI/STT语音学习/语音转文字/faster-whisper学习3.py",
-      "path": "AI/STT语音学习/语音转文字/faster-whisper学习3.py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字/faster-whisper学习3.py",
       "sha256": "951f9759d2ee7628a69cbec2ed52bb2c094116f4a74f59155095758c6ee4f2db",
       "size": 1607
     },
     {
       "id": "content.81bad65652f252778ade275b9dd7e784",
       "oldPath": "AI/STT语音学习/语音转文字/whisper(官网示例1).py",
-      "path": "AI/STT语音学习/语音转文字/whisper(官网示例1).py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字/whisper(官网示例1).py",
       "sha256": "d272420191a94e2c6ce72eac8c3c062430289784bb280fc052cbf49b4e95c13c",
       "size": 2622
     },
     {
       "id": "content.aa93ccd06c4c503c9f311daa7a2ca9cb",
       "oldPath": "AI/STT语音学习/语音转文字/whisper(官网示例2).py",
-      "path": "AI/STT语音学习/语音转文字/whisper(官网示例2).py",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/STT语音识别/语音转文字/whisper(官网示例2).py",
       "sha256": "f7f047382d8e5373af99328feace90ba8ca8f5ac03cd2df32d0f3a333091c510",
       "size": 2299
     },
     {
       "id": "content.fd191602c96c5de081def37ecba203a6",
       "oldPath": "AI/WSL和windows文件挂载问题.png",
-      "path": "AI/WSL和windows文件挂载问题.png",
+      "path": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/assets/WSL和windows文件挂载问题.png",
       "sha256": "c437fc2f38439d09264dc6f8e630d72634c2470f3c197132e70cec75765a0c1f",
       "size": 116149
     },
     {
       "id": "content.d788e6adc7ad5b6395659e2a00b95e56",
       "oldPath": "AI/clash verge订阅链接是网友的爱心发电的(仅用于学习).txt",
-      "path": "AI/clash verge订阅链接是网友的爱心发电的(仅用于学习).txt",
+      "path": "系统平台与自动化/网络、域名与内网穿透/网络代理/clash verge订阅链接是网友的爱心发电的(仅用于学习).txt",
       "sha256": "93dba045a9fd8a3fedb353926501a5cc8b72b436b40eeaac5fa9fde88ef54839",
       "size": 208
     },
     {
       "id": "content.270d38587480592e8259897d309c38ee",
       "oldPath": "AI/ollama改变默认下载路径位置.txt",
-      "path": "AI/ollama改变默认下载路径位置.txt",
+      "path": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/Ollama/ollama改变默认下载路径位置.txt",
       "sha256": "047498febbd0992d5907eef6294524a2632bea8deabbc2c4d2f26282e94b658d",
       "size": 37
     },
     {
       "id": "content.da66cca928975e5d92ed0f52b14711fe",
       "oldPath": "AI/open-webui/open-webui-gpu.yaml",
-      "path": "AI/open-webui/open-webui-gpu.yaml",
+      "path": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/open-webui/open-webui-gpu.yaml",
       "sha256": "0ca0c5685403bccb17cb230ae3026f2ae559310c98a84284548ec336279fa033",
       "size": 905
     },
     {
       "id": "content.8f3ffaddfa3d5e4096fd31d85d3aa7dd",
       "oldPath": "AI/open-webui/open-webui部署.md",
-      "path": "AI/open-webui/open-webui部署.md",
+      "path": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/open-webui/open-webui部署.md",
       "sha256": "e5a71ee3e25b98499c3a8d3119009f36a000356e3117f65173baaf5dc7a64190",
       "size": 10098
     },
     {
       "id": "content.c39c596030e658c5ac3bb63c9209c42d",
       "oldPath": "AI/open-webui/部署指令.txt",
-      "path": "AI/open-webui/部署指令.txt",
+      "path": "AI模型与多模态智能/模型推理、部署与本地运行/本地模型运行/open-webui/部署指令.txt",
       "sha256": "4c1bf15a2c75c3010387e7fe84376e308aa59effa2d4c623c5fe1da2fc529172",
       "size": 437
     },
     {
       "id": "content.4bceae4e3ca45b7a91124511d3d7912f",
       "oldPath": "AI/任务日志分析提示词.md",
-      "path": "AI/任务日志分析提示词.md",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/任务日志分析提示词.md",
       "sha256": "4dca4cbb82a29b2d2f94a84e22db45c2167021c6b2fe5e268765c5879efdcab8",
       "size": 1313
     },
     {
       "id": "content.8969507720ef51849a8865ca454c9883",
       "oldPath": "AI/去品牌水印提示词.md",
-      "path": "AI/去品牌水印提示词.md",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/去品牌水印提示词.md",
       "sha256": "d90c22afa7a28dc8bb9f985a3d46fa3c8c5b7ff5a2cb8e2567d05d84a912d9d6",
       "size": 2751
     },
     {
       "id": "content.4f34be2ec0ae5c83affb0a5f8ae13c14",
       "oldPath": "AI/多功能游戏查询Bot/AstrBot + Napcat + Shipyard Neo + gsuid_core + natapp 一体化部署指南.md",
-      "path": "AI/多功能游戏查询Bot/AstrBot + Napcat + Shipyard Neo + gsuid_core + natapp 一体化部署指南.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/AstrBot + Napcat + Shipyard Neo + gsuid_core + natapp 一体化部署指南.md",
       "sha256": "352b5bfad8c4a176a83233687efd486ea19de1f1c703821b8662774962cb329f",
       "size": 10642
     },
     {
       "id": "content.99119a99b2965ff098adbf0970064a86",
       "oldPath": "AI/多功能游戏查询Bot/config.yaml",
-      "path": "AI/多功能游戏查询Bot/config.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/config.yaml",
       "sha256": "256dbfddeab073f583660c4ab08ce04c9bdd55c1e2fd78126498b926b8062490",
       "size": 6299
     },
     {
       "id": "content.23a48e32ec2959b3b0cf7931e71e7de3",
       "oldPath": "AI/多功能游戏查询Bot/docker-compose.yaml",
-      "path": "AI/多功能游戏查询Bot/docker-compose.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/docker-compose.yaml",
       "sha256": "57c9b24838f570c444de48a10b14c9c289b92797d1cae780fbc56e5e74d7237b",
       "size": 8993
     },
     {
       "id": "content.00c2454749ff5fa59b9026bbc4ef50bf",
       "oldPath": "AI/多功能游戏查询Bot/linux极小化部署/AstrBot + NapCat + gsuid_core 一体化部署完整记录.md",
-      "path": "AI/多功能游戏查询Bot/linux极小化部署/AstrBot + NapCat + gsuid_core 一体化部署完整记录.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/linux极小化部署/AstrBot + NapCat + gsuid_core 一体化部署完整记录.md",
       "sha256": "d21d2e58aa0ee072f8af05095034f4ac18bb5903221ea826fe3b85aac2f57379",
       "size": 36274
     },
     {
       "id": "content.8aa4270f6000559587c608858efa0d38",
       "oldPath": "AI/多功能游戏查询Bot/linux极小化部署/docker-compose.yaml",
-      "path": "AI/多功能游戏查询Bot/linux极小化部署/docker-compose.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/linux极小化部署/docker-compose.yaml",
       "sha256": "46353b9076a020b0f951f170eca822c325c5340580c18421ccccc277fdb459d7",
       "size": 4359
     },
     {
       "id": "content.87b3373004cf5a9e9806f9e997fa3504",
       "oldPath": "AI/多功能游戏查询Bot/linux极小化部署/部署指令.txt",
-      "path": "AI/多功能游戏查询Bot/linux极小化部署/部署指令.txt",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/linux极小化部署/部署指令.txt",
       "sha256": "45ca00224f5c0697eca95f17de5d57ca6f15435f0810d1a99bf4b182ac0ffac2",
       "size": 975
     },
     {
       "id": "content.5e7b62512bd152d9b338b44c10c11aa9",
       "oldPath": "AI/多功能游戏查询Bot/linux极小化部署/部署过程记录和问题解析（未整合）/AstrBot + NapCat + gsuid_core 一体化部署网络问题总结.md",
-      "path": "AI/多功能游戏查询Bot/linux极小化部署/部署过程记录和问题解析（未整合）/AstrBot + NapCat + gsuid_core 一体化部署网络问题总结.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/linux极小化部署/部署过程记录和问题解析（未整合）/AstrBot + NapCat + gsuid_core 一体化部署网络问题总结.md",
       "sha256": "1802993ed1774c493b2aea14166bb33e6c6d2c81d7c539294a599bf385331b2f",
       "size": 7097
     },
     {
       "id": "content.118a98c356a853849393b323403e10dd",
       "oldPath": "AI/多功能游戏查询Bot/linux极小化部署/部署过程记录和问题解析（未整合）/AstrBot + Napcat + gsuid_core 轻量部署指南.md",
-      "path": "AI/多功能游戏查询Bot/linux极小化部署/部署过程记录和问题解析（未整合）/AstrBot + Napcat + gsuid_core 轻量部署指南.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/linux极小化部署/部署过程记录和问题解析（未整合）/AstrBot + Napcat + gsuid_core 轻量部署指南.md",
       "sha256": "35faaf457a7835e682e24bd0012d35f895dd94dc761554cb6e80f46fa99081e7",
       "size": 8677
     },
     {
       "id": "content.5f060e7fe35a5af2815c7fc4573c7147",
       "oldPath": "AI/多功能游戏查询Bot/linux极小化部署/部署过程记录和问题解析（未整合）/NapCat、AstrBot 和 gsuid_core 这三个服务相关的 Token 及安全配置.md",
-      "path": "AI/多功能游戏查询Bot/linux极小化部署/部署过程记录和问题解析（未整合）/NapCat、AstrBot 和 gsuid_core 这三个服务相关的 Token 及安全配置.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/linux极小化部署/部署过程记录和问题解析（未整合）/NapCat、AstrBot 和 gsuid_core 这三个服务相关的 Token 及安全配置.md",
       "sha256": "b8fd8df746a907fb7b181d2a79c979b5a6533750498a7a61fcba0cf236a3ac3a",
       "size": 13840
     },
     {
       "id": "content.2f6ce9f259c85a20bc2d6ab335c04028",
       "oldPath": "AI/多功能游戏查询Bot/仅游戏查询机器人/docker-compose.yaml",
-      "path": "AI/多功能游戏查询Bot/仅游戏查询机器人/docker-compose.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/仅游戏查询机器人/docker-compose.yaml",
       "sha256": "dc42f4933158d3bc7ae1135de37d9a404ea6f01cdb96a292b44582e7de4210b0",
       "size": 5507
     },
     {
       "id": "content.8a2d16f6c8f3534cbce8f174182267fd",
       "oldPath": "AI/多功能游戏查询Bot/仅游戏查询机器人/部署指令和注意事项.md",
-      "path": "AI/多功能游戏查询Bot/仅游戏查询机器人/部署指令和注意事项.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/仅游戏查询机器人/部署指令和注意事项.md",
       "sha256": "16681673b5b8d4c4bdebe4bbfed9440806bedcb115748787c81c901c4edb6e5f",
       "size": 143
     },
     {
       "id": "content.d34c6adb8e7b562896ad7509e27b1a88",
       "oldPath": "AI/多功能游戏查询Bot/早柚核心配置和说明/docker-compose.yaml",
-      "path": "AI/多功能游戏查询Bot/早柚核心配置和说明/docker-compose.yaml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/早柚核心配置和说明/docker-compose.yaml",
       "sha256": "ad545ac1fe775e6ed2ef2a5fd3f98a22b61592ac52c11436ef7311f4037f1a3e",
       "size": 2433
     },
     {
       "id": "content.5a0965238e0e53a891fba496a762e029",
       "oldPath": "AI/多功能游戏查询Bot/早柚核心配置和说明/官方原始的.yml",
-      "path": "AI/多功能游戏查询Bot/早柚核心配置和说明/官方原始的.yml",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/早柚核心配置和说明/官方原始的.yml",
       "sha256": "fe192421f64522d430068f71539d9fd513f68c171fa1abea22d86a854ca40299",
       "size": 1055
     },
     {
       "id": "content.26c7048e9ca05d0ebefecf46a20d164f",
       "oldPath": "AI/多功能游戏查询Bot/早柚核心配置和说明/官方原始的env",
-      "path": "AI/多功能游戏查询Bot/早柚核心配置和说明/官方原始的env",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/早柚核心配置和说明/官方原始的env",
       "sha256": "918cc132ac591cd6fee166c4514f5d73f212ec4a210e4c772fa982635215c87f",
       "size": 1979
     },
     {
       "id": "content.3b3c2a9bda1e522ca41922d3735b8d40",
       "oldPath": "AI/多功能游戏查询Bot/早柚核心配置和说明/早柚核心配置和说明.md",
-      "path": "AI/多功能游戏查询Bot/早柚核心配置和说明/早柚核心配置和说明.md",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/早柚核心配置和说明/早柚核心配置和说明.md",
       "sha256": "63561530ce78aa574941c608f74e5cbff77fea24ee2cd5077131ccec9d1373d0",
       "size": 2149
     },
     {
       "id": "content.60099e02f8f2553e8ba68a883d0e89d2",
       "oldPath": "AI/多功能游戏查询Bot/部署指令.txt",
-      "path": "AI/多功能游戏查询Bot/部署指令.txt",
+      "path": "项目工坊/AI应用与智能体项目/机器人部署/多功能游戏查询Bot/部署指令.txt",
       "sha256": "45ca00224f5c0697eca95f17de5d57ca6f15435f0810d1a99bf4b182ac0ffac2",
       "size": 975
     },
     {
       "id": "content.0611770d8a9c5211ba328d7e85cd30ed",
       "oldPath": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/README.md",
-      "path": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/README.md",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/README.md",
       "sha256": "b47f85e35cbe7466258f13fad7ff2b9f3122900f0491c6ebd53f2a1c908f02d7",
       "size": 1641
     },
     {
       "id": "content.2be3938903c95ae59c840fe65f00000f",
       "oldPath": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/SKILL.md",
-      "path": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/SKILL.md",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/SKILL.md",
       "sha256": "352a5301db41efc21e86e35d87fde30329e5dfbbb926f034535afac0bb1a2608",
       "size": 5513
     },
     {
       "id": "content.ba002e1d255852368d0b49be7919a96c",
       "oldPath": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/docs/pitfalls.md",
-      "path": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/docs/pitfalls.md",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/docs/pitfalls.md",
       "sha256": "da001e3f2e0fdf702a7ce3e9def12b3d2fa417318bf63f5e74494aaa09c18750",
       "size": 3115
     },
     {
       "id": "content.fdab7db727355404b07a0e74a6b57ffb",
       "oldPath": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/examples/iphone14-example.md",
-      "path": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/examples/iphone14-example.md",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/examples/iphone14-example.md",
       "sha256": "c42bcbe4cfbc19fff85aae44d4ff9f2481c4850622bba70ffe54d43a08981b7f",
       "size": 1616
     },
     {
       "id": "content.2025d7cdd65f5d169d8b6e1cb5bd518e",
       "oldPath": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/templates/prompt-template.md",
-      "path": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/templates/prompt-template.md",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/templates/prompt-template.md",
       "sha256": "b2e6443e371a3a0b76bd5497b7f77410cb8e2a6ddd6a9042fb0cc83338df6497",
       "size": 2017
     },
     {
       "id": "content.92aa684963e150fd943ac71b80e4471b",
       "oldPath": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/templates/requirements-template.md",
-      "path": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/templates/requirements-template.md",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/templates/requirements-template.md",
       "sha256": "3fbd9d6643236fabb158ef6a4195cb6b13e6d54c6811fb06c7d35d1ce7f54052",
       "size": 842
     },
     {
       "id": "content.8d03eacc346e56739bec361bf9c42d52",
       "oldPath": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/templates/review-checklist.md",
-      "path": "AI/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/templates/review-checklist.md",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/mobile-wallpaper-study-card-skill/templates/review-checklist.md",
       "sha256": "d5a8dc9af31b88de96d4c77fd7cc19b0a17013d4443e69fe051a55a5d5e0aba2",
       "size": 1473
     },
     {
       "id": "content.71b188dd74b35aebbd59738798f112b2",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-aspect-preserved-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-aspect-preserved-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-aspect-preserved-redmi-note-12-pro-1080x2400.png",
       "sha256": "267bbccfc9cd84ce901c4eff1ba3512c3c8f5adcbb6264a4cbec76920f372d9d",
       "size": 4847769
     },
     {
       "id": "content.d561a236ba225d35936918fa4a779fb6",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-aspect-preserved-v2-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-aspect-preserved-v2-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-aspect-preserved-v2-redmi-note-12-pro-1080x2400.png",
       "sha256": "1babe34bba12737f44c6a06b72a81653738198aaf899863948a843c7aeedebcf",
       "size": 4509615
     },
     {
       "id": "content.5ed335214ae3513da859cd18e4b53d61",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-aspect-preserved-v3-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-aspect-preserved-v3-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-aspect-preserved-v3-redmi-note-12-pro-1080x2400.png",
       "sha256": "9399469f7d116d401664f8c5a9227578e4dce9ed72d6d1eba3098fe7513da14b",
       "size": 4507631
     },
     {
       "id": "content.82ff44e013a257adb030af175ca1d5be",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-face-preserved-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-face-preserved-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-face-preserved-redmi-note-12-pro-1080x2400.png",
       "sha256": "8c76fe87dc9a442cc93ac906dea2a429e98fc03ada5dc8afd271f1e1479b3c3b",
       "size": 4941852
     },
     {
       "id": "content.28a11f0b5d2a5485aa6b878cc14dd54d",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-redmi-note-12-pro-1080x2400.png",
       "sha256": "7a1bae8856c606002e36761d8fa63fca7279576474a2543212f117390fd6470b",
       "size": 4947967
     },
     {
       "id": "content.81a28defa8855752ac7e0f437cdbe5fd",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-v2-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-v2-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-dark-large-text-v2-redmi-note-12-pro-1080x2400.png",
       "sha256": "d5b0250e3a750cc22f5926ec61d1afabd9685119387fe4809887d9ba1cbbacfa",
       "size": 4948538
     },
     {
       "id": "content.c883be8d638754139b1decafff288d33",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-original-art-right-bottom-redmi-note-12-pro-1080x2400.png",
       "sha256": "bfd6871750672912f08d9ccb4b8829de086a829779eea70d87d641030615db64",
       "size": 4915469
     },
     {
       "id": "content.569e74b9bac955a3899bb808d1cf1c1b",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-underwater-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-underwater-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-underwater-redmi-note-12-pro-1080x2400.png",
       "sha256": "8eb8ea26796026123938f1947247bb574c35d9487437dd7c65d1e45d6c337f88",
       "size": 4983171
     },
     {
       "id": "content.bc18cba0e9615624904a0d802168a1ca",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-underwater-unobstructed-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-underwater-unobstructed-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-underwater-unobstructed-redmi-note-12-pro-1080x2400.png",
       "sha256": "04a6ed052167db4bd9f51a2ae9649a9029913a86a51a70d527b4455d6d7105b8",
       "size": 5002960
     },
     {
       "id": "content.636fa59ab7a15dfebc1b505a7e18150a",
       "oldPath": "AI/手机壁纸学习提示卡片制作/output/learning-card-unobstructed-redmi-note-12-pro-1080x2400.png",
-      "path": "AI/手机壁纸学习提示卡片制作/output/learning-card-unobstructed-redmi-note-12-pro-1080x2400.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/output/learning-card-unobstructed-redmi-note-12-pro-1080x2400.png",
       "sha256": "6d2133931ca542b4fc03f121346666b0a3c2a912a8e28b1962d45c05abcaba53",
       "size": 3785241
     },
     {
       "id": "content.14cfbd9025d05e5796cd6d32ace040af",
       "oldPath": "AI/手机壁纸学习提示卡片制作/同学的案例/考研的同学/原图.jpg",
-      "path": "AI/手机壁纸学习提示卡片制作/同学的案例/考研的同学/原图.jpg",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/同学的案例/考研的同学/原图.jpg",
       "sha256": "41acc5e2c3d83d4e03053bd4d311c2d1960984ab90d355419a8415b65ebd8818",
       "size": 381971
     },
     {
       "id": "content.d69cc954fd5a5f94ab0c01ed1a3e40b2",
       "oldPath": "AI/手机壁纸学习提示卡片制作/同学的案例/考研的同学/最后手机壁纸效果图.jpg",
-      "path": "AI/手机壁纸学习提示卡片制作/同学的案例/考研的同学/最后手机壁纸效果图.jpg",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/同学的案例/考研的同学/最后手机壁纸效果图.jpg",
       "sha256": "c7430d92d8c3175a9e614948413004e3bd51773363a8fc0aeb52cfc3dd3182ed",
       "size": 294325
     },
     {
       "id": "content.07694fea9c3c5112bb44c1fc89c660ec",
       "oldPath": "AI/手机壁纸学习提示卡片制作/同学的案例/考研的同学/要学的课本内容.jpg",
-      "path": "AI/手机壁纸学习提示卡片制作/同学的案例/考研的同学/要学的课本内容.jpg",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/同学的案例/考研的同学/要学的课本内容.jpg",
       "sha256": "73db7abccbe2721f79d83dd763b8dfc6735394e11261532df4d42197c49134fd",
       "size": 733685
     },
     {
       "id": "content.abc607da989f518c8866d1feb100aae4",
       "oldPath": "AI/手机壁纸学习提示卡片制作/手机壁纸原图.jpg",
-      "path": "AI/手机壁纸学习提示卡片制作/手机壁纸原图.jpg",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/手机壁纸原图.jpg",
       "sha256": "518e26943962393e9b1f0e6cb9f63a91aee402979498da2c080ebdef7aa55a43",
       "size": 160336
     },
     {
       "id": "content.db3f7d04b0c057b7b1ad8f1d39f88402",
       "oldPath": "AI/手机壁纸学习提示卡片制作/手机实际展示图.png",
-      "path": "AI/手机壁纸学习提示卡片制作/手机实际展示图.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/手机实际展示图.png",
       "sha256": "356dca7e9fa1348e4ab91bf79691ba1ed5df7fc919baac154573af2c1f08961f",
       "size": 2705812
     },
     {
       "id": "content.472e513093795c8ab9b58086c5e6ae00",
       "oldPath": "AI/手机壁纸学习提示卡片制作/改后手机壁纸.png",
-      "path": "AI/手机壁纸学习提示卡片制作/改后手机壁纸.png",
+      "path": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/手机壁纸学习提示卡片制作/改后手机壁纸.png",
       "sha256": "2ba220230eb45146a3a8f9b493c24913fc0a3fc0b0e32d23fa7b97d6d2cb9255",
       "size": 1892761
     },
     {
       "id": "content.1a67c9afcddd5566bd98fe5bd1335b3b",
       "oldPath": "AI/控制台日志面板提示词.md",
-      "path": "AI/控制台日志面板提示词.md",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/控制台日志面板提示词.md",
       "sha256": "8e582e5bdab00025d7c5fc3d4f1cb4e485f57d38f8b9fb624e7e092bb3c7eaba",
       "size": 7822
     },
     {
       "id": "content.b5a110ed4b805084aaee3eb737a2c0d1",
       "oldPath": "AI/提示词工程/AI 人格/人格注意事项.md",
-      "path": "AI/提示词工程/AI 人格/人格注意事项.md",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程/AI 人格/人格注意事项.md",
       "sha256": "94693d4d059c27cbbca52d21c1fae49148d742b27a102923d2e6e3da18755ee4",
       "size": 14036
     },
     {
       "id": "content.3a91631d1f3b5affb8d11e2012ea1458",
       "oldPath": "AI/提示词工程/AI 人格/爱丽丝(复杂化).md",
-      "path": "AI/提示词工程/AI 人格/爱丽丝(复杂化).md",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程/AI 人格/爱丽丝(复杂化).md",
       "sha256": "a59ef891c569b5fefa941640dcc0534a2e85640131345a19aaadde99a8ff9c32",
       "size": 4406
     },
     {
       "id": "content.7be203f58fe55909a736412f3f19bedf",
       "oldPath": "AI/提示词工程/AI 人格/真实NSFfW指导.json",
-      "path": "AI/提示词工程/AI 人格/真实NSFfW指导.json",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程/AI 人格/真实NSFfW指导.json",
       "sha256": "a50b18644e1061627151cb264d9a28298ba2bf9014fcb0fa2e81604c3192c55f",
       "size": 3712
     },
     {
       "id": "content.a6dd03d78e995347ad3c3dab2f2f7380",
       "oldPath": "AI/提示词工程/图片生成/Claude乞讨图.jpeg",
-      "path": "AI/提示词工程/图片生成/Claude乞讨图.jpeg",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程/图片生成/Claude乞讨图.jpeg",
       "sha256": "4aca47026efc8f3afac7c98801e02f077e2c31dce47a6ace8b3f05a13b7985a0",
       "size": 159570
     },
     {
       "id": "content.729980dac14f5287b6c87398d7c9e384",
       "oldPath": "AI/提示词工程/图片生成/deepseek的logo.svg",
-      "path": "AI/提示词工程/图片生成/deepseek的logo.svg",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程/图片生成/deepseek的logo.svg",
       "sha256": "90d7e400ca261d28dfb7982bfade335912b3a27a620faee9a787f8a52164fd43",
       "size": 3642
     },
     {
       "id": "content.b09a52baf0b15ac7ae9150a7fc1876ff",
       "oldPath": "AI/提示词工程/图片生成/提示词.txt",
-      "path": "AI/提示词工程/图片生成/提示词.txt",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程/图片生成/提示词.txt",
       "sha256": "820247c1814412feb636257023fed6c322d81d386b24410e4d7928d47113a6ae",
       "size": 2355
     },
     {
       "id": "content.0f78ecc5c1e25dd18f88ad0ed43cd93c",
       "oldPath": "AI/提示词工程/图片生成/效果图.png",
-      "path": "AI/提示词工程/图片生成/效果图.png",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程/图片生成/效果图.png",
       "sha256": "714faf9bd7e7c460562a9bb5179ab17da77fe7ec544211944f00bf02965dea17",
       "size": 2704906
     },
     {
       "id": "content.d523d0d8498d51a796f628fba1057333",
       "oldPath": "AI/提示词工程/数学断层 (Mathematical Discontinuity)  逻辑跳跃 (Logical Leap).md",
-      "path": "AI/提示词工程/数学断层 (Mathematical Discontinuity)  逻辑跳跃 (Logical Leap).md",
+      "path": "AI模型与多模态智能/大语言模型与提示工程/Prompt设计/提示词工程/数学断层 (Mathematical Discontinuity)  逻辑跳跃 (Logical Leap).md",
       "sha256": "cebe16b82468b33eb4a53a5d98e39bf2f86171655c0803a30f6b948fd6e53b04",
       "size": 5627
     },
     {
       "id": "content.5c0dadc447db5309b508f4421ba36031",
       "oldPath": "AI/期刊论文做牢中.txt",
-      "path": "AI/期刊论文做牢中.txt",
+      "path": "学习路径、研究与现实实践/个人学习日志/日常学习记录/期刊论文做牢中.txt",
       "sha256": "040961be168999bd936a64dc0cf900c2688f6460516b425e75effcbf4ff44a9a",
       "size": 20
     },
     {
       "id": "content.fb52d0ffa3ce55429851285c02c583fc",
       "oldPath": "AI/过检测AIGC测试/AIGC查重原理以躲避机制.md",
-      "path": "AI/过检测AIGC测试/AIGC查重原理以躲避机制.md",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/AIGC查重原理以躲避机制.md",
       "sha256": "0417124e65df41e34d2a622e45fa8f767ba5cc2cc9efca46158ed8bea0032ff5",
       "size": 5506
     },
     {
       "id": "content.fae1d2176af852fdaabb045a2c6e4257",
       "oldPath": "AI/过检测AIGC测试/AIGC查重原理以躲避机制.pdf",
-      "path": "AI/过检测AIGC测试/AIGC查重原理以躲避机制.pdf",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/AIGC查重原理以躲避机制.pdf",
       "sha256": "cac52add00ef741d8eff45ea617f03fa77a93d5d26d7d1400797ecf595af53a6",
       "size": 754561
     },
     {
       "id": "content.39cfe0eaafbd581bb7c362d70518eb14",
       "oldPath": "AI/过检测AIGC测试/外挂原理.md",
-      "path": "AI/过检测AIGC测试/外挂原理.md",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/外挂原理.md",
       "sha256": "f8656143f151acafd970eb38c294cb2a524ce7f0a88d3e417cc34fe219aaecaa",
       "size": 7699
     },
     {
       "id": "content.06d044160da9559d80cb44872291bca0",
       "oldPath": "AI/过检测AIGC测试/外挂原理.pdf",
-      "path": "AI/过检测AIGC测试/外挂原理.pdf",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/外挂原理.pdf",
       "sha256": "730f07376da988035cda962027843de72ce5bebf8e68446138ebf28b8aae5c0a",
       "size": 1056384
     },
     {
       "id": "content.71b5872f730b5f99bc31e0e0b410d8d9",
       "oldPath": "AI/过检测AIGC测试/机器学习与人工智能的发展.md",
-      "path": "AI/过检测AIGC测试/机器学习与人工智能的发展.md",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/机器学习与人工智能的发展.md",
       "sha256": "bdb75a361ac594b2fbd170e9e6f4465f580b89458056a3f708a84fec05c12e32",
       "size": 6489
     },
     {
       "id": "content.fd5e80db97785067a26323ba27817a3e",
       "oldPath": "AI/过检测AIGC测试/机器学习与人工智能的发展.pdf",
-      "path": "AI/过检测AIGC测试/机器学习与人工智能的发展.pdf",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/机器学习与人工智能的发展.pdf",
       "sha256": "6103fd075e691be88dc05349ea013a0b0bbfc01b3546a7a1c9c8d67374fce5a3",
       "size": 1026600
     },
     {
       "id": "content.5c3156ca7fc95a6097e23847dd52a666",
       "oldPath": "AI/过检测AIGC测试/机器学习与人工智能的发展2.md",
-      "path": "AI/过检测AIGC测试/机器学习与人工智能的发展2.md",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/机器学习与人工智能的发展2.md",
       "sha256": "7a3248f7dd3ab3ee963b0ad23fc6c22f1777b984a3fa1f69cf2d8b22d2724e55",
       "size": 6121
     },
     {
       "id": "content.96768554d0bf58b38419c1199a8e6b9d",
       "oldPath": "AI/过检测AIGC测试/机器学习与人工智能的发展2.pdf",
-      "path": "AI/过检测AIGC测试/机器学习与人工智能的发展2.pdf",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/机器学习与人工智能的发展2.pdf",
       "sha256": "3e5f081458129faabc4fc1c484309554803362ccc256c3b937c1c1b25740ed2c",
       "size": 987787
     },
     {
       "id": "content.b5035de143c65c49bfba914f83b3f3d2",
       "oldPath": "AI/过检测AIGC测试/相关知识研究.md",
-      "path": "AI/过检测AIGC测试/相关知识研究.md",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/相关知识研究.md",
       "sha256": "6efb95f9d825bfd0e49c5101acba73994277b0e8d66a3fa345b89ce6f95e3f6c",
       "size": 6749
     },
     {
       "id": "content.5a91b608ade459eda77a6e2da0d1dc66",
       "oldPath": "AI/过检测AIGC测试/系统提示词语.txt",
-      "path": "AI/过检测AIGC测试/系统提示词语.txt",
+      "path": "AI知识系统与智能体/评测、可观测性、安全与治理/模型评测/过检测AIGC测试/系统提示词语.txt",
       "sha256": "d050dbe508266ce84c29ecf7644e1cf5b686d4a6450ea5d26710d96b8569e98e",
       "size": 30946
     },
     {
       "id": "content.6d0ce73df8635fff99cb19c6698aedc2",
       "oldPath": "AI/飞书/ERP从概念到精通.md",
-      "path": "AI/飞书/ERP从概念到精通.md",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/ERP从概念到精通.md",
       "sha256": "887a636e22fb7c409b673f912ad42fd381b9a9f6fb4b11e51683d026f7a151ed",
       "size": 7930
     },
     {
       "id": "content.0949f35769f755e7b306d50a6312895f",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/.python-version",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/.python-version",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/.python-version",
       "sha256": "a876e0b10411037a012498b9fe18d9bc1df32ed8b722a13564dc944ddcfd9135",
       "size": 5
     },
     {
       "id": "content.ceb54dff52ae5f49b481c3e2dfe1cfd9",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/README.md",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/README.md",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/README.md",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.32005316d68f5f6c883d36c4d748bdae",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/data.xlsx",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/data.xlsx",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/data.xlsx",
       "sha256": "97126d866caf176590f9e1c75e1c9630029935b264f6420bfe3c7e71a162190d",
       "size": 6602
     },
     {
       "id": "content.7c2a223edf6f5b91b63193e14aa3ff6c",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/pyproject.toml",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/pyproject.toml",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/pyproject.toml",
       "sha256": "c14ebab4b274bf0624b653dd2b02c79c70d9ab60d2821d9a500ac5e94d1d2815",
       "size": 346
     },
     {
       "id": "content.9b341314f7e956a1aa42e1ae4d05216b",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/uv.lock",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/uv.lock",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/uv.lock",
       "sha256": "8e9a22e942fb78a05c575ef9dbac81f6fd534350b31d896f80a675fe7316f555",
       "size": 325317
     },
     {
       "id": "content.92c6418ffcb5591db81628b607a73416",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/使用说明书.md",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/使用说明书.md",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/使用说明书.md",
       "sha256": "b9eb692c4bd8b7c6bd3baeee878097fad6dbb815b8d66125d05734bd7d813d09",
       "size": 10897
     },
     {
       "id": "content.84ed572b671e5ee48553b2aeeecb52cc",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/使用说明书.pdf",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/使用说明书.pdf",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/使用说明书.pdf",
       "sha256": "cb7d8dd896ab6ba0b6d7764e0d1f011100a77332db7614da3be7f1a93e2783fd",
       "size": 1286071
     },
     {
       "id": "content.638a45af1bd85047bc18d3468041807b",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/原商品编码替换为商品编码（仓库填）.py",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/原商品编码替换为商品编码（仓库填）.py",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/原商品编码替换为商品编码（仓库填）.py",
       "sha256": "c4625122d5e6007d2b66e8837e262fdf6fcae2759aaea722422241604419d698",
       "size": 3741
     },
     {
       "id": "content.a58264d7b3345bdba2a9310fc3d4fc55",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/原商品编码替换为商品编码（仓库填）.spec",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/原商品编码替换为商品编码（仓库填）.spec",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/原商品编码替换为商品编码（仓库填）.spec",
       "sha256": "320172eecc3f3ed1e7a3c0bf7e594a6db30844b9beb67d5057f27d07efabaf77",
       "size": 918
     },
     {
       "id": "content.26bbbfd503335ae594b34f16dbb3c7ca",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/日志记录.txt",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/日志记录.txt",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/日志记录.txt",
       "sha256": "37b8b9ce75dc8d7951d83c46ae175af1abb80b3976ddae91a8c009890ab0cc6d",
       "size": 1111
     },
     {
       "id": "content.c38d1836474659159a54855c619dd57a",
       "oldPath": "AI/飞书/原商品编码替换为商品编码（仓库填）/需求规格说明书.md",
-      "path": "AI/飞书/原商品编码替换为商品编码（仓库填）/需求规格说明书.md",
+      "path": "项目工坊/自动化与工具项目/脚本工具/原商品编码替换为商品编码（仓库填）/需求规格说明书.md",
       "sha256": "f929b7f91d8e4cc6174b46b236e2a3861fba6708435b3a55d72d62b4bda778d4",
       "size": 4181
     },
     {
       "id": "content.0951b4a77b705f9c9bc3470bfee7a2be",
       "oldPath": "AI/飞书/对接飞书/1.txt",
-      "path": "AI/飞书/对接飞书/1.txt",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/对接飞书/1.txt",
       "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
       "size": 1
     },
     {
       "id": "content.11bc726126cf5c80b918f2a301db6698",
       "oldPath": "AI/飞书/拼多多商家后台RPA/.gitignore",
-      "path": "AI/飞书/拼多多商家后台RPA/.gitignore",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/.gitignore",
       "sha256": "7950611283363d5ab1489bbc86a7ed9bd0ab4b32419044010c4408d8e0b39826",
       "size": 1051
     },
     {
       "id": "content.c8b8b16606545dfd9baa2aed95aad4e8",
       "oldPath": "AI/飞书/拼多多商家后台RPA/PRPAS.py",
-      "path": "AI/飞书/拼多多商家后台RPA/PRPAS.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/PRPAS.py",
       "sha256": "2b15ef5829889f59e3d25105c2ebc9aad80a2fc1850c26af442466aa97b04fbb",
       "size": 5289
     },
     {
       "id": "content.8283af9c7a4353f6965e687695f52157",
       "oldPath": "AI/飞书/拼多多商家后台RPA/README.md",
-      "path": "AI/飞书/拼多多商家后台RPA/README.md",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/README.md",
       "sha256": "82d892d05c71ea36de6ec7d2bdf358686d13dba3f55c2e7550936c7a4ba373a2",
       "size": 118
     },
     {
       "id": "content.4435cc5bc08a5bcf806a1310ff916fcf",
       "oldPath": "AI/飞书/拼多多商家后台RPA/_test.py",
-      "path": "AI/飞书/拼多多商家后台RPA/_test.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/_test.py",
       "sha256": "7220b545f95eab03a813b21aad912f8de60cd05a0ca6809edc3f8e4aceee1138",
       "size": 541
     },
     {
       "id": "content.9ca76d7339af50ea9cdf70dedcdb61df",
       "oldPath": "AI/飞书/拼多多商家后台RPA/config/logging_config.yaml",
-      "path": "AI/飞书/拼多多商家后台RPA/config/logging_config.yaml",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/config/logging_config.yaml",
       "sha256": "45ab6a9caec8625ccbe75a9c26408d81732c7865623872eeb7f80ad265dd4092",
       "size": 7985
     },
     {
       "id": "content.4caf54aa1282540097e2afd333e1c919",
       "oldPath": "AI/飞书/拼多多商家后台RPA/config/logo.ico",
-      "path": "AI/飞书/拼多多商家后台RPA/config/logo.ico",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/config/logo.ico",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.058803c0c1db55f5b6a693cecd0903c4",
       "oldPath": "AI/飞书/拼多多商家后台RPA/config/settings.toml",
-      "path": "AI/飞书/拼多多商家后台RPA/config/settings.toml",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/config/settings.toml",
       "sha256": "ebcfec531e788ab41afd2c265ecafb3d41cb4ddda90313e6e1295515a58c6b8e",
       "size": 825
     },
     {
       "id": "content.7aefabd31bb056a9a74ee81cdf9a1103",
       "oldPath": "AI/飞书/拼多多商家后台RPA/data.xlsx",
-      "path": "AI/飞书/拼多多商家后台RPA/data.xlsx",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/data.xlsx",
       "sha256": "e06315f6de066930e65fe7e6a7cac1e95e504e0bfe7b9c7a4b2f465c5ab5b627",
       "size": 1268568
     },
     {
       "id": "content.ce532a64dae350dd9fe77279b44aff8a",
       "oldPath": "AI/飞书/拼多多商家后台RPA/data_models/__init__.py",
-      "path": "AI/飞书/拼多多商家后台RPA/data_models/__init__.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/data_models/__init__.py",
       "sha256": "42347840cc742b3fa0d18ec856e8d7b883a9a773906d704a19bbddca3501bf16",
       "size": 261
     },
     {
       "id": "content.962a91c52e8d56979c96dbaf5a147f00",
       "oldPath": "AI/飞书/拼多多商家后台RPA/data_models/config_model.py",
-      "path": "AI/飞书/拼多多商家后台RPA/data_models/config_model.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/data_models/config_model.py",
       "sha256": "178c5474aabd0aa239101a6eaf25977ef8ed6c153f77b605fbc4d4b08063bb2e",
       "size": 257
     },
     {
       "id": "content.0e34ffbd1e6a5424aca137c97bd46bc0",
       "oldPath": "AI/飞书/拼多多商家后台RPA/data_models/server_config.py",
-      "path": "AI/飞书/拼多多商家后台RPA/data_models/server_config.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/data_models/server_config.py",
       "sha256": "80b2c2cd2e64df99d8b23fc9c3a995728b7da4f2ef5e8a4b5cd794b65c7554b1",
       "size": 461
     },
     {
       "id": "content.2bc4103dd3bd5e41b7be0508029c8eba",
       "oldPath": "AI/飞书/拼多多商家后台RPA/logger/__init__.py",
-      "path": "AI/飞书/拼多多商家后台RPA/logger/__init__.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/logger/__init__.py",
       "sha256": "c683ab594c13894c291f300cf8a5808bf688c6b58dfa964a438e269c53ba7ebe",
       "size": 251
     },
     {
       "id": "content.4c62b45880f652749cefcc040d5f4d48",
       "oldPath": "AI/飞书/拼多多商家后台RPA/logger/logger.py",
-      "path": "AI/飞书/拼多多商家后台RPA/logger/logger.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/logger/logger.py",
       "sha256": "94ac142ecaa601947611d7319a0bac8c5f6c8fed8b46c481b30cc34df18d0300",
       "size": 13730
     },
     {
       "id": "content.92881057e602538a8ce1c6601e0d6685",
       "oldPath": "AI/飞书/拼多多商家后台RPA/logger/logging_configurator.py",
-      "path": "AI/飞书/拼多多商家后台RPA/logger/logging_configurator.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/logger/logging_configurator.py",
       "sha256": "b50bc2e8aa1c8c8c63930118a1fecc2871809ff4ff067379d34ee7b0e05e9932",
       "size": 6073
     },
     {
       "id": "content.b23955e2802a50cd805307c98be11d7a",
       "oldPath": "AI/飞书/拼多多商家后台RPA/main.spec",
-      "path": "AI/飞书/拼多多商家后台RPA/main.spec",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/main.spec",
       "sha256": "b0850303985a30176f52b303551e6627c88aa8afd6c6713f5655d0c62a9b64f0",
       "size": 1697
     },
     {
       "id": "content.1060e372de7a50268c2271f77549f273",
       "oldPath": "AI/飞书/拼多多商家后台RPA/outputs/downloads/.gitkeep",
-      "path": "AI/飞书/拼多多商家后台RPA/outputs/downloads/.gitkeep",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/outputs/downloads/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.7ab154f1d51b536da952eec6cd71894e",
       "oldPath": "AI/飞书/拼多多商家后台RPA/outputs/har/.gitkeep",
-      "path": "AI/飞书/拼多多商家后台RPA/outputs/har/.gitkeep",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/outputs/har/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.e8d77e649daf529081698fd176be9a6e",
       "oldPath": "AI/飞书/拼多多商家后台RPA/outputs/pyinstaller/.gitkeep",
-      "path": "AI/飞书/拼多多商家后台RPA/outputs/pyinstaller/.gitkeep",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/outputs/pyinstaller/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.856fbbb46a1851e0adf6d5cde263a6a4",
       "oldPath": "AI/飞书/拼多多商家后台RPA/outputs/reports/.gitkeep",
-      "path": "AI/飞书/拼多多商家后台RPA/outputs/reports/.gitkeep",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/outputs/reports/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.ad43e047e37e5626b45eb69dba7ba732",
       "oldPath": "AI/飞书/拼多多商家后台RPA/outputs/screenshots/.gitkeep",
-      "path": "AI/飞书/拼多多商家后台RPA/outputs/screenshots/.gitkeep",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/outputs/screenshots/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.80e60d69085d5c2d9529a30bfadb879d",
       "oldPath": "AI/飞书/拼多多商家后台RPA/outputs/traces/.gitkeep",
-      "path": "AI/飞书/拼多多商家后台RPA/outputs/traces/.gitkeep",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/outputs/traces/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.42444d8627c15a879b708a44aabf88f0",
       "oldPath": "AI/飞书/拼多多商家后台RPA/outputs/videos/.gitkeep",
-      "path": "AI/飞书/拼多多商家后台RPA/outputs/videos/.gitkeep",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/outputs/videos/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.5f5ca7c10a4051a3aa2425f7c462363e",
       "oldPath": "AI/飞书/拼多多商家后台RPA/pyproject.toml",
-      "path": "AI/飞书/拼多多商家后台RPA/pyproject.toml",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/pyproject.toml",
       "sha256": "e8e0db13a4e00e7d44b6f8af95abfb663b5f79af99b4ebc82130fa6ed34cfa14",
       "size": 390
     },
     {
       "id": "content.4f6421aa67a05180b8c543ac7d75ac58",
       "oldPath": "AI/飞书/拼多多商家后台RPA/user_data/logging_config.yaml",
-      "path": "AI/飞书/拼多多商家后台RPA/user_data/logging_config.yaml",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/user_data/logging_config.yaml",
       "sha256": "dfabc467463138be450011e41da742eedcbcd5ba4e5cdaa7bf5056be0d8124f4",
       "size": 8581
     },
     {
       "id": "content.e1204ed691b65ed5a00622fd2066df7f",
       "oldPath": "AI/飞书/拼多多商家后台RPA/user_data/user_settings.toml",
-      "path": "AI/飞书/拼多多商家后台RPA/user_data/user_settings.toml",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/user_data/user_settings.toml",
       "sha256": "ebcfec531e788ab41afd2c265ecafb3d41cb4ddda90313e6e1295515a58c6b8e",
       "size": 825
     },
     {
       "id": "content.458230d0b7e3561c8f4bba4655474356",
       "oldPath": "AI/飞书/拼多多商家后台RPA/utils/__init__.py",
-      "path": "AI/飞书/拼多多商家后台RPA/utils/__init__.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/utils/__init__.py",
       "sha256": "fd1c07a32008a1710506a7c3ec3f175920afdaaa49a6ce7df23e6681f6c1e1a6",
       "size": 147
     },
     {
       "id": "content.490d7c2a81295327a9a818250888768f",
       "oldPath": "AI/飞书/拼多多商家后台RPA/utils/config_manager.py",
-      "path": "AI/飞书/拼多多商家后台RPA/utils/config_manager.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/utils/config_manager.py",
       "sha256": "305580b590c188856cecd82511e1818d5c18505eacb232a79dc33606ac4d44b7",
       "size": 10017
     },
     {
       "id": "content.614a0b24a5375baf94f2cb6e1e1b47d1",
       "oldPath": "AI/飞书/拼多多商家后台RPA/utils/path_utils.py",
-      "path": "AI/飞书/拼多多商家后台RPA/utils/path_utils.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/utils/path_utils.py",
       "sha256": "6e5345e1f294adaf6d1d922a6beb6726f0666c3e715dbfac8df761323851b0b3",
       "size": 3203
     },
     {
       "id": "content.33f1bc3c95145397a652918182fff1f4",
       "oldPath": "AI/飞书/拼多多商家后台RPA/utils/qrcode_manager.py",
-      "path": "AI/飞书/拼多多商家后台RPA/utils/qrcode_manager.py",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/utils/qrcode_manager.py",
       "sha256": "b3c610d8eea3aed138105c94178d8d718088a41502658a7d5ef664d2d5729f74",
       "size": 14072
     },
     {
       "id": "content.a3dd4c54df015e0284e2c07bf5e173c5",
       "oldPath": "AI/飞书/拼多多商家后台RPA/uv.lock",
-      "path": "AI/飞书/拼多多商家后台RPA/uv.lock",
+      "path": "项目工坊/自动化与工具项目/RPA项目/拼多多商家后台RPA/uv.lock",
       "sha256": "66ac9943cc27eadb4fe2cee8368f4972a0219d746c2648c4300d3135a7dcaee8",
       "size": 171159
     },
     {
       "id": "content.0e1ce57a24085b4fbbe610deed354903",
       "oldPath": "AI/飞书/老师的指导.md",
-      "path": "AI/飞书/老师的指导.md",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/老师的指导.md",
       "sha256": "330c3a507da66b78dba98e3cb40ffb7f22b65599aea9e4d98a6af8d9653fdc48",
       "size": 1215
     },
     {
       "id": "content.e96508bd5b615c6db8b6958cb345f072",
       "oldPath": "AI/飞书/飞书多维表格学习/学习网址.md",
-      "path": "AI/飞书/飞书多维表格学习/学习网址.md",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/飞书多维表格学习/学习网址.md",
       "sha256": "9150543bed160ad9c56d0256cf29fd4e4fe3591c735d218f8f70cb010d902fb0",
       "size": 323
     },
     {
       "id": "content.199b4f54f9fa5c159df9758111666217",
       "oldPath": "AI/飞书/飞书工作流学习.md",
-      "path": "AI/飞书/飞书工作流学习.md",
+      "path": "AI知识系统与智能体/MCP、工具调用与协议/外部系统连接器/飞书/飞书工作流学习.md",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
@@ -27479,112 +27479,112 @@
     {
       "id": "content.d9a9e1ed6e845fd98b83c1ac1459a4e3",
       "oldPath": "Pipecat框架学习/pipecat-quickstart/.gitignore",
-      "path": "Pipecat框架学习/pipecat-quickstart/.gitignore",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart/.gitignore",
       "sha256": "45d5eca4f1711776a8f85651501a1290217d8ea921f2e07426cd835fc1f127ac",
       "size": 4801
     },
     {
       "id": "content.3e329861ce775c66a9424f5d38926e76",
       "oldPath": "Pipecat框架学习/pipecat-quickstart/README.md",
-      "path": "Pipecat框架学习/pipecat-quickstart/README.md",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart/README.md",
       "sha256": "8137bd1d9e4d6785d5a71e7cc9fc98ec6f78f11b8799f39fda5ed53707ec4233",
       "size": 1994
     },
     {
       "id": "content.c1a5292565fd56e5abc5eddcaafdc768",
       "oldPath": "Pipecat框架学习/pipecat-quickstart/server/.env.example",
-      "path": "Pipecat框架学习/pipecat-quickstart/server/.env.example",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart/server/.env.example",
       "sha256": "1efaa769480a56dd6bbece986b38a53f262e83c245aecfc77cebbc0bd14fdbae",
       "size": 501
     },
     {
       "id": "content.67752b3a71d7599580afc0fddc62ea51",
       "oldPath": "Pipecat框架学习/pipecat-quickstart/server/Dockerfile",
-      "path": "Pipecat框架学习/pipecat-quickstart/server/Dockerfile",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart/server/Dockerfile",
       "sha256": "0f453d7201cd69f6d67bd55dde69b2a8ca435de1a360bc099fedd00c1a382228",
       "size": 664
     },
     {
       "id": "content.7eda464578135d018e29f1271852194a",
       "oldPath": "Pipecat框架学习/pipecat-quickstart/server/bot.py",
-      "path": "Pipecat框架学习/pipecat-quickstart/server/bot.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart/server/bot.py",
       "sha256": "b667bf2e56d7b8a36625f19279087434df96c5838dbc287ec24269b344224af8",
       "size": 5249
     },
     {
       "id": "content.1ba94afa5fcd56209e12497f7f685a2c",
       "oldPath": "Pipecat框架学习/pipecat-quickstart/server/pcc-deploy.toml",
-      "path": "Pipecat框架学习/pipecat-quickstart/server/pcc-deploy.toml",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart/server/pcc-deploy.toml",
       "sha256": "51a7737c150ec92eeca51cbd7c92934821aee6bc9c979508aae7bbe7a3d285cb",
       "size": 134
     },
     {
       "id": "content.53e2f0fa1dc25c659a3519d6af59f64d",
       "oldPath": "Pipecat框架学习/pipecat-quickstart/server/pyproject.toml",
-      "path": "Pipecat框架学习/pipecat-quickstart/server/pyproject.toml",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/pipecat-quickstart/server/pyproject.toml",
       "sha256": "b0698b9b5386bc418be33a607ebe458e2be29fc3e3dbc2f2b590b8aa43f69b0e",
       "size": 404
     },
     {
       "id": "content.8563a049e05851979d8415a0d367f4a7",
       "oldPath": "Pipecat框架学习/快速入门/.gitignore",
-      "path": "Pipecat框架学习/快速入门/.gitignore",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门/.gitignore",
       "sha256": "45d5eca4f1711776a8f85651501a1290217d8ea921f2e07426cd835fc1f127ac",
       "size": 4801
     },
     {
       "id": "content.1e0e96383d865a92ace1a7d0adcf9c04",
       "oldPath": "Pipecat框架学习/快速入门/README.md",
-      "path": "Pipecat框架学习/快速入门/README.md",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门/README.md",
       "sha256": "8137bd1d9e4d6785d5a71e7cc9fc98ec6f78f11b8799f39fda5ed53707ec4233",
       "size": 1994
     },
     {
       "id": "content.6ae5a5e3076b5c158ca3001309c21962",
       "oldPath": "Pipecat框架学习/快速入门/main.py",
-      "path": "Pipecat框架学习/快速入门/main.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门/main.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.b33baa995cc05f7d9583303c338410e7",
       "oldPath": "Pipecat框架学习/快速入门/server/.env.example",
-      "path": "Pipecat框架学习/快速入门/server/.env.example",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门/server/.env.example",
       "sha256": "1efaa769480a56dd6bbece986b38a53f262e83c245aecfc77cebbc0bd14fdbae",
       "size": 501
     },
     {
       "id": "content.bbb16ebe075059f1bcdb26a2f8276741",
       "oldPath": "Pipecat框架学习/快速入门/server/Dockerfile",
-      "path": "Pipecat框架学习/快速入门/server/Dockerfile",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门/server/Dockerfile",
       "sha256": "0f453d7201cd69f6d67bd55dde69b2a8ca435de1a360bc099fedd00c1a382228",
       "size": 664
     },
     {
       "id": "content.e27e376142365f1d965a3aadfbef58f1",
       "oldPath": "Pipecat框架学习/快速入门/server/bot.py",
-      "path": "Pipecat框架学习/快速入门/server/bot.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门/server/bot.py",
       "sha256": "b438acf03580ffe8f46575a1b21ff78680f2be7f2157e928df2da603e6226fd8",
       "size": 5249
     },
     {
       "id": "content.52f7f2ef25985ba29fa7ae350742b72d",
       "oldPath": "Pipecat框架学习/快速入门/server/pcc-deploy.toml",
-      "path": "Pipecat框架学习/快速入门/server/pcc-deploy.toml",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门/server/pcc-deploy.toml",
       "sha256": "51a7737c150ec92eeca51cbd7c92934821aee6bc9c979508aae7bbe7a3d285cb",
       "size": 134
     },
     {
       "id": "content.cb89db92071c57788c7f7284c1f410f3",
       "oldPath": "Pipecat框架学习/快速入门/server/pyproject.toml",
-      "path": "Pipecat框架学习/快速入门/server/pyproject.toml",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Pipecat/快速入门/server/pyproject.toml",
       "sha256": "b0698b9b5386bc418be33a607ebe458e2be29fc3e3dbc2f2b590b8aa43f69b0e",
       "size": 404
     },
     {
       "id": "content.a37a8f5d27605bc3a7b43130bbaed27f",
       "oldPath": "Pipecat框架学习/框架资料.md",
-      "path": "Pipecat框架学习/框架资料.md",
+      "path": "AI模型与多模态智能/语音、音频与实时交互/实时语音Agent/Pipecat/框架资料.md",
       "sha256": "c9a375350d30f3b8ed79b4fa4123bb1c62d4e9cc0751c48d7cb5d2ddfb7835f7",
       "size": 1572
     },
@@ -29684,714 +29684,714 @@
     {
       "id": "content.2c2636e541db572ba746e08e1a17caaf",
       "oldPath": "YOLO学习/PUBG人物检测/数据采集.txt",
-      "path": "YOLO学习/PUBG人物检测/数据采集.txt",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/PUBG人物检测/数据采集.txt",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.d28e61868d5a564c952b4d165ec5c572",
       "oldPath": "YOLO学习/web自动化做牢中.txt",
-      "path": "YOLO学习/web自动化做牢中.txt",
+      "path": "学习路径、研究与现实实践/个人学习日志/日常学习记录/web自动化做牢中.txt",
       "sha256": "9a5c0b55e6106b7fd6772fff70bde8ede925a90cf5d57a421d45c71454a68319",
       "size": 15
     },
     {
       "id": "content.3fd32cefea2d51b38681450802c126ae",
       "oldPath": "YOLO学习/yolo26模型下载和性能指标.md",
-      "path": "YOLO学习/yolo26模型下载和性能指标.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/yolo26模型下载和性能指标.md",
       "sha256": "c082a5a68da76335eea7ef532e8af2a94707f25d88bf28c5f8846eece69dff8b",
       "size": 9755
     },
     {
       "id": "content.75f90af806a65b90a4ebaee52abc82d2",
       "oldPath": "YOLO学习/基准测试.md",
-      "path": "YOLO学习/基准测试.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/基准测试.md",
       "sha256": "6d11e76626b186d7b3bb63c0b8e6d25f30e4e696584d74e6f8b98bc8af39993c",
       "size": 13998
     },
     {
       "id": "content.f25421539ed6589fbffeeb72f679339a",
       "oldPath": "YOLO学习/实际训练中要要用到的东西/代码实现自动标注.py",
-      "path": "YOLO学习/实际训练中要要用到的东西/代码实现自动标注.py",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/实际训练中要要用到的东西/代码实现自动标注.py",
       "sha256": "54ca3f7c89509a6f3278d6191ffd7610ae2b5ff7dc2da6496767520c929ed8c6",
       "size": 1968
     },
     {
       "id": "content.b9d4ba77c9bd54bfad651beee2b6e569",
       "oldPath": "YOLO学习/实际训练中要要用到的东西/模型训练和导出.py",
-      "path": "YOLO学习/实际训练中要要用到的东西/模型训练和导出.py",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/实际训练中要要用到的东西/模型训练和导出.py",
       "sha256": "fca63747e269b5493d60087680f8891766f5f60d8c61129d10656441950e5fb7",
       "size": 1696
     },
     {
       "id": "content.7569e216c9d35b6e9b89379f4a71322a",
       "oldPath": "YOLO学习/实际训练中要要用到的东西/视频抽帧.py",
-      "path": "YOLO学习/实际训练中要要用到的东西/视频抽帧.py",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/实际训练中要要用到的东西/视频抽帧.py",
       "sha256": "a297be196ac27f9a6d7cc222e7033529f01a7c605e8badfc947eb5a7e4a0726e",
       "size": 1663
     },
     {
       "id": "content.78187bfc04035d80b58d102819569f44",
       "oldPath": "YOLO学习/实际训练中要要用到的东西/训练用的配置文件.yaml",
-      "path": "YOLO学习/实际训练中要要用到的东西/训练用的配置文件.yaml",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/实际训练中要要用到的东西/训练用的配置文件.yaml",
       "sha256": "12ac952a5c17211a1540b6eaef9bb8fa8d843d3d356de47d9f963450eb58fdd4",
       "size": 651
     },
     {
       "id": "content.69ea8aa2f1ca5eafb9992c2c4796a2c7",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/docker-compose.override.yml",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/docker-compose.override.yml",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/docker-compose.override.yml",
       "sha256": "9fefdbaf69524248ca83a1da095cd30172b76b3e464964002b925c8d99c6b394",
       "size": 4767
     },
     {
       "id": "content.f59b947549e0570a970562ee5e1e68be",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/docker-compose.yml",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/docker-compose.yml",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/docker-compose.yml",
       "sha256": "6b1922a79b2cf6c79027797b006b899d0d9f66d2d3c02ee5dc239e3d2c2bc13e",
       "size": 12766
     },
     {
       "id": "content.82bc9cb70dbd547cbe0b356536e9fc7b",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/image-1.png",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/image-1.png",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/image-1.png",
       "sha256": "6e5f51a61eed9f0617ceabb8192cddeaec9ef849f4f6b0f08acab53a8186a6a0",
       "size": 150346
     },
     {
       "id": "content.02e38646f6bc533f90818a725365fd10",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/image-2.png",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/image-2.png",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/image-2.png",
       "sha256": "83c1633a353876b44c4627aea7766252e050bdcaa32d4e6d0287c82c59090439",
       "size": 152235
     },
     {
       "id": "content.746838d5eac7552097833aaca86694c7",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/image-3.png",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/image-3.png",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/image-3.png",
       "sha256": "43733644eae31e748e0d38aab5551450813830191e9073ed37242fce479e6847",
       "size": 121539
     },
     {
       "id": "content.a26855ecaea35e23a6ae1f65b7a1e753",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/image-4.png",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/image-4.png",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/image-4.png",
       "sha256": "de40593c62d9b37c52b9ab3b554da1cdfabe24cf215db5a989a757d185cdf6fc",
       "size": 311995
     },
     {
       "id": "content.ddc835e71d025f258b2c7d8db50e8b2d",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/image-5.png",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/image-5.png",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/image-5.png",
       "sha256": "ad89d78ee9b6b48127c97f1e599d48d606cc6c5cdd7e61f4aac65a0f01d88a57",
       "size": 363270
     },
     {
       "id": "content.b66d1837c32e57f2b6050228da5c54fd",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/image-6.png",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/image-6.png",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/image-6.png",
       "sha256": "a97dd7680dc94e624968ac70ddaf1ad61e8daeaaea683384757aafc484dc3c9e",
       "size": 8969
     },
     {
       "id": "content.e3472331846e50fe9742f9b82069b897",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/image-7.png",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/image-7.png",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/image-7.png",
       "sha256": "58b8d2c8a439e377f86e173cb5a5e8e2a5bb9a775f40efb0779b796fa10f31f0",
       "size": 1003597
     },
     {
       "id": "content.345d31589ebb565ba729d260477d6831",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/image.png",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/image.png",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/image.png",
       "sha256": "fb934a0515def5c49545a490d4d4c7cc0d5b54669a94f7d3b8ec6539f9b34f6a",
       "size": 63795
     },
     {
       "id": "content.1328a898e9f95c5e8c9a8b40afff1bd2",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/windows下docker卷的挂载路径.txt",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/windows下docker卷的挂载路径.txt",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/windows下docker卷的挂载路径.txt",
       "sha256": "b2a47f19561b47dca81e9be6a90e40cb9dce6db7831255183007d30dd4c3f418",
       "size": 74
     },
     {
       "id": "content.fdb95c8767495b409470cfbbe58903ab",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/卷挂载和网络配置问题记录.md",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/卷挂载和网络配置问题记录.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/卷挂载和网络配置问题记录.md",
       "sha256": "29a386415329e70e909aa544d0ad996d4f5dd4225941bbcf5fff1131c3983933",
       "size": 7699
     },
     {
       "id": "content.d4138900760458298148f3753164047f",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/官方的做法 CVAT导入格式参考(垃圾官方文档)/data.yaml",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/官方的做法 CVAT导入格式参考(垃圾官方文档)/data.yaml",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/数据集导入问题/官方的做法 CVAT导入格式参考(垃圾官方文档)/data.yaml",
       "sha256": "82fe32f4e6b042b669837f8fb4ca7bd927f54a90499ac06e3f7777272bcd123e",
       "size": 50
     },
     {
       "id": "content.b1a4bfb032ff5a2cafe1b9c7d2c9da5c",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/官方的做法 CVAT导入格式参考(垃圾官方文档)/images/train/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/官方的做法 CVAT导入格式参考(垃圾官方文档)/images/train/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/数据集导入问题/官方的做法 CVAT导入格式参考(垃圾官方文档)/images/train/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg",
       "sha256": "73736e2b65710f5c307efbab2a97dea5636109b3cb1444a3998d881120cf2798",
       "size": 25606
     },
     {
       "id": "content.846cc511a09857b99bd80423061d3cbd",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/官方的做法 CVAT导入格式参考(垃圾官方文档)/labels/train/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/官方的做法 CVAT导入格式参考(垃圾官方文档)/labels/train/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/数据集导入问题/官方的做法 CVAT导入格式参考(垃圾官方文档)/labels/train/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt",
       "sha256": "86aa9288be4e93d553575366441943c2b6eb2b93469dd019529f75342f876e53",
       "size": 76
     },
     {
       "id": "content.81aa5470c400577db26fe71624835c6e",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/笔记.txt",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/笔记.txt",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/数据集导入问题/笔记.txt",
       "sha256": "b492c321b8b360af157d34c216a7a4c95273a367003750a63b0e895e940948e2",
       "size": 2322
     },
     {
       "id": "content.edf755633773596a89395d1665eb0da4",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/train/images/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/train/images/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/数据集导入问题/项目名/train/images/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg",
       "sha256": "73736e2b65710f5c307efbab2a97dea5636109b3cb1444a3998d881120cf2798",
       "size": 25606
     },
     {
       "id": "content.d9918d57291152bf926009f40dbf2119",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/train/labels/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/train/labels/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/数据集导入问题/项目名/train/labels/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt",
       "sha256": "86aa9288be4e93d553575366441943c2b6eb2b93469dd019529f75342f876e53",
       "size": 76
     },
     {
       "id": "content.aed42780172851aea48d326649a51895",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/val/images/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/val/images/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/数据集导入问题/项目名/val/images/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.jpg",
       "sha256": "73736e2b65710f5c307efbab2a97dea5636109b3cb1444a3998d881120cf2798",
       "size": 25606
     },
     {
       "id": "content.cba5496aa3395a0e8ad1482458bdbd65",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/val/labels/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/val/labels/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/数据集导入问题/项目名/val/labels/1ba5fa63de5e0099_original_jpg.rf.3e3fb4b7f8c4ac19b8a20c526e69f796.txt",
       "sha256": "86aa9288be4e93d553575366441943c2b6eb2b93469dd019529f75342f876e53",
       "size": 76
     },
     {
       "id": "content.da75de302601589d9690583473bc1525",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/项目名.yaml",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/数据集导入问题/项目名/项目名.yaml",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/数据集导入问题/项目名/项目名.yaml",
       "sha256": "a67fbeed19a8bc40a58ad5da7389b843169b20a9151ec7c620b9ad6aad90291b",
       "size": 69
     },
     {
       "id": "content.1a7510a1c33551d28a3c42cd03e10219",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/文章封面.png",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/文章封面.png",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/文章封面.png",
       "sha256": "8a791b3c2600b01b6e889d591075fbd811ffbd67a8f40d3ae241503321162da0",
       "size": 1054886
     },
     {
       "id": "content.5a46f7930fa35177bf913ad8c318d453",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/标签类型和快捷键.md",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/标签类型和快捷键.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/标签类型和快捷键.md",
       "sha256": "20dbfe1bb03bae56d987ae36f681a3d62cbad6dc2ea9b3342eec86a837fd851c",
       "size": 13988
     },
     {
       "id": "content.098436ccb7d35e58a19808a796eafc9a",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/自动标注/方案1 AI Agent(适合SAM2这类视频追踪模型—模型跑在你自己的电脑服务器)/AI Agent(适合SAM2这类视频追踪模型—模型跑在你自己的电脑服务器).py",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/自动标注/方案1 AI Agent(适合SAM2这类视频追踪模型—模型跑在你自己的电脑服务器)/AI Agent(适合SAM2这类视频追踪模型—模型跑在你自己的电脑服务器).py",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/自动标注/方案1 AI Agent(适合SAM2这类视频追踪模型—模型跑在你自己的电脑服务器)/AI Agent(适合SAM2这类视频追踪模型—模型跑在你自己的电脑服务器).py",
       "sha256": "0514d7ac652b4e77fcba1cb4844074a3d5b068cbd6635f5a08c43a89fd759caf",
       "size": 1272
     },
     {
       "id": "content.ba325e134df9566e873c5e999ab469e1",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/自动标注/自动标注.md",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/自动标注/自动标注.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/自动标注/自动标注.md",
       "sha256": "5ee9e811cb0caf865beb5834f5789677511ebe450609441b1cf49a0ef849549e",
       "size": 12193
     },
     {
       "id": "content.469f6759625b51d88c637702e3d7bd12",
       "oldPath": "YOLO学习/数据集标注工具/CVAT部署/部署过程及其遇到的问题.md",
-      "path": "YOLO学习/数据集标注工具/CVAT部署/部署过程及其遇到的问题.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/CVAT部署/部署过程及其遇到的问题.md",
       "sha256": "a2b2267643758af4fc1f1893fc3c278b6bbb7cafa8051e2cd920e403b95de842",
       "size": 15648
     },
     {
       "id": "content.b9b6ed8a72855b52b295748c16ddd942",
       "oldPath": "YOLO学习/数据集标注工具/label-studio/main.py",
-      "path": "YOLO学习/数据集标注工具/label-studio/main.py",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/label-studio/main.py",
       "sha256": "7de323f8a58964b2b90e4ff4f4056cbdfbfe6d213873c03d2f6611d814eebb94",
       "size": 1359
     },
     {
       "id": "content.04e07876c38e5b888052338eb26c004b",
       "oldPath": "YOLO学习/数据集标注工具/label-studio/yolo导出转换标准格式.py",
-      "path": "YOLO学习/数据集标注工具/label-studio/yolo导出转换标准格式.py",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/label-studio/yolo导出转换标准格式.py",
       "sha256": "ea3911e92f23c57087c3d13775bdf1eabe4f0c08bf10325a2e408e425bcf5d69",
       "size": 2845
     },
     {
       "id": "content.d72e31f8fade5297a9b96fb671790dec",
       "oldPath": "YOLO学习/数据集标注工具/label-studio/使用方法.txt",
-      "path": "YOLO学习/数据集标注工具/label-studio/使用方法.txt",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/label-studio/使用方法.txt",
       "sha256": "6c24605057f9f110ec75372450399a140e8de1a8703c0362144dea399a520bb7",
       "size": 64
     },
     {
       "id": "content.b4ec7f73ee1554a19736d0cc468fb47f",
       "oldPath": "YOLO学习/数据集标注工具/label-studio/启动.bat",
-      "path": "YOLO学习/数据集标注工具/label-studio/启动.bat",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/label-studio/启动.bat",
       "sha256": "499cb86225e936a3e54efb21f72b1fcf1ff72a30a7c6184f98429227520daa7d",
       "size": 812
     },
     {
       "id": "content.d19057bd4e2c51ee93945165799f6010",
       "oldPath": "YOLO学习/数据集标注工具/label-studio/官方导出标准格式方法.py",
-      "path": "YOLO学习/数据集标注工具/label-studio/官方导出标准格式方法.py",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/label-studio/官方导出标准格式方法.py",
       "sha256": "8a0caa3a64f0da3ab7d173d6e879d33453ec6c40139a20b939988e35e5927def",
       "size": 1821
     },
     {
       "id": "content.961b72a762dc5fd08a1506dfc1159071",
       "oldPath": "YOLO学习/数据集标注工具/label-studio/快捷键.md",
-      "path": "YOLO学习/数据集标注工具/label-studio/快捷键.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/label-studio/快捷键.md",
       "sha256": "820187af852d2f2899e8b10da87cf73b2f712cb89761cedb80ab3d63384bcae7",
       "size": 2020
     },
     {
       "id": "content.a212338a3b0b5051adbb72ea4d0f6f74",
       "oldPath": "YOLO学习/数据集标注工具/label-studio/问题描述.md",
-      "path": "YOLO学习/数据集标注工具/label-studio/问题描述.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/label-studio/问题描述.md",
       "sha256": "a92fc1401062716a5f12e65b94e6e8860c5ab942b385ffeca9004e7138b2c8af",
       "size": 614
     },
     {
       "id": "content.03de06172159586f89e4d86c351bf6b4",
       "oldPath": "YOLO学习/数据集标注工具/labelimg/labelimg(yolo数据集标注工具).zip",
-      "path": "YOLO学习/数据集标注工具/labelimg/labelimg(yolo数据集标注工具).zip",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/labelimg/labelimg(yolo数据集标注工具).zip",
       "sha256": "df272bbe2b1ff737b8c077b57635350aef7ce3ce50b79eb488d5688f3b9fcb09",
       "size": 13394852
     },
     {
       "id": "content.35a1f90f691f59d6821ee37c7c238fd9",
       "oldPath": "YOLO学习/数据集标注工具/labelimg/main.py",
-      "path": "YOLO学习/数据集标注工具/labelimg/main.py",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/labelimg/main.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size": 0
     },
     {
       "id": "content.a54cac231af251b78551dcfa34a3da44",
       "oldPath": "YOLO学习/数据集标注工具/labelimg/使用说明.md",
-      "path": "YOLO学习/数据集标注工具/labelimg/使用说明.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/labelimg/使用说明.md",
       "sha256": "be39a082cbd8db82629f54ad76dccdb6f9bf412e88e1793f916d940fa85641c2",
       "size": 177
     },
     {
       "id": "content.92d2505526d25e99a990c58d97d32669",
       "oldPath": "YOLO学习/数据集标注工具/labelimg/启动.bat",
-      "path": "YOLO学习/数据集标注工具/labelimg/启动.bat",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/数据集与标注/数据集标注工具/labelimg/启动.bat",
       "sha256": "38db8654e4f8cf40f566600ea0adca3ec12e8f447ed448d8b6aacad2908c4906",
       "size": 273
     },
     {
       "id": "content.b28d61a873335e32be001a42418b172c",
       "oldPath": "YOLO学习/模型相关参数.md",
-      "path": "YOLO学习/模型相关参数.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/模型相关参数.md",
       "sha256": "02947997d94f31ea3810b7cfe323a562fab2d2631d368e86b7a459bb15b763bd",
       "size": 17351
     },
     {
       "id": "content.9050ab2243ed5fd8a674dc1d1c78277e",
       "oldPath": "YOLO学习/第一次官网自学/bus.jpg",
-      "path": "YOLO学习/第一次官网自学/bus.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/bus.jpg",
       "sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
       "size": 137419
     },
     {
       "id": "content.d4b530a37f205acf8ff95a5ad409ae66",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/LICENSE",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/LICENSE",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/LICENSE",
       "sha256": "c3bc1fd94148c28485e8bab1d5a28edbc8e3870f2bd9be7127c68c8b7a0ea5df",
       "size": 35126
     },
     {
       "id": "content.2fc80148db875a929ce4edeba84b8734",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/README.md",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/README.md",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/README.md",
       "sha256": "e1ce0c77829f3765ed6bd21733dcada572d772413dd44c41d36d0a90ecb0ec60",
       "size": 684
     },
     {
       "id": "content.3e8eb30b97a95a73a943c3a11008f892",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/images/train/000000000009.jpg",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/images/train/000000000009.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/images/train/000000000009.jpg",
       "sha256": "be0ecc9cacc0150f0a84f6dc098f3e5c526ac85f8a14c1a0d16c2a4eb3d305a6",
       "size": 45073
     },
     {
       "id": "content.da85678422d9590781a3e4e2e0f941a4",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/images/train/000000000025.jpg",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/images/train/000000000025.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/images/train/000000000025.jpg",
       "sha256": "f7ddff65077bd4e362a890ed13b1cd931fd38882d49bae9e7e53e369e4b4d028",
       "size": 64972
     },
     {
       "id": "content.09fe5616fdcf532eab080d0b0c857db1",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/images/train/000000000030.jpg",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/images/train/000000000030.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/images/train/000000000030.jpg",
       "sha256": "52a12b6af76049a23192320610a316b6c1ea8e7d12e083f15c18e1690c506e66",
       "size": 22329
     },
     {
       "id": "content.69c174ccc988515384e93f29b02a3af8",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/images/train/000000000034.jpg",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/images/train/000000000034.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/images/train/000000000034.jpg",
       "sha256": "8d5334f6c8d3e8b77d50726625eecc6896597f063d3801f1993ffcb9e6b05acb",
       "size": 72598
     },
     {
       "id": "content.3e8052040636589aabc8c62040109ff1",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/images/val/000000000036.jpg",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/images/val/000000000036.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/images/val/000000000036.jpg",
       "sha256": "4c28394898302bef227834d63498a0fc54e4295f11c590c8a8ebcba51347bc03",
       "size": 49262
     },
     {
       "id": "content.0ad6906e3b1b59dc87ed6c69c71a30a5",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/images/val/000000000042.jpg",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/images/val/000000000042.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/images/val/000000000042.jpg",
       "sha256": "c87afb6dfe55db1cada52479ed939a231e030d64f5e3c3eaf7eb1544591f853a",
       "size": 42264
     },
     {
       "id": "content.e2c0e5a9f2cc5c1185bc55b5a9e95e83",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/images/val/000000000049.jpg",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/images/val/000000000049.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/images/val/000000000049.jpg",
       "sha256": "86b46022d382f67b0934147fe515e1c3c3f5c04db45045516214b5e3092148e3",
       "size": 30297
     },
     {
       "id": "content.e87569bb7b845b73a47c0916196f3ecd",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/images/val/000000000061.jpg",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/images/val/000000000061.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/images/val/000000000061.jpg",
       "sha256": "6460e4a7cc80e34815aba8910a23152a16a24a416fa598138bd9231cccd413e2",
       "size": 99547
     },
     {
       "id": "content.9c1f2351d14350ae973e5024372521cb",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/train.cache",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/train.cache",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/train.cache",
       "sha256": "d6a4347e14c4001ada495370e6e90fd8ffcdec8ea262b1ef1416448ac0748ad2",
       "size": 1450
     },
     {
       "id": "content.66058360b79759c9895a3015035fa519",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/train/000000000009.txt",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/train/000000000009.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/train/000000000009.txt",
       "sha256": "91e0c22ffeffd27ae1c176c38fc534ff4de980c20fafb32922f01dcd407b920e",
       "size": 312
     },
     {
       "id": "content.d83263c276d65148bf9edaaf0ba6aa3d",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/train/000000000025.txt",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/train/000000000025.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/train/000000000025.txt",
       "sha256": "73e4d0a58416a5814ad3e9d58b6927b3a4898c5a4fa18341d333261ddb215b86",
       "size": 78
     },
     {
       "id": "content.e81999430f9951e297b12e7c3651058f",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/train/000000000030.txt",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/train/000000000030.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/train/000000000030.txt",
       "sha256": "1defb5823f183ade62575a6b4398f2609a4d9cabd428147c887b95e610a831d9",
       "size": 72
     },
     {
       "id": "content.ebb6cd28f6805a69843be415e7e69b42",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/train/000000000034.txt",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/train/000000000034.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/train/000000000034.txt",
       "sha256": "252857cf07883c38308b12ec978323222813ffd0fb9a98bbfe350b44ee1a62e7",
       "size": 39
     },
     {
       "id": "content.f6412c1f246b52afa2009fcd1f1be181",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/val.cache",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/val.cache",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/val.cache",
       "sha256": "777a72620fd927fd0dee7e15fac62d71eebbc34f7fb31a1bc5a121572fb3ac71",
       "size": 1522
     },
     {
       "id": "content.0ad0f3b26a855db2823571c1eef811f7",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/val/000000000036.txt",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/val/000000000036.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/val/000000000036.txt",
       "sha256": "638773d69e1348c8d213cc0fdaf4107d170df7811af56f2cce372ca245556149",
       "size": 77
     },
     {
       "id": "content.c413400abfd95c79a617e7c98fc7f398",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/val/000000000042.txt",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/val/000000000042.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/val/000000000042.txt",
       "sha256": "c0e1ac95cf47310a3de9692cf0505fbf1ddcabceed575a3ecfac3c87f184f168",
       "size": 35
     },
     {
       "id": "content.e93b9b627f225d11b15692560089f5e7",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/val/000000000049.txt",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/val/000000000049.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/val/000000000049.txt",
       "sha256": "0c0973cfb10a591266b92769e7cd43686133ea12faaa9d583702bf1c55e126e3",
       "size": 328
     },
     {
       "id": "content.b30353d04f415456abf9b3761ec4987b",
       "oldPath": "YOLO学习/第一次官网自学/datasets/coco8/labels/val/000000000061.txt",
-      "path": "YOLO学习/第一次官网自学/datasets/coco8/labels/val/000000000061.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/datasets/coco8/labels/val/000000000061.txt",
       "sha256": "d7988d745a68480c7331b323adeec29adb1b0a4df53b072ed45d9650893eb812",
       "size": 193
     },
     {
       "id": "content.33533642bdd55528856cb6c6de1647d6",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/LICENSE",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/LICENSE",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/LICENSE",
       "sha256": "c3bc1fd94148c28485e8bab1d5a28edbc8e3870f2bd9be7127c68c8b7a0ea5df",
       "size": 35126
     },
     {
       "id": "content.29f568b9e66551f48678e7289b9340eb",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/README.md",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/README.md",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/README.md",
       "sha256": "e1ce0c77829f3765ed6bd21733dcada572d772413dd44c41d36d0a90ecb0ec60",
       "size": 684
     },
     {
       "id": "content.e385517f6df95d10b956e756a9ee79ab",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000009.jpg",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000009.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000009.jpg",
       "sha256": "be0ecc9cacc0150f0a84f6dc098f3e5c526ac85f8a14c1a0d16c2a4eb3d305a6",
       "size": 45073
     },
     {
       "id": "content.3e9c013860cf5b1ca60c4accbb09fd37",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000025.jpg",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000025.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000025.jpg",
       "sha256": "f7ddff65077bd4e362a890ed13b1cd931fd38882d49bae9e7e53e369e4b4d028",
       "size": 64972
     },
     {
       "id": "content.eb0cd04ccdc95b4fae67d75969a7f8d7",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000030.jpg",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000030.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000030.jpg",
       "sha256": "52a12b6af76049a23192320610a316b6c1ea8e7d12e083f15c18e1690c506e66",
       "size": 22329
     },
     {
       "id": "content.9f1dd2f410b752a7beb4ac919fe97525",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000034.jpg",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000034.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/images/train/000000000034.jpg",
       "sha256": "8d5334f6c8d3e8b77d50726625eecc6896597f063d3801f1993ffcb9e6b05acb",
       "size": 72598
     },
     {
       "id": "content.83e618f00a8053a9a38c1130ac95ef1d",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000036.jpg",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000036.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000036.jpg",
       "sha256": "4c28394898302bef227834d63498a0fc54e4295f11c590c8a8ebcba51347bc03",
       "size": 49262
     },
     {
       "id": "content.efd2d65b51975a96979b06455b0f849c",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000042.jpg",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000042.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000042.jpg",
       "sha256": "c87afb6dfe55db1cada52479ed939a231e030d64f5e3c3eaf7eb1544591f853a",
       "size": 42264
     },
     {
       "id": "content.a9577ea90a635618b4bac7346cadab6c",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000049.jpg",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000049.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000049.jpg",
       "sha256": "86b46022d382f67b0934147fe515e1c3c3f5c04db45045516214b5e3092148e3",
       "size": 30297
     },
     {
       "id": "content.1f5a9a1a40fa5193a1c699dc7ead65a5",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000061.jpg",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000061.jpg",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/images/val/000000000061.jpg",
       "sha256": "6460e4a7cc80e34815aba8910a23152a16a24a416fa598138bd9231cccd413e2",
       "size": 99547
     },
     {
       "id": "content.4ec7664f423d54dcb18277bc1dcd799f",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train.cache",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train.cache",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/train.cache",
       "sha256": "f42829ead61014b6cc3b5a90d66fc54acba9df4e7cb224008e2990a6aa7c138a",
       "size": 1494
     },
     {
       "id": "content.0bf11eeaed6855b6a2c96d9c84145f47",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000009.txt",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000009.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000009.txt",
       "sha256": "91e0c22ffeffd27ae1c176c38fc534ff4de980c20fafb32922f01dcd407b920e",
       "size": 312
     },
     {
       "id": "content.b827ebcd510556fa9a4e251902fec8bd",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000025.txt",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000025.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000025.txt",
       "sha256": "73e4d0a58416a5814ad3e9d58b6927b3a4898c5a4fa18341d333261ddb215b86",
       "size": 78
     },
     {
       "id": "content.2fdfe3b1233553d0ab75320107c1faa6",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000030.txt",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000030.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000030.txt",
       "sha256": "1defb5823f183ade62575a6b4398f2609a4d9cabd428147c887b95e610a831d9",
       "size": 72
     },
     {
       "id": "content.2a8056dfc54d5358b013a8675920e18c",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000034.txt",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000034.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/train/000000000034.txt",
       "sha256": "252857cf07883c38308b12ec978323222813ffd0fb9a98bbfe350b44ee1a62e7",
       "size": 39
     },
     {
       "id": "content.e6ce10bb0d5a5c128f24272d46877138",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val.cache",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val.cache",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/val.cache",
       "sha256": "d462b85ed445e30961a1c9fd4e77ea7302a705232b1be6a0160bbbd42cf34e03",
       "size": 1566
     },
     {
       "id": "content.ae07a457ba955d49908d909a8937cb00",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000036.txt",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000036.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000036.txt",
       "sha256": "638773d69e1348c8d213cc0fdaf4107d170df7811af56f2cce372ca245556149",
       "size": 77
     },
     {
       "id": "content.694ffe42d2335370b9c53635a92b73d3",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000042.txt",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000042.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000042.txt",
       "sha256": "c0e1ac95cf47310a3de9692cf0505fbf1ddcabceed575a3ecfac3c87f184f168",
       "size": 35
     },
     {
       "id": "content.880998f0e2145373858fea6539f28d4c",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000049.txt",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000049.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000049.txt",
       "sha256": "0c0973cfb10a591266b92769e7cd43686133ea12faaa9d583702bf1c55e126e3",
       "size": 328
     },
     {
       "id": "content.ddb0d9e9892a5aeaae8ceae810fc07dc",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000061.txt",
-      "path": "YOLO学习/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000061.txt",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/datasets/coco8/labels/val/000000000061.txt",
       "sha256": "d7988d745a68480c7331b323adeec29adb1b0a4df53b072ed45d9650893eb812",
       "size": 193
     },
     {
       "id": "content.a6c3d0094b1551a98636a13c24a7fd8f",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/yolo配置.py",
-      "path": "YOLO学习/第一次官网自学/yolo配置/yolo配置.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/yolo配置.py",
       "sha256": "7dbbbc9fe0ad004e26065f3a2f9db53dc6c6f8354cf2e63849a07884a9bd824d",
       "size": 133
     },
     {
       "id": "content.fd8631d6ecb35bdab844a7c5c5df18d8",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置/修改配置.py",
-      "path": "YOLO学习/第一次官网自学/yolo配置/修改配置.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置/修改配置.py",
       "sha256": "bcb1054de95134574a962ea2aba249be6bfdc68f67e14da85ec9b8dcff6a01a4",
       "size": 372
     },
     {
       "id": "content.71cdffe3eee15280a5bdedc9bb955a82",
       "oldPath": "YOLO学习/第一次官网自学/yolo配置解析.md",
-      "path": "YOLO学习/第一次官网自学/yolo配置解析.md",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/yolo配置解析.md",
       "sha256": "1dd20a5f4e2e538f883838b51d148682e6791c09ee2e315398097875548298dd",
       "size": 2074
     },
     {
       "id": "content.d6522fb34f8c5a9b8da15469f4046ed7",
       "oldPath": "YOLO学习/第一次官网自学/模型使用.py",
-      "path": "YOLO学习/第一次官网自学/模型使用.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/模型使用.py",
       "sha256": "03bf5c711d938fbad0e062ea02f08c80951fa1525c80b8507d777d12751b02c9",
       "size": 728
     },
     {
       "id": "content.bc4957a8a440547b8ebd985c7fe54399",
       "oldPath": "YOLO学习/第一次官网自学/模型校验.py",
-      "path": "YOLO学习/第一次官网自学/模型校验.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/模型校验.py",
       "sha256": "822ca5e0786414eb30d9a7549d81820844ebdcd167a076c9e1caed59b0d0c439",
       "size": 847
     },
     {
       "id": "content.225118e4806e5e51bd9e34eca9b88bb7",
       "oldPath": "YOLO学习/第一次官网自学/模型训练学习.py",
-      "path": "YOLO学习/第一次官网自学/模型训练学习.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/模型训练学习.py",
       "sha256": "4009987a3af5c3bb48708e92674422e6b682001fb2e92b57d1c6e0e90fd99f00",
       "size": 857
     },
     {
       "id": "content.7461ba099bcc588d9496f5167f77b727",
       "oldPath": "YOLO学习/第一次官网自学/测试是否使用GPU训练.py",
-      "path": "YOLO学习/第一次官网自学/测试是否使用GPU训练.py",
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/YOLO/第一次官网自学/测试是否使用GPU训练.py",
       "sha256": "8c30a625f66c29ebc3ed62200dac2a5b4b02f2f07b8e1e76bc43ac185a09371e",
       "size": 1727
     },
     {
       "id": "content.6444b090a2cd54d49f469cdf8c19ee42",
       "oldPath": "YOLO学习/第二次官网自学(偏向研究)/屏幕实时检测/MSS库实现的屏幕检测(跨平台).py",
-      "path": "YOLO学习/第二次官网自学(偏向研究)/屏幕实时检测/MSS库实现的屏幕检测(跨平台).py",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/第二次官网自学(偏向研究)/屏幕实时检测/MSS库实现的屏幕检测(跨平台).py",
       "sha256": "20925bb170b783b823b4a33351e83fbbe3e02be6917438cb382ad1c318ccfde4",
       "size": 1391
     },
     {
       "id": "content.9b2675b709e25dea91b263e6c2d07880",
       "oldPath": "YOLO学习/第二次官网自学(偏向研究)/屏幕实时检测/track.py",
-      "path": "YOLO学习/第二次官网自学(偏向研究)/屏幕实时检测/track.py",
+      "path": "项目工坊/AI应用与智能体项目/计算机视觉项目/第二次官网自学(偏向研究)/屏幕实时检测/track.py",
       "sha256": "e37d9895a2a5c4aa7e9535f821466e93da7f9b2e910ac09d5c7d2bfe934c6f36",
       "size": 645
     },
     {
       "id": "content.c524381ec7305bafac5bdcbb96cf82dc",
       "oldPath": "YOLO学习/自动标注.md",
-      "path": "YOLO学习/自动标注.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/自动标注.md",
       "sha256": "37d87b6e81712f4dde65d144b841b001948101276f11850eac3a56baf539cabe",
       "size": 16488
     },
     {
       "id": "content.f62a52b9e3675ce9be65da65b9dec574",
       "oldPath": "YOLO学习/软件环境配置.md",
-      "path": "YOLO学习/软件环境配置.md",
+      "path": "AI模型与多模态智能/计算机视觉与YOLO/YOLO训练与推理/软件环境配置.md",
       "sha256": "5af939a3cf7c70af13e32aecd703da42c0fb975b298f42ab3b87f7dc4f5e4dff",
       "size": 5572
     },
     {
       "id": "content.507f9c7fedc053b48ac8bac06e4f829a",
       "oldPath": "YOLO学习/远程训练/platform_ultralytics/img.png",
-      "path": "YOLO学习/远程训练/platform_ultralytics/img.png",
+      "path": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录/远程训练/platform_ultralytics/img.png",
       "sha256": "31c06c65a5a6490d3a4a816445e9075bf9915657e5028ead856aecd936a87855",
       "size": 88030
     },
     {
       "id": "content.c7afc0221f7d5c789e95be2877eabc40",
       "oldPath": "YOLO学习/远程训练/platform_ultralytics/main.py",
-      "path": "YOLO学习/远程训练/platform_ultralytics/main.py",
+      "path": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录/远程训练/platform_ultralytics/main.py",
       "sha256": "c5ffe08807c91873471906ee39611b7f6a260b75fa8cc0ec8caf718d2940aaa8",
       "size": 474
     },
     {
       "id": "content.543ca41f533e5f8d9e21e9ad78e9fea8",
       "oldPath": "YOLO学习/远程训练/platform_ultralytics/终端里面跑.md",
-      "path": "YOLO学习/远程训练/platform_ultralytics/终端里面跑.md",
+      "path": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录/远程训练/platform_ultralytics/终端里面跑.md",
       "sha256": "b43af2a9dfbee5389d2b794cd51f083d0a5657ec3755d39f269d96b5a910c491",
       "size": 540
     },
     {
       "id": "content.76f5e879df7b5978ae3e35f6b72a5a82",
       "oldPath": "YOLO学习/远程训练/yandifei/datasets/project-2-at-2026-01-17-16-20-c5c8a9df/project-2-at-2026-01-17-16-20-c5c8a9df.ndjson",
-      "path": "YOLO学习/远程训练/yandifei/datasets/project-2-at-2026-01-17-16-20-c5c8a9df/project-2-at-2026-01-17-16-20-c5c8a9df.ndjson",
+      "path": "AI模型与多模态智能/机器学习基础与训练/训练流程与实验记录/远程训练/yandifei/datasets/project-2-at-2026-01-17-16-20-c5c8a9df/project-2-at-2026-01-17-16-20-c5c8a9df.ndjson",
       "sha256": "ef7534cc14f6f32a8a48eeebd39999bad6156e169b1223ea1cea8cde1c807960",
       "size": 25442
     },
