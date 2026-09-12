@@ -17,6 +17,12 @@
   "localDependencyJunctionsRetargeted": 82,
   "markdownLinkDestinationsUpdated": 137,
   "maxCommittedFileBytes": 100000000,
+  "readerCorrections": {
+    "exportAndResolveShareReadableInventory": true,
+    "ignoredUntrackedAndMissingAliasTargetsRejected": true,
+    "assetNodesKeepIDsAndUseAttachmentVisibility": true,
+    "regressionTestsPassed": 8
+  },
   "historyRewritten": false,
   "remotePushed": false,
   "remainingLocalState": "Old empty source directories retained: removal was rejected by tool policy. Ignored dependencies and large files retained beside their moved projects.",

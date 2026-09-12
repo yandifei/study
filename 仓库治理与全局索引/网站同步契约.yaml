@@ -32,6 +32,9 @@ limits:
   neverReadIgnoredFiles: true
   neverReadLocalEnvironmentFiles: true
   allowEnvironmentTemplates: [.env.example, .env.sample, .env.template]
+  forceTrackedIgnoredFiles: exclude
+  unresolvedOrMissingAliasTarget: not-found
+  symlinkOrJunctionPaths: exclude
 sync:
   version: commit-sha
   changeDetection: git-blob-id
@@ -41,6 +44,9 @@ sync:
   followDirectoryJunctions: false
   executeRepositoryCode: false
 adapter:
+  python: '>=3.12'
+  lookupInventory: same-filtered-snapshot-as-export
+  snapshotRefresh: recreate-Catalog-after-source-changes
   export: python -X utf8 仓库治理与全局索引/工具/catalog.py --export
   verify: python -X utf8 仓库治理与全局索引/工具/catalog.py --verify
   note: Reference inventory adapter; document parsers, search, graph persistence and HTTP routes belong to the website backend.

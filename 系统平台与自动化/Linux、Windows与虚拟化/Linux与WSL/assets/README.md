@@ -1,11 +1,11 @@
 ---
 id: node.8f12a14f7ac253bdbaa16f7655204838
-kind: topic
+kind: asset
 title: "assets"
 summary: "assets的资料入口与关联目录。"
 domain: platform
 status: active
-site: true
+site: false
 ---
 
 # assets

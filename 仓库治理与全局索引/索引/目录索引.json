@@ -2496,7 +2496,8 @@
     },
     {
       "id": "node.8f12a14f7ac253bdbaa16f7655204838",
-      "kind": "topic",
+      "kind": "asset",
+      "site": false,
       "title": "assets",
       "path": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/assets",
       "entryPath": "系统平台与自动化/Linux、Windows与虚拟化/Linux与WSL/assets/README.md",
@@ -2820,7 +2821,8 @@
     },
     {
       "id": "node.21dddf7ecfd158c789c3f2db0a07354e",
-      "kind": "topic",
+      "kind": "asset",
+      "site": false,
       "title": "assets",
       "path": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/assets",
       "entryPath": "软件开发与应用工程/Web前端与桌面客户端/PyQt桌面应用/assets/README.md",
