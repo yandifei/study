@@ -1,0 +1,8 @@
+{
+  "batch": "practice",
+  "moves": 34,
+  "trackedFilesMoved": 207,
+  "localFilesPreserved": 218,
+  "linksUpdated": 0,
+  "verification": "All local file paths and sizes preserved; all baseline content SHA256 hashes match except recorded link destination edits."
+}

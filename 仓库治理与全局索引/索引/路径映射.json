@@ -2066,6 +2066,244 @@
       "targetPath": "项目工坊/自动化与工具项目/游戏与桌面自动化/鸣潮脚本",
       "isDirectory": true,
       "id": "migration.e728b5d096d551548f5bde0f8b7f0008"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "复习资料/QQ转义字符系列.md",
+      "targetPath": "软件开发与应用工程/Python与运行时/代码片段与最小示例/QQ转义字符系列.md",
+      "isDirectory": false,
+      "id": "migration.8721d60a9d335a908694770214428ec3"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "复习资料/三级数据库技术考试",
+      "targetPath": "学习路径、研究与现实实践/竞赛、考试与证书/证书备考/三级数据库技术考试",
+      "isDirectory": true,
+      "id": "migration.1bfc6f97b7805a75b6e8b7698c05be8e"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "复习资料/线性代数",
+      "targetPath": "基础理论与计算思维/数学与数据分析/线性代数与矩阵/线性代数",
+      "isDirectory": true,
+      "id": "migration.48efb78f135f5c398083bc666e227efc"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "复习资料/药膏知识",
+      "targetPath": "学习路径、研究与现实实践/生活实践与长期观察/生活知识记录/药膏知识",
+      "isDirectory": true,
+      "id": "migration.cccec4caa84a5062a7863bd3c550cc1a"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "复习资料/计算机组成原理学习笔记.docx",
+      "targetPath": "基础理论与计算思维/计算机组成与操作系统/计算机组成/计算机组成原理学习笔记.docx",
+      "isDirectory": false,
+      "id": "migration.c398d0c203ab5f6c8f4a51a315ebd7b7"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "复习资料/软件中级架构师考试",
+      "targetPath": "学习路径、研究与现实实践/竞赛、考试与证书/证书备考/软件中级架构师考试",
+      "isDirectory": true,
+      "id": "migration.0ecbe5705ce555db9dc0511e51a4a755"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "复习资料/软件工程期末复习资料.zip",
+      "targetPath": "学习路径、研究与现实实践/竞赛、考试与证书/期末复习/软件工程期末复习资料.zip",
+      "isDirectory": false,
+      "id": "migration.ab08b918ad0a58088bbbef00aab779fd"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "复习资料/软件测试",
+      "targetPath": "基础理论与计算思维/软件工程基础/测试与质量/软件测试",
+      "isDirectory": true,
+      "id": "migration.745bba98616c576895a44a4f402dba38"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "计算机网络和网络安全/11.12置换密码对称加密.pdf",
+      "targetPath": "基础理论与计算思维/计算机网络与密码学/密码学与加密实践/11.12置换密码对称加密.pdf",
+      "isDirectory": false,
+      "id": "migration.db5dd08f73895514baba775eff9c0fb6"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "计算机网络和网络安全/信息安全技术-复习.pdf",
+      "targetPath": "基础理论与计算思维/计算机网络与密码学/网络安全基础/信息安全技术-复习.pdf",
+      "isDirectory": false,
+      "id": "migration.746e9cfaed42518582c242e2f439206f"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "计算机网络和网络安全/对称密码实验报告.docx",
+      "targetPath": "基础理论与计算思维/计算机网络与密码学/密码学与加密实践/对称密码实验报告.docx",
+      "isDirectory": false,
+      "id": "migration.ab8da884851653f7983ebd8643275617"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "计算机网络和网络安全/病毒下载链接.txt",
+      "targetPath": "系统平台与自动化/安全研究与防护实践/靶场与合规实验/病毒下载链接.txt",
+      "isDirectory": false,
+      "id": "migration.e5a4bd2cc00855bd94fd11bc07388b58"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "计算机网络和网络安全/计算机网络复习.docx",
+      "targetPath": "基础理论与计算思维/计算机网络与密码学/网络协议基础/计算机网络复习.docx",
+      "isDirectory": false,
+      "id": "migration.e6dc9d4eab59555f8a6b6ece4b5eb98d"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "交流会和比赛/AI Ping 黑客松",
+      "targetPath": "学习路径、研究与现实实践/竞赛、考试与证书/比赛记录/AI Ping 黑客松",
+      "isDirectory": true,
+      "id": "migration.bf659cadee955e43b559d5618d563236"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "交流会和比赛/AIx Origin",
+      "targetPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/AIx Origin",
+      "isDirectory": true,
+      "id": "migration.c6045fb0449558b787fd967acf1091f7"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "交流会和比赛/AI创客节",
+      "targetPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/AI创客节",
+      "isDirectory": true,
+      "id": "migration.a005a7df191c5864ab5a7ab1d5573634"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "交流会和比赛/FDE交流会",
+      "targetPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/FDE交流会",
+      "isDirectory": true,
+      "id": "migration.f4b30a693fe15a758525baeec501da32"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "交流会和比赛/IOTE物联网展",
+      "targetPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/IOTE物联网展",
+      "isDirectory": true,
+      "id": "migration.e1cbe9f63d425e40bd824ad93ac3028f"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "交流会和比赛/与 AI 共生 · 2026 微信小程序开发大赛",
+      "targetPath": "学习路径、研究与现实实践/竞赛、考试与证书/比赛记录/与 AI 共生 · 2026 微信小程序开发大赛",
+      "isDirectory": true,
+      "id": "migration.c1a07552e3555ac0b238c06238f2e31e"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "交流会和比赛/全国数学建模大赛",
+      "targetPath": "学习路径、研究与现实实践/竞赛、考试与证书/比赛记录/全国数学建模大赛",
+      "isDirectory": true,
+      "id": "migration.3714cb0b2832517696d6fc4291f17050"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "交流会和比赛/微信开发者创新工坊",
+      "targetPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/微信开发者创新工坊",
+      "isDirectory": true,
+      "id": "migration.79f997940a6f56ef86b7f6c00739b095"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "交流会和比赛/第34届广州博览会",
+      "targetPath": "学习路径、研究与现实实践/交流会与知识蒸馏/交流会记录/第34届广州博览会",
+      "isDirectory": true,
+      "id": "migration.3f8f1b3112d35491aa198365d5c143a9"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "小七笔记",
+      "targetPath": "学习路径、研究与现实实践/生活实践与长期观察/小七笔记",
+      "isDirectory": true,
+      "id": "migration.54c1b27387575ca4a42d8ad8f9e10917"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "蓝桥杯",
+      "targetPath": "基础理论与计算思维/算法与数据结构/蓝桥杯与竞赛题解/蓝桥杯",
+      "isDirectory": true,
+      "id": "migration.ecc70e26fb42540e833315bbdd8a56c5"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "study/README.md",
+      "targetPath": "参考资源与历史归档/旧目录历史快照/早期学习记录/README.md",
+      "isDirectory": false,
+      "id": "migration.bda9435947825f118633d29df2f1f6f5"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "study/学习卡片生成",
+      "targetPath": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/学习卡片生成",
+      "isDirectory": true,
+      "id": "migration.0d4b14e1d1a3534793c5070012d1b8d6"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "study/开发者测试赛.zip",
+      "targetPath": "参考资源与历史归档/旧目录历史快照/早期学习记录/开发者测试赛.zip",
+      "isDirectory": false,
+      "id": "migration.f512a2e8da815c78973356cf4479a967"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "study/散华辅助脚本(无动态UI).Q",
+      "targetPath": "项目工坊/自动化与工具项目/游戏与桌面自动化/早期脚本副本/散华辅助脚本(无动态UI).Q",
+      "isDirectory": false,
+      "id": "migration.f9fcd1f614c35664838518f4b68ec695"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "study/生成3D模型",
+      "targetPath": "项目工坊/AI应用与智能体项目/多模态生成工作流项目/生成3D模型",
+      "isDirectory": true,
+      "id": "migration.0928801c6c6654c3876f9ad13231a122"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "study/逆模因.md",
+      "targetPath": "学习路径、研究与现实实践/创作、表达与跨领域材料/写作素材/逆模因.md",
+      "isDirectory": false,
+      "id": "migration.0d297b05365050419e080b9442ff3802"
+    },
+    {
+      "batch": "practice",
+      "oldPath": ".txt",
+      "targetPath": "参考资源与历史归档/旧目录历史快照/早期学习记录/.txt",
+      "isDirectory": false,
+      "id": "migration.becd594b98d45e258f1f76a26bf4c7f5"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "通用配置文件格式.md",
+      "targetPath": "软件开发与应用工程/工程规范与开发工具/配置文件与工程模板/通用配置文件格式.md",
+      "isDirectory": false,
+      "id": "migration.0c243516548a53cd83c32ff699618a85"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "python字体变色.txt",
+      "targetPath": "软件开发与应用工程/Python与运行时/代码片段与最小示例/python字体变色.txt",
+      "isDirectory": false,
+      "id": "migration.e46a4cd6ed115ab5ba122760d311b96a"
+    },
+    {
+      "batch": "practice",
+      "oldPath": "新编WIN32API大全（中文）.chm",
+      "targetPath": "参考资源与历史归档/电子书、课件与参考资料/电子书登记/新编WIN32API大全（中文）.chm",
+      "isDirectory": false,
+      "id": "migration.ca14861f87c854fcbd9d8e346f29e607"
     }
   ]
 }
