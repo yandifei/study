@@ -24,7 +24,15 @@
     "regressionTestsPassed": 8
   },
   "historyRewritten": false,
-  "remotePushed": false,
-  "remainingLocalState": "Old empty source directories retained: removal was rejected by tool policy. Ignored dependencies and large files retained beside their moved projects.",
+  "initialMigrationPushedRemotely": false,
+  "remainingLocalState": "2026-09-14: removed 24 verified empty legacy directories (19 top-level). Ignored dependencies and large files remain beside their projects; no knowledge files deleted.",
+  "ignorePolicyFollowup": {
+    "date": "2026-09-14",
+    "additionalFilesUntrackedAndRetainedLocally": 46,
+    "activeMigratedFileRecords": 6341,
+    "retiredMigratedFileRecords": 46,
+    "policyRegressionTests": 4,
+    "pushAuthorized": true
+  },
   "runtimeValidation": "File integrity, Git identity, navigation and path references verified; historical applications were not individually launched."
 }

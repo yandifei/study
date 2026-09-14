@@ -1,93 +1,100 @@
-# ================
-# IDE 配置
-# ================
+# 个人学习与研究知识库
+# 保留知识、源码、素材和复现清单；忽略依赖、生成物及本地状态。
+# 配套说明：仓库治理与全局索引/提交与忽略规则.md
+# Git 不能按大小忽略；100,000,000 字节上限由提交检查器执行（包括 LFS）。
+
+# 操作系统、编辑器与临时文件
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 .idea/
-
-# ================
-# 系统文件
-# ================
-# 递归忽略所有 .DS_Store 文件
-**/.DS_Store
-
-# ================
-# 通用忽略规则
-# ================
-*.log
+.vscode/
+.smarttomcat/
+.history/
+*.swp
+*.swo
 *.tmp
 *.bak
-*.swp
+*.log
+~$*
+.~lock.*#
 
-# ================
-# 开发环境依赖
-# ================
-node_modules/
-venv/
-__pycache__/
-target/
-
-# ================
-# 构建产物
-# ================
-**/dist/
-**/build/
-
-# ================
-# AI产物
-# ================
-.claude
-
-# ================
-# 大文件 / 模型文件（禁止提交）
-# ================
-**/models_files/
-*.ckpt
-*.pth
-*.onnx
-*.bin
-*.safetensors
-*.gguf
-large-v3*.pt
-
-# ================
-# 二进制 / 安装包（禁止提交）
-# ================
-*.exe
-*.rar
-*.7z
-*.msi
-
-# 忽略的文件
-.vscode
-
-# 知识库迁移：依赖、缓存及本地运行状态（任意层级均生效）
+# Python：依赖、解释器环境与工具缓存
 .venv/
+venv/
 env/
 site-packages/
-oh_modules/
-.hvigor/
-.preview/
+__pypackages__/
+__pycache__/
+*.py[cod]
 *.egg-info/
-**/python课堂复习/10.18/环境/
+.eggs/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-.smarttomcat/
-__pypackages__/
-*.pyc
-*.pyo
-*.class
+.tox/
+.nox/
+.hypothesis/
+.ipynb_checkpoints/
+.coverage
+.coverage.*
+htmlcov/
+# 此课程的“环境”是整个 Python 虚拟环境，不是学习文档。
+**/python课堂复习/10.18/环境/
+
+# 前端、小程序与 HarmonyOS：依赖及本地工具状态
+node_modules/
+oh_modules/
+.hvigor/
+.preview/
+.next/
+.nuxt/
+.svelte-kit/
+.angular/
+.parcel-cache/
+.turbo/
+.vite/
+.npm/
+.pnpm-store/
+coverage/
 *.tsbuildinfo
+*.js.map
+*.css.map
+project.private.config.json
+local.properties
+
+# 各语言构建产物；不要把唯一一份手写资料放在这些目录。
+build/
+dist/
+target/
 out/
 collect_static/
-runs/
-checkpoints/
-weights/
-*.pt
-*.h5
-*.hdf5
-*.tflite
+*.class
+*.jar
+*.war
+*.ear
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.sys
+*.pdb
+*.hap
+*.hsp
+*.har
+*.apk
+*.aab
+# 工程复现必需的 wrapper 不当作普通依赖包丢弃。
+!**/.mvn/wrapper/maven-wrapper.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+# 已有汉化研究中的资源附件，不是应用运行依赖目录。
+!**/VMware 25汉化问题/zh_CN/*.dll
 
-# 本地凭据；保留可复用的环境变量模板
+# 本机凭据与身份信息；只允许无真实值的模板。
 .env
 .env.*
 !.env.example
@@ -95,17 +102,73 @@ weights/
 !.env.template
 *.pem
 *.key
+*.p12
+*.pfx
+*.jks
 id_rsa
 id_ed25519
-project.private.config.json
+credentials.json
+credentials.local.*
+# 保留 AGENTS.md、CLAUDE.md、SKILL.md 和可复用技能，只忽略本地会话配置。
+**/.claude/settings.local.json
+**/.claude/projects/
+**/.claude/todos/
+**/.claude/cache/
 
-# 第三方源码镜像只保留来源登记，本机副本不删除
+# 运行数据库与浏览器会话；不笼统屏蔽 data/、user_data/ 或全部数据库后缀。
+db.sqlite3
+db.sqlite3-*
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+**/user_data/email_tasks.db
+**/user_data/email_tasks.db-*
+**/user_data/chrome_data/
+**/user_data/firefox_data/
+**/user_data/webkit_data/
+dump.rdb
+appendonly.aof
+appendonlydir/
+# 明确整理过的脱敏测试数据库可以作为 fixture 保存。
+!**/fixtures/db.sqlite3
+
+# AI 权重与训练输出。HDF5/bin 也可能是教学数据，不按通用后缀一刀切。
+models_files/
+weights/
+checkpoints/
+runs/
+wandb/
+mlruns/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.gguf
+*.tflite
+pytorch_model*.bin
+model-*-of-*.bin
+
+# 安装包与大型归档；课程 ZIP、PDF、Notebook 和媒体默认允许。
+*.exe
+*.msi
+*.msix
+*.iso
+*.dmg
+*.rar
+*.7z
+# 已发现的 629MB 安装包，目录迁移后仍匹配。
+mongodb-windows-x86_64-7.0.30.zip
+
+# 已登记的第三方镜像；保留它们旁边的笔记与来源登记。
 ragflow-main/
 **/老师舍弃的黑马/redis/
 **/第二次官网自学(偏向研究)/ultralytics/
 
-# 已发现的超限安装包，迁移后仍匹配；大小由提交检查器强制校验
-mongodb-windows-x86_64-7.0.30.zip
-
-# 仓库工具的临时输出
-.migration-local/
+# 本仓库维护工具的本地工作区
+/.migration-local/
+/.worktrees/
+# 不全局忽略 *.lock、*.json、*.yaml、assets/、data/、docs/ 或 .github/。

@@ -19,6 +19,9 @@ def git(*args, data=None):
 def check():
     entries = []
     errors = []
+    ignored = git('ls-files', '-ci', '--exclude-standard', '-z')
+    errors.extend('ignored file is tracked: ' + os.fsdecode(p)
+                  for p in ignored.split(b'\0') if p)
     for record in git("ls-files", "--stage", "-z").split(b"\0"):
         if not record:
             continue
@@ -52,6 +55,7 @@ def check():
             size = int(output[pos:end].split()[-1])
             content = output[end + 1:end + 1 + size]
             pos = end + size + 2
+            content = content.replace(b'\r\n', b'\n')
             if content.startswith(b"version https://git-lfs.github.com/spec/v1\n"):
                 match = re.search(rb"(?m)^size (\d+)$", content)
                 if not match:

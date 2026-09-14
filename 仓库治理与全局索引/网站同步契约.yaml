@@ -12,6 +12,7 @@ identity:
   migratedFiles: preserve-file-index-id
   directories: preserve-directory-index-id
   newContent: explicit-front-matter-id-preferred
+  retiredFiles: preserve-id-history-but-never-expose-as-readable-content
   fallback: persist-generated-id-on-first-import
   rename: update-path-and-alias-without-changing-id
 hierarchy:

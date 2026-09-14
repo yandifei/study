@@ -1,0 +1,330 @@
+{
+  "date": "2026-09-14",
+  "previousCommit": "3540f3346796577129925160ad3400354938fded",
+  "untrackedCount": 46,
+  "activeIndexedFiles": 6341,
+  "files": [
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/HarmonyOS/school_11_6/local.properties",
+      "size": 349,
+      "sha256": "b9939da94c57e6659dee49c44b85640468b070b8a52d8668cc8b8d84e9afb333",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Java-Web开发/JSP编程学习/9.9JSP快速入门/study/src/main/webapp/WEB-INF/lib/servlet-api.jar",
+      "size": 407571,
+      "sha256": "a42d4238e57f348dbce7faaf34b3d35cfd321da46a71548fe1a7fee148be68a7",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Java-Web开发/JSP编程学习/JSP配置问题/study/src/main/webapp/WEB-INF/lib/servlet-api.jar",
+      "size": 407571,
+      "sha256": "a42d4238e57f348dbce7faaf34b3d35cfd321da46a71548fe1a7fee148be68a7",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Djangon课堂学习/9.17/study/db.sqlite3",
+      "size": 131072,
+      "sha256": "b22a386b8df5182e2eb82f3c46f494daf8ae137b25d611c901d32775e1861277",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Djangon课堂学习/9.18/study/db.sqlite3",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Djangon课堂学习/9.18/study2/db.sqlite3",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/Django创建项目/db.sqlite3",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python-Web开发/启动Django/db.sqlite3",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python编程/python课堂复习/10.18/~$第五章.pptx",
+      "size": 165,
+      "sha256": "24aa41c07f0095cdc7a74534c1f309f2d33ef76eb5fad9fdb6b67c9c61885eb0",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Python编程/python课堂复习/期末/db.sqlite3",
+      "size": 151552,
+      "sha256": "c842a8ff53cc1e78b838064e7941654ba417f2617700c631c0df6b17b9ac14c6",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/4_2 第5周SSM及三层结构/~$三层结构概念.docx",
+      "size": 162,
+      "sha256": "4c69be83d5b1fd428c9d2f778fd885fc69ad6faea8c560e71c8ebed674918137",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/4_2 第5周SSM及三层结构/~$周 上机操作.docx",
+      "size": 162,
+      "sha256": "4c69be83d5b1fd428c9d2f778fd885fc69ad6faea8c560e71c8ebed674918137",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/4_29 第8周Mybatis多表关联查询/离线jar/ide-eval-resetter-2.1.6.jar",
+      "size": 36003,
+      "sha256": "931788327f56a61128cdb50c7af5479f043a9bd26d69f89bc4d1f2c33802f7c8",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/4_29 第8周Mybatis多表关联查询/离线jar/junit-4.7.jar",
+      "size": 232354,
+      "sha256": "0a15bdccb0260d05630c34b55af7e7ab309541ba2b4a37afdc30b580ceac50e5",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/4_29 第8周Mybatis多表关联查询/离线jar/log4j-1.2.16.jar",
+      "size": 481535,
+      "sha256": "7ae3fdde7ab0cae4735a2aec04381ad9b6e25c93d24205f3ed315d9866f12fe1",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/4_29 第8周Mybatis多表关联查询/离线jar/mybatis-3.2.2-sources.jar",
+      "size": 383963,
+      "sha256": "b9a30767586e3179f56ed7df5d669ff2ec1d64341dff9fb255a1373fc8c5c645",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/4_29 第8周Mybatis多表关联查询/离线jar/mybatis-3.3.0.jar",
+      "size": 1417472,
+      "sha256": "97f380bfdd92d7355ff93bbfed4275c898c00426e9d2f78030a4806b585e7e82",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/4_29 第8周Mybatis多表关联查询/离线jar/mysql-connector-java-5.1.0-bin.jar",
+      "size": 566623,
+      "sha256": "b25fe4a9684f338307f51e640fb2745f639a38f03c6a59b4ef498018de62ce46",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/SpringBoot与MyBatis/spring boot/4_29 第8周Mybatis多表关联查询/离线jar/mysql-connector-java-8.0.26.jar",
+      "size": 2462364,
+      "sha256": "3e1dddd5fdbcd78a552a8fc915fcb804e4f7f83a873355972a3c97a22556f62c",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/大学课程与课堂记录/Web前端开发/web前端课堂学习/9.23/作业/~$2-20235120801082-潘炜德.docx",
+      "size": 162,
+      "sha256": "b9d8e5ccdf307bad471d6e8dd9ca630e1c04301cef0bc54847748d7118b83ce8",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "学习路径、研究与现实实践/教程与视频学习/官方文档学习/Django/官网自学/djangotutorial/db.sqlite3",
+      "size": 143360,
+      "sha256": "f83c688ff84e261d55c1c0b71abcfdf46241e5a8637b189bfefa3418a863a439",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/Qt5Core.dll",
+      "size": 5998712,
+      "sha256": "45861a45902474fc1fea389c0d7375c57831e781e8fd346e1f968abe0b9f8cb5",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/Qt5Gui.dll",
+      "size": 7085176,
+      "sha256": "fc9955aeedef3a439f536f243bf5258b6c28a7c92d0506312b003568a5667765",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/Qt5Widgets.dll",
+      "size": 5516920,
+      "sha256": "cf4da208c6648e32472f58939c31913c4178208c9b1133a856be735eb87ace25",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/WinRing0x64.dll",
+      "size": 62976,
+      "sha256": "a746fd5728e7485f741cc330a279674bc8590b1b8007d8614046c49f58698485",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/WinRing0x64.sys",
+      "size": 14544,
+      "sha256": "11bd2c9f9e2397c9a16e0990e4ed2cf0679498fe0fd418a3dfdac60b5c160ee5",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/hidapi.dll",
+      "size": 162304,
+      "sha256": "ebeb835e2b4530ed68843f19d6a2604c51772e3c26e7f542fde194075f82d9b4",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/imageformats/qgif.dll",
+      "size": 38008,
+      "sha256": "e1f6186d39cfa95c6639ae3a035066c87cc1b3a76d7909e18b76661422a3d98a",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/imageformats/qico.dll",
+      "size": 36984,
+      "sha256": "2b51c4f038cc95a109286e208c058bbb4ee1a11676ceea0a49cfa222749bcd90",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/imageformats/qjpeg.dll",
+      "size": 418936,
+      "sha256": "cff769bf14a53c4ac6c2ae3d64f21e04f2fd907d097a54a1784af483b596ddef",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/libusb-1.0.dll",
+      "size": 157696,
+      "sha256": "a8c91f0ff68fb7802a9f4416728f0eeb4d99af4ceaa4ef7dfe9374e76e375018",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/platforms/qwindows.dll",
+      "size": 1493624,
+      "sha256": "ba0278ed9851dff2ae29b9b21bbf8cfbc0500973fbd0214e8a6a97c95f8a53f9",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "系统平台与自动化/桌面、硬件与系统脚本/硬件与外设/ARGB学习/OpenRGB Windows 64-bit/styles/qwindowsvistastyle.dll",
+      "size": 143480,
+      "sha256": "a347fcd340ab6df13fff7294585696af5cbbb71104944204507f0c3b9ead6afd",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/AI应用与智能体项目/浏览器Agent项目/WebAIPilot/user_data/chrome_data/content_data.json",
+      "size": 2,
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/AI应用与智能体项目/浏览器Agent项目/WebAIPilot/user_data/firefox_data/content_data.json",
+      "size": 2,
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/AI应用与智能体项目/浏览器Agent项目/WebAIPilot/user_data/webkit_data/content_data.json",
+      "size": 2,
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/Web与后端项目/FastAPI项目/邮件发送系统/user_data/email_tasks.db",
+      "size": 12288,
+      "sha256": "68beb92325a09ef8ece260f221194029985158955b3b2540ce00c74367350c08",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/自动化与工具项目/网络监测工具/路由故障率监测工具/iperf-3.21-win64/cygwin1.dll",
+      "size": 3161653,
+      "sha256": "0ab76b4724499df54b75b7fa701788f1e77425ce65c8bca0a9f2120598bb8a70",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/课程项目成果/Django课程项目/智慧校园考试系统综合实训/exam/redis/EventLog.dll",
+      "size": 1024,
+      "sha256": "116f2be511b8f4eaf77c48d53a72291d8a6fe1db70c2ce724882af7a5bfdd5aa",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/课程项目成果/Django课程项目/智慧校园考试系统综合实训/exam/redis/dump.rdb",
+      "size": 2535,
+      "sha256": "df4c617e9fbebe7a53aeaa8f5e2163ba0abb6beaa20a008c34153c7ef3777441",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/课程项目成果/Django课程项目/智慧校园考试系统综合实训/exam/redis/redis-benchmark.pdb",
+      "size": 4370432,
+      "sha256": "4318a16e5062ddaba098153c5e91be666ade9622ca218368367844da6c0cc5f3",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/课程项目成果/Django课程项目/智慧校园考试系统综合实训/exam/redis/redis-check-aof.pdb",
+      "size": 3518464,
+      "sha256": "cc7c414c234f638c7b7cea6e5cfd7505614c2e8c2a8808743286aa86a16dd6bf",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/课程项目成果/Django课程项目/智慧校园考试系统综合实训/exam/redis/redis-cli.pdb",
+      "size": 4526080,
+      "sha256": "8fcf684c6249e093796d569d8eda9f1bcf22e47ca4ebb0d4f83800404d7d0942",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/课程项目成果/Django课程项目/智慧校园考试系统综合实训/exam/redis/redis-server.pdb",
+      "size": 7081984,
+      "sha256": "5e201af71da2b867fff19beb2b6daca16c62c85c879dcfe4ce2e096ec2bf43ae",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/课程项目成果/Django课程项目/老师舍弃的黑马/db.sqlite3",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    },
+    {
+      "path": "项目工坊/课程项目成果/Django课程项目/老师舍弃的黑马/xiaoyu_mall/db.sqlite3",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Dependency, runtime state, machine configuration or temporary Office lock file",
+      "localRetained": true
+    }
+  ]
+}
