@@ -1,0 +1,8 @@
+dsh 市场里面巨多东西，先让他安装 dsh  market 
+https://github.com/awesome-dsh-plugin/awesome-dsh-plugin
+开屏插件：
+https://github.com/lxj5820/dsh-boot-animation
+背景插件：
+https://github.com/Btmy520/dsh-skin-toggle
+实时查询消耗金额插件：
+https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget
