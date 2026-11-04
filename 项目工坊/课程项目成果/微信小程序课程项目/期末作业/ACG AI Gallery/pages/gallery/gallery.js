@@ -9,7 +9,7 @@ Page({
   },
 
   onLoad(args) {
-    const is_mobile_portrait = ['aimp', 'fjmp', 'moemp', 'mp', 'tx', 'xhl', 'ysmp'];
+    const is_mobile_portrait = ['moemp', 'mp', 'xhl', 'ysmp', 'mikump', 'tx'];
     this.setData({
       code: args.code || '',
       isVerticalType: is_mobile_portrait.includes(args.code)
@@ -34,7 +34,7 @@ Page({
   get_img_urls() {
     // console.log("进行了请求");
     wx.request({
-      url: `https://t.alcy.cc/json/?${this.data.code}=10`,
+      url: `https://t.alcy.cc/json?${this.data.code}=10`,
       success: (res) => {
         this.setData({ img_urls: [...this.data.img_urls, ...res.data.links]});
         const images = res.data.links.map((url, index) => ({

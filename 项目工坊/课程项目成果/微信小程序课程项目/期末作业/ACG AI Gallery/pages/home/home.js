@@ -2,20 +2,19 @@
 Page({
   data: {
     list: [
-      {code: 'pc', name: 'PC壁纸', icon: '💻', type: ''},
-      {code: 'ai', name: '二次创作', icon: '🤖', type: 'ai'},
-      {code: 'aimp', name: '创作竖屏', icon: '📱', type: 'ai'},
-      {code: 'bd', name: '白底极简', icon: '⚪', type: ''},
-      {code: 'fj', name: '风景', icon: '🏔️', type: ''},
-      {code: 'fjmp', name: '风景竖屏', icon: '🏞️', type: ''},
-      {code: 'lai', name: '软萌表情', icon: '🐾', type: 'moe'},
-      {code: 'moe', name: '萌图', icon: '🌸', type: 'moe'},
-      {code: 'moemp', name: '萌图竖屏', icon: '💖', type: 'moe'},
-      {code: 'mp', name: '横屏壁纸', icon: '📺', type: ''},
-      {code: 'tx', name: '头像', icon: '👤', type: ''},
-      {code: 'xhl', name: '软萌狐', icon: '🦊', type: 'moe'},
-      {code: 'ys', name: '原神横屏', icon: '⚔️', type: 'ys'},
-      {code: 'ysmp', name: '原神竖屏', icon: '🎒', type: 'ys'}
+      {code: 'pc',     name: 'PC壁纸',     icon: '💻', type: ''},
+      {code: 'mp',     name: '手机壁纸',   icon: '📱', type: 'mp'},
+      {code: 'moe',    name: '萌图',       icon: '🌸', type: ''},
+      {code: 'moemp',  name: '萌图竖屏',   icon: '💖', type: 'moemp'},
+      {code: 'lai',    name: '七濑胡桃',   icon: '🐾', type: ''},
+      {code: 'xhl',    name: '小狐狸',     icon: '🦊', type: 'xhl'},
+      {code: 'ys',     name: '原神横屏',   icon: '⚔️', type: ''},
+      {code: 'ysmp',   name: '原神竖屏',   icon: '🎒', type: 'ysmp'},
+      {code: 'miku',   name: '初音横屏',   icon: '🎤', type: ''},
+      {code: 'mikump', name: '初音竖屏',   icon: '🎶', type: 'mikump'},
+      {code: 'fj',     name: '风景',       icon: '🏔️', type: ''},
+      {code: 'bd',     name: '白底极简',   icon: '⚪', type: ''},
+      {code: 'tx',     name: '头像',       icon: '👤', type: 'tx'}
     ]
   },
 
